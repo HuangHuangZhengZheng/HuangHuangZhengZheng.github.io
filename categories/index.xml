@@ -1,0 +1,23 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Categories - Category - HHZZ`s space</title>
+        <link>http://example.org/categories/</link>
+        <description>Categories - Category - HHZZ`s space</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 29 Apr 2024 15:52:37 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/" rel="self" type="application/rss+xml" /><item>
+    <title>Weekly_random_thoughts</title>
+    <link>http://example.org/categories/weekly_random_thoughts/</link>
+    <pubDate>Mon, 29 Apr 2024 15:52:37 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/categories/weekly_random_thoughts/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>CSAPP</title>
+    <link>http://example.org/categories/csapp/</link>
+    <pubDate>Mon, 22 Apr 2024 08:40:36 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/categories/csapp/</guid>
+    <description><![CDATA[]]></description>
+</item>
+</channel>
+</rss>

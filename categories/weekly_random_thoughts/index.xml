@@ -1,0 +1,23 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Weekly_random_thoughts - Category - HHZZ`s space</title>
+        <link>http://example.org/categories/weekly_random_thoughts/</link>
+        <description>Weekly_random_thoughts - Category - HHZZ`s space</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 29 Apr 2024 15:52:37 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/weekly_random_thoughts/" rel="self" type="application/rss+xml" /><item>
+    <title>first_thoughts</title>
+    <link>http://example.org/try/</link>
+    <pubDate>Mon, 29 Apr 2024 15:52:37 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/try/</guid>
+    <description><![CDATA[第十一周随想 一时兴起，感觉需要梳理一下所谓人生（尤其是转专业第一次失败之后） 这个专栏在周老师@SJTU的启发下决定开始书写，每周至少一篇记录一下抽象生活]]></description>
+</item>
+<item>
+    <title>First_post</title>
+    <link>http://example.org/first_post/</link>
+    <pubDate>Sat, 20 Apr 2024 18:57:22 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/first_post/</guid>
+    <description><![CDATA[HHZZ会爱markdown和latex工程系的 ]]></description>
+</item>
+</channel>
+</rss>
