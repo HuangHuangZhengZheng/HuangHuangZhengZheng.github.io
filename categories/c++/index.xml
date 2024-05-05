@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>C&#43;&#43; - Category - HHZZ`s space</title>
+        <link>http://example.org/categories/c&#43;&#43;/</link>
+        <description>C&#43;&#43; - Category - HHZZ`s space</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 05 May 2024 22:24:42 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/c&#43;&#43;/" rel="self" type="application/rss+xml" /><item>
+    <title>C&#43;&#43; ptr</title>
+    <link>http://example.org/basic_cpp1/</link>
+    <pubDate>Sun, 05 May 2024 22:24:42 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/basic_cpp1/</guid>
+    <description><![CDATA[learning pointer(advanced version) 为了防止搞混而写
+下标为0?首地址? 1 2 3 4 5 6 void test0(){ int arr[] = {1, 2, 3}; cout &lt;&lt; &amp;arr[0] &lt;&lt; endl; cout &lt;&lt; &amp;arr &lt;&lt; endl; cout &lt;&lt; arr &lt;&lt; endl; } arr &amp;arr &amp;arr[0] 存储的都是相同的地址 arr 常量指针不能被改变 指向数组元素的指针(不一定是首元素)以用[]来访问数组元素 1 2 3 4 5 6 void test2() { int a[3] = {1,2,3}; int *p = a; p++; cout &lt;&lt; p[0] &lt;&lt; endl; // 2 } 数组类型的指针 1 2 3 4 5 6 7 void test2(){ int arr[] = {1, 2, 3}; int (*p)[] = &amp;arr; // 定义一个指向数组的指针 cout &lt;&lt; (*p)[0] &lt;&lt; endl; // 输出数组首地址 cout &lt;&lt; p[0] &lt;&lt; endl; // 输出数组首地址 cout &lt;&lt; p[0][0] &lt;&lt; endl; // 输出数组首元素 } int *p[] = &amp;arr vs int (*p)[] = &amp;arr?]]></description>
+</item>
+</channel>
+</rss>
