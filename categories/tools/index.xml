@@ -3,7 +3,18 @@
         <title>TOOLS - Category - HHZZ`s space</title>
         <link>http://example.org/categories/tools/</link>
         <description>TOOLS - Category - HHZZ`s space</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 29 Jun 2024 13:37:39 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/tools/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 29 Jun 2024 15:06:38 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/tools/" rel="self" type="application/rss+xml" /><item>
+    <title>Git</title>
+    <link>http://example.org/git/</link>
+    <pubDate>Sat, 29 Jun 2024 15:06:38 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/git/</guid>
+    <description><![CDATA[文件状态 未跟踪-未修改-已修改-暂存 git add &lt;name&gt; - *-&gt;暂存 git commit -m &quot;message&quot; - 暂存-&gt;未修改 git rm &lt;name&gt; - 未修改-&gt;未跟踪
+查看状态 1 git status 更加细致几行几列
+1 git diff 查看历史日志
+1 2 git log --pretty=oneline git log --graph --oneline --decorate 基本操作 基础配置 1 2 git config --global user.name &#34;your name&#34; git config --global user.email &#34;your email&#34; 创建版本库 1 2 3 mkdir myproject cd myproject git init 克隆版本库 1 git clone https://github.com/username/repository.git 跟踪文件or文件夹 1 git add &lt;filename&gt; 1 2 git rm &lt;filename&gt; git rm --cache &lt;filename&gt; 设置缓存状态 1 git add 1 git reset HEAD &lt;filename&gt; 提交修改 1 git commit -m &#34;commit message str&#34; 撤销非首次修改]]></description>
+</item>
+<item>
     <title>正则表达式笔记</title>
     <link>http://example.org/reg/</link>
     <pubDate>Sat, 29 Jun 2024 13:37:39 &#43;0800</pubDate>
