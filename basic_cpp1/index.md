@@ -64,3 +64,55 @@ int (*p)[] --> 指向的数组的元素是int类型
 **内存地址从上往下递增**
 
 ~~和CSAPP里面的栈画法有点不一样~~
+
+### delete
+
+1. 申请一个连续的内存块，然后将其视为二维数组：
+   ```cpp
+   int** arr = new int*[rows];
+   for (int i = 0; i < rows; ++i) {
+       arr[i] = new int[cols];
+   }
+   ```
+   释放时，你需要先释放每一行的内存，然后释放行指针数组：
+   ```cpp
+   for (int i = 0; i < rows; ++i) {
+       delete[] arr[i];
+   }
+   delete[] arr;
+   ```
+
+2. 申请一个足够大的连续内存块，然后将其视为二维数组：
+   ```cpp
+   int* arr = new int[rows * cols];
+   ```
+   在这种情况下，你只需要释放一次：
+   ```cpp
+   delete[] arr;
+   ```
+   注意，这种方式下，`arr`实际上是一个一维数组，但是你可以像访问二维数组一样使用它（例如，`arr[i][j]`实际上是`arr[i * cols + j]`）。
+
+确保在释放内存后将指针设置为`nullptr`，以避免悬垂指针问题：
+```cpp
+delete[] arr;
+arr = nullptr; // 或者使用智能指针自动管理内存
+```
+
+
+
+### char?
+```c++
+int main() {
+    char **p, *city[] = {"aaa","bbb"};
+    for (p = city; p < city + 2; ++p) {
+        cout << *p << endl;
+    }
+    return 0;
+}
+```
+结果为：
+```shell
+aaa
+bbb
+```
+
