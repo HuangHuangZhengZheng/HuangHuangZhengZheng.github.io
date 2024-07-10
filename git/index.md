@@ -103,5 +103,4 @@ git branch -d hhzz
 ### 重置、换基功能
 ~~待施工~~
 
-
-
+{{< figure src="/avatar.jpg" title="Lighthouse (figure)" >}}
