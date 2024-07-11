@@ -3,7 +3,77 @@
         <title>All Posts - HHZZ`s space</title>
         <link>http://example.org/posts/</link>
         <description>All Posts | HHZZ`s space</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 29 Jun 2024 15:06:38 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 11 Jul 2024 11:46:17 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>61B-35</title>
+    <link>http://example.org/61b-35/</link>
+    <pubDate>Thu, 11 Jul 2024 11:46:17 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/61b-35/</guid>
+    <description><![CDATA[math problems $$ N! ∈ \Omega (N^{N}) ? $$ √
+$$ log(N!) ∈ \Omega (NlogN) ? $$ √
+$$ NlogN∈ \Omega (log(N!)) ? $$ √
+所以可以推出：
+$$ NlogN ∈ \Theta (logN!) $$
+$$ log(N!) ∈ \Theta (NlogN) $$
+TUCS用时 上下界？ the ultimate comparison sort run time
+$$ \Omega(NlogN) $$
+$$ O(NlogN) $$
+下面开始证明： 考虑下界，对n个物体进行排序，有N！种可能，用两两比大小，考虑决策树的高度$$ H = \log_2 N! $$ 因此下界为 $$ \Omega (log(N!)) $$ 或者 $$ \Omega (NlogN) $$ 上界通过TUCS的性质可以通过具体示例反证得到，比如用merge sort]]></description>
+</item>
+<item>
+    <title>61B-34</title>
+    <link>http://example.org/61b-34/</link>
+    <pubDate>Thu, 11 Jul 2024 11:43:13 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/61b-34/</guid>
+    <description><![CDATA[More quick sort, Stability, Shuffling quick sort VS merge sort QuicksortL3S = left + 3-scan + shuffle
+Quicksort_LTHS:
+Tony Hoare partition scheme:
+L ptr 仅仅指向小的 G ptr 仅仅指向大的 ptr walk towards to each other, stopping on a hated item 两个都停下来的话， 交换一下， 然后移动其中一个 when ptrs cross, done. 和G交换pivot Not random smarter pivot selection: median Quicksort_PickTH
+考虑了如何计算数组地址的复杂度， 以及如何选择pivot的复杂度。
+worst case: $$ \Theta(NlogN) $$
+但实际上并没有那么好，因为计算中位数的复杂度是$$\Theta(N)$$。耗费了更多时间。
+quick select&ndash;using partitioning worst case:
+a sorted array $$ \Theta(N^2) $$]]></description>
+</item>
+<item>
+    <title>61B-38: Compression</title>
+    <link>http://example.org/61b-38/</link>
+    <pubDate>Thu, 11 Jul 2024 10:13:26 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/61b-38/</guid>
+    <description><![CDATA[信息无损性 模糊性
+prefix-free codes Huffman codes shannon-fano codes using tries to convert compressed data into a original data longest prefix matching
+self-extracting bits ]]></description>
+</item>
+<item>
+    <title>61B-37:overview, Tries</title>
+    <link>http://example.org/61b-37/</link>
+    <pubDate>Thu, 11 Jul 2024 08:46:02 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/61b-37/</guid>
+    <description><![CDATA[Overview Tries——前缀树/字典树 usages:
+prefix matching approximate matching 1 2 keysWithPrefix(String prefix) // returns all keys in the trie that start with the given prefix longestPrefixOf(String query) // returns the longest key in the trie that is a prefix of the query implementation 1 2 3 4 5 6 7 8 private class Node{ boolean exists; Map&lt;Character, Node&gt; links; public Node(){ links = new TreeMap&lt;&gt;(); exists = false; } } T9 keyboard Ternary search Tries 1 2 3 4 5 6 7 public class TSTSet&lt;Value&gt;{ private Node&lt;Value&gt; root; private static class Node&lt;Value&gt;{ private char c; private Node&lt;Value&gt; lo, mid, hi; } } 但是这种实现方式表现不佳 ]]></description>
+</item>
+<item>
+    <title>61B-36</title>
+    <link>http://example.org/61b-36/</link>
+    <pubDate>Wed, 10 Jul 2024 23:30:58 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/61b-36/</guid>
+    <description><![CDATA[radix sort 不用comparisons的排序算法，时间复杂度O(dn)，d为最大数的位数，n为待排序数的个数。
+空间换时间
+bucket sort
+counting sort:
+找出待排序数的最大值max，确定计数数组的长度为max+1。 遍历待排序数，将每个数的个位数值作为索引，将该索引对应的计数数组元素加1。 遍历计数数组，将每个元素的值作为索引，将该索引对应的元素值输出到结果数组中。 runtime: O(n+k)
+LSD radix sort: least significant digit radix sort
+找出待排序数的最大值max，确定计数数组的长度为10。 遍历待排序数，将每个数的个位数值作为索引，将该索引对应的计数数组元素加1。 LSD sort vs merge sort:
+similar strings:LSD sort is better
+dissimilar strings:merge sort is better
+MSD radix sort: most significant digit radix sort
+找出待排序数的最大值max，确定计数数组的长度为10。 遍历待排序数，将每个数的个位数值作为索引，将该索引对应的计数数组元素加1。 遍历计数数组，将每个元素的值作为索引，将该索引对应的元素值输出到结果数组中。 runtime: O(n+k)]]></description>
+</item>
+<item>
     <title>Git</title>
     <link>http://example.org/git/</link>
     <pubDate>Sat, 29 Jun 2024 15:06:38 &#43;0800</pubDate>
@@ -52,31 +122,6 @@
     <author>HHZZ</author>
     <guid>http://example.org/csapp_attacklab/</guid>
     <description><![CDATA[实验一：栈溢出攻击实验 栈的基本结构 实验二：ROP攻击实验 ]]></description>
-</item>
-<item>
-    <title>CSAPP_bomblab</title>
-    <link>http://example.org/csapp_bomblab/</link>
-    <pubDate>Mon, 22 Apr 2024 08:05:47 &#43;0800</pubDate>
-    <author>HHZZ</author>
-    <guid>http://example.org/csapp_bomblab/</guid>
-    <description><![CDATA[csapp_bomblab 都是汇编语言，没有什么好说的 注意GDB调试
-核心概念之一：寻址 如何寻址？ $Imm(r_1,r_2,factor)$ 注意值还是地址？ (%rdx)取memory时，$M[R_i]$ 中M一直在最外层 核心概念之二：GDB调试 常用命令 run 运行程序（注意结合数据流pipeline） b +$Addr$ 设置断点 delete 删除断点 next 单步执行 step stepi``finish进入函数 p $eax 打印变量 x /$nxb $Addr$ 打印内存 layout asm 切换到汇编模式有好看的窗口 info registers 打印寄存器 info frame 打印栈帧 info args 打印函数参数 info locals 打印局部变量 info breakpoints 打印断点信息 continue 继续运行 quit stop退出调试 一些些技巧 mov一些奇奇怪怪的地址时，很可能是线索，可以用x /$nxb $Addr$查看内存 jne之类的能不能直接取等擦边通过 常见的基础语句（条件/循环）有一些固定的范式，可以用x /6i $PC等查看指令 ]]></description>
-</item>
-<item>
-    <title>CSAPP_datalab</title>
-    <link>http://example.org/csapp_datalab/</link>
-    <pubDate>Sun, 21 Apr 2024 21:59:35 &#43;0800</pubDate>
-    <author>HHZZ</author>
-    <guid>http://example.org/csapp_datalab/</guid>
-    <description><![CDATA[int bit-level operations 德摩根律（位运算和集合论） 与：&amp; 非：~ 两者组合已经可以表示四个基本运算：与、非、或、异或。 移动位运算 注意是否为无符号数，有符号数的移位运算规则与无符号数不同。 有符号数的移位运算规则： 左移：符号位不变，右边补0。 右移：符号位不变，左边补符号位。 无符号数的移位运算规则： 左移：左边补0。 右移：右边补0。 与运算（&amp;）取特定的位数，用于位层面条件判断 减法的实现 A + ~A = -1 &ndash;&gt; A + (~A+1) = 0 减法的描述范围问题 做差取符号位 掩码操作 1 2 3 4 5 int conditional(int x, int y, int z) { int exp1 = ~(!!x) + 1; int exp2 = ~(!x) + 1; return (exp1&amp;y) + (exp2&amp;z); } 位层面分类讨论 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 /* howManyBits - return the minimum number of bits required to represent x in * two&#39;s complement(补码系统) * Examples: howManyBits(12) = 5 * howManyBits(298) = 10 * howManyBits(-5) = 4 负数的话 取反 同理 * howManyBits(0) = 1 * howManyBits(-1) = 1 特殊点?]]></description>
-</item>
-<item>
-    <title>First_post</title>
-    <link>http://example.org/first_post/</link>
-    <pubDate>Sat, 20 Apr 2024 18:57:22 &#43;0800</pubDate>
-    <author>HHZZ</author>
-    <guid>http://example.org/first_post/</guid>
-    <description><![CDATA[HHZZ会爱markdown和latex工程系的 ]]></description>
 </item>
 </channel>
 </rss>
