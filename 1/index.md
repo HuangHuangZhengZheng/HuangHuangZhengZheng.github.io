@@ -1,4 +1,4 @@
-# DATA100: course overview
+# DATA100-1: course overview
 
 ## cycle of data science
 ![alt text](image.png)

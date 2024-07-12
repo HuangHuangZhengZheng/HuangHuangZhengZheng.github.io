@@ -1,14 +1,14 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Markdown - Tag - HHZZ`s space</title>
-        <link>http://example.org/tags/markdown/</link>
+        <link>http://localhost:1313/tags/markdown/</link>
         <description>Markdown - Tag - HHZZ`s space</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 20 Apr 2024 18:57:22 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/markdown/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 20 Apr 2024 18:57:22 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/tags/markdown/" rel="self" type="application/rss+xml" /><item>
     <title>First_post</title>
-    <link>http://example.org/first_post/</link>
+    <link>http://localhost:1313/first_post/</link>
     <pubDate>Sat, 20 Apr 2024 18:57:22 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/first_post/</guid>
+    <guid>http://localhost:1313/first_post/</guid>
     <description><![CDATA[HHZZ会爱markdown和latex工程系的 ]]></description>
 </item>
 </channel>

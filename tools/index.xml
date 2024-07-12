@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tools on HHZZ`s space</title>
+    <link>http://example.org/tools/</link>
+    <description>Recent content in Tools on HHZZ`s space</description>
+    <generator>Hugo 0.125.1</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 29 Jun 2024 15:06:38 +0800</lastBuildDate>
+    <atom:link href="http://example.org/tools/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git</title>
+      <link>http://example.org/tools/git/git/</link>
+      <pubDate>Sat, 29 Jun 2024 15:06:38 +0800</pubDate>
+      <guid>http://example.org/tools/git/git/</guid>
+      <description>文件状态 未跟踪-未修改-已修改-暂存&#xA;git add &amp;lt;name&amp;gt; - *-&amp;gt;暂存&#xA;git commit -m &amp;quot;message&amp;quot; - 暂存-&amp;gt;未修改&#xA;git rm &amp;lt;name&amp;gt; - 未修改-&amp;gt;未跟踪&#xA;查看状态 1 git status 更加细致几行几列&#xA;1 git diff 查看历史日志&#xA;1 2 git log --pretty=oneline git log --graph --oneline --decorate 基本操作 基础配置 1 2 git config --global user.name &amp;#34;your name&amp;#34; git config --global user.email &amp;#34;your email&amp;#34; 创建版本库 1 2 3 mkdir myproject cd myproject git init 克隆版本库 1 git clone https://github.com/username/repository.git 跟踪文件or文件夹 1 git add &amp;lt;filename&amp;gt; 1 2 git rm &amp;lt;filename&amp;gt; git rm --cache &amp;lt;filename&amp;gt; 设置缓存状态 1 git add 1 git reset HEAD &amp;lt;filename&amp;gt; 提交修改 1 git commit -m &amp;#34;commit message str&amp;#34; 撤销非首次修改</description>
+    </item>
+    <item>
+      <title>正则表达式笔记</title>
+      <link>http://example.org/tools/reg/</link>
+      <pubDate>Sat, 29 Jun 2024 13:37:39 +0800</pubDate>
+      <guid>http://example.org/tools/reg/</guid>
+      <description>Regular Expressions 注意版本和文档！ 常用工具 https://regex101.com/ https://regexr.com/ python re模块&#xA;字符 . 匹配任意一个字符 [] 匹配括号中的任意一个字符,如 [a-zA-Z1-3] 匹配大写字母或小写字母或数字1-3, [^] 匹配除了括号中的字符&#xA;预定字符类 \d 匹配数字 \D 匹配非数字 \w 匹配字母、数字或下划线 \W 匹配非字母、数字或下划线 \s 匹配空白字符或者tab \S 匹配非空白字符&#xA;边界匹配 ^ 匹配字符串的开头 $ 匹配字符串的结尾 \b 匹配单词的边界, 如 \bthe\b 匹配the \B 匹配非单词边界&#xA;数量词 * 匹配前面的字符0次或多次 + 匹配前面的字符1次或多次 ? 匹配前面的字符0次或1次 {n} 匹配前面的字符n次 {n,} 匹配前面的字符至少n次 {n,m} 匹配前面的字符至少n次, 至多m次&#xA;非贪婪匹配 量词默认是贪婪匹配, 即尽可能多的匹配字符, 如 a.*b 会匹配到最长的以a开头的b 后面的量词加上? 则为非贪婪匹配, 即尽可能少的匹配字符, 如 a.*?b 会匹配到最短的以a开头的b&#xA;分组与捕获 () 用来创建分组, 捕获括号中的字符, 并在匹配时返回匹配到的内容 [] 用来创建字符类, 如 [Pp] 匹配P或p | 用来创建或关系, 如 a(bc|de) 匹配a后面是bc或de \n 引用分组, 如 \1 引用第一个分组 $n 引用第n个分组 ?</description>
+    </item>
+  </channel>
+</rss>

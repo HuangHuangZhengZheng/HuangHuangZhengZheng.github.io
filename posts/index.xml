@@ -4,7 +4,7 @@
         <link>http://example.org/posts/</link>
         <description>All Posts | HHZZ`s space</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 12 Jul 2024 19:11:57 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
-    <title>DATA100: course overview</title>
+    <title>DATA100-1: course overview</title>
     <link>http://example.org/1/</link>
     <pubDate>Fri, 12 Jul 2024 19:11:57 &#43;0800</pubDate>
     <author>HHZZ</author>
@@ -82,46 +82,29 @@ MSD radix sort: most significant digit radix sort
 找出待排序数的最大值max，确定计数数组的长度为10。 遍历待排序数，将每个数的个位数值作为索引，将该索引对应的计数数组元素加1。 遍历计数数组，将每个元素的值作为索引，将该索引对应的元素值输出到结果数组中。 runtime: O(n+k)]]></description>
 </item>
 <item>
-    <title>Git</title>
-    <link>http://example.org/git/</link>
-    <pubDate>Sat, 29 Jun 2024 15:06:38 &#43;0800</pubDate>
+    <title>CSAPP_attacklab</title>
+    <link>http://example.org/csapp_attacklab/</link>
+    <pubDate>Mon, 22 Apr 2024 08:40:36 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/git/</guid>
-    <description><![CDATA[文件状态 未跟踪-未修改-已修改-暂存 git add &lt;name&gt; - *-&gt;暂存 git commit -m &quot;message&quot; - 暂存-&gt;未修改 git rm &lt;name&gt; - 未修改-&gt;未跟踪
-查看状态 1 git status 更加细致几行几列
-1 git diff 查看历史日志
-1 2 git log --pretty=oneline git log --graph --oneline --decorate 基本操作 基础配置 1 2 git config --global user.name &#34;your name&#34; git config --global user.email &#34;your email&#34; 创建版本库 1 2 3 mkdir myproject cd myproject git init 克隆版本库 1 git clone https://github.com/username/repository.git 跟踪文件or文件夹 1 git add &lt;filename&gt; 1 2 git rm &lt;filename&gt; git rm --cache &lt;filename&gt; 设置缓存状态 1 git add 1 git reset HEAD &lt;filename&gt; 提交修改 1 git commit -m &#34;commit message str&#34; 撤销非首次修改]]></description>
+    <guid>http://example.org/csapp_attacklab/</guid>
+    <description><![CDATA[实验一：栈溢出攻击实验 栈的基本结构 实验二：ROP攻击实验 ]]></description>
 </item>
 <item>
-    <title>正则表达式笔记</title>
-    <link>http://example.org/reg/</link>
-    <pubDate>Sat, 29 Jun 2024 13:37:39 &#43;0800</pubDate>
+    <title>CSAPP_bomblab</title>
+    <link>http://example.org/csapp_bomblab/</link>
+    <pubDate>Mon, 22 Apr 2024 08:05:47 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/reg/</guid>
-    <description><![CDATA[Regular Expressions 注意版本和文档！ 常用工具 https://regex101.com/ https://regexr.com/ python re模块
-字符 . 匹配任意一个字符 [] 匹配括号中的任意一个字符,如 [a-zA-Z1-3] 匹配大写字母或小写字母或数字1-3, [^] 匹配除了括号中的字符
-预定字符类 \d 匹配数字 \D 匹配非数字 \w 匹配字母、数字或下划线 \W 匹配非字母、数字或下划线 \s 匹配空白字符或者tab \S 匹配非空白字符
-边界匹配 ^ 匹配字符串的开头 $ 匹配字符串的结尾 \b 匹配单词的边界, 如 \bthe\b 匹配the \B 匹配非单词边界
-数量词 * 匹配前面的字符0次或多次 + 匹配前面的字符1次或多次 ? 匹配前面的字符0次或1次 {n} 匹配前面的字符n次 {n,} 匹配前面的字符至少n次 {n,m} 匹配前面的字符至少n次, 至多m次
-非贪婪匹配 量词默认是贪婪匹配, 即尽可能多的匹配字符, 如 a.*b 会匹配到最长的以a开头的b 后面的量词加上? 则为非贪婪匹配, 即尽可能少的匹配字符, 如 a.*?b 会匹配到最短的以a开头的b
-分组与捕获 () 用来创建分组, 捕获括号中的字符, 并在匹配时返回匹配到的内容 [] 用来创建字符类, 如 [Pp] 匹配P或p | 用来创建或关系, 如 a(bc|de) 匹配a后面是bc或de \n 引用分组, 如 \1 引用第一个分组 $n 引用第n个分组 ?]]></description>
+    <guid>http://example.org/csapp_bomblab/</guid>
+    <description><![CDATA[csapp_bomblab 都是汇编语言，没有什么好说的 注意GDB调试
+核心概念之一：寻址 如何寻址？ $Imm(r_1,r_2,factor)$ 注意值还是地址？ (%rdx)取memory时，$M[R_i]$ 中M一直在最外层 核心概念之二：GDB调试 常用命令 run 运行程序（注意结合数据流pipeline） b +$Addr$ 设置断点 delete 删除断点 next 单步执行 step stepi``finish进入函数 p $eax 打印变量 x /$nxb $Addr$ 打印内存 layout asm 切换到汇编模式有好看的窗口 info registers 打印寄存器 info frame 打印栈帧 info args 打印函数参数 info locals 打印局部变量 info breakpoints 打印断点信息 continue 继续运行 quit stop退出调试 一些些技巧 mov一些奇奇怪怪的地址时，很可能是线索，可以用x /$nxb $Addr$查看内存 jne之类的能不能直接取等擦边通过 常见的基础语句（条件/循环）有一些固定的范式，可以用x /6i $PC等查看指令 ]]></description>
 </item>
 <item>
-    <title>C&#43;&#43; ptr</title>
-    <link>http://example.org/basic_cpp1/</link>
-    <pubDate>Sun, 05 May 2024 22:24:42 &#43;0800</pubDate>
+    <title>CSAPP_datalab</title>
+    <link>http://example.org/csapp_datalab/</link>
+    <pubDate>Sun, 21 Apr 2024 21:59:35 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/basic_cpp1/</guid>
-    <description><![CDATA[learning pointer(advanced version) 为了防止搞混而写
-下标为0?首地址? 1 2 3 4 5 6 void test0(){ int arr[] = {1, 2, 3}; cout &lt;&lt; &amp;arr[0] &lt;&lt; endl; cout &lt;&lt; &amp;arr &lt;&lt; endl; cout &lt;&lt; arr &lt;&lt; endl; } arr &amp;arr &amp;arr[0] 存储的都是相同的地址 arr 常量指针不能被改变 指向数组元素的指针(不一定是首元素)以用[]来访问数组元素 1 2 3 4 5 6 void test2() { int a[3] = {1,2,3}; int *p = a; p++; cout &lt;&lt; p[0] &lt;&lt; endl; // 2 } 数组类型的指针 1 2 3 4 5 6 7 void test2(){ int arr[] = {1, 2, 3}; int (*p)[] = &amp;arr; // 定义一个指向数组的指针 cout &lt;&lt; (*p)[0] &lt;&lt; endl; // 输出数组首地址 cout &lt;&lt; p[0] &lt;&lt; endl; // 输出数组首地址 cout &lt;&lt; p[0][0] &lt;&lt; endl; // 输出数组首元素 } int *p[] = &amp;arr vs int (*p)[] = &amp;arr?]]></description>
-</item>
-<item>
-    <title>first_thoughts</title>
-    <link>http://example.org/try/</link>
-    <pubDate>Mon, 29 Apr 2024 15:52:37 &#43;0800</pubDate>
-    <author>HHZZ</author>
-    <guid>http://example.org/try/</guid>
-    <description><![CDATA[]]></description>
+    <guid>http://example.org/csapp_datalab/</guid>
+    <description><![CDATA[int bit-level operations 德摩根律（位运算和集合论） 与：&amp; 非：~ 两者组合已经可以表示四个基本运算：与、非、或、异或。 移动位运算 注意是否为无符号数，有符号数的移位运算规则与无符号数不同。 有符号数的移位运算规则： 左移：符号位不变，右边补0。 右移：符号位不变，左边补符号位。 无符号数的移位运算规则： 左移：左边补0。 右移：右边补0。 与运算（&amp;）取特定的位数，用于位层面条件判断 减法的实现 A + ~A = -1 &ndash;&gt; A + (~A+1) = 0 减法的描述范围问题 做差取符号位 掩码操作 1 2 3 4 5 int conditional(int x, int y, int z) { int exp1 = ~(!!x) + 1; int exp2 = ~(!x) + 1; return (exp1&amp;y) + (exp2&amp;z); } 位层面分类讨论 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 /* howManyBits - return the minimum number of bits required to represent x in * two&#39;s complement(补码系统) * Examples: howManyBits(12) = 5 * howManyBits(298) = 10 * howManyBits(-5) = 4 负数的话 取反 同理 * howManyBits(0) = 1 * howManyBits(-1) = 1 特殊点?]]></description>
 </item>
 </channel>
 </rss>

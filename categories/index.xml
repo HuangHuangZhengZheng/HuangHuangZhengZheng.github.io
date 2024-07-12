@@ -3,7 +3,15 @@
         <title>Categories - Category - HHZZ`s space</title>
         <link>http://example.org/categories/</link>
         <description>Categories - Category - HHZZ`s space</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 12 Jul 2024 19:11:57 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 12 Jul 2024 22:37:18 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/" rel="self" type="application/rss+xml" /><item>
+    <title>CSIEC</title>
+    <link>http://example.org/categories/csiec/</link>
+    <pubDate>Fri, 12 Jul 2024 22:37:18 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/categories/csiec/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
     <title>DATA100</title>
     <link>http://example.org/categories/data100/</link>
     <pubDate>Fri, 12 Jul 2024 19:11:57 &#43;0800</pubDate>
@@ -28,19 +36,19 @@
     <description><![CDATA[]]></description>
 </item>
 <item>
+    <title>PRP</title>
+    <link>http://example.org/categories/prp/</link>
+    <pubDate>Tue, 21 May 2024 17:28:04 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/categories/prp/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
     <title>C&#43;&#43;</title>
     <link>http://example.org/categories/c&#43;&#43;/</link>
     <pubDate>Sun, 05 May 2024 22:24:42 &#43;0800</pubDate>
     <author>HHZZ</author>
     <guid>http://example.org/categories/c&#43;&#43;/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Weekly_random_thoughts</title>
-    <link>http://example.org/categories/weekly_random_thoughts/</link>
-    <pubDate>Mon, 29 Apr 2024 15:52:37 &#43;0800</pubDate>
-    <author>HHZZ</author>
-    <guid>http://example.org/categories/weekly_random_thoughts/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>

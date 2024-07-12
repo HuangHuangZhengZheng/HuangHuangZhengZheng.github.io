@@ -11,21 +11,5 @@
     <guid>http://example.org/tags/c&#43;&#43;/</guid>
     <description><![CDATA[]]></description>
 </item>
-<item>
-    <title>Latex</title>
-    <link>http://example.org/tags/latex/</link>
-    <pubDate>Sat, 20 Apr 2024 18:57:22 &#43;0800</pubDate>
-    <author>HHZZ</author>
-    <guid>http://example.org/tags/latex/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Markdown</title>
-    <link>http://example.org/tags/markdown/</link>
-    <pubDate>Sat, 20 Apr 2024 18:57:22 &#43;0800</pubDate>
-    <author>HHZZ</author>
-    <guid>http://example.org/tags/markdown/</guid>
-    <description><![CDATA[]]></description>
-</item>
 </channel>
 </rss>
