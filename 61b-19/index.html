@@ -4,10 +4,11 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>61B 19 - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/61b-19/">
+        <title>61B-19: Asymptotics III - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/61b-19/">
   <meta property="og:site_name" content="HHZZ`s space">
-  <meta property="og:title" content="61B 19">
-  <meta property="og:description" content="This is my cool site">
+  <meta property="og:title" content="61B-19: Asymptotics III">
+  <meta property="og:description" content="Big-O Notation 细节分析 局限性 对比 Important: Big O does not mean “worst case”! Often abused to mean this.
+大O记号的用处 Big-Omega Notation $\Omega(f(n))$ 大Ω记号的用处 非严格证明和严格证明 ">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
@@ -15,8 +16,9 @@
     <meta property="article:modified_time" content="2024-07-13T14:18:51+08:00">
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="61B 19">
-<meta name="twitter:description" content="">
+<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="61B-19: Asymptotics III">
+<meta name="twitter:description" content="Big-O Notation 细节分析 局限性 对比 Important: Big O does not mean “worst case”! Often abused to mean this.
+大O记号的用处 Big-Omega Notation $\Omega(f(n))$ 大Ω记号的用处 非严格证明和严格证明 ">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -26,12 +28,12 @@
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "61B 19",
+        "headline": "61B-19: Asymptotics III",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/61b-19\/"
-        },"genre": "posts","wordcount":  0 ,
+        },"genre": "posts","wordcount":  24 ,
         "url": "http:\/\/example.org\/61b-19\/","datePublished": "2024-07-13T14:18:51+08:00","dateModified": "2024-07-13T14:18:51+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -103,17 +105,125 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">61B 19</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">61B-19: Asymptotics III</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-13">2024-07-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;0 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;0 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-13">2024-07-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;24 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"></div><div class="post-footer" id="post-footer">
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#big-o-notation">Big-O Notation</a></li>
+    <li><a href="#细节分析">细节分析</a></li>
+    <li><a href="#局限性">局限性</a></li>
+    <li><a href="#对比">对比</a></li>
+    <li><a href="#大o记号的用处">大O记号的用处</a></li>
+    <li><a href="#big-omega-notation-omegafn">Big-Omega Notation $\Omega(f(n))$</a></li>
+    <li><a href="#大ω记号的用处">大Ω记号的用处</a></li>
+    <li><a href="#非严格证明和严格证明">非严格证明和严格证明</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="big-o-notation">Big-O Notation</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-19/image.png"
+        data-srcset="/61b-19/image.png, /61b-19/image.png 1.5x, /61b-19/image.png 2x"
+        data-sizes="auto"
+        alt="/61b-19/image.png"
+        title="alt text" width="1101" height="609" /></p>
+<h2 id="细节分析">细节分析</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-19/image-1.png"
+        data-srcset="/61b-19/image-1.png, /61b-19/image-1.png 1.5x, /61b-19/image-1.png 2x"
+        data-sizes="auto"
+        alt="/61b-19/image-1.png"
+        title="alt text" width="944" height="559" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-19/image-2.png"
+        data-srcset="/61b-19/image-2.png, /61b-19/image-2.png 1.5x, /61b-19/image-2.png 2x"
+        data-sizes="auto"
+        alt="/61b-19/image-2.png"
+        title="alt text" width="1091" height="572" /></p>
+<h2 id="局限性">局限性</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-19/image-3.png"
+        data-srcset="/61b-19/image-3.png, /61b-19/image-3.png 1.5x, /61b-19/image-3.png 2x"
+        data-sizes="auto"
+        alt="/61b-19/image-3.png"
+        title="alt text" width="1078" height="543" /></p>
+<h2 id="对比">对比</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-19/image-4.png"
+        data-srcset="/61b-19/image-4.png, /61b-19/image-4.png 1.5x, /61b-19/image-4.png 2x"
+        data-sizes="auto"
+        alt="/61b-19/image-4.png"
+        title="alt text" width="1065" height="510" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-19/image-5.png"
+        data-srcset="/61b-19/image-5.png, /61b-19/image-5.png 1.5x, /61b-19/image-5.png 2x"
+        data-sizes="auto"
+        alt="/61b-19/image-5.png"
+        title="alt text" width="1055" height="481" />
+<em><strong>Important: Big O does not mean “worst case”! Often abused to mean this.</strong></em></p>
+<h2 id="大o记号的用处">大O记号的用处</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-19/image-6.png"
+        data-srcset="/61b-19/image-6.png, /61b-19/image-6.png 1.5x, /61b-19/image-6.png 2x"
+        data-sizes="auto"
+        alt="/61b-19/image-6.png"
+        title="alt text" width="1082" height="612" /></p>
+<h2 id="big-omega-notation-omegafn">Big-Omega Notation $\Omega(f(n))$</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-19/image-7.png"
+        data-srcset="/61b-19/image-7.png, /61b-19/image-7.png 1.5x, /61b-19/image-7.png 2x"
+        data-sizes="auto"
+        alt="/61b-19/image-7.png"
+        title="alt text" width="1035" height="596" /></p>
+<h2 id="大ω记号的用处">大Ω记号的用处</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-19/image-8.png"
+        data-srcset="/61b-19/image-8.png, /61b-19/image-8.png 1.5x, /61b-19/image-8.png 2x"
+        data-sizes="auto"
+        alt="/61b-19/image-8.png"
+        title="alt text" width="1067" height="568" /></p>
+<h2 id="非严格证明和严格证明">非严格证明和严格证明</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-19/image-9.png"
+        data-srcset="/61b-19/image-9.png, /61b-19/image-9.png 1.5x, /61b-19/image-9.png 2x"
+        data-sizes="auto"
+        alt="/61b-19/image-9.png"
+        title="alt text" width="1083" height="607" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-19/image-10.png"
+        data-srcset="/61b-19/image-10.png, /61b-19/image-10.png 1.5x, /61b-19/image-10.png 2x"
+        data-sizes="auto"
+        alt="/61b-19/image-10.png"
+        title="alt text" width="1094" height="619" /></p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -124,7 +234,7 @@
                             <a class="link-to-markdown" href="/61b-19/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/61b-19/" data-title="61B 19"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/61b-19/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/61b-19/" data-title="61B 19"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/61b-19/" data-title="61B 19"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/61b-19/" data-title="61B 19"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/61b-19/" data-title="61B-19: Asymptotics III"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/61b-19/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/61b-19/" data-title="61B-19: Asymptotics III"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/61b-19/" data-title="61B-19: Asymptotics III"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/61b-19/" data-title="61B-19: Asymptotics III"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -136,7 +246,7 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/61b-20/" class="prev" rel="prev" title="61B 20"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>61B 20</a>
+    <div class="post-nav"><a href="/61b-20/" class="prev" rel="prev" title="61B-20: Disjoint Sets"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>61B-20: Disjoint Sets</a>
             <a href="/61b-23/" class="next" rel="next" title="61B 23">61B 23<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
