@@ -3,28 +3,36 @@
         <title>Categories - Category - HHZZ`s space</title>
         <link>http://example.org/categories/</link>
         <description>Categories - Category - HHZZ`s space</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 12 Jul 2024 22:37:18 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/" rel="self" type="application/rss+xml" /><item>
-    <title>CSIEC</title>
-    <link>http://example.org/categories/csiec/</link>
-    <pubDate>Fri, 12 Jul 2024 22:37:18 &#43;0800</pubDate>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 13 Jul 2024 14:22:01 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/" rel="self" type="application/rss+xml" /><item>
+    <title>UCB-CS61B</title>
+    <link>http://example.org/categories/ucb-cs61b/</link>
+    <pubDate>Sat, 13 Jul 2024 14:22:01 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/categories/csiec/</guid>
+    <guid>http://example.org/categories/ucb-cs61b/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>DATA100</title>
     <link>http://example.org/categories/data100/</link>
-    <pubDate>Fri, 12 Jul 2024 19:11:57 &#43;0800</pubDate>
+    <pubDate>Sat, 13 Jul 2024 13:27:45 &#43;0800</pubDate>
     <author>HHZZ</author>
     <guid>http://example.org/categories/data100/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
-    <title>UCB-CS61B</title>
-    <link>http://example.org/categories/ucb-cs61b/</link>
-    <pubDate>Thu, 11 Jul 2024 11:46:17 &#43;0800</pubDate>
+    <title>NNDL</title>
+    <link>http://example.org/categories/nndl/</link>
+    <pubDate>Fri, 12 Jul 2024 22:51:22 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/categories/ucb-cs61b/</guid>
+    <guid>http://example.org/categories/nndl/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>CSIEC</title>
+    <link>http://example.org/categories/csiec/</link>
+    <pubDate>Fri, 12 Jul 2024 22:37:18 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/categories/csiec/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
