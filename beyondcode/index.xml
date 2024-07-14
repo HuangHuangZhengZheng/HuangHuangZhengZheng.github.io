@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Beyondcodes on HHZZ`s space</title>
+    <link>http://example.org/beyondcode/</link>
+    <description>Recent content in Beyondcodes on HHZZ`s space</description>
+    <generator>Hugo 0.125.1</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 14 Jul 2024 20:40:24 +0800</lastBuildDate>
+    <atom:link href="http://example.org/beyondcode/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Thinking0</title>
+      <link>http://example.org/beyondcode/thinking0/</link>
+      <pubDate>Sun, 14 Jul 2024 20:40:24 +0800</pubDate>
+      <guid>http://example.org/beyondcode/thinking0/</guid>
+      <description>记录2024寒假时候的思考 </description>
+    </item>
+  </channel>
+</rss>
