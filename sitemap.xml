@@ -2,15 +2,32 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
+            <loc>http://example.org/61b-14/</loc><lastmod>2024-07-14T21:29:34&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/61b-15/</loc><lastmod>2024-07-14T21:29:34&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/61b-16/</loc><lastmod>2024-07-14T21:29:34&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/categories/</loc><lastmod>2024-07-14T21:29:34&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/</loc><lastmod>2024-07-14T21:29:34&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/posts/</loc><lastmod>2024-07-14T21:29:34&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/categories/ucb-cs61b/</loc><lastmod>2024-07-14T21:29:34&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/61b-12/</loc><lastmod>2024-07-14T21:29:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/61b-13/</loc><lastmod>2024-07-14T21:29:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/61b-10/</loc><lastmod>2024-07-14T21:29:32&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/61b-11/</loc><lastmod>2024-07-14T21:29:32&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/61b-9/</loc><lastmod>2024-07-14T21:29:32&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/61b-7/</loc><lastmod>2024-07-14T21:29:31&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/61b-8/</loc><lastmod>2024-07-14T21:29:31&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/61b-4/</loc><lastmod>2024-07-14T21:29:30&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/61b-5/</loc><lastmod>2024-07-14T21:29:30&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/61b-6/</loc><lastmod>2024-07-14T21:29:30&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/61b-1/</loc><lastmod>2024-07-14T21:29:29&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/61b-2/</loc><lastmod>2024-07-14T21:29:29&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/61b-3/</loc><lastmod>2024-07-14T21:29:29&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://example.org/beyondcode/</loc><lastmod>2024-07-14T20:50:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://example.org/</loc><lastmod>2024-07-14T20:50:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://example.org/beyondcode/thinking1/</loc><lastmod>2024-07-14T20:50:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://example.org/beyondcode/thinking0/</loc><lastmod>2024-07-14T20:40:24&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://example.org/categories/</loc><lastmod>2024-07-14T10:55:10&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://example.org/categories/data100/</loc><lastmod>2024-07-14T10:55:10&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://example.org/datal4/</loc><lastmod>2024-07-14T10:55:10&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://example.org/tags/pandas/</loc><lastmod>2024-07-14T10:55:10&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://example.org/posts/</loc><lastmod>2024-07-14T10:55:10&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://example.org/tags/</loc><lastmod>2024-07-14T10:55:10&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://example.org/datahw01/</loc><lastmod>2024-07-14T10:33:54&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://example.org/tags/math/</loc><lastmod>2024-07-14T10:33:54&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
@@ -18,7 +35,6 @@
             <loc>http://example.org/datal3/</loc><lastmod>2024-07-13T19:50:30&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://example.org/61b-32/</loc><lastmod>2024-07-13T14:22:01&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://example.org/61b-33/</loc><lastmod>2024-07-13T14:22:01&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://example.org/categories/ucb-cs61b/</loc><lastmod>2024-07-13T14:22:01&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://example.org/61b-31/</loc><lastmod>2024-07-13T14:22:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://example.org/61b-29/</loc><lastmod>2024-07-13T14:18:56&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://example.org/61b-30/</loc><lastmod>2024-07-13T14:18:56&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
