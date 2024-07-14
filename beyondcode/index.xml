@@ -6,8 +6,15 @@
     <description>Recent content in Beyondcodes on HHZZ`s space</description>
     <generator>Hugo 0.125.1</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 14 Jul 2024 20:40:24 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 14 Jul 2024 20:50:15 +0800</lastBuildDate>
     <atom:link href="http://example.org/beyondcode/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Thinking1</title>
+      <link>http://example.org/beyondcode/thinking1/</link>
+      <pubDate>Sun, 14 Jul 2024 20:50:15 +0800</pubDate>
+      <guid>http://example.org/beyondcode/thinking1/</guid>
+      <description>CS61ABC DATA100(DS100) 触动的瞬间&amp;#x1f60b;</description>
+    </item>
     <item>
       <title>Thinking0</title>
       <link>http://example.org/beyondcode/thinking0/</link>

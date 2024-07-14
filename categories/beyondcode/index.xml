@@ -1,14 +1,25 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>BeyondCode - Category - HHZZ`s space</title>
-        <link>http://example.org/categories/beyondcode/</link>
+        <link>http://localhost:1313/categories/beyondcode/</link>
         <description>BeyondCode - Category - HHZZ`s space</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 14 Jul 2024 20:40:24 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/beyondcode/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 14 Jul 2024 20:50:15 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/categories/beyondcode/" rel="self" type="application/rss+xml" /><item>
+    <title>Thinking1</title>
+    <link>http://localhost:1313/beyondcode/thinking1/</link>
+    <pubDate>Sun, 14 Jul 2024 20:50:15 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://localhost:1313/beyondcode/thinking1/</guid>
+    <description><![CDATA[CS61ABC DATA100(DS100) 触动的瞬间&#x1f60b;
+CS61A Lecture 1
+DS100 Lecture 1
+UCB EECS本科？专业课程图]]></description>
+</item>
+<item>
     <title>Thinking0</title>
-    <link>http://example.org/beyondcode/thinking0/</link>
+    <link>http://localhost:1313/beyondcode/thinking0/</link>
     <pubDate>Sun, 14 Jul 2024 20:40:24 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/beyondcode/thinking0/</guid>
+    <guid>http://localhost:1313/beyondcode/thinking0/</guid>
     <description><![CDATA[记录2024寒假时候的思考 ]]></description>
 </item>
 </channel>
