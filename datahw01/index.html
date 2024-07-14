@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>DATA100-hw01 - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/datahw01/">
+  <meta property="og:site_name" content="HHZZ`s space">
+  <meta property="og:title" content="DATA100-hw01">
+  <meta property="og:description" content="1 2 3 # Initialize Otter import otter grader = otter.Notebook(&amp;#34;hw01.ipynb&amp;#34;) HW 1: Math Review and Plotting 重点在coding，理论供参考 Due Date: Thursday Jan 27, 11:59 PM Collaboration Policy Data science is a collaborative activity. While you may talk with others about the homework, we ask that you write your solutions individually. If you do discuss the assignments with others please include their names at the top of your notebook.
+Collaborators: list collaborators here">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+  <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-07-14T10:33:54+08:00">
+    <meta property="article:modified_time" content="2024-07-14T10:33:54+08:00">
+    <meta property="article:tag" content="Math">
+    <meta property="article:tag" content="Plotting">
+    <meta property="og:image" content="http://example.org/logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="DATA100-hw01">
+<meta name="twitter:description" content="1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;hw01.ipynb&#34;) HW 1: Math Review and Plotting 重点在coding，理论供参考 Due Date: Thursday Jan 27, 11:59 PM Collaboration Policy Data science is a collaborative activity. While you may talk with others about the homework, we ask that you write your solutions individually. If you do discuss the assignments with others please include their names at the top of your notebook.
+Collaborators: list collaborators here">
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/datahw01/" /><link rel="prev" href="http://example.org/datal3/" /><link rel="next" href="http://example.org/datal4/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "DATA100-hw01",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/datahw01\/"
+        },"genre": "posts","keywords": "math, plotting","wordcount":  6616 ,
+        "url": "http:\/\/example.org\/datahw01\/","datePublished": "2024-07-14T10:33:54+08:00","dateModified": "2024-07-14T10:33:54+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "HHZZ"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HHZZ`s space"></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HHZZ`s space"></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">DATA100-hw01</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-14">2024-07-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;6616 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;32 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#due-date-thursday-jan-27-1159-pm">Due Date: Thursday Jan 27, 11:59 PM</a></li>
+    <li><a href="#collaboration-policy">Collaboration Policy</a></li>
+    <li><a href="#this-assignment">This Assignment</a></li>
+    <li><a href="#score-breakdown">Score Breakdown</a></li>
+    <li><a href="#before-you-start">Before You Start</a>
+      <ul>
+        <li><a href="#initialize-your-environment">Initialize your environment</a></li>
+        <li><a href="#preliminary-jupyter-shortcuts">Preliminary: Jupyter Shortcuts</a></li>
+        <li><a href="#preliminary-numpy">Preliminary: NumPy</a></li>
+        <li><a href="#preliminary-latex">Preliminary: LaTeX</a></li>
+        <li><a href="#preliminary-sums">Preliminary: Sums</a></li>
+      </ul>
+    </li>
+    <li><a href="#question-1-calculus">Question 1: Calculus</a>
+      <ul>
+        <li><a href="#question-1a">Question 1a</a></li>
+        <li><a href="#question-1b">Question 1b</a></li>
+      </ul>
+    </li>
+    <li><a href="#question-2-probabilities-and-proportions">Question 2: Probabilities and Proportions</a>
+      <ul>
+        <li><a href="#question-2a">Question 2a</a></li>
+        <li><a href="#question-2b">Question 2b</a></li>
+        <li><a href="#question-2c">Question 2c</a></li>
+        <li><a href="#question-2d">Question 2d</a></li>
+        <li><a href="#question-2e">Question 2e</a></li>
+      </ul>
+    </li>
+    <li><a href="#question-3-distributions">Question 3: Distributions</a>
+      <ul>
+        <li><a href="#question-3a">Question 3a</a></li>
+        <li><a href="#question-3b">Question 3b</a></li>
+        <li><a href="#question-3c">Question 3c</a></li>
+        <li><a href="#question-3d">Question 3d</a></li>
+        <li><a href="#question-3e">Question 3e</a></li>
+      </ul>
+    </li>
+    <li><a href="#question-4-linear-algebra">Question 4: Linear Algebra</a>
+      <ul>
+        <li><a href="#question-4a">Question 4a</a></li>
+        <li><a href="#question-4b">Question 4b</a></li>
+        <li><a href="#question-4c">Question 4c</a></li>
+        <li><a href="#question-4d">Question 4d</a></li>
+      </ul>
+    </li>
+    <li><a href="#question-5-a-least-squares-predictor">Question 5: A Least Squares Predictor</a>
+      <ul>
+        <li><a href="#question-5a">Question 5a</a></li>
+        <li><a href="#question-5b">Question 5b</a></li>
+        <li><a href="#mean-squared-error">Mean Squared Error</a></li>
+        <li><a href="#question-5c">Question 5c</a></li>
+      </ul>
+    </li>
+    <li><a href="#question-6-a-more-familiar-least-squares-predictor">Question 6: A More Familiar Least Squares Predictor</a>
+      <ul>
+        <li><a href="#the-dot-product">The Dot Product</a></li>
+        <li><a href="#question-6a">Question 6a</a></li>
+        <li><a href="#dot-products-in-numpy">Dot Products in NumPy</a></li>
+        <li><a href="#question-6b-i">Question 6b (i)</a></li>
+        <li><a href="#question-6b-ii">Question 6b (ii)</a></li>
+        <li><a href="#question-6c">Question 6c</a></li>
+      </ul>
+    </li>
+    <li><a href="#submission">Submission</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Initialize Otter</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">otter</span>
+</span></span><span class="line"><span class="cl"><span class="n">grader</span> <span class="o">=</span> <span class="n">otter</span><span class="o">.</span><span class="n">Notebook</span><span class="p">(</span><span class="s2">&#34;hw01.ipynb&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="hw-1-math-review-and-plotting-重点在coding理论供参考">HW 1: Math Review and Plotting 重点在coding，理论供参考</h1>
+<h2 id="due-date-thursday-jan-27-1159-pm">Due Date: Thursday Jan 27, 11:59 PM</h2>
+<h2 id="collaboration-policy">Collaboration Policy</h2>
+<p>Data science is a collaborative activity. While you may talk with others about
+the homework, we ask that you <strong>write your solutions individually</strong>. If you do
+discuss the assignments with others please <strong>include their names</strong> at the top
+of your notebook.</p>
+<p><strong>Collaborators</strong>: <em>list collaborators here</em></p>
+<h2 id="this-assignment">This Assignment</h2>
+<p>The purpose of this assignment is for you to combine Python, math, and the ideas in Data 8 to draw some interesting conclusions. The methods and results will help build the foundation of Data 100.</p>
+<h2 id="score-breakdown">Score Breakdown</h2>
+<table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1a</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1b</td>
+<td>2</td>
+</tr>
+<tr>
+<td>2a</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2b</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2c</td>
+<td>2</td>
+</tr>
+<tr>
+<td>2d</td>
+<td>2</td>
+</tr>
+<tr>
+<td>2e</td>
+<td>1</td>
+</tr>
+<tr>
+<td>3a</td>
+<td>2</td>
+</tr>
+<tr>
+<td>3b</td>
+<td>2</td>
+</tr>
+<tr>
+<td>3c</td>
+<td>1</td>
+</tr>
+<tr>
+<td>3d</td>
+<td>2</td>
+</tr>
+<tr>
+<td>3e</td>
+<td>2</td>
+</tr>
+<tr>
+<td>4a</td>
+<td>1</td>
+</tr>
+<tr>
+<td>4b</td>
+<td>1</td>
+</tr>
+<tr>
+<td>4c</td>
+<td>1</td>
+</tr>
+<tr>
+<td>4d</td>
+<td>1</td>
+</tr>
+<tr>
+<td>5a</td>
+<td>1</td>
+</tr>
+<tr>
+<td>5b</td>
+<td>1</td>
+</tr>
+<tr>
+<td>5d</td>
+<td>3</td>
+</tr>
+<tr>
+<td>6a</td>
+<td>2</td>
+</tr>
+<tr>
+<td>6b(i)</td>
+<td>2</td>
+</tr>
+<tr>
+<td>6b(ii)</td>
+<td>2</td>
+</tr>
+<tr>
+<td>6c</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>36</td>
+</tr>
+</tbody>
+</table>
+<h2 id="before-you-start">Before You Start</h2>
+<p>For each question in the assignment, please write down your answer in the answer cell(s) right below the question.</p>
+<p>We understand that it is helpful to have extra cells breaking down the process towards reaching your final answer. If you happen to create new cells <em>below</em> your answer to run code, <strong>NEVER</strong> add cells between a question cell and the answer cell below it. It will cause errors when we run the autograder, and it will sometimes cause a failure to generate the PDF file.</p>
+<p><strong>Important note: The local autograder tests will not be comprehensive. You can pass the automated tests in your notebook but still fail tests in the autograder.</strong> Please be sure to check your results carefully.</p>
+<h3 id="initialize-your-environment">Initialize your environment</h3>
+<p>This cell should run without error if you&rsquo;re using the course Jupyter Hub or you have <a href="http://www.ds100.org/sp20/setup" target="_blank" rel="noopener noreffer ">set up your personal computer correctly</a>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">matplotlib</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;fivethirtyeight&#39;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="preliminary-jupyter-shortcuts">Preliminary: Jupyter Shortcuts</h3>
+<p>Here are some useful Jupyter notebook keyboard shortcuts.  To learn more keyboard shortcuts, go to <strong>Help -&gt; Keyboard Shortcuts</strong> in the menu above.</p>
+<p>Here are a few we like:</p>
+<ol>
+<li><code>ctrl</code>+<code>return</code> : <em>Evaluate the current cell</em></li>
+<li><code>shift</code>+<code>return</code>: <em>Evaluate the current cell and move to the next</em></li>
+<li><code>esc</code> : <em>command mode</em> (may need to press before using any of the commands below)</li>
+<li><code>a</code> : <em>create a cell above</em></li>
+<li><code>b</code> : <em>create a cell below</em></li>
+<li><code>dd</code> : <em>delete a cell</em></li>
+<li><code>m</code> : <em>convert a cell to markdown</em></li>
+<li><code>y</code> : <em>convert a cell to code</em></li>
+</ol>
+<h3 id="preliminary-numpy">Preliminary: NumPy</h3>
+<p>You should be able to understand the code in the following cells. If not, review the following:</p>
+<ul>
+<li><a href="https://www.inferentialthinking.com/chapters/05/1/Arrays" target="_blank" rel="noopener noreffer ">The Data 8 Textbook Chapter on NumPy</a></li>
+<li><a href="http://ds100.org/fa17/assets/notebooks/numpy/Numpy_Review.html" target="_blank" rel="noopener noreffer ">DS100 NumPy Review</a></li>
+<li><a href="http://cs231n.github.io/python-numpy-tutorial/#numpy" target="_blank" rel="noopener noreffer ">Condensed NumPy Review</a></li>
+<li><a href="https://numpy.org/doc/stable/user/quickstart.html" target="_blank" rel="noopener noreffer ">The Official NumPy Tutorial</a></li>
+</ul>
+<p><strong>Jupyter pro-tip</strong>: Pull up the docs for any function in Jupyter by running a cell with
+the function name and a <code>?</code> at the end:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="err">?</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>[1;31mDocstring:[0m
+arange([start,] stop[, step,], dtype=None, *, device=None, like=None)
+
+Return evenly spaced values within a given interval.
+
+``arange`` can be called with a varying number of positional arguments:
+
+* ``arange(stop)``: Values are generated within the half-open interval
+  ``[0, stop)`` (in other words, the interval including `start` but
+  excluding `stop`).
+* ``arange(start, stop)``: Values are generated within the half-open
+  interval ``[start, stop)``.
+* ``arange(start, stop, step)`` Values are generated within the half-open
+  interval ``[start, stop)``, with spacing between values given by
+  ``step``.
+
+For integer arguments the function is roughly equivalent to the Python
+built-in :py:class:`range`, but returns an ndarray rather than a ``range``
+instance.
+
+When using a non-integer step, such as 0.1, it is often better to use
+`numpy.linspace`.
+
+See the Warning sections below for more information.
+
+Parameters
+----------
+start : integer or real, optional
+    Start of interval.  The interval includes this value.  The default
+    start value is 0.
+stop : integer or real
+    End of interval.  The interval does not include this value, except
+    in some cases where `step` is not an integer and floating point
+    round-off affects the length of `out`.
+step : integer or real, optional
+    Spacing between values.  For any output `out`, this is the distance
+    between two adjacent values, ``out[i+1] - out[i]``.  The default
+    step size is 1.  If `step` is specified as a position argument,
+    `start` must also be given.
+dtype : dtype, optional
+    The type of the output array.  If `dtype` is not given, infer the data
+    type from the other input arguments.
+device : str, optional
+    The device on which to place the created array. Default: None.
+    For Array-API interoperability only, so must be ``&quot;cpu&quot;`` if passed.
+
+    .. versionadded:: 2.0.0
+like : array_like, optional
+    Reference object to allow the creation of arrays which are not
+    NumPy arrays. If an array-like passed in as ``like`` supports
+    the ``__array_function__`` protocol, the result will be defined
+    by it. In this case, it ensures the creation of an array object
+    compatible with that passed in via this argument.
+
+    .. versionadded:: 1.20.0
+
+Returns
+-------
+arange : ndarray
+    Array of evenly spaced values.
+
+    For floating point arguments, the length of the result is
+    ``ceil((stop - start)/step)``.  Because of floating point overflow,
+    this rule may result in the last element of `out` being greater
+    than `stop`.
+
+Warnings
+--------
+The length of the output might not be numerically stable.
+
+Another stability issue is due to the internal implementation of
+`numpy.arange`.
+The actual step value used to populate the array is
+``dtype(start + step) - dtype(start)`` and not `step`. Precision loss
+can occur here, due to casting or due to using floating points when
+`start` is much larger than `step`. This can lead to unexpected
+behaviour. For example::
+
+  &gt;&gt;&gt; np.arange(0, 5, 0.5, dtype=int)
+  array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+  &gt;&gt;&gt; np.arange(-3, 3, 0.5, dtype=int)
+  array([-3, -2, -1,  0,  1,  2,  3,  4,  5,  6,  7,  8])
+
+In such cases, the use of `numpy.linspace` should be preferred.
+
+The built-in :py:class:`range` generates :std:doc:`Python built-in integers
+that have arbitrary size &lt;python:c-api/long&gt;`, while `numpy.arange`
+produces `numpy.int32` or `numpy.int64` numbers. This may result in
+incorrect results for large integer values::
+
+  &gt;&gt;&gt; power = 40
+  &gt;&gt;&gt; modulo = 10000
+  &gt;&gt;&gt; x1 = [(n ** power) % modulo for n in range(8)]
+  &gt;&gt;&gt; x2 = [(n ** power) % modulo for n in np.arange(8)]
+  &gt;&gt;&gt; print(x1)
+  [0, 1, 7776, 8801, 6176, 625, 6576, 4001]  # correct
+  &gt;&gt;&gt; print(x2)
+  [0, 1, 7776, 7185, 0, 5969, 4816, 3361]  # incorrect
+
+See Also
+--------
+numpy.linspace : Evenly spaced numbers with careful handling of endpoints.
+numpy.ogrid: Arrays of evenly spaced numbers in N-dimensions.
+numpy.mgrid: Grid-shaped arrays of evenly spaced numbers in N-dimensions.
+:ref:`how-to-partition`
+
+Examples
+--------
+&gt;&gt;&gt; np.arange(3)
+array([0, 1, 2])
+&gt;&gt;&gt; np.arange(3.0)
+array([ 0.,  1.,  2.])
+&gt;&gt;&gt; np.arange(3,7)
+array([3, 4, 5, 6])
+&gt;&gt;&gt; np.arange(3,7,2)
+array([3, 5])
+[1;31mType:[0m      builtin_function_or_method
+</code></pre>
+<p>You can close the window at the bottom by pressing <code>esc</code> several times or clicking on the x at the right hand side.</p>
+<p><strong>Another Jupyter pro-tip</strong>: Pull up the docs for any function in Jupyter by typing the function
+name, then <code>&lt;Shift&gt;&lt;Tab&gt;</code> on your keyboard. This is super convenient when you forget the order
+of the arguments to a function. You can press <code>&lt;Tab&gt;</code> multiple times to expand the docs and reveal additional information.</p>
+<p>Try it on the function below:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">np</span><span class="o">.</span><span class="n">linspace</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="preliminary-latex">Preliminary: LaTeX</h3>
+<p>You should use LaTeX to format math in your answers. If you aren&rsquo;t familiar with LaTeX, not to worry. It&rsquo;s not hard to use in a Jupyter notebook. Just place your math in between dollar signs within Markdown cells:</p>
+<p><code>$ f(x) = 2x $</code> becomes $ f(x) = 2x $.</p>
+<p>If you have a longer equation, use double dollar signs to place it on a line by itself:</p>
+<p><code>$$ \sum_{i=0}^n i^2 $$</code> becomes:</p>
+<p>$$ \sum_{i=0}^n i^2$$</p>
+<p>You can align multiple lines using the <code>&amp;</code> anchor, <code>\\</code> newline, in an <code>align</code> block as follows:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">\begin{align}
+</span></span><span class="line"><span class="cl">f(x) &amp;= (x - 1)^2 \\
+</span></span><span class="line"><span class="cl">&amp;= x^2 - 2x + 1
+</span></span><span class="line"><span class="cl">\end{align}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>becomes</p>
+<p>\begin{align}
+f(x) &amp;= (x - 1)^2 \
+&amp;= x^2 - 2x + 1
+\end{align}</p>
+<ul>
+<li><a href="latex_tips.pdf" rel="">This PDF</a> has some handy LaTeX.</li>
+<li><a href="https://www.sharelatex.com/learn/Mathematical_expressions" target="_blank" rel="noopener noreffer ">For more about basic LaTeX formatting, you can read this article.</a></li>
+</ul>
+<h3 id="preliminary-sums">Preliminary: Sums</h3>
+<p>Here&rsquo;s a recap of some basic algebra written in sigma notation. The facts are all just applications of the ordinary associative and distributive properties of addition and multiplication, written compactly and without the possibly ambiguous &ldquo;&hellip;&rdquo;. But if you are ever unsure of whether you&rsquo;re working correctly with a sum, you can always try writing $\sum_{i=1}^n a_i$ as $a_1 + a_2 + \cdots + a_n$ and see if that helps.</p>
+<p>You can use any reasonable notation for the index over which you are summing, just as in Python you can use any reasonable name in <code>for name in list</code>. Thus $\sum_{i=1}^n a_i = \sum_{k=1}^n a_k$.</p>
+<ul>
+<li>$\sum_{i=1}^n (a_i + b_i) = \sum_{i=1}^n a_i + \sum_{i=1}^n b_i$</li>
+<li>$\sum_{i=1}^n d = nd$</li>
+<li>$\sum_{i=1}^n (ca_i + d) = c\sum_{i=1}^n a_i + nd$</li>
+</ul>
+<p>These properties may be useful in the Least Squares Predictor question. To see the LaTeX we used, double-click this cell. Evaluate the cell to exit.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"></code></pre></td></tr></table>
+</div>
+</div><!-- BEGIN QUESTION -->
+<h2 id="question-1-calculus">Question 1: Calculus</h2>
+<p>In this question we will review some fundamental properties of the sigmoid function, which will be discussed when we talk more about logistic regression in the latter half of the class. The sigmoid function is defined to be
+$$\sigma(x) =
+\frac{1}{1+e^{-x}}$$</p>
+<!--
+BEGIN QUESTION
+name: q1a
+manual: true
+-->
+<h3 id="question-1a">Question 1a</h3>
+<p>Show that $\sigma(-x) = 1 - \sigma(x)$.</p>
+<p><strong>Note, again: In this class, you must always put your answer in the cell that immediately follows the question. DO NOT create any cells between this one and the one that says</strong> <em>Type your answer here, replacing this text.</em></p>
+<p><em>Type your answer here, replacing this text.</em></p>
+<!-- END QUESTION -->
+<!-- BEGIN QUESTION -->
+<h3 id="question-1b">Question 1b</h3>
+<p>Show that the derivative of the sigmoid function can be written as:</p>
+<p>$$\frac{d}{dx}\sigma(x) = \sigma(x)(1 - \sigma(x))$$</p>
+<p><a href="latex_tips.pdf" rel="">This PDF</a> has some handy LaTeX.</p>
+<!--
+BEGIN QUESTION
+name: q1b
+manual: true
+-->
+<p><em>Type your answer here, replacing this text.</em></p>
+<!-- END QUESTION -->
+<h2 id="question-2-probabilities-and-proportions">Question 2: Probabilities and Proportions</h2>
+<!-- BEGIN QUESTION -->
+<p>Much of data analysis involves interpreting proportions – lots and lots of related proportions. So let&rsquo;s recall the basics. It might help to start by reviewing <a href="https://www.inferentialthinking.com/chapters/09/5/Finding_Probabilities.html" target="_blank" rel="noopener noreffer ">the main rules</a> from Data 8, with particular attention to what&rsquo;s being multiplied in the multiplication rule.</p>
+<!--
+    BEGIN QUESTION
+    name: q2a
+    manual: true
+-->
+<h3 id="question-2a">Question 2a</h3>
+<p>The Pew Research Foundation publishes the results of numerous surveys, one of which is about the <a href="https://www.pewresearch.org/fact-tank/2019/03/22/public-confidence-in-scientists-has-remained-stable-for-decades/" target="_blank" rel="noopener noreffer ">trust that Americans have</a> in groups such as the military, scientists, and elected officials to act in the public interest. A table in the article summarizes the results.</p>
+<p>Pick one of the options (i) and (ii) to answer the question below; if you pick (i), fill in the blank with the percent. Then, explain your choice.</p>
+<p>The percent of surveyed U.S. adults who had a great deal of confidence in both scientists and religious leaders</p>
+<p>(i) is equal to ______________________.</p>
+<p>(ii) cannot be found with the information in the article.</p>
+<p><em>Type your answer here, replacing this text.</em></p>
+<!-- END QUESTION -->
+<h3 id="question-2b">Question 2b</h3>
+<p>In a famous (or infamous) survey, members of the Harvard medical school were asked to consider a scenario in which &ldquo;a test to detect a disease whose prevalence is 1/1,000 has a false positive rate of 5 percent&rdquo;. The terminology, the specific question asked in the survey, and the answer, are discussed in detail in a Stat 88 textbook <a href="http://stat88.org/textbook/notebooks/Chapter_02/04_Use_and_Interpretation.html#Harvard-Medical-School-Survey" target="_blank" rel="noopener noreffer ">section</a> that you are strongly encouraged to read. As Stat 88 is a Data 8 connector course, the section is another look at the same ideas as in the corresponding <a href="https://www.inferentialthinking.com/chapters/18/2/Making_Decisions.html" target="_blank" rel="noopener noreffer ">Data 8 textbook section</a>.</p>
+<p>The corresponding tree diagram is copied below for your reference.</p>
+<img src="tree_disease_harvard.png">
+<p>The survey did not provide the true positive rate. The respondents and Stat 88 were allowed to assume that the true positive rate is 1, but we will not do so here. <strong>Let the true positive rate be some unknown proportion $p$.</strong></p>
+<p>Suppose a person is picked at random from the population. Let $N$ be the event that the person doesn&rsquo;t have the disease and let $T_N$ be the event that the person&rsquo;s test result is negative.</p>
+<p>Fill in Blanks 1 and 2 with options chosen from (1)-(9).</p>
+<p>The proportion $P(N \mid T_N)$ is the number of people who $\underline{<del><del><del>1</del></del></del>}$ relative to the total number of people who $\underline{<del><del><del>2</del></del></del>}$.</p>
+<p>(1) are in the population</p>
+<p>(2) have the disease</p>
+<p>(3) don&rsquo;t have the disease</p>
+<p>(4) test positive</p>
+<p>(5) test negative</p>
+<p>(6) have the disease and test positive</p>
+<p>(7) have the disease and test negative</p>
+<p>(8) don&rsquo;t have the disease and test positive</p>
+<p>(9) don&rsquo;t have the disease and test negative</p>
+<p>Assign the variable <code>q4bi</code> to your answer to the first blank and <code>q4bii</code> to your answer to the second blank.</p>
+<!--
+    BEGIN QUESTION
+    name: q2b
+    points: 1
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">q4bi</span> <span class="o">=</span> <span class="o">...</span>
+</span></span><span class="line"><span class="cl"><span class="n">q4bii</span> <span class="o">=</span> <span class="o">...</span>
+</span></span><span class="line"><span class="cl"><span class="n">q4bi</span><span class="p">,</span> <span class="n">q4bii</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q2b&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="question-2c">Question 2c</h3>
+<p>(This is a continuation of the previous part.) Define a function <code>no_disease_given_negative</code> that takes $p$ as its argument and returns $P(N \mid T_N)$.</p>
+<!--
+    BEGIN QUESTION
+    name: q4c
+    points: 2
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">no_disease_given_negative</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="o">...</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q4c&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><!-- BEGIN QUESTION -->
+<h3 id="question-2d">Question 2d</h3>
+<p>(This part is a continuation of the previous two.) Pick all of the options (i)-(iv) that are true for all values of $p$. Explain by algebraic or probailistic reasoning; you are welcome to use your function <code>no_disease_given_negative</code> to try a few cases numerically. Your explanation should include the reasons why you <em>didn&rsquo;t</em> choose some options.</p>
+<p>$P(N \mid T_N)$ is</p>
+<p>(i) equal to $0.95$.</p>
+<p>(ii) equal to $0.999 \times 0.95$.</p>
+<p>(iii) greater than $0.999 \times 0.95$.</p>
+<p>(iv) greater than $0.95$.</p>
+<!--
+BEGIN QUESTION
+name: q2d
+manual: true
+-->
+<p><em>Type your answer here, replacing this text.</em></p>
+<!-- END QUESTION -->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Use this cell for experimenting if you wish, but your answer should be written in the cell above.</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><!-- BEGIN QUESTION -->
+<h3 id="question-2e">Question 2e</h3>
+<p>Suzuki is one of most commonly owned makes of cars in our county (Alameda). A car heading from Berkeley to San Francisco is pulled over on the freeway for speeding. Suppose I tell you that the car is either a Suzuki or a Lamborghini, and you have to guess which of the two is more likely.</p>
+<p>What would you guess, and why? Make some reasonable assumptions and explain them (data scientists often have to do this), justify your answer, and say how it&rsquo;s connected to the previous parts.</p>
+<!--
+    BEGIN QUESTION
+    name: q2e
+    manual: true
+-->
+<p><em>Type your answer here, replacing this text.</em></p>
+<!-- END QUESTION -->
+<h2 id="question-3-distributions">Question 3: Distributions</h2>
+<p>Visualizing distributions, both categorical and numerical, helps us understand variability. In Data 8 you visualized numerical distributions by drawing <a href="https://www.inferentialthinking.com/chapters/07/2/Visualizing_Numerical_Distributions.html#A-Histogram" target="_blank" rel="noopener noreffer ">histograms</a>, which look like bar charts but represent proportions by the <em>areas</em> of the bars instead of the heights or lengths. In this exercise you will use the <code>hist</code> function in <code>matplotlib</code> instead of the corresponding <code>Table</code> method to draw histograms.</p>
+<p>To start off, suppose we want to plot the probability distribution of the number of spots on a single roll of a die. That should be a flat histogram since the chance of each of the values 1 through 6 is 1/6. Here is a first attempt at drawing the histogram.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">faces</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">faces</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>(array([1., 0., 1., 0., 1., 0., 1., 0., 1., 1.]),
+ array([1. , 1.5, 2. , 2.5, 3. , 3.5, 4. , 4.5, 5. , 5.5, 6. ]),
+ &lt;BarContainer object of 10 artists&gt;)
+</code></pre>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datahw01/hw01_files/hw01_37_1.png"
+        data-srcset="/datahw01/hw01_files/hw01_37_1.png, /datahw01/hw01_files/hw01_37_1.png 1.5x, /datahw01/hw01_files/hw01_37_1.png 2x"
+        data-sizes="auto"
+        alt="/datahw01/hw01_files/hw01_37_1.png"
+        title="png" width="612" height="432" /></p>
+<p>This default plot is not helpful. We have to choose some arguments to get a visualization that we can interpret.</p>
+<p>Note that the second printed line shows the left ends of the default bins, as well as the right end of the last bin. The first line shows the counts in the bins. If you don&rsquo;t want the printed lines you can add a semi-colon at the end of the call to <code>plt.hist</code>, but we&rsquo;ll keep the lines for now.</p>
+<p>Let&rsquo;s redraw the histogram with bins of unit length centered at the possible values. By the end of the exercise you&rsquo;ll see a reason for centering. Notice that the argument for specifying bins is the same as the one for the <code>Table</code> method <code>hist</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">unit_bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">6.6</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">faces</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">unit_bins</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>(array([1., 1., 1., 1., 1., 1.]),
+ array([0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5]),
+ &lt;BarContainer object of 6 artists&gt;)
+</code></pre>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datahw01/hw01_files/hw01_39_1.png"
+        data-srcset="/datahw01/hw01_files/hw01_39_1.png, /datahw01/hw01_files/hw01_39_1.png 1.5x, /datahw01/hw01_files/hw01_39_1.png 2x"
+        data-sizes="auto"
+        alt="/datahw01/hw01_files/hw01_39_1.png"
+        title="png" width="612" height="432" /></p>
+<p>We need to see the edges of the bars! Let&rsquo;s specify the edge color <code>ec</code> to be white. <a href="https://matplotlib.org/3.1.0/gallery/color/named_colors.html" target="_blank" rel="noopener noreffer ">Here</a> are all the colors you could use, but do try to drag yourself away from the poetic names.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">faces</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">unit_bins</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>(array([1., 1., 1., 1., 1., 1.]),
+ array([0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5]),
+ &lt;BarContainer object of 6 artists&gt;)
+</code></pre>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datahw01/hw01_files/hw01_41_1.png"
+        data-srcset="/datahw01/hw01_files/hw01_41_1.png, /datahw01/hw01_files/hw01_41_1.png 1.5x, /datahw01/hw01_files/hw01_41_1.png 2x"
+        data-sizes="auto"
+        alt="/datahw01/hw01_files/hw01_41_1.png"
+        title="png" width="612" height="432" /></p>
+<p>That&rsquo;s much better, but look at the vertical axis. It is not drawn to the <a href="https://www.inferentialthinking.com/chapters/07/2/Visualizing_Numerical_Distributions.html#The-Histogram:-General-Principles-and-Calculation" target="_blank" rel="noopener noreffer ">density scale</a> defined in Data 8. We want a histogram of a probability distribution, so the total area should be 1. We just have to ask for that.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">faces</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">unit_bins</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>(array([0.16666667, 0.16666667, 0.16666667, 0.16666667, 0.16666667,
+        0.16666667]),
+ array([0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5]),
+ &lt;BarContainer object of 6 artists&gt;)
+</code></pre>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datahw01/hw01_files/hw01_43_1.png"
+        data-srcset="/datahw01/hw01_files/hw01_43_1.png, /datahw01/hw01_files/hw01_43_1.png 1.5x, /datahw01/hw01_files/hw01_43_1.png 2x"
+        data-sizes="auto"
+        alt="/datahw01/hw01_files/hw01_43_1.png"
+        title="png" width="624" height="432" /></p>
+<p>That&rsquo;s the probability histogram of the number of spots on one roll of a die. The proportion is $1/6$ in each of the bins.</p>
+<p><strong>Note</strong>: You may notice that running the above cells also displayed the return value of the last function call of each cell. This was intentional on our part to show you how <code>plt.hist()</code> (<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.hist.html" target="_blank" rel="noopener noreffer ">documentation</a>) returned different values per plot.</p>
+<p><strong>Note 2</strong>: Going forward, you can use a semicolon <code>;</code> on the last line to suppress additional display, as below.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">faces</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">unit_bins</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datahw01/hw01_files/hw01_45_0.png"
+        data-srcset="/datahw01/hw01_files/hw01_45_0.png, /datahw01/hw01_files/hw01_45_0.png 1.5x, /datahw01/hw01_files/hw01_45_0.png 2x"
+        data-sizes="auto"
+        alt="/datahw01/hw01_files/hw01_45_0.png"
+        title="png" width="624" height="432" /></p>
+<!-- BEGIN QUESTION -->
+<h3 id="question-3a">Question 3a</h3>
+<p>Define a function <code>integer_distribution</code> that takes an array of integers and draws the histogram of the distribution using unit bins centered at the integers and white edges for the bars. The histogram should be drawn to the density scale. The left-most bar should be centered at the smallest integer in the array, and the right-most bar at the largest.</p>
+<p>Your function does not have to check that the input is an array consisting only of integers. The display does not need to include the printed proportions and bins.</p>
+<p>If you have trouble defining the function, go back and carefully read all the lines of code that resulted in the probability histogram of the number of spots on one roll of a die. Pay special attention to the bins.</p>
+<!--
+    BEGIN QUESTION
+    name: q3a
+    manual: true
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">integer_distribution</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="mf">1.5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">integer_distribution</span><span class="p">(</span><span class="n">faces</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datahw01/hw01_files/hw01_47_0.png"
+        data-srcset="/datahw01/hw01_files/hw01_47_0.png, /datahw01/hw01_files/hw01_47_0.png 1.5x, /datahw01/hw01_files/hw01_47_0.png 2x"
+        data-sizes="auto"
+        alt="/datahw01/hw01_files/hw01_47_0.png"
+        title="png" width="624" height="432" /></p>
+<!-- END QUESTION -->
+<h3 id="question-3b">Question 3b</h3>
+<p>(Note: You can complete this part with just prerequisite knowledge for Data 100. That being said, Lecture 2 provides additional historical context and definitions for probability sample, sampling bias, and chance error).</p>
+<p>One way to use probability samples is to quantify sampling bias and chance error. Put briefly, if we assume that a sample distribution was selected at random from a known population, then we can quantify how likely that sample is to have arisen due to random chance (<strong>chance error</strong>). If the difference in sample and population distributions is too great, then we suspect that the given sample has <strong>bias</strong> in how it was selected from the population.</p>
+<p>Let&rsquo;s see this process in a <em>post</em>-analysis of <em>pre</em>-election polling of the 1936 U.S. Presidential Election. Through the U.S. electoral college process (we&rsquo;ll ignore it in this question, but read more <a href="https://en.wikipedia.org/wiki/United_States_Electoral_College" target="_blank" rel="noopener noreffer ">here</a>), Franklin D. Roosevelt won the election by an overwhelming margin. The popular vote results were approximately 61% Roosevelt (Democrat, incumbent), 37% Alf Landon (Republican), and 2% other candidates. For this problem, this is our <strong>population distribution</strong>.</p>
+<p>You can use <code>np.random.multinomial</code> to simulate drawing at random with replacement from a categorical distribution. The arguments are the sample size <code>n</code> and an array <code>pvals</code> of the proportions in all the categories. The function simulates <code>n</code> independent random draws from the distribution and returns the observed counts in all the categories. Read the documentation to see how this is described formally; we will use the formal terminology and notation in future assignments after we have discussed them in class.</p>
+<p>You will see that the function also takes a third argument <code>size</code>, which for our purposes will be an integer that specifies the number of times to run the entire simulation. All the runs are independent of each other.</p>
+<p>Write one line of code that uses <code>np.random.multinomial</code> to run 10 independent simulations of drawing 100 times at random with replacement from a population in which 61% of the people vote for Roosevelt, 37% for Landon, and 2% for other candidatdes. The output should be an array containing the counts in the <strong>Roosevelt</strong> category in the 10 simulations. It will help to recall how to slice <code>NumPy</code> arrays. Assign your answer to the variable <code>sample</code>.</p>
+<!--
+    BEGIN QUESTION
+    name: q3b
+    points: 2
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multinomial</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.61</span><span class="p">,</span> <span class="mf">0.37</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)[:,</span> <span class="mi">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">sample</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>array([54, 65, 58, 53, 66, 58, 61, 56, 60, 57], dtype=int32)
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q3b&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong><pre style='display: inline;'>q3b</pre></strong> passed! 🙌</p>
+<!-- BEGIN QUESTION -->
+<h3 id="question-3c">Question 3c</h3>
+<p>Replace the &ldquo;&hellip;&rdquo; in the code cell below with a Python expression so that the output of the cell is an empirical histogram of 500,000 simulated counts of voters for Roosevelt in 100 draws made at random with replacement from the voting population.</p>
+<p>After you have drawn the histogram, you might want to take a moment to recall the conclusion reached by the <em>Literary Digest</em>, a magazine that&mdash;while having successfully predicted the outcome of many previous presidential elections&mdash;failed to correctly predict the winner of the 1936 presidential election. In their survey of 10 million individuals, they predicted the popular vote as just 43% for Roosevelt and 57% for Landon. Based on our simulation, there was most definitely sampling bias in the <em>Digest</em>&rsquo;s sampling process.</p>
+<!--
+    BEGIN QUESTION
+    name: q3c
+    manual: true
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">simulated_counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multinomial</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.61</span><span class="p">,</span> <span class="mf">0.37</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="mi">500000</span><span class="p">)[:,</span> <span class="mi">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">integer_distribution</span><span class="p">(</span><span class="n">simulated_counts</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datahw01/hw01_files/hw01_52_0.png"
+        data-srcset="/datahw01/hw01_files/hw01_52_0.png, /datahw01/hw01_files/hw01_52_0.png 1.5x, /datahw01/hw01_files/hw01_52_0.png 2x"
+        data-sizes="auto"
+        alt="/datahw01/hw01_files/hw01_52_0.png"
+        title="png" width="624" height="432" /></p>
+<!-- END QUESTION -->
+<!-- BEGIN QUESTION -->
+<h3 id="question-3d">Question 3d</h3>
+<p>As you know, the count of Roosevelt voters in a sample of 100 people drawn at random from the eligible population is expected to be 61. Just by looking at the histogram in Part <strong>c</strong>, and <strong>no other calculation</strong>, pick the correct option and <strong>explain your choice</strong>. You might want to refer to the <a href="https://www.inferentialthinking.com/chapters/14/3/SD_and_the_Normal_Curve.html" target="_blank" rel="noopener noreffer ">Data 8 textbook</a> again.</p>
+<p>The SD of the distribution of the number of Roosevelt voters in a random sample of 100 people drawn from the eligible population is closest to</p>
+<p>(i) 1.9</p>
+<p>(ii) 4.9</p>
+<p>(iii) 10.9</p>
+<p>(iv) 15.9</p>
+<!--
+    BEGIN QUESTION
+    name: q3d
+    manual: true
+-->
+<p><em>Type your answer here.</em></p>
+<p>假设上面图片是对的，用3σ原则粗略估计5左右。</p>
+<!-- END QUESTION -->
+<!-- BEGIN QUESTION -->
+<h3 id="question-3e">Question 3e</h3>
+<p>The <em>normal curve with mean $\mu$ and SD $\sigma$</em> is defined by</p>
+<p>$$
+f(x) ~ = ~ \frac{1}{\sqrt{2\pi}\sigma} e^{-\frac{1}{2}\frac{(x-\mu)^2}{\sigma^2}}, ~~~ -\infty &lt; x &lt; \infty
+$$</p>
+<p>Redraw your histogram from Part <strong>c</strong> and overlay the normal curve with $\mu = 61$ and $\sigma$ equal to the choice you made in Part <strong>d</strong>. You just have to call <code>plt.plot</code> after <code>integer_distribution</code>. Use <code>np.e</code> for $e$. For the curve, use 2 as the line width, and any color that is easy to see over the blue histogram. It&rsquo;s fine to just let Python use its default color.</p>
+<p>Now you can see why centering the histogram bars over the integers was a good idea. The normal curve peaks at 26, which is the center of the corresponding bar.</p>
+<!--
+    BEGIN QUESTION
+    name: q3e
+    manual: true
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">mu</span> <span class="o">=</span> <span class="mi">61</span>
+</span></span><span class="line"><span class="cl"><span class="n">sigma</span> <span class="o">=</span> <span class="mf">4.9</span>
+</span></span><span class="line"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">f_x</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f_x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">integer_distribution</span><span class="p">(</span><span class="n">simulated_counts</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datahw01/hw01_files/hw01_56_0.png"
+        data-srcset="/datahw01/hw01_files/hw01_56_0.png, /datahw01/hw01_files/hw01_56_0.png 1.5x, /datahw01/hw01_files/hw01_56_0.png 2x"
+        data-sizes="auto"
+        alt="/datahw01/hw01_files/hw01_56_0.png"
+        title="png" width="624" height="432" /></p>
+<!-- END QUESTION -->
+<h2 id="question-4-linear-algebra">Question 4: Linear Algebra</h2>
+<p>A common representation of data uses matrices and vectors, so it is helpful to familiarize ourselves with linear algebra notation, as well as some simple operations.</p>
+<p>Define a vector $\vec{v}$ to be a column vector. Then, the following properties hold:</p>
+<ul>
+<li>
+<p>$c\vec{v}$ with $c$ some constant $c \in \mathbb{R}$, is equal to a new vector where every element in $c\vec{v}$ is equal to the corresponding element in $\vec{v}$ multiplied by $c$. For example, $2 \begin{bmatrix}
+1 \
+2 \
+\end{bmatrix} = \begin{bmatrix}
+2 \
+4 \
+\end{bmatrix}$</p>
+</li>
+<li>
+<p>$\vec{v}_1 + \vec{v}_2$ is equal to a new vector with elements equal to the elementwise addition of $\vec{v}_1$ and $\vec{v}_2$. For example, $\begin{bmatrix}
+1 \
+2 \
+\end{bmatrix} + \begin{bmatrix}
+-3 \
+4 \
+\end{bmatrix} = \begin{bmatrix}
+-2 \
+6 \
+\end{bmatrix}$.</p>
+</li>
+</ul>
+<p>The above properties form our definition for a <strong>linear combination</strong> of vectors. $\vec{v}_3$ is a linear combination of $\vec{v}_1$ and $\vec{v}_2$ if $\vec{v}_3 = a\vec{v}_1 + b\vec{v}_2$, where $a$ and $b$ are some constants.</p>
+<p>Oftentimes, we stack column vectors to form a matrix. Define the <strong>rank</strong> of a matrix $A$ to be equal to the maximal number of linearly independent columns in $A$. A set of columns is <strong>linearly independent</strong> if no column can be written as a linear combination of any other column(s) within the set.</p>
+<p>For example, let $A$ be a matrix with 4 columns. If three of these columns are linearly independent, but the fourth can be written as a linear combination of the other three, then $\text{rank}(A) = 3$.</p>
+<!-- BEGIN QUESTION -->
+<p><strong>For each part below</strong>, you will be presented with a set of vectors, and a matrix consisting of those vectors stacked in columns.</p>
+<ol>
+<li>State the rank of the matrix, and whether or not the matrix is full rank.</li>
+<li>If the matrix is <em>not</em> full rank, state a linear relationship among the vectors—for example: $\vec{v}_1 = 2\vec{v}_2$.</li>
+</ol>
+<!--
+BEGIN QUESTION
+name: q4a
+manual: true
+-->
+<h3 id="question-4a">Question 4a</h3>
+<p>$$
+\vec{v}_1 = \begin{bmatrix}
+1 \
+0 \
+\end{bmatrix}
+,
+\vec{v}_2 = \begin{bmatrix}
+1 \
+1 \
+\end{bmatrix}
+, A = \begin{bmatrix}
+\vert &amp; \vert \
+\vec{v}_1 &amp; \vec{v}_2   \
+\vert &amp; \vert
+\end{bmatrix}$$</p>
+<p><em>Type your answer here, replacing this text.</em></p>
+<!-- END QUESTION -->
+<!-- BEGIN QUESTION -->
+<!--
+BEGIN QUESTION
+name: q4b
+manual: true
+-->
+<h3 id="question-4b">Question 4b</h3>
+<p>$$
+\vec{v}_1 = \begin{bmatrix}
+3 \
+-4 \
+\end{bmatrix}
+,
+\vec{v}_2 = \begin{bmatrix}
+0 \
+0 \
+\end{bmatrix}
+,
+B = \begin{bmatrix}
+\vert &amp; \vert \
+\vec{v}_1 &amp; \vec{v}_2   \
+\vert &amp; \vert
+\end{bmatrix}
+$$</p>
+<p><em>Type your answer here, replacing this text.</em></p>
+<!-- END QUESTION -->
+<!-- BEGIN QUESTION -->
+<!--
+BEGIN QUESTION
+name: q4c
+manual: true
+-->
+<h3 id="question-4c">Question 4c</h3>
+<p>$$
+\vec{v}_1 = \begin{bmatrix}
+0 \
+1 \
+\end{bmatrix}
+,
+\vec{v}_2 = \begin{bmatrix}
+5 \
+0 \
+\end{bmatrix}
+,
+\vec{v}_3 = \begin{bmatrix}
+10 \
+10 \
+\end{bmatrix}
+,
+C = \begin{bmatrix}
+\vert &amp; \vert &amp; \vert \
+\vec{v}_1 &amp; \vec{v}_2 &amp; \vec{v}_3    \
+\vert &amp; \vert &amp; \vert
+\end{bmatrix}
+$$</p>
+<p><em>Type your answer here, replacing this text.</em></p>
+<!-- END QUESTION -->
+<!-- BEGIN QUESTION -->
+<!--
+BEGIN QUESTION
+name: q4d
+manual: true
+-->
+<h3 id="question-4d">Question 4d</h3>
+<p>$$
+\vec{v}_1 = \begin{bmatrix}
+0 \
+2 \
+3 \
+\end{bmatrix}
+,
+\vec{v}_2 = \begin{bmatrix}
+-2 \
+-2 \
+5 \
+\end{bmatrix}
+,
+\vec{v}_3 = \begin{bmatrix}
+2 \
+4 \
+-2 \
+\end{bmatrix}
+,
+D = \begin{bmatrix}
+\vert &amp; \vert &amp; \vert \
+\vec{v}_1 &amp; \vec{v}_2 &amp; \vec{v}_3    \
+\vert &amp; \vert &amp; \vert
+\end{bmatrix}
+$$</p>
+<p><em>Type your answer here, replacing this text.</em></p>
+<!-- END QUESTION -->
+<!-- BEGIN QUESTION -->
+<h2 id="question-5-a-least-squares-predictor">Question 5: A Least Squares Predictor</h2>
+<p>Let the list of numbers $(x_1, x_2, \ldots, x_n)$ be data. You can think of each index $i$ as the label of a household, and the entry $x_i$ as the annual income of Household $i$. Define the <strong>mean</strong> or <strong>average</strong> $\mu$ of the list to be
+$$\mu ~ = ~ \frac{1}{n}\sum_{i=1}^n x_i.$$</p>
+<!--
+BEGIN QUESTION
+name: q5a
+manual: true
+-->
+<h3 id="question-5a">Question 5a</h3>
+<p>The $i$ th <em>deviation from average</em> is the difference $x_i - \mu$. In Data 8 you saw in numerical examples that the <a href="https://www.inferentialthinking.com/chapters/14/2/Variability.html#The-Rough-Size-of-Deviations-from-Average" target="_blank" rel="noopener noreffer ">sum of all these deviations is 0</a>. Now prove that fact. That is, show that $\sum_{i=1}^n (x_i - \mu) = 0$.</p>
+<p><em>Type your answer here, replacing this text.</em></p>
+<!-- END QUESTION -->
+<!-- BEGIN QUESTION -->
+<h3 id="question-5b">Question 5b</h3>
+<p><a href="https://www.inferentialthinking.com/chapters/14/2/Variability.html#The-Rough-Size-of-Deviations-from-Average" target="_blank" rel="noopener noreffer ">Recall</a> that the <strong>variance</strong> of a list is defined as the <em>mean squared deviation from average</em>, and that the <a href="https://www.inferentialthinking.com/chapters/14/2/Variability.html#Standard-Deviation" target="_blank" rel="noopener noreffer "><strong>standard deviation</strong></a> (SD) of the list is the square root of the variance. The SD is in the same units as the data and measures the rough size of the deviations from average.</p>
+<p>Denote the variance of the list by $\sigma^2$. Write a math expression for $\sigma^2$ in terms of the data ($x_{1} \dots x_{n}$) and $\mu$. We recommend building your expression by reading the definition of variance from right to left. That is, start by writing the notation for &ldquo;average&rdquo;, then &ldquo;deviation from average&rdquo;, and so on.</p>
+<!--
+BEGIN QUESTION
+name: q5b
+manual: true
+-->
+<p><em>Type your answer here, replacing this text.</em></p>
+<!-- END QUESTION -->
+<h3 id="mean-squared-error">Mean Squared Error</h3>
+<p>Suppose you have to predict the value of $x_i$ for some $i$, but you don&rsquo;t get to see $i$ and you certainly don&rsquo;t get to see $x_i$. You decide that whatever $x_i$ is, you&rsquo;re just going to use some number $c$ as your <em>predictor</em>.</p>
+<p>The <em>error</em> in your prediction is $x_i - c$. Thus the <strong>mean squared error</strong> (MSE) of your predictor $c$ over the entire list of $n$ data points can be written as:</p>
+<p>$$MSE(c) = \frac{1}{n}\sum_{i=1}^n (x_i - c)^2.$$</p>
+<p>You may already see some similarities to your definition of variance from above! You then start to wonder—if you picked your favorite number $c = \mu$ as the predictor, would it be &ldquo;better&rdquo; than other choices $c \neq \mu$?</p>
+<!-- BEGIN QUESTION -->
+<!--
+BEGIN QUESTION
+name: q5c
+manual: true
+-->
+<h3 id="question-5c">Question 5c</h3>
+<p>One common approach to defining a &ldquo;best&rdquo; predictor is as predictor that <em>minimizes</em> the MSE on the data $(x_1, \dots, x_n)$.</p>
+<p>In this course, we commonly use calculus to find the predictor $c$ as follows:</p>
+<ol>
+<li>Define $MSE$ to be a function of $c$, i.e., $MSE(c)$ as above. Assume that the data points $x_1, x_2, &hellip;, x_n$ are fixed, and that $c$ is the only variable.</li>
+<li>Determine the value of $c$ that minimizes $MSE(c)$.</li>
+<li>Justify that this is indeed a minimum, not a maximum.</li>
+</ol>
+<p>Step 1 is done for you in the problem statement; follow steps 2 and 3 to show that $\mu$ is the value of $c$ that minimizes $MSE(c)$. You must do both steps.</p>
+<p><em>Type your answer here, replacing this text.</em></p>
+<!-- END QUESTION -->
+<p>Your proof above shows that $\mu$ is the <strong>least squares</strong> <em>constant</em> predictor.</p>
+<h2 id="question-6-a-more-familiar-least-squares-predictor">Question 6: A More Familiar Least Squares Predictor</h2>
+<p>In Data 8 you found (numerically) the <a href="https://www.inferentialthinking.com/chapters/15/3/Method_of_Least_Squares.html" target="_blank" rel="noopener noreffer ">least squares <em>linear</em> predictor</a> of a variable $y$ based on a related variable $x$. In this course, we will prove your findings using a generalization of your calculation in the previous question.</p>
+<p>When we get to this proof later in this course, you will need to be comfortable with vector operations. For now, you will get familiar with this notation by rewriting your least squares findings from Data 8 (and the previous question) using vector notation. <strong>This question won&rsquo;t require you to write LaTeX</strong>, so just focus on the mathematical notation we&rsquo;re presenting.</p>
+<h3 id="the-dot-product">The Dot Product</h3>
+<p>(1) We start by defining the <strong>dot product</strong> of two <em>real</em> vectors
+$x = \begin{bmatrix}
+x_1 \
+x_2 \
+\dots \
+x_n
+\end{bmatrix}$
+and
+$y = \begin{bmatrix}
+y_1 \
+y_2 \
+\dots \
+y_n
+\end{bmatrix}$ as follows:</p>
+<p>$$x^T y = \sum_{i=1}^n x_i y_i $$</p>
+<ul>
+<li>Given the above definition, the dot product is (1) a <strong>scalar</strong>, not another vector; and (2) only defined for two vectors of the same length.</li>
+<li><strong>Note</strong>: In this course we often opt for $x$ instead of $\vec{x}$ to simplify notation; $x$ as a vector is inferred from its use in the dot product. Then $x_i$ is the $i$-th element of the vector $x$.</li>
+<li><em>Detail</em>: In this course, we prefer the notation $x^Ty$ to illustrate a dot product, defined as matrix multiplication of $x^T$ and $y$. In the literature you may also see $x \cdot y$, but we avoid this notation since the dot ($\cdot$) notation is occasionally used for scalar values.</li>
+<li><em>Detail</em>: The dot product is a special case of an inner product, where $x, y \in \mathbb{R}^n$.</li>
+</ul>
+<p>(2) We introduce a special vector, $\mathbb{1}$, to write the <a href="https://inferentialthinking.com/chapters/14/1/Properties_of_the_Mean.html" target="_blank" rel="noopener noreffer "><strong>mean</strong></a> $\bar{x}$ of data $(x_1, x_2, \dots, x_n)$ as a dot product:
+\begin{align}
+\bar{x} &amp;= \frac{1}{n}\sum_{i=1}^n x_i = \frac{1}{n}\sum_{i=1}^n 1x_i \
+&amp;= \frac{1}{n}(x^T\mathbb{1}).
+\end{align}</p>
+<ul>
+<li>The data $(x_1, \dots, x_n)$ have been defined as an $n$-dimensional column vector $x$, where $x = \begin{bmatrix}
+x_1 \
+x_2 \
+\dots \
+x_n
+\end{bmatrix}$.</li>
+<li>The special vector $\mathbb{1}$ is a <strong>vector of ones</strong>, whose length is defined by the vector operation in which it is used. So with $n$-dimensional column vector $x$, the dot product $x^T\mathbb{1}$ implies that $\mathbb{1}$ is an $n$-dimensional column vector where every element is $1$.</li>
+<li>Because dot products produce scalars, the multiplication of two scalars $\frac{1}{n}$ and $x^T\mathbb{1}$ produces another scalar, $\bar{x}$.</li>
+<li><strong>Note</strong>: We use bar notation for the mean ($\bar{x}$ instead of $\mu$) in this problem to differentiate $\bar{x}$ from $\bar{y}$, the latter of which is the mean of data $(y_1, \dots, y_n)$.</li>
+</ul>
+<p>(3) We can further use this definition of $\bar{x}$ to additionally write the <a href="https://www.inferentialthinking.com/chapters/14/2/Variability.html#The-Rough-Size-of-Deviations-from-Average" target="_blank" rel="noopener noreffer "><strong>variance</strong></a> $\sigma_x^2$ of the data $(x_1, \dots, x_n)$ as a dot product. Verify for yourself that the below operation defines $\sigma_x^2$ as a scalar:
+\begin{align}
+\sigma_x^2 &amp;= \frac{1}{n}\sum_{i=1}^n (x_i - \bar{x})^2 \
+&amp;= \frac{1}{n}(x - \bar{x})^T(x - \bar{x}).
+\end{align}</p>
+<!--
+BEGIN QUESTION
+name: q6a
+manual: false
+-->
+<h3 id="question-6a">Question 6a</h3>
+<p>To verify your understanding of the dot product as defined above, suppose you are working with $n$ datapoints ${(x_1, y_1), (x_2, y_2), \dots, (x_n, y_n)}$.</p>
+<ul>
+<li>Define the $x$ data as $(x_1, \dots, x_n)$ and the $y$ data as $(y_1, \dots, y_n)$, and define $x$ and $y$ as two $n$-dimensional column vectors, where the $i$-th elements of $x$ and $y$ are $x_i$ and $y_i$, respectively.</li>
+<li>Define $\bar{x}$ and $\bar{y}$ as the means of the $x$ data and $y$ data, respectively.</li>
+<li>Define $\sigma_x^2$ and $\sigma_y^2$ as the variances of the $x$ data and $y$ data, respectively. Therefore $\sigma_x = \sqrt{\sigma_x^2}$ and $\sigma_y = \sqrt{\sigma_y^2}$ are the <a href="https://inferentialthinking.com/chapters/14/2/Variability.html?highlight=standard%20deviation#standard-deviation" target="_blank" rel="noopener noreffer "><strong>standard deviations</strong></a> of the $x$ data and $y$ data, respectively.</li>
+</ul>
+<p><strong>Suppose</strong> $n = 32$. What is the <strong>dimension</strong> of each of the following expressions?</p>
+<p>Expression (i). Note there are two ways it is written in the literature.
+$$\dfrac{1}{\sigma_x} (x - \bar{x}) = \dfrac{x - \bar{x}}{\sigma_x} $$</p>
+<p>Expression (ii).
+$$\dfrac{1}{n} \left( \dfrac{x - \bar{x}}{\sigma^x}\right)^T \left( \dfrac{x - \bar{x}}{\sigma^x}\right)$$</p>
+<p>Assign the variables <code>q6a_i</code> and <code>q6a_ii</code> to an integer representing the dimension of the above expressions (i) and (ii), respectively.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">q6a_i</span> <span class="o">=</span> <span class="o">...</span>
+</span></span><span class="line"><span class="cl"><span class="n">q6a_ii</span> <span class="o">=</span> <span class="o">...</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># do not modify these lines</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Q6a(i) is </span><span class="si">{</span><span class="n">q6a_i</span><span class="si">}</span><span class="s2">-dimensional&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Q6a(ii) is </span><span class="si">{</span><span class="n">q6a_ii</span><span class="si">}</span><span class="s2">-dimensional&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q6a&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="dot-products-in-numpy">Dot Products in NumPy</h3>
+<p>Next, we&rsquo;ll use NumPy&rsquo;s matrix multiplication operators to compute expressions for the <strong>regression line</strong>, which you learned in Data 8 was the unique line that minimizes the mean squared error of estimation among all straight lines. At this time, it may be helpful to review the <a href="https://inferentialthinking.com/chapters/15/2/Regression_Line.html#the-equation-of-the-regression-line" target="_blank" rel="noopener noreffer ">Data 8 section</a>.</p>
+<p>Before we continue, let&rsquo;s contextualize our computation by loading in a <a href="https://inferentialthinking.com/chapters/15/4/Least_Squares_Regression.html" target="_blank" rel="noopener noreffer ">dataset</a> you saw in Data 8: the relation between weight lifted and shot put distance among surveyed female collegiate athletes. We&rsquo;ve plotted the point using matplotlib&rsquo;s <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.scatter.html" target="_blank" rel="noopener noreffer ">scatter</a> function, which you will see in more detail in two weeks.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Run this cell to plot the data.</span>
+</span></span><span class="line"><span class="cl"><span class="n">weight_lifted</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="mf">37.5</span><span class="p">,</span>  <span class="mf">51.5</span><span class="p">,</span>  <span class="mf">61.3</span><span class="p">,</span>  <span class="mf">61.3</span><span class="p">,</span>  <span class="mf">63.6</span><span class="p">,</span>  <span class="mf">66.1</span><span class="p">,</span>  <span class="mf">70.</span> <span class="p">,</span>  <span class="mf">92.7</span><span class="p">,</span>  <span class="mf">90.5</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="mf">90.5</span><span class="p">,</span>  <span class="mf">94.8</span><span class="p">,</span>  <span class="mf">97.</span> <span class="p">,</span>  <span class="mf">97.</span> <span class="p">,</span>  <span class="mf">97.</span> <span class="p">,</span> <span class="mf">102.</span> <span class="p">,</span> <span class="mf">102.</span> <span class="p">,</span> <span class="mf">103.6</span><span class="p">,</span> <span class="mf">100.4</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">       <span class="mf">108.4</span><span class="p">,</span> <span class="mf">114.</span> <span class="p">,</span> <span class="mf">115.3</span><span class="p">,</span> <span class="mf">114.9</span><span class="p">,</span> <span class="mf">114.7</span><span class="p">,</span> <span class="mf">123.6</span><span class="p">,</span> <span class="mf">125.8</span><span class="p">,</span> <span class="mf">119.1</span><span class="p">,</span> <span class="mf">118.9</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">       <span class="mf">141.1</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">shot_put_distance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="mf">6.4</span><span class="p">,</span> <span class="mf">10.2</span><span class="p">,</span> <span class="mf">12.4</span><span class="p">,</span> <span class="mf">13.</span> <span class="p">,</span> <span class="mf">13.2</span><span class="p">,</span> <span class="mf">13.</span> <span class="p">,</span> <span class="mf">12.7</span><span class="p">,</span> <span class="mf">13.9</span><span class="p">,</span> <span class="mf">15.5</span><span class="p">,</span> <span class="mf">15.8</span><span class="p">,</span> <span class="mf">15.8</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">       <span class="mf">16.8</span><span class="p">,</span> <span class="mf">17.1</span><span class="p">,</span> <span class="mf">17.8</span><span class="p">,</span> <span class="mf">14.8</span><span class="p">,</span> <span class="mf">15.5</span><span class="p">,</span> <span class="mf">16.1</span><span class="p">,</span> <span class="mf">16.2</span><span class="p">,</span> <span class="mf">17.9</span><span class="p">,</span> <span class="mf">15.9</span><span class="p">,</span> <span class="mf">15.8</span><span class="p">,</span> <span class="mf">16.7</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">       <span class="mf">17.6</span><span class="p">,</span> <span class="mf">16.8</span><span class="p">,</span> <span class="mf">17.</span> <span class="p">,</span> <span class="mf">18.2</span><span class="p">,</span> <span class="mf">19.2</span><span class="p">,</span> <span class="mf">18.6</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">weight_lifted</span><span class="p">,</span> <span class="n">shot_put_distance</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&#34;Weight Lifted&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&#34;Shot Put Distance&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Looks pretty linear! Let&rsquo;s try to fit a regression line to this data.</p>
+<p>Define the vectors $x$ as the weight lifted data vector and $y$ as the shot put distance data vector, respectively, of the college athletes. Then the regression line uses the weight lifted $x$ to predict $\hat{y}$, which is the <strong>linear estimate</strong> of the actual value shot put distance $y$ as follows:</p>
+<p>\begin{align}
+\hat{y} &amp;= \hat{a} + \hat{b}{x}\text{, where} \
+\hat{a} &amp;= \bar{y} - \hat{b}\bar{x} \
+\hat{b} &amp;= r \dfrac{\sigma_y}{\sigma_x}
+\end{align}</p>
+<ul>
+<li>$\bar{x}, \bar{y}$ and $\sigma_x, \sigma_y$ are the means and standard deviations, respectively of the data $x$ and $y$, respectively. Here, $r$ is the correlation coefficient as defined in Data 8!</li>
+<li><strong>Note</strong>: We use the hat $\hat{}$ notation to indicate values we are <em>estimating</em>: $\hat{y}$, the predicted shot put distance, as well as $\hat{a}$ and $\hat{b}$, the respective estimated intercept and slope parameters we are using to model the &ldquo;best&rdquo; linear predictor of $y$ from $x$. We&rsquo;ll dive into this later in the course.</li>
+<li><strong>Note</strong>: Remember how we dropped the $\vec{}$ vector notation? These linear regression equations therefore represent both the scalar case (predict a single value $\hat{y}$ from a single $x$) <em>and</em> the vector case (predict a vector $\hat{y}$ element-wise from a vector $x$). How convenient!!</li>
+</ul>
+<p>In this part, instead of using NumPy&rsquo;s built-in statistical functions like <code>np.mean()</code> and <code>np.std()</code>, you are going to use NumPy&rsquo;s matrix operations to create the components of the regression line from first principles.</p>
+<p>The <code>@</code> operator multiplies NumPy matrices or arrays together (<a href="https://numpy.org/doc/stable/reference/generated/numpy.matmul.html#numpy.matmul" target="_blank" rel="noopener noreffer ">documentation</a>). We can use this operator to write functions to compute statistics on data, using the expressions that we defined in part (a). Check it out:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Just run this cell.</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">dot_mean</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">all_ones</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>   <span class="c1"># creates n-dimensional vector of ones</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">(</span><span class="n">arr</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">all_ones</span><span class="p">)</span><span class="o">/</span><span class="n">n</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">dot_var</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">mean</span> <span class="o">=</span> <span class="n">dot_mean</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">zero_mean_arr</span> <span class="o">=</span> <span class="n">arr</span> <span class="o">-</span> <span class="n">mean</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">(</span><span class="n">zero_mean_arr</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">zero_mean_arr</span><span class="p">)</span><span class="o">/</span><span class="n">n</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">dot_std</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dot_var</span><span class="p">(</span><span class="n">arr</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;np.mean(weight_lifted)  =&#34;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">weight_lifted</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;</span><span class="se">\t</span><span class="s2">dot_mean(weight_lifted) =&#34;</span><span class="p">,</span> <span class="n">dot_mean</span><span class="p">(</span><span class="n">weight_lifted</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;np.var(weight_lifted)   =&#34;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">weight_lifted</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;</span><span class="se">\t</span><span class="s2">dot_var(weight_lifted   =&#34;</span><span class="p">,</span> <span class="n">dot_var</span><span class="p">(</span><span class="n">weight_lifted</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;np.std(weight_lifted)   =&#34;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">weight_lifted</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;</span><span class="se">\t</span><span class="s2">dot_std(weight_lifted   =&#34;</span><span class="p">,</span> <span class="n">dot_std</span><span class="p">(</span><span class="n">weight_lifted</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><!--
+BEGIN QUESTION
+name: q6bi
+manual: false
+-->
+<p>Now, you will write code to define the expressions you explored in part (a) of this question.</p>
+<h3 id="question-6b-i">Question 6b (i)</h3>
+<p>Use the NumPy <code>@</code> operator to compute expression (i) from part (a). For convenience, we&rsquo;ve rewritten the expression below.
+Note that this expression is also referred to as $x$ in <strong>standard units</strong> (<a href="https://inferentialthinking.com/chapters/14/2/Variability.html#standard-units" target="_blank" rel="noopener noreffer ">Data 8 textbook section</a>).</p>
+<p>$$\dfrac{x - \bar{x}}{\sigma_x} $$</p>
+<p>Write the body of the function <code>dot_su</code> which takes in a 1-D NumPy array <code>arr</code> and returns <code>arr</code> in standard units.</p>
+<ul>
+<li><strong>Do not use <code>np.mean(), np.std(), np.var(), np.sum()</code> nor any Python loops.</strong></li>
+<li>You should only use a <em>subset</em> of <code>@, /, +, -, len()</code>, the <code>dot_mean(), dot_var(), and dot_std()</code> functions defined above.</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">dot_su</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="o">...</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># do not edit below this line</span>
+</span></span><span class="line"><span class="cl"><span class="n">q6bi_su</span> <span class="o">=</span> <span class="n">dot_su</span><span class="p">(</span><span class="n">weight_lifted</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">q6bi_su</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q6bi&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><!--
+BEGIN QUESTION
+name: q6bii
+manual: false
+-->
+<h3 id="question-6b-ii">Question 6b (ii)</h3>
+<p>Next use the NumPy <code>@</code> operator to compute the correlation coefficient $r$, which is expression (ii) from part (a). For convenience, we&rsquo;ve rewritten the expression below.</p>
+<p>$$r = \dfrac{1}{n} \left( \dfrac{x - \bar{x}}{\sigma^x}\right)^T \left( \dfrac{x - \bar{x}}{\sigma^x}\right)$$</p>
+<p>Write the body of the function <code>dot_corr_coeff</code> which takes in two 1-D NumPy arrays <code>x</code> and <code>y</code> and returns the correlation coefficient of <code>x</code> and <code>y</code>.</p>
+<ul>
+<li>As before, <strong>Do not use <code>np.mean(), np.std(), np.var(), np.sum()</code> nor any Python loops.</strong></li>
+<li>As before, you should only use a <em>subset</em> of <code>@, /, +, -, len()</code>, the <code>dot_mean(), dot_var(), and dot_std()</code> functions defined above.</li>
+<li>You may also use the <code>dot_su()</code> function that you defined in the previous part.</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">dot_corr_coeff</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="o">...</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># do not edit below this line</span>
+</span></span><span class="line"><span class="cl"><span class="n">q6bii_r</span> <span class="o">=</span> <span class="n">dot_corr_coeff</span><span class="p">(</span><span class="n">weight_lifted</span><span class="p">,</span> <span class="n">shot_put_distance</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">q6bii_r</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q6bii&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><!--
+BEGIN QUESTION
+name: q6c
+manual: false
+-->
+<h3 id="question-6c">Question 6c</h3>
+<p>We&rsquo;re ready to put everything together! Finally, use the <code>dot_</code>-prefixed functions in this question to compute the regression line. For convenience, we&rsquo;ve rewritten the expressions below. $\hat{y}$ is the linear estimate of the value $y$ based on $x$.</p>
+<p>\begin{align}
+\hat{y} &amp;= \hat{a} + \hat{b}{x}\text{, where} \
+\hat{a} &amp;= \bar{y} - \hat{b}\bar{x} \
+\hat{b} &amp;= r \dfrac{\sigma_y}{\sigma_x}
+\end{align}</p>
+<p>Define the functions <code>compute_a_hat</code> and <code>compute_b_hat</code> which return the intercept and slope, respectively, of the regression line defind above for a linear estimator of <code>y</code> using <code>x</code>. Verify how the functions are used to plot the linear regression line (implemented for you).</p>
+<ul>
+<li>As before, <strong>Do not use <code>np.mean(), np.std(), np.var(), np.sum()</code>, or any for loops.</strong></li>
+<li>You may use a <em>subset</em> of <code>@, /, +, -, len(), dot_mean(), dot_var(), dot_std(), dot_su(), dot_corr_coeff()</code>.</li>
+<li><strong>Hint:</strong> You may want to define a_hat in terms of b_hat.</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">compute_a_hat</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="o">...</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">compute_b_hat</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="o">...</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># do not edit below this line</span>
+</span></span><span class="line"><span class="cl"><span class="n">a_hat</span> <span class="o">=</span> <span class="n">compute_a_hat</span><span class="p">(</span><span class="n">weight_lifted</span><span class="p">,</span> <span class="n">shot_put_distance</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">b_hat</span> <span class="o">=</span> <span class="n">compute_b_hat</span><span class="p">(</span><span class="n">weight_lifted</span><span class="p">,</span> <span class="n">shot_put_distance</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">shot_put_hats</span> <span class="o">=</span> <span class="n">a_hat</span> <span class="o">+</span> <span class="n">b_hat</span> <span class="o">*</span> <span class="n">weight_lifted</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">weight_lifted</span><span class="p">,</span> <span class="n">shot_put_distance</span><span class="p">)</span> <span class="c1"># the actual data</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">weight_lifted</span><span class="p">,</span> <span class="n">shot_put_hats</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> <span class="c1"># the prediction line, transparent green</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&#34;Weight Lifted&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&#34;Shot Put Distance&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">display</span><span class="p">(</span><span class="n">compute_a_hat</span><span class="p">(</span><span class="n">weight_lifted</span><span class="p">,</span> <span class="n">shot_put_distance</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">display</span><span class="p">(</span><span class="n">compute_b_hat</span><span class="p">(</span><span class="n">weight_lifted</span><span class="p">,</span> <span class="n">shot_put_distance</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q6c&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<p>To double-check your work, the cell below will rerun all of the autograder tests.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check_all</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="submission">Submission</h2>
+<p>Make sure you have run all cells in your notebook in order before running the cell below, so that all images/graphs appear in the output. The cell below will generate a zip file for you to submit. <strong>Please save before exporting!</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Save your notebook first, then run this cell to export your submission.</span>
+</span></span><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">export</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2024-07-14</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/datahw01/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/datahw01/" data-title="DATA100-hw01" data-hashtags="math,plotting"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/datahw01/" data-hashtag="math"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/datahw01/" data-title="DATA100-hw01"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/datahw01/" data-title="DATA100-hw01"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/datahw01/" data-title="DATA100-hw01"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/math/">Math</a>,&nbsp;<a href="/tags/plotting/">Plotting</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/datal3/" class="prev" rel="prev" title="DATA100-L3: Pandas Ⅰ"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>DATA100-L3: Pandas Ⅰ</a>
+            <a href="/datal4/" class="next" rel="next" title="DATA100-L4: Pandas Ⅱ">DATA100-L4: Pandas Ⅱ<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.125.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">HHZZ</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

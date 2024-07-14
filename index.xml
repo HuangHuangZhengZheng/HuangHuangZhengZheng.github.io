@@ -3,9 +3,28 @@
         <title>HHZZ`s space</title>
         <link>http://example.org/</link>
         <description>This is my cool site</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 13 Jul 2024 19:50:30 &#43;0800</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 14 Jul 2024 10:55:10 &#43;0800</lastBuildDate>
             <atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>DATA100-L4: Pandas Ⅱ</title>
+    <link>http://example.org/datal4/</link>
+    <pubDate>Sun, 14 Jul 2024 10:55:10 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/datal4/</guid>
+    <description><![CDATA[lambda function 1 lambda x: x**2 非显式定义函数，可以直接使用lambda表达式来定义一个函数。 This is a lambda function that takes in one argument x and returns the square of x.
+再看sort_values() 注意传递key
+1 df.sort_values(by=&#39;column_name&#39;, keys=lambda x: x.str.lower(), ascending=True) add move modify and so on sort by length of string approach1: create a new column and add to original df 1 2 3 newdf = df[&#34;Name&#34;].str.len() # create a new column with length of each string df[&#39;length&#39;] = newdf df.]]></description>
+</item>
+<item>
+    <title>DATA100-hw01</title>
+    <link>http://example.org/datahw01/</link>
+    <pubDate>Sun, 14 Jul 2024 10:33:54 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/datahw01/</guid>
+    <description><![CDATA[1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;hw01.ipynb&#34;) HW 1: Math Review and Plotting 重点在coding，理论供参考 Due Date: Thursday Jan 27, 11:59 PM Collaboration Policy Data science is a collaborative activity. While you may talk with others about the homework, we ask that you write your solutions individually. If you do discuss the assignments with others please include their names at the top of your notebook.
+Collaborators: list collaborators here]]></description>
+</item>
+<item>
     <title>DATA100-L3: Pandas Ⅰ</title>
     <link>http://example.org/datal3/</link>
     <pubDate>Sat, 13 Jul 2024 19:50:30 &#43;0800</pubDate>
@@ -71,22 +90,6 @@ loc: an operator select items by labels
     <pubDate>Sat, 13 Jul 2024 14:18:54 &#43;0800</pubDate>
     <author>HHZZ</author>
     <guid>http://example.org/61b-26/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>61B 27</title>
-    <link>http://example.org/61b-27/</link>
-    <pubDate>Sat, 13 Jul 2024 14:18:54 &#43;0800</pubDate>
-    <author>HHZZ</author>
-    <guid>http://example.org/61b-27/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>61B 24</title>
-    <link>http://example.org/61b-24/</link>
-    <pubDate>Sat, 13 Jul 2024 14:18:53 &#43;0800</pubDate>
-    <author>HHZZ</author>
-    <guid>http://example.org/61b-24/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>
