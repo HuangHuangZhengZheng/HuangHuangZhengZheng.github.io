@@ -42,7 +42,7 @@ type: pandas.core.groupby.generic.**DataFrameGroupBy**
 df.groupby('column_name').filter(lambda x: x['column_name'].mean() > 10)
 ```
 - This will return a new DataFrame with only the groups that have a mean value greater than 10.
-
+![alt text](image-2.png)
 
 ### multi index 多维索引
 using pivot_table()

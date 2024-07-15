@@ -1,4 +1,4 @@
-# Datadisc02
+# DATA100-disc02
 
 
 # Discussion 2: Pandas Practice
