@@ -3,7 +3,19 @@
         <title>All Posts - HHZZ`s space</title>
         <link>http://example.org/posts/</link>
         <description>All Posts | HHZZ`s space</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 15 Jul 2024 08:37:23 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 15 Jul 2024 14:13:49 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>DATA100-L6: Regex</title>
+    <link>http://example.org/datal6/</link>
+    <pubDate>Mon, 15 Jul 2024 14:13:49 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/datal6/</guid>
+    <description><![CDATA[text data python string methods .replace(str1, str2)
+.split('/') regex 参考Tools正则表达式笔记
+| 优先级较低 感兴趣的练习↓ https://alf.nu/RegexGolf
+python re .sub() pattern(r&quot;......&quot;) is a raw string, which means that backslashes are not interpreted as escape characters. eg: &ldquo;\\section&rdquo; in regular str, &ldquo;\section&rdquo; in raw str.
+.findall(pattern, string) 1 2 3 4 5 6 7 import re pattern = r&#39;\b\w{3}\b&#39; string = &#39;The quick brown fox jumps over the lazy dog&#39; matches = re.findall(pattern, string) print(matches) Output:]]></description>
+</item>
+<item>
     <title>DATA100-disc02</title>
     <link>http://example.org/datadisc02/</link>
     <pubDate>Mon, 15 Jul 2024 08:37:23 &#43;0800</pubDate>
@@ -12,6 +24,18 @@
     <description><![CDATA[Discussion 2: Pandas Practice We will begin our discussion of Pandas. You will practice:
 Selecting columns Filtering with boolean conditions Counting with value_counts 1 2 import pandas as pd import numpy as np Pandas Practise In the first Pandas question, we will be working with the elections dataset from lecture.
 1 2 elections = pd.read_csv(&#34;elections.csv&#34;) # read in the elections data into a pandas dataframe! elections.head(5) Year Candidate Party Popular vote Result % 0 1824 Andrew Jackson Democratic-Republican 151271 loss 57.]]></description>
+</item>
+<item>
+    <title>DATA100-L5: Data Wrangling and EDA</title>
+    <link>http://example.org/datal5/</link>
+    <pubDate>Sun, 14 Jul 2024 21:39:44 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/datal5/</guid>
+    <description><![CDATA[EDA: Exploratory Data Analysis
+Infinite loop DW &amp; EDA&hellip;&hellip;
+DW: raw data -&gt; clean data -&gt; usable data
+key data properties to consider in EDA structure file format rectangular data: tables and matrices CSV, TabSV/TSV, json(is a dict) txt, XML 1 pd.read_csv(&#39;filename.tsv&#39;,delimiter=&#39;\t&#39;) turn to lec jupyter notebook to see more details
+变量种类 注意：不唯一，不全面 multiple files 主键？ granularity(颗粒度？) scope and temporality 颗粒度 scope: sampling frame temporality: time-series data unix time posix time]]></description>
 </item>
 <item>
     <title>61B 14</title>
@@ -67,22 +91,6 @@ Selecting columns Filtering with boolean conditions Counting with value_counts 1
     <pubDate>Sun, 14 Jul 2024 21:29:32 &#43;0800</pubDate>
     <author>HHZZ</author>
     <guid>http://example.org/61b-11/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>61B 9</title>
-    <link>http://example.org/61b-9/</link>
-    <pubDate>Sun, 14 Jul 2024 21:29:32 &#43;0800</pubDate>
-    <author>HHZZ</author>
-    <guid>http://example.org/61b-9/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>61B 7</title>
-    <link>http://example.org/61b-7/</link>
-    <pubDate>Sun, 14 Jul 2024 21:29:31 &#43;0800</pubDate>
-    <author>HHZZ</author>
-    <guid>http://example.org/61b-7/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>
