@@ -4,10 +4,13 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>61B 3 - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/61b-3/">
+        <title>61B-3: References, Recursion, and Lists - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/61b-3/">
   <meta property="og:site_name" content="HHZZ`s space">
-  <meta property="og:title" content="61B 3">
-  <meta property="og:description" content="This is my cool site">
+  <meta property="og:title" content="61B-3: References, Recursion, and Lists">
+  <meta property="og:description" content="Primitive Types 8 primitive types in Java: byte, short, int, long, float, double, boolean, char Everything else, including arrays, is a reference type.
+The Golden Rule of Equals (GRoE) Given variables y and x:
+y = x copies all the bits from x into y. Reference Types Everything else, including arrays, is a reference type. 和cpp的区别之一不显式使用指针
+Parameter Passing pass by value &amp;#x1f60b; pass by reference（某种意义上java纯纯pass by value &amp;#x1f60f;） Instantiation of Arrays IntList and Linked Data Structures 单链表，不赘述">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
@@ -15,8 +18,11 @@
     <meta property="article:modified_time" content="2024-07-14T21:29:29+08:00">
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="61B 3">
-<meta name="twitter:description" content="">
+<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="61B-3: References, Recursion, and Lists">
+<meta name="twitter:description" content="Primitive Types 8 primitive types in Java: byte, short, int, long, float, double, boolean, char Everything else, including arrays, is a reference type.
+The Golden Rule of Equals (GRoE) Given variables y and x:
+y = x copies all the bits from x into y. Reference Types Everything else, including arrays, is a reference type. 和cpp的区别之一不显式使用指针
+Parameter Passing pass by value &#x1f60b; pass by reference（某种意义上java纯纯pass by value &#x1f60f;） Instantiation of Arrays IntList and Linked Data Structures 单链表，不赘述">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -26,12 +32,12 @@
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "61B 3",
+        "headline": "61B-3: References, Recursion, and Lists",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/61b-3\/"
-        },"genre": "posts","wordcount":  0 ,
+        },"genre": "posts","wordcount":  77 ,
         "url": "http:\/\/example.org\/61b-3\/","datePublished": "2024-07-14T21:29:29+08:00","dateModified": "2024-07-14T21:29:29+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -103,17 +109,64 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">61B 3</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">61B-3: References, Recursion, and Lists</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-14">2024-07-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;0 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;0 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-14">2024-07-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;77 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"></div><div class="post-footer" id="post-footer">
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-golden-rule-of-equals-groe">The Golden Rule of Equals (GRoE)</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="primitive-types">Primitive Types</h1>
+<p>8 primitive types in Java: byte, short, int, long, float, double, boolean, char
+Everything else, including arrays, is a reference type.</p>
+<h2 id="the-golden-rule-of-equals-groe">The Golden Rule of Equals (GRoE)</h2>
+<p>Given variables y and x:</p>
+<ul>
+<li>y = x copies all the bits from x into y.</li>
+</ul>
+<h1 id="reference-types">Reference Types</h1>
+<p>Everything else, including arrays, is a reference type.
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-3/image.png"
+        data-srcset="/61b-3/image.png, /61b-3/image.png 1.5x, /61b-3/image.png 2x"
+        data-sizes="auto"
+        alt="/61b-3/image.png"
+        title="alt text" width="1103" height="600" />
+和cpp的区别之一不显式使用指针</p>
+<h1 id="parameter-passing">Parameter Passing</h1>
+<ul>
+<li>pass by value &#x1f60b;</li>
+<li>pass by reference（某种意义上java纯纯pass by value &#x1f60f;）</li>
+</ul>
+<h1 id="instantiation-of-arrays">Instantiation of Arrays</h1>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-3/image-1.png"
+        data-srcset="/61b-3/image-1.png, /61b-3/image-1.png 1.5x, /61b-3/image-1.png 2x"
+        data-sizes="auto"
+        alt="/61b-3/image-1.png"
+        title="/61b-3/image-1.png" width="1055" height="198" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-3/image-2.png"
+        data-srcset="/61b-3/image-2.png, /61b-3/image-2.png 1.5x, /61b-3/image-2.png 2x"
+        data-sizes="auto"
+        alt="/61b-3/image-2.png"
+        title="alt text" width="1117" height="266" /></p>
+<h1 id="intlist-and-linked-data-structures">IntList and Linked Data Structures</h1>
+<p>单链表，不赘述</p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -124,7 +177,7 @@
                             <a class="link-to-markdown" href="/61b-3/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/61b-3/" data-title="61B 3"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/61b-3/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/61b-3/" data-title="61B 3"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/61b-3/" data-title="61B 3"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/61b-3/" data-title="61B 3"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/61b-3/" data-title="61B-3: References, Recursion, and Lists"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/61b-3/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/61b-3/" data-title="61B-3: References, Recursion, and Lists"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/61b-3/" data-title="61B-3: References, Recursion, and Lists"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/61b-3/" data-title="61B-3: References, Recursion, and Lists"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -137,7 +190,7 @@
     </div>
 
     <div class="post-nav"><a href="/datal4/" class="prev" rel="prev" title="DATA100-L4: Pandas Ⅱ"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>DATA100-L4: Pandas Ⅱ</a>
-            <a href="/61b-2/" class="next" rel="next" title="61B 2">61B 2<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+            <a href="/61b-2/" class="next" rel="next" title="61B-2: Defining and Using Classes">61B-2: Defining and Using Classes<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">

@@ -4,10 +4,12 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>61B 4 - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/61b-4/">
+        <title>61B-4: SLLists, Nested Classes, Sentinel Nodes - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/61b-4/">
   <meta property="og:site_name" content="HHZZ`s space">
-  <meta property="og:title" content="61B 4">
-  <meta property="og:description" content="This is my cool site">
+  <meta property="og:title" content="61B-4: SLLists, Nested Classes, Sentinel Nodes">
+  <meta property="og:description" content="From IntList to SLList 事实是在SLList里面添加一个Intlist数据成员
+Public vs. Private or Nested Classes 介绍了private
+Nested Classes 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 public class SLList { public class IntNode { public int item; public IntNode next; public IntNode(int i, IntNode n) { item = i; next = n; } } private IntNode first; public SLList(int x) { first = new IntNode(x, null); } .">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
@@ -15,23 +17,25 @@
     <meta property="article:modified_time" content="2024-07-14T21:29:30+08:00">
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="61B 4">
-<meta name="twitter:description" content="">
+<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="61B-4: SLLists, Nested Classes, Sentinel Nodes">
+<meta name="twitter:description" content="From IntList to SLList 事实是在SLList里面添加一个Intlist数据成员
+Public vs. Private or Nested Classes 介绍了private
+Nested Classes 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 public class SLList { public class IntNode { public int item; public IntNode next; public IntNode(int i, IntNode n) { item = i; next = n; } } private IntNode first; public SLList(int x) { first = new IntNode(x, null); } .">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/61b-4/" /><link rel="prev" href="http://example.org/61b-5/" /><link rel="next" href="http://example.org/61b-8/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/61b-4/" /><link rel="prev" href="http://example.org/61b-1/" /><link rel="next" href="http://example.org/61b-6/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "61B 4",
+        "headline": "61B-4: SLLists, Nested Classes, Sentinel Nodes",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/61b-4\/"
-        },"genre": "posts","wordcount":  0 ,
+        },"genre": "posts","wordcount":  81 ,
         "url": "http:\/\/example.org\/61b-4\/","datePublished": "2024-07-14T21:29:30+08:00","dateModified": "2024-07-14T21:29:30+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -103,17 +107,94 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">61B 4</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">61B-4: SLLists, Nested Classes, Sentinel Nodes</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-14">2024-07-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;0 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;0 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-14">2024-07-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;81 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"></div><div class="post-footer" id="post-footer">
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#nested-classes">Nested Classes</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="from-intlist-to-sllist">From IntList to SLList</h1>
+<p>事实是在SLList里面添加一个Intlist数据成员</p>
+<h1 id="public-vs-private-or-nested-classes">Public vs. Private or Nested Classes</h1>
+<p>介绍了<code>private</code></p>
+<h2 id="nested-classes">Nested Classes</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SLList</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">IntNode</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">item</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="kd">public</span><span class="w"> </span><span class="n">IntNode</span><span class="w"> </span><span class="n">next</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="kd">public</span><span class="w"> </span><span class="nf">IntNode</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">IntNode</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">         </span><span class="n">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">         </span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="kd">private</span><span class="w"> </span><span class="n">IntNode</span><span class="w"> </span><span class="n">first</span><span class="p">;</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="kd">public</span><span class="w"> </span><span class="nf">SLList</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">first</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">IntNode</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="p">}</span><span class="w"> </span><span class="p">...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-4/image.png"
+        data-srcset="/61b-4/image.png, /61b-4/image.png 1.5x, /61b-4/image.png 2x"
+        data-sizes="auto"
+        alt="/61b-4/image.png"
+        title="alt text" width="1096" height="605" /></p>
+<h1 id="addlast-and-size">addLast() and size()</h1>
+<p>讨论recursion和iteration两种思路，略过</p>
+<p>空间换时间初见
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-4/image-1.png"
+        data-srcset="/61b-4/image-1.png, /61b-4/image-1.png 1.5x, /61b-4/image-1.png 2x"
+        data-sizes="auto"
+        alt="/61b-4/image-1.png"
+        title="alt text" width="1051" height="614" /></p>
+<h1 id="sentinel-nodes">Sentinel Nodes</h1>
+<ul>
+<li>对边界现象（空指针）的讨论和保护</li>
+<li>简化代码<code>.addLast(x)</code>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-4/image-2.png"
+        data-srcset="/61b-4/image-2.png, /61b-4/image-2.png 1.5x, /61b-4/image-2.png 2x"
+        data-sizes="auto"
+        alt="/61b-4/image-2.png"
+        title="alt text" width="1100" height="608" /></li>
+</ul>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -124,7 +205,7 @@
                             <a class="link-to-markdown" href="/61b-4/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/61b-4/" data-title="61B 4"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/61b-4/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/61b-4/" data-title="61B 4"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/61b-4/" data-title="61B 4"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/61b-4/" data-title="61B 4"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/61b-4/" data-title="61B-4: SLLists, Nested Classes, Sentinel Nodes"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/61b-4/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/61b-4/" data-title="61B-4: SLLists, Nested Classes, Sentinel Nodes"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/61b-4/" data-title="61B-4: SLLists, Nested Classes, Sentinel Nodes"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/61b-4/" data-title="61B-4: SLLists, Nested Classes, Sentinel Nodes"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -136,8 +217,8 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/61b-5/" class="prev" rel="prev" title="61B 5"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>61B 5</a>
-            <a href="/61b-8/" class="next" rel="next" title="61B 8">61B 8<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/61b-1/" class="prev" rel="prev" title="61B-1: Intro, Hello World Java"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>61B-1: Intro, Hello World Java</a>
+            <a href="/61b-6/" class="next" rel="next" title="61B 6">61B 6<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
