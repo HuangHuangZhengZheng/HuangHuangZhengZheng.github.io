@@ -7,7 +7,9 @@
         <title>61B-9: Extends, Casting, Higher Order Functions - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/61b-9/">
   <meta property="og:site_name" content="HHZZ`s space">
   <meta property="og:title" content="61B-9: Extends, Casting, Higher Order Functions">
-  <meta property="og:description" content="This is my cool site">
+  <meta property="og:description" content="Implementation Inheritance: Extends extends
+Because of extends, RotatingSLList inherits all members of SLList: All instance and static variables. （注意public, private, protected的区别） All methods. All nested classes. Constructors are not inherited. super
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 public class VengefulSLList&amp;lt;Item&amp;gt; extends SLList&amp;lt;Item&amp;gt; { private SLList&amp;lt;Item&amp;gt; deletedItems; public VengefulSLList() { deletedItems = new SLList&amp;lt;Item&amp;gt;(); } @Override public Item removeLast() { Item oldBack = super.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
@@ -16,7 +18,9 @@
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="61B-9: Extends, Casting, Higher Order Functions">
-<meta name="twitter:description" content="">
+<meta name="twitter:description" content="Implementation Inheritance: Extends extends
+Because of extends, RotatingSLList inherits all members of SLList: All instance and static variables. （注意public, private, protected的区别） All methods. All nested classes. Constructors are not inherited. super
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 public class VengefulSLList&lt;Item&gt; extends SLList&lt;Item&gt; { private SLList&lt;Item&gt; deletedItems; public VengefulSLList() { deletedItems = new SLList&lt;Item&gt;(); } @Override public Item removeLast() { Item oldBack = super.">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -31,7 +35,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/61b-9\/"
-        },"genre": "posts","wordcount":  0 ,
+        },"genre": "posts","wordcount":  139 ,
         "url": "http:\/\/example.org\/61b-9\/","datePublished": "2024-07-14T21:29:32+08:00","dateModified": "2024-07-14T21:29:32+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -105,15 +109,202 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">61B-9: Extends, Casting, Higher Order Functions</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-14">2024-07-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;0 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;0 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-14">2024-07-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;139 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"></div><div class="post-footer" id="post-footer">
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#constructor">constructor</a></li>
+    <li><a href="#object-class">Object class</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#module">Module</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="implementation-inheritance-extends">Implementation Inheritance: Extends</h1>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-9/image.png"
+        data-srcset="/61b-9/image.png, /61b-9/image.png 1.5x, /61b-9/image.png 2x"
+        data-sizes="auto"
+        alt="/61b-9/image.png"
+        title="/61b-9/image.png" width="1085" height="580" />
+<code>extends</code></p>
+<ul>
+<li>Because of extends, RotatingSLList inherits all members of SLList:</li>
+<li>All instance and static variables. （注意public, private, protected的区别）</li>
+<li>All methods.</li>
+<li>All nested classes.</li>
+<li>Constructors are not inherited.</li>
+</ul>
+<p><code>super</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">VengefulSLList</span><span class="o">&lt;</span><span class="n">Item</span><span class="o">&gt;</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">SLList</span><span class="o">&lt;</span><span class="n">Item</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">private</span><span class="w"> </span><span class="n">SLList</span><span class="o">&lt;</span><span class="n">Item</span><span class="o">&gt;</span><span class="w"> </span><span class="n">deletedItems</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="kd">public</span><span class="w"> </span><span class="nf">VengefulSLList</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">deletedItems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SLList</span><span class="o">&lt;</span><span class="n">Item</span><span class="o">&gt;</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="kd">public</span><span class="w"> </span><span class="n">Item</span><span class="w"> </span><span class="nf">removeLast</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    		</span><span class="n">Item</span><span class="w"> </span><span class="n">oldBack</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">super</span><span class="p">.</span><span class="na">removeLast</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    		</span><span class="n">deletedItems</span><span class="p">.</span><span class="na">addLast</span><span class="p">(</span><span class="n">oldBack</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    		</span><span class="k">return</span><span class="w"> </span><span class="n">oldBack</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">printLostItems</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    		</span><span class="n">deletedItems</span><span class="p">.</span><span class="na">print</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>注意没有<code>super.super</code>的情况</p>
+<h2 id="constructor">constructor</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-9/image-1.png"
+        data-srcset="/61b-9/image-1.png, /61b-9/image-1.png 1.5x, /61b-9/image-1.png 2x"
+        data-sizes="auto"
+        alt="/61b-9/image-1.png"
+        title="alt text" width="1122" height="618" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-9/image-2.png"
+        data-srcset="/61b-9/image-2.png, /61b-9/image-2.png 1.5x, /61b-9/image-2.png 2x"
+        data-sizes="auto"
+        alt="/61b-9/image-2.png"
+        title="alt text" width="1083" height="601" /></p>
+<h2 id="object-class">Object class</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-9/image-3.png"
+        data-srcset="/61b-9/image-3.png, /61b-9/image-3.png 1.5x, /61b-9/image-3.png 2x"
+        data-sizes="auto"
+        alt="/61b-9/image-3.png"
+        title="alt text" width="1101" height="594" /></p>
+<h1 id="encapsulation">Encapsulation</h1>
+<h2 id="module">Module</h2>
+<p><strong>Module</strong>: A set of methods that work together as a whole to perform some task or set of related tasks.</p>
+<p>Implementation Inheritance Breaks Encapsulation</p>
+<p>注意private 还有 反复自我调用↓
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-9/image-4.png"
+        data-srcset="/61b-9/image-4.png, /61b-9/image-4.png 1.5x, /61b-9/image-4.png 2x"
+        data-sizes="auto"
+        alt="/61b-9/image-4.png"
+        title="alt text" width="1070" height="559" /></p>
+<h1 id="type-checking-and-casting">Type Checking and Casting</h1>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-9/image-5.png"
+        data-srcset="/61b-9/image-5.png, /61b-9/image-5.png 1.5x, /61b-9/image-5.png 2x"
+        data-sizes="auto"
+        alt="/61b-9/image-5.png"
+        title="/61b-9/image-5.png" width="1117" height="627" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-9/image-6.png"
+        data-srcset="/61b-9/image-6.png, /61b-9/image-6.png 1.5x, /61b-9/image-6.png 2x"
+        data-sizes="auto"
+        alt="/61b-9/image-6.png"
+        title="/61b-9/image-6.png" width="1113" height="604" />
+子类赋值给基类可以，反之不行
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-9/image-7.png"
+        data-srcset="/61b-9/image-7.png, /61b-9/image-7.png 1.5x, /61b-9/image-7.png 2x"
+        data-sizes="auto"
+        alt="/61b-9/image-7.png"
+        title="alt text" width="1104" height="612" /></p>
+<h1 id="dynamic-method-selection-and-casting-puzzle">Dynamic Method Selection and Casting Puzzle</h1>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-9/image-8.png"
+        data-srcset="/61b-9/image-8.png, /61b-9/image-8.png 1.5x, /61b-9/image-8.png 2x"
+        data-sizes="auto"
+        alt="/61b-9/image-8.png"
+        title="alt text" width="1092" height="597" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-9/image-9.png"
+        data-srcset="/61b-9/image-9.png, /61b-9/image-9.png 1.5x, /61b-9/image-9.png 2x"
+        data-sizes="auto"
+        alt="/61b-9/image-9.png"
+        title="alt text" width="1119" height="635" /></p>
+<h1 id="higher-order-functions-a-first-look">Higher Order Functions (A First Look)</h1>
+<p>执行类似f(f(x))的操作
+Java7及之前不能使用函数指针，考虑实体化一个函数对象
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-9/image-10.png"
+        data-srcset="/61b-9/image-10.png, /61b-9/image-10.png 1.5x, /61b-9/image-10.png 2x"
+        data-sizes="auto"
+        alt="/61b-9/image-10.png"
+        title="alt text" width="1118" height="611" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-9/image-11.png"
+        data-srcset="/61b-9/image-11.png, /61b-9/image-11.png 1.5x, /61b-9/image-11.png 2x"
+        data-sizes="auto"
+        alt="/61b-9/image-11.png"
+        title="alt text" width="1119" height="631" /></p>
+<p>Java8及其以后：
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-9/image-12.png"
+        data-srcset="/61b-9/image-12.png, /61b-9/image-12.png 1.5x, /61b-9/image-12.png 2x"
+        data-sizes="auto"
+        alt="/61b-9/image-12.png"
+        title="alt text" width="1121" height="624" />
+一张图总结继承
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-9/image-13.png"
+        data-srcset="/61b-9/image-13.png, /61b-9/image-13.png 1.5x, /61b-9/image-13.png 2x"
+        data-sizes="auto"
+        alt="/61b-9/image-13.png"
+        title="alt text" width="1105" height="623" /></p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">

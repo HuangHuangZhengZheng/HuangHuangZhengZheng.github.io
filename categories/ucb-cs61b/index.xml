@@ -65,7 +65,9 @@
     <pubDate>Sun, 14 Jul 2024 21:29:32 &#43;0800</pubDate>
     <author>HHZZ</author>
     <guid>http://example.org/61b-9/</guid>
-    <description><![CDATA[]]></description>
+    <description><![CDATA[Implementation Inheritance: Extends extends
+Because of extends, RotatingSLList inherits all members of SLList: All instance and static variables. （注意public, private, protected的区别） All methods. All nested classes. Constructors are not inherited. super
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 public class VengefulSLList&lt;Item&gt; extends SLList&lt;Item&gt; { private SLList&lt;Item&gt; deletedItems; public VengefulSLList() { deletedItems = new SLList&lt;Item&gt;(); } @Override public Item removeLast() { Item oldBack = super.]]></description>
 </item>
 <item>
     <title>61B-7: Testing</title>
