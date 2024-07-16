@@ -3,7 +3,15 @@
         <title>All Posts - HHZZ`s space</title>
         <link>http://example.org/posts/</link>
         <description>All Posts | HHZZ`s space</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 15 Jul 2024 18:20:24 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 16 Jul 2024 19:57:02 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>DATA100-L8: Visualization Ⅱ</title>
+    <link>http://example.org/datal8/</link>
+    <pubDate>Tue, 16 Jul 2024 19:57:02 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/datal8/</guid>
+    <description><![CDATA[ ]]></description>
+</item>
+<item>
     <title>DATA100-lab02</title>
     <link>http://example.org/datalab02/</link>
     <pubDate>Mon, 15 Jul 2024 18:20:24 &#43;0800</pubDate>
@@ -85,14 +93,6 @@ key data properties to consider in EDA structure file format rectangular data: t
     <pubDate>Sun, 14 Jul 2024 21:29:33 &#43;0800</pubDate>
     <author>HHZZ</author>
     <guid>http://example.org/61b-12/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>61B 13</title>
-    <link>http://example.org/61b-13/</link>
-    <pubDate>Sun, 14 Jul 2024 21:29:33 &#43;0800</pubDate>
-    <author>HHZZ</author>
-    <guid>http://example.org/61b-13/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>
