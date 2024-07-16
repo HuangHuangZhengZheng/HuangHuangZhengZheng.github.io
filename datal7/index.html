@@ -7,7 +7,7 @@
         <title>DATA100-L7: Visualization Ⅰ - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/datal7/">
   <meta property="og:site_name" content="HHZZ`s space">
   <meta property="og:title" content="DATA100-L7: Visualization Ⅰ">
-  <meta property="og:description" content="distribution ">
+  <meta property="og:description" content="distribution 定义 bar plots for distribution data8 example compound way seaborn example 1 2 3 4 import seaborn as sns sns.countplot(x=&amp;#39;variable&amp;#39;, data=df) # rug plot sns.rugplot(x=&amp;#39;variable&amp;#39;, data=df, color=&amp;#39;black&amp;#39;) plotly example 处理异常值（outliers）和峰值（mode） density curve 密度曲线看峰 箱型图 1 2 import seaborn as sns sns.boxplot(x=&amp;#39;variable&amp;#39;, data=df) violin plot 和箱型图对比来看，violin plot宽度有意义 1 2 import seaborn as sns sns.violinplot(x=&amp;#39;variable&amp;#39;, data=df) 处理overplotting random jitter ">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
@@ -16,7 +16,7 @@
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="DATA100-L7: Visualization Ⅰ">
-<meta name="twitter:description" content="distribution ">
+<meta name="twitter:description" content="distribution 定义 bar plots for distribution data8 example compound way seaborn example 1 2 3 4 import seaborn as sns sns.countplot(x=&#39;variable&#39;, data=df) # rug plot sns.rugplot(x=&#39;variable&#39;, data=df, color=&#39;black&#39;) plotly example 处理异常值（outliers）和峰值（mode） density curve 密度曲线看峰 箱型图 1 2 import seaborn as sns sns.boxplot(x=&#39;variable&#39;, data=df) violin plot 和箱型图对比来看，violin plot宽度有意义 1 2 import seaborn as sns sns.violinplot(x=&#39;variable&#39;, data=df) 处理overplotting random jitter ">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -31,7 +31,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/datal7\/"
-        },"genre": "posts","wordcount":  1 ,
+        },"genre": "posts","wordcount":  58 ,
         "url": "http:\/\/example.org\/datal7\/","datePublished": "2024-07-15T16:05:53+08:00","dateModified": "2024-07-15T16:05:53+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -105,7 +105,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">DATA100-L7: Visualization Ⅰ</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-15">2024-07-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;One word&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-15">2024-07-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;58 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
@@ -114,10 +114,23 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#distribution">distribution</a></li>
+    <li><a href="#distribution-定义">distribution 定义</a></li>
+    <li><a href="#bar-plots-for-distribution">bar plots for distribution</a>
+      <ul>
+        <li><a href="#data8-example">data8 example</a></li>
+        <li><a href="#compound-way">compound way</a></li>
+        <li><a href="#seaborn-example"><em>seaborn</em> example</a></li>
+        <li><a href="#plotly-example">plotly example</a></li>
+      </ul>
+    </li>
+    <li><a href="#处理异常值outliers和峰值mode">处理异常值（outliers）和峰值（mode）</a>
+      <ul>
+        <li><a href="#density-curve">density curve</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h2 id="distribution">distribution</h2>
+            </div><div class="content" id="content"><h2 id="distribution-定义">distribution 定义</h2>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -126,6 +139,129 @@
         data-sizes="auto"
         alt="/datal7/image.png"
         title="define" width="688" height="381" /></p>
+<h2 id="bar-plots-for-distribution">bar plots for distribution</h2>
+<h3 id="data8-example">data8 example</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal7/image-1.png"
+        data-srcset="/datal7/image-1.png, /datal7/image-1.png 1.5x, /datal7/image-1.png 2x"
+        data-sizes="auto"
+        alt="/datal7/image-1.png"
+        title="table" width="1593" height="862" /></p>
+<h3 id="compound-way">compound way</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal7/image-2.png"
+        data-srcset="/datal7/image-2.png, /datal7/image-2.png 1.5x, /datal7/image-2.png 2x"
+        data-sizes="auto"
+        alt="/datal7/image-2.png"
+        title="compound" width="1290" height="831" /></p>
+<h3 id="seaborn-example"><em>seaborn</em> example</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal7/image-3.png"
+        data-srcset="/datal7/image-3.png, /datal7/image-3.png 1.5x, /datal7/image-3.png 2x"
+        data-sizes="auto"
+        alt="/datal7/image-3.png"
+        title="seaborn" width="1544" height="839" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;variable&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># rug plot</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">rugplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;variable&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="plotly-example">plotly example</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal7/image-4.png"
+        data-srcset="/datal7/image-4.png, /datal7/image-4.png 1.5x, /datal7/image-4.png 2x"
+        data-sizes="auto"
+        alt="/datal7/image-4.png"
+        title="plotly" width="1530" height="844" /></p>
+<h2 id="处理异常值outliers和峰值mode">处理异常值（outliers）和峰值（mode）</h2>
+<h3 id="density-curve">density curve</h3>
+<p>密度曲线看峰
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal7/image-5.png"
+        data-srcset="/datal7/image-5.png, /datal7/image-5.png 1.5x, /datal7/image-5.png 2x"
+        data-sizes="auto"
+        alt="/datal7/image-5.png"
+        title="alt text" width="1323" height="791" /></p>
+<ul>
+<li>箱型图
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal7/image-6.png"
+        data-srcset="/datal7/image-6.png, /datal7/image-6.png 1.5x, /datal7/image-6.png 2x"
+        data-sizes="auto"
+        alt="/datal7/image-6.png"
+        title="alt text" width="801" height="553" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal7/image-7.png"
+        data-srcset="/datal7/image-7.png, /datal7/image-7.png 1.5x, /datal7/image-7.png 2x"
+        data-sizes="auto"
+        alt="/datal7/image-7.png"
+        title="alt text" width="1237" height="867" /></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;variable&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>violin plot
+和箱型图对比来看，violin plot宽度有意义</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;variable&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal7/image-8.png"
+        data-srcset="/datal7/image-8.png, /datal7/image-8.png 1.5x, /datal7/image-8.png 2x"
+        data-sizes="auto"
+        alt="/datal7/image-8.png"
+        title="alt text" width="1582" height="882" />
+处理overplotting
+random jitter
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal7/image-9.png"
+        data-srcset="/datal7/image-9.png, /datal7/image-9.png 1.5x, /datal7/image-9.png 2x"
+        data-sizes="auto"
+        alt="/datal7/image-9.png"
+        title="alt text" width="1527" height="863" /></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">

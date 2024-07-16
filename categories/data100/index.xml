@@ -19,7 +19,7 @@ Lab Walk-Through In addition to the lab notebook, we have also released a prerec
     <pubDate>Mon, 15 Jul 2024 16:05:53 &#43;0800</pubDate>
     <author>HHZZ</author>
     <guid>http://example.org/datal7/</guid>
-    <description><![CDATA[distribution ]]></description>
+    <description><![CDATA[distribution 定义 bar plots for distribution data8 example compound way seaborn example 1 2 3 4 import seaborn as sns sns.countplot(x=&#39;variable&#39;, data=df) # rug plot sns.rugplot(x=&#39;variable&#39;, data=df, color=&#39;black&#39;) plotly example 处理异常值（outliers）和峰值（mode） density curve 密度曲线看峰 箱型图 1 2 import seaborn as sns sns.boxplot(x=&#39;variable&#39;, data=df) violin plot 和箱型图对比来看，violin plot宽度有意义 1 2 import seaborn as sns sns.violinplot(x=&#39;variable&#39;, data=df) 处理overplotting random jitter ]]></description>
 </item>
 <item>
     <title>DATA100-L6: Regex</title>
