@@ -4,10 +4,12 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>61B 8 - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/61b-8/">
+        <title>61B-8: Inheritance, Implements - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/61b-8/">
   <meta property="og:site_name" content="HHZZ`s space">
-  <meta property="og:title" content="61B 8">
-  <meta property="og:description" content="This is my cool site">
+  <meta property="og:title" content="61B-8: Inheritance, Implements">
+  <meta property="og:description" content="but hard to maintain!
+Hypernyms, Hyponyms, and Interface Inheritance interface 1 2 3 4 5 6 7 8 9 10 public interface List61B&amp;lt;Item&amp;gt; { public void addFirst(Item x); public void addLast(Item y); public Item getFirst(); public Item getLast(); public Item removeLast(); public Item get(int i); public void insert(Item x, int position); public int size(); } Overriding vs. Overloading override注意加上@Override!!!
+Interface Inheritance 基类存放指针问题 Answer: If X is a superclass of Y, then memory boxes for X may contain Y.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
@@ -15,23 +17,25 @@
     <meta property="article:modified_time" content="2024-07-14T21:29:31+08:00">
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="61B 8">
-<meta name="twitter:description" content="">
+<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="61B-8: Inheritance, Implements">
+<meta name="twitter:description" content="but hard to maintain!
+Hypernyms, Hyponyms, and Interface Inheritance interface 1 2 3 4 5 6 7 8 9 10 public interface List61B&lt;Item&gt; { public void addFirst(Item x); public void addLast(Item y); public Item getFirst(); public Item getLast(); public Item removeLast(); public Item get(int i); public void insert(Item x, int position); public int size(); } Overriding vs. Overloading override注意加上@Override!!!
+Interface Inheritance 基类存放指针问题 Answer: If X is a superclass of Y, then memory boxes for X may contain Y.">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/61b-8/" /><link rel="prev" href="http://example.org/61b-5/" /><link rel="next" href="http://example.org/61b-7/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/61b-8/" /><link rel="prev" href="http://example.org/61b-4/" /><link rel="next" href="http://example.org/61b-7/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "61B 8",
+        "headline": "61B-8: Inheritance, Implements",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/61b-8\/"
-        },"genre": "posts","wordcount":  0 ,
+        },"genre": "posts","wordcount":  193 ,
         "url": "http:\/\/example.org\/61b-8\/","datePublished": "2024-07-14T21:29:31+08:00","dateModified": "2024-07-14T21:29:31+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -103,17 +107,166 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">61B 8</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">61B-8: Inheritance, Implements</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-14">2024-07-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;0 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;0 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-14">2024-07-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;193 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"></div><div class="post-footer" id="post-footer">
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#interface">interface</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-8/image.png"
+        data-srcset="/61b-8/image.png, /61b-8/image.png 1.5x, /61b-8/image.png 2x"
+        data-sizes="auto"
+        alt="/61b-8/image.png"
+        title="/61b-8/image.png" width="1067" height="550" />
+but hard to maintain!</p>
+<h1 id="hypernyms-hyponyms-and-interface-inheritance">Hypernyms, Hyponyms, and Interface Inheritance</h1>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-8/image-1.png"
+        data-srcset="/61b-8/image-1.png, /61b-8/image-1.png 1.5x, /61b-8/image-1.png 2x"
+        data-sizes="auto"
+        alt="/61b-8/image-1.png"
+        title="/61b-8/image-1.png" width="1056" height="546" /></p>
+<h2 id="interface">interface</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">List61B</span><span class="o">&lt;</span><span class="n">Item</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">addFirst</span><span class="p">(</span><span class="n">Item</span><span class="w"> </span><span class="n">x</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">addLast</span><span class="p">(</span><span class="n">Item</span><span class="w"> </span><span class="n">y</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="kd">public</span><span class="w"> </span><span class="n">Item</span><span class="w"> </span><span class="nf">getFirst</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="kd">public</span><span class="w"> </span><span class="n">Item</span><span class="w"> </span><span class="nf">getLast</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="kd">public</span><span class="w"> </span><span class="n">Item</span><span class="w"> </span><span class="nf">removeLast</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="kd">public</span><span class="w"> </span><span class="n">Item</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">insert</span><span class="p">(</span><span class="n">Item</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">position</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w">  </span><span class="nf">size</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="overriding-vs-overloading">Overriding vs. Overloading</h1>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-8/image-2.png"
+        data-srcset="/61b-8/image-2.png, /61b-8/image-2.png 1.5x, /61b-8/image-2.png 2x"
+        data-sizes="auto"
+        alt="/61b-8/image-2.png"
+        title="alt text" width="1118" height="613" />
+override注意加上<code>@Override</code>!!!</p>
+<h1 id="interface-inheritance">Interface Inheritance</h1>
+<p>基类存放指针问题
+Answer: If X is a superclass of Y, then memory boxes for X may contain Y.</p>
+<ul>
+<li>An AList is-a List.</li>
+<li>Therefore List variables can hold ALList addresses.</li>
+</ul>
+<h1 id="implementation-inheritance-default-methods">Implementation Inheritance: Default Methods</h1>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">List61B</span><span class="o">&lt;</span><span class="n">Item</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">addFirst</span><span class="p">(</span><span class="n">Item</span><span class="w"> </span><span class="n">x</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">addLast</span><span class="p">(</span><span class="n">Item</span><span class="w"> </span><span class="n">y</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="kd">public</span><span class="w"> </span><span class="n">Item</span><span class="w"> </span><span class="nf">getFirst</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="kd">public</span><span class="w"> </span><span class="n">Item</span><span class="w"> </span><span class="nf">getLast</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="kd">public</span><span class="w"> </span><span class="n">Item</span><span class="w"> </span><span class="nf">removeLast</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="kd">public</span><span class="w"> </span><span class="n">Item</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">insert</span><span class="p">(</span><span class="n">Item</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">position</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">size</span><span class="p">();</span><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">default</span><span class="w"> </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">print</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">         </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="n">get</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&#34; &#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="static-and-dynamic-type-dynamic-method-selection-warning-warning-warning">Static and Dynamic Type, Dynamic Method Selection &#x26a0;&#xfe0f; &#x26a0;&#xfe0f; &#x26a0;&#xfe0f;</h1>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-8/image-3.png"
+        data-srcset="/61b-8/image-3.png, /61b-8/image-3.png 1.5x, /61b-8/image-3.png 2x"
+        data-sizes="auto"
+        alt="/61b-8/image-3.png"
+        title="/61b-8/image-3.png" width="1101" height="615" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-8/image-4.png"
+        data-srcset="/61b-8/image-4.png, /61b-8/image-4.png 1.5x, /61b-8/image-4.png 2x"
+        data-sizes="auto"
+        alt="/61b-8/image-4.png"
+        title="/61b-8/image-4.png" width="1145" height="640" /></p>
+<h1 id="more-dynamic-method-selection-overloading-vs-overriding-warning-warning-warning">More Dynamic Method Selection, Overloading vs. Overriding &#x26a0;&#xfe0f; &#x26a0;&#xfe0f; &#x26a0;&#xfe0f;</h1>
+<p><em>紧紧盯住细节！</em>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-8/image-5.png"
+        data-srcset="/61b-8/image-5.png, /61b-8/image-5.png 1.5x, /61b-8/image-5.png 2x"
+        data-sizes="auto"
+        alt="/61b-8/image-5.png"
+        title="/61b-8/image-5.png" width="1111" height="623" /></p>
+<h1 id="interface-vs-implementation-inheritance">Interface vs. Implementation Inheritance</h1>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-8/image-6.png"
+        data-srcset="/61b-8/image-6.png, /61b-8/image-6.png 1.5x, /61b-8/image-6.png 2x"
+        data-sizes="auto"
+        alt="/61b-8/image-6.png"
+        title="/61b-8/image-6.png" width="1028" height="588" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-8/image-7.png"
+        data-srcset="/61b-8/image-7.png, /61b-8/image-7.png 1.5x, /61b-8/image-7.png 2x"
+        data-sizes="auto"
+        alt="/61b-8/image-7.png"
+        title="alt text" width="1075" height="450" /></p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -124,7 +277,7 @@
                             <a class="link-to-markdown" href="/61b-8/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/61b-8/" data-title="61B 8"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/61b-8/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/61b-8/" data-title="61B 8"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/61b-8/" data-title="61B 8"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/61b-8/" data-title="61B 8"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/61b-8/" data-title="61B-8: Inheritance, Implements"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/61b-8/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/61b-8/" data-title="61B-8: Inheritance, Implements"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/61b-8/" data-title="61B-8: Inheritance, Implements"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/61b-8/" data-title="61B-8: Inheritance, Implements"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -136,8 +289,8 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/61b-5/" class="prev" rel="prev" title="61B 5"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>61B 5</a>
-            <a href="/61b-7/" class="next" rel="next" title="61B 7">61B 7<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/61b-4/" class="prev" rel="prev" title="61B-4: SLLists, Nested Classes, Sentinel Nodes"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>61B-4: SLLists, Nested Classes, Sentinel Nodes</a>
+            <a href="/61b-7/" class="next" rel="next" title="61B-7: Testing">61B-7: Testing<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">

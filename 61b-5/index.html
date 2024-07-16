@@ -4,10 +4,11 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>61B 5 - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/61b-5/">
+        <title>61B-5: DLLists, Arrays - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/61b-5/">
   <meta property="og:site_name" content="HHZZ`s space">
-  <meta property="og:title" content="61B 5">
-  <meta property="og:description" content="This is my cool site">
+  <meta property="og:title" content="61B-5: DLLists, Arrays">
+  <meta property="og:description" content="Doubly Linked Lists 注意只有sentinel时要讨论一些特殊情况，特别是环状链表。
+Generic Lists 泛型列表 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 public class SLList&amp;lt;BleepBlorp&amp;gt; { private IntNode sentinel; private int size; public class IntNode { public BleepBlorp item; public IntNode next; ... } ... } SLList&amp;lt;Integer&amp;gt; s1 = new SLList&amp;lt;&amp;gt;(5); s1.insertFront(10); SLList&amp;lt;String&amp;gt; s2 = new SLList&amp;lt;&amp;gt;(&amp;#34;hi&amp;#34;); s2.insertFront(&amp;#34;apple&amp;#34;); Arrays, AList 介绍了System.arraycopy()用来resize 2D Arrays Arrays vs. Classes array的runtime动态索引（和cpp不一样） class runtime ">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
@@ -15,23 +16,24 @@
     <meta property="article:modified_time" content="2024-07-14T21:29:30+08:00">
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="61B 5">
-<meta name="twitter:description" content="">
+<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="61B-5: DLLists, Arrays">
+<meta name="twitter:description" content="Doubly Linked Lists 注意只有sentinel时要讨论一些特殊情况，特别是环状链表。
+Generic Lists 泛型列表 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 public class SLList&lt;BleepBlorp&gt; { private IntNode sentinel; private int size; public class IntNode { public BleepBlorp item; public IntNode next; ... } ... } SLList&lt;Integer&gt; s1 = new SLList&lt;&gt;(5); s1.insertFront(10); SLList&lt;String&gt; s2 = new SLList&lt;&gt;(&#34;hi&#34;); s2.insertFront(&#34;apple&#34;); Arrays, AList 介绍了System.arraycopy()用来resize 2D Arrays Arrays vs. Classes array的runtime动态索引（和cpp不一样） class runtime ">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/61b-5/" /><link rel="prev" href="http://example.org/61b-6/" /><link rel="next" href="http://example.org/61b-8/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/61b-5/" /><link rel="prev" href="http://example.org/61b-6/" /><link rel="next" href="http://example.org/61b-4/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "61B 5",
+        "headline": "61B-5: DLLists, Arrays",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/61b-5\/"
-        },"genre": "posts","wordcount":  0 ,
+        },"genre": "posts","wordcount":  72 ,
         "url": "http:\/\/example.org\/61b-5\/","datePublished": "2024-07-14T21:29:30+08:00","dateModified": "2024-07-14T21:29:30+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -103,17 +105,148 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">61B 5</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">61B-5: DLLists, Arrays</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-14">2024-07-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;0 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;0 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-14">2024-07-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;72 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"></div><div class="post-footer" id="post-footer">
+            </div><div class="content" id="content"><h1 id="doubly-linked-lists">Doubly Linked Lists</h1>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-5/image.png"
+        data-srcset="/61b-5/image.png, /61b-5/image.png 1.5x, /61b-5/image.png 2x"
+        data-sizes="auto"
+        alt="/61b-5/image.png"
+        title="alt text" width="1093" height="542" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-5/image-1.png"
+        data-srcset="/61b-5/image-1.png, /61b-5/image-1.png 1.5x, /61b-5/image-1.png 2x"
+        data-sizes="auto"
+        alt="/61b-5/image-1.png"
+        title="alt text" width="1093" height="614" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-5/image-2.png"
+        data-srcset="/61b-5/image-2.png, /61b-5/image-2.png 1.5x, /61b-5/image-2.png 2x"
+        data-sizes="auto"
+        alt="/61b-5/image-2.png"
+        title="alt text" width="1118" height="603" />
+注意只有sentinel时要讨论一些特殊情况，特别是环状链表。</p>
+<h1 id="generic-lists-泛型列表">Generic Lists 泛型列表</h1>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SLList</span><span class="o">&lt;</span><span class="n">BleepBlorp</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="kd">private</span><span class="w"> </span><span class="n">IntNode</span><span class="w"> </span><span class="n">sentinel</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">IntNode</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="kd">public</span><span class="w"> </span><span class="n">BleepBlorp</span><span class="w"> </span><span class="n">item</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="kd">public</span><span class="w"> </span><span class="n">IntNode</span><span class="w"> </span><span class="n">next</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="p">...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="p">...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">SLList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">s1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SLList</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">5</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">s1</span><span class="p">.</span><span class="na">insertFront</span><span class="p">(</span><span class="n">10</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">SLList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">s2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SLList</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="s">&#34;hi&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">s2</span><span class="p">.</span><span class="na">insertFront</span><span class="p">(</span><span class="s">&#34;apple&#34;</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-5/image-3.png"
+        data-srcset="/61b-5/image-3.png, /61b-5/image-3.png 1.5x, /61b-5/image-3.png 2x"
+        data-sizes="auto"
+        alt="/61b-5/image-3.png"
+        title="alt text" width="1080" height="570" /></p>
+<h1 id="arrays-alist">Arrays, AList</h1>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-5/image-4.png"
+        data-srcset="/61b-5/image-4.png, /61b-5/image-4.png 1.5x, /61b-5/image-4.png 2x"
+        data-sizes="auto"
+        alt="/61b-5/image-4.png"
+        title="alt text" width="1042" height="610" />
+介绍了<code>System.arraycopy()</code>用来resize
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-5/image-5.png"
+        data-srcset="/61b-5/image-5.png, /61b-5/image-5.png 1.5x, /61b-5/image-5.png 2x"
+        data-sizes="auto"
+        alt="/61b-5/image-5.png"
+        title="alt text" width="1094" height="550" /></p>
+<h1 id="2d-arrays">2D Arrays</h1>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-5/image-6.png"
+        data-srcset="/61b-5/image-6.png, /61b-5/image-6.png 1.5x, /61b-5/image-6.png 2x"
+        data-sizes="auto"
+        alt="/61b-5/image-6.png"
+        title="alt text" width="1082" height="595" /></p>
+<h1 id="arrays-vs-classes">Arrays vs. Classes</h1>
+<p>array的runtime动态索引（和cpp不一样）
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-5/image-7.png"
+        data-srcset="/61b-5/image-7.png, /61b-5/image-7.png 1.5x, /61b-5/image-7.png 2x"
+        data-sizes="auto"
+        alt="/61b-5/image-7.png"
+        title="alt text" width="986" height="595" />
+class runtime
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-5/image-8.png"
+        data-srcset="/61b-5/image-8.png, /61b-5/image-8.png 1.5x, /61b-5/image-8.png 2x"
+        data-sizes="auto"
+        alt="/61b-5/image-8.png"
+        title="/61b-5/image-8.png" width="1095" height="609" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-5/image-9.png"
+        data-srcset="/61b-5/image-9.png, /61b-5/image-9.png 1.5x, /61b-5/image-9.png 2x"
+        data-sizes="auto"
+        alt="/61b-5/image-9.png"
+        title="alt text" width="1068" height="602" /></p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -124,7 +257,7 @@
                             <a class="link-to-markdown" href="/61b-5/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/61b-5/" data-title="61B 5"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/61b-5/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/61b-5/" data-title="61B 5"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/61b-5/" data-title="61B 5"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/61b-5/" data-title="61B 5"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/61b-5/" data-title="61B-5: DLLists, Arrays"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/61b-5/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/61b-5/" data-title="61B-5: DLLists, Arrays"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/61b-5/" data-title="61B-5: DLLists, Arrays"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/61b-5/" data-title="61B-5: DLLists, Arrays"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -136,8 +269,8 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/61b-6/" class="prev" rel="prev" title="61B 6"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>61B 6</a>
-            <a href="/61b-8/" class="next" rel="next" title="61B 8">61B 8<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/61b-6/" class="prev" rel="prev" title="61B-6: ALists, Resizing, vs. SLists"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>61B-6: ALists, Resizing, vs. SLists</a>
+            <a href="/61b-4/" class="next" rel="next" title="61B-4: SLLists, Nested Classes, Sentinel Nodes">61B-4: SLLists, Nested Classes, Sentinel Nodes<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">

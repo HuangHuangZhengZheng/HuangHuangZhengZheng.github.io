@@ -60,7 +60,7 @@
     <description><![CDATA[]]></description>
 </item>
 <item>
-    <title>61B 9</title>
+    <title>61B-9: Extends, Casting, Higher Order Functions</title>
     <link>http://example.org/61b-9/</link>
     <pubDate>Sun, 14 Jul 2024 21:29:32 &#43;0800</pubDate>
     <author>HHZZ</author>
@@ -68,20 +68,22 @@
     <description><![CDATA[]]></description>
 </item>
 <item>
-    <title>61B 7</title>
+    <title>61B-7: Testing</title>
     <link>http://example.org/61b-7/</link>
     <pubDate>Sun, 14 Jul 2024 21:29:31 &#43;0800</pubDate>
     <author>HHZZ</author>
     <guid>http://example.org/61b-7/</guid>
-    <description><![CDATA[]]></description>
+    <description><![CDATA[Ad Hoc Testing vs. JUnit 1 2 3 4 5 6 7 8 9 10 11 12 13 14 public class TestSort { /** Tests the sort method of the Sort class. */ public static testSort() { String[] input = {&#34;cows&#34;, &#34;dwell&#34;, &#34;above&#34;, &#34;clouds&#34;}; String[] expected = {&#34;above&#34;, &#34;cows&#34;, &#34;clouds&#34;, &#34;dwell&#34;}; Sort.sort(input); org.junit.Assert.assertArrayEquals(expected, input); } public static void main(String[] args) { testSort(); } } Selection Sort 简单介绍一下了，关注点在junit Simpler JUnit Tests ADD, TDD, Integration Testing More On JUnit (Extra) ]]></description>
 </item>
 <item>
-    <title>61B 8</title>
+    <title>61B-8: Inheritance, Implements</title>
     <link>http://example.org/61b-8/</link>
     <pubDate>Sun, 14 Jul 2024 21:29:31 &#43;0800</pubDate>
     <author>HHZZ</author>
     <guid>http://example.org/61b-8/</guid>
-    <description><![CDATA[]]></description>
+    <description><![CDATA[but hard to maintain!
+Hypernyms, Hyponyms, and Interface Inheritance interface 1 2 3 4 5 6 7 8 9 10 public interface List61B&lt;Item&gt; { public void addFirst(Item x); public void addLast(Item y); public Item getFirst(); public Item getLast(); public Item removeLast(); public Item get(int i); public void insert(Item x, int position); public int size(); } Overriding vs. Overloading override注意加上@Override!!!
+Interface Inheritance 基类存放指针问题 Answer: If X is a superclass of Y, then memory boxes for X may contain Y.]]></description>
 </item>
 </channel>
 </rss>
