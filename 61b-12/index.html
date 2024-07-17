@@ -4,10 +4,12 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>61B 12 - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/61b-12/">
+        <title>61B-12:  Coding in the Real World, Review - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/61b-12/">
   <meta property="og:site_name" content="HHZZ`s space">
-  <meta property="og:title" content="61B 12">
-  <meta property="og:description" content="This is my cool site">
+  <meta property="og:title" content="61B-12:  Coding in the Real World, Review">
+  <meta property="og:description" content="Programming in the Real World 对技术要敬畏 midterm review Comparing strings for equality using == vs .equals &amp;mdash;&amp;gt; see in autoboxing lecture 在Java中，this 是一个指向当前对象实例的引用。它通常用于引用当前类的实例成员，或者在方法中区分成员变量和局部变量。然而，你不能将 this 重新赋值为另一个对象的引用，因为 this 是一个固定的概念，它代表当前对象本身。
+你提供的代码示例中，尝试将 this 赋值为一个新的 Dog 对象，这是不允许的。Java 编译器会报错，因为它违反了 this 的使用规则。
+1 2 3 4 5 6 7 8 public class Dog { public void f() { this = new Dog(); // 这行代码会导致编译错误，因为不能重新赋值this } } Dog d = new Dog(); d.f(); // 调用f()方法，但由于上面的错误，这行代码实际上无法执行 如果你想要创建一个新的 Dog 对象并将其引用赋给 this，你需要使用另一个变量，比如 anotherDog。下面是修改后的代码示例：">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
@@ -15,8 +17,10 @@
     <meta property="article:modified_time" content="2024-07-14T21:29:33+08:00">
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="61B 12">
-<meta name="twitter:description" content="">
+<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="61B-12:  Coding in the Real World, Review">
+<meta name="twitter:description" content="Programming in the Real World 对技术要敬畏 midterm review Comparing strings for equality using == vs .equals &mdash;&gt; see in autoboxing lecture 在Java中，this 是一个指向当前对象实例的引用。它通常用于引用当前类的实例成员，或者在方法中区分成员变量和局部变量。然而，你不能将 this 重新赋值为另一个对象的引用，因为 this 是一个固定的概念，它代表当前对象本身。
+你提供的代码示例中，尝试将 this 赋值为一个新的 Dog 对象，这是不允许的。Java 编译器会报错，因为它违反了 this 的使用规则。
+1 2 3 4 5 6 7 8 public class Dog { public void f() { this = new Dog(); // 这行代码会导致编译错误，因为不能重新赋值this } } Dog d = new Dog(); d.f(); // 调用f()方法，但由于上面的错误，这行代码实际上无法执行 如果你想要创建一个新的 Dog 对象并将其引用赋给 this，你需要使用另一个变量，比如 anotherDog。下面是修改后的代码示例：">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -26,12 +30,12 @@
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "61B 12",
+        "headline": "61B-12:  Coding in the Real World, Review",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/61b-12\/"
-        },"genre": "posts","wordcount":  0 ,
+        },"genre": "posts","wordcount":  116 ,
         "url": "http:\/\/example.org\/61b-12\/","datePublished": "2024-07-14T21:29:33+08:00","dateModified": "2024-07-14T21:29:33+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -103,17 +107,97 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">61B 12</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">61B-12:  Coding in the Real World, Review</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-14">2024-07-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;0 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;0 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-14">2024-07-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;116 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"></div><div class="post-footer" id="post-footer">
+            </div><div class="content" id="content"><h1 id="programming-in-the-real-world">Programming in the Real World</h1>
+<p>对技术要敬畏
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-12/image.png"
+        data-srcset="/61b-12/image.png, /61b-12/image.png 1.5x, /61b-12/image.png 2x"
+        data-sizes="auto"
+        alt="/61b-12/image.png"
+        title="/61b-12/image.png" width="1062" height="593" /></p>
+<h1 id="midterm-review">midterm review</h1>
+<ul>
+<li>Comparing strings for equality using == vs .equals &mdash;&gt; see in <strong>autoboxing</strong> lecture
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-12/image-1.png"
+        data-srcset="/61b-12/image-1.png, /61b-12/image-1.png 1.5x, /61b-12/image-1.png 2x"
+        data-sizes="auto"
+        alt="/61b-12/image-1.png"
+        title="alt text" width="1071" height="646" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-12/image-2.png"
+        data-srcset="/61b-12/image-2.png, /61b-12/image-2.png 1.5x, /61b-12/image-2.png 2x"
+        data-sizes="auto"
+        alt="/61b-12/image-2.png"
+        title="alt text" width="1061" height="608" /></li>
+</ul>
+<p>在Java中，<code>this</code> 是一个指向当前对象实例的引用。它通常用于引用当前类的实例成员，或者在方法中区分成员变量和局部变量。然而，你不能将 <code>this</code> 重新赋值为另一个对象的引用，因为 <code>this</code> 是一个固定的概念，它代表当前对象本身。</p>
+<p>你提供的代码示例中，尝试将 <code>this</code> 赋值为一个新的 <code>Dog</code> 对象，这是不允许的。Java 编译器会报错，因为它违反了 <code>this</code> 的使用规则。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Dog</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">f</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">this</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Dog</span><span class="p">();</span><span class="w"> </span><span class="c1">// 这行代码会导致编译错误，因为不能重新赋值this</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Dog</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Dog</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">d</span><span class="p">.</span><span class="na">f</span><span class="p">();</span><span class="w"> </span><span class="c1">// 调用f()方法，但由于上面的错误，这行代码实际上无法执行</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果你想要创建一个新的 <code>Dog</code> 对象并将其引用赋给 <code>this</code>，你需要使用另一个变量，比如 <code>anotherDog</code>。下面是修改后的代码示例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Dog</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">f</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">Dog</span><span class="w"> </span><span class="n">anotherDog</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Dog</span><span class="p">();</span><span class="w"> </span><span class="c1">// 创建一个新的Dog对象</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c1">// 这里你可以使用anotherDog来引用新创建的Dog对象</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Dog</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Dog</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">d</span><span class="p">.</span><span class="na">f</span><span class="p">();</span><span class="w"> </span><span class="c1">// 现在f()方法可以正常执行，没有编译错误</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>在这段修改后的代码中，<code>anotherDog</code> 变量用于存储新创建的 <code>Dog</code> 对象的引用，而 <code>this</code> 仍然保持其原始含义，即指向当前的 <code>Dog</code> 对象实例。</p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -124,7 +208,7 @@
                             <a class="link-to-markdown" href="/61b-12/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/61b-12/" data-title="61B 12"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/61b-12/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/61b-12/" data-title="61B 12"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/61b-12/" data-title="61B 12"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/61b-12/" data-title="61B 12"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/61b-12/" data-title="61B-12:  Coding in the Real World, Review"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/61b-12/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/61b-12/" data-title="61B-12:  Coding in the Real World, Review"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/61b-12/" data-title="61B-12:  Coding in the Real World, Review"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/61b-12/" data-title="61B-12:  Coding in the Real World, Review"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -136,7 +220,7 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/61b-13/" class="prev" rel="prev" title="61B 13"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>61B 13</a>
+    <div class="post-nav"><a href="/61b-13/" class="prev" rel="prev" title="61B-13: Generics, Autoboxing"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>61B-13: Generics, Autoboxing</a>
             <a href="/61b-16/" class="next" rel="next" title="61B 16">61B 16<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>

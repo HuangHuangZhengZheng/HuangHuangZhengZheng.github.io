@@ -112,12 +112,18 @@
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-14">2024-07-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content"></div><div class="post-footer">
         <a href="/61b-16/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/61b-12/">61B 12</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-14">2024-07-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content"></div><div class="post-footer">
+        <a href="/61b-12/">61B-12:  Coding in the Real World, Review</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-14">2024-07-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">Programming in the Real World 对技术要敬畏 midterm review Comparing strings for equality using == vs .equals &mdash;&gt; see in autoboxing lecture 在Java中，this 是一个指向当前对象实例的引用。它通常用于引用当前类的实例成员，或者在方法中区分成员变量和局部变量。然而，你不能将 this 重新赋值为另一个对象的引用，因为 this 是一个固定的概念，它代表当前对象本身。
+你提供的代码示例中，尝试将 this 赋值为一个新的 Dog 对象，这是不允许的。Java 编译器会报错，因为它违反了 this 的使用规则。
+1 2 3 4 5 6 7 8 public class Dog { public void f() { this = new Dog(); // 这行代码会导致编译错误，因为不能重新赋值this } } Dog d = new Dog(); d.f(); // 调用f()方法，但由于上面的错误，这行代码实际上无法执行 如果你想要创建一个新的 Dog 对象并将其引用赋给 this，你需要使用另一个变量，比如 anotherDog。下面是修改后的代码示例：</div><div class="post-footer">
         <a href="/61b-12/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/61b-13/">61B 13</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-14">2024-07-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content"></div><div class="post-footer">
+        <a href="/61b-13/">61B-13: Generics, Autoboxing</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-14">2024-07-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">13-16几乎是java语法讲解&#x1f604;
+Primitives Cannot Be Used as Actual Type Arguments Autoboxing Wrapper Types Are (Mostly) Just Like Any Class
+8种基本类型之间转换也存在widening
+Immutability 类似于const在cpp
+1 2 3 4 5 6 7 8 9 public class Date { public final int month; public final int day; public final int year; private boolean contrived = true; public Date(int m, int d, int y) { month = m; day = d; year = y; } } Warning: Declaring a reference as Final does not make object immutable.</div><div class="post-footer">
         <a href="/61b-13/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/61b-10/">61B-10: Subtype Polymorphism vs. HoFs</a>
