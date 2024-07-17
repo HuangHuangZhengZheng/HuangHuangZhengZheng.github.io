@@ -7,7 +7,10 @@
         <title>61B-21: Trees, BSTs - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/61b-21/">
   <meta property="og:site_name" content="HHZZ`s space">
   <meta property="og:title" content="61B-21: Trees, BSTs">
-  <meta property="og:description" content="This is my cool site">
+  <meta property="og:description" content="ordered linked list&amp;mdash;&amp;gt; binary search tree or skip list (out of course)
+BST Definitions A tree consists of:
+A set of nodes. A set of edges that connect those nodes. Constraint: There is exactly one path between any two nodes. In a rooted tree, we call one node the root.
+Every node N except the root has exactly one parent, defined as the first node on the path from N to the root.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
@@ -16,11 +19,14 @@
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="61B-21: Trees, BSTs">
-<meta name="twitter:description" content="">
+<meta name="twitter:description" content="ordered linked list&mdash;&gt; binary search tree or skip list (out of course)
+BST Definitions A tree consists of:
+A set of nodes. A set of edges that connect those nodes. Constraint: There is exactly one path between any two nodes. In a rooted tree, we call one node the root.
+Every node N except the root has exactly one parent, defined as the first node on the path from N to the root.">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/61b-21/" /><link rel="prev" href="http://example.org/61b-19/" /><link rel="next" href="http://example.org/61b-23/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/61b-21/" /><link rel="prev" href="http://example.org/61b-22/" /><link rel="next" href="http://example.org/61b-23/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -31,7 +37,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/61b-21\/"
-        },"genre": "posts","wordcount":  0 ,
+        },"genre": "posts","wordcount":  385 ,
         "url": "http:\/\/example.org\/61b-21\/","datePublished": "2024-07-13T14:18:52+08:00","dateModified": "2024-07-13T14:18:52+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -105,15 +111,149 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">61B-21: Trees, BSTs</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-13">2024-07-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;0 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;0 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-13">2024-07-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;385 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"></div><div class="post-footer" id="post-footer">
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#properties-of-bsts">Properties of BSTs</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#finding-a-searchkey-in-a-bst">Finding a searchKey in a BST</a></li>
+    <li><a href="#inserting-a-new-key-into-a-bst">Inserting a new key into a BST</a></li>
+    <li><a href="#deleting-a-key-from-a-bst">Deleting a key from a BST</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#tree-height">Tree Height</a></li>
+    <li><a href="#insertion-demo">Insertion demo</a></li>
+    <li><a href="#deletion-demo">Deletion demo</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p><em><strong>ordered linked list</strong></em>&mdash;&gt; binary search tree or skip list (out of course)</p>
+<h1 id="bst-definitions">BST Definitions</h1>
+<p>A tree consists of:</p>
+<ul>
+<li>A set of nodes.</li>
+<li>A set of edges that connect those nodes.
+<ul>
+<li>Constraint: There is exactly one path between any two nodes.</li>
+</ul>
+</li>
+</ul>
+<p>In a rooted tree, we call one node the root.</p>
+<ul>
+<li>Every node N except the root has exactly one parent, defined as the first node on the path from N to the root.</li>
+<li>Unlike (most) real trees, the root is usually depicted at the top of the tree.</li>
+<li>A node with no child is called a leaf.</li>
+</ul>
+<p>In a rooted binary tree, every node has either 0, 1, or 2 children (subtrees).</p>
+<h2 id="properties-of-bsts">Properties of BSTs</h2>
+<p>A binary search tree is a rooted binary tree with the BST property.</p>
+<p>BST Property. For every node X in the tree:</p>
+<ul>
+<li>Every key in the left subtree is less than X’s key.</li>
+<li>Every key in the right subtree is greater than X’s key.
+One consequence of these rules: No duplicate keys allowed!</li>
+</ul>
+<h1 id="bst-operations">BST Operations</h1>
+<h2 id="finding-a-searchkey-in-a-bst">Finding a searchKey in a BST</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">static</span><span class="w"> </span><span class="n">BST</span><span class="w"> </span><span class="nf">find</span><span class="p">(</span><span class="n">BST</span><span class="w"> </span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">Key</span><span class="w"> </span><span class="n">sk</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">sk</span><span class="p">.</span><span class="na">keyequals</span><span class="p">(</span><span class="n">T</span><span class="p">.</span><span class="na">label</span><span class="p">()))</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">T</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">sk</span><span class="w"> </span><span class="err">≺</span><span class="w"> </span><span class="n">T</span><span class="p">.</span><span class="na">label</span><span class="p">())</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">find</span><span class="p">(</span><span class="n">T</span><span class="p">.</span><span class="na">left</span><span class="p">,</span><span class="w"> </span><span class="n">sk</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">else</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">find</span><span class="p">(</span><span class="n">T</span><span class="p">.</span><span class="na">right</span><span class="p">,</span><span class="w"> </span><span class="n">sk</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><em><strong>runtime:</strong></em> $O(h)$, where $h$ is the height of the tree, i.e., $O(log (N))$, where $N$ is the number of nodes in the tree.</p>
+<h2 id="inserting-a-new-key-into-a-bst">Inserting a new key into a BST</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">static</span><span class="w"> </span><span class="n">BST</span><span class="w"> </span><span class="nf">insert</span><span class="p">(</span><span class="n">BST</span><span class="w"> </span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">Key</span><span class="w"> </span><span class="n">ik</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BST</span><span class="p">(</span><span class="n">ik</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ik</span><span class="w"> </span><span class="err">≺</span><span class="w"> </span><span class="n">T</span><span class="p">.</span><span class="na">label</span><span class="p">())</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">T</span><span class="p">.</span><span class="na">left</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">insert</span><span class="p">(</span><span class="n">T</span><span class="p">.</span><span class="na">left</span><span class="p">,</span><span class="w"> </span><span class="n">ik</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ik</span><span class="w"> </span><span class="err">≻</span><span class="w"> </span><span class="n">T</span><span class="p">.</span><span class="na">label</span><span class="p">())</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">T</span><span class="p">.</span><span class="na">right</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">insert</span><span class="p">(</span><span class="n">T</span><span class="p">.</span><span class="na">right</span><span class="p">,</span><span class="w"> </span><span class="n">ik</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">T</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="deleting-a-key-from-a-bst">Deleting a key from a BST</h2>
+<ul>
+<li>no child: simply remove the node.</li>
+<li>one child: replace the node with its child.</li>
+<li>two children: find the inorder successor (smallest in the right subtree) and replace the node with it. Then recursively delete the inorder successor from the right subtree.
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-21/image.png"
+        data-srcset="/61b-21/image.png, /61b-21/image.png 1.5x, /61b-21/image.png 2x"
+        data-sizes="auto"
+        alt="/61b-21/image.png"
+        title="alt text" width="1064" height="574" /></li>
+</ul>
+<h1 id="bst-performance">BST Performance</h1>
+<h2 id="tree-height">Tree Height</h2>
+<p>Performance of spindly trees can be just as bad as a linked list!</p>
+<p>usually, the height of a BST is $O(log(N))$, where $N$ is the number of nodes in the tree.</p>
+<h2 id="insertion-demo">Insertion demo</h2>
+<p>Random inserts take on average only Θ(log N) each.</p>
+<h2 id="deletion-demo">Deletion demo</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-21/image-1.png"
+        data-srcset="/61b-21/image-1.png, /61b-21/image-1.png 1.5x, /61b-21/image-1.png 2x"
+        data-sizes="auto"
+        alt="/61b-21/image-1.png"
+        title="alt text" width="1071" height="590" />
+<a href="https://docs.google.com/presentation/d/1rEHpAx8Xu2LnJBWsRPWy8blL20qb96Q5UhdZtQYFkBI/edit#slide=id.g75707c75c_0224" target="_blank" rel="noopener noreffer ">https://docs.google.com/presentation/d/1rEHpAx8Xu2LnJBWsRPWy8blL20qb96Q5UhdZtQYFkBI/edit#slide=id.g75707c75c_0224</a></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-21/image-2.png"
+        data-srcset="/61b-21/image-2.png, /61b-21/image-2.png 1.5x, /61b-21/image-2.png 2x"
+        data-sizes="auto"
+        alt="/61b-21/image-2.png"
+        title="alt text" width="1104" height="606" /></p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -136,7 +276,7 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/61b-19/" class="prev" rel="prev" title="61B-19: Asymptotics III"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>61B-19: Asymptotics III</a>
+    <div class="post-nav"><a href="/61b-22/" class="prev" rel="prev" title="61B-22: Balanced BSTs"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>61B-22: Balanced BSTs</a>
             <a href="/61b-23/" class="next" rel="next" title="61B 23">61B 23<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
