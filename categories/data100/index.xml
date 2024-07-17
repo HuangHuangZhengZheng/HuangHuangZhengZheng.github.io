@@ -4,12 +4,22 @@
         <link>http://example.org/categories/data100/</link>
         <description>DATA100 - Category - HHZZ`s space</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 16 Jul 2024 19:57:02 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/data100/" rel="self" type="application/rss+xml" /><item>
-    <title>DATA100-L8: Visualization Ⅱ</title>
+    <title>DATA100-L8: Visualizations Ⅱ</title>
     <link>http://example.org/datal8/</link>
     <pubDate>Tue, 16 Jul 2024 19:57:02 &#43;0800</pubDate>
     <author>HHZZ</author>
     <guid>http://example.org/datal8/</guid>
-    <description><![CDATA[ ]]></description>
+    <description><![CDATA[Kernel Density Functions KDE Mechanics smoothing in 1D（histograms） rug &mdash;&gt; histogram
+smoothing in 2D（heatmaps/Hex Plot） KDEs 代码实现： sns.distplot(data, kde=True)
+Kernel Functions and Bandwidth $\alpha$ 越大，曲线越平滑
+当然也有其他的kernel函数，比如：
+triangular kernel epanechnikov kernel boxcar kernel Visualization Theory 注意可视化的目的！
+仅仅靠统计方法不够直观并且不够准确！
+Information Channels color, shape, size, position (coordinate), and orientation
+Harnessing X/Y do not use different scales for x and y in the same visualization!
+比例适中
+Harnessing Color 选颜色，jet, viridis主题等等
+最好选择perceptually uniform的颜色！而jet不是！Inferno， Turbo可以 Harnessing Markings 人更倾向于比较整齐的直方图（一维长度）]]></description>
 </item>
 <item>
     <title>DATA100-lab02</title>

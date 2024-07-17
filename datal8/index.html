@@ -4,10 +4,20 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>DATA100-L8: Visualization Ⅱ - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/datal8/">
+        <title>DATA100-L8: Visualizations Ⅱ - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/datal8/">
   <meta property="og:site_name" content="HHZZ`s space">
-  <meta property="og:title" content="DATA100-L8: Visualization Ⅱ">
-  <meta property="og:description" content=" ">
+  <meta property="og:title" content="DATA100-L8: Visualizations Ⅱ">
+  <meta property="og:description" content="Kernel Density Functions KDE Mechanics smoothing in 1D（histograms） rug &amp;mdash;&amp;gt; histogram
+smoothing in 2D（heatmaps/Hex Plot） KDEs 代码实现： sns.distplot(data, kde=True)
+Kernel Functions and Bandwidth $\alpha$ 越大，曲线越平滑
+当然也有其他的kernel函数，比如：
+triangular kernel epanechnikov kernel boxcar kernel Visualization Theory 注意可视化的目的！
+仅仅靠统计方法不够直观并且不够准确！
+Information Channels color, shape, size, position (coordinate), and orientation
+Harnessing X/Y do not use different scales for x and y in the same visualization!
+比例适中
+Harnessing Color 选颜色，jet, viridis主题等等
+最好选择perceptually uniform的颜色！而jet不是！Inferno， Turbo可以 Harnessing Markings 人更倾向于比较整齐的直方图（一维长度）">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
@@ -15,8 +25,18 @@
     <meta property="article:modified_time" content="2024-07-16T19:57:02+08:00">
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="DATA100-L8: Visualization Ⅱ">
-<meta name="twitter:description" content=" ">
+<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="DATA100-L8: Visualizations Ⅱ">
+<meta name="twitter:description" content="Kernel Density Functions KDE Mechanics smoothing in 1D（histograms） rug &mdash;&gt; histogram
+smoothing in 2D（heatmaps/Hex Plot） KDEs 代码实现： sns.distplot(data, kde=True)
+Kernel Functions and Bandwidth $\alpha$ 越大，曲线越平滑
+当然也有其他的kernel函数，比如：
+triangular kernel epanechnikov kernel boxcar kernel Visualization Theory 注意可视化的目的！
+仅仅靠统计方法不够直观并且不够准确！
+Information Channels color, shape, size, position (coordinate), and orientation
+Harnessing X/Y do not use different scales for x and y in the same visualization!
+比例适中
+Harnessing Color 选颜色，jet, viridis主题等等
+最好选择perceptually uniform的颜色！而jet不是！Inferno， Turbo可以 Harnessing Markings 人更倾向于比较整齐的直方图（一维长度）">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -26,12 +46,12 @@
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "DATA100-L8: Visualization Ⅱ",
+        "headline": "DATA100-L8: Visualizations Ⅱ",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/datal8\/"
-        },"genre": "posts","wordcount":  0 ,
+        },"genre": "posts","wordcount":  83 ,
         "url": "http:\/\/example.org\/datal8\/","datePublished": "2024-07-16T19:57:02+08:00","dateModified": "2024-07-16T19:57:02+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -103,17 +123,129 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">DATA100-L8: Visualization Ⅱ</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">DATA100-L8: Visualizations Ⅱ</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-16">2024-07-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;0 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;0 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-16">2024-07-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;83 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"><h1 id="heading"></h1>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#kde-mechanics">KDE Mechanics</a>
+      <ul>
+        <li><a href="#smoothing-in-1dhistograms">smoothing in 1D（histograms）</a></li>
+        <li><a href="#smoothing-in-2dheatmapshex-plot">smoothing in 2D（heatmaps/Hex Plot）</a></li>
+        <li><a href="#kdes">KDEs</a></li>
+      </ul>
+    </li>
+    <li><a href="#kernel-functions-and-bandwidth">Kernel Functions and Bandwidth</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#information-channels">Information Channels</a></li>
+    <li><a href="#harnessing-xy">Harnessing X/Y</a></li>
+    <li><a href="#harnessing-color">Harnessing Color</a></li>
+    <li><a href="#harnessing-markings">Harnessing Markings</a></li>
+    <li><a href="#harnessing-conditioning">Harnessing Conditioning</a></li>
+    <li><a href="#harnessing-context">Harnessing Context</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="kernel-density-functions">Kernel Density Functions</h1>
+<h2 id="kde-mechanics">KDE Mechanics</h2>
+<h3 id="smoothing-in-1dhistograms">smoothing in 1D（histograms）</h3>
+<p>rug &mdash;&gt; histogram</p>
+<h3 id="smoothing-in-2dheatmapshex-plot">smoothing in 2D（heatmaps/Hex Plot）</h3>
+<h3 id="kdes">KDEs</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal8/image.png"
+        data-srcset="/datal8/image.png, /datal8/image.png 1.5x, /datal8/image.png 2x"
+        data-sizes="auto"
+        alt="/datal8/image.png"
+        title="alt text" width="968" height="411" />
+代码实现：
+<code>sns.distplot(data, kde=True)</code></p>
+<h2 id="kernel-functions-and-bandwidth">Kernel Functions and Bandwidth</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal8/image-1.png"
+        data-srcset="/datal8/image-1.png, /datal8/image-1.png 1.5x, /datal8/image-1.png 2x"
+        data-sizes="auto"
+        alt="/datal8/image-1.png"
+        title="alt text" width="1779" height="913" />
+$\alpha$ 越大，曲线越平滑</p>
+<p>当然也有其他的kernel函数，比如：</p>
+<ul>
+<li>triangular kernel</li>
+<li>epanechnikov kernel</li>
+<li>boxcar kernel</li>
+</ul>
+<h1 id="visualization-theory">Visualization Theory</h1>
+<p>注意可视化的目的！</p>
+<p>仅仅靠统计方法不够直观并且不够准确！</p>
+<h2 id="information-channels">Information Channels</h2>
+<p>color, shape, size, position (coordinate), and orientation</p>
+<h2 id="harnessing-xy">Harnessing X/Y</h2>
+<p>do not use different scales for x and y in the same visualization!</p>
+<p>比例适中</p>
+<h2 id="harnessing-color">Harnessing Color</h2>
+<p>选颜色，jet, viridis主题等等</p>
+<p>最好选择perceptually uniform的颜色！而jet不是！Inferno， Turbo可以
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal8/image-2.png"
+        data-srcset="/datal8/image-2.png, /datal8/image-2.png 1.5x, /datal8/image-2.png 2x"
+        data-sizes="auto"
+        alt="/datal8/image-2.png"
+        title="alt text" width="1628" height="933" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal8/image-3.png"
+        data-srcset="/datal8/image-3.png, /datal8/image-3.png 1.5x, /datal8/image-3.png 2x"
+        data-sizes="auto"
+        alt="/datal8/image-3.png"
+        title="alt text" width="1540" height="1052" /></p>
+<h2 id="harnessing-markings">Harnessing Markings</h2>
+<p>人更倾向于比较整齐的直方图（一维长度）</p>
+<p>避免移动调整基线！</p>
+<p><em><strong>取决于讲什么故事</strong></em></p>
+<h2 id="harnessing-conditioning">Harnessing Conditioning</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal8/image-4.png"
+        data-srcset="/datal8/image-4.png, /datal8/image-4.png 1.5x, /datal8/image-4.png 2x"
+        data-sizes="auto"
+        alt="/datal8/image-4.png"
+        title="alt text" width="1781" height="491" /></p>
+<h2 id="harnessing-context">Harnessing Context</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal8/image-5.png"
+        data-srcset="/datal8/image-5.png, /datal8/image-5.png 1.5x, /datal8/image-5.png 2x"
+        data-sizes="auto"
+        alt="/datal8/image-5.png"
+        title="alt text" width="1748" height="581" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal8/image-6.png"
+        data-srcset="/datal8/image-6.png, /datal8/image-6.png 1.5x, /datal8/image-6.png 2x"
+        data-sizes="auto"
+        alt="/datal8/image-6.png"
+        title="alt text" width="893" height="344" /></p>
+<h1 id="transformations">Transformations</h1>
+<p>linearize线性化处理</p>
+<p>log transform对数变换</p>
+<p>更多的代码参考jupyter notebook</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
@@ -125,7 +257,7 @@
                             <a class="link-to-markdown" href="/datal8/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/datal8/" data-title="DATA100-L8: Visualization Ⅱ"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/datal8/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/datal8/" data-title="DATA100-L8: Visualization Ⅱ"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/datal8/" data-title="DATA100-L8: Visualization Ⅱ"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/datal8/" data-title="DATA100-L8: Visualization Ⅱ"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/datal8/" data-title="DATA100-L8: Visualizations Ⅱ"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/datal8/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/datal8/" data-title="DATA100-L8: Visualizations Ⅱ"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/datal8/" data-title="DATA100-L8: Visualizations Ⅱ"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/datal8/" data-title="DATA100-L8: Visualizations Ⅱ"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
