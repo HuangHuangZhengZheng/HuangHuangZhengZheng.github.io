@@ -4,10 +4,13 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>61B 16 - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/61b-16/">
+        <title>61B-16: Encapsulation, Lists, Delegation vs. Extension - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/61b-16/">
   <meta property="og:site_name" content="HHZZ`s space">
-  <meta property="og:title" content="61B 16">
-  <meta property="og:description" content="This is my cool site">
+  <meta property="og:title" content="61B-16: Encapsulation, Lists, Delegation vs. Extension">
+  <meta property="og:description" content="61B: Writing Efficient Programs Programming cost. How long does it take to develop your programs? How easy is it to read, modify, and maintain your code? More important than you might think! Majority of cost is in maintenance, not development! 自顶向下，逐层抽象，分而治之，化整为零
+ADT Implementations Designing ADTs 虽然extension简单，但是委托delegation更加灵活
+Views 视图 在Java中，&amp;ldquo;view&amp;quot;通常指的是一种数据结构的视图，它提供了一种访问和操作底层数据的方式，而不需要复制整个数据集。视图的主要优点是它们提供了一种高效的方式来操作数据子集，而不需要复制数据，从而节省内存和提高性能。然而，视图也有一些限制，例如固定大小的视图不能添加或删除元素。
+Occasionally, implementation details may allow for views that are too difficult to implement for an abstract type.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
@@ -15,8 +18,11 @@
     <meta property="article:modified_time" content="2024-07-14T21:29:34+08:00">
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="61B 16">
-<meta name="twitter:description" content="">
+<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="61B-16: Encapsulation, Lists, Delegation vs. Extension">
+<meta name="twitter:description" content="61B: Writing Efficient Programs Programming cost. How long does it take to develop your programs? How easy is it to read, modify, and maintain your code? More important than you might think! Majority of cost is in maintenance, not development! 自顶向下，逐层抽象，分而治之，化整为零
+ADT Implementations Designing ADTs 虽然extension简单，但是委托delegation更加灵活
+Views 视图 在Java中，&ldquo;view&quot;通常指的是一种数据结构的视图，它提供了一种访问和操作底层数据的方式，而不需要复制整个数据集。视图的主要优点是它们提供了一种高效的方式来操作数据子集，而不需要复制数据，从而节省内存和提高性能。然而，视图也有一些限制，例如固定大小的视图不能添加或删除元素。
+Occasionally, implementation details may allow for views that are too difficult to implement for an abstract type.">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -26,12 +32,12 @@
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "61B 16",
+        "headline": "61B-16: Encapsulation, Lists, Delegation vs. Extension",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/61b-16\/"
-        },"genre": "posts","wordcount":  0 ,
+        },"genre": "posts","wordcount":  66 ,
         "url": "http:\/\/example.org\/61b-16\/","datePublished": "2024-07-14T21:29:34+08:00","dateModified": "2024-07-14T21:29:34+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -103,17 +109,74 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">61B 16</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">61B-16: Encapsulation, Lists, Delegation vs. Extension</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-14">2024-07-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;0 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;0 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-14">2024-07-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;66 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"></div><div class="post-footer" id="post-footer">
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#61b-writing-efficient-programs">61B: Writing Efficient Programs</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="61b-writing-efficient-programs">61B: Writing Efficient Programs</h2>
+<ul>
+<li>Programming cost.
+<ul>
+<li>How long does it take to develop your programs?</li>
+<li>How easy is it to read, modify, and maintain your code?
+<ul>
+<li>More important than you might think!</li>
+<li>Majority of cost is in maintenance, not development!</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>自顶向下，逐层抽象，分而治之，化整为零</p>
+<h1 id="adt-implementations">ADT Implementations</h1>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-16/image.png"
+        data-srcset="/61b-16/image.png, /61b-16/image.png 1.5x, /61b-16/image.png 2x"
+        data-sizes="auto"
+        alt="/61b-16/image.png"
+        title="alt text" width="1066" height="599" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-16/image-1.png"
+        data-srcset="/61b-16/image-1.png, /61b-16/image-1.png 1.5x, /61b-16/image-1.png 2x"
+        data-sizes="auto"
+        alt="/61b-16/image-1.png"
+        title="alt text" width="1064" height="572" /></p>
+<h1 id="designing-adts">Designing ADTs</h1>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-16/image-2.png"
+        data-srcset="/61b-16/image-2.png, /61b-16/image-2.png 1.5x, /61b-16/image-2.png 2x"
+        data-sizes="auto"
+        alt="/61b-16/image-2.png"
+        title="alt text" width="1032" height="499" />
+虽然extension简单，但是委托delegation更加灵活</p>
+<h1 id="views-视图">Views 视图</h1>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-16/image-3.png"
+        data-srcset="/61b-16/image-3.png, /61b-16/image-3.png 1.5x, /61b-16/image-3.png 2x"
+        data-sizes="auto"
+        alt="/61b-16/image-3.png"
+        title="alt text" width="1070" height="547" />
+在Java中，&ldquo;view&quot;通常指的是一种数据结构的视图，它提供了一种访问和操作底层数据的方式，而不需要复制整个数据集。视图的主要优点是它们提供了一种高效的方式来操作数据子集，而不需要复制数据，从而节省内存和提高性能。然而，视图也有一些限制，例如固定大小的视图不能添加或删除元素。</p>
+<p>Occasionally, implementation details may allow for views that are too difficult to implement for an abstract type.</p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -124,7 +187,7 @@
                             <a class="link-to-markdown" href="/61b-16/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/61b-16/" data-title="61B 16"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/61b-16/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/61b-16/" data-title="61B 16"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/61b-16/" data-title="61B 16"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/61b-16/" data-title="61B 16"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/61b-16/" data-title="61B-16: Encapsulation, Lists, Delegation vs. Extension"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/61b-16/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/61b-16/" data-title="61B-16: Encapsulation, Lists, Delegation vs. Extension"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/61b-16/" data-title="61B-16: Encapsulation, Lists, Delegation vs. Extension"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/61b-16/" data-title="61B-16: Encapsulation, Lists, Delegation vs. Extension"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -137,7 +200,7 @@
     </div>
 
     <div class="post-nav"><a href="/61b-12/" class="prev" rel="prev" title="61B-12:  Coding in the Real World, Review"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>61B-12:  Coding in the Real World, Review</a>
-            <a href="/61b-15/" class="next" rel="next" title="61B 15">61B 15<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+            <a href="/61b-15/" class="next" rel="next" title="61B-15: Packages, Access Control, Objects">61B-15: Packages, Access Control, Objects<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">

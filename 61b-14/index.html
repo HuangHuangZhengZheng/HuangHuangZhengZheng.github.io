@@ -4,10 +4,12 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>61B 14 - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/61b-14/">
+        <title>61B-14: Exceptions, Iterators, Iterables - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/61b-14/">
   <meta property="og:site_name" content="HHZZ`s space">
-  <meta property="og:title" content="61B 14">
-  <meta property="og:description" content="This is my cool site">
+  <meta property="og:title" content="61B-14: Exceptions, Iterators, Iterables">
+  <meta property="og:description" content="Exceptions throw statement: throws an exception
+1 2 3 4 5 6 public V get(K key) { int location = findKey(key); if (location &amp;lt; 0) { throw new IllegalArgumentException(&amp;#34;Key &amp;#34; &#43; key &#43; &amp;#34; does not exist in map.&amp;#34;); } return values[findKey(key)]; } 显式抛出异常
+1 2 3 4 public static void main(String[] args) { System.out.println(&amp;#34;ayyy lmao&amp;#34;); throw new RuntimeException(&amp;#34;For no reason.&amp;#34;); } What has been Thrown, can be Caught 1 2 3 4 5 6 7 8 9 10 11 Dog d = new Dog(&amp;#34;Lucy&amp;#34;, &amp;#34;Retriever&amp;#34;, 80); d.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
@@ -15,8 +17,10 @@
     <meta property="article:modified_time" content="2024-07-14T21:29:34+08:00">
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="61B 14">
-<meta name="twitter:description" content="">
+<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="61B-14: Exceptions, Iterators, Iterables">
+<meta name="twitter:description" content="Exceptions throw statement: throws an exception
+1 2 3 4 5 6 public V get(K key) { int location = findKey(key); if (location &lt; 0) { throw new IllegalArgumentException(&#34;Key &#34; &#43; key &#43; &#34; does not exist in map.&#34;); } return values[findKey(key)]; } 显式抛出异常
+1 2 3 4 public static void main(String[] args) { System.out.println(&#34;ayyy lmao&#34;); throw new RuntimeException(&#34;For no reason.&#34;); } What has been Thrown, can be Caught 1 2 3 4 5 6 7 8 9 10 11 Dog d = new Dog(&#34;Lucy&#34;, &#34;Retriever&#34;, 80); d.">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -26,12 +30,12 @@
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "61B 14",
+        "headline": "61B-14: Exceptions, Iterators, Iterables",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/61b-14\/"
-        },"genre": "posts","wordcount":  0 ,
+        },"genre": "posts","wordcount":  164 ,
         "url": "http:\/\/example.org\/61b-14\/","datePublished": "2024-07-14T21:29:34+08:00","dateModified": "2024-07-14T21:29:34+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -103,17 +107,208 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">61B 14</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">61B-14: Exceptions, Iterators, Iterables</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-14">2024-07-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;0 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;0 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-14">2024-07-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;164 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"></div><div class="post-footer" id="post-footer">
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-has-been-thrown-can-be-caught">What has been Thrown, can be Caught</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#the-iterable-interface">The Iterable Interface</a>
+      <ul>
+        <li><a href="#假如要遍历arraymap需要对key进行操作">假如要遍历ArrayMap，需要对key进行操作</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="exceptions">Exceptions</h1>
+<p><code>throw</code> statement: throws an exception</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="n">V</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="n">K</span><span class="w"> </span><span class="n">key</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="n">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">findKey</span><span class="p">(</span><span class="n">key</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">location</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">IllegalArgumentException</span><span class="p">(</span><span class="s">&#34;Key &#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">                            </span><span class="n">key</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&#34; does not exist in map.&#34;</span><span class="p">);</span><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">values</span><span class="o">[</span><span class="n">findKey</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="o">]</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>显式抛出异常</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;ayyy lmao&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(</span><span class="s">&#34;For no reason.&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="what-has-been-thrown-can-be-caught">What has been Thrown, can be Caught</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Dog</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Dog</span><span class="p">(</span><span class="s">&#34;Lucy&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;Retriever&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">80</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">d</span><span class="p">.</span><span class="na">becomeAngry</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">d</span><span class="p">.</span><span class="na">receivePat</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     	</span><span class="s">&#34;Tried to pat: &#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">e</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">d</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-14/image.png"
+        data-srcset="/61b-14/image.png, /61b-14/image.png 1.5x, /61b-14/image.png 2x"
+        data-sizes="auto"
+        alt="/61b-14/image.png"
+        title="alt text" width="1112" height="631" />
+由callstack顺序</p>
+<p>exception是一种对象，有时可能见到的错误↓
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-14/image-1.png"
+        data-srcset="/61b-14/image-1.png, /61b-14/image-1.png 1.5x, /61b-14/image-1.png 2x"
+        data-sizes="auto"
+        alt="/61b-14/image-1.png"
+        title="alt text" width="1103" height="594" />
+最好明确怎么处理exception
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-14/image-3.png"
+        data-srcset="/61b-14/image-3.png, /61b-14/image-3.png 1.5x, /61b-14/image-3.png 2x"
+        data-sizes="auto"
+        alt="/61b-14/image-3.png"
+        title="alt text" width="1053" height="607" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">gulgate</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">IOException</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="p">...</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">IOException</span><span class="p">(</span><span class="s">&#34;hi&#34;</span><span class="p">);</span><span class="w"> </span><span class="p">...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>有时需要考虑main情况
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-14/image-4.png"
+        data-srcset="/61b-14/image-4.png, /61b-14/image-4.png 1.5x, /61b-14/image-4.png 2x"
+        data-sizes="auto"
+        alt="/61b-14/image-4.png"
+        title="alt text" width="1073" height="413" />
+上面没有明确处理
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-14/image-5.png"
+        data-srcset="/61b-14/image-5.png, /61b-14/image-5.png 1.5x, /61b-14/image-5.png 2x"
+        data-sizes="auto"
+        alt="/61b-14/image-5.png"
+        title="alt text" width="1115" height="550" />
+checked与否见种类
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-14/image-2.png"
+        data-srcset="/61b-14/image-2.png, /61b-14/image-2.png 1.5x, /61b-14/image-2.png 2x"
+        data-sizes="auto"
+        alt="/61b-14/image-2.png"
+        title="alt text" width="1085" height="591" /></p>
+<h1 id="iteration">Iteration</h1>
+<p>创建能支持<code>for (Item i : someIterable)</code>的情况</p>
+<h2 id="the-iterable-interface">The Iterable Interface</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">Iterable</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">iterator</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nn">java.util</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">Iterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">hasNext</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="nf">next</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="假如要遍历arraymap需要对key进行操作">假如要遍历ArrayMap，需要对key进行操作</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-14/image-6.png"
+        data-srcset="/61b-14/image-6.png, /61b-14/image-6.png 1.5x, /61b-14/image-6.png 2x"
+        data-sizes="auto"
+        alt="/61b-14/image-6.png"
+        title="alt text" width="1093" height="604" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-14/image-7.png"
+        data-srcset="/61b-14/image-7.png, /61b-14/image-7.png 1.5x, /61b-14/image-7.png 2x"
+        data-sizes="auto"
+        alt="/61b-14/image-7.png"
+        title="alt text" width="1098" height="583" />
+到此完成，可以执行遍历</p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -124,7 +319,7 @@
                             <a class="link-to-markdown" href="/61b-14/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/61b-14/" data-title="61B 14"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/61b-14/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/61b-14/" data-title="61B 14"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/61b-14/" data-title="61B 14"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/61b-14/" data-title="61B 14"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/61b-14/" data-title="61B-14: Exceptions, Iterators, Iterables"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/61b-14/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/61b-14/" data-title="61B-14: Exceptions, Iterators, Iterables"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/61b-14/" data-title="61B-14: Exceptions, Iterators, Iterables"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/61b-14/" data-title="61B-14: Exceptions, Iterators, Iterables"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -136,7 +331,7 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/61b-15/" class="prev" rel="prev" title="61B 15"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>61B 15</a>
+    <div class="post-nav"><a href="/61b-15/" class="prev" rel="prev" title="61B-15: Packages, Access Control, Objects"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>61B-15: Packages, Access Control, Objects</a>
             <a href="/datal5/" class="next" rel="next" title="DATA100-L5: Data Wrangling and EDA">DATA100-L5: Data Wrangling and EDA<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>

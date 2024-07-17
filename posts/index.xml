@@ -74,28 +74,34 @@ key data properties to consider in EDA structure file format rectangular data: t
 变量种类 注意：不唯一，不全面 multiple files 主键？ granularity(颗粒度？) scope and temporality 颗粒度 scope: sampling frame temporality: time-series data unix time posix time]]></description>
 </item>
 <item>
-    <title>61B 14</title>
+    <title>61B-14: Exceptions, Iterators, Iterables</title>
     <link>http://example.org/61b-14/</link>
     <pubDate>Sun, 14 Jul 2024 21:29:34 &#43;0800</pubDate>
     <author>HHZZ</author>
     <guid>http://example.org/61b-14/</guid>
-    <description><![CDATA[]]></description>
+    <description><![CDATA[Exceptions throw statement: throws an exception
+1 2 3 4 5 6 public V get(K key) { int location = findKey(key); if (location &lt; 0) { throw new IllegalArgumentException(&#34;Key &#34; + key + &#34; does not exist in map.&#34;); } return values[findKey(key)]; } 显式抛出异常
+1 2 3 4 public static void main(String[] args) { System.out.println(&#34;ayyy lmao&#34;); throw new RuntimeException(&#34;For no reason.&#34;); } What has been Thrown, can be Caught 1 2 3 4 5 6 7 8 9 10 11 Dog d = new Dog(&#34;Lucy&#34;, &#34;Retriever&#34;, 80); d.]]></description>
 </item>
 <item>
-    <title>61B 15</title>
+    <title>61B-15: Packages, Access Control, Objects</title>
     <link>http://example.org/61b-15/</link>
     <pubDate>Sun, 14 Jul 2024 21:29:34 &#43;0800</pubDate>
     <author>HHZZ</author>
     <guid>http://example.org/61b-15/</guid>
-    <description><![CDATA[]]></description>
+    <description><![CDATA[Packages and JAR Files 创建包 At the top of every file in the package, put the package name. Make sure that the file is stored in a folder with the appropriate folder name. For a package with name ug.joshh.animal, use folder ug/joshh/animal. 要用的时候import即可
+default package JAR Files Access Control Object Methods: Equals and toString( ) toString( ) == vs equals( ) == compares references equals( ) compares values, but pay attention to the type!]]></description>
 </item>
 <item>
-    <title>61B 16</title>
+    <title>61B-16: Encapsulation, Lists, Delegation vs. Extension</title>
     <link>http://example.org/61b-16/</link>
     <pubDate>Sun, 14 Jul 2024 21:29:34 &#43;0800</pubDate>
     <author>HHZZ</author>
     <guid>http://example.org/61b-16/</guid>
-    <description><![CDATA[]]></description>
+    <description><![CDATA[61B: Writing Efficient Programs Programming cost. How long does it take to develop your programs? How easy is it to read, modify, and maintain your code? More important than you might think! Majority of cost is in maintenance, not development! 自顶向下，逐层抽象，分而治之，化整为零
+ADT Implementations Designing ADTs 虽然extension简单，但是委托delegation更加灵活
+Views 视图 在Java中，&ldquo;view&quot;通常指的是一种数据结构的视图，它提供了一种访问和操作底层数据的方式，而不需要复制整个数据集。视图的主要优点是它们提供了一种高效的方式来操作数据子集，而不需要复制数据，从而节省内存和提高性能。然而，视图也有一些限制，例如固定大小的视图不能添加或删除元素。
+Occasionally, implementation details may allow for views that are too difficult to implement for an abstract type.]]></description>
 </item>
 <item>
     <title>61B-12:  Coding in the Real World, Review</title>
