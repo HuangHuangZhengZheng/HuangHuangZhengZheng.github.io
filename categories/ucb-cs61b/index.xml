@@ -44,14 +44,6 @@
     <description><![CDATA[]]></description>
 </item>
 <item>
-    <title>61B 11</title>
-    <link>http://example.org/61b-11/</link>
-    <pubDate>Sun, 14 Jul 2024 21:29:32 &#43;0800</pubDate>
-    <author>HHZZ</author>
-    <guid>http://example.org/61b-11/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
     <title>61B-10: Subtype Polymorphism vs. HoFs</title>
     <link>http://example.org/61b-10/</link>
     <pubDate>Sun, 14 Jul 2024 21:29:32 &#43;0800</pubDate>
@@ -60,6 +52,15 @@
     <description><![CDATA[Subtype Polymorphism 指的是可以使用父类类型的对象来引用子类类型的实例。 DIY Comparison 比较Object类对象时产生问题，如何比较？？？
 考虑写一个比较器，比较两个Object对象
 加深编译理解 Comparable Interface 1 2 3 public interface Comparable&lt;T&gt; { public int compareTo(T obj); } Comparator Interface 1 2 3 public interface Comparator&lt;T&gt; { public int compare(T obj1, T obj2); } 两者的关系↓ 总结]]></description>
+</item>
+<item>
+    <title>61B-11: Libraries, Abstract Classes, Packages</title>
+    <link>http://example.org/61b-11/</link>
+    <pubDate>Sun, 14 Jul 2024 21:29:32 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/61b-11/</guid>
+    <description><![CDATA[Java Libraries Collections Collections is a package in Java that provides various utility classes for working with collections. Tasks引入 3 tasks, given the text of a book:
+Create a list of all words in the book. Count the number of unique words. Keep track of the number of times that specific words are mentioned. #1 way set 1 2 3 4 5 6 7 8 9 10 11 12 public static int countUniqueWords(List&lt;String&gt; words) { Set&lt;String&gt; ss = new HashSet&lt;&gt;(); for (String s : words) { ss.]]></description>
 </item>
 <item>
     <title>61B-9: Extends, Casting, Higher Order Functions</title>
