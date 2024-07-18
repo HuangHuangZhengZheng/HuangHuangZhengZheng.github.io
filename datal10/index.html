@@ -4,49 +4,41 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>DATA100-L9: Introduction to Modeling, Simple Linear Regression - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/datal9/">
+        <title>DATA100-L10: Constant Model, Loss, and Transformations - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/datal10/">
   <meta property="og:site_name" content="HHZZ`s space">
-  <meta property="og:title" content="DATA100-L9: Introduction to Modeling, Simple Linear Regression">
-  <meta property="og:description" content="regression line, correlation 高中最小二乘法(least squares regression)，线性回归 model $“all\ models\ are\ wrong,\ but\ some\ are\ useful”$
-trade between interpretability and accuracy
-物理or统计模型
-the modeling process: definitions SLR: Simple Linear Regression 明确input和parameter的区别
-有些统计模型可以没有参数！
-loss functions metric for good or bad
-minimizing average loss (Empirical Risk 期望风险？) 最优化！
-interpreting SLR: slope, Anscombe&amp;rsquo;s quartet 解释参数意义 预测未知数据 evaluating the model: RMSE, Residual Plot ">
+  <meta property="og:title" content="DATA100-L10: Constant Model, Loss, and Transformations">
+  <meta property="og:description" content="constant model &#43; MSE 微积分是求最优化的一种方法
+两种记法 constant model &#43; MAE 绝对值求导新视角 $$ \sum_{\theta &amp;lt;y_i} 1=\sum_{\theta &amp;gt;y_i} 1 $$ 是计数！==&amp;gt;中位数
+loss的敏感性问题 revisiting SLR evaluation 画图before modeling！！！
+transformations to fit linear model 经验之谈 introducing notation for multiple linear regression ">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2024-07-18T15:42:18+08:00">
-    <meta property="article:modified_time" content="2024-07-18T15:42:18+08:00">
+    <meta property="article:published_time" content="2024-07-18T21:50:36+08:00">
+    <meta property="article:modified_time" content="2024-07-18T21:50:36+08:00">
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="DATA100-L9: Introduction to Modeling, Simple Linear Regression">
-<meta name="twitter:description" content="regression line, correlation 高中最小二乘法(least squares regression)，线性回归 model $“all\ models\ are\ wrong,\ but\ some\ are\ useful”$
-trade between interpretability and accuracy
-物理or统计模型
-the modeling process: definitions SLR: Simple Linear Regression 明确input和parameter的区别
-有些统计模型可以没有参数！
-loss functions metric for good or bad
-minimizing average loss (Empirical Risk 期望风险？) 最优化！
-interpreting SLR: slope, Anscombe&rsquo;s quartet 解释参数意义 预测未知数据 evaluating the model: RMSE, Residual Plot ">
+<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="DATA100-L10: Constant Model, Loss, and Transformations">
+<meta name="twitter:description" content="constant model &#43; MSE 微积分是求最优化的一种方法
+两种记法 constant model &#43; MAE 绝对值求导新视角 $$ \sum_{\theta &lt;y_i} 1=\sum_{\theta &gt;y_i} 1 $$ 是计数！==&gt;中位数
+loss的敏感性问题 revisiting SLR evaluation 画图before modeling！！！
+transformations to fit linear model 经验之谈 introducing notation for multiple linear regression ">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/datal9/" /><link rel="prev" href="http://example.org/datal8/" /><link rel="next" href="http://example.org/datal10/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/datal10/" /><link rel="prev" href="http://example.org/datal9/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "DATA100-L9: Introduction to Modeling, Simple Linear Regression",
+        "headline": "DATA100-L10: Constant Model, Loss, and Transformations",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/example.org\/datal9\/"
-        },"genre": "posts","wordcount":  58 ,
-        "url": "http:\/\/example.org\/datal9\/","datePublished": "2024-07-18T15:42:18+08:00","dateModified": "2024-07-18T15:42:18+08:00","publisher": {
+            "@id": "http:\/\/example.org\/datal10\/"
+        },"genre": "posts","wordcount":  37 ,
+        "url": "http:\/\/example.org\/datal10\/","datePublished": "2024-07-18T21:50:36+08:00","dateModified": "2024-07-18T21:50:36+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -117,9 +109,9 @@ interpreting SLR: slope, Anscombe&rsquo;s quartet 解释参数意义 预测未�
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">DATA100-L9: Introduction to Modeling, Simple Linear Regression</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">DATA100-L10: Constant Model, Loss, and Transformations</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-18">2024-07-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;58 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-18">2024-07-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;37 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
@@ -127,82 +119,69 @@ interpreting SLR: slope, Anscombe&rsquo;s quartet 解释参数意义 预测未�
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"><h1 id="regression-line-correlation">regression line, correlation</h1>
-<p>高中最小二乘法(least squares regression)，线性回归
-<img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/datal9/image.png"
-        data-srcset="/datal9/image.png, /datal9/image.png 1.5x, /datal9/image.png 2x"
-        data-sizes="auto"
-        alt="/datal9/image.png"
-        title="alt text" width="1839" height="300" />
-<img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/datal9/image-1.png"
-        data-srcset="/datal9/image-1.png, /datal9/image-1.png 1.5x, /datal9/image-1.png 2x"
-        data-sizes="auto"
-        alt="/datal9/image-1.png"
-        title="alt text" width="795" height="628" /></p>
-<h1 id="model">model</h1>
-<p>$“all\ models\ are\ wrong,\ but\ some\ are\ useful”$</p>
-<p>trade between interpretability and accuracy</p>
-<p>物理or统计模型</p>
-<h1 id="the-modeling-process-definitions">the modeling process: definitions</h1>
-<p>SLR: Simple Linear Regression
-<img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/datal9/image-2.png"
-        data-srcset="/datal9/image-2.png, /datal9/image-2.png 1.5x, /datal9/image-2.png 2x"
-        data-sizes="auto"
-        alt="/datal9/image-2.png"
-        title="alt text" width="1764" height="371" />
-明确input和parameter的区别</p>
-<p>有些统计模型可以没有参数！</p>
-<h1 id="loss-functions">loss functions</h1>
-<p>metric for good or bad</p>
-<h1 id="minimizing-average-loss-empirical-risk-期望风险">minimizing average loss (Empirical Risk 期望风险？)</h1>
+            </div><div class="content" id="content"><h1 id="constant-model--mse">constant model + MSE</h1>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/datal9/image-3.png"
-        data-srcset="/datal9/image-3.png, /datal9/image-3.png 1.5x, /datal9/image-3.png 2x"
+        data-src="/datal10/image.png"
+        data-srcset="/datal10/image.png, /datal10/image.png 1.5x, /datal10/image.png 2x"
         data-sizes="auto"
-        alt="/datal9/image-3.png"
-        title="alt text" width="762" height="188" />
-最优化！</p>
-<h1 id="interpreting-slr-slope-anscombes-quartet">interpreting SLR: slope, Anscombe&rsquo;s quartet</h1>
-<ol>
-<li>解释参数意义
+        alt="/datal10/image.png"
+        title="alt text" width="1702" height="933" />
+微积分是求最优化的一种方法</p>
+<p>两种记法
 <img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/datal9/image-4.png"
-        data-srcset="/datal9/image-4.png, /datal9/image-4.png 1.5x, /datal9/image-4.png 2x"
+        data-src="/datal10/image-1.png"
+        data-srcset="/datal10/image-1.png, /datal10/image-1.png 1.5x, /datal10/image-1.png 2x"
         data-sizes="auto"
-        alt="/datal9/image-4.png"
-        title="alt text" width="1780" height="636" /></li>
-<li>预测未知数据
+        alt="/datal10/image-1.png"
+        title="alt text" width="1702" height="350" /></p>
+<h1 id="constant-model--mae">constant model + MAE</h1>
+<p>绝对值求导新视角
 <img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/datal9/image-5.png"
-        data-srcset="/datal9/image-5.png, /datal9/image-5.png 1.5x, /datal9/image-5.png 2x"
+        data-src="/datal10/image-2.png"
+        data-srcset="/datal10/image-2.png, /datal10/image-2.png 1.5x, /datal10/image-2.png 2x"
         data-sizes="auto"
-        alt="/datal9/image-5.png"
-        title="alt text" width="1834" height="597" /></li>
-</ol>
-<h1 id="evaluating-the-model-rmse-residual-plot">evaluating the model: RMSE, Residual Plot</h1>
+        alt="/datal10/image-2.png"
+        title="alt text" width="1640" height="941" />
+$$
+\sum_{\theta &lt;y_i} 1=\sum_{\theta &gt;y_i} 1
+$$
+是计数！==&gt;中位数</p>
+<p>loss的敏感性问题
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal10/image-3.png"
+        data-srcset="/datal10/image-3.png, /datal10/image-3.png 1.5x, /datal10/image-3.png 2x"
+        data-sizes="auto"
+        alt="/datal10/image-3.png"
+        title="alt text" width="1320" height="1041" /></p>
+<h1 id="revisiting-slr-evaluation">revisiting SLR evaluation</h1>
+<p>画图before modeling！！！</p>
+<h1 id="transformations-to-fit-linear-model">transformations to fit linear model</h1>
+<p>经验之谈
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal10/image-4.png"
+        data-srcset="/datal10/image-4.png, /datal10/image-4.png 1.5x, /datal10/image-4.png 2x"
+        data-sizes="auto"
+        alt="/datal10/image-4.png"
+        title="alt text" width="1209" height="883" /></p>
+<h1 id="introducing-notation-for-multiple-linear-regression">introducing notation for multiple linear regression</h1>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/datal9/image-6.png"
-        data-srcset="/datal9/image-6.png, /datal9/image-6.png 1.5x, /datal9/image-6.png 2x"
+        data-src="/datal10/image-5.png"
+        data-srcset="/datal10/image-5.png, /datal10/image-5.png 1.5x, /datal10/image-5.png 2x"
         data-sizes="auto"
-        alt="/datal9/image-6.png"
-        title="alt text" width="1226" height="530" /></p>
+        alt="/datal10/image-5.png"
+        title="alt text" width="1710" height="790" /></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
@@ -211,10 +190,10 @@ interpreting SLR: slope, Anscombe&rsquo;s quartet 解释参数意义 预测未�
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
-                            <a class="link-to-markdown" href="/datal9/index.md" target="_blank">Read Markdown</a>
+                            <a class="link-to-markdown" href="/datal10/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/datal9/" data-title="DATA100-L9: Introduction to Modeling, Simple Linear Regression"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/datal9/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/datal9/" data-title="DATA100-L9: Introduction to Modeling, Simple Linear Regression"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/datal9/" data-title="DATA100-L9: Introduction to Modeling, Simple Linear Regression"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/datal9/" data-title="DATA100-L9: Introduction to Modeling, Simple Linear Regression"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/datal10/" data-title="DATA100-L10: Constant Model, Loss, and Transformations"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/datal10/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/datal10/" data-title="DATA100-L10: Constant Model, Loss, and Transformations"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/datal10/" data-title="DATA100-L10: Constant Model, Loss, and Transformations"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/datal10/" data-title="DATA100-L10: Constant Model, Loss, and Transformations"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -226,8 +205,7 @@ interpreting SLR: slope, Anscombe&rsquo;s quartet 解释参数意义 预测未�
         </section>
     </div>
 
-    <div class="post-nav"><a href="/datal8/" class="prev" rel="prev" title="DATA100-L8: Visualizations Ⅱ"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>DATA100-L8: Visualizations Ⅱ</a>
-            <a href="/datal10/" class="next" rel="next" title="DATA100-L10: Constant Model, Loss, and Transformations">DATA100-L10: Constant Model, Loss, and Transformations<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/datal9/" class="prev" rel="prev" title="DATA100-L9: Introduction to Modeling, Simple Linear Regression"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>DATA100-L9: Introduction to Modeling, Simple Linear Regression</a></div>
 </div>
 </article></div>
             </main><footer class="footer">

@@ -3,7 +3,18 @@
         <title>All Posts - HHZZ`s space</title>
         <link>http://example.org/posts/</link>
         <description>All Posts | HHZZ`s space</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 18 Jul 2024 15:42:18 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 18 Jul 2024 21:50:36 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>DATA100-L10: Constant Model, Loss, and Transformations</title>
+    <link>http://example.org/datal10/</link>
+    <pubDate>Thu, 18 Jul 2024 21:50:36 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/datal10/</guid>
+    <description><![CDATA[constant model + MSE 微积分是求最优化的一种方法
+两种记法 constant model + MAE 绝对值求导新视角 $$ \sum_{\theta &lt;y_i} 1=\sum_{\theta &gt;y_i} 1 $$ 是计数！==&gt;中位数
+loss的敏感性问题 revisiting SLR evaluation 画图before modeling！！！
+transformations to fit linear model 经验之谈 introducing notation for multiple linear regression ]]></description>
+</item>
+<item>
     <title>DATA100-L9: Introduction to Modeling, Simple Linear Regression</title>
     <link>http://example.org/datal9/</link>
     <pubDate>Thu, 18 Jul 2024 15:42:18 &#43;0800</pubDate>
@@ -106,17 +117,6 @@ key data properties to consider in EDA structure file format rectangular data: t
     <guid>http://example.org/61b-15/</guid>
     <description><![CDATA[Packages and JAR Files 创建包 At the top of every file in the package, put the package name. Make sure that the file is stored in a folder with the appropriate folder name. For a package with name ug.joshh.animal, use folder ug/joshh/animal. 要用的时候import即可
 default package JAR Files Access Control Object Methods: Equals and toString( ) toString( ) == vs equals( ) == compares references equals( ) compares values, but pay attention to the type!]]></description>
-</item>
-<item>
-    <title>61B-16: Encapsulation, Lists, Delegation vs. Extension</title>
-    <link>http://example.org/61b-16/</link>
-    <pubDate>Sun, 14 Jul 2024 21:29:34 &#43;0800</pubDate>
-    <author>HHZZ</author>
-    <guid>http://example.org/61b-16/</guid>
-    <description><![CDATA[61B: Writing Efficient Programs Programming cost. How long does it take to develop your programs? How easy is it to read, modify, and maintain your code? More important than you might think! Majority of cost is in maintenance, not development! 自顶向下，逐层抽象，分而治之，化整为零
-ADT Implementations Designing ADTs 虽然extension简单，但是委托delegation更加灵活
-Views 视图 在Java中，&ldquo;view&quot;通常指的是一种数据结构的视图，它提供了一种访问和操作底层数据的方式，而不需要复制整个数据集。视图的主要优点是它们提供了一种高效的方式来操作数据子集，而不需要复制数据，从而节省内存和提高性能。然而，视图也有一些限制，例如固定大小的视图不能添加或删除元素。
-Occasionally, implementation details may allow for views that are too difficult to implement for an abstract type.]]></description>
 </item>
 </channel>
 </rss>
