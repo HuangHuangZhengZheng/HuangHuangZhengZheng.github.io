@@ -109,8 +109,13 @@ Every node N except the root has exactly one parent, defined as the first node o
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/61b-22/">61B-22: Balanced BSTs</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-13">2024-07-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">To avoid the worst-case time complexity of O(n), we need to use a balanced binary search tree.
-Tree Rotation Non-obvious fact: Rotation allows balancing of any BST.</div><div class="post-footer">
+Tree Rotation Non-obvious fact: Rotation allows balancing of any BST. One way to achieve balance:
+Rotate after each insertion and deletion to maintain balance. … the mystery is to know which rotations. We’ll come back to this. B-trees / 2-3 trees / 2-3-4 trees search tree weird solution to achieve balance add leaf overstuff leaf, but can not be too juicy!</div><div class="post-footer">
         <a href="/61b-22/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/61b-23/">61B-23: Hashing</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-13">2024-07-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content"></div><div class="post-footer">
+        <a href="/61b-23/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/61b-19/">61B-19: Asymptotics III</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-13">2024-07-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">Big-O Notation 细节分析 局限性 对比 Important: Big O does not mean “worst case”! Often abused to mean this.
@@ -127,11 +132,6 @@ better implementation Better approach: Model connectedness in terms of sets. How
 binary search 形如$\Theta(\log n)$
 C(N) = ⌊log2(N)⌋+1 merge sort 形如$\Theta(n\log n)$ </div><div class="post-footer">
         <a href="/61b-18/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/61b-17/">61B-17: Asymptotics I</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-13">2024-07-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">Runtime Characterizations In most cases, we care only about asymptotic behavior, i.e. what happens for very large N.
-Intuitive Simplification Consider only the worst case. Restrict Attention to One Operation. 找得好并且巧的话可很快看出，退而求其次的话可以考虑画图分析 Eliminate low order terms. Eliminate multiplicative constants. Big-Theta Notation $\Theta(f(n))$ The only difference is that we use the Θ symbol anywhere we would have said “order of growth”. </div><div class="post-footer">
-        <a href="/61b-17/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -157,6 +157,10 @@ Intuitive Simplification Consider only the worst case. Restrict Attention to One
                 </li><li class="page-item ">
                     <span class="page-link">
                         <a href="/page/9/">9</a>
+                    </span>
+                </li><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/page/10/">10</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">

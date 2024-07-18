@@ -3,9 +3,24 @@
         <title>HHZZ`s space</title>
         <link>http://example.org/</link>
         <description>This is my cool site</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 16 Jul 2024 19:57:02 &#43;0800</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 18 Jul 2024 15:42:18 &#43;0800</lastBuildDate>
             <atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>DATA100-L9: Introduction to Modeling, Simple Linear Regression</title>
+    <link>http://example.org/datal9/</link>
+    <pubDate>Thu, 18 Jul 2024 15:42:18 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/datal9/</guid>
+    <description><![CDATA[regression line, correlation 高中最小二乘法(least squares regression)，线性回归 model $“all\ models\ are\ wrong,\ but\ some\ are\ useful”$
+trade between interpretability and accuracy
+物理or统计模型
+the modeling process: definitions SLR: Simple Linear Regression 明确input和parameter的区别
+有些统计模型可以没有参数！
+loss functions metric for good or bad
+minimizing average loss (Empirical Risk 期望风险？) 最优化！
+interpreting SLR: slope, Anscombe&rsquo;s quartet 解释参数意义 预测未知数据 evaluating the model: RMSE, Residual Plot ]]></description>
+</item>
+<item>
     <title>DATA100-L8: Visualizations Ⅱ</title>
     <link>http://example.org/datal8/</link>
     <pubDate>Tue, 16 Jul 2024 19:57:02 &#43;0800</pubDate>
@@ -104,16 +119,6 @@ default package JAR Files Access Control Object Methods: Equals and toString( ) 
 ADT Implementations Designing ADTs 虽然extension简单，但是委托delegation更加灵活
 Views 视图 在Java中，&ldquo;view&quot;通常指的是一种数据结构的视图，它提供了一种访问和操作底层数据的方式，而不需要复制整个数据集。视图的主要优点是它们提供了一种高效的方式来操作数据子集，而不需要复制数据，从而节省内存和提高性能。然而，视图也有一些限制，例如固定大小的视图不能添加或删除元素。
 Occasionally, implementation details may allow for views that are too difficult to implement for an abstract type.]]></description>
-</item>
-<item>
-    <title>61B-12:  Coding in the Real World, Review</title>
-    <link>http://example.org/61b-12/</link>
-    <pubDate>Sun, 14 Jul 2024 21:29:33 &#43;0800</pubDate>
-    <author>HHZZ</author>
-    <guid>http://example.org/61b-12/</guid>
-    <description><![CDATA[Programming in the Real World 对技术要敬畏 midterm review Comparing strings for equality using == vs .equals &mdash;&gt; see in autoboxing lecture 在Java中，this 是一个指向当前对象实例的引用。它通常用于引用当前类的实例成员，或者在方法中区分成员变量和局部变量。然而，你不能将 this 重新赋值为另一个对象的引用，因为 this 是一个固定的概念，它代表当前对象本身。
-你提供的代码示例中，尝试将 this 赋值为一个新的 Dog 对象，这是不允许的。Java 编译器会报错，因为它违反了 this 的使用规则。
-1 2 3 4 5 6 7 8 public class Dog { public void f() { this = new Dog(); // 这行代码会导致编译错误，因为不能重新赋值this } } Dog d = new Dog(); d.f(); // 调用f()方法，但由于上面的错误，这行代码实际上无法执行 如果你想要创建一个新的 Dog 对象并将其引用赋给 this，你需要使用另一个变量，比如 anotherDog。下面是修改后的代码示例：]]></description>
 </item>
 </channel>
 </rss>

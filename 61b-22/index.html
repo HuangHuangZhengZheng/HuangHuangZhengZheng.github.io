@@ -8,7 +8,8 @@
   <meta property="og:site_name" content="HHZZ`s space">
   <meta property="og:title" content="61B-22: Balanced BSTs">
   <meta property="og:description" content="To avoid the worst-case time complexity of O(n), we need to use a balanced binary search tree.
-Tree Rotation Non-obvious fact: Rotation allows balancing of any BST.">
+Tree Rotation Non-obvious fact: Rotation allows balancing of any BST. One way to achieve balance:
+Rotate after each insertion and deletion to maintain balance. … the mystery is to know which rotations. We’ll come back to this. B-trees / 2-3 trees / 2-3-4 trees search tree weird solution to achieve balance add leaf overstuff leaf, but can not be too juicy!">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
@@ -18,11 +19,12 @@ Tree Rotation Non-obvious fact: Rotation allows balancing of any BST.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="61B-22: Balanced BSTs">
 <meta name="twitter:description" content="To avoid the worst-case time complexity of O(n), we need to use a balanced binary search tree.
-Tree Rotation Non-obvious fact: Rotation allows balancing of any BST.">
+Tree Rotation Non-obvious fact: Rotation allows balancing of any BST. One way to achieve balance:
+Rotate after each insertion and deletion to maintain balance. … the mystery is to know which rotations. We’ll come back to this. B-trees / 2-3 trees / 2-3-4 trees search tree weird solution to achieve balance add leaf overstuff leaf, but can not be too juicy!">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/61b-22/" /><link rel="prev" href="http://example.org/61b-19/" /><link rel="next" href="http://example.org/61b-21/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/61b-22/" /><link rel="prev" href="http://example.org/61b-23/" /><link rel="next" href="http://example.org/61b-21/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -33,7 +35,7 @@ Tree Rotation Non-obvious fact: Rotation allows balancing of any BST.">
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/61b-22\/"
-        },"genre": "posts","wordcount":  27 ,
+        },"genre": "posts","wordcount":  276 ,
         "url": "http:\/\/example.org\/61b-22\/","datePublished": "2024-07-13T14:18:52+08:00","dateModified": "2024-07-13T14:18:52+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -107,17 +109,199 @@ Tree Rotation Non-obvious fact: Rotation allows balancing of any BST.">
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">61B-22: Balanced BSTs</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-13">2024-07-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;27 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-13">2024-07-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;276 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#search-tree">search tree</a></li>
+    <li><a href="#weird-solution-to-achieve-balance">weird solution to achieve balance</a></li>
+    <li><a href="#performance-of-b-trees">Performance of B-trees</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#summary">summary</a></li>
+  </ul>
+</nav></div>
             </div><div class="content" id="content"><p>To avoid the worst-case time complexity of O(n), we need to use a balanced binary search tree.</p>
 <h1 id="tree-rotation">Tree Rotation</h1>
-<p>Non-obvious fact: Rotation allows balancing of any BST.</p>
+<p>Non-obvious fact: Rotation allows balancing of any BST.
+One way to achieve balance:</p>
+<ul>
+<li>Rotate after each insertion and deletion to maintain balance.</li>
+<li>… the mystery is to know which rotations. We’ll come back to this.</li>
+</ul>
+<h1 id="b-trees--2-3-trees--2-3-4-trees">B-trees / 2-3 trees / 2-3-4 trees</h1>
+<h2 id="search-tree">search tree</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-22/image.png"
+        data-srcset="/61b-22/image.png, /61b-22/image.png 1.5x, /61b-22/image.png 2x"
+        data-sizes="auto"
+        alt="/61b-22/image.png"
+        title="alt text" width="1046" height="431" /></p>
+<h2 id="weird-solution-to-achieve-balance">weird solution to achieve balance</h2>
+<ul>
+<li>add leaf</li>
+<li>overstuff leaf, but can not be too juicy!
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-22/image-1.png"
+        data-srcset="/61b-22/image-1.png, /61b-22/image-1.png 1.5x, /61b-22/image-1.png 2x"
+        data-sizes="auto"
+        alt="/61b-22/image-1.png"
+        title="alt text" width="1087" height="527" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-22/image-2.png"
+        data-srcset="/61b-22/image-2.png, /61b-22/image-2.png 1.5x, /61b-22/image-2.png 2x"
+        data-sizes="auto"
+        alt="/61b-22/image-2.png"
+        title="alt text" width="1082" height="518" /></li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-22/image-3.png"
+        data-srcset="/61b-22/image-3.png, /61b-22/image-3.png 1.5x, /61b-22/image-3.png 2x"
+        data-sizes="auto"
+        alt="/61b-22/image-3.png"
+        title="alt text" width="1089" height="542" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-22/image-4.png"
+        data-srcset="/61b-22/image-4.png, /61b-22/image-4.png 1.5x, /61b-22/image-4.png 2x"
+        data-sizes="auto"
+        alt="/61b-22/image-4.png"
+        title="alt text" width="974" height="526" /></p>
+<h2 id="performance-of-b-trees">Performance of B-trees</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-22/image-5.png"
+        data-srcset="/61b-22/image-5.png, /61b-22/image-5.png 1.5x, /61b-22/image-5.png 2x"
+        data-sizes="auto"
+        alt="/61b-22/image-5.png"
+        title="alt text" width="1057" height="526" />
+Splitting tree is a better name, but I didn’t invent them, so we’re stuck with their real name: B-trees.</p>
+<ul>
+<li>A B-tree of order M=4 (like we used today) is also called a 2-3-4 tree or a 2-4 tree.
+<ul>
+<li>The name refers to the number of children that a node can have, e.g. a 2-3-4 tree node may have  2, 3, or 4 children.</li>
+</ul>
+</li>
+<li>A B-tree of order M=3 (like in the textbook) is also called a 2-3 tree.
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-22/image-6.png"
+        data-srcset="/61b-22/image-6.png, /61b-22/image-6.png 1.5x, /61b-22/image-6.png 2x"
+        data-sizes="auto"
+        alt="/61b-22/image-6.png"
+        title="alt text" width="1042" height="482" /></li>
+</ul>
+<h1 id="red-black-trees">Red-Black Trees</h1>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-22/image-7.png"
+        data-srcset="/61b-22/image-7.png, /61b-22/image-7.png 1.5x, /61b-22/image-7.png 2x"
+        data-sizes="auto"
+        alt="/61b-22/image-7.png"
+        title="alt text" width="1033" height="600" />
+There are many types of search trees:</p>
+<ul>
+<li>Binary search trees: Require rotations to maintain balance. There are many strategies for rotation. Coming up with a strategy is hard.</li>
+<li>2-3 trees: No rotations required.</li>
+</ul>
+<p>Clever (and strange idea): Build a BST that is isometric (structurally identical) to a 2-3 tree.</p>
+<ul>
+<li>Use rotations to ensure the isometry.</li>
+<li>Since 2-3 trees are balanced, rotations on BST will ensure balance.
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-22/image-8.png"
+        data-srcset="/61b-22/image-8.png, /61b-22/image-8.png 1.5x, /61b-22/image-8.png 2x"
+        data-sizes="auto"
+        alt="/61b-22/image-8.png"
+        title="alt text" width="1094" height="607" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-22/image-9.png"
+        data-srcset="/61b-22/image-9.png, /61b-22/image-9.png 1.5x, /61b-22/image-9.png 2x"
+        data-sizes="auto"
+        alt="/61b-22/image-9.png"
+        title="alt text" width="1043" height="598" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-22/image-10.png"
+        data-srcset="/61b-22/image-10.png, /61b-22/image-10.png 1.5x, /61b-22/image-10.png 2x"
+        data-sizes="auto"
+        alt="/61b-22/image-10.png"
+        title="alt text" width="1094" height="605" /></li>
+</ul>
+<h1 id="maintaining-isometry-through-rotations-optional">Maintaining Isometry Through Rotations (Optional)</h1>
+<p>Violations for LLRBs:</p>
+<ul>
+<li>Two red children.</li>
+<li>Two consecutive red links.</li>
+<li>Right red child.</li>
+</ul>
+<p>Operations for Fixing LLRB Tree Violations: <em><strong>Tree rotations and Color Flips</strong></em>!</p>
+<ul>
+<li>when <code>insert</code> , use red link
+<ul>
+<li>if right-insert happens, <code>rotateLeft</code></li>
+<li>two red children?
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-22/image-12.png"
+        data-srcset="/61b-22/image-12.png, /61b-22/image-12.png 1.5x, /61b-22/image-12.png 2x"
+        data-sizes="auto"
+        alt="/61b-22/image-12.png"
+        title="alt text" width="1037" height="527" /></li>
+<li>two reds in a row?
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-22/image-13.png"
+        data-srcset="/61b-22/image-13.png, /61b-22/image-13.png 1.5x, /61b-22/image-13.png 2x"
+        data-sizes="auto"
+        alt="/61b-22/image-13.png"
+        title="alt text" width="1025" height="544" /></li>
+<li>Left-Red-Right-Red?
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-22/image-14.png"
+        data-srcset="/61b-22/image-14.png, /61b-22/image-14.png 1.5x, /61b-22/image-14.png 2x"
+        data-sizes="auto"
+        alt="/61b-22/image-14.png"
+        title="alt text" width="1088" height="523" /></li>
+</ul>
+</li>
+</ul>
+<h2 id="summary">summary</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-22/image-11.png"
+        data-srcset="/61b-22/image-11.png, /61b-22/image-11.png 1.5x, /61b-22/image-11.png 2x"
+        data-sizes="auto"
+        alt="/61b-22/image-11.png"
+        title="alt text" width="992" height="527" /></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
@@ -141,7 +325,7 @@ Tree Rotation Non-obvious fact: Rotation allows balancing of any BST.">
         </section>
     </div>
 
-    <div class="post-nav"><a href="/61b-19/" class="prev" rel="prev" title="61B-19: Asymptotics III"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>61B-19: Asymptotics III</a>
+    <div class="post-nav"><a href="/61b-23/" class="prev" rel="prev" title="61B-23: Hashing"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>61B-23: Hashing</a>
             <a href="/61b-21/" class="next" rel="next" title="61B-21: Trees, BSTs">61B-21: Trees, BSTs<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>

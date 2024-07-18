@@ -3,7 +3,22 @@
         <title>DATA100 - Category - HHZZ`s space</title>
         <link>http://example.org/categories/data100/</link>
         <description>DATA100 - Category - HHZZ`s space</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 16 Jul 2024 19:57:02 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/data100/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 18 Jul 2024 15:42:18 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/data100/" rel="self" type="application/rss+xml" /><item>
+    <title>DATA100-L9: Introduction to Modeling, Simple Linear Regression</title>
+    <link>http://example.org/datal9/</link>
+    <pubDate>Thu, 18 Jul 2024 15:42:18 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/datal9/</guid>
+    <description><![CDATA[regression line, correlation 高中最小二乘法(least squares regression)，线性回归 model $“all\ models\ are\ wrong,\ but\ some\ are\ useful”$
+trade between interpretability and accuracy
+物理or统计模型
+the modeling process: definitions SLR: Simple Linear Regression 明确input和parameter的区别
+有些统计模型可以没有参数！
+loss functions metric for good or bad
+minimizing average loss (Empirical Risk 期望风险？) 最优化！
+interpreting SLR: slope, Anscombe&rsquo;s quartet 解释参数意义 预测未知数据 evaluating the model: RMSE, Residual Plot ]]></description>
+</item>
+<item>
     <title>DATA100-L8: Visualizations Ⅱ</title>
     <link>http://example.org/datal8/</link>
     <pubDate>Tue, 16 Jul 2024 19:57:02 &#43;0800</pubDate>
@@ -103,16 +118,6 @@ indexing and loc/iloc generate subsets:
 loc: an operator select items by labels
 1 df.loc[row_indexer, column_indexer] row_indexer: can be a single label, a list of labels, slice（闭区间）, single value column_indexer: same as row_indexer returns a DataFrame or Series iloc: an operator select items by positions
 1 df.iloc[row_indexer, column_indexer] row_indexer: numeric index or a list of numeric indices，此时回到python经典索引 左闭右开 column_indexer: same as row_indexer returns a DataFrame or Series 通常情况下，我们使用 loc 进行索引 .]]></description>
-</item>
-<item>
-    <title>DATA100-lab01</title>
-    <link>http://example.org/datalab01/</link>
-    <pubDate>Sat, 13 Jul 2024 13:27:45 &#43;0800</pubDate>
-    <author>HHZZ</author>
-    <guid>http://example.org/datalab01/</guid>
-    <description><![CDATA[1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab01.ipynb&#34;) Lab 01 Welcome to the first lab of Data 100! This lab is meant to help you familiarize yourself with JupyterHub, review Python and numpy, and introduce you to matplotlib, a Python visualization library.
-To receive credit for a lab, answer all questions correctly and submit before the deadline.
-This lab is due Tuesday, January 25 at 11:59 PM.]]></description>
 </item>
 </channel>
 </rss>
