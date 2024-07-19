@@ -100,59 +100,32 @@
         alt="https://tse2-mm.cn.bing.net/th/id/OIP-C.pm8D3-OqctVYYztXsTaJzQHaE8?w=207&amp;h=139&amp;c=7&amp;r=0&amp;o=5&amp;pid=1.7/rp/SAZ_WTPnkAhjkioRoye2Et5dW-E.svg"
         title="https://tse2-mm.cn.bing.net/th/id/OIP-C.pm8D3-OqctVYYztXsTaJzQHaE8?w=207&amp;h=139&amp;c=7&amp;r=0&amp;o=5&amp;pid=1.7/rp/SAZ_WTPnkAhjkioRoye2Et5dW-E.svg" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/ZhengTMHuang" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/61b-35/">61B-35</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-11">2024-07-11</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">math problems $$ N! ∈ \Omega (N^{N}) ? $$ √
-$$ log(N!) ∈ \Omega (NlogN) ? $$ √
-$$ NlogN∈ \Omega (log(N!)) ? $$ √
-所以可以推出：
-$$ NlogN ∈ \Theta (logN!) $$
-$$ log(N!) ∈ \Theta (NlogN) $$
-TUCS用时 上下界？ the ultimate comparison sort run time
-$$ \Omega(NlogN) $$
-$$ O(NlogN) $$
-下面开始证明： 考虑下界，对n个物体进行排序，有N！种可能，用两两比大小，考虑决策树的高度$$ H = \log_2 N! $$ 因此下界为 $$ \Omega (log(N!)) $$ 或者 $$ \Omega (NlogN) $$ 上界通过TUCS的性质可以通过具体示例反证得到，比如用merge sort</div><div class="post-footer">
-        <a href="/61b-35/">Read More</a></div>
+        <a href="/61b-28/">61B 28</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-13">2024-07-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content"></div><div class="post-footer">
+        <a href="/61b-28/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/61b-34/">61B-34</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-11">2024-07-11</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">More quick sort, Stability, Shuffling quick sort VS merge sort QuicksortL3S = left + 3-scan + shuffle
-Quicksort_LTHS:
-Tony Hoare partition scheme:
-L ptr 仅仅指向小的 G ptr 仅仅指向大的 ptr walk towards to each other, stopping on a hated item 两个都停下来的话， 交换一下， 然后移动其中一个 when ptrs cross, done. 和G交换pivot Not random smarter pivot selection: median Quicksort_PickTH
-考虑了如何计算数组地址的复杂度， 以及如何选择pivot的复杂度。
-worst case: $$ \Theta(NlogN) $$
-但实际上并没有那么好，因为计算中位数的复杂度是$$\Theta(N)$$。耗费了更多时间。
-quick select&ndash;using partitioning worst case:
-a sorted array $$ \Theta(N^2) $$</div><div class="post-footer">
-        <a href="/61b-34/">Read More</a></div>
+        <a href="/61b-26/">61B 26</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-13">2024-07-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content"></div><div class="post-footer">
+        <a href="/61b-26/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/61b-38/">61B-38: Compression</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-11">2024-07-11</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">信息无损性 模糊性
-prefix-free codes Huffman codes shannon-fano codes using tries to convert compressed data into a original data longest prefix matching
-self-extracting bits </div><div class="post-footer">
-        <a href="/61b-38/">Read More</a></div>
+        <a href="/61b-27/">61B 27</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-13">2024-07-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content"></div><div class="post-footer">
+        <a href="/61b-27/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/61b-37/">61B-37:overview, Tries</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-11">2024-07-11</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">Overview Tries——前缀树/字典树 usages:
-prefix matching approximate matching 1 2 keysWithPrefix(String prefix) // returns all keys in the trie that start with the given prefix longestPrefixOf(String query) // returns the longest key in the trie that is a prefix of the query implementation 1 2 3 4 5 6 7 8 private class Node{ boolean exists; Map&lt;Character, Node&gt; links; public Node(){ links = new TreeMap&lt;&gt;(); exists = false; } } T9 keyboard Ternary search Tries 1 2 3 4 5 6 7 public class TSTSet&lt;Value&gt;{ private Node&lt;Value&gt; root; private static class Node&lt;Value&gt;{ private char c; private Node&lt;Value&gt; lo, mid, hi; } } 但是这种实现方式表现不佳 </div><div class="post-footer">
-        <a href="/61b-37/">Read More</a></div>
+        <a href="/61b-24/">61B 24</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-13">2024-07-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content"></div><div class="post-footer">
+        <a href="/61b-24/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/61b-36/">61B-36</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-10">2024-07-10</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">radix sort 不用comparisons的排序算法，时间复杂度O(dn)，d为最大数的位数，n为待排序数的个数。
-空间换时间
-bucket sort
-counting sort:
-找出待排序数的最大值max，确定计数数组的长度为max+1。 遍历待排序数，将每个数的个位数值作为索引，将该索引对应的计数数组元素加1。 遍历计数数组，将每个元素的值作为索引，将该索引对应的元素值输出到结果数组中。 runtime: O(n+k)
-LSD radix sort: least significant digit radix sort
-找出待排序数的最大值max，确定计数数组的长度为10。 遍历待排序数，将每个数的个位数值作为索引，将该索引对应的计数数组元素加1。 LSD sort vs merge sort:
-similar strings:LSD sort is better
-dissimilar strings:merge sort is better
-MSD radix sort: most significant digit radix sort
-找出待排序数的最大值max，确定计数数组的长度为10。 遍历待排序数，将每个数的个位数值作为索引，将该索引对应的计数数组元素加1。 遍历计数数组，将每个元素的值作为索引，将该索引对应的元素值输出到结果数组中。 runtime: O(n+k)</div><div class="post-footer">
-        <a href="/61b-36/">Read More</a></div>
+        <a href="/61b-25/">61B 25</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-13">2024-07-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content"></div><div class="post-footer">
+        <a href="/61b-25/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/csapp_attacklab/">CSAPP_attacklab</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-04-22">2024-04-22</time></span>&nbsp;<span class="post-category">included in <a href="/categories/csapp/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CSAPP</a></span></div><div class="content">实验一：栈溢出攻击实验 栈的基本结构 实验二：ROP攻击实验 </div><div class="post-footer">
-        <a href="/csapp_attacklab/">Read More</a></div>
+        <a href="/61b-21/">61B-21: Trees, BSTs</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-13">2024-07-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">ordered linked list&mdash;&gt; binary search tree or skip list (out of course)
+BST Definitions A tree consists of:
+A set of nodes. A set of edges that connect those nodes. Constraint: There is exactly one path between any two nodes. In a rooted tree, we call one node the root.
+Every node N except the root has exactly one parent, defined as the first node on the path from N to the root.</div><div class="post-footer">
+        <a href="/61b-21/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -174,6 +147,14 @@ MSD radix sort: most significant digit radix sort
                 </li><li class="page-item ">
                     <span class="page-link">
                         <a href="/page/10/">10</a>
+                    </span>
+                </li><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/page/11/">11</a>
+                    </span>
+                </li><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/page/12/">12</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">
