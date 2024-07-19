@@ -4,10 +4,14 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>DATA100-L15: - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/datal15/">
+        <title>DATA100-L15: Cross Validation, Regularization - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/datal15/">
   <meta property="og:site_name" content="HHZZ`s space">
-  <meta property="og:title" content="DATA100-L15:">
-  <meta property="og:description" content="This is my cool site">
+  <meta property="og:title" content="DATA100-L15: Cross Validation, Regularization">
+  <meta property="og:description" content="Cross Validation the holdout method 1 2 from sklearn.utils import shuffle training_set, dev_set = np.split(shuffle(data), [int(.8*len(data))]) 比较validation error和training error，选择最优的模型。
+K-fold cross validation K=1 is equivalent to holdout method.
+Test sets provide an unbiased estimate of the model&amp;rsquo;s performance on new, unseen data. Regularization L2 regularization (Ridge) the small the ball, the simpler the model 拉格朗日思想，$\alpha$ 越大，约束越强，模型越简单。 岭回归
+scaling data for regularization 标准化数据，be on the same scale
+L1 regularization (Lasso) summary ">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
@@ -15,8 +19,12 @@
     <meta property="article:modified_time" content="2024-07-19T11:32:09+08:00">
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="DATA100-L15:">
-<meta name="twitter:description" content="">
+<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="DATA100-L15: Cross Validation, Regularization">
+<meta name="twitter:description" content="Cross Validation the holdout method 1 2 from sklearn.utils import shuffle training_set, dev_set = np.split(shuffle(data), [int(.8*len(data))]) 比较validation error和training error，选择最优的模型。
+K-fold cross validation K=1 is equivalent to holdout method.
+Test sets provide an unbiased estimate of the model&rsquo;s performance on new, unseen data. Regularization L2 regularization (Ridge) the small the ball, the simpler the model 拉格朗日思想，$\alpha$ 越大，约束越强，模型越简单。 岭回归
+scaling data for regularization 标准化数据，be on the same scale
+L1 regularization (Lasso) summary ">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -26,12 +34,12 @@
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "DATA100-L15:",
+        "headline": "DATA100-L15: Cross Validation, Regularization",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/datal15\/"
-        },"genre": "posts","wordcount":  0 ,
+        },"genre": "posts","wordcount":  70 ,
         "url": "http:\/\/example.org\/datal15\/","datePublished": "2024-07-19T11:32:09+08:00","dateModified": "2024-07-19T11:32:09+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -103,17 +111,123 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">DATA100-L15:</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">DATA100-L15: Cross Validation, Regularization</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-19">2024-07-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;0 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;0 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-19">2024-07-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;70 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"></div><div class="post-footer" id="post-footer">
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-holdout-method">the holdout method</a></li>
+    <li><a href="#k-fold-cross-validation">K-fold cross validation</a></li>
+    <li><a href="#test-sets">Test sets</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#l2-regularization-ridge">L2 regularization (Ridge)</a></li>
+    <li><a href="#scaling-data-for-regularization">scaling data for regularization</a></li>
+    <li><a href="#l1-regularization-lasso">L1 regularization (Lasso)</a>
+      <ul>
+        <li><a href="#summary">summary</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="cross-validation">Cross Validation</h1>
+<h2 id="the-holdout-method">the holdout method</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal15/image.png"
+        data-srcset="/datal15/image.png, /datal15/image.png 1.5x, /datal15/image.png 2x"
+        data-sizes="auto"
+        alt="/datal15/image.png"
+        title="alt text" width="1520" height="819" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sklearn.utils</span> <span class="kn">import</span> <span class="n">shuffle</span>
+</span></span><span class="line"><span class="cl"><span class="n">training_set</span><span class="p">,</span> <span class="n">dev_set</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">shuffle</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="mf">.8</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))])</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>比较validation error和training error，选择最优的模型。</p>
+<h2 id="k-fold-cross-validation">K-fold cross validation</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal15/image-1.png"
+        data-srcset="/datal15/image-1.png, /datal15/image-1.png 1.5x, /datal15/image-1.png 2x"
+        data-sizes="auto"
+        alt="/datal15/image-1.png"
+        title="alt text" width="1514" height="499" />
+K=1 is equivalent to holdout method.</p>
+<h2 id="test-sets">Test sets</h2>
+<p>provide an unbiased estimate of the model&rsquo;s performance on new, unseen data.
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal15/image-2.png"
+        data-srcset="/datal15/image-2.png, /datal15/image-2.png 1.5x, /datal15/image-2.png 2x"
+        data-sizes="auto"
+        alt="/datal15/image-2.png"
+        title="alt text" width="1546" height="875" /></p>
+<h1 id="regularization">Regularization</h1>
+<h2 id="l2-regularization-ridge">L2 regularization (Ridge)</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal15/image-3.png"
+        data-srcset="/datal15/image-3.png, /datal15/image-3.png 1.5x, /datal15/image-3.png 2x"
+        data-sizes="auto"
+        alt="/datal15/image-3.png"
+        title="alt text" width="1608" height="897" />
+the small the ball, the simpler the model
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal15/image-4.png"
+        data-srcset="/datal15/image-4.png, /datal15/image-4.png 1.5x, /datal15/image-4.png 2x"
+        data-sizes="auto"
+        alt="/datal15/image-4.png"
+        title="alt text" width="1483" height="889" />
+拉格朗日思想，$\alpha$ 越大，约束越强，模型越简单。
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal15/image-5.png"
+        data-srcset="/datal15/image-5.png, /datal15/image-5.png 1.5x, /datal15/image-5.png 2x"
+        data-sizes="auto"
+        alt="/datal15/image-5.png"
+        title="alt text" width="1494" height="549" />
+岭回归</p>
+<h2 id="scaling-data-for-regularization">scaling data for regularization</h2>
+<p>标准化数据，be on the same scale</p>
+<h2 id="l1-regularization-lasso">L1 regularization (Lasso)</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal15/image-6.png"
+        data-srcset="/datal15/image-6.png, /datal15/image-6.png 1.5x, /datal15/image-6.png 2x"
+        data-sizes="auto"
+        alt="/datal15/image-6.png"
+        title="alt text" width="1657" height="878" /></p>
+<h3 id="summary">summary</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal15/image-7.png"
+        data-srcset="/datal15/image-7.png, /datal15/image-7.png 1.5x, /datal15/image-7.png 2x"
+        data-sizes="auto"
+        alt="/datal15/image-7.png"
+        title="alt text" width="1593" height="826" /></p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -124,7 +238,7 @@
                             <a class="link-to-markdown" href="/datal15/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/datal15/" data-title="DATA100-L15:"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/datal15/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/datal15/" data-title="DATA100-L15:"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/datal15/" data-title="DATA100-L15:"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/datal15/" data-title="DATA100-L15:"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/datal15/" data-title="DATA100-L15: Cross Validation, Regularization"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/datal15/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/datal15/" data-title="DATA100-L15: Cross Validation, Regularization"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/datal15/" data-title="DATA100-L15: Cross Validation, Regularization"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/datal15/" data-title="DATA100-L15: Cross Validation, Regularization"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
