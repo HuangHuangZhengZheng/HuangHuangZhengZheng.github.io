@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Crashes on HHZZ`s space</title>
-    <link>http://example.org/crash/</link>
+    <link>http://localhost:1313/crash/</link>
     <description>Recent content in Crashes on HHZZ`s space</description>
     <generator>Hugo 0.125.1</generator>
     <language>en</language>
     <lastBuildDate>Sun, 05 May 2024 22:24:42 +0800</lastBuildDate>
-    <atom:link href="http://example.org/crash/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/crash/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>C&#43;&#43; ptr</title>
-      <link>http://example.org/crash/cpp1/</link>
+      <link>http://localhost:1313/crash/cpp1/</link>
       <pubDate>Sun, 05 May 2024 22:24:42 +0800</pubDate>
-      <guid>http://example.org/crash/cpp1/</guid>
+      <guid>http://localhost:1313/crash/cpp1/</guid>
       <description>learning pointer(advanced version) 为了防止搞混而写&#xA;下标为0?首地址? 1 2 3 4 5 6 void test0(){ int arr[] = {1, 2, 3}; cout &amp;lt;&amp;lt; &amp;amp;arr[0] &amp;lt;&amp;lt; endl; cout &amp;lt;&amp;lt; &amp;amp;arr &amp;lt;&amp;lt; endl; cout &amp;lt;&amp;lt; arr &amp;lt;&amp;lt; endl; } arr &amp;amp;arr &amp;amp;arr[0] 存储的都是相同的地址 arr 常量指针不能被改变 指向数组元素的指针(不一定是首元素)以用[]来访问数组元素 1 2 3 4 5 6 void test2() { int a[3] = {1,2,3}; int *p = a; p++; cout &amp;lt;&amp;lt; p[0] &amp;lt;&amp;lt; endl; // 2 } 数组类型的指针 1 2 3 4 5 6 7 void test2(){ int arr[] = {1, 2, 3}; int (*p)[] = &amp;amp;arr; // 定义一个指向数组的指针 cout &amp;lt;&amp;lt; (*p)[0] &amp;lt;&amp;lt; endl; // 输出数组首地址 cout &amp;lt;&amp;lt; p[0] &amp;lt;&amp;lt; endl; // 输出数组首地址 cout &amp;lt;&amp;lt; p[0][0] &amp;lt;&amp;lt; endl; // 输出数组首元素 } int *p[] = &amp;amp;arr vs int (*p)[] = &amp;amp;arr?</description>
     </item>
   </channel>

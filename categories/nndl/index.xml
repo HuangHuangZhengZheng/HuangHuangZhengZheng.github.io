@@ -1,14 +1,14 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>NNDL - Category - HHZZ`s space</title>
-        <link>http://example.org/categories/nndl/</link>
+        <link>http://localhost:1313/categories/nndl/</link>
         <description>NNDL - Category - HHZZ`s space</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 12 Jul 2024 22:51:22 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/nndl/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 12 Jul 2024 22:51:22 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/categories/nndl/" rel="self" type="application/rss+xml" /><item>
     <title>NNDL0</title>
-    <link>http://example.org/nndl/</link>
+    <link>http://localhost:1313/nndl/</link>
     <pubDate>Fri, 12 Jul 2024 22:51:22 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/nndl/</guid>
+    <guid>http://localhost:1313/nndl/</guid>
     <description><![CDATA[neuronal networks and deep learning&hellip; coming soon]]></description>
 </item>
 </channel>

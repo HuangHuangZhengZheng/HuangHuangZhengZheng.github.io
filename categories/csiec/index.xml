@@ -1,14 +1,14 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>CSIEC - Category - HHZZ`s space</title>
-        <link>http://example.org/categories/csiec/</link>
+        <link>http://localhost:1313/categories/csiec/</link>
         <description>CSIEC - Category - HHZZ`s space</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 12 Jul 2024 22:37:18 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/csiec/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 12 Jul 2024 22:37:18 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/categories/csiec/" rel="self" type="application/rss+xml" /><item>
     <title>CSIEC0</title>
-    <link>http://example.org/experiences/csiec/csiec0/</link>
+    <link>http://localhost:1313/experiences/csiec/csiec0/</link>
     <pubDate>Fri, 12 Jul 2024 22:37:18 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/experiences/csiec/csiec0/</guid>
+    <guid>http://localhost:1313/experiences/csiec/csiec0/</guid>
     <description><![CDATA[COLLEGE STUDENTS INNOVATION AND ENTREPRENEURSHIP COMPETITION (CSIEC)]]></description>
 </item>
 </channel>

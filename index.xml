@@ -1,88 +1,88 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>HHZZ`s space</title>
-        <link>http://example.org/</link>
+        <link>http://localhost:1313/</link>
         <description>This is my cool site</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 19 Jul 2024 11:32:15 &#43;0800</lastBuildDate>
-            <atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
+            <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
         <item>
     <title>DATA100-L26:</title>
-    <link>http://example.org/datal26/</link>
+    <link>http://localhost:1313/datal26/</link>
     <pubDate>Fri, 19 Jul 2024 11:32:15 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/datal26/</guid>
+    <guid>http://localhost:1313/datal26/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>DATA100-L24:</title>
-    <link>http://example.org/datal24/</link>
+    <link>http://localhost:1313/datal24/</link>
     <pubDate>Fri, 19 Jul 2024 11:32:14 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/datal24/</guid>
+    <guid>http://localhost:1313/datal24/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>DATA100-L25:</title>
-    <link>http://example.org/datal25/</link>
+    <link>http://localhost:1313/datal25/</link>
     <pubDate>Fri, 19 Jul 2024 11:32:14 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/datal25/</guid>
+    <guid>http://localhost:1313/datal25/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>DATA100-L23:</title>
-    <link>http://example.org/datal23/</link>
+    <link>http://localhost:1313/datal23/</link>
     <pubDate>Fri, 19 Jul 2024 11:32:13 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/datal23/</guid>
+    <guid>http://localhost:1313/datal23/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>DATA100-L21:</title>
-    <link>http://example.org/datal21/</link>
+    <link>http://localhost:1313/datal21/</link>
     <pubDate>Fri, 19 Jul 2024 11:32:12 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/datal21/</guid>
+    <guid>http://localhost:1313/datal21/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>DATA100-L22:</title>
-    <link>http://example.org/datal22/</link>
+    <link>http://localhost:1313/datal22/</link>
     <pubDate>Fri, 19 Jul 2024 11:32:12 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/datal22/</guid>
+    <guid>http://localhost:1313/datal22/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>DATA100-L19:</title>
-    <link>http://example.org/datal19/</link>
+    <link>http://localhost:1313/datal19/</link>
     <pubDate>Fri, 19 Jul 2024 11:32:11 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/datal19/</guid>
+    <guid>http://localhost:1313/datal19/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>DATA100-L20:</title>
-    <link>http://example.org/datal20/</link>
+    <link>http://localhost:1313/datal20/</link>
     <pubDate>Fri, 19 Jul 2024 11:32:11 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/datal20/</guid>
+    <guid>http://localhost:1313/datal20/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>DATA100-L17:</title>
-    <link>http://example.org/datal17/</link>
+    <link>http://localhost:1313/datal17/</link>
     <pubDate>Fri, 19 Jul 2024 11:32:10 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/datal17/</guid>
+    <guid>http://localhost:1313/datal17/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>DATA100-L18:</title>
-    <link>http://example.org/datal18/</link>
+    <link>http://localhost:1313/datal18/</link>
     <pubDate>Fri, 19 Jul 2024 11:32:10 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/datal18/</guid>
+    <guid>http://localhost:1313/datal18/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>

@@ -1,70 +1,70 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Categories - Category - HHZZ`s space</title>
-        <link>http://example.org/categories/</link>
+        <link>http://localhost:1313/categories/</link>
         <description>Categories - Category - HHZZ`s space</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 19 Jul 2024 11:32:15 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 19 Jul 2024 11:32:15 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/categories/" rel="self" type="application/rss+xml" /><item>
     <title>DATA100</title>
-    <link>http://example.org/categories/data100/</link>
+    <link>http://localhost:1313/categories/data100/</link>
     <pubDate>Fri, 19 Jul 2024 11:32:15 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/categories/data100/</guid>
+    <guid>http://localhost:1313/categories/data100/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>UCB-CS61B</title>
-    <link>http://example.org/categories/ucb-cs61b/</link>
+    <link>http://localhost:1313/categories/ucb-cs61b/</link>
     <pubDate>Sun, 14 Jul 2024 21:29:34 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/categories/ucb-cs61b/</guid>
+    <guid>http://localhost:1313/categories/ucb-cs61b/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>NNDL</title>
-    <link>http://example.org/categories/nndl/</link>
+    <link>http://localhost:1313/categories/nndl/</link>
     <pubDate>Fri, 12 Jul 2024 22:51:22 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/categories/nndl/</guid>
+    <guid>http://localhost:1313/categories/nndl/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>CSIEC</title>
-    <link>http://example.org/categories/csiec/</link>
+    <link>http://localhost:1313/categories/csiec/</link>
     <pubDate>Fri, 12 Jul 2024 22:37:18 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/categories/csiec/</guid>
+    <guid>http://localhost:1313/categories/csiec/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>TOOLS</title>
-    <link>http://example.org/categories/tools/</link>
+    <link>http://localhost:1313/categories/tools/</link>
     <pubDate>Sat, 29 Jun 2024 15:06:38 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/categories/tools/</guid>
+    <guid>http://localhost:1313/categories/tools/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>PRP</title>
-    <link>http://example.org/categories/prp/</link>
+    <link>http://localhost:1313/categories/prp/</link>
     <pubDate>Tue, 21 May 2024 17:28:04 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/categories/prp/</guid>
+    <guid>http://localhost:1313/categories/prp/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>C&#43;&#43;</title>
-    <link>http://example.org/categories/c&#43;&#43;/</link>
+    <link>http://localhost:1313/categories/c&#43;&#43;/</link>
     <pubDate>Sun, 05 May 2024 22:24:42 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/categories/c&#43;&#43;/</guid>
+    <guid>http://localhost:1313/categories/c&#43;&#43;/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>CSAPP</title>
-    <link>http://example.org/categories/csapp/</link>
+    <link>http://localhost:1313/categories/csapp/</link>
     <pubDate>Mon, 22 Apr 2024 08:40:36 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/categories/csapp/</guid>
+    <guid>http://localhost:1313/categories/csapp/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>
