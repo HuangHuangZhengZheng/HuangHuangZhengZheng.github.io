@@ -4,10 +4,11 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>DATA100-L17: - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/datal17/">
+        <title>DATA100-L17: Estimators, Bias, and Variance - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/datal17/">
   <meta property="og:site_name" content="HHZZ`s space">
-  <meta property="og:title" content="DATA100-L17:">
-  <meta property="og:description" content="This is my cool site">
+  <meta property="og:title" content="DATA100-L17: Estimators, Bias, and Variance">
+  <meta property="og:description" content="sample statistics (from last time) 参考 概率论与数理统计
+prediction vs. inference modeling: assumptions of randomness the bias-variance tradeoff $$ model\ risk = observation\ variance &#43; (model\ bias)^2&#43;model\ variance $$ $$ \mathbb{E}[(Y-\hat{Y}(x))^2] = \sigma^2&#43;(\mathbb{E}[\hat{Y}(x)]-g(x))^2&#43;Var(\hat{Y}(x)) $$ interpreting slopes slope == 0? 假设检验证明是否无关 [Extra]review of the Bootstrap [Extra]derivation of Bias-Variance decomposition https://docs.google.com/presentation/d/1gzgxGO_nbCDajYs7qIpjzjQfJqKadliBOat7Es10Ll8/edit#slide=id.g11df3da7bd7_0_467">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
@@ -15,8 +16,9 @@
     <meta property="article:modified_time" content="2024-07-19T11:32:10+08:00">
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="DATA100-L17:">
-<meta name="twitter:description" content="">
+<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="DATA100-L17: Estimators, Bias, and Variance">
+<meta name="twitter:description" content="sample statistics (from last time) 参考 概率论与数理统计
+prediction vs. inference modeling: assumptions of randomness the bias-variance tradeoff $$ model\ risk = observation\ variance &#43; (model\ bias)^2&#43;model\ variance $$ $$ \mathbb{E}[(Y-\hat{Y}(x))^2] = \sigma^2&#43;(\mathbb{E}[\hat{Y}(x)]-g(x))^2&#43;Var(\hat{Y}(x)) $$ interpreting slopes slope == 0? 假设检验证明是否无关 [Extra]review of the Bootstrap [Extra]derivation of Bias-Variance decomposition https://docs.google.com/presentation/d/1gzgxGO_nbCDajYs7qIpjzjQfJqKadliBOat7Es10Ll8/edit#slide=id.g11df3da7bd7_0_467">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -26,12 +28,12 @@
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "DATA100-L17:",
+        "headline": "DATA100-L17: Estimators, Bias, and Variance",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/datal17\/"
-        },"genre": "posts","wordcount":  0 ,
+        },"genre": "posts","wordcount":  48 ,
         "url": "http:\/\/example.org\/datal17\/","datePublished": "2024-07-19T11:32:10+08:00","dateModified": "2024-07-19T11:32:10+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -103,17 +105,80 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">DATA100-L17:</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">DATA100-L17: Estimators, Bias, and Variance</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-19">2024-07-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;0 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;0 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-19">2024-07-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;48 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"></div><div class="post-footer" id="post-footer">
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#modeling-assumptions-of-randomness">modeling: assumptions of randomness</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="sample-statistics-from-last-time">sample statistics (from last time)</h1>
+<p>参考 概率论与数理统计</p>
+<h1 id="prediction-vs-inference">prediction vs. inference</h1>
+<h2 id="modeling-assumptions-of-randomness">modeling: assumptions of randomness</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal17/image.png"
+        data-srcset="/datal17/image.png, /datal17/image.png 1.5x, /datal17/image.png 2x"
+        data-sizes="auto"
+        alt="/datal17/image.png"
+        title="alt text" width="1264" height="708" /></p>
+<h1 id="the-bias-variance-tradeoff">the bias-variance tradeoff</h1>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal17/image-1.png"
+        data-srcset="/datal17/image-1.png, /datal17/image-1.png 1.5x, /datal17/image-1.png 2x"
+        data-sizes="auto"
+        alt="/datal17/image-1.png"
+        title="alt text" width="1232" height="703" />
+$$
+model\ risk = observation\ variance + (model\ bias)^2+model\ variance
+$$
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal17/image-2.png"
+        data-srcset="/datal17/image-2.png, /datal17/image-2.png 1.5x, /datal17/image-2.png 2x"
+        data-sizes="auto"
+        alt="/datal17/image-2.png"
+        title="alt text" width="767" height="90" />
+$$
+\mathbb{E}[(Y-\hat{Y}(x))^2] = \sigma^2+(\mathbb{E}[\hat{Y}(x)]-g(x))^2+Var(\hat{Y}(x))
+$$
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal17/image-3.png"
+        data-srcset="/datal17/image-3.png, /datal17/image-3.png 1.5x, /datal17/image-3.png 2x"
+        data-sizes="auto"
+        alt="/datal17/image-3.png"
+        title="alt text" width="1771" height="380" /></p>
+<h1 id="interpreting-slopes">interpreting slopes</h1>
+<ul>
+<li>slope == 0? 假设检验证明是否无关</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal17/image-4.png"
+        data-srcset="/datal17/image-4.png, /datal17/image-4.png 1.5x, /datal17/image-4.png 2x"
+        data-sizes="auto"
+        alt="/datal17/image-4.png"
+        title="alt text" width="1805" height="846" /></p>
+<h1 id="extrareview-of-the-bootstrap">[Extra]review of the Bootstrap</h1>
+<h1 id="extraderivation-of-bias-variance">[Extra]derivation of Bias-Variance</h1>
+<h1 id="decomposition">decomposition</h1>
+<p><a href="https://docs.google.com/presentation/d/1gzgxGO_nbCDajYs7qIpjzjQfJqKadliBOat7Es10Ll8/edit#slide=id.g11df3da7bd7_0_467" target="_blank" rel="noopener noreffer ">https://docs.google.com/presentation/d/1gzgxGO_nbCDajYs7qIpjzjQfJqKadliBOat7Es10Ll8/edit#slide=id.g11df3da7bd7_0_467</a></p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -124,7 +189,7 @@
                             <a class="link-to-markdown" href="/datal17/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/datal17/" data-title="DATA100-L17:"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/datal17/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/datal17/" data-title="DATA100-L17:"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/datal17/" data-title="DATA100-L17:"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/datal17/" data-title="DATA100-L17:"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/datal17/" data-title="DATA100-L17: Estimators, Bias, and Variance"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/datal17/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/datal17/" data-title="DATA100-L17: Estimators, Bias, and Variance"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/datal17/" data-title="DATA100-L17: Estimators, Bias, and Variance"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/datal17/" data-title="DATA100-L17: Estimators, Bias, and Variance"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
