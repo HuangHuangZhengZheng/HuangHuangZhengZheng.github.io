@@ -1,14 +1,14 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Math - Tag - HHZZ`s space</title>
-        <link>http://localhost:1313/tags/math/</link>
+        <link>http://example.org/tags/math/</link>
         <description>Math - Tag - HHZZ`s space</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 14 Jul 2024 10:33:54 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/tags/math/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 14 Jul 2024 10:33:54 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/math/" rel="self" type="application/rss+xml" /><item>
     <title>DATA100-hw01</title>
-    <link>http://localhost:1313/datahw01/</link>
+    <link>http://example.org/datahw01/</link>
     <pubDate>Sun, 14 Jul 2024 10:33:54 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/datahw01/</guid>
+    <guid>http://example.org/datahw01/</guid>
     <description><![CDATA[1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;hw01.ipynb&#34;) HW 1: Math Review and Plotting 重点在coding，理论供参考 Due Date: Thursday Jan 27, 11:59 PM Collaboration Policy Data science is a collaborative activity. While you may talk with others about the homework, we ask that you write your solutions individually. If you do discuss the assignments with others please include their names at the top of your notebook.
 Collaborators: list collaborators here]]></description>
 </item>

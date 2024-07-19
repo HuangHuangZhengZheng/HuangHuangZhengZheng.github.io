@@ -1,24 +1,24 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Pandas - Tag - HHZZ`s space</title>
-        <link>http://localhost:1313/tags/pandas/</link>
+        <link>http://example.org/tags/pandas/</link>
         <description>Pandas - Tag - HHZZ`s space</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 14 Jul 2024 10:55:10 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/tags/pandas/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 14 Jul 2024 10:55:10 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/pandas/" rel="self" type="application/rss+xml" /><item>
     <title>DATA100-L4: Pandas Ⅱ</title>
-    <link>http://localhost:1313/datal4/</link>
+    <link>http://example.org/datal4/</link>
     <pubDate>Sun, 14 Jul 2024 10:55:10 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/datal4/</guid>
+    <guid>http://example.org/datal4/</guid>
     <description><![CDATA[lambda function 1 lambda x: x**2 非显式定义函数，可以直接使用lambda表达式来定义一个函数。 This is a lambda function that takes in one argument x and returns the square of x.
 再看sort_values() 注意传递key
 1 df.sort_values(by=&#39;column_name&#39;, keys=lambda x: x.str.lower(), ascending=True) add move modify and so on sort by length of string approach1: create a new column and add to original df 1 2 3 newdf = df[&#34;Name&#34;].str.len() # create a new column with length of each string df[&#39;length&#39;] = newdf df.]]></description>
 </item>
 <item>
     <title>DATA100-L3: Pandas Ⅰ</title>
-    <link>http://localhost:1313/datal3/</link>
+    <link>http://example.org/datal3/</link>
     <pubDate>Sat, 13 Jul 2024 19:50:30 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/datal3/</guid>
+    <guid>http://example.org/datal3/</guid>
     <description><![CDATA[DataFrames: a data structure for tabular data API always remember to turn to GPT/google/doc
 indexing and loc/iloc generate subsets:
 loc: an operator select items by labels

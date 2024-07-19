@@ -1,14 +1,14 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>PRP - Category - HHZZ`s space</title>
-        <link>http://localhost:1313/categories/prp/</link>
+        <link>http://example.org/categories/prp/</link>
         <description>PRP - Category - HHZZ`s space</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 21 May 2024 17:28:04 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/categories/prp/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 21 May 2024 17:28:04 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/prp/" rel="self" type="application/rss+xml" /><item>
     <title>PRP0</title>
-    <link>http://localhost:1313/experiences/prp/prp0/</link>
+    <link>http://example.org/experiences/prp/prp0/</link>
     <pubDate>Tue, 21 May 2024 17:28:04 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/experiences/prp/prp0/</guid>
+    <guid>http://example.org/experiences/prp/prp0/</guid>
     <description><![CDATA[PRP系列将用于记录研究项目，包括但不限于课题、研究方法、研究成果、研究心得、研究经验、研究心路历程等。]]></description>
 </item>
 </channel>

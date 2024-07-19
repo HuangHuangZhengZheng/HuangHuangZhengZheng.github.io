@@ -1,38 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>DATA100-L13: - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://localhost:1313/datal13/">
+        <title>DATA100-L13: Gradient Descent, Feature Engineering - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/datal13/">
   <meta property="og:site_name" content="HHZZ`s space">
-  <meta property="og:title" content="DATA100-L13:">
-  <meta property="og:description" content="This is my cool site">
+  <meta property="og:title" content="DATA100-L13: Gradient Descent, Feature Engineering">
+  <meta property="og:description" content=" $\downarrow{shuffle}$ SGD: Stochastic Gradient Descent(but size == 1)
+convexity (凹凸性) feature engineering 在于怎么使用transforming
+feature function see website code
+non-numeric features one-hot encoding concat high order polynomials detect overfitting collect more data more see next lecture ">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2024-07-19T11:32:08+08:00">
     <meta property="article:modified_time" content="2024-07-19T11:32:08+08:00">
-    <meta property="og:image" content="http://localhost:1313/logo.png">
+    <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://localhost:1313/logo.png"><meta name="twitter:title" content="DATA100-L13:">
-<meta name="twitter:description" content="">
+<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="DATA100-L13: Gradient Descent, Feature Engineering">
+<meta name="twitter:description" content=" $\downarrow{shuffle}$ SGD: Stochastic Gradient Descent(but size == 1)
+convexity (凹凸性) feature engineering 在于怎么使用transforming
+feature function see website code
+non-numeric features one-hot encoding concat high order polynomials detect overfitting collect more data more see next lecture ">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/datal13/" /><link rel="prev" href="http://localhost:1313/datal14/" /><link rel="next" href="http://localhost:1313/datal16/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/datal13/" /><link rel="prev" href="http://example.org/datal14/" /><link rel="next" href="http://example.org/datal16/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "DATA100-L13:",
+        "headline": "DATA100-L13: Gradient Descent, Feature Engineering",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/localhost:1313\/datal13\/"
-        },"genre": "posts","wordcount":  0 ,
-        "url": "http:\/\/localhost:1313\/datal13\/","datePublished": "2024-07-19T11:32:08+08:00","dateModified": "2024-07-19T11:32:08+08:00","publisher": {
+            "@id": "http:\/\/example.org\/datal13\/"
+        },"genre": "posts","wordcount":  35 ,
+        "url": "http:\/\/example.org\/datal13\/","datePublished": "2024-07-19T11:32:08+08:00","dateModified": "2024-07-19T11:32:08+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -103,17 +109,96 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">DATA100-L13:</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">DATA100-L13: Gradient Descent, Feature Engineering</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-19">2024-07-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;0 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;0 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-19">2024-07-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;35 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"></div><div class="post-footer" id="post-footer">
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#convexity-凹凸性">convexity (凹凸性)</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#feature-function">feature function</a>
+      <ul>
+        <li><a href="#non-numeric-features">non-numeric features</a></li>
+        <li><a href="#concat">concat</a></li>
+      </ul>
+    </li>
+    <li><a href="#high-order-polynomials">high order polynomials</a></li>
+    <li><a href="#detect-overfitting">detect overfitting</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal13/image.png"
+        data-srcset="/datal13/image.png, /datal13/image.png 1.5x, /datal13/image.png 2x"
+        data-sizes="auto"
+        alt="/datal13/image.png"
+        title="alt text" width="1566" height="820" />
+$\downarrow{shuffle}$
+SGD: Stochastic Gradient Descent(but size == 1)</p>
+<h2 id="convexity-凹凸性">convexity (凹凸性)</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal13/image-1.png"
+        data-srcset="/datal13/image-1.png, /datal13/image-1.png 1.5x, /datal13/image-1.png 2x"
+        data-sizes="auto"
+        alt="/datal13/image-1.png"
+        title="alt text" width="1551" height="790" /></p>
+<h1 id="feature-engineering">feature engineering</h1>
+<p>在于怎么使用transforming</p>
+<h2 id="feature-function">feature function</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal13/image-2.png"
+        data-srcset="/datal13/image-2.png, /datal13/image-2.png 1.5x, /datal13/image-2.png 2x"
+        data-sizes="auto"
+        alt="/datal13/image-2.png"
+        title="alt text" width="1487" height="290" />
+see website code</p>
+<h3 id="non-numeric-features">non-numeric features</h3>
+<p>one-hot encoding
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal13/image-3.png"
+        data-srcset="/datal13/image-3.png, /datal13/image-3.png 1.5x, /datal13/image-3.png 2x"
+        data-sizes="auto"
+        alt="/datal13/image-3.png"
+        title="alt text" width="1378" height="647" /></p>
+<h3 id="concat">concat</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal13/image-4.png"
+        data-srcset="/datal13/image-4.png, /datal13/image-4.png 1.5x, /datal13/image-4.png 2x"
+        data-sizes="auto"
+        alt="/datal13/image-4.png"
+        title="alt text" width="1290" height="574" /></p>
+<h2 id="high-order-polynomials">high order polynomials</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal13/image-5.png"
+        data-srcset="/datal13/image-5.png, /datal13/image-5.png 1.5x, /datal13/image-5.png 2x"
+        data-sizes="auto"
+        alt="/datal13/image-5.png"
+        title="alt text" width="1558" height="631" /></p>
+<h2 id="detect-overfitting">detect overfitting</h2>
+<ul>
+<li>collect more data</li>
+<li>more see next lecture</li>
+</ul>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -124,7 +209,7 @@
                             <a class="link-to-markdown" href="/datal13/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://localhost:1313/datal13/" data-title="DATA100-L13:"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/datal13/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://localhost:1313/datal13/" data-title="DATA100-L13:"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://localhost:1313/datal13/" data-title="DATA100-L13:"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://localhost:1313/datal13/" data-title="DATA100-L13:"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/datal13/" data-title="DATA100-L13: Gradient Descent, Feature Engineering"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/datal13/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/datal13/" data-title="DATA100-L13: Gradient Descent, Feature Engineering"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/datal13/" data-title="DATA100-L13: Gradient Descent, Feature Engineering"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/datal13/" data-title="DATA100-L13: Gradient Descent, Feature Engineering"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -136,7 +221,7 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/datal14/" class="prev" rel="prev" title="DATA100-L14:"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>DATA100-L14:</a>
+    <div class="post-nav"><a href="/datal14/" class="prev" rel="prev" title="DATA100-L14: Case Study (HCE): Fairness in Housing Appraisal"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>DATA100-L14: Case Study (HCE): Fairness in Housing Appraisal</a>
             <a href="/datal16/" class="next" rel="next" title="DATA100-L16:">DATA100-L16:<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
