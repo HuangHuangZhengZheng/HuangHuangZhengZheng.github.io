@@ -4,10 +4,14 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>DATA100-L21: - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/datal21/">
+        <title>DATA100-L21: Classification and Logistic Regression I - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/datal21/">
   <meta property="og:site_name" content="HHZZ`s space">
-  <meta property="og:title" content="DATA100-L21:">
-  <meta property="og:description" content="This is my cool site">
+  <meta property="og:title" content="DATA100-L21: Classification and Logistic Regression I">
+  <meta property="og:description" content="Regression vs. Classification 全攻略&amp;#x1f60b; intuition: the coin flip 重新定义概率，只需要满足一些性质即可。参考 概率论与数理统计
+deriving the logistic regression model knn一瞥 这说明可以从某些变化转换为线性性质
+考虑 probability $p$ 考虑 odds $\frac{p}{1-p}$ 考虑 log odds 广义线性由此可见
+Graph of Averages the sigmoid function $$ \sigma(t)=\frac{1}{1&#43;e^{-t}} $$
+the logistic regression model comparison to linear regression parameter estimation pitfalls of squared loss non-convex bounded, MSE ∈[0，1] conceptually questionable, not matching the &amp;ldquo;Probability and 0/1 labels&amp;rdquo; cross-entropy loss $$ -\frac{1}{N}\sum_{i=1}^N[y_i\log(p_i)&#43;(1-y_i)\log(1-p_i)] $$ Loss function should penalize well!">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
@@ -15,8 +19,12 @@
     <meta property="article:modified_time" content="2024-07-19T11:32:12+08:00">
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="DATA100-L21:">
-<meta name="twitter:description" content="">
+<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="DATA100-L21: Classification and Logistic Regression I">
+<meta name="twitter:description" content="Regression vs. Classification 全攻略&#x1f60b; intuition: the coin flip 重新定义概率，只需要满足一些性质即可。参考 概率论与数理统计
+deriving the logistic regression model knn一瞥 这说明可以从某些变化转换为线性性质
+考虑 probability $p$ 考虑 odds $\frac{p}{1-p}$ 考虑 log odds 广义线性由此可见
+Graph of Averages the sigmoid function $$ \sigma(t)=\frac{1}{1&#43;e^{-t}} $$
+the logistic regression model comparison to linear regression parameter estimation pitfalls of squared loss non-convex bounded, MSE ∈[0，1] conceptually questionable, not matching the &ldquo;Probability and 0/1 labels&rdquo; cross-entropy loss $$ -\frac{1}{N}\sum_{i=1}^N[y_i\log(p_i)&#43;(1-y_i)\log(1-p_i)] $$ Loss function should penalize well!">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -26,12 +34,12 @@
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "DATA100-L21:",
+        "headline": "DATA100-L21: Classification and Logistic Regression I",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/datal21\/"
-        },"genre": "posts","wordcount":  0 ,
+        },"genre": "posts","wordcount":  80 ,
         "url": "http:\/\/example.org\/datal21\/","datePublished": "2024-07-19T11:32:12+08:00","dateModified": "2024-07-19T11:32:12+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -103,17 +111,146 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">DATA100-L21:</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">DATA100-L21: Classification and Logistic Regression I</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-19">2024-07-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;0 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;0 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-19">2024-07-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;80 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"></div><div class="post-footer" id="post-footer">
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#graph-of-averages">Graph of Averages</a></li>
+    <li><a href="#the-sigmoid-function">the sigmoid function</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#comparison-to-linear-regression">comparison to linear regression</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#pitfalls-of-squared-loss">pitfalls of squared loss</a></li>
+    <li><a href="#cross-entropy-loss">cross-entropy loss</a></li>
+    <li><a href="#maximum-likelihood-estimation">maximum likelihood estimation</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="regression-vs-classification">Regression vs. Classification</h1>
+<p>全攻略&#x1f60b;
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal21/image.png"
+        data-srcset="/datal21/image.png, /datal21/image.png 1.5x, /datal21/image.png 2x"
+        data-sizes="auto"
+        alt="/datal21/image.png"
+        title="alt text" width="1237" height="706" /></p>
+<h1 id="intuition-the-coin-flip">intuition: the coin flip</h1>
+<p>重新定义概率，只需要满足一些性质即可。参考 概率论与数理统计</p>
+<h1 id="deriving-the-logistic-regression-model">deriving the logistic regression model</h1>
+<p>knn一瞥
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal21/image-1.png"
+        data-srcset="/datal21/image-1.png, /datal21/image-1.png 1.5x, /datal21/image-1.png 2x"
+        data-sizes="auto"
+        alt="/datal21/image-1.png"
+        title="alt text" width="900" height="645" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal21/image-2.png"
+        data-srcset="/datal21/image-2.png, /datal21/image-2.png 1.5x, /datal21/image-2.png 2x"
+        data-sizes="auto"
+        alt="/datal21/image-2.png"
+        title="alt text" width="1283" height="549" />
+这说明可以从某些变化转换为线性性质</p>
+<ol>
+<li>考虑 probability $p$</li>
+<li>考虑 odds $\frac{p}{1-p}$</li>
+<li>考虑 log odds</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal21/image-3.png"
+        data-srcset="/datal21/image-3.png, /datal21/image-3.png 1.5x, /datal21/image-3.png 2x"
+        data-sizes="auto"
+        alt="/datal21/image-3.png"
+        title="alt text" width="1919" height="1079" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal21/image-4.png"
+        data-srcset="/datal21/image-4.png, /datal21/image-4.png 1.5x, /datal21/image-4.png 2x"
+        data-sizes="auto"
+        alt="/datal21/image-4.png"
+        title="alt text" width="920" height="179" />
+广义线性由此可见</p>
+<h2 id="graph-of-averages">Graph of Averages</h2>
+<h2 id="the-sigmoid-function">the sigmoid function</h2>
+<p>$$
+\sigma(t)=\frac{1}{1+e^{-t}}
+$$</p>
+<h1 id="the-logistic-regression-model">the logistic regression model</h1>
+<h2 id="comparison-to-linear-regression">comparison to linear regression</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal21/image-5.png"
+        data-srcset="/datal21/image-5.png, /datal21/image-5.png 1.5x, /datal21/image-5.png 2x"
+        data-sizes="auto"
+        alt="/datal21/image-5.png"
+        title="alt text" width="1870" height="952" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal21/image-6.png"
+        data-srcset="/datal21/image-6.png, /datal21/image-6.png 1.5x, /datal21/image-6.png 2x"
+        data-sizes="auto"
+        alt="/datal21/image-6.png"
+        title="alt text" width="1258" height="689" /></p>
+<h1 id="parameter-estimation">parameter estimation</h1>
+<h2 id="pitfalls-of-squared-loss">pitfalls of squared loss</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal21/image-7.png"
+        data-srcset="/datal21/image-7.png, /datal21/image-7.png 1.5x, /datal21/image-7.png 2x"
+        data-sizes="auto"
+        alt="/datal21/image-7.png"
+        title="alt text" width="881" height="701" /></p>
+<ol>
+<li>non-convex</li>
+<li>bounded, MSE ∈[0，1]</li>
+<li>conceptually questionable, not matching the &ldquo;Probability and 0/1 labels&rdquo;</li>
+</ol>
+<h2 id="cross-entropy-loss">cross-entropy loss</h2>
+<p>$$
+-\frac{1}{N}\sum_{i=1}^N[y_i\log(p_i)+(1-y_i)\log(1-p_i)]
+$$
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal21/image-8.png"
+        data-srcset="/datal21/image-8.png, /datal21/image-8.png 1.5x, /datal21/image-8.png 2x"
+        data-sizes="auto"
+        alt="/datal21/image-8.png"
+        title="alt text" width="1255" height="697" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal21/image-9.png"
+        data-srcset="/datal21/image-9.png, /datal21/image-9.png 1.5x, /datal21/image-9.png 2x"
+        data-sizes="auto"
+        alt="/datal21/image-9.png"
+        title="alt text" width="1256" height="640" />
+<em><strong>Loss function should penalize well!</strong></em></p>
+<h2 id="maximum-likelihood-estimation">maximum likelihood estimation</h2>
+<p>see extra in L22!</p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -124,7 +261,7 @@
                             <a class="link-to-markdown" href="/datal21/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/datal21/" data-title="DATA100-L21:"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/datal21/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/datal21/" data-title="DATA100-L21:"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/datal21/" data-title="DATA100-L21:"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/datal21/" data-title="DATA100-L21:"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/datal21/" data-title="DATA100-L21: Classification and Logistic Regression I"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/datal21/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/datal21/" data-title="DATA100-L21: Classification and Logistic Regression I"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/datal21/" data-title="DATA100-L21: Classification and Logistic Regression I"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/datal21/" data-title="DATA100-L21: Classification and Logistic Regression I"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -136,7 +273,7 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/datal22/" class="prev" rel="prev" title="DATA100-L22:"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>DATA100-L22:</a>
+    <div class="post-nav"><a href="/datal22/" class="prev" rel="prev" title="DATA100-L22: Logistic Regression II"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>DATA100-L22: Logistic Regression II</a>
             <a href="/datal23/" class="next" rel="next" title="DATA100-L23:">DATA100-L23:<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>

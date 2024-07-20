@@ -4,10 +4,14 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>DATA100-L22: - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/datal22/">
+        <title>DATA100-L22: Logistic Regression II - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/datal22/">
   <meta property="og:site_name" content="HHZZ`s space">
-  <meta property="og:title" content="DATA100-L22:">
-  <meta property="og:description" content="This is my cool site">
+  <meta property="og:title" content="DATA100-L22: Logistic Regression II">
+  <meta property="og:description" content="logistic regression model continued sklearn demo go to see lec code!
+MLE: high-level, detailed (recorded) linear separability and regularization 线性可分性：如果存在一个 超平面（hyperplane） 可以将数据集分割成两部分，那么这就是线性可分的。
+超平面的维度和数据集的维度相同 $$ C $$ 注意对“push”的理解！
+另一种理解正则化的角度 这里是避免loss出现无限大的情况（梯度爆炸？），避免出现使前面情况发生的参数（infinite theta）出现，所以在loss里面预先加入正则化项。
+performance metrics accuracy 1 2 # using sklearn model.score(X_test, y_test) imbalanced data, precision, recall Acc is not a good metric for imbalanced data, use precision and recall instead!!! $$ acc= \frac{TP&#43;TN}{n}\ precision(精确率)=\frac{TP}{TP&#43;FP}\ recall(召回率)=\frac{TP}{TP&#43;FN} $$ adjusting the classification threshold(阈值界限) a case study 变界限可能是因为imbalanced data导致的">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
@@ -15,8 +19,12 @@
     <meta property="article:modified_time" content="2024-07-19T11:32:12+08:00">
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="DATA100-L22:">
-<meta name="twitter:description" content="">
+<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="DATA100-L22: Logistic Regression II">
+<meta name="twitter:description" content="logistic regression model continued sklearn demo go to see lec code!
+MLE: high-level, detailed (recorded) linear separability and regularization 线性可分性：如果存在一个 超平面（hyperplane） 可以将数据集分割成两部分，那么这就是线性可分的。
+超平面的维度和数据集的维度相同 $$ C $$ 注意对“push”的理解！
+另一种理解正则化的角度 这里是避免loss出现无限大的情况（梯度爆炸？），避免出现使前面情况发生的参数（infinite theta）出现，所以在loss里面预先加入正则化项。
+performance metrics accuracy 1 2 # using sklearn model.score(X_test, y_test) imbalanced data, precision, recall Acc is not a good metric for imbalanced data, use precision and recall instead!!! $$ acc= \frac{TP&#43;TN}{n}\ precision(精确率)=\frac{TP}{TP&#43;FP}\ recall(召回率)=\frac{TP}{TP&#43;FN} $$ adjusting the classification threshold(阈值界限) a case study 变界限可能是因为imbalanced data导致的">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -26,12 +34,12 @@
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "DATA100-L22:",
+        "headline": "DATA100-L22: Logistic Regression II",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/datal22\/"
-        },"genre": "posts","wordcount":  0 ,
+        },"genre": "posts","wordcount":  112 ,
         "url": "http:\/\/example.org\/datal22\/","datePublished": "2024-07-19T11:32:12+08:00","dateModified": "2024-07-19T11:32:12+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -103,17 +111,269 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">DATA100-L22:</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">DATA100-L22: Logistic Regression II</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-19">2024-07-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;0 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;0 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-19">2024-07-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;112 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"></div><div class="post-footer" id="post-footer">
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#sklearn-demo">sklearn demo</a></li>
+    <li><a href="#mle-high-level-detailed-recorded">MLE: high-level, detailed (recorded)</a></li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#另一种理解正则化的角度">另一种理解正则化的角度</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#accuracy">accuracy</a></li>
+    <li><a href="#imbalanced-data-precision-recall">imbalanced data, precision, recall</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#a-case-study">a case study</a></li>
+    <li><a href="#roc-curves-and-auc">ROC curves and AUC</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#why-cross-entropy">Why cross-entropy?</a></li>
+    <li><a href="#pr-curves">PR curves</a></li>
+    <li><a href="#插曲">插曲</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="logistic-regression-model-continued">logistic regression model continued</h1>
+<h2 id="sklearn-demo">sklearn demo</h2>
+<p>go to see lec code!</p>
+<h2 id="mle-high-level-detailed-recorded">MLE: high-level, detailed (recorded)</h2>
+<h1 id="linear-separability-and-regularization">linear separability and regularization</h1>
+<p>线性可分性：如果存在一个 <strong>超平面（hyperplane）</strong> 可以将数据集分割成两部分，那么这就是线性可分的。</p>
+<p>超平面的维度和数据集的维度相同
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal22/image-2.png"
+        data-srcset="/datal22/image-2.png, /datal22/image-2.png 1.5x, /datal22/image-2.png 2x"
+        data-sizes="auto"
+        alt="/datal22/image-2.png"
+        title="alt text" width="1828" height="966" />
+$$
+C
+$$
+注意对“push”的理解！</p>
+<h4 id="另一种理解正则化的角度">另一种理解正则化的角度</h4>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal22/image-4.png"
+        data-srcset="/datal22/image-4.png, /datal22/image-4.png 1.5x, /datal22/image-4.png 2x"
+        data-sizes="auto"
+        alt="/datal22/image-4.png"
+        title="alt text" width="1251" height="691" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal22/image-3.png"
+        data-srcset="/datal22/image-3.png, /datal22/image-3.png 1.5x, /datal22/image-3.png 2x"
+        data-sizes="auto"
+        alt="/datal22/image-3.png"
+        title="alt text" width="1261" height="692" />
+这里是避免loss出现无限大的情况（梯度爆炸？），避免出现使前面情况发生的参数（infinite theta）出现，所以在loss里面预先加入正则化项。</p>
+<h1 id="performance-metrics">performance metrics</h1>
+<h2 id="accuracy">accuracy</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># using sklearn</span>
+</span></span><span class="line"><span class="cl"><span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="imbalanced-data-precision-recall">imbalanced data, precision, recall</h2>
+<p><code>Acc</code> is not a good metric for imbalanced data, use precision and recall instead!!!
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal22/image-5.png"
+        data-srcset="/datal22/image-5.png, /datal22/image-5.png 1.5x, /datal22/image-5.png 2x"
+        data-sizes="auto"
+        alt="/datal22/image-5.png"
+        title="alt text" width="1263" height="705" />
+$$
+acc= \frac{TP+TN}{n}\
+precision(精确率)=\frac{TP}{TP+FP}\
+recall(召回率)=\frac{TP}{TP+FN}
+$$
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal22/image-6.png"
+        data-srcset="/datal22/image-6.png, /datal22/image-6.png 1.5x, /datal22/image-6.png 2x"
+        data-sizes="auto"
+        alt="/datal22/image-6.png"
+        title="alt text" width="1247" height="708" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal22/image-7.png"
+        data-srcset="/datal22/image-7.png, /datal22/image-7.png 1.5x, /datal22/image-7.png 2x"
+        data-sizes="auto"
+        alt="/datal22/image-7.png"
+        title="alt text" width="1246" height="674" /></p>
+<h1 id="adjusting-the-classification-threshold阈值界限">adjusting the classification threshold(阈值界限)</h1>
+<h2 id="a-case-study">a case study</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal22/image-9.png"
+        data-srcset="/datal22/image-9.png, /datal22/image-9.png 1.5x, /datal22/image-9.png 2x"
+        data-sizes="auto"
+        alt="/datal22/image-9.png"
+        title="alt text" width="1745" height="949" />
+变界限可能是因为imbalanced data导致的</p>
+<h2 id="roc-curves-and-auc">ROC curves and AUC</h2>
+<p>怎么选择阈值？
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal22/image-10.png"
+        data-srcset="/datal22/image-10.png, /datal22/image-10.png 1.5x, /datal22/image-10.png 2x"
+        data-sizes="auto"
+        alt="/datal22/image-10.png"
+        title="alt text" width="852" height="361" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal22/image-11.png"
+        data-srcset="/datal22/image-11.png, /datal22/image-11.png 1.5x, /datal22/image-11.png 2x"
+        data-sizes="auto"
+        alt="/datal22/image-11.png"
+        title="alt text" width="891" height="701" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal22/image-12.png"
+        data-srcset="/datal22/image-12.png, /datal22/image-12.png 1.5x, /datal22/image-12.png 2x"
+        data-sizes="auto"
+        alt="/datal22/image-12.png"
+        title="alt text" width="1273" height="693" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal22/image-13.png"
+        data-srcset="/datal22/image-13.png, /datal22/image-13.png 1.5x, /datal22/image-13.png 2x"
+        data-sizes="auto"
+        alt="/datal22/image-13.png"
+        title="alt text" width="880" height="703" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal22/image-14.png"
+        data-srcset="/datal22/image-14.png, /datal22/image-14.png 1.5x, /datal22/image-14.png 2x"
+        data-sizes="auto"
+        alt="/datal22/image-14.png"
+        title="alt text" width="890" height="597" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal22/image-15.png"
+        data-srcset="/datal22/image-15.png, /datal22/image-15.png 1.5x, /datal22/image-15.png 2x"
+        data-sizes="auto"
+        alt="/datal22/image-15.png"
+        title="alt text" width="1271" height="686" /></p>
+<h1 id="extra-detailed-mle-gradient-descent-pr-curves">[extra] detailed MLE, gradient descent, PR curves</h1>
+<h2 id="why-cross-entropy">Why cross-entropy?</h2>
+<ul>
+<li>KL散度: <a href="https://www.textbook.ds100.org/ch/24/classification_cost_justification.html?highlight=divergence" target="_blank" rel="noopener noreffer ">https://www.textbook.ds100.org/ch/24/classification_cost_justification.html?highlight=divergence</a></li>
+<li>MLE</li>
+</ul>
+<p>以下讨论MLE，二分类的话以 <strong>伯努利</strong> 举例
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal22/image.png"
+        data-srcset="/datal22/image.png, /datal22/image.png 1.5x, /datal22/image.png 2x"
+        data-sizes="auto"
+        alt="/datal22/image.png"
+        title="alt text" width="1258" height="688" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal22/image-1.png"
+        data-srcset="/datal22/image-1.png, /datal22/image-1.png 1.5x, /datal22/image-1.png 2x"
+        data-sizes="auto"
+        alt="/datal22/image-1.png"
+        title="alt text" width="636" height="188" /></p>
+<h2 id="pr-curves">PR curves</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal22/image-16.png"
+        data-srcset="/datal22/image-16.png, /datal22/image-16.png 1.5x, /datal22/image-16.png 2x"
+        data-sizes="auto"
+        alt="/datal22/image-16.png"
+        title="alt text" width="1250" height="491" />
+false positive在T变大的时候增加得更快，所以可能slightly decrease
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal22/image-17.png"
+        data-srcset="/datal22/image-17.png, /datal22/image-17.png 1.5x, /datal22/image-17.png 2x"
+        data-sizes="auto"
+        alt="/datal22/image-17.png"
+        title="alt text" width="1232" height="555" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal22/image-18.png"
+        data-srcset="/datal22/image-18.png, /datal22/image-18.png 1.5x, /datal22/image-18.png 2x"
+        data-sizes="auto"
+        alt="/datal22/image-18.png"
+        title="alt text" width="1197" height="538" />
+考虑PR
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal22/image-19.png"
+        data-srcset="/datal22/image-19.png, /datal22/image-19.png 1.5x, /datal22/image-19.png 2x"
+        data-sizes="auto"
+        alt="/datal22/image-19.png"
+        title="alt text" width="1267" height="530" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal22/image-20.png"
+        data-srcset="/datal22/image-20.png, /datal22/image-20.png 1.5x, /datal22/image-20.png 2x"
+        data-sizes="auto"
+        alt="/datal22/image-20.png"
+        title="alt text" width="1242" height="466" /></p>
+<h2 id="插曲">插曲</h2>
+<p>似乎自然科学所有学科都可以被解构为 “观测到的知识点（context）” + 信息数理化（math &amp; computer science） ？</p>
+<p>换言之只需要一方面不断扩充数据/知识点，另一方面提出高明的信息数理化分析方法，就可以推动科学的进步？&#x1f914; &#x1f914; &#x2753;
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal22/image-8.png"
+        data-srcset="/datal22/image-8.png, /datal22/image-8.png 1.5x, /datal22/image-8.png 2x"
+        data-sizes="auto"
+        alt="/datal22/image-8.png"
+        title="alt text" width="1259" height="711" />
+<a href="https://docs.google.com/presentation/d/1YsxPERhul760_0TrLhawljbWWqDbtIp5tUm05irfkmw/edit#slide=id.g12444cd4007_0_537" target="_blank" rel="noopener noreffer ">https://docs.google.com/presentation/d/1YsxPERhul760_0TrLhawljbWWqDbtIp5tUm05irfkmw/edit#slide=id.g12444cd4007_0_537</a></p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -124,7 +384,7 @@
                             <a class="link-to-markdown" href="/datal22/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/datal22/" data-title="DATA100-L22:"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/datal22/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/datal22/" data-title="DATA100-L22:"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/datal22/" data-title="DATA100-L22:"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/datal22/" data-title="DATA100-L22:"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/datal22/" data-title="DATA100-L22: Logistic Regression II"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/datal22/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/datal22/" data-title="DATA100-L22: Logistic Regression II"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/datal22/" data-title="DATA100-L22: Logistic Regression II"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/datal22/" data-title="DATA100-L22: Logistic Regression II"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -136,8 +396,8 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/datal19/" class="prev" rel="prev" title="DATA100-L19:"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>DATA100-L19:</a>
-            <a href="/datal21/" class="next" rel="next" title="DATA100-L21:">DATA100-L21:<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/datal19/" class="prev" rel="prev" title="DATA100-L19: SQL II and PCA I"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>DATA100-L19: SQL II and PCA I</a>
+            <a href="/datal21/" class="next" rel="next" title="DATA100-L21: Classification and Logistic Regression I">DATA100-L21: Classification and Logistic Regression I<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">

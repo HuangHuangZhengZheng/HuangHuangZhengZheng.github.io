@@ -36,36 +36,51 @@
     <description><![CDATA[]]></description>
 </item>
 <item>
-    <title>DATA100-L21:</title>
+    <title>DATA100-L21: Classification and Logistic Regression I</title>
     <link>http://example.org/datal21/</link>
     <pubDate>Fri, 19 Jul 2024 11:32:12 &#43;0800</pubDate>
     <author>HHZZ</author>
     <guid>http://example.org/datal21/</guid>
-    <description><![CDATA[]]></description>
+    <description><![CDATA[Regression vs. Classification 全攻略&#x1f60b; intuition: the coin flip 重新定义概率，只需要满足一些性质即可。参考 概率论与数理统计
+deriving the logistic regression model knn一瞥 这说明可以从某些变化转换为线性性质
+考虑 probability $p$ 考虑 odds $\frac{p}{1-p}$ 考虑 log odds 广义线性由此可见
+Graph of Averages the sigmoid function $$ \sigma(t)=\frac{1}{1+e^{-t}} $$
+the logistic regression model comparison to linear regression parameter estimation pitfalls of squared loss non-convex bounded, MSE ∈[0，1] conceptually questionable, not matching the &ldquo;Probability and 0/1 labels&rdquo; cross-entropy loss $$ -\frac{1}{N}\sum_{i=1}^N[y_i\log(p_i)+(1-y_i)\log(1-p_i)] $$ Loss function should penalize well!]]></description>
 </item>
 <item>
-    <title>DATA100-L22:</title>
+    <title>DATA100-L22: Logistic Regression II</title>
     <link>http://example.org/datal22/</link>
     <pubDate>Fri, 19 Jul 2024 11:32:12 &#43;0800</pubDate>
     <author>HHZZ</author>
     <guid>http://example.org/datal22/</guid>
-    <description><![CDATA[]]></description>
+    <description><![CDATA[logistic regression model continued sklearn demo go to see lec code!
+MLE: high-level, detailed (recorded) linear separability and regularization 线性可分性：如果存在一个 超平面（hyperplane） 可以将数据集分割成两部分，那么这就是线性可分的。
+超平面的维度和数据集的维度相同 $$ C $$ 注意对“push”的理解！
+另一种理解正则化的角度 这里是避免loss出现无限大的情况（梯度爆炸？），避免出现使前面情况发生的参数（infinite theta）出现，所以在loss里面预先加入正则化项。
+performance metrics accuracy 1 2 # using sklearn model.score(X_test, y_test) imbalanced data, precision, recall Acc is not a good metric for imbalanced data, use precision and recall instead!!! $$ acc= \frac{TP+TN}{n}\ precision(精确率)=\frac{TP}{TP+FP}\ recall(召回率)=\frac{TP}{TP+FN} $$ adjusting the classification threshold(阈值界限) a case study 变界限可能是因为imbalanced data导致的]]></description>
 </item>
 <item>
-    <title>DATA100-L19:</title>
+    <title>DATA100-L19: SQL II and PCA I</title>
     <link>http://example.org/datal19/</link>
     <pubDate>Fri, 19 Jul 2024 11:32:11 &#43;0800</pubDate>
     <author>HHZZ</author>
     <guid>http://example.org/datal19/</guid>
-    <description><![CDATA[]]></description>
+    <description><![CDATA[SQL II sql and pandas how to connect sql to python
+1 2 3 4 5 6 7 8 9 import pandas as pd import sqlalchmey engine = sqlalchemy.create_engine(&#39;sqlite:///mydatabase.db&#39;) connection = engine.connect() pd.read_sql(&#34;&#34;&#34; SELECT * FROM mytable GROUP BY column1, column2 &#34;&#34;&#34;, connection) LIKE and CAST LIKE: search for a pattern in a column
+1 2 SELECT * FROM mytable WHERE column1 LIKE &#39;%value%&#39; CAST: convert data type SQL Joins Cross Join 1 2 3 SELECT * FROM table1 CROSS JOIN table2 Inner Join 1 2 3 4 SELECT * FROM table1 INNER JOIN table2 ON table1.]]></description>
 </item>
 <item>
-    <title>DATA100-L20:</title>
+    <title>DATA100-L20: PCA II</title>
     <link>http://example.org/datal20/</link>
     <pubDate>Fri, 19 Jul 2024 11:32:11 &#43;0800</pubDate>
     <author>HHZZ</author>
     <guid>http://example.org/datal20/</guid>
-    <description><![CDATA[]]></description>
+    <description><![CDATA[recap and Goals approximate factorization $W\ L\rightarrow (W+L)/ 2$ rank 下降使得信息缺失了
+所以 $M_{100 \times 4} = N_{100 \times P} \times Q_{P \times 4}$ P的值尽量不要小于原来的&quot;秩&quot;
+singular value decomposition (SVD) low rank approximation no bad! seem good!
+SVD theory 验证orthonormal set
+V@V.T = I 当相乘的时候本质上是旋转，不会拉伸
+Principal Components 零中心化再来看PCA Principal Components and Variance PCA example Why is useful? &#x1f914; ]]></description>
 </item>
 <item>
     <title>DATA100-L17: Estimators, Bias, and Variance</title>
@@ -77,12 +92,18 @@
 prediction vs. inference modeling: assumptions of randomness the bias-variance tradeoff $$ model\ risk = observation\ variance + (model\ bias)^2+model\ variance $$ $$ \mathbb{E}[(Y-\hat{Y}(x))^2] = \sigma^2+(\mathbb{E}[\hat{Y}(x)]-g(x))^2+Var(\hat{Y}(x)) $$ interpreting slopes slope == 0? 假设检验证明是否无关 [Extra]review of the Bootstrap [Extra]derivation of Bias-Variance decomposition https://docs.google.com/presentation/d/1gzgxGO_nbCDajYs7qIpjzjQfJqKadliBOat7Es10Ll8/edit#slide=id.g11df3da7bd7_0_467]]></description>
 </item>
 <item>
-    <title>DATA100-L18:</title>
+    <title>DATA100-L18: SQL I</title>
     <link>http://example.org/datal18/</link>
     <pubDate>Fri, 19 Jul 2024 11:32:10 &#43;0800</pubDate>
     <author>HHZZ</author>
     <guid>http://example.org/datal18/</guid>
-    <description><![CDATA[]]></description>
+    <description><![CDATA[why databases structured query language (SQL) &#x1f60b;
+DBMS: database management system sql example type
+INT for integer REAL for decimal TEXT for string BLOB for ARBITRARY data DATETIME for date and time different implementations of sql support different types
+sql table use singular, CamelCase for SQL tables! basic sql queries 通配
+1 SELECT * FROM table_name; 选定子集
+1 SELECT column1, column2 FROM table_name; AS rename columns
+1 2 3 SELECT cute AS cuteness, smart AS intelligence FROM table_name; WHERE filter rows]]></description>
 </item>
 </channel>
 </rss>
