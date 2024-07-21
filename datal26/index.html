@@ -4,10 +4,16 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>DATA100-L26: - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/datal26/">
+        <title>DATA100-L26: Parallel Data Analytics; Conclusion - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/datal26/">
   <meta property="og:site_name" content="HHZZ`s space">
-  <meta property="og:title" content="DATA100-L26:">
-  <meta property="og:description" content="This is my cool site">
+  <meta property="og:title" content="DATA100-L26: Parallel Data Analytics; Conclusion">
+  <meta property="og:description" content="mapreduce MapReduce是一种编程模型,用于大规模数据集的并行运算[1][2][3]。它将复杂的并行计算过程抽象为两个函数:Map和Reduce[4]。
+Map函数将输入数据集拆分成独立的块,并对每个块应用映射操作,生成一组中间键值对[1][2][3]。Reduce函数会对所有Map的输出进行合并操作,生成最终结果[1][2][3]。
+MapReduce的主要特点包括[4][5]:
+易于编程:程序员只需描述做什么,具体怎么做由系统的执行框架处理 良好的扩展性:可通过添加节点扩展集群能力 高容错性:通过计算迁移或数据迁移等策略提高集群的可用性与容错性 MapReduce采用&amp;quot;分而治之&amp;quot;策略,将大规模数据集切分成多个独立的分片,这些分片可以被多个Map任务并行处理[4]。它设计的一个理念是&amp;quot;计算向数据靠拢&amp;quot;,移动数据需要大量的网络传输开销[4]。
+总之,MapReduce是一种简单、可扩展的并行计算模型,通过抽象Map和Reduce函数,使得程序员可以轻松编写大规模并行应用程序,而无需关注底层的分布式细节[1][2][3][4][5]。
+Citations: [1] https://baike.baidu.com/item/MapReduce/133425 [2] https://zh.wikipedia.org/zh-hans/MapReduce [3] https://www.ibm.com/cn-zh/topics/mapreduce [4] https://cshihong.github.io/2018/05/11/MapReduce%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86/ [5] https://cloud.tencent.com/developer/article/1778549
+apache spark lazy strategy: 延迟计算策略,Spark默认采用这种策略,即只有当数据真正被使用时才会计算。 编译优化语句执行顺序！ Conclusion 工具链 What is next? 有用的data science链接 http://kaggle.com https://github.com/awesomedata/awesome-public-datasets http://toolbox.google.com/datasetsearch https://towardsdatascience.com https://www.reddit.com/r/dataisbeautiful/ https://fivethirtyeight.com">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
@@ -15,8 +21,14 @@
     <meta property="article:modified_time" content="2024-07-19T11:32:15+08:00">
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="DATA100-L26:">
-<meta name="twitter:description" content="">
+<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="DATA100-L26: Parallel Data Analytics; Conclusion">
+<meta name="twitter:description" content="mapreduce MapReduce是一种编程模型,用于大规模数据集的并行运算[1][2][3]。它将复杂的并行计算过程抽象为两个函数:Map和Reduce[4]。
+Map函数将输入数据集拆分成独立的块,并对每个块应用映射操作,生成一组中间键值对[1][2][3]。Reduce函数会对所有Map的输出进行合并操作,生成最终结果[1][2][3]。
+MapReduce的主要特点包括[4][5]:
+易于编程:程序员只需描述做什么,具体怎么做由系统的执行框架处理 良好的扩展性:可通过添加节点扩展集群能力 高容错性:通过计算迁移或数据迁移等策略提高集群的可用性与容错性 MapReduce采用&quot;分而治之&quot;策略,将大规模数据集切分成多个独立的分片,这些分片可以被多个Map任务并行处理[4]。它设计的一个理念是&quot;计算向数据靠拢&quot;,移动数据需要大量的网络传输开销[4]。
+总之,MapReduce是一种简单、可扩展的并行计算模型,通过抽象Map和Reduce函数,使得程序员可以轻松编写大规模并行应用程序,而无需关注底层的分布式细节[1][2][3][4][5]。
+Citations: [1] https://baike.baidu.com/item/MapReduce/133425 [2] https://zh.wikipedia.org/zh-hans/MapReduce [3] https://www.ibm.com/cn-zh/topics/mapreduce [4] https://cshihong.github.io/2018/05/11/MapReduce%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86/ [5] https://cloud.tencent.com/developer/article/1778549
+apache spark lazy strategy: 延迟计算策略,Spark默认采用这种策略,即只有当数据真正被使用时才会计算。 编译优化语句执行顺序！ Conclusion 工具链 What is next? 有用的data science链接 http://kaggle.com https://github.com/awesomedata/awesome-public-datasets http://toolbox.google.com/datasetsearch https://towardsdatascience.com https://www.reddit.com/r/dataisbeautiful/ https://fivethirtyeight.com">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -26,12 +38,12 @@
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "DATA100-L26:",
+        "headline": "DATA100-L26: Parallel Data Analytics; Conclusion",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/datal26\/"
-        },"genre": "posts","wordcount":  0 ,
+        },"genre": "posts","wordcount":  39 ,
         "url": "http:\/\/example.org\/datal26\/","datePublished": "2024-07-19T11:32:15+08:00","dateModified": "2024-07-19T11:32:15+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -103,17 +115,199 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">DATA100-L26:</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">DATA100-L26: Parallel Data Analytics; Conclusion</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-19">2024-07-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;0 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;0 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-19">2024-07-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;39 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"></div><div class="post-footer" id="post-footer">
+            </div><div class="content" id="content"><h1 id="mapreduce">mapreduce</h1>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal26/image.png"
+        data-srcset="/datal26/image.png, /datal26/image.png 1.5x, /datal26/image.png 2x"
+        data-sizes="auto"
+        alt="/datal26/image.png"
+        title="alt text" width="846" height="521" />
+MapReduce是一种编程模型,用于大规模数据集的并行运算[1][2][3]。它将复杂的并行计算过程抽象为两个函数:Map和Reduce[4]。</p>
+<p><strong>Map函数</strong>将输入数据集拆分成独立的块,并对每个块应用映射操作,生成一组中间键值对[1][2][3]。<strong>Reduce函数</strong>会对所有Map的输出进行合并操作,生成最终结果[1][2][3]。</p>
+<p>MapReduce的主要特点包括[4][5]:</p>
+<ul>
+<li>易于编程:程序员只需描述做什么,具体怎么做由系统的执行框架处理</li>
+<li>良好的扩展性:可通过添加节点扩展集群能力</li>
+<li>高容错性:通过计算迁移或数据迁移等策略提高集群的可用性与容错性</li>
+</ul>
+<p>MapReduce采用&quot;分而治之&quot;策略,将大规模数据集切分成多个独立的分片,这些分片可以被多个Map任务并行处理[4]。它设计的一个理念是&quot;计算向数据靠拢&quot;,移动数据需要大量的网络传输开销[4]。</p>
+<p>总之,MapReduce是一种简单、可扩展的并行计算模型,通过抽象Map和Reduce函数,使得程序员可以轻松编写大规模并行应用程序,而无需关注底层的分布式细节[1][2][3][4][5]。</p>
+<p>Citations:
+[1] <a href="https://baike.baidu.com/item/MapReduce/133425" target="_blank" rel="noopener noreffer ">https://baike.baidu.com/item/MapReduce/133425</a>
+[2] <a href="https://zh.wikipedia.org/zh-hans/MapReduce" target="_blank" rel="noopener noreffer ">https://zh.wikipedia.org/zh-hans/MapReduce</a>
+[3] <a href="https://www.ibm.com/cn-zh/topics/mapreduce" target="_blank" rel="noopener noreffer ">https://www.ibm.com/cn-zh/topics/mapreduce</a>
+[4] <a href="https://cshihong.github.io/2018/05/11/MapReduce%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86/" target="_blank" rel="noopener noreffer ">https://cshihong.github.io/2018/05/11/MapReduce%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86/</a>
+[5] <a href="https://cloud.tencent.com/developer/article/1778549" target="_blank" rel="noopener noreffer ">https://cloud.tencent.com/developer/article/1778549</a></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal26/image-1.png"
+        data-srcset="/datal26/image-1.png, /datal26/image-1.png 1.5x, /datal26/image-1.png 2x"
+        data-sizes="auto"
+        alt="/datal26/image-1.png"
+        title="/datal26/image-1.png" width="908" height="453" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal26/image-2.png"
+        data-srcset="/datal26/image-2.png, /datal26/image-2.png 1.5x, /datal26/image-2.png 2x"
+        data-sizes="auto"
+        alt="/datal26/image-2.png"
+        title="alt text" width="854" height="403" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal26/image-3.png"
+        data-srcset="/datal26/image-3.png, /datal26/image-3.png 1.5x, /datal26/image-3.png 2x"
+        data-sizes="auto"
+        alt="/datal26/image-3.png"
+        title="alt text" width="830" height="249" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal26/image-4.png"
+        data-srcset="/datal26/image-4.png, /datal26/image-4.png 1.5x, /datal26/image-4.png 2x"
+        data-sizes="auto"
+        alt="/datal26/image-4.png"
+        title="alt text" width="836" height="320" /></p>
+<h1 id="apache-spark">apache spark</h1>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal26/image-5.png"
+        data-srcset="/datal26/image-5.png, /datal26/image-5.png 1.5x, /datal26/image-5.png 2x"
+        data-sizes="auto"
+        alt="/datal26/image-5.png"
+        title="alt text" width="810" height="530" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal26/image-6.png"
+        data-srcset="/datal26/image-6.png, /datal26/image-6.png 1.5x, /datal26/image-6.png 2x"
+        data-sizes="auto"
+        alt="/datal26/image-6.png"
+        title="alt text" width="922" height="675" />
+lazy strategy: 延迟计算策略,Spark默认采用这种策略,即只有当数据真正被使用时才会计算。
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal26/image-7.png"
+        data-srcset="/datal26/image-7.png, /datal26/image-7.png 1.5x, /datal26/image-7.png 2x"
+        data-sizes="auto"
+        alt="/datal26/image-7.png"
+        title="alt text" width="1314" height="845" />
+编译优化语句执行顺序！
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal26/image-8.png"
+        data-srcset="/datal26/image-8.png, /datal26/image-8.png 1.5x, /datal26/image-8.png 2x"
+        data-sizes="auto"
+        alt="/datal26/image-8.png"
+        title="alt text" width="1333" height="875" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal26/image-9.png"
+        data-srcset="/datal26/image-9.png, /datal26/image-9.png 1.5x, /datal26/image-9.png 2x"
+        data-sizes="auto"
+        alt="/datal26/image-9.png"
+        title="alt text" width="1325" height="761" /></p>
+<h1 id="conclusion">Conclusion</h1>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal26/image-10.png"
+        data-srcset="/datal26/image-10.png, /datal26/image-10.png 1.5x, /datal26/image-10.png 2x"
+        data-sizes="auto"
+        alt="/datal26/image-10.png"
+        title="alt text" width="1256" height="602" />
+工具链
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal26/image-11.png"
+        data-srcset="/datal26/image-11.png, /datal26/image-11.png 1.5x, /datal26/image-11.png 2x"
+        data-sizes="auto"
+        alt="/datal26/image-11.png"
+        title="alt text" width="1188" height="690" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal26/image-12.png"
+        data-srcset="/datal26/image-12.png, /datal26/image-12.png 1.5x, /datal26/image-12.png 2x"
+        data-sizes="auto"
+        alt="/datal26/image-12.png"
+        title="alt text" width="1206" height="701" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal26/image-13.png"
+        data-srcset="/datal26/image-13.png, /datal26/image-13.png 1.5x, /datal26/image-13.png 2x"
+        data-sizes="auto"
+        alt="/datal26/image-13.png"
+        title="alt text" width="1203" height="708" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal26/image-14.png"
+        data-srcset="/datal26/image-14.png, /datal26/image-14.png 1.5x, /datal26/image-14.png 2x"
+        data-sizes="auto"
+        alt="/datal26/image-14.png"
+        title="alt text" width="1264" height="699" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal26/image-15.png"
+        data-srcset="/datal26/image-15.png, /datal26/image-15.png 1.5x, /datal26/image-15.png 2x"
+        data-sizes="auto"
+        alt="/datal26/image-15.png"
+        title="alt text" width="1250" height="689" /></p>
+<h1 id="what-is-next">What is next?</h1>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal26/image-16.png"
+        data-srcset="/datal26/image-16.png, /datal26/image-16.png 1.5x, /datal26/image-16.png 2x"
+        data-sizes="auto"
+        alt="/datal26/image-16.png"
+        title="alt text" width="1249" height="596" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal26/image-17.png"
+        data-srcset="/datal26/image-17.png, /datal26/image-17.png 1.5x, /datal26/image-17.png 2x"
+        data-sizes="auto"
+        alt="/datal26/image-17.png"
+        title="alt text" width="1238" height="602" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datal26/image-18.png"
+        data-srcset="/datal26/image-18.png, /datal26/image-18.png 1.5x, /datal26/image-18.png 2x"
+        data-sizes="auto"
+        alt="/datal26/image-18.png"
+        title="alt text" width="1247" height="529" /></p>
+<p>有用的data science链接
+<a href="http://kaggle.com" target="_blank" rel="noopener noreffer ">http://kaggle.com</a>
+<a href="https://github.com/awesomedata/awesome-public-datasets" target="_blank" rel="noopener noreffer ">https://github.com/awesomedata/awesome-public-datasets</a>
+<a href="http://toolbox.google.com/datasetsearch" target="_blank" rel="noopener noreffer ">http://toolbox.google.com/datasetsearch</a>
+<a href="https://towardsdatascience.com" target="_blank" rel="noopener noreffer ">https://towardsdatascience.com</a>
+<a href="https://www.reddit.com/r/dataisbeautiful/" target="_blank" rel="noopener noreffer ">https://www.reddit.com/r/dataisbeautiful/</a>
+<a href="https://fivethirtyeight.com" target="_blank" rel="noopener noreffer ">https://fivethirtyeight.com</a></p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -124,7 +318,7 @@
                             <a class="link-to-markdown" href="/datal26/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/datal26/" data-title="DATA100-L26:"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/datal26/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/datal26/" data-title="DATA100-L26:"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/datal26/" data-title="DATA100-L26:"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/datal26/" data-title="DATA100-L26:"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/datal26/" data-title="DATA100-L26: Parallel Data Analytics; Conclusion"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/datal26/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/datal26/" data-title="DATA100-L26: Parallel Data Analytics; Conclusion"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/datal26/" data-title="DATA100-L26: Parallel Data Analytics; Conclusion"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/datal26/" data-title="DATA100-L26: Parallel Data Analytics; Conclusion"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -136,7 +330,7 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/datal24/" class="prev" rel="prev" title="DATA100-L24:"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>DATA100-L24:</a></div>
+    <div class="post-nav"><a href="/datal24/" class="prev" rel="prev" title="DATA100-L24: Clustering"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>DATA100-L24: Clustering</a></div>
 </div>
 </article></div>
             </main><footer class="footer">
