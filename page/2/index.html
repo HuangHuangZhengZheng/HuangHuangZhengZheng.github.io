@@ -100,6 +100,14 @@
         alt="https://tse2-mm.cn.bing.net/th/id/OIP-C.pm8D3-OqctVYYztXsTaJzQHaE8?w=207&amp;h=139&amp;c=7&amp;r=0&amp;o=5&amp;pid=1.7/rp/SAZ_WTPnkAhjkioRoye2Et5dW-E.svg"
         title="https://tse2-mm.cn.bing.net/th/id/OIP-C.pm8D3-OqctVYYztXsTaJzQHaE8?w=207&amp;h=139&amp;c=7&amp;r=0&amp;o=5&amp;pid=1.7/rp/SAZ_WTPnkAhjkioRoye2Et5dW-E.svg" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/ZhengTMHuang" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/datal22/">DATA100-L22: Logistic Regression II</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">logistic regression model continued sklearn demo go to see lec code!
+MLE: high-level, detailed (recorded) linear separability and regularization 线性可分性：如果存在一个 超平面（hyperplane） 可以将数据集分割成两部分，那么这就是线性可分的。
+超平面的维度和数据集的维度相同 $$ C $$ 注意对“push”的理解！
+另一种理解正则化的角度 这里是避免loss出现无限大的情况（梯度爆炸？），避免出现使前面情况发生的参数（infinite theta）出现，所以在loss里面预先加入正则化项。
+performance metrics accuracy 1 2 # using sklearn model.score(X_test, y_test) imbalanced data, precision, recall Acc is not a good metric for imbalanced data, use precision and recall instead!!! $$ acc= \frac{TP+TN}{n}\ precision(精确率)=\frac{TP}{TP+FP}\ recall(召回率)=\frac{TP}{TP+FN} $$ adjusting the classification threshold(阈值界限) a case study 变界限可能是因为imbalanced data导致的</div><div class="post-footer">
+        <a href="/datal22/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/datal19/">DATA100-L19: SQL II and PCA I</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">SQL II sql and pandas how to connect sql to python
 1 2 3 4 5 6 7 8 9 import pandas as pd import sqlalchmey engine = sqlalchemy.create_engine(&#39;sqlite:///mydatabase.db&#39;) connection = engine.connect() pd.read_sql(&#34;&#34;&#34; SELECT * FROM mytable GROUP BY column1, column2 &#34;&#34;&#34;, connection) LIKE and CAST LIKE: search for a pattern in a column
@@ -137,13 +145,6 @@ Test sets provide an unbiased estimate of the model&rsquo;s performance on new, 
 scaling data for regularization 标准化数据，be on the same scale
 L1 regularization (Lasso) summary </div><div class="post-footer">
         <a href="/datal15/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/datal16/">DATA100-L16: Probability I: Random Variables</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">随机变量及其分布 参考 概率论与数理统计 课程即可
-期望与方差 $$ \mathbb{E}[X] 和 Var(X) $$ 参考 概率论与数理统计 课程即可
-随机变量的和 equality vs Identically distributed vs IID 有意思的分析 &#x1f60f;
-期望和方差的性质 协方差与相关系数 伯努利（0-1）和Binomial分布 Sample Statistics sample mean central limit theorem </div><div class="post-footer">
-        <a href="/datal16/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -164,7 +165,7 @@ L1 regularization (Lasso) summary </div><div class="post-footer">
                     <span class="page-link" aria-hidden="true">&hellip;</span>
                 </li><li class="page-item ">
                     <span class="page-link">
-                        <a href="/page/12/">12</a>
+                        <a href="/page/13/">13</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">
