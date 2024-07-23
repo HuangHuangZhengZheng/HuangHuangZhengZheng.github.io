@@ -1,4 +1,4 @@
-# 61B-34
+# 61B-34: More Quick Sort, Stability, Shuffling
 
 
 

@@ -1,4 +1,4 @@
-# 61B-35
+# 61B-35: Sorting and Algorithmic Bounds
 
 
 ## math problems

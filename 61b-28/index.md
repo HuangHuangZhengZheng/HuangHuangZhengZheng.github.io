@@ -61,3 +61,37 @@ public class DepthFirstOrder {
 ![alt text](image-5.png)
 "fringe"（边缘）通常指的是一个数据结构，用于存储等待处理的节点。[see](https://docs.google.com/presentation/d/1EGco7EDfVtrqouiUCQr6iY7Lq5mZmvWrprWm5yIQZTQ/pub?start=false&loop=false&delayms=3000)
 ![alt text](image-6.png)
+
+```java
+public class BreadthFirstPaths {
+  private boolean[] marked;
+  private int[] edgeTo;
+  ...
+	
+  private void bfs(Graph G, int s) {
+  Queue<Integer> fringe = 
+          new Queue<Integer>();
+  fringe.enqueue(s); // set up starting vertex
+  marked[s] = true;
+  while (!fringe.isEmpty()) {
+    int v = fringe.dequeue();
+	/**
+	 * for freshly dequeued vertex v, for each neighbor that is unmarked:
+	 * Enqueue that neighbor to the fringe.
+	 * Mark it.
+	 * Set its edgeTo to v.
+	*/
+    for (int w : G.adj(v)) {
+      if (!marked[w]) {
+        fringe.enqueue(w);
+        marked[w] = true;
+        edgeTo[w] = v;
+      }
+    }
+  }
+}
+```
+
+![alt text](image-7.png)
+
+
