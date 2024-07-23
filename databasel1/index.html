@@ -7,7 +7,8 @@
         <title>CS186-L1: Introduction &#43; SQL I - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/databasel1/">
   <meta property="og:site_name" content="HHZZ`s space">
   <meta property="og:title" content="CS186-L1: Introduction &#43; SQL I">
-  <meta property="og:description" content="大纲进程： sheet">
+  <meta property="og:description" content="大纲进程： sheet
+SQL I pros and cons relational Terminology and concepts database: set of name relations relation(table): schema: descriptions &amp;ldquo;metadata&amp;rdquo; fixed, unique attribute names, atomic types instance: set of data 符合description often changed, can duplicate multiset of tuples or &amp;ldquo;rows&amp;rdquo; attribute (column,field) tuple (row,record),怀疑一些python概念也来自于此 DDL (Data Definition Language) 1 2 3 4 5 6 7 8 9 10 CREATE TABLE myTable ( ID INTEGER, myName CHAR(50), Age INTEGER, Salary FLOAT, PRIMARY KEY (ID, myName), FOREIGN KEY (ID) REFERENCES myOtherTable(ID), FOREIGN KEY (myName) REFERENCES myOtherTable(myName) ); 1 2 3 SELECT [DISTINCT] &amp;lt;column expression list&amp;gt; FROM &amp;lt;single_table&amp;gt; [WHERE &amp;lt;predicate&amp;gt;] ORDER BY Lexicographic order by default 字典序 LIMIT Aggregation functions AVG: average COUNT: count the number of rows MAX: maximum value MIN: minimum value SUM: sum of values 1 2 SELECT AVG(Salary) FROM myTable; GROUP BY HAVING">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
@@ -16,7 +17,8 @@
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="CS186-L1: Introduction &#43; SQL I">
-<meta name="twitter:description" content="大纲进程： sheet">
+<meta name="twitter:description" content="大纲进程： sheet
+SQL I pros and cons relational Terminology and concepts database: set of name relations relation(table): schema: descriptions &ldquo;metadata&rdquo; fixed, unique attribute names, atomic types instance: set of data 符合description often changed, can duplicate multiset of tuples or &ldquo;rows&rdquo; attribute (column,field) tuple (row,record),怀疑一些python概念也来自于此 DDL (Data Definition Language) 1 2 3 4 5 6 7 8 9 10 CREATE TABLE myTable ( ID INTEGER, myName CHAR(50), Age INTEGER, Salary FLOAT, PRIMARY KEY (ID, myName), FOREIGN KEY (ID) REFERENCES myOtherTable(ID), FOREIGN KEY (myName) REFERENCES myOtherTable(myName) ); 1 2 3 SELECT [DISTINCT] &lt;column expression list&gt; FROM &lt;single_table&gt; [WHERE &lt;predicate&gt;] ORDER BY Lexicographic order by default 字典序 LIMIT Aggregation functions AVG: average COUNT: count the number of rows MAX: maximum value MIN: minimum value SUM: sum of values 1 2 SELECT AVG(Salary) FROM myTable; GROUP BY HAVING">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -31,7 +33,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/databasel1\/"
-        },"genre": "posts","wordcount":  2 ,
+        },"genre": "posts","wordcount":  149 ,
         "url": "http:\/\/example.org\/databasel1\/","datePublished": "2024-07-22T14:39:02+08:00","dateModified": "2024-07-22T14:39:02+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -105,14 +107,20 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">CS186-L1: Introduction + SQL I</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-22">2024-07-22</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-22">2024-07-22</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;149 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#pros-and-cons">pros and cons</a></li>
+    <li><a href="#relational-terminology-and-concepts">relational Terminology and concepts</a></li>
+    <li><a href="#ddl-data-definition-language">DDL (Data Definition Language)</a></li>
+  </ul>
+</nav></div>
             </div><div class="content" id="content"><p>大纲进程：
 <a href="https://docs.google.com/spreadsheets/d/1BWr5C8ZNC8Z6muMxHtxUX4Ut5p7AMvl_OLd9BbldEy0/edit?pli=1&amp;gid=0#gid=0" target="_blank" rel="noopener noreffer ">sheet</a></p>
 <p><img
@@ -147,6 +155,177 @@
         data-sizes="auto"
         alt="/databasel1/image-3.png"
         title="alt text" width="1332" height="737" /></p>
+<h1 id="sql-i">SQL I</h1>
+<h2 id="pros-and-cons">pros and cons</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel1/image-4.png"
+        data-srcset="/databasel1/image-4.png, /databasel1/image-4.png 1.5x, /databasel1/image-4.png 2x"
+        data-sizes="auto"
+        alt="/databasel1/image-4.png"
+        title="alt text" width="1199" height="857" /></p>
+<h2 id="relational-terminology-and-concepts">relational Terminology and concepts</h2>
+<ul>
+<li><em><strong>database</strong></em>: set of name relations</li>
+<li><em><strong>relation</strong></em>(table):
+<ul>
+<li>schema: descriptions &ldquo;metadata&rdquo;
+<ul>
+<li>fixed, unique attribute names, <em>atomic</em> types</li>
+</ul>
+</li>
+<li>instance: set of data 符合description
+<ul>
+<li>often changed, can duplicate</li>
+<li>multiset of tuples or &ldquo;rows&rdquo;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><em><strong>attribute</strong></em> (column,field)</li>
+<li><em><strong>tuple</strong></em> (row,record),怀疑一些python概念也来自于此</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel1/image-5.png"
+        data-srcset="/databasel1/image-5.png, /databasel1/image-5.png 1.5x, /databasel1/image-5.png 2x"
+        data-sizes="auto"
+        alt="/databasel1/image-5.png"
+        title="alt text" width="1211" height="523" /></p>
+<h2 id="ddl-data-definition-language">DDL (Data Definition Language)</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">myTable</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">ID</span><span class="w"> </span><span class="nb">INTEGER</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">myName</span><span class="w"> </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Age</span><span class="w"> </span><span class="nb">INTEGER</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Salary</span><span class="w"> </span><span class="nb">FLOAT</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">ID</span><span class="p">,</span><span class="w"> </span><span class="n">myName</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">ID</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">myOtherTable</span><span class="p">(</span><span class="n">ID</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">myName</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">myOtherTable</span><span class="p">(</span><span class="n">myName</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel1/image-6.png"
+        data-srcset="/databasel1/image-6.png, /databasel1/image-6.png 1.5x, /databasel1/image-6.png 2x"
+        data-sizes="auto"
+        alt="/databasel1/image-6.png"
+        title="alt text" width="1042" height="324" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="p">[</span><span class="k">DISTINCT</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="k">column</span><span class="w"> </span><span class="n">expression</span><span class="w"> </span><span class="n">list</span><span class="o">&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="o">&lt;</span><span class="n">single_table</span><span class="o">&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">[</span><span class="k">WHERE</span><span class="w"> </span><span class="o">&lt;</span><span class="n">predicate</span><span class="o">&gt;</span><span class="p">]</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>ORDER BY
+Lexicographic order by default 字典序
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel1/image-7.png"
+        data-srcset="/databasel1/image-7.png, /databasel1/image-7.png 1.5x, /databasel1/image-7.png 2x"
+        data-sizes="auto"
+        alt="/databasel1/image-7.png"
+        title="alt text" width="1015" height="669" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel1/image-8.png"
+        data-srcset="/databasel1/image-8.png, /databasel1/image-8.png 1.5x, /databasel1/image-8.png 2x"
+        data-sizes="auto"
+        alt="/databasel1/image-8.png"
+        title="alt text" width="933" height="385" /></p>
+<p>LIMIT
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel1/image-9.png"
+        data-srcset="/databasel1/image-9.png, /databasel1/image-9.png 1.5x, /databasel1/image-9.png 2x"
+        data-sizes="auto"
+        alt="/databasel1/image-9.png"
+        title="alt text" width="955" height="493" /></p>
+<h1 id="aggregation-functions">Aggregation functions</h1>
+<ul>
+<li>AVG: average</li>
+<li>COUNT: count the number of rows</li>
+<li>MAX: maximum value</li>
+<li>MIN: minimum value</li>
+<li>SUM: sum of values</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">Salary</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">myTable</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel1/image-10.png"
+        data-srcset="/databasel1/image-10.png, /databasel1/image-10.png 1.5x, /databasel1/image-10.png 2x"
+        data-sizes="auto"
+        alt="/databasel1/image-10.png"
+        title="alt text" width="972" height="396" /></p>
+<p>GROUP BY
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel1/image-11.png"
+        data-srcset="/databasel1/image-11.png, /databasel1/image-11.png 1.5x, /databasel1/image-11.png 2x"
+        data-sizes="auto"
+        alt="/databasel1/image-11.png"
+        title="alt text" width="917" height="463" /></p>
+<p>HAVING</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">Salary</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">myTable</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">Age</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">HAVING</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">Salary</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">50000</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel1/image-12.png"
+        data-srcset="/databasel1/image-12.png, /databasel1/image-12.png 1.5x, /databasel1/image-12.png 2x"
+        data-sizes="auto"
+        alt="/databasel1/image-12.png"
+        title="alt text" width="723" height="333" /></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
