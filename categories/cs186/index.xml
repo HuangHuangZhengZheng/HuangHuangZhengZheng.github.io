@@ -3,13 +3,21 @@
         <title>CS186 - Category - HHZZ`s space</title>
         <link>http://example.org/categories/cs186/</link>
         <description>CS186 - Category - HHZZ`s space</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 22 Jul 2024 14:39:02 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/cs186/" rel="self" type="application/rss+xml" /><item>
-    <title>CS186-L1: Introduction</title>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 22 Jul 2024 21:33:38 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/cs186/" rel="self" type="application/rss+xml" /><item>
+    <title>CS186-L2: </title>
+    <link>http://example.org/databasel2/</link>
+    <pubDate>Mon, 22 Jul 2024 21:33:38 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/databasel2/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>CS186-L1: Introduction &#43; SQL I</title>
     <link>http://example.org/databasel1/</link>
     <pubDate>Mon, 22 Jul 2024 14:39:02 &#43;0800</pubDate>
     <author>HHZZ</author>
     <guid>http://example.org/databasel1/</guid>
-    <description><![CDATA[1	8/23	Introduction	(projects due 1 day after date here) 2	8/28	SQL I	5	SQL	2	8/30	SQL II	5	3	9/4	Disk, Buffers, Files I	9.1, 9.3, 9.4	3	9/6	Disks, Buffers, Files II	9.5 - 9.7	SQL 4	9/11	B+-Trees	10	B+-Tree	4	9/13	Indexes and B+-tree refinements	9-10	5	9/18	Buffer Management	9.4	5	9/20	free (no lecture)	N/A	6	9/25	Sorting and Hashing	9.1, 13.1-13.3, 13.]]></description>
+    <description><![CDATA[大纲进程： sheet]]></description>
 </item>
 </channel>
 </rss>

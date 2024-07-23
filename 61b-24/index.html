@@ -4,10 +4,11 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>61B 24 - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/61b-24/">
+        <title>61B-24: Priority Queues and Heaps - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/61b-24/">
   <meta property="og:site_name" content="HHZZ`s space">
-  <meta property="og:title" content="61B 24">
-  <meta property="og:description" content="This is my cool site">
+  <meta property="og:title" content="61B-24: Priority Queues and Heaps">
+  <meta property="og:description" content="interface
+1 2 3 4 5 6 7 8 9 10 11 12 /** (Min) Priority Queue: Allowing tracking and removal of the * smallest item in a priority queue. */ public interface MinPQ&amp;lt;Item&amp;gt; { /** Adds the item to the priority queue. */ public void add(Item x); /** Returns the smallest item in the priority queue. */ public Item getSmallest(); /** Removes the smallest item from the priority queue. */ public Item removeSmallest(); /** Returns the size of the priority queue.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
@@ -15,8 +16,9 @@
     <meta property="article:modified_time" content="2024-07-13T14:18:53+08:00">
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="61B 24">
-<meta name="twitter:description" content="">
+<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="61B-24: Priority Queues and Heaps">
+<meta name="twitter:description" content="interface
+1 2 3 4 5 6 7 8 9 10 11 12 /** (Min) Priority Queue: Allowing tracking and removal of the * smallest item in a priority queue. */ public interface MinPQ&lt;Item&gt; { /** Adds the item to the priority queue. */ public void add(Item x); /** Returns the smallest item in the priority queue. */ public Item getSmallest(); /** Removes the smallest item from the priority queue. */ public Item removeSmallest(); /** Returns the size of the priority queue.">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -26,12 +28,12 @@
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "61B 24",
+        "headline": "61B-24: Priority Queues and Heaps",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/61b-24\/"
-        },"genre": "posts","wordcount":  0 ,
+        },"genre": "posts","wordcount":  259 ,
         "url": "http:\/\/example.org\/61b-24\/","datePublished": "2024-07-13T14:18:53+08:00","dateModified": "2024-07-13T14:18:53+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -103,17 +105,226 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">61B 24</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">61B-24: Priority Queues and Heaps</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-13">2024-07-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;0 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;0 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-13">2024-07-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;259 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"></div><div class="post-footer" id="post-footer">
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#bst-way">bst way</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#how-do-we-represent-a-tree-in-java">How do we Represent a Tree in Java?</a>
+      <ul>
+        <li><a href="#1a">1a</a></li>
+        <li><a href="#1b">1b</a></li>
+        <li><a href="#1c">1c</a></li>
+        <li><a href="#2--store-keys-in-an-array-store-parentids-in-an-array">2  Store keys in an array. Store parentIDs in an array.</a></li>
+        <li><a href="#3-store-keys-in-an-array-dont-store-structure-anywhere">3 Store keys in an array. Don’t store structure anywhere.</a>
+          <ul>
+            <li><a href="#3b">3b</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#search-data-structures-the-particularly-abstract-ones">Search Data Structures (The particularly abstract ones)</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>interface</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/** (Min) Priority Queue: Allowing tracking and removal of the
+</span></span></span><span class="line"><span class="cl"><span class="cm">  * smallest item in a priority queue. */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">MinPQ</span><span class="o">&lt;</span><span class="n">Item</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="cm">/** Adds the item to the priority queue. */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">Item</span><span class="w"> </span><span class="n">x</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="cm">/** Returns the smallest item in the priority queue. */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="kd">public</span><span class="w"> </span><span class="n">Item</span><span class="w"> </span><span class="nf">getSmallest</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="cm">/** Removes the smallest item from the priority queue. */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="kd">public</span><span class="w"> </span><span class="n">Item</span><span class="w"> </span><span class="nf">removeSmallest</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="cm">/** Returns the size of the priority queue. */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">size</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>全记录下来然后排序？naive way!</p>
+<p>better way
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-24/image.png"
+        data-srcset="/61b-24/image.png, /61b-24/image.png 1.5x, /61b-24/image.png 2x"
+        data-sizes="auto"
+        alt="/61b-24/image.png"
+        title="alt text" width="1065" height="586" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-24/image-1.png"
+        data-srcset="/61b-24/image-1.png, /61b-24/image-1.png 1.5x, /61b-24/image-1.png 2x"
+        data-sizes="auto"
+        alt="/61b-24/image-1.png"
+        title="alt text" width="1071" height="593" /></p>
+<h1 id="heaps">heaps</h1>
+<h2 id="bst-way">bst way</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-24/image-2.png"
+        data-srcset="/61b-24/image-2.png, /61b-24/image-2.png 1.5x, /61b-24/image-2.png 2x"
+        data-sizes="auto"
+        alt="/61b-24/image-2.png"
+        title="alt text" width="1111" height="615" /></p>
+<p>see <a href="https://goo.gl/wBKdFQ" target="_blank" rel="noopener noreffer ">https://goo.gl/wBKdFQ</a></p>
+<p>Given a heap, how do we implement PQ operations?</p>
+<ul>
+<li>getSmallest() - return the item in the root node.</li>
+<li>add(x) - place the new employee in the last position, and promote as high as possible.</li>
+<li>removeSmallest() - assassinate the president (of the company), promote the rightmost person in the company to president. Then demote repeatedly, always taking the ‘better’ successor.</li>
+</ul>
+<h1 id="tree-representations">Tree Representations</h1>
+<h2 id="how-do-we-represent-a-tree-in-java">How do we Represent a Tree in Java?</h2>
+<h3 id="1a">1a</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-24/image-3.png"
+        data-srcset="/61b-24/image-3.png, /61b-24/image-3.png 1.5x, /61b-24/image-3.png 2x"
+        data-sizes="auto"
+        alt="/61b-24/image-3.png"
+        title="alt text" width="1097" height="542" /></p>
+<h3 id="1b">1b</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-24/image-4.png"
+        data-srcset="/61b-24/image-4.png, /61b-24/image-4.png 1.5x, /61b-24/image-4.png 2x"
+        data-sizes="auto"
+        alt="/61b-24/image-4.png"
+        title="alt text" width="1079" height="340" /></p>
+<h3 id="1c">1c</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-24/image-5.png"
+        data-srcset="/61b-24/image-5.png, /61b-24/image-5.png 1.5x, /61b-24/image-5.png 2x"
+        data-sizes="auto"
+        alt="/61b-24/image-5.png"
+        title="alt text" width="1078" height="534" /></p>
+<h3 id="2--store-keys-in-an-array-store-parentids-in-an-array">2  Store keys in an array. Store parentIDs in an array.</h3>
+<p>Similar to what we did with disjointSets.
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-24/image-6.png"
+        data-srcset="/61b-24/image-6.png, /61b-24/image-6.png 1.5x, /61b-24/image-6.png 2x"
+        data-sizes="auto"
+        alt="/61b-24/image-6.png"
+        title="alt text" width="1121" height="619" /></p>
+<h3 id="3-store-keys-in-an-array-dont-store-structure-anywhere">3 Store keys in an array. Don’t store structure anywhere.</h3>
+<p>从左到右分层级编码进入数组
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-24/image-7.png"
+        data-srcset="/61b-24/image-7.png, /61b-24/image-7.png 1.5x, /61b-24/image-7.png 2x"
+        data-sizes="auto"
+        alt="/61b-24/image-7.png"
+        title="alt text" width="1098" height="493" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Tree3</span><span class="o">&lt;</span><span class="n">Key</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Key</span><span class="o">[]</span><span class="w"> </span><span class="n">keys</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">swim</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">keys</span><span class="o">[</span><span class="n">parent</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">]</span><span class="w"> </span><span class="err">≻</span><span class="w"> </span><span class="n">keys</span><span class="o">[</span><span class="n">k</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">swap</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">parent</span><span class="p">(</span><span class="n">k</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">swim</span><span class="p">(</span><span class="n">parent</span><span class="p">(</span><span class="n">k</span><span class="p">));</span><span class="w">              
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">parent</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">k</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">1</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">2</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="c1">// 观察法</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="3b">3b</h4>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-24/image-8.png"
+        data-srcset="/61b-24/image-8.png, /61b-24/image-8.png 1.5x, /61b-24/image-8.png 2x"
+        data-sizes="auto"
+        alt="/61b-24/image-8.png"
+        title="alt text" width="1107" height="606" /></p>
+<h1 id="对比">对比</h1>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-24/image-9.png"
+        data-srcset="/61b-24/image-9.png, /61b-24/image-9.png 1.5x, /61b-24/image-9.png 2x"
+        data-sizes="auto"
+        alt="/61b-24/image-9.png"
+        title="alt text" width="1074" height="606" /></p>
+<h1 id="data-structures-summary">Data Structures Summary</h1>
+<h2 id="search-data-structures-the-particularly-abstract-ones">Search Data Structures (The particularly abstract ones)</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-24/image-10.png"
+        data-srcset="/61b-24/image-10.png, /61b-24/image-10.png 1.5x, /61b-24/image-10.png 2x"
+        data-sizes="auto"
+        alt="/61b-24/image-10.png"
+        title="alt text" width="1016" height="327" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-24/image-11.png"
+        data-srcset="/61b-24/image-11.png, /61b-24/image-11.png 1.5x, /61b-24/image-11.png 2x"
+        data-sizes="auto"
+        alt="/61b-24/image-11.png"
+        title="alt text" width="1068" height="602" /></p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -124,7 +335,7 @@
                             <a class="link-to-markdown" href="/61b-24/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/61b-24/" data-title="61B 24"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/61b-24/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/61b-24/" data-title="61B 24"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/61b-24/" data-title="61B 24"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/61b-24/" data-title="61B 24"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/61b-24/" data-title="61B-24: Priority Queues and Heaps"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/61b-24/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/61b-24/" data-title="61B-24: Priority Queues and Heaps"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/61b-24/" data-title="61B-24: Priority Queues and Heaps"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/61b-24/" data-title="61B-24: Priority Queues and Heaps"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -136,7 +347,7 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/61b-25/" class="prev" rel="prev" title="61B 25"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>61B 25</a>
+    <div class="post-nav"><a href="/61b-25/" class="prev" rel="prev" title="61B-25: Advanced Trees, incl. Geometric"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>61B-25: Advanced Trees, incl. Geometric</a>
             <a href="/61b-27/" class="next" rel="next" title="61B 27">61B 27<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>

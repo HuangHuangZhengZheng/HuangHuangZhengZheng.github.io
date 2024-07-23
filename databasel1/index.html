@@ -4,10 +4,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>CS186-L1: Introduction - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/databasel1/">
+        <title>CS186-L1: Introduction &#43; SQL I - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/databasel1/">
   <meta property="og:site_name" content="HHZZ`s space">
-  <meta property="og:title" content="CS186-L1: Introduction">
-  <meta property="og:description" content="1	8/23	Introduction	(projects due 1 day after date here) 2	8/28	SQL I	5	SQL	2	8/30	SQL II	5	3	9/4	Disk, Buffers, Files I	9.1, 9.3, 9.4	3	9/6	Disks, Buffers, Files II	9.5 - 9.7	SQL 4	9/11	B&#43;-Trees	10	B&#43;-Tree	4	9/13	Indexes and B&#43;-tree refinements	9-10	5	9/18	Buffer Management	9.4	5	9/20	free (no lecture)	N/A	6	9/25	Sorting and Hashing	9.1, 13.1-13.3, 13.">
+  <meta property="og:title" content="CS186-L1: Introduction &#43; SQL I">
+  <meta property="og:description" content="大纲进程： sheet">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
@@ -15,23 +15,23 @@
     <meta property="article:modified_time" content="2024-07-22T14:39:02+08:00">
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="CS186-L1: Introduction">
-<meta name="twitter:description" content="1	8/23	Introduction	(projects due 1 day after date here) 2	8/28	SQL I	5	SQL	2	8/30	SQL II	5	3	9/4	Disk, Buffers, Files I	9.1, 9.3, 9.4	3	9/6	Disks, Buffers, Files II	9.5 - 9.7	SQL 4	9/11	B&#43;-Trees	10	B&#43;-Tree	4	9/13	Indexes and B&#43;-tree refinements	9-10	5	9/18	Buffer Management	9.4	5	9/20	free (no lecture)	N/A	6	9/25	Sorting and Hashing	9.1, 13.1-13.3, 13.">
+<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="CS186-L1: Introduction &#43; SQL I">
+<meta name="twitter:description" content="大纲进程： sheet">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/databasel1/" /><link rel="prev" href="http://example.org/datal26/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/databasel1/" /><link rel="prev" href="http://example.org/datal26/" /><link rel="next" href="http://example.org/databasel2/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "CS186-L1: Introduction",
+        "headline": "CS186-L1: Introduction + SQL I",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/databasel1\/"
-        },"genre": "posts","wordcount":  201 ,
+        },"genre": "posts","wordcount":  2 ,
         "url": "http:\/\/example.org\/databasel1\/","datePublished": "2024-07-22T14:39:02+08:00","dateModified": "2024-07-22T14:39:02+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -103,9 +103,9 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">CS186-L1: Introduction</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">CS186-L1: Introduction + SQL I</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-22">2024-07-22</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;201 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-22">2024-07-22</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
@@ -113,36 +113,7 @@
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"><p>1	8/23	Introduction			(projects due 1 day after date here)
-2	8/28	SQL I	5	SQL	
-2	8/30	SQL II	5		
-3	9/4	Disk, Buffers, Files I	9.1, 9.3, 9.4		
-3	9/6	Disks, Buffers, Files II	9.5 - 9.7		SQL
-4	9/11	B+-Trees	10	B+-Tree	
-4	9/13	Indexes and B+-tree refinements	9-10		
-5	9/18	Buffer Management	9.4		
-5	9/20	free (no lecture)	N/A		
-6	9/25	Sorting and Hashing	9.1, 13.1-13.3, 13.4.2		B+-Tree
-6	9/27	Relational Algebra	4.1-4.2, 12		
-7	10/2	Midterm 1		Joins	
-7	10/4	Iterators &amp; Joins	12, 14		
-8	10/9	more time for previous lecture			
-8	10/11	Parallel Query Processing	22.1-22.4		
-9	10/16	Query Optimization: Plan Space	19	Query Opt	Joins
-9	10/18	Query Optimization: Costs and Search	19		
-10	10/23	Unstructured Data: Searching Text			
-10	10/25	DB Design: Entity-Relationship Models	15		
-11	10/30	DB Design: FDs and Normalization	15		QueryOpt
-11	11/1	Midterm 2			
-12	11/6	Transactions &amp; Concurrency I	16,17		
-12	11/8	Transactions &amp; Concurrency 2	16, 17	Transactions	
-13	11/13	Recovery	18		
-13	11/15	Web Infrastructure: Ranking, Crawling			
-14	11/20	Distributed Transactions			
-14	11/22	THANKSGIVING BREAK			
-15	11/27	Replication, Consistency, NoSQL	N/A		Transactions
-15	11/29	Big Data, Data Wrangling, Class Conclusion	N/A		
-RRR	12/4		N/A		
+            </div><div class="content" id="content"><p>大纲进程：
 <a href="https://docs.google.com/spreadsheets/d/1BWr5C8ZNC8Z6muMxHtxUX4Ut5p7AMvl_OLd9BbldEy0/edit?pli=1&amp;gid=0#gid=0" target="_blank" rel="noopener noreffer ">sheet</a></p>
 <p><img
         class="lazyload"
@@ -187,7 +158,7 @@ RRR	12/4		N/A
                             <a class="link-to-markdown" href="/databasel1/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/databasel1/" data-title="CS186-L1: Introduction"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/databasel1/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/databasel1/" data-title="CS186-L1: Introduction"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/databasel1/" data-title="CS186-L1: Introduction"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/databasel1/" data-title="CS186-L1: Introduction"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/databasel1/" data-title="CS186-L1: Introduction &#43; SQL I"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/databasel1/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/databasel1/" data-title="CS186-L1: Introduction &#43; SQL I"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/databasel1/" data-title="CS186-L1: Introduction &#43; SQL I"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/databasel1/" data-title="CS186-L1: Introduction &#43; SQL I"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -199,7 +170,8 @@ RRR	12/4		N/A
         </section>
     </div>
 
-    <div class="post-nav"><a href="/datal26/" class="prev" rel="prev" title="DATA100-L26: Parallel Data Analytics; Conclusion"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>DATA100-L26: Parallel Data Analytics; Conclusion</a></div>
+    <div class="post-nav"><a href="/datal26/" class="prev" rel="prev" title="DATA100-L26: Parallel Data Analytics; Conclusion"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>DATA100-L26: Parallel Data Analytics; Conclusion</a>
+            <a href="/databasel2/" class="next" rel="next" title="CS186-L2: ">CS186-L2: <i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">

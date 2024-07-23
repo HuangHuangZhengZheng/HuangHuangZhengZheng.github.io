@@ -7,7 +7,8 @@
         <title>61B-23: Hashing - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/61b-23/">
   <meta property="og:site_name" content="HHZZ`s space">
   <meta property="og:title" content="61B-23: Hashing">
-  <meta property="og:description" content="This is my cool site">
+  <meta property="og:description" content="起因，无序array Using data as an Index One extreme approach: All data is really just bits.
+Use data itself as an array index. Store true and false in the array. Extremely wasteful of memory. To support checking presence of all positive integers, we need 2 billion booleans. Need some way to generalize beyond integers. 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 public class DataIndexedIntegerSet { boolean[] present; public DataIndexedIntegerSet() { present = new boolean[16]; } public insert(int i) { present[i] = true; } public contains(int i) { return present[i]; } } Binary Representations DataIndexedSet insert a cat 但是有弱点↓ collision handling &amp;amp; computing a hashCode！">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
@@ -16,7 +17,8 @@
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="61B-23: Hashing">
-<meta name="twitter:description" content="">
+<meta name="twitter:description" content="起因，无序array Using data as an Index One extreme approach: All data is really just bits.
+Use data itself as an array index. Store true and false in the array. Extremely wasteful of memory. To support checking presence of all positive integers, we need 2 billion booleans. Need some way to generalize beyond integers. 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 public class DataIndexedIntegerSet { boolean[] present; public DataIndexedIntegerSet() { present = new boolean[16]; } public insert(int i) { present[i] = true; } public contains(int i) { return present[i]; } } Binary Representations DataIndexedSet insert a cat 但是有弱点↓ collision handling &amp; computing a hashCode！">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -31,7 +33,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/61b-23\/"
-        },"genre": "posts","wordcount":  0 ,
+        },"genre": "posts","wordcount":  321 ,
         "url": "http:\/\/example.org\/61b-23\/","datePublished": "2024-07-13T14:18:52+08:00","dateModified": "2024-07-13T14:18:52+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -105,15 +107,230 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">61B-23: Hashing</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-13">2024-07-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;0 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;0 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-13">2024-07-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;321 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"></div><div class="post-footer" id="post-footer">
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#using-data-as-an-index">Using data as an Index</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#external-chaining">external chaining</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#str-example">str example</a></li>
+    <li><a href="#recursive-example">recursive example</a></li>
+    <li><a href="#default-hashcode">default hashCode()</a></li>
+    <li><a href="#hashsets-and-hashmaps">HashSets and HashMaps</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>起因，无序array
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-23/image.png"
+        data-srcset="/61b-23/image.png, /61b-23/image.png 1.5x, /61b-23/image.png 2x"
+        data-sizes="auto"
+        alt="/61b-23/image.png"
+        title="alt text" width="1089" height="614" /></p>
+<h2 id="using-data-as-an-index">Using data as an Index</h2>
+<p>One extreme approach: All data is really just bits.</p>
+<ul>
+<li>Use data itself as an array index.</li>
+<li>Store true and false in the array.</li>
+<li>Extremely wasteful of memory. To support checking presence of all positive integers, we need 2 billion booleans.</li>
+<li>Need some way to generalize beyond integers.</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">DataIndexedIntegerSet</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="kt">boolean</span><span class="o">[]</span><span class="w"> </span><span class="n">present</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="kd">public</span><span class="w"> </span><span class="nf">DataIndexedIntegerSet</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    	</span><span class="n">present</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">boolean</span><span class="o">[</span><span class="n">16</span><span class="o">]</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="kd">public</span><span class="w"> </span><span class="nf">insert</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    	</span><span class="n">present</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="kd">public</span><span class="w"> </span><span class="nf">contains</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    	</span><span class="k">return</span><span class="w"> </span><span class="n">present</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="binary-representations-dataindexedset">Binary Representations DataIndexedSet</h1>
+<p>insert a <code>cat</code>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-23/image-1.png"
+        data-srcset="/61b-23/image-1.png, /61b-23/image-1.png 1.5x, /61b-23/image-1.png 2x"
+        data-sizes="auto"
+        alt="/61b-23/image-1.png"
+        title="alt text" width="1082" height="581" />
+但是有弱点↓
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-23/image-2.png"
+        data-srcset="/61b-23/image-2.png, /61b-23/image-2.png 1.5x, /61b-23/image-2.png 2x"
+        data-sizes="auto"
+        alt="/61b-23/image-2.png"
+        title="alt text" width="1101" height="597" />
+<code>collision handling</code> &amp; <code>computing a hashCode</code>！</p>
+<h1 id="handling-collisions">Handling Collisions</h1>
+<p>抽屉原理告诉我们，不可以只靠扩展数组容量来处理之。</p>
+<p>Suppose N items have the same hashcode h:</p>
+<ul>
+<li>Instead of storing true in position h, store a list of these N items at position h.</li>
+</ul>
+<h2 id="external-chaining">external chaining</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-23/image-3.png"
+        data-srcset="/61b-23/image-3.png, /61b-23/image-3.png 1.5x, /61b-23/image-3.png 2x"
+        data-sizes="auto"
+        alt="/61b-23/image-3.png"
+        title="alt text" width="1098" height="590" />
+Depends on the number of items in the ‘bucket’.</p>
+<ul>
+<li>If N items are distributed across M buckets, average time grows with   N/M = L, also known as the load factor.
+<ul>
+<li>Average runtime is Θ(L).</li>
+</ul>
+</li>
+<li>Whenever L=N/M exceeds some number, increase M by resizing.</li>
+</ul>
+<p>负数索引
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-23/image-4.png"
+        data-srcset="/61b-23/image-4.png, /61b-23/image-4.png 1.5x, /61b-23/image-4.png 2x"
+        data-sizes="auto"
+        alt="/61b-23/image-4.png"
+        title="alt text" width="1080" height="594" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-23/image-5.png"
+        data-srcset="/61b-23/image-5.png, /61b-23/image-5.png 1.5x, /61b-23/image-5.png 2x"
+        data-sizes="auto"
+        alt="/61b-23/image-5.png"
+        title="alt text" width="1082" height="581" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-23/image-6.png"
+        data-srcset="/61b-23/image-6.png, /61b-23/image-6.png 1.5x, /61b-23/image-6.png 2x"
+        data-sizes="auto"
+        alt="/61b-23/image-6.png"
+        title="alt text" width="1081" height="615" /></p>
+<h1 id="hash-functions">Hash Functions</h1>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-23/image-7.png"
+        data-srcset="/61b-23/image-7.png, /61b-23/image-7.png 1.5x, /61b-23/image-7.png 2x"
+        data-sizes="auto"
+        alt="/61b-23/image-7.png"
+        title="alt text" width="1036" height="586" /></p>
+<h2 id="str-example">str example</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-23/image-8.png"
+        data-srcset="/61b-23/image-8.png, /61b-23/image-8.png 1.5x, /61b-23/image-8.png 2x"
+        data-sizes="auto"
+        alt="/61b-23/image-8.png"
+        title="alt text" width="1083" height="567" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">hashCode</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="n">hashCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">1</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Object</span><span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="k">this</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">hashCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hashCode</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">31</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">hashCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hashCode</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="na">hashCode</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   	</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">return</span><span class="w"> </span><span class="n">hashCode</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="recursive-example">recursive example</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-23/image-9.png"
+        data-srcset="/61b-23/image-9.png, /61b-23/image-9.png 1.5x, /61b-23/image-9.png 2x"
+        data-sizes="auto"
+        alt="/61b-23/image-9.png"
+        title="alt text" width="1053" height="605" /></p>
+<h2 id="default-hashcode">default hashCode()</h2>
+<p>All Objects have hashCode() function.</p>
+<ul>
+<li>Default: returns this (i.e. address of object).
+<ul>
+<li>Can have strange consequences: “hello”.hashCode() is not the same as (“h” + “ello”).hashCode()</li>
+</ul>
+</li>
+<li>Can override for your type.</li>
+<li>Hash tables (HashSet, HashMap, etc.) are so important that Java requires that all objects implement hashCode().</li>
+</ul>
+<h2 id="hashsets-and-hashmaps">HashSets and HashMaps</h2>
+<p>Java provides a hash table based implementation of sets and maps.</p>
+<ul>
+<li>Idea is very similar to what we’ve done in lecture.</li>
+<li>Warning: Never store <strong>mutable</strong> objects in a HashSet or HashMap!</li>
+<li>Warning #2: <em><strong>Never override <code>equals</code> without also overriding <code>hashCode</code>.</strong></em></li>
+</ul>
+<h1 id="extra">extra</h1>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-23/image-10.png"
+        data-srcset="/61b-23/image-10.png, /61b-23/image-10.png 1.5x, /61b-23/image-10.png 2x"
+        data-sizes="auto"
+        alt="/61b-23/image-10.png"
+        title="alt text" width="1083" height="488" /></p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">

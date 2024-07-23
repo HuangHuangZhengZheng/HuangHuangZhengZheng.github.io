@@ -100,6 +100,14 @@
         alt="https://tse2-mm.cn.bing.net/th/id/OIP-C.pm8D3-OqctVYYztXsTaJzQHaE8?w=207&amp;h=139&amp;c=7&amp;r=0&amp;o=5&amp;pid=1.7/rp/SAZ_WTPnkAhjkioRoye2Et5dW-E.svg"
         title="https://tse2-mm.cn.bing.net/th/id/OIP-C.pm8D3-OqctVYYztXsTaJzQHaE8?w=207&amp;h=139&amp;c=7&amp;r=0&amp;o=5&amp;pid=1.7/rp/SAZ_WTPnkAhjkioRoye2Et5dW-E.svg" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/ZhengTMHuang" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/datal15/">DATA100-L15: Cross Validation, Regularization</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">Cross Validation the holdout method 1 2 from sklearn.utils import shuffle training_set, dev_set = np.split(shuffle(data), [int(.8*len(data))]) 比较validation error和training error，选择最优的模型。
+K-fold cross validation K=1 is equivalent to holdout method.
+Test sets provide an unbiased estimate of the model&rsquo;s performance on new, unseen data. Regularization L2 regularization (Ridge) the small the ball, the simpler the model 拉格朗日思想，$\alpha$ 越大，约束越强，模型越简单。 岭回归
+scaling data for regularization 标准化数据，be on the same scale
+L1 regularization (Lasso) summary </div><div class="post-footer">
+        <a href="/datal15/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/datal16/">DATA100-L16: Probability I: Random Variables</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">随机变量及其分布 参考 概率论与数理统计 课程即可
 期望与方差 $$ \mathbb{E}[X] 和 Var(X) $$ 参考 概率论与数理统计 课程即可
@@ -132,13 +140,6 @@ geometric derivation lin alg review: orthogonality, span $$ span(\mathbb{A})是�
 $$ R^2∈[0,1] $$ 越大拟合效果越好
 OLS properties residuals the bias/intercept term existence of a unique solution </div><div class="post-footer">
         <a href="/datal11/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/datal10/">DATA100-L10: Constant Model, Loss, and Transformations</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-18">2024-07-18</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">constant model + MSE 微积分是求最优化的一种方法
-两种记法 constant model + MAE 绝对值求导新视角 $$ \sum_{\theta &lt;y_i} 1=\sum_{\theta &gt;y_i} 1 $$ 是计数！==&gt;中位数
-loss的敏感性问题 revisiting SLR evaluation 画图before modeling！！！
-transformations to fit linear model 经验之谈 introducing notation for multiple linear regression </div><div class="post-footer">
-        <a href="/datal10/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>

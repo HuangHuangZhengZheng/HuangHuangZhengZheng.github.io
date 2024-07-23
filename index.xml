@@ -3,15 +3,23 @@
         <title>HHZZ`s space</title>
         <link>http://example.org/</link>
         <description>This is my cool site</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 22 Jul 2024 14:39:02 &#43;0800</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 22 Jul 2024 21:33:38 &#43;0800</lastBuildDate>
             <atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
         <item>
-    <title>CS186-L1: Introduction</title>
+    <title>CS186-L2: </title>
+    <link>http://example.org/databasel2/</link>
+    <pubDate>Mon, 22 Jul 2024 21:33:38 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/databasel2/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>CS186-L1: Introduction &#43; SQL I</title>
     <link>http://example.org/databasel1/</link>
     <pubDate>Mon, 22 Jul 2024 14:39:02 &#43;0800</pubDate>
     <author>HHZZ</author>
     <guid>http://example.org/databasel1/</guid>
-    <description><![CDATA[1	8/23	Introduction	(projects due 1 day after date here) 2	8/28	SQL I	5	SQL	2	8/30	SQL II	5	3	9/4	Disk, Buffers, Files I	9.1, 9.3, 9.4	3	9/6	Disks, Buffers, Files II	9.5 - 9.7	SQL 4	9/11	B+-Trees	10	B+-Tree	4	9/13	Indexes and B+-tree refinements	9-10	5	9/18	Buffer Management	9.4	5	9/20	free (no lecture)	N/A	6	9/25	Sorting and Hashing	9.1, 13.1-13.3, 13.]]></description>
+    <description><![CDATA[大纲进程： sheet]]></description>
 </item>
 <item>
     <title>DATA100-L26: Parallel Data Analytics; Conclusion</title>
@@ -111,15 +119,6 @@ singular value decomposition (SVD) low rank approximation no bad! seem good!
 SVD theory 验证orthonormal set
 V@V.T = I 当相乘的时候本质上是旋转，不会拉伸
 Principal Components 零中心化再来看PCA Principal Components and Variance PCA example Why is useful? &#x1f914; ]]></description>
-</item>
-<item>
-    <title>DATA100-L17: Estimators, Bias, and Variance</title>
-    <link>http://example.org/datal17/</link>
-    <pubDate>Fri, 19 Jul 2024 11:32:10 &#43;0800</pubDate>
-    <author>HHZZ</author>
-    <guid>http://example.org/datal17/</guid>
-    <description><![CDATA[sample statistics (from last time) 参考 概率论与数理统计
-prediction vs. inference modeling: assumptions of randomness the bias-variance tradeoff $$ model\ risk = observation\ variance + (model\ bias)^2+model\ variance $$ $$ \mathbb{E}[(Y-\hat{Y}(x))^2] = \sigma^2+(\mathbb{E}[\hat{Y}(x)]-g(x))^2+Var(\hat{Y}(x)) $$ interpreting slopes slope == 0? 假设检验证明是否无关 [Extra]review of the Bootstrap [Extra]derivation of Bias-Variance decomposition https://docs.google.com/presentation/d/1gzgxGO_nbCDajYs7qIpjzjQfJqKadliBOat7Es10Ll8/edit#slide=id.g11df3da7bd7_0_467]]></description>
 </item>
 </channel>
 </rss>

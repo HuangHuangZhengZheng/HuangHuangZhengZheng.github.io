@@ -100,6 +100,14 @@
         alt="https://tse2-mm.cn.bing.net/th/id/OIP-C.pm8D3-OqctVYYztXsTaJzQHaE8?w=207&amp;h=139&amp;c=7&amp;r=0&amp;o=5&amp;pid=1.7/rp/SAZ_WTPnkAhjkioRoye2Et5dW-E.svg"
         title="https://tse2-mm.cn.bing.net/th/id/OIP-C.pm8D3-OqctVYYztXsTaJzQHaE8?w=207&amp;h=139&amp;c=7&amp;r=0&amp;o=5&amp;pid=1.7/rp/SAZ_WTPnkAhjkioRoye2Et5dW-E.svg" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/ZhengTMHuang" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/datal21/">DATA100-L21: Classification and Logistic Regression I</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">Regression vs. Classification 全攻略&#x1f60b; intuition: the coin flip 重新定义概率，只需要满足一些性质即可。参考 概率论与数理统计
+deriving the logistic regression model knn一瞥 这说明可以从某些变化转换为线性性质
+考虑 probability $p$ 考虑 odds $\frac{p}{1-p}$ 考虑 log odds 广义线性由此可见
+Graph of Averages the sigmoid function $$ \sigma(t)=\frac{1}{1+e^{-t}} $$
+the logistic regression model comparison to linear regression parameter estimation pitfalls of squared loss non-convex bounded, MSE ∈[0，1] conceptually questionable, not matching the &ldquo;Probability and 0/1 labels&rdquo; cross-entropy loss $$ -\frac{1}{N}\sum_{i=1}^N[y_i\log(p_i)+(1-y_i)\log(1-p_i)] $$ Loss function should penalize well!</div><div class="post-footer">
+        <a href="/datal21/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/datal22/">DATA100-L22: Logistic Regression II</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">logistic regression model continued sklearn demo go to see lec code!
 MLE: high-level, detailed (recorded) linear separability and regularization 线性可分性：如果存在一个 超平面（hyperplane） 可以将数据集分割成两部分，那么这就是线性可分的。
@@ -137,14 +145,6 @@ sql table use singular, CamelCase for SQL tables! basic sql queries 通配
 1 SELECT column1, column2 FROM table_name; AS rename columns
 1 2 3 SELECT cute AS cuteness, smart AS intelligence FROM table_name; WHERE filter rows</div><div class="post-footer">
         <a href="/datal18/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/datal15/">DATA100-L15: Cross Validation, Regularization</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">Cross Validation the holdout method 1 2 from sklearn.utils import shuffle training_set, dev_set = np.split(shuffle(data), [int(.8*len(data))]) 比较validation error和training error，选择最优的模型。
-K-fold cross validation K=1 is equivalent to holdout method.
-Test sets provide an unbiased estimate of the model&rsquo;s performance on new, unseen data. Regularization L2 regularization (Ridge) the small the ball, the simpler the model 拉格朗日思想，$\alpha$ 越大，约束越强，模型越简单。 岭回归
-scaling data for regularization 标准化数据，be on the same scale
-L1 regularization (Lasso) summary </div><div class="post-footer">
-        <a href="/datal15/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
