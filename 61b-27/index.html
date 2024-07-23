@@ -4,10 +4,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>61B 27 - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/61b-27/">
+        <title>61B-27:  - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/61b-27/">
   <meta property="og:site_name" content="HHZZ`s space">
-  <meta property="og:title" content="61B 27">
-  <meta property="og:description" content="This is my cool site">
+  <meta property="og:title" content="61B-27: ">
+  <meta property="og:description" content="intro types of graph terminology 图论问题 s-t Path. Is there a path between vertices s and t? Shortest s-t Path. What is the shortest path between vertices s and t? Cycle. Does the graph contain any cycles? Euler Tour. Is there a cycle that uses every edge exactly once? Hamilton Tour. Is there a cycle that uses every vertex exactly once? Connectivity. Is the graph connected, i.e. is there a path between all vertex pairs?">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
@@ -15,8 +15,8 @@
     <meta property="article:modified_time" content="2024-07-13T14:18:54+08:00">
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="61B 27">
-<meta name="twitter:description" content="">
+<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="61B-27: ">
+<meta name="twitter:description" content="intro types of graph terminology 图论问题 s-t Path. Is there a path between vertices s and t? Shortest s-t Path. What is the shortest path between vertices s and t? Cycle. Does the graph contain any cycles? Euler Tour. Is there a cycle that uses every edge exactly once? Hamilton Tour. Is there a cycle that uses every vertex exactly once? Connectivity. Is the graph connected, i.e. is there a path between all vertex pairs?">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -26,12 +26,12 @@
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "61B 27",
+        "headline": "61B-27: ",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/61b-27\/"
-        },"genre": "posts","wordcount":  0 ,
+        },"genre": "posts","wordcount":  325 ,
         "url": "http:\/\/example.org\/61b-27\/","datePublished": "2024-07-13T14:18:54+08:00","dateModified": "2024-07-13T14:18:54+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -103,17 +103,254 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">61B 27</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">61B-27: </h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-13">2024-07-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;0 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;0 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-13">2024-07-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;325 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"></div><div class="post-footer" id="post-footer">
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#types-of-graph">types of graph</a></li>
+    <li><a href="#terminology">terminology</a></li>
+    <li><a href="#图论问题">图论问题</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#api">API</a></li>
+    <li><a href="#1-adjacency-matrix">#1 Adjacency Matrix</a></li>
+    <li><a href="#2-edge-set">#2 edge set</a></li>
+    <li><a href="#3-adjacency-list">#3 Adjacency List</a></li>
+    <li><a href="#总结">总结</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#implementation">implementation</a></li>
+    <li><a href="#summary">summary</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="intro">intro</h1>
+<h2 id="types-of-graph">types of graph</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-27/image.png"
+        data-srcset="/61b-27/image.png, /61b-27/image.png 1.5x, /61b-27/image.png 2x"
+        data-sizes="auto"
+        alt="/61b-27/image.png"
+        title="alt text" width="1076" height="573" /></p>
+<h2 id="terminology">terminology</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-27/image-1.png"
+        data-srcset="/61b-27/image-1.png, /61b-27/image-1.png 1.5x, /61b-27/image-1.png 2x"
+        data-sizes="auto"
+        alt="/61b-27/image-1.png"
+        title="alt text" width="1061" height="614" /></p>
+<h2 id="图论问题">图论问题</h2>
+<ul>
+<li>s-t Path. Is there a path between vertices s and t?</li>
+<li>Shortest s-t Path. What is the shortest path between vertices s and t?</li>
+<li>Cycle. Does the graph contain any cycles?</li>
+<li>Euler Tour. Is there a cycle that uses every edge exactly once?</li>
+<li>Hamilton Tour. Is there a cycle that uses every vertex exactly once?</li>
+<li>Connectivity. Is the graph connected, i.e. is there a path between all vertex pairs?</li>
+<li>Biconnectivity. Is there a vertex whose removal disconnects the graph?</li>
+<li>Planarity. Can you draw the graph on a piece of paper with no crossing edges?</li>
+<li>Isomorphism. Are two graphs isomorphic (the same graph in disguise)?</li>
+</ul>
+<p>Graph problems: Unobvious which are easy, hard, or computationally intractable.</p>
+<h1 id="graph-representations">Graph Representations</h1>
+<ul>
+<li>Common Simplification: Integer Vertices</li>
+</ul>
+<h2 id="api">API</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Graph</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="nf">Graph</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">V</span><span class="p">):</span><span class="w">               </span><span class="c1">// Create empty graph with v vertices</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">addEdge</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">w</span><span class="p">):</span><span class="w"> </span><span class="c1">// add an edge v-w</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">Iterable</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">adj</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="p">):</span><span class="w">      </span><span class="c1">// vertices adjacent to v</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="nf">V</span><span class="p">():</span><span class="w">                           </span><span class="c1">// number of vertices</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="nf">E</span><span class="p">():</span><span class="w">                           </span><span class="c1">// number of edges</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">...</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-27/image-2.png"
+        data-srcset="/61b-27/image-2.png, /61b-27/image-2.png 1.5x, /61b-27/image-2.png 2x"
+        data-sizes="auto"
+        alt="/61b-27/image-2.png"
+        title="alt text" width="1080" height="252" /></p>
+<h2 id="1-adjacency-matrix">#1 Adjacency Matrix</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-27/image-3.png"
+        data-srcset="/61b-27/image-3.png, /61b-27/image-3.png 1.5x, /61b-27/image-3.png 2x"
+        data-sizes="auto"
+        alt="/61b-27/image-3.png"
+        title="alt text" width="1017" height="519" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-27/image-4.png"
+        data-srcset="/61b-27/image-4.png, /61b-27/image-4.png 1.5x, /61b-27/image-4.png 2x"
+        data-sizes="auto"
+        alt="/61b-27/image-4.png"
+        title="alt text" width="1046" height="522" /></p>
+<h2 id="2-edge-set">#2 edge set</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-27/image-5.png"
+        data-srcset="/61b-27/image-5.png, /61b-27/image-5.png 1.5x, /61b-27/image-5.png 2x"
+        data-sizes="auto"
+        alt="/61b-27/image-5.png"
+        title="alt text" width="991" height="213" /></p>
+<h2 id="3-adjacency-list">#3 Adjacency List</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-27/image-6.png"
+        data-srcset="/61b-27/image-6.png, /61b-27/image-6.png 1.5x, /61b-27/image-6.png 2x"
+        data-sizes="auto"
+        alt="/61b-27/image-6.png"
+        title="alt text" width="1043" height="311" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-27/image-7.png"
+        data-srcset="/61b-27/image-7.png, /61b-27/image-7.png 1.5x, /61b-27/image-7.png 2x"
+        data-sizes="auto"
+        alt="/61b-27/image-7.png"
+        title="alt text" width="1030" height="514" />
+$\Theta(V) \rightarrow \Theta(V^2) $ √
+$$
+\Theta(V+E)
+$$
+才是有意思的答案
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-27/image-8.png"
+        data-srcset="/61b-27/image-8.png, /61b-27/image-8.png 1.5x, /61b-27/image-8.png 2x"
+        data-sizes="auto"
+        alt="/61b-27/image-8.png"
+        title="alt text" width="1048" height="523" /></p>
+<h2 id="总结">总结</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-27/image-9.png"
+        data-srcset="/61b-27/image-9.png, /61b-27/image-9.png 1.5x, /61b-27/image-9.png 2x"
+        data-sizes="auto"
+        alt="/61b-27/image-9.png"
+        title="alt text" width="1089" height="580" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Graph</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">V</span><span class="p">;</span><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;[]</span><span class="w"> </span><span class="n">adj</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="kd">public</span><span class="w"> </span><span class="nf">Graph</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">V</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    	    </span><span class="k">this</span><span class="p">.</span><span class="na">V</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">V</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    	    </span><span class="n">adj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;[]</span><span class="p">)</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">[</span><span class="n">V</span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="c1">// cast!</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    	    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">0</span><span class="p">;</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">V</span><span class="p">;</span><span class="w"> </span><span class="n">v</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">             </span><span class="n">adj</span><span class="o">[</span><span class="n">v</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">         </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">}</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">addEdge</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">w</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">         </span><span class="n">adj</span><span class="o">[</span><span class="n">v</span><span class="o">]</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">w</span><span class="p">);</span><span class="w">   </span><span class="n">adj</span><span class="o">[</span><span class="n">w</span><span class="o">]</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">v</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="kd">public</span><span class="w"> </span><span class="n">Iterable</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">adj</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">adj</span><span class="o">[</span><span class="n">v</span><span class="o">]</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="depth-first-traversal">Depth First Traversal</h1>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-27/image-10.png"
+        data-srcset="/61b-27/image-10.png, /61b-27/image-10.png 1.5x, /61b-27/image-10.png 2x"
+        data-sizes="auto"
+        alt="/61b-27/image-10.png"
+        title="alt text" width="1048" height="501" />
+<a href="https://docs.google.com/presentation/d/1IJyC4cAogU2x3erW7E3hDz8jWDTLoaaot8u2ebHtpto/pub?start=false&amp;loop=false&amp;delayms=3000" target="_blank" rel="noopener noreffer ">https://docs.google.com/presentation/d/1IJyC4cAogU2x3erW7E3hDz8jWDTLoaaot8u2ebHtpto/pub?start=false&loop=false&delayms=3000</a></p>
+<h2 id="implementation">implementation</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Paths</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Paths</span><span class="p">(</span><span class="n">Graph</span><span class="w"> </span><span class="n">G</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">s</span><span class="p">):</span><span class="w">    </span><span class="n">Find</span><span class="w"> </span><span class="n">all</span><span class="w"> </span><span class="n">paths</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">G</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">hasPathTo</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="p">):</span><span class="w">        </span><span class="n">is</span><span class="w"> </span><span class="n">there</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">v</span><span class="o">?</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Iterable</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">pathTo</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="p">):</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="nf">v</span><span class="w"> </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="n">any</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-27/image-11.png"
+        data-srcset="/61b-27/image-11.png, /61b-27/image-11.png 1.5x, /61b-27/image-11.png 2x"
+        data-sizes="auto"
+        alt="/61b-27/image-11.png"
+        title="alt text" width="1102" height="598" /></p>
+<h2 id="summary">summary</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-27/image-12.png"
+        data-srcset="/61b-27/image-12.png, /61b-27/image-12.png 1.5x, /61b-27/image-12.png 2x"
+        data-sizes="auto"
+        alt="/61b-27/image-12.png"
+        title="alt text" width="1056" height="383" /></p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -124,7 +361,7 @@
                             <a class="link-to-markdown" href="/61b-27/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/61b-27/" data-title="61B 27"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/61b-27/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/61b-27/" data-title="61B 27"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/61b-27/" data-title="61B 27"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/61b-27/" data-title="61B 27"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/61b-27/" data-title="61B-27: "><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/61b-27/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/61b-27/" data-title="61B-27: "><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/61b-27/" data-title="61B-27: "><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/61b-27/" data-title="61B-27: "><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -137,7 +374,7 @@
     </div>
 
     <div class="post-nav"><a href="/61b-24/" class="prev" rel="prev" title="61B-24: Priority Queues and Heaps"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>61B-24: Priority Queues and Heaps</a>
-            <a href="/61b-26/" class="next" rel="next" title="61B 26">61B 26<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+            <a href="/61b-26/" class="next" rel="next" title="61B-26: Midterm 2 Review">61B-26: Midterm 2 Review<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">

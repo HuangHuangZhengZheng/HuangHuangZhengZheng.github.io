@@ -4,10 +4,11 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>61B 28 - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/61b-28/">
+        <title>61B-28:  Graph Traversals - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/61b-28/">
   <meta property="og:site_name" content="HHZZ`s space">
-  <meta property="og:title" content="61B 28">
-  <meta property="og:description" content="This is my cool site">
+  <meta property="og:title" content="61B-28:  Graph Traversals">
+  <meta property="og:description" content="Depth First Paths “Depth First Search” is a more general term for any graph search algorithm that traverses a graph as deep as possible before backtracking.
+The term is used for several slightly different algorithms. For example: DFS may refer to the version from the previous lecture that doesn’t use any marks (and thus can get caught in a loop). DFS may refer to the version where vertices are marked. DFS may refer to a version where vertices are marked and source edges recorded (as in Depth First Paths).">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
@@ -15,8 +16,9 @@
     <meta property="article:modified_time" content="2024-07-13T14:18:55+08:00">
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="61B 28">
-<meta name="twitter:description" content="">
+<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="61B-28:  Graph Traversals">
+<meta name="twitter:description" content="Depth First Paths “Depth First Search” is a more general term for any graph search algorithm that traverses a graph as deep as possible before backtracking.
+The term is used for several slightly different algorithms. For example: DFS may refer to the version from the previous lecture that doesn’t use any marks (and thus can get caught in a loop). DFS may refer to the version where vertices are marked. DFS may refer to a version where vertices are marked and source edges recorded (as in Depth First Paths).">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -26,12 +28,12 @@
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "61B 28",
+        "headline": "61B-28:  Graph Traversals",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/61b-28\/"
-        },"genre": "posts","wordcount":  0 ,
+        },"genre": "posts","wordcount":  276 ,
         "url": "http:\/\/example.org\/61b-28\/","datePublished": "2024-07-13T14:18:55+08:00","dateModified": "2024-07-13T14:18:55+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -103,17 +105,157 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">61B 28</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">61B-28:  Graph Traversals</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-13">2024-07-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;0 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;0 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-13">2024-07-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;276 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"></div><div class="post-footer" id="post-footer">
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#now-graph-problem-summary">now graph problem summary</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="depth-first-paths">Depth First Paths</h1>
+<p>“Depth First Search” is a more general term for any graph search algorithm that traverses a graph as deep as possible before backtracking.</p>
+<ul>
+<li>The term is used for several slightly different algorithms. For example:
+<ul>
+<li>DFS may refer to the version from the previous lecture that doesn’t use any marks (and thus can get caught in a loop).</li>
+<li>DFS may refer to the version where vertices are marked.</li>
+<li>DFS may refer to a version where vertices are marked and source edges recorded (as in Depth First Paths).</li>
+<li>DFS may refer to other algorithms like the “topological sort algorithm” well discuss later in lecture.
+And more!</li>
+</ul>
+</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-28/image.png"
+        data-srcset="/61b-28/image.png, /61b-28/image.png 1.5x, /61b-28/image.png 2x"
+        data-sizes="auto"
+        alt="/61b-28/image.png"
+        title="alt text" width="1047" height="572" />
+space 分析可能是要考虑runtime的内存占用，因为DFS算法需要递归调用，每一次递归调用都会消耗一定的内存。</p>
+<h1 id="graph-traversals">Graph Traversals</h1>
+<p>应该讲的是BFS
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-28/image-1.png"
+        data-srcset="/61b-28/image-1.png, /61b-28/image-1.png 1.5x, /61b-28/image-1.png 2x"
+        data-sizes="auto"
+        alt="/61b-28/image-1.png"
+        title="alt text" width="1081" height="500" /></p>
+<h1 id="topological-sorting">Topological Sorting</h1>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-28/image-2.png"
+        data-srcset="/61b-28/image-2.png, /61b-28/image-2.png 1.5x, /61b-28/image-2.png 2x"
+        data-sizes="auto"
+        alt="/61b-28/image-2.png"
+        title="alt text" width="1075" height="454" />
+DFS, then reverse the order of the vertices.
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-28/image-3.png"
+        data-srcset="/61b-28/image-3.png, /61b-28/image-3.png 1.5x, /61b-28/image-3.png 2x"
+        data-sizes="auto"
+        alt="/61b-28/image-3.png"
+        title="alt text" width="1086" height="508" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">DepthFirstOrder</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="o">[]</span><span class="w"> </span><span class="n">marked</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="kd">private</span><span class="w"> </span><span class="n">Stack</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">reversePostorder</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="kd">public</span><span class="w"> </span><span class="nf">DepthFirstOrder</span><span class="p">(</span><span class="n">Digraph</span><span class="w"> </span><span class="n">G</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   	 </span><span class="n">reversePostorder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Stack</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   	 </span><span class="n">marked</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">boolean</span><span class="o">[</span><span class="n">G</span><span class="p">.</span><span class="na">V</span><span class="p">()</span><span class="o">]</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   	</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">0</span><span class="p">;</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">G</span><span class="p">.</span><span class="na">V</span><span class="p">();</span><span class="w"> </span><span class="n">v</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       	</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">marked</span><span class="o">[</span><span class="n">v</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">dfs</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">);</span><span class="w"> </span><span class="p">}</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Perform DFS of all unmarked vertices.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Note: Our algorithm earlier started at vertices with indegree zero. It turns out this
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * algorithm works no matter where you start!
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * */</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">dfs</span><span class="p">(</span><span class="n">Digraph</span><span class="w"> </span><span class="n">G</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   	    </span><span class="n">marked</span><span class="o">[</span><span class="n">v</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   	    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">G</span><span class="p">.</span><span class="na">adj</span><span class="p">(</span><span class="n">v</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">           	</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">marked</span><span class="o">[</span><span class="n">w</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">dfs</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="p">);</span><span class="w"> </span><span class="p">}</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">         </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">         </span><span class="n">reversePostorder</span><span class="p">.</span><span class="na">push</span><span class="p">(</span><span class="n">v</span><span class="p">);</span><span class="w">  </span><span class="c1">// After each DFS is done, ‘visit’ vertex by putting on a stack.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> 	</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="kd">public</span><span class="w"> </span><span class="n">Iterable</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">reversePostorder</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">reversePostorder</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="now-graph-problem-summary">now graph problem summary</h2>
+<p>本质上还是 DFS
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-28/image-4.png"
+        data-srcset="/61b-28/image-4.png, /61b-28/image-4.png 1.5x, /61b-28/image-4.png 2x"
+        data-sizes="auto"
+        alt="/61b-28/image-4.png"
+        title="alt text" width="929" height="189" /></p>
+<h1 id="breadth-first-search">Breadth First Search</h1>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-28/image-5.png"
+        data-srcset="/61b-28/image-5.png, /61b-28/image-5.png 1.5x, /61b-28/image-5.png 2x"
+        data-sizes="auto"
+        alt="/61b-28/image-5.png"
+        title="alt text" width="1060" height="588" />
+&ldquo;fringe&rdquo;（边缘）通常指的是一个数据结构，用于存储等待处理的节点。<a href="https://docs.google.com/presentation/d/1EGco7EDfVtrqouiUCQr6iY7Lq5mZmvWrprWm5yIQZTQ/pub?start=false&amp;loop=false&amp;delayms=3000" target="_blank" rel="noopener noreffer ">see</a>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-28/image-6.png"
+        data-srcset="/61b-28/image-6.png, /61b-28/image-6.png 1.5x, /61b-28/image-6.png 2x"
+        data-sizes="auto"
+        alt="/61b-28/image-6.png"
+        title="alt text" width="1609" height="889" /></p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -124,7 +266,7 @@
                             <a class="link-to-markdown" href="/61b-28/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/61b-28/" data-title="61B 28"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/61b-28/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/61b-28/" data-title="61B 28"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/61b-28/" data-title="61B 28"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/61b-28/" data-title="61B 28"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/61b-28/" data-title="61B-28:  Graph Traversals"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/61b-28/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/61b-28/" data-title="61B-28:  Graph Traversals"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/61b-28/" data-title="61B-28:  Graph Traversals"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/61b-28/" data-title="61B-28:  Graph Traversals"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -136,7 +278,7 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/61b-26/" class="prev" rel="prev" title="61B 26"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>61B 26</a>
+    <div class="post-nav"><a href="/61b-26/" class="prev" rel="prev" title="61B-26: Midterm 2 Review"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>61B-26: Midterm 2 Review</a>
             <a href="/61b-30/" class="next" rel="next" title="61B 30">61B 30<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
