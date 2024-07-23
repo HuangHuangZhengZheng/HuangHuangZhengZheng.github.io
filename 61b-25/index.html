@@ -7,7 +7,10 @@
         <title>61B-25: Advanced Trees, incl. Geometric - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/61b-25/">
   <meta property="og:site_name" content="HHZZ`s space">
   <meta property="og:title" content="61B-25: Advanced Trees, incl. Geometric">
-  <meta property="og:description" content="Traversals ">
+  <meta property="og:description" content="Traversals Level Order
+Traverse top-to-bottom, left-to-right (like reading in English): We say that the nodes are ‘visited’ in the given order. Depth First Traversals
+Preorder, Inorder, Postorder Basic (rough) idea: Traverse “deep nodes” (e.g. A) before shallow ones (e.g. F). preorder 1 2 3 4 5 6 preOrder(BSTNode x) { if (x == null) return; print(x.key) preOrder(x.left) preOrder(x.right) } D B A C F E G
+inorder 1 2 3 4 5 6 inOrder(BSTNode x) { if (x == null) return; inOrder(x.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
@@ -16,7 +19,10 @@
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="61B-25: Advanced Trees, incl. Geometric">
-<meta name="twitter:description" content="Traversals ">
+<meta name="twitter:description" content="Traversals Level Order
+Traverse top-to-bottom, left-to-right (like reading in English): We say that the nodes are ‘visited’ in the given order. Depth First Traversals
+Preorder, Inorder, Postorder Basic (rough) idea: Traverse “deep nodes” (e.g. A) before shallow ones (e.g. F). preorder 1 2 3 4 5 6 preOrder(BSTNode x) { if (x == null) return; print(x.key) preOrder(x.left) preOrder(x.right) } D B A C F E G
+inorder 1 2 3 4 5 6 inOrder(BSTNode x) { if (x == null) return; inOrder(x.">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -31,7 +37,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/61b-25\/"
-        },"genre": "posts","wordcount":  1 ,
+        },"genre": "posts","wordcount":  405 ,
         "url": "http:\/\/example.org\/61b-25\/","datePublished": "2024-07-13T14:18:53+08:00","dateModified": "2024-07-13T14:18:53+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -105,15 +111,286 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">61B-25: Advanced Trees, incl. Geometric</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-13">2024-07-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;One word&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-13">2024-07-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;405 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#preorder">preorder</a></li>
+        <li><a href="#inorder">inorder</a></li>
+        <li><a href="#postorder">postorder</a></li>
+      </ul>
+    </li>
+    <li><a href="#trick-to-think-about">trick to think about</a></li>
+    <li><a href="#visitor-pattern">visitor pattern</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#iterative-deepening">Iterative Deepening</a></li>
+  </ul>
+</nav></div>
             </div><div class="content" id="content"><h1 id="traversals">Traversals</h1>
+<p>Level Order</p>
+<ul>
+<li>Traverse top-to-bottom, left-to-right (like reading in English):</li>
+<li>We say that the nodes are ‘visited’ in the given order.</li>
+</ul>
+<p>Depth First Traversals</p>
+<ul>
+<li>Preorder, Inorder, Postorder</li>
+<li>Basic (rough) idea: Traverse “deep nodes” (e.g. A) before shallow ones (e.g. F).</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-25/image.png"
+        data-srcset="/61b-25/image.png, /61b-25/image.png 1.5x, /61b-25/image.png 2x"
+        data-sizes="auto"
+        alt="/61b-25/image.png"
+        title="alt text" width="545" height="239" /></p>
+<h3 id="preorder">preorder</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">preOrder</span><span class="p">(</span><span class="n">BSTNode</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">print</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="na">key</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">preOrder</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="na">left</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">preOrder</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="na">right</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>D B A C F E G</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-25/image-2.png"
+        data-srcset="/61b-25/image-2.png, /61b-25/image-2.png 1.5x, /61b-25/image-2.png 2x"
+        data-sizes="auto"
+        alt="/61b-25/image-2.png"
+        title="alt text" width="1097" height="538" /></p>
+<h3 id="inorder">inorder</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">inOrder</span><span class="p">(</span><span class="n">BSTNode</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">inOrder</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="na">left</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">print</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="na">key</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">inOrder</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="na">right</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>A B C D E F G</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-25/image-3.png"
+        data-srcset="/61b-25/image-3.png, /61b-25/image-3.png 1.5x, /61b-25/image-3.png 2x"
+        data-sizes="auto"
+        alt="/61b-25/image-3.png"
+        title="alt text" width="1106" height="521" /></p>
+<h3 id="postorder">postorder</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">postOrder</span><span class="p">(</span><span class="n">BSTNode</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">postOrder</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="na">left</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">postOrder</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="na">right</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">print</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="na">key</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>A C B E G F D</p>
+<h2 id="trick-to-think-about">trick to think about</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-25/image-1.png"
+        data-srcset="/61b-25/image-1.png, /61b-25/image-1.png 1.5x, /61b-25/image-1.png 2x"
+        data-sizes="auto"
+        alt="/61b-25/image-1.png"
+        title="alt text" width="1086" height="623" /></p>
+<h2 id="visitor-pattern">visitor pattern</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">interface</span> <span class="nc">Action</span><span class="o">&lt;</span><span class="n">Label</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="kt">void</span><span class="w"> </span><span class="nf">visit</span><span class="p">(</span><span class="n">Tree</span><span class="o">&lt;</span><span class="n">Label</span><span class="o">&gt;</span><span class="w"> </span><span class="n">T</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">class</span> <span class="nc">FindPig</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Action</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="kt">boolean</span><span class="w"> </span><span class="n">found</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="kt">void</span><span class="w"> </span><span class="nf">visit</span><span class="p">(</span><span class="n">Tree</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">T</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="s">&#34;pig&#34;</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">T</span><span class="p">.</span><span class="na">label</span><span class="p">))</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">         </span><span class="p">{</span><span class="w"> </span><span class="n">found</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kt">void</span><span class="w"> </span><span class="nf">preorderTraverse</span><span class="p">(</span><span class="n">Tree</span><span class="o">&lt;</span><span class="n">Label</span><span class="o">&gt;</span><span class="w"> </span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">Action</span><span class="o">&lt;</span><span class="n">Label</span><span class="o">&gt;</span><span class="w"> </span><span class="n">whatToDo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="n">whatToDo</span><span class="p">.</span><span class="na">visit</span><span class="p">(</span><span class="n">T</span><span class="p">);</span><span class="w"> </span><span class="cm">/* before we hard coded a print */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="n">preorderTraverse</span><span class="p">(</span><span class="n">T</span><span class="p">.</span><span class="na">left</span><span class="p">,</span><span class="w"> </span><span class="n">whatToDo</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="n">preorderTraverse</span><span class="p">(</span><span class="n">T</span><span class="p">.</span><span class="na">right</span><span class="p">,</span><span class="w"> </span><span class="n">whatToDo</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">preorderTraverse</span><span class="p">(</span><span class="n">someTree</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FindPig</span><span class="p">());</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>What is the runtime of a preorder traversal in terms of N, the number                  of nodes? (in code below, assume the visit action takes constant time)</p>
+<ul>
+<li>Θ(N) : <em>Every node visited exactly once</em>. Constant work per visit.</li>
+</ul>
+<h1 id="level-order-traversal">Level Order Traversal</h1>
+<h2 id="iterative-deepening">Iterative Deepening</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">levelOrder</span><span class="p">(</span><span class="n">Tree</span><span class="w"> </span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">Action</span><span class="w"> </span><span class="n">toDo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="p">.</span><span class="na">height</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">visitLevel</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">toDo</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// Run visitLevel H times, one for each level.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">visitLevel</span><span class="p">(</span><span class="n">Tree</span><span class="w"> </span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">level</span><span class="p">,</span><span class="w"> </span><span class="n">Action</span><span class="w"> </span><span class="n">toDo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lev</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">0</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="n">toDo</span><span class="p">.</span><span class="na">visit</span><span class="p">(</span><span class="n">T</span><span class="p">.</span><span class="na">key</span><span class="p">);</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">visitLevel</span><span class="p">(</span><span class="n">T</span><span class="p">.</span><span class="na">left</span><span class="p">(),</span><span class="w"> </span><span class="n">lev</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">1</span><span class="p">,</span><span class="w"> </span><span class="n">toDo</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">visitLevel</span><span class="p">(</span><span class="n">T</span><span class="p">.</span><span class="na">right</span><span class="p">(),</span><span class="w"> </span><span class="n">lev</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">1</span><span class="p">,</span><span class="w"> </span><span class="n">toDo</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-25/image-4.png"
+        data-srcset="/61b-25/image-4.png, /61b-25/image-4.png 1.5x, /61b-25/image-4.png 2x"
+        data-sizes="auto"
+        alt="/61b-25/image-4.png"
+        title="alt text" width="1121" height="549" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-25/image-5.png"
+        data-srcset="/61b-25/image-5.png, /61b-25/image-5.png 1.5x, /61b-25/image-5.png 2x"
+        data-sizes="auto"
+        alt="/61b-25/image-5.png"
+        title="alt text" width="1040" height="579" />
+For algorithms whose runtime depends on height, difference between            bushy tree and spindly tree can be huge!</p>
+<h1 id="range-finding">Range Finding</h1>
+<p>问题描述
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-25/image-6.png"
+        data-srcset="/61b-25/image-6.png, /61b-25/image-6.png 1.5x, /61b-25/image-6.png 2x"
+        data-sizes="auto"
+        alt="/61b-25/image-6.png"
+        title="alt text" width="1068" height="541" /></p>
+<p>Easy approach, just do a traversal of the whole tree, and use visitor                         pattern to collect matching items. $\Theta(N)$</p>
+<p>better way: <strong>Pruning</strong>, Restricting our search to only nodes that might contain the answers we seek. $\Theta(log N+R)$ ，其中R是匹配的的个数。</p>
+<h1 id="spatial-trees">Spatial Trees</h1>
+<p>2D Range Finding, Building Trees of Two Dimensional Data
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-25/image-7.png"
+        data-srcset="/61b-25/image-7.png, /61b-25/image-7.png 1.5x, /61b-25/image-7.png 2x"
+        data-sizes="auto"
+        alt="/61b-25/image-7.png"
+        title="alt text" width="1094" height="600" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-25/image-8.png"
+        data-srcset="/61b-25/image-8.png, /61b-25/image-8.png 1.5x, /61b-25/image-8.png 2x"
+        data-sizes="auto"
+        alt="/61b-25/image-8.png"
+        title="alt text" width="1075" height="614" /></p>
+<h1 id="optional-tree-iterators">Optional: Tree Iterators</h1>
+<p><a href="https://docs.google.com/presentation/d/14pqGRZAN_Q60xqYGR3c8XTqHdQT8BVWGPJPC_G_INJQ/edit#slide=id.g75c09ac94_0284" target="_blank" rel="noopener noreffer ">https://docs.google.com/presentation/d/14pqGRZAN_Q60xqYGR3c8XTqHdQT8BVWGPJPC_G_INJQ/edit#slide=id.g75c09ac94_0284</a></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
