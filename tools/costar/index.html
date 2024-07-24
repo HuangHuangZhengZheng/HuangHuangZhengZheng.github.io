@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>COSTAR提示词框架笔记 - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/tools/costar/">
+  <meta property="og:site_name" content="HHZZ`s space">
+  <meta property="og:title" content="COSTAR提示词框架笔记">
+  <meta property="og:description" content="原作者帖子？
+COSTAR提示词框架是一个用于提升大语言模型（如GPT-3/4）生成结果质量的工具。这个框架的目标是通过提供详细和具体的提示，指导大语言模型生成更准确和有用的内容。以下是对CoSTAR提示词框架的详细介绍：
+COSTAR提示词框架是一种用于优化和提升大语言模型（如GPT-4）生成效果的方法。通过应用这个框架，可以更好地指导模型生成更加相关、准确和有用的内容。COSTAR 是一个首字母缩略词，每个字母代表了提示框架中的一个重要方面：
+Context（上下文）：
+提供详细的背景信息和具体情境，帮助模型理解问题的具体需求。 示例：提供更多的上下文信息，使生成的内容更加符合预期。 Objective（目标）：
+明确生成内容的目标和预期结果，帮助模型聚焦于特定任务。 示例：清晰地陈述希望模型生成何种类型的内容（如解释、总结、创建故事等）。 Style（风格）：
+设定生成内容的语气、风格和格式，确保输出符合预期的风格。 示例：指定正式、非正式、幽默、学术等不同的风格。 Tone（语气）：
+指定生成内容的情感基调，如友好、鼓励、警告等，以符合预期的交流效果。 示例：确定需要温和、严肃、轻松等不同的语气。 Audience（受众）：
+明确生成内容的目标读者或观众，帮助模型调适内容的复杂度和适用性。 示例：区分是面向专业人士还是普通读者，使内容更具针对性。 Relevance（相关性）：
+强调生成内容与主题的相关性，避免不必要的偏离和无关内容。 示例：确保模型生成的内容直接回答问题，避免偏题。 如何应用COSTAR提示词框架 上下文（Context）：
+提供足够的背景信息。例如，如果需要生成关于特定历史事件的内容，可以先提供一些相关的历史背景。 1 请提供关于1969年阿波罗11号登月任务的详细描述。阿波罗11号是美国宇航局的一次任务，目的是将人类首次送上月球。 目标（Objective）：
+明确生成内容的目标。例如，如果需要模型生成一篇介绍文章，可以明确说明这一点。 1 请写一篇关于可持续发展的介绍文章，重点介绍其重要性和主要策略。 风格（Style）：
+指定生成内容的风格。例如，如果需要生成学术风格的文章，可以这样提示。 1 请以学术风格写一篇关于人工智能在医疗领域应用的论文。 语气（Tone）：
+指定内容的语气。例如，如果希望内容具有激励性，可以明确说明。 1 请用鼓励的语气写一篇关于如何克服困难的文章。 受众（Audience）：
+明确内容的受众。例如，如果内容是面向学生的，可以这样提示。 1 请为高中生写一篇关于气候变化的介绍文章。 相关性（Relevance）：
+强调内容的相关性。例如，如果需要内容聚焦在某个主题，可以这样提示。 1 请写一篇关于电动车优势的文章，特别关注其对环境的积极影响。 ">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+  <meta property="article:section" content="tools">
+    <meta property="article:published_time" content="2024-07-24T20:48:55+08:00">
+    <meta property="article:modified_time" content="2024-07-24T20:48:55+08:00">
+    <meta property="og:image" content="http://example.org/logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="COSTAR提示词框架笔记">
+<meta name="twitter:description" content="原作者帖子？
+COSTAR提示词框架是一个用于提升大语言模型（如GPT-3/4）生成结果质量的工具。这个框架的目标是通过提供详细和具体的提示，指导大语言模型生成更准确和有用的内容。以下是对CoSTAR提示词框架的详细介绍：
+COSTAR提示词框架是一种用于优化和提升大语言模型（如GPT-4）生成效果的方法。通过应用这个框架，可以更好地指导模型生成更加相关、准确和有用的内容。COSTAR 是一个首字母缩略词，每个字母代表了提示框架中的一个重要方面：
+Context（上下文）：
+提供详细的背景信息和具体情境，帮助模型理解问题的具体需求。 示例：提供更多的上下文信息，使生成的内容更加符合预期。 Objective（目标）：
+明确生成内容的目标和预期结果，帮助模型聚焦于特定任务。 示例：清晰地陈述希望模型生成何种类型的内容（如解释、总结、创建故事等）。 Style（风格）：
+设定生成内容的语气、风格和格式，确保输出符合预期的风格。 示例：指定正式、非正式、幽默、学术等不同的风格。 Tone（语气）：
+指定生成内容的情感基调，如友好、鼓励、警告等，以符合预期的交流效果。 示例：确定需要温和、严肃、轻松等不同的语气。 Audience（受众）：
+明确生成内容的目标读者或观众，帮助模型调适内容的复杂度和适用性。 示例：区分是面向专业人士还是普通读者，使内容更具针对性。 Relevance（相关性）：
+强调生成内容与主题的相关性，避免不必要的偏离和无关内容。 示例：确保模型生成的内容直接回答问题，避免偏题。 如何应用COSTAR提示词框架 上下文（Context）：
+提供足够的背景信息。例如，如果需要生成关于特定历史事件的内容，可以先提供一些相关的历史背景。 1 请提供关于1969年阿波罗11号登月任务的详细描述。阿波罗11号是美国宇航局的一次任务，目的是将人类首次送上月球。 目标（Objective）：
+明确生成内容的目标。例如，如果需要模型生成一篇介绍文章，可以明确说明这一点。 1 请写一篇关于可持续发展的介绍文章，重点介绍其重要性和主要策略。 风格（Style）：
+指定生成内容的风格。例如，如果需要生成学术风格的文章，可以这样提示。 1 请以学术风格写一篇关于人工智能在医疗领域应用的论文。 语气（Tone）：
+指定内容的语气。例如，如果希望内容具有激励性，可以明确说明。 1 请用鼓励的语气写一篇关于如何克服困难的文章。 受众（Audience）：
+明确内容的受众。例如，如果内容是面向学生的，可以这样提示。 1 请为高中生写一篇关于气候变化的介绍文章。 相关性（Relevance）：
+强调内容的相关性。例如，如果需要内容聚焦在某个主题，可以这样提示。 1 请写一篇关于电动车优势的文章，特别关注其对环境的积极影响。 ">
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/tools/costar/" /><link rel="prev" href="http://example.org/tools/git/git/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "COSTAR提示词框架笔记",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/tools\/costar\/"
+        },"genre": "tools","wordcount":  47 ,
+        "url": "http:\/\/example.org\/tools\/costar\/","datePublished": "2024-07-24T20:48:55+08:00","dateModified": "2024-07-24T20:48:55+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "HHZZ"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HHZZ`s space">Code and BeyondCode😋</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tools/"> Tools </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/beyondcode/"> BeyondCode😋 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HHZZ`s space">Code and BeyondCode😋</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tools/" title="">Tools</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/beyondcode/" title="">BeyondCode😋</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="page single special"><h1 class="single-title animate__animated animate__pulse animate__faster">COSTAR提示词框架笔记</h1><div class="content" id="content"><p><a href="https://medium.com/towards-data-science/how-i-won-singapores-gpt-4-prompt-engineering-competition-34c195a93d41" target="_blank" rel="noopener noreffer ">原作者帖子？</a></p>
+<p><a href="https://www.jiqizhixin.com/articles/2024-05-14-4" target="_blank" rel="noopener noreffer ">COSTAR</a>提示词框架是一个用于提升大语言模型（如GPT-3/4）生成结果质量的工具。这个框架的目标是通过提供详细和具体的提示，指导大语言模型生成更准确和有用的内容。以下是对CoSTAR提示词框架的详细介绍：</p>
+<p>COSTAR提示词框架是一种用于优化和提升大语言模型（如GPT-4）生成效果的方法。通过应用这个框架，可以更好地指导模型生成更加相关、准确和有用的内容。COSTAR 是一个首字母缩略词，每个字母代表了提示框架中的一个重要方面：</p>
+<ol>
+<li>
+<p><strong>Context（上下文）</strong>：</p>
+<ul>
+<li>提供详细的背景信息和具体情境，帮助模型理解问题的具体需求。</li>
+<li>示例：提供更多的上下文信息，使生成的内容更加符合预期。</li>
+</ul>
+</li>
+<li>
+<p><strong>Objective（目标）</strong>：</p>
+<ul>
+<li>明确生成内容的目标和预期结果，帮助模型聚焦于特定任务。</li>
+<li>示例：清晰地陈述希望模型生成何种类型的内容（如解释、总结、创建故事等）。</li>
+</ul>
+</li>
+<li>
+<p><strong>Style（风格）</strong>：</p>
+<ul>
+<li>设定生成内容的语气、风格和格式，确保输出符合预期的风格。</li>
+<li>示例：指定正式、非正式、幽默、学术等不同的风格。</li>
+</ul>
+</li>
+<li>
+<p><strong>Tone（语气）</strong>：</p>
+<ul>
+<li>指定生成内容的情感基调，如友好、鼓励、警告等，以符合预期的交流效果。</li>
+<li>示例：确定需要温和、严肃、轻松等不同的语气。</li>
+</ul>
+</li>
+<li>
+<p><strong>Audience（受众）</strong>：</p>
+<ul>
+<li>明确生成内容的目标读者或观众，帮助模型调适内容的复杂度和适用性。</li>
+<li>示例：区分是面向专业人士还是普通读者，使内容更具针对性。</li>
+</ul>
+</li>
+<li>
+<p><strong>Relevance（相关性）</strong>：</p>
+<ul>
+<li>强调生成内容与主题的相关性，避免不必要的偏离和无关内容。</li>
+<li>示例：确保模型生成的内容直接回答问题，避免偏题。</li>
+</ul>
+</li>
+</ol>
+<h3 id="如何应用costar提示词框架">如何应用COSTAR提示词框架</h3>
+<ol>
+<li>
+<p><strong>上下文（Context）</strong>：</p>
+<ul>
+<li>提供足够的背景信息。例如，如果需要生成关于特定历史事件的内容，可以先提供一些相关的历史背景。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">请提供关于1969年阿波罗11号登月任务的详细描述。阿波罗11号是美国宇航局的一次任务，目的是将人类首次送上月球。
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>目标（Objective）</strong>：</p>
+<ul>
+<li>明确生成内容的目标。例如，如果需要模型生成一篇介绍文章，可以明确说明这一点。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">请写一篇关于可持续发展的介绍文章，重点介绍其重要性和主要策略。
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>风格（Style）</strong>：</p>
+<ul>
+<li>指定生成内容的风格。例如，如果需要生成学术风格的文章，可以这样提示。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">请以学术风格写一篇关于人工智能在医疗领域应用的论文。
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>语气（Tone）</strong>：</p>
+<ul>
+<li>指定内容的语气。例如，如果希望内容具有激励性，可以明确说明。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">请用鼓励的语气写一篇关于如何克服困难的文章。
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>受众（Audience）</strong>：</p>
+<ul>
+<li>明确内容的受众。例如，如果内容是面向学生的，可以这样提示。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">请为高中生写一篇关于气候变化的介绍文章。
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>相关性（Relevance）</strong>：</p>
+<ul>
+<li>强调内容的相关性。例如，如果需要内容聚焦在某个主题，可以这样提示。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">请写一篇关于电动车优势的文章，特别关注其对环境的积极影响。
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+</div></div></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.125.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">HHZZ</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

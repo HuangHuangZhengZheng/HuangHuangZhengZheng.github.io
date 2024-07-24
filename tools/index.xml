@@ -6,8 +6,15 @@
     <description>Recent content in Tools on HHZZ`s space</description>
     <generator>Hugo 0.125.1</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 29 Jun 2024 15:06:38 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 24 Jul 2024 20:48:55 +0800</lastBuildDate>
     <atom:link href="http://example.org/tools/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>COSTAR提示词框架笔记</title>
+      <link>http://example.org/tools/costar/</link>
+      <pubDate>Wed, 24 Jul 2024 20:48:55 +0800</pubDate>
+      <guid>http://example.org/tools/costar/</guid>
+      <description>原作者帖子？&#xA;COSTAR提示词框架是一个用于提升大语言模型（如GPT-3/4）生成结果质量的工具。这个框架的目标是通过提供详细和具体的提示，指导大语言模型生成更准确和有用的内容。以下是对CoSTAR提示词框架的详细介绍：&#xA;COSTAR提示词框架是一种用于优化和提升大语言模型（如GPT-4）生成效果的方法。通过应用这个框架，可以更好地指导模型生成更加相关、准确和有用的内容。COSTAR 是一个首字母缩略词，每个字母代表了提示框架中的一个重要方面：&#xA;Context（上下文）：&#xA;提供详细的背景信息和具体情境，帮助模型理解问题的具体需求。 示例：提供更多的上下文信息，使生成的内容更加符合预期。 Objective（目标）：&#xA;明确生成内容的目标和预期结果，帮助模型聚焦于特定任务。 示例：清晰地陈述希望模型生成何种类型的内容（如解释、总结、创建故事等）。 Style（风格）：&#xA;设定生成内容的语气、风格和格式，确保输出符合预期的风格。 示例：指定正式、非正式、幽默、学术等不同的风格。 Tone（语气）：&#xA;指定生成内容的情感基调，如友好、鼓励、警告等，以符合预期的交流效果。 示例：确定需要温和、严肃、轻松等不同的语气。 Audience（受众）：&#xA;明确生成内容的目标读者或观众，帮助模型调适内容的复杂度和适用性。 示例：区分是面向专业人士还是普通读者，使内容更具针对性。 Relevance（相关性）：&#xA;强调生成内容与主题的相关性，避免不必要的偏离和无关内容。 示例：确保模型生成的内容直接回答问题，避免偏题。 如何应用COSTAR提示词框架 上下文（Context）：&#xA;提供足够的背景信息。例如，如果需要生成关于特定历史事件的内容，可以先提供一些相关的历史背景。 1 请提供关于1969年阿波罗11号登月任务的详细描述。阿波罗11号是美国宇航局的一次任务，目的是将人类首次送上月球。 目标（Objective）：&#xA;明确生成内容的目标。例如，如果需要模型生成一篇介绍文章，可以明确说明这一点。 1 请写一篇关于可持续发展的介绍文章，重点介绍其重要性和主要策略。 风格（Style）：&#xA;指定生成内容的风格。例如，如果需要生成学术风格的文章，可以这样提示。 1 请以学术风格写一篇关于人工智能在医疗领域应用的论文。 语气（Tone）：&#xA;指定内容的语气。例如，如果希望内容具有激励性，可以明确说明。 1 请用鼓励的语气写一篇关于如何克服困难的文章。 受众（Audience）：&#xA;明确内容的受众。例如，如果内容是面向学生的，可以这样提示。 1 请为高中生写一篇关于气候变化的介绍文章。 相关性（Relevance）：&#xA;强调内容的相关性。例如，如果需要内容聚焦在某个主题，可以这样提示。 1 请写一篇关于电动车优势的文章，特别关注其对环境的积极影响。 </description>
+    </item>
     <item>
       <title>Git</title>
       <link>http://example.org/tools/git/git/</link>
