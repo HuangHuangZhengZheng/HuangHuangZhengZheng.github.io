@@ -33,3 +33,43 @@ $Θ(N^2)$ time if we use an array (or similar data structure).
 ![alt text](image.png)
 分析
 ![alt text](image-1.png)
+
+## in-place Heapsort
+[demo](https://docs.google.com/presentation/d/1z1lCiLSVLKoyUOIFspy1vxyEbe329ntLAVDQP3xjmnU/edit?usp=sharing)
+### performance analysis
+![alt text](image-2.png)
+
+![alt text](image-3.png)
+
+# Merge Sort
+
+[demo](https://docs.google.com/presentation/d/1h-gS13kKWSKd_5gt2FPXLYigFY4jf5rBkNFl3qZzRRw/edit)
+
+
+Time complexity, [analysis from previous lecture](https://docs.google.com/presentation/d/1-RTOdwBNFVIMTxMh3LSJuePMAz5lFGRudwI3myX99gg/edit#slide=id.g8d0b1deb4_0364): Θ(N log N runtime)
+Space complexity with aux array: Costs Θ(N) memory.
+
+Also possible to do in-place merge sort, but algorithm is very complicated, and runtime performance suffers by a significant constant factor.
+
+# Insertion Sort
+General strategy: 
+Starting with an empty output sequence.
+Add each item from input, inserting into output at right point.
+
+Naive approach, build entirely new output: [Demo](http://goo.gl/bVyVCS)
+
+
+## in-place Insertion Sort
+[Demo](https://docs.google.com/presentation/d/10b9aRqpGJu8pUk8OpfqUIEEm8ou-zmmC7b_BE5wgNg0/edit?usp=sharing)
+有点像冒泡？
+![alt text](image-5.png)
+看上去没什么好的表现？
+![alt text](image-6.png)
+
+
+
+# Shell’s Sort (Extra) (Not on Exam)
+
+# so far summary
+![alt text](image-4.png)
+
