@@ -4,10 +4,13 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>61B 30 - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/61b-30/">
+        <title>61B-30: Minimum Spanning Trees - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/61b-30/">
   <meta property="og:site_name" content="HHZZ`s space">
-  <meta property="og:title" content="61B 30">
-  <meta property="og:description" content="This is my cool site">
+  <meta property="og:title" content="61B-30: Minimum Spanning Trees">
+  <meta property="og:description" content="warm up MST, Cut Property, Generic MST Algorithm MST vs SPT A shortest paths tree depends on the start vertex:
+Because it tells you how to get from a source to EVERYTHING. There is no source for a MST.
+Nonetheless, the MST sometimes happens to be an SPT for a specific vertex.
+两者关系不大？ Cut Property 简单证明 cross bridge 一定在 MST 中。 Generic MST Algorithm Start with no edges in the MST.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
@@ -15,8 +18,11 @@
     <meta property="article:modified_time" content="2024-07-13T14:18:56+08:00">
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="61B 30">
-<meta name="twitter:description" content="">
+<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="61B-30: Minimum Spanning Trees">
+<meta name="twitter:description" content="warm up MST, Cut Property, Generic MST Algorithm MST vs SPT A shortest paths tree depends on the start vertex:
+Because it tells you how to get from a source to EVERYTHING. There is no source for a MST.
+Nonetheless, the MST sometimes happens to be an SPT for a specific vertex.
+两者关系不大？ Cut Property 简单证明 cross bridge 一定在 MST 中。 Generic MST Algorithm Start with no edges in the MST.">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -26,12 +32,12 @@
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "61B 30",
+        "headline": "61B-30: Minimum Spanning Trees",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/61b-30\/"
-        },"genre": "posts","wordcount":  0 ,
+        },"genre": "posts","wordcount":  213 ,
         "url": "http:\/\/example.org\/61b-30\/","datePublished": "2024-07-13T14:18:56+08:00","dateModified": "2024-07-13T14:18:56+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -103,17 +109,211 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">61B 30</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">61B-30: Minimum Spanning Trees</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-13">2024-07-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;0 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;0 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-13">2024-07-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;213 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"></div><div class="post-footer" id="post-footer">
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#mst-vs-spt">MST vs SPT</a></li>
+    <li><a href="#cut-property">Cut Property</a></li>
+    <li><a href="#generic-mst-algorithm">Generic MST Algorithm</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#prims-vs-dijkstras">Prim’s vs. Dijkstra’s</a></li>
+    <li><a href="#pseudocode">pseudocode</a></li>
+    <li><a href="#runtime">runtime</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#kruskals-algorithm-pseudocode">Kruskal’s Algorithm Pseudocode</a></li>
+    <li><a href="#runtime-1">runtime</a></li>
+    <li><a href="#summary">Summary</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="warm-up">warm up</h1>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-30/image.png"
+        data-srcset="/61b-30/image.png, /61b-30/image.png 1.5x, /61b-30/image.png 2x"
+        data-sizes="auto"
+        alt="/61b-30/image.png"
+        title="alt text" width="1098" height="597" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-30/image-1.png"
+        data-srcset="/61b-30/image-1.png, /61b-30/image-1.png 1.5x, /61b-30/image-1.png 2x"
+        data-sizes="auto"
+        alt="/61b-30/image-1.png"
+        title="alt text" width="1054" height="496" /></p>
+<h1 id="mst-cut-property-generic-mst-algorithm">MST, Cut Property, Generic MST Algorithm</h1>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-30/image-2.png"
+        data-srcset="/61b-30/image-2.png, /61b-30/image-2.png 1.5x, /61b-30/image-2.png 2x"
+        data-sizes="auto"
+        alt="/61b-30/image-2.png"
+        title="alt text" width="1085" height="590" /></p>
+<h2 id="mst-vs-spt">MST vs SPT</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-30/image-3.png"
+        data-srcset="/61b-30/image-3.png, /61b-30/image-3.png 1.5x, /61b-30/image-3.png 2x"
+        data-sizes="auto"
+        alt="/61b-30/image-3.png"
+        title="alt text" width="1071" height="508" />
+A shortest paths tree depends on the start vertex:</p>
+<ul>
+<li>Because it tells you how to get from a source to EVERYTHING.</li>
+</ul>
+<p>There is no source for a MST.</p>
+<p>Nonetheless, the MST sometimes happens to be an SPT for a specific vertex.</p>
+<p>两者关系不大？
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-30/image-4.png"
+        data-srcset="/61b-30/image-4.png, /61b-30/image-4.png 1.5x, /61b-30/image-4.png 2x"
+        data-sizes="auto"
+        alt="/61b-30/image-4.png"
+        title="alt text" width="1105" height="569" /></p>
+<h2 id="cut-property">Cut Property</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-30/image-5.png"
+        data-srcset="/61b-30/image-5.png, /61b-30/image-5.png 1.5x, /61b-30/image-5.png 2x"
+        data-sizes="auto"
+        alt="/61b-30/image-5.png"
+        title="alt text" width="1074" height="551" />
+简单证明 cross bridge 一定在 MST 中。
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-30/image-6.png"
+        data-srcset="/61b-30/image-6.png, /61b-30/image-6.png 1.5x, /61b-30/image-6.png 2x"
+        data-sizes="auto"
+        alt="/61b-30/image-6.png"
+        title="alt text" width="915" height="591" /></p>
+<h2 id="generic-mst-algorithm">Generic MST Algorithm</h2>
+<p>Start with no edges in the MST.</p>
+<ul>
+<li>Find a cut that has no crossing edges in the MST.</li>
+<li>Add smallest crossing edge to the MST.</li>
+<li>Repeat until V-1 edges.</li>
+</ul>
+<p>This should work, but we need some way of finding a cut with no crossing edges!</p>
+<ul>
+<li>Random isn’t a very good idea.</li>
+</ul>
+<h1 id="prims-algorithm">Prim’s Algorithm</h1>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-30/image-7.png"
+        data-srcset="/61b-30/image-7.png, /61b-30/image-7.png 1.5x, /61b-30/image-7.png 2x"
+        data-sizes="auto"
+        alt="/61b-30/image-7.png"
+        title="alt text" width="1103" height="521" />
+<a href="https://docs.google.com/presentation/d/1NFLbVeCuhhaZAM1z3s9zIYGGnhT4M4PWwAc-TLmCJjc/edit#slide=id.g9a60b2f52_0_0" target="_blank" rel="noopener noreffer ">https://docs.google.com/presentation/d/1NFLbVeCuhhaZAM1z3s9zIYGGnhT4M4PWwAc-TLmCJjc/edit#slide=id.g9a60b2f52_0_0</a></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-30/image-8.png"
+        data-srcset="/61b-30/image-8.png, /61b-30/image-8.png 1.5x, /61b-30/image-8.png 2x"
+        data-sizes="auto"
+        alt="/61b-30/image-8.png"
+        title="alt text" width="1091" height="606" />
+<a href="https://docs.google.com/presentation/d/1GPizbySYMsUhnXSXKvbqV4UhPCvrt750MiqPPgU-eCY/edit#slide=id.g9a60b2f52_0_0" target="_blank" rel="noopener noreffer ">https://docs.google.com/presentation/d/1GPizbySYMsUhnXSXKvbqV4UhPCvrt750MiqPPgU-eCY/edit#slide=id.g9a60b2f52_0_0</a></p>
+<h2 id="prims-vs-dijkstras">Prim’s vs. Dijkstra’s</h2>
+<p>Prim’s and Dijkstra’s algorithms are exactly the same, except Dijkstra’s considers “distance from the source”, and Prim’s considers “distance from the tree.”</p>
+<p>Visit order:</p>
+<ul>
+<li>Dijkstra’s algorithm visits vertices in order of distance from the source.</li>
+<li>Prim’s algorithm visits vertices in order of distance from the MST under construction.</li>
+</ul>
+<p>Relaxation:</p>
+<ul>
+<li>Relaxation in Dijkstra’s considers an edge better based on distance to source.</li>
+<li>Relaxation in Prim’s considers an edge better based on distance to tree.</li>
+</ul>
+<h2 id="pseudocode">pseudocode</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-30/image-9.png"
+        data-srcset="/61b-30/image-9.png, /61b-30/image-9.png 1.5x, /61b-30/image-9.png 2x"
+        data-sizes="auto"
+        alt="/61b-30/image-9.png"
+        title="alt text" width="1086" height="536" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-30/image-10.png"
+        data-srcset="/61b-30/image-10.png, /61b-30/image-10.png 1.5x, /61b-30/image-10.png 2x"
+        data-sizes="auto"
+        alt="/61b-30/image-10.png"
+        title="alt text" width="1098" height="542" /></p>
+<h2 id="runtime">runtime</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-30/image-11.png"
+        data-srcset="/61b-30/image-11.png, /61b-30/image-11.png 1.5x, /61b-30/image-11.png 2x"
+        data-sizes="auto"
+        alt="/61b-30/image-11.png"
+        title="alt text" width="954" height="603" /></p>
+<h1 id="kruskals-algorithm">Kruskal’s Algorithm</h1>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-30/image-12.png"
+        data-srcset="/61b-30/image-12.png, /61b-30/image-12.png 1.5x, /61b-30/image-12.png 2x"
+        data-sizes="auto"
+        alt="/61b-30/image-12.png"
+        title="alt text" width="1090" height="612" /></p>
+<p><a href="https://docs.google.com/presentation/d/1RhRSYs9Jbc335P24p7vR-6PLXZUl-1EmeDtqieL9ad8/edit?usp=sharing" target="_blank" rel="noopener noreffer ">conceptual</a>
+<a href="https://docs.google.com/presentation/d/1KpNiR7aLIEG9sm7HgX29nvf3yLD8_vdQEPa0ktQfuYc/edit?usp=sharing" target="_blank" rel="noopener noreffer ">real</a></p>
+<h2 id="kruskals-algorithm-pseudocode">Kruskal’s Algorithm Pseudocode</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-30/image-13.png"
+        data-srcset="/61b-30/image-13.png, /61b-30/image-13.png 1.5x, /61b-30/image-13.png 2x"
+        data-sizes="auto"
+        alt="/61b-30/image-13.png"
+        title="alt text" width="1086" height="532" /></p>
+<h2 id="runtime-1">runtime</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-30/image-14.png"
+        data-srcset="/61b-30/image-14.png, /61b-30/image-14.png 1.5x, /61b-30/image-14.png 2x"
+        data-sizes="auto"
+        alt="/61b-30/image-14.png"
+        title="alt text" width="1107" height="575" /></p>
+<h2 id="summary">Summary</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-30/image-15.png"
+        data-srcset="/61b-30/image-15.png, /61b-30/image-15.png 1.5x, /61b-30/image-15.png 2x"
+        data-sizes="auto"
+        alt="/61b-30/image-15.png"
+        title="alt text" width="1008" height="436" />
+<a href="https://docs.google.com/presentation/d/1I8GSEL0CgT09_JjSUF7MfoRMJkyzPjo8lKRd8XdOaRA/edit#slide=id.g772f8a8e2_0_117" target="_blank" rel="noopener noreffer ">https://docs.google.com/presentation/d/1I8GSEL0CgT09_JjSUF7MfoRMJkyzPjo8lKRd8XdOaRA/edit#slide=id.g772f8a8e2_0_117</a></p>
+<p>SOTA of compare-based MST algorithms &#x1f199;</p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -124,7 +324,7 @@
                             <a class="link-to-markdown" href="/61b-30/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/61b-30/" data-title="61B 30"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/61b-30/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/61b-30/" data-title="61B 30"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/61b-30/" data-title="61B 30"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/61b-30/" data-title="61B 30"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/61b-30/" data-title="61B-30: Minimum Spanning Trees"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/61b-30/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/61b-30/" data-title="61B-30: Minimum Spanning Trees"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/61b-30/" data-title="61B-30: Minimum Spanning Trees"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/61b-30/" data-title="61B-30: Minimum Spanning Trees"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>

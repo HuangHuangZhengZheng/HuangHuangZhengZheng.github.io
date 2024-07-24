@@ -1,4 +1,4 @@
-# 61B-27: 
+# 61B-27: Graphs
 
 
 # intro

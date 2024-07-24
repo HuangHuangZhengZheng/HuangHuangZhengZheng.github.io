@@ -8,7 +8,7 @@
   <meta property="og:site_name" content="HHZZ`s space">
   <meta property="og:title" content="61-29: Shortest Paths">
   <meta property="og:description" content="pros and cons Graph Problem so far Punchline:
-DFS and BFS both traverse entire graphs, just in a different order (like preorder, inorder, postorder, and level order for trees). Solving graph problems is often a question of identifying the right traversal. Many traversals may work. Example: DFS for topological sort. BFS for shortest paths. Example: DFS or BFS about equally good for checking existence of path. Dijkstra’s Algorithm ">
+DFS and BFS both traverse entire graphs, just in a different order (like preorder, inorder, postorder, and level order for trees). Solving graph problems is often a question of identifying the right traversal. Many traversals may work. Example: DFS for topological sort. BFS for shortest paths. Example: DFS or BFS about equally good for checking existence of path. Dijkstra’s Algorithm problem restatement: Find the shortest paths from source vertex s to some target vertex t.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
@@ -18,7 +18,7 @@ DFS and BFS both traverse entire graphs, just in a different order (like preorde
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="61-29: Shortest Paths">
 <meta name="twitter:description" content="pros and cons Graph Problem so far Punchline:
-DFS and BFS both traverse entire graphs, just in a different order (like preorder, inorder, postorder, and level order for trees). Solving graph problems is often a question of identifying the right traversal. Many traversals may work. Example: DFS for topological sort. BFS for shortest paths. Example: DFS or BFS about equally good for checking existence of path. Dijkstra’s Algorithm ">
+DFS and BFS both traverse entire graphs, just in a different order (like preorder, inorder, postorder, and level order for trees). Solving graph problems is often a question of identifying the right traversal. Many traversals may work. Example: DFS for topological sort. BFS for shortest paths. Example: DFS or BFS about equally good for checking existence of path. Dijkstra’s Algorithm problem restatement: Find the shortest paths from source vertex s to some target vertex t.">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -33,7 +33,7 @@ DFS and BFS both traverse entire graphs, just in a different order (like preorde
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/61b-29\/"
-        },"genre": "posts","wordcount":  68 ,
+        },"genre": "posts","wordcount":  289 ,
         "url": "http:\/\/example.org\/61b-29\/","datePublished": "2024-07-13T14:18:56+08:00","dateModified": "2024-07-13T14:18:56+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -107,8 +107,8 @@ DFS and BFS both traverse entire graphs, just in a different order (like preorde
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">61-29: Shortest Paths</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-13">2024-07-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;68 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-13">2024-07-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;289 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -122,6 +122,31 @@ DFS and BFS both traverse entire graphs, just in a different order (like preorde
       </ul>
     </li>
     <li><a href="#graph-problem-so-far">Graph Problem so far</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#sptshortest-path-tree-edge-count">SPT（Shortest Path Tree） Edge Count</a></li>
+    <li><a href="#伪代码">伪代码</a></li>
+    <li><a href="#runtime-analysis">runtime analysis</a></li>
+    <li><a href="#so-far-graph-problems">so far graph problems</a>
+      <ul>
+        <li><a href="#the-problem-with-dijkstras">The Problem with Dijkstra’s</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#可视化两者对比">可视化两者对比</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#summary">Summary</a></li>
+    <li><a href="#graph-problems-so-so-far">graph problems so so far</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h3 id="pros-and-cons">pros and cons</h3>
@@ -153,6 +178,175 @@ Punchline:</p>
 </li>
 </ul>
 <h1 id="dijkstras-algorithm">Dijkstra’s Algorithm</h1>
+<p>problem restatement: Find the shortest paths from <em>source</em> vertex s to some <em>target</em> vertex t.
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-29/image-2.png"
+        data-srcset="/61b-29/image-2.png, /61b-29/image-2.png 1.5x, /61b-29/image-2.png 2x"
+        data-sizes="auto"
+        alt="/61b-29/image-2.png"
+        title="alt text" width="1034" height="459" />
+another problem restatement: Find the shortest path from <em>source</em> vertex s to <em>all</em> other vertices.
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-29/image-3.png"
+        data-srcset="/61b-29/image-3.png, /61b-29/image-3.png 1.5x, /61b-29/image-3.png 2x"
+        data-sizes="auto"
+        alt="/61b-29/image-3.png"
+        title="alt text" width="1088" height="544" />
+深层解释
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-29/image-4.png"
+        data-srcset="/61b-29/image-4.png, /61b-29/image-4.png 1.5x, /61b-29/image-4.png 2x"
+        data-sizes="auto"
+        alt="/61b-29/image-4.png"
+        title="alt text" width="976" height="548" /></p>
+<h2 id="sptshortest-path-tree-edge-count">SPT（Shortest Path Tree） Edge Count</h2>
+<p>If G is a connected edge-weighted graph with V vertices and E edges, how many edges are in the Shortest Paths Tree of G? [assume every vertex is reachable]</p>
+<p>Always V-1:</p>
+<ul>
+<li>For each vertex, <em><strong>there is exactly one input edge (except source).</strong></em></li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-29/image-5.png"
+        data-srcset="/61b-29/image-5.png, /61b-29/image-5.png 1.5x, /61b-29/image-5.png 2x"
+        data-sizes="auto"
+        alt="/61b-29/image-5.png"
+        title="alt text" width="1089" height="614" />
+Insert all vertices into fringe PQ, storing vertices in order of distance from source.</p>
+<p>Repeat: Remove (closest) vertex v from PQ, and relax all edges pointing from v.</p>
+<p><a href="https://docs.google.com/presentation/d/1_bw2z1ggUkquPdhl7gwdVBoTaoJmaZdpkV6MoAgxlJc/pub?start=false&amp;loop=false&amp;delayms=3000" target="_blank" rel="noopener noreffer ">Dijkstra’s Algorithm Demo Link.</a></p>
+<p>贪心思想证明
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-29/image-6.png"
+        data-srcset="/61b-29/image-6.png, /61b-29/image-6.png 1.5x, /61b-29/image-6.png 2x"
+        data-sizes="auto"
+        alt="/61b-29/image-6.png"
+        title="alt text" width="1064" height="546" /></p>
+<h2 id="伪代码">伪代码</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-29/image-7.png"
+        data-srcset="/61b-29/image-7.png, /61b-29/image-7.png 1.5x, /61b-29/image-7.png 2x"
+        data-sizes="auto"
+        alt="/61b-29/image-7.png"
+        title="alt text" width="1074" height="603" />
+<a href="http://algs4.cs.princeton.edu/44sp/DijkstraSP.java.html" target="_blank" rel="noopener noreffer ">http://algs4.cs.princeton.edu/44sp/DijkstraSP.java.html</a></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-29/image-8.png"
+        data-srcset="/61b-29/image-8.png, /61b-29/image-8.png 1.5x, /61b-29/image-8.png 2x"
+        data-sizes="auto"
+        alt="/61b-29/image-8.png"
+        title="alt text" width="1101" height="601" /></p>
+<h2 id="runtime-analysis">runtime analysis</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-29/image-9.png"
+        data-srcset="/61b-29/image-9.png, /61b-29/image-9.png 1.5x, /61b-29/image-9.png 2x"
+        data-sizes="auto"
+        alt="/61b-29/image-9.png"
+        title="alt text" width="968" height="545" /></p>
+<h2 id="so-far-graph-problems">so far graph problems</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-29/image-10.png"
+        data-srcset="/61b-29/image-10.png, /61b-29/image-10.png 1.5x, /61b-29/image-10.png 2x"
+        data-sizes="auto"
+        alt="/61b-29/image-10.png"
+        title="alt text" width="975" height="352" /></p>
+<h3 id="the-problem-with-dijkstras">The Problem with Dijkstra’s</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-29/image-11.png"
+        data-srcset="/61b-29/image-11.png, /61b-29/image-11.png 1.5x, /61b-29/image-11.png 2x"
+        data-sizes="auto"
+        alt="/61b-29/image-11.png"
+        title="alt text" width="997" height="502" /></p>
+<h1 id="a-cs188-preview">A* (CS188 Preview)</h1>
+<p>We have only a single target in mind, so we need a different algorithm. How can we do better?
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-29/image-12.png"
+        data-srcset="/61b-29/image-12.png, /61b-29/image-12.png 1.5x, /61b-29/image-12.png 2x"
+        data-sizes="auto"
+        alt="/61b-29/image-12.png"
+        title="alt text" width="1100" height="611" /></p>
+<p><a href="https://docs.google.com/presentation/d/177bRUTdCa60fjExdr9eO04NHm0MRfPtCzvEup1iMccM/edit#slide=id.g771336078_0_180" target="_blank" rel="noopener noreffer ">A* Demo Link</a></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-29/image-13.png"
+        data-srcset="/61b-29/image-13.png, /61b-29/image-13.png 1.5x, /61b-29/image-13.png 2x"
+        data-sizes="auto"
+        alt="/61b-29/image-13.png"
+        title="alt text" width="1087" height="612" />
+How do we get our estimate?</p>
+<ul>
+<li>Estimate is an arbitrary heuristic h(v).</li>
+<li>heuristic: “using experience to learn and improve”</li>
+<li>Doesn’t have to be perfect!</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/** h(v) DOES NOT CHANGE as algorithm runs. */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="nf">h</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">computeLineDistance</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="na">latLong</span><span class="p">,</span><span class="w"> </span><span class="n">NYC</span><span class="p">.</span><span class="na">latLong</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-29/image-14.png"
+        data-srcset="/61b-29/image-14.png, /61b-29/image-14.png 1.5x, /61b-29/image-14.png 2x"
+        data-sizes="auto"
+        alt="/61b-29/image-14.png"
+        title="alt text" width="1083" height="601" /></p>
+<h4 id="可视化两者对比">可视化两者对比</h4>
+<p><a href="http://qiao.github.io/PathFinding.js/visual/" target="_blank" rel="noopener noreffer ">http://qiao.github.io/PathFinding.js/visual/</a></p>
+<h2 id="summary">Summary</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-29/image-15.png"
+        data-srcset="/61b-29/image-15.png, /61b-29/image-15.png 1.5x, /61b-29/image-15.png 2x"
+        data-sizes="auto"
+        alt="/61b-29/image-15.png"
+        title="alt text" width="1054" height="464" /></p>
+<h2 id="graph-problems-so-so-far">graph problems so so far</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/61b-29/image-16.png"
+        data-srcset="/61b-29/image-16.png, /61b-29/image-16.png 1.5x, /61b-29/image-16.png 2x"
+        data-sizes="auto"
+        alt="/61b-29/image-16.png"
+        title="alt text" width="1039" height="529" /></p>
+<h1 id="a-tree-search-vs-a-graph-search-admissibility-vs-consistency-extra-see-cs188-for-more">A* Tree Search vs. A* Graph Search Admissibility vs. Consistency (Extra: See CS188 for more)</h1>
+<p><a href="https://docs.google.com/presentation/d/1fFAgAna9PrxRK54Whg4TtzduWeaWCp-Pbr7g95wVZss/edit#slide=id.g3639550628_1_13" target="_blank" rel="noopener noreffer ">see</a></p>
+<h1 id="iterative-dfs-extra">Iterative DFS (Extra)</h1>
+<p><a href="https://docs.google.com/presentation/d/1fFAgAna9PrxRK54Whg4TtzduWeaWCp-Pbr7g95wVZss/edit#slide=id.g431b6f645db5a43c_114" target="_blank" rel="noopener noreffer ">see</a></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
@@ -176,8 +370,8 @@ Punchline:</p>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/61b-30/" class="prev" rel="prev" title="61B 30"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>61B 30</a>
-            <a href="/61b-31/" class="next" rel="next" title="61B 31">61B 31<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/61b-30/" class="prev" rel="prev" title="61B-30: Minimum Spanning Trees"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>61B-30: Minimum Spanning Trees</a>
+            <a href="/61b-31/" class="next" rel="next" title="61B-31: Dynamic Programming">61B-31: Dynamic Programming<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
