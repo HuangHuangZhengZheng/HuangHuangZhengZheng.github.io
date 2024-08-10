@@ -4,10 +4,12 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>CS186-L2:  - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/databasel2/">
+        <title>CS186-L2: SQLⅡ - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/databasel2/">
   <meta property="og:site_name" content="HHZZ`s space">
-  <meta property="og:title" content="CS186-L2: ">
-  <meta property="og:description" content="This is my cool site">
+  <meta property="og:title" content="CS186-L2: SQLⅡ">
+  <meta property="og:description" content="怎么读懂SQL语句？ FROM WHERE, to eliminate rows SELECT GROUP BY HAVING, to eliminate groups DISTINCT ORDER BY, LIMIT, OFFSET等等格式化输出 Join Queries cross product 生成所有的组合，然后过滤掉不符合条件的组合，但是低效
+考虑以下sql，更加简洁
+1 2 3 SELECT S.sid, sname, bid FROM Sailors AS S, Reserves AS R WHERE S.sid = R.sid self join and more aliases 1 2 3 4 SELECT x.sname, x.age, y.sname AS sname2, y.age AS age2 FROM Sailors AS x, Sailors AS y WHERE x.age &amp;gt; y.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
@@ -15,8 +17,10 @@
     <meta property="article:modified_time" content="2024-07-22T21:33:38+08:00">
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="CS186-L2: ">
-<meta name="twitter:description" content="">
+<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="CS186-L2: SQLⅡ">
+<meta name="twitter:description" content="怎么读懂SQL语句？ FROM WHERE, to eliminate rows SELECT GROUP BY HAVING, to eliminate groups DISTINCT ORDER BY, LIMIT, OFFSET等等格式化输出 Join Queries cross product 生成所有的组合，然后过滤掉不符合条件的组合，但是低效
+考虑以下sql，更加简洁
+1 2 3 SELECT S.sid, sname, bid FROM Sailors AS S, Reserves AS R WHERE S.sid = R.sid self join and more aliases 1 2 3 4 SELECT x.sname, x.age, y.sname AS sname2, y.age AS age2 FROM Sailors AS x, Sailors AS y WHERE x.age &gt; y.">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -26,12 +30,12 @@
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "CS186-L2: ",
+        "headline": "CS186-L2: SQLⅡ",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/databasel2\/"
-        },"genre": "posts","wordcount":  0 ,
+        },"genre": "posts","wordcount":  601 ,
         "url": "http:\/\/example.org\/databasel2\/","datePublished": "2024-07-22T21:33:38+08:00","dateModified": "2024-07-22T21:33:38+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -103,17 +107,495 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">CS186-L2: </h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">CS186-L2: SQLⅡ</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-22">2024-07-22</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;0 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;0 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-22">2024-07-22</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;601 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"></div><div class="post-footer" id="post-footer">
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#cross-product">cross product</a></li>
+    <li><a href="#self-join-and-more-aliases">self join and more aliases</a></li>
+    <li><a href="#innernatural-join">inner/natural join</a></li>
+    <li><a href="#left-outer-join">left outer join</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#only-set">only set</a></li>
+    <li><a href="#multiset">multiset</a></li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#理解步骤">理解步骤：</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#argmax-group-by">ARGMAX GROUP BY</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#null的比较">NULL的比较</a></li>
+    <li><a href="#null-in-boolean-expressions">NULL in boolean expressions</a></li>
+    <li><a href="#null-in-aggregation-functions">NULL in aggregation functions</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="怎么读懂sql语句">怎么读懂SQL语句？</h1>
+<ol>
+<li>FROM</li>
+<li>WHERE, to eliminate <em>rows</em></li>
+<li>SELECT</li>
+<li>GROUP BY</li>
+<li>HAVING, to eliminate <em>groups</em></li>
+<li>DISTINCT</li>
+<li>ORDER BY, LIMIT, OFFSET等等格式化输出</li>
+</ol>
+<h1 id="join-queries">Join Queries</h1>
+<h2 id="cross-product">cross product</h2>
+<p>生成所有的组合，然后过滤掉不符合条件的组合，但是低效</p>
+<p>考虑以下sql，更加简洁</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">S</span><span class="p">.</span><span class="n">sid</span><span class="p">,</span><span class="w"> </span><span class="n">sname</span><span class="p">,</span><span class="w"> </span><span class="n">bid</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">Sailors</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">S</span><span class="p">,</span><span class="w"> </span><span class="n">Reserves</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">R</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">S</span><span class="p">.</span><span class="n">sid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">R</span><span class="p">.</span><span class="n">sid</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="self-join-and-more-aliases">self join and more aliases</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">x</span><span class="p">.</span><span class="n">sname</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">.</span><span class="n">age</span><span class="p">,</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">y</span><span class="p">.</span><span class="n">sname</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">sname2</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">.</span><span class="n">age</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">age2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">Sailors</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">Sailors</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">y</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">x</span><span class="p">.</span><span class="n">age</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">y</span><span class="p">.</span><span class="n">age</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="innernatural-join">inner/natural join</h2>
+<p>where clause &#x1f199; &#x1f913;
+看下面</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">select</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">bid</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">from</span><span class="w"> </span><span class="n">sailors</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="k">inner</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">reserves</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">r</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">on</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">sid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">sid</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel2/image-4.png"
+        data-srcset="/databasel2/image-4.png, /databasel2/image-4.png 1.5x, /databasel2/image-4.png 2x"
+        data-sizes="auto"
+        alt="/databasel2/image-4.png"
+        title="alt text" width="833" height="482" /></p>
+<h2 id="left-outer-join">left outer join</h2>
+<ul>
+<li>returns all matched rows, and preserves all unmatched rows from the left table of the join clause</li>
+</ul>
+<p><code>NULL</code>出现</p>
+<p><code>FULL OUTER JOIN</code>等等同理</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">select</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">sid</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">bid</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">bname</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">from</span><span class="w"> </span><span class="n">reserves</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="k">full</span><span class="w"> </span><span class="k">outer</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">boats</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">b</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">on</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">bid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">bid</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="arithmetic-expressions">Arithmetic Expressions</h1>
+<p>注意SELECT和WHERE</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span><span class="mi">1</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">new_salary</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">Employees</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="n">salary</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10000</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>use sql as calculator &#x1f913;</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">log</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">three</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">exp</span><span class="p">(</span><span class="n">ln</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">two</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">cos</span><span class="p">(</span><span class="n">pi</span><span class="p">())</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">zero</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">ln</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ln</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">ln</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">sanity</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="string-functions">string functions</h1>
+<p>old way &#x1f928;</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">sname</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">Sailors</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">s</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">sname</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;a_%&#39;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>new way &#x1f60e; use regular expressions!</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">sname</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">Sailors</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">s</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">sname</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="s1">&#39;a.*&#39;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="bool-and-combining">bool and combining</h1>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">sid</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">boats</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">reserves</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">r</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">bid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">bid</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="p">.</span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;blue&#39;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;green&#39;</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel2/image.png"
+        data-srcset="/databasel2/image.png, /databasel2/image.png 1.5x, /databasel2/image.png 2x"
+        data-sizes="auto"
+        alt="/databasel2/image.png"
+        title="alt text" width="560" height="352" />
+以上两者等价</p>
+<p>看下面两个</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">sid</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">boats</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">reserves</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">r</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">bid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">bid</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="p">.</span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;blue&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;green&#39;</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>return nothing &#x1f92f;
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel2/image-1.png"
+        data-srcset="/databasel2/image-1.png, /databasel2/image-1.png 1.5x, /databasel2/image-1.png 2x"
+        data-sizes="auto"
+        alt="/databasel2/image-1.png"
+        title="alt text" width="535" height="352" />
+返回即预定了红船又预定了绿船的人 &#x1f913;</p>
+<h1 id="set-operations">Set Operations</h1>
+<h2 id="only-set">only set</h2>
+<p>union, intersect, except, 返回的都是<code>集合</code>，没有重复</p>
+<h2 id="multiset">multiset</h2>
+<ul>
+<li>UNION ALL: 返回所有元素，包括重复元素 <code>sum</code></li>
+<li>INTERSECT ALL: 返回交集，包括重复元素 <code>min</code></li>
+<li>EXCEPT ALL: 返回差集，包括重复元素 <code>minus</code></li>
+</ul>
+<h1 id="nested-queries">Nested Queries</h1>
+<p>subquery &#x1f600;</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">select</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">sname</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">from</span><span class="w"> </span><span class="n">sailors</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">s</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">where</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">sid</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">sid</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">                 </span><span class="k">from</span><span class="w"> </span><span class="n">reserves</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">r</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">                 </span><span class="k">where</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">bid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6767</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>NOT IN</code> 同理即可</p>
+<p>考虑<code>EXISTS</code>， 非空即可返回
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel2/image-2.png"
+        data-srcset="/databasel2/image-2.png, /databasel2/image-2.png 1.5x, /databasel2/image-2.png 2x"
+        data-sizes="auto"
+        alt="/databasel2/image-2.png"
+        title="alt text" width="598" height="379" />
+另一个例子</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">select</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">sname</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">from</span><span class="w"> </span><span class="n">sailors</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">s</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">where</span><span class="w"> </span><span class="k">exists</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">                 </span><span class="k">from</span><span class="w"> </span><span class="n">reserves</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">sid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">sid</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">bid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6767</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>具体来说，查询中包含了一个<code>EXISTS</code>条件，这个条件中的子查询是与主查询相关的。每当主查询处理Sailors表中的一行时，都会将该行中的sid值带入子查询中进行计算，以确定这行数据是否满足条件（即是否存在一条对应的Reserves记录）。这样，子查询的计算会随着Sailors表中行的不同而变化，因此需要为每一行重新计算。</p>
+<p>这意味着，如果Sailors表中有很多行，子查询也会被执行很多次，这可能会<em>影响查询的性能</em>。</p>
+<p>考虑<code>ANY</code>， <code>ALL</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">sname</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">sailors</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">s</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">age</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="k">ANY</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                  </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">age</span><span class="p">)</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">                  </span><span class="k">FROM</span><span class="w"> </span><span class="n">sailors</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="关系除法">关系除法</h1>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel2/image-3.png"
+        data-srcset="/databasel2/image-3.png, /databasel2/image-3.png 1.5x, /databasel2/image-3.png 2x"
+        data-sizes="auto"
+        alt="/databasel2/image-3.png"
+        title="alt text" width="1080" height="457" />
+这个PPT展示了一个关于“关系除法”（Relational Division）的SQL查询的例子，目的是寻找那些已经预订了所有船只的水手。通过这种查询，我们可以找到那些没有漏掉任何一艘船只预订的水手。</p>
+<h3 id="理解步骤">理解步骤：</h3>
+<ol>
+<li>
+<p><strong>关系除法的定义</strong>：</p>
+<ul>
+<li>关系除法是一种复杂的SQL查询操作，用于找到那些在一个集合中对所有元素都满足某个条件的记录。</li>
+<li>在这个例子中，我们想找到那些预订了所有船只的水手。</li>
+</ul>
+</li>
+<li>
+<p><strong>查询的逻辑</strong>：</p>
+<ul>
+<li><strong>外层查询</strong>：<code>SELECT S.sname FROM Sailors S</code>：选择所有水手的名字。</li>
+<li><strong>NOT EXISTS子查询</strong>：这个部分是关键：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">SELECT</span><span class="w"> </span><span class="n">B</span><span class="p">.</span><span class="n">bid</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">Boats</span><span class="w"> </span><span class="n">B</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="n">R</span><span class="p">.</span><span class="n">bid</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">FROM</span><span class="w"> </span><span class="n">Reserves</span><span class="w"> </span><span class="n">R</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">WHERE</span><span class="w"> </span><span class="n">R</span><span class="p">.</span><span class="n">bid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">B</span><span class="p">.</span><span class="n">bid</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">R</span><span class="p">.</span><span class="n">sid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">S</span><span class="p">.</span><span class="n">sid</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>逻辑解释：
+<ul>
+<li>首先，查询了所有的船只 (<code>Boats B</code>)。</li>
+<li>对于每艘船，只要存在一艘船 (<code>B.bid</code>)，当前水手 (<code>S.sid</code>) 没有预订 (<code>R.sid = S.sid AND R.bid = B.bid</code>)，那么这个水手就会被排除。</li>
+<li>如果对于某个水手，不存在这样一艘他没有预订的船（即<code>NOT EXISTS</code>的结果为真），那么这个水手就满足预订了所有船的条件。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>结论</strong>：</p>
+<ul>
+<li>最终的查询将会返回那些名字是水手并且预订了每一艘船的人。</li>
+</ul>
+</li>
+</ol>
+<h1 id="argmax">ARGMAX</h1>
+<ul>
+<li>find the sailor with the highest rating</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">from</span><span class="w"> </span><span class="n">sailors</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">s</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">where</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">rating</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="k">ALL</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                  </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">sailors</span><span class="p">.</span><span class="n">rating</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">                   </span><span class="k">FROM</span><span class="w"> </span><span class="n">sailors</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">from</span><span class="w"> </span><span class="n">sailors</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">s</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">where</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">rating</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="k">MAX</span><span class="p">(</span><span class="n">sailors</span><span class="p">.</span><span class="n">rating</span><span class="p">)</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">                   </span><span class="k">FROM</span><span class="w"> </span><span class="n">sailors</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>注意下面这个 &#x2615;</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">from</span><span class="w"> </span><span class="n">sailors</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">s</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">rating</span><span class="w"> </span><span class="k">desc</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">limit</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="argmax-group-by">ARGMAX GROUP BY</h2>
+<p>提示：借助视图筛选</p>
+<h1 id="creating-views">Creating Views</h1>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel2/image-5.png"
+        data-srcset="/databasel2/image-5.png, /databasel2/image-5.png 1.5x, /databasel2/image-5.png 2x"
+        data-sizes="auto"
+        alt="/databasel2/image-5.png"
+        title="alt text" width="805" height="498" />
+有时候不需要建立显式的views</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">select</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="k">c</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">from</span><span class="w"> </span><span class="n">boats</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">bid</span><span class="p">,</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">from</span><span class="w"> </span><span class="n">reserves</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">boats</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">b</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">where</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">bid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">bid</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;blue&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">bid</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">Reds</span><span class="p">(</span><span class="n">bid</span><span class="p">,</span><span class="w"> </span><span class="k">c</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">where</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">bid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Reds</span><span class="p">.</span><span class="n">bid</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>有时候CTE（common table expression）表示法更加简洁
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel2/image-6.png"
+        data-srcset="/databasel2/image-6.png, /databasel2/image-6.png 1.5x, /databasel2/image-6.png 2x"
+        data-sizes="auto"
+        alt="/databasel2/image-6.png"
+        title="alt text" width="868" height="382" />
+注意<code>WITH</code>从句后面能建立多个视图，记得加上逗号！</p>
+<h1 id="null">NULL</h1>
+<h2 id="null的比较">NULL的比较</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel2/image-7.png"
+        data-srcset="/databasel2/image-7.png, /databasel2/image-7.png 1.5x, /databasel2/image-7.png 2x"
+        data-sizes="auto"
+        alt="/databasel2/image-7.png"
+        title="全部是NULL" width="834" height="253" />
+不要使用<code>=</code>，而是使用<code>IS NULL</code>或<code>IS NOT NULL</code></p>
+<ul>
+<li><code>IS NULL</code> : 左边是NULL</li>
+<li><code>IS NOT NULL</code> : 左边不是NULL</li>
+</ul>
+<h2 id="null-in-boolean-expressions">NULL in boolean expressions</h2>
+<p>首先， 形如<code>WHERE NULL</code>是不合法的！</p>
+<p>三值逻辑表如下
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel2/image-8.png"
+        data-srcset="/databasel2/image-8.png, /databasel2/image-8.png 1.5x, /databasel2/image-8.png 2x"
+        data-sizes="auto"
+        alt="/databasel2/image-8.png"
+        title="alt text" width="1002" height="248" /></p>
+<h2 id="null-in-aggregation-functions">NULL in aggregation functions</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel2/image-9.png"
+        data-srcset="/databasel2/image-9.png, /databasel2/image-9.png 1.5x, /databasel2/image-9.png 2x"
+        data-sizes="auto"
+        alt="/databasel2/image-9.png"
+        title="alt text" width="828" height="441" /></p>
+<p>接下来就是implement! &#x1f600;</p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -124,7 +606,7 @@
                             <a class="link-to-markdown" href="/databasel2/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/databasel2/" data-title="CS186-L2: "><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/databasel2/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/databasel2/" data-title="CS186-L2: "><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/databasel2/" data-title="CS186-L2: "><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/databasel2/" data-title="CS186-L2: "><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/databasel2/" data-title="CS186-L2: SQLⅡ"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/databasel2/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/databasel2/" data-title="CS186-L2: SQLⅡ"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/databasel2/" data-title="CS186-L2: SQLⅡ"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/databasel2/" data-title="CS186-L2: SQLⅡ"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>

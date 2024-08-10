@@ -82,6 +82,6 @@ FROM myTable
 GROUP BY Age
 HAVING AVG(Salary) > 50000;
 ```
-
+不同的DISTINCT位置效果不同, 其中第二个压根没用
 ![alt text](image-12.png)
 

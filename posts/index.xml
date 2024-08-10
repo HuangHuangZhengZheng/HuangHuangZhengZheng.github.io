@@ -4,12 +4,14 @@
         <link>http://example.org/posts/</link>
         <description>All Posts | HHZZ`s space</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 24 Jul 2024 11:27:09 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
-    <title>CS186-L2: </title>
+    <title>CS186-L2: SQLⅡ</title>
     <link>http://example.org/databasel2/</link>
     <pubDate>Mon, 22 Jul 2024 21:33:38 &#43;0800</pubDate>
     <author>HHZZ</author>
     <guid>http://example.org/databasel2/</guid>
-    <description><![CDATA[]]></description>
+    <description><![CDATA[怎么读懂SQL语句？ FROM WHERE, to eliminate rows SELECT GROUP BY HAVING, to eliminate groups DISTINCT ORDER BY, LIMIT, OFFSET等等格式化输出 Join Queries cross product 生成所有的组合，然后过滤掉不符合条件的组合，但是低效
+考虑以下sql，更加简洁
+1 2 3 SELECT S.sid, sname, bid FROM Sailors AS S, Reserves AS R WHERE S.sid = R.sid self join and more aliases 1 2 3 4 SELECT x.sname, x.age, y.sname AS sname2, y.age AS age2 FROM Sailors AS x, Sailors AS y WHERE x.age &gt; y.]]></description>
 </item>
 <item>
     <title>CS186-L1: Introduction &#43; SQL I</title>
