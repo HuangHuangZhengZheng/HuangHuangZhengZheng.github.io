@@ -100,6 +100,16 @@
         alt="https://tse2-mm.cn.bing.net/th/id/OIP-C.pm8D3-OqctVYYztXsTaJzQHaE8?w=207&amp;h=139&amp;c=7&amp;r=0&amp;o=5&amp;pid=1.7/rp/SAZ_WTPnkAhjkioRoye2Et5dW-E.svg"
         title="https://tse2-mm.cn.bing.net/th/id/OIP-C.pm8D3-OqctVYYztXsTaJzQHaE8?w=207&amp;h=139&amp;c=7&amp;r=0&amp;o=5&amp;pid=1.7/rp/SAZ_WTPnkAhjkioRoye2Et5dW-E.svg" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/ZhengTMHuang" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/datal23/">DATA100-L23: Decision Trees</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">Multiclass Classification 多分类问题 但是没有softmax &#x1f622; Decision Trees (conceptually) Decision Tree Demo Creating Decision Trees in sklearn 可视化代码见lecture code
+Evaluating Tree Accuracy Overfit Decision Tree Example tree is too complex to generalize well to new data too tall and narrow
+有用的特征越多，树的结构可能比较简单&#x1f914;
+The Decision Tree Generation Algorithm Intuitively Evaluating Split Quality 分割怎么样“更明显”？
+Entropy 沿着树向下，信息熵越小？可能变大！ Generating Trees Using Entropy Weighted entropy can decrease!
+Traditional decision tree generation algorithm:
+All of the data starts in the root node.</div><div class="post-footer">
+        <a href="/datal23/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/datal21/">DATA100-L21: Classification and Logistic Regression I</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">Regression vs. Classification 全攻略&#x1f60b; intuition: the coin flip 重新定义概率，只需要满足一些性质即可。参考 概率论与数理统计
 deriving the logistic regression model knn一瞥 这说明可以从某些变化转换为线性性质
@@ -135,16 +145,6 @@ Principal Components 零中心化再来看PCA Principal Components and Variance 
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">sample statistics (from last time) 参考 概率论与数理统计
 prediction vs. inference modeling: assumptions of randomness the bias-variance tradeoff $$ model\ risk = observation\ variance + (model\ bias)^2+model\ variance $$ $$ \mathbb{E}[(Y-\hat{Y}(x))^2] = \sigma^2+(\mathbb{E}[\hat{Y}(x)]-g(x))^2+Var(\hat{Y}(x)) $$ interpreting slopes slope == 0? 假设检验证明是否无关 [Extra]review of the Bootstrap [Extra]derivation of Bias-Variance decomposition https://docs.google.com/presentation/d/1gzgxGO_nbCDajYs7qIpjzjQfJqKadliBOat7Es10Ll8/edit#slide=id.g11df3da7bd7_0_467</div><div class="post-footer">
         <a href="/datal17/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/datal18/">DATA100-L18: SQL I</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">why databases structured query language (SQL) &#x1f60b;
-DBMS: database management system sql example type
-INT for integer REAL for decimal TEXT for string BLOB for ARBITRARY data DATETIME for date and time different implementations of sql support different types
-sql table use singular, CamelCase for SQL tables! basic sql queries 通配
-1 SELECT * FROM table_name; 选定子集
-1 SELECT column1, column2 FROM table_name; AS rename columns
-1 2 3 SELECT cute AS cuteness, smart AS intelligence FROM table_name; WHERE filter rows</div><div class="post-footer">
-        <a href="/datal18/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>

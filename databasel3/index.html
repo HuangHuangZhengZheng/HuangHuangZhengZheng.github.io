@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>CS186-L3: Disk, Buffers, Files I - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/databasel3/">
+  <meta property="og:site_name" content="HHZZ`s space">
+  <meta property="og:title" content="CS186-L3: Disk, Buffers, Files I">
+  <meta property="og:description" content="big picture sql client -&amp;gt; DBMS -&amp;gt; database &amp;#x1f913;
+DBMS parsing &amp;amp; optimization 执行SQL语句时，DBMS需要解析SQL语句，并将其转换为执行计划。优化器会根据统计信息、查询模式、索引等因素，选择最优的执行计划。 relational operators 处理数据流 or 关系运算符？ files and index management buffer management disk space management 事实上纵向还有两个模块：concurrency control和recovery。 省流：从RAM &amp;amp; DISK获取数据非常慢， 相对于CPU
+Disk 注意sector, disk head， 其中后者似乎只能单次读写 access time flash SSD 注意：
+read很快，随着数据变大，可以预测
+write很慢，slower for random，写入放大 disk space management block level storage block: unit of transfer for disk read/write (64~128KB in 2018)
+page: a common synonym for block, in some contexts, it means in RAM">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+  <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-08-11T08:46:58+08:00">
+    <meta property="article:modified_time" content="2024-08-11T08:46:58+08:00">
+    <meta property="og:image" content="http://example.org/logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="CS186-L3: Disk, Buffers, Files I">
+<meta name="twitter:description" content="big picture sql client -&gt; DBMS -&gt; database &#x1f913;
+DBMS parsing &amp; optimization 执行SQL语句时，DBMS需要解析SQL语句，并将其转换为执行计划。优化器会根据统计信息、查询模式、索引等因素，选择最优的执行计划。 relational operators 处理数据流 or 关系运算符？ files and index management buffer management disk space management 事实上纵向还有两个模块：concurrency control和recovery。 省流：从RAM &amp; DISK获取数据非常慢， 相对于CPU
+Disk 注意sector, disk head， 其中后者似乎只能单次读写 access time flash SSD 注意：
+read很快，随着数据变大，可以预测
+write很慢，slower for random，写入放大 disk space management block level storage block: unit of transfer for disk read/write (64~128KB in 2018)
+page: a common synonym for block, in some contexts, it means in RAM">
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/databasel3/" /><link rel="prev" href="http://example.org/databasel2/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "CS186-L3: Disk, Buffers, Files I",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/databasel3\/"
+        },"genre": "posts","wordcount":  271 ,
+        "url": "http:\/\/example.org\/databasel3\/","datePublished": "2024-08-11T08:46:58+08:00","dateModified": "2024-08-11T08:46:58+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "HHZZ"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HHZZ`s space">Code and BeyondCode😋</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tools/"> Tools </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/beyondcode/"> BeyondCode😋 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HHZZ`s space">Code and BeyondCode😋</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tools/" title="">Tools</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/beyondcode/" title="">BeyondCode😋</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">CS186-L3: Disk, Buffers, Files I</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-11">2024-08-11</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;271 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#big-picture">big picture</a>
+      <ul>
+        <li><a href="#dbms">DBMS</a></li>
+        <li><a href="#disk">Disk</a></li>
+        <li><a href="#access-time">access time</a></li>
+      </ul>
+    </li>
+    <li><a href="#flash-ssd">flash SSD</a></li>
+    <li><a href="#disk-space-management">disk space management</a>
+      <ul>
+        <li><a href="#block-level-storage">block level storage</a></li>
+        <li><a href="#implementation">implementation</a></li>
+      </ul>
+    </li>
+    <li><a href="#files-and-representation">files and representation</a>
+      <ul>
+        <li><a href="#db-files">DB files</a></li>
+      </ul>
+    </li>
+    <li><a href="#layout-of-a-page">layout of a page</a>
+      <ul>
+        <li><a href="#fixed-length-packed-records">fixed-length packed records</a></li>
+        <li><a href="#fixed-length-unpacked-records">fixed-length unpacked records</a></li>
+        <li><a href="#variable-length-records">variable-length records</a></li>
+      </ul>
+    </li>
+    <li><a href="#layout-of-records">layout of records</a>
+      <ul>
+        <li><a href="#fixed-length-records">fixed-length records</a></li>
+        <li><a href="#variable-length-records-1">variable-length records</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="big-picture">big picture</h2>
+<p>sql client -&gt; DBMS -&gt; database &#x1f913;</p>
+<h3 id="dbms">DBMS</h3>
+<ul>
+<li>parsing &amp; optimization
+<ul>
+<li>执行SQL语句时，DBMS需要解析SQL语句，并将其转换为执行计划。优化器会根据统计信息、查询模式、索引等因素，选择最优的执行计划。</li>
+</ul>
+</li>
+<li>relational operators
+<ul>
+<li>处理数据流 or 关系运算符？</li>
+</ul>
+</li>
+<li>files and index management</li>
+<li>buffer management</li>
+<li>disk space management<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel3/image-5.png"
+        data-srcset="/databasel3/image-5.png, /databasel3/image-5.png 1.5x, /databasel3/image-5.png 2x"
+        data-sizes="auto"
+        alt="/databasel3/image-5.png"
+        title="alt text" width="920" height="614" /></li>
+</ul>
+<p>事实上纵向还有两个模块：concurrency control和recovery。
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel3/image.png"
+        data-srcset="/databasel3/image.png, /databasel3/image.png 1.5x, /databasel3/image.png 2x"
+        data-sizes="auto"
+        alt="/databasel3/image.png"
+        title="alt text" width="926" height="512" /></p>
+<p>省流：从RAM &amp; DISK获取数据非常慢， 相对于CPU</p>
+<h3 id="disk">Disk</h3>
+<p>注意<code>sector</code>, <code>disk head</code>， 其中后者似乎只能单次读写
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel3/image-1.png"
+        data-srcset="/databasel3/image-1.png, /databasel3/image-1.png 1.5x, /databasel3/image-1.png 2x"
+        data-sizes="auto"
+        alt="/databasel3/image-1.png"
+        title="alt text" width="1319" height="467" /></p>
+<h3 id="access-time">access time</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel3/image-2.png"
+        data-srcset="/databasel3/image-2.png, /databasel3/image-2.png 1.5x, /databasel3/image-2.png 2x"
+        data-sizes="auto"
+        alt="/databasel3/image-2.png"
+        title="alt text" width="1007" height="490" /></p>
+<h2 id="flash-ssd">flash SSD</h2>
+<p>注意：</p>
+<p>read很快，随着数据变大，可以预测</p>
+<p>write很慢，slower for random，写入放大
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel3/image-3.png"
+        data-srcset="/databasel3/image-3.png, /databasel3/image-3.png 1.5x, /databasel3/image-3.png 2x"
+        data-sizes="auto"
+        alt="/databasel3/image-3.png"
+        title="alt text" width="734" height="581" /></p>
+<h2 id="disk-space-management">disk space management</h2>
+<h3 id="block-level-storage">block level storage</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel3/image-4.png"
+        data-srcset="/databasel3/image-4.png, /databasel3/image-4.png 1.5x, /databasel3/image-4.png 2x"
+        data-sizes="auto"
+        alt="/databasel3/image-4.png"
+        title="alt text" width="1129" height="509" /></p>
+<p><strong>block</strong>: unit of transfer for disk read/write (64~128KB in 2018)</p>
+<p><strong>page</strong>: a common synonym for block, in some contexts, it means in RAM</p>
+<h3 id="implementation">implementation</h3>
+<ul>
+<li>talk to hardware directly &#x1f914;</li>
+<li>use file system (FS) &#x1f600;
+<ul>
+<li>always remember: <em><strong>next</strong></em> is fast</li>
+</ul>
+</li>
+</ul>
+<h2 id="files-and-representation">files and representation</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel3/image-6.png"
+        data-srcset="/databasel3/image-6.png, /databasel3/image-6.png 1.5x, /databasel3/image-6.png 2x"
+        data-sizes="auto"
+        alt="/databasel3/image-6.png"
+        title="alt text" width="947" height="606" />
+important! &#x1f60e;</p>
+<ul>
+<li>tables stored in files
+<ul>
+<li>consist of pages
+<ul>
+<li>pages contain a collection of records</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="db-files">DB files</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel3/image-7.png"
+        data-srcset="/databasel3/image-7.png, /databasel3/image-7.png 1.5x, /databasel3/image-7.png 2x"
+        data-sizes="auto"
+        alt="/databasel3/image-7.png"
+        title="alt text" width="1243" height="602" /></p>
+<ul>
+<li>unordered heap files
+<ul>
+<li>DLL是一种简单的实现heap file的方案，但是insert效率不高 &#x1f61e;</li>
+<li>better: a page directory <img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel3/image-8.png"
+        data-srcset="/databasel3/image-8.png, /databasel3/image-8.png 1.5x, /databasel3/image-8.png 2x"
+        data-sizes="auto"
+        alt="/databasel3/image-8.png"
+        title="alt text" width="1256" height="457" /> 注意header page is SLL</li>
+</ul>
+</li>
+</ul>
+<h2 id="layout-of-a-page">layout of a page</h2>
+<ul>
+<li>page header
+<ul>
+<li>nums of records</li>
+<li>free space</li>
+<li>maybe a next/last pointer</li>
+<li>bitmaps, slot table (what is that? &#x1f914;)</li>
+</ul>
+</li>
+</ul>
+<p>注意，是否records定长以及是否有free space决定了page layout</p>
+<h3 id="fixed-length-packed-records">fixed-length packed records</h3>
+<p>now take a look at a fixed length records, packed page:
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel3/image-10.png"
+        data-srcset="/databasel3/image-10.png, /databasel3/image-10.png 1.5x, /databasel3/image-10.png 2x"
+        data-sizes="auto"
+        alt="/databasel3/image-10.png"
+        title="alt text" width="1310" height="516" /></p>
+<h3 id="fixed-length-unpacked-records">fixed-length unpacked records</h3>
+<p>same as before, but with unpacked records:
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel3/image-11.png"
+        data-srcset="/databasel3/image-11.png, /databasel3/image-11.png 1.5x, /databasel3/image-11.png 2x"
+        data-sizes="auto"
+        alt="/databasel3/image-11.png"
+        title="alt text" width="1329" height="531" /></p>
+<h3 id="variable-length-records">variable-length records</h3>
+<p>records can have different lengths &#x1f92f;</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel3/image-12.png"
+        data-srcset="/databasel3/image-12.png, /databasel3/image-12.png 1.5x, /databasel3/image-12.png 2x"
+        data-sizes="auto"
+        alt="/databasel3/image-12.png"
+        title="alt text" width="681" height="457" /></p>
+<ul>
+<li>header -&gt; footer</li>
+<li>footer has a slot directory (read from right to left, has a <code>pointer</code> to the start of the free space)</li>
+<li>slot directory save slot, each slot has a <code>pointer</code> to the start of the record and the <code>length</code> of the record
+<ul>
+<li>growing slot directory, 前后夹击</li>
+<li><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel3/image-13.png"
+        data-srcset="/databasel3/image-13.png, /databasel3/image-13.png 1.5x, /databasel3/image-13.png 2x"
+        data-sizes="auto"
+        alt="/databasel3/image-13.png"
+        title="alt text" width="753" height="324" /></li>
+</ul>
+</li>
+</ul>
+<h2 id="layout-of-records">layout of records</h2>
+<ul>
+<li>each record has a fixed type</li>
+<li>system catalog stores the SCHEMA
+<ul>
+<li>no need to store the type of records</li>
+<li>catalog just a table</li>
+</ul>
+</li>
+</ul>
+<p>注意，以下讨论在字段（field）级别，不是record级别。</p>
+<h3 id="fixed-length-records">fixed-length records</h3>
+<p>类比数组，注意null存在就是空着，不是很compact</p>
+<h3 id="variable-length-records-1">variable-length records</h3>
+<ul>
+<li>冗余配置按照定长处理 （padding）</li>
+<li>类比CSV，每行记录不同长度，用分隔符分隔</li>
+<li>a record header way <img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel3/image-14.png"
+        data-srcset="/databasel3/image-14.png, /databasel3/image-14.png 1.5x, /databasel3/image-14.png 2x"
+        data-sizes="auto"
+        alt="/databasel3/image-14.png"
+        title="alt text" width="833" height="348" /></li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2024-08-11</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/databasel3/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/databasel3/" data-title="CS186-L3: Disk, Buffers, Files I"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/databasel3/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/databasel3/" data-title="CS186-L3: Disk, Buffers, Files I"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/databasel3/" data-title="CS186-L3: Disk, Buffers, Files I"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/databasel3/" data-title="CS186-L3: Disk, Buffers, Files I"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/databasel2/" class="prev" rel="prev" title="CS186-L2: SQLⅡ"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>CS186-L2: SQLⅡ</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.125.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">HHZZ</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

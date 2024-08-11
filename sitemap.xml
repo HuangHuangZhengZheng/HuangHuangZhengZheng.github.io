@@ -2,13 +2,14 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>http://example.org/categories/</loc><lastmod>2024-07-24T20:48:55&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>http://example.org/categories/</loc><lastmod>2024-08-11T08:46:58&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/categories/cs186/</loc><lastmod>2024-08-11T08:46:58&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/databasel3/</loc><lastmod>2024-08-11T08:46:58&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/</loc><lastmod>2024-08-11T08:46:58&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/posts/</loc><lastmod>2024-08-11T08:46:58&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://example.org/tools/costar/</loc><lastmod>2024-07-24T20:48:55&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>http://example.org/</loc><lastmod>2024-07-24T20:48:55&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
             <loc>http://example.org/tools/</loc><lastmod>2024-07-24T20:48:55&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
             <loc>http://example.org/categories/tools/</loc><lastmod>2024-07-24T20:48:55&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>http://example.org/posts/</loc><lastmod>2024-07-24T11:27:09&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>http://example.org/categories/cs186/</loc><lastmod>2024-07-22T21:33:38&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
             <loc>http://example.org/databasel2/</loc><lastmod>2024-07-22T21:33:38&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
             <loc>http://example.org/databasel1/</loc><lastmod>2024-07-22T14:39:02&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
             <loc>http://example.org/categories/data100/</loc><lastmod>2024-07-19T11:32:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
@@ -57,13 +58,13 @@
             <loc>http://example.org/beyondcode/</loc><lastmod>2024-07-14T20:50:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
             <loc>http://example.org/beyondcode/thinking1/</loc><lastmod>2024-07-14T20:50:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
             <loc>http://example.org/beyondcode/thinking0/</loc><lastmod>2024-07-14T20:40:24&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://example.org/datal4/</loc><lastmod>2024-07-14T10:55:10&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://example.org/tags/pandas/</loc><lastmod>2024-07-14T10:55:10&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://example.org/tags/</loc><lastmod>2024-07-14T10:55:10&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://example.org/datahw01/</loc><lastmod>2024-07-14T10:33:54&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://example.org/tags/math/</loc><lastmod>2024-07-14T10:33:54&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://example.org/tags/plotting/</loc><lastmod>2024-07-14T10:33:54&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://example.org/datal3/</loc><lastmod>2024-07-13T19:50:30&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
+            <loc>http://example.org/datal4/</loc><lastmod>2024-07-14T10:55:10&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>http://example.org/tags/pandas/</loc><lastmod>2024-07-14T10:55:10&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>http://example.org/tags/</loc><lastmod>2024-07-14T10:55:10&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>http://example.org/datahw01/</loc><lastmod>2024-07-14T10:33:54&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>http://example.org/tags/math/</loc><lastmod>2024-07-14T10:33:54&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>http://example.org/tags/plotting/</loc><lastmod>2024-07-14T10:33:54&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>http://example.org/datal3/</loc><lastmod>2024-07-13T19:50:30&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
             <loc>http://example.org/61b-32/</loc><lastmod>2024-07-13T14:22:01&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
             <loc>http://example.org/61b-33/</loc><lastmod>2024-07-13T14:22:01&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
             <loc>http://example.org/61b-31/</loc><lastmod>2024-07-13T14:22:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>

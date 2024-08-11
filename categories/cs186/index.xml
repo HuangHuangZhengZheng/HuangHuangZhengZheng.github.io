@@ -3,7 +3,20 @@
         <title>CS186 - Category - HHZZ`s space</title>
         <link>http://example.org/categories/cs186/</link>
         <description>CS186 - Category - HHZZ`s space</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 22 Jul 2024 21:33:38 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/cs186/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 11 Aug 2024 08:46:58 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/cs186/" rel="self" type="application/rss+xml" /><item>
+    <title>CS186-L3: Disk, Buffers, Files I</title>
+    <link>http://example.org/databasel3/</link>
+    <pubDate>Sun, 11 Aug 2024 08:46:58 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/databasel3/</guid>
+    <description><![CDATA[big picture sql client -&gt; DBMS -&gt; database &#x1f913;
+DBMS parsing &amp; optimization 执行SQL语句时，DBMS需要解析SQL语句，并将其转换为执行计划。优化器会根据统计信息、查询模式、索引等因素，选择最优的执行计划。 relational operators 处理数据流 or 关系运算符？ files and index management buffer management disk space management 事实上纵向还有两个模块：concurrency control和recovery。 省流：从RAM &amp; DISK获取数据非常慢， 相对于CPU
+Disk 注意sector, disk head， 其中后者似乎只能单次读写 access time flash SSD 注意：
+read很快，随着数据变大，可以预测
+write很慢，slower for random，写入放大 disk space management block level storage block: unit of transfer for disk read/write (64~128KB in 2018)
+page: a common synonym for block, in some contexts, it means in RAM]]></description>
+</item>
+<item>
     <title>CS186-L2: SQLⅡ</title>
     <link>http://example.org/databasel2/</link>
     <pubDate>Mon, 22 Jul 2024 21:33:38 &#43;0800</pubDate>
