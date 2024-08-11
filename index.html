@@ -100,6 +100,14 @@
         alt="/avatar.jpg"
         title="/avatar.jpg" width="1920" height="1280" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/ZhengTMHuang" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/databasel5/">CS186-L5: B+ Trees</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-08-11">2024-08-11</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div><div class="content">Index 竟然是一种数据结构？ search and insertion in ISAM indexed sequential access method 注意建立了许多索引，沿用BST的思想，但是insert的时候会出现overflow pages （IBM in 1960s）
+B+ Tree 和B Tree的区别在于：B+只有叶子存放数据，而B Tree的中间节点也存放数据。
+几乎和上面一样，但是多了
+dynamic tree index always balanced support efficient insertions and deletions grows at root not leaves 注意:
+占有率：几乎半满，除了root 底部DLL $max\ fan\ out = 2d + 1$ 工业实际情况 &#x1f914; B+ Tree Operations search, 同上 insert 没有overflow，直接插入 满了，分裂成两个节点，中间节点存放 中间key（过程中可能是右边最小的那个key），左右节点存放左右key 递归向上分裂，直到根节点 叶子 $\xrightarrow{copy}$ 父节点 ，父节点 $\xrightarrow{push}$ 新父节点 delete &#x1f609; bulk loading 批量加载 精髓在于先排序，后构建 time-stamp: 01h09min02s</div><div class="post-footer">
+        <a href="/databasel5/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/databasel4/">CS186-L4: Disks, Buffers, Files II</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-08-11">2024-08-11</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div><div class="content">cost model and analysis 基本量化指标定义 基本假设
 single record insert and delete equality selection - exactly one match for heap files: insert always appends for sorted files: packed: files compacted after deletions sorted according to search key 以下是计算时间，类似渐进记法，但是有细节 &#x1f60e; side note:
@@ -135,15 +143,6 @@ MapReduce的主要特点包括[4][5]:
 Citations: [1] https://baike.baidu.com/item/MapReduce/133425 [2] https://zh.wikipedia.org/zh-hans/MapReduce [3] https://www.ibm.com/cn-zh/topics/mapreduce [4] https://cshihong.github.io/2018/05/11/MapReduce%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86/ [5] https://cloud.tencent.com/developer/article/1778549
 apache spark lazy strategy: 延迟计算策略,Spark默认采用这种策略,即只有当数据真正被使用时才会计算。 编译优化语句执行顺序！ Conclusion 工具链 What is next? 有用的data science链接 http://kaggle.com https://github.com/awesomedata/awesome-public-datasets http://toolbox.google.com/datasetsearch https://towardsdatascience.com https://www.reddit.com/r/dataisbeautiful/ https://fivethirtyeight.com</div><div class="post-footer">
         <a href="/datal26/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/datal24/">DATA100-L24: Clustering</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">introduction to clustering no label at all &#x1f622;
-K-means clustering 算法动画演示
-K-Means vs KNN minimizing inertia convex?? 损失函数不一定凸，梯度下降难顶 how to see which one is better &#x2753; 但是找到全局最优解非常困难 agglomerative clustering 演示见上面链接以及lec code！
-和CS61B的minimum spanning tree类似，每次合并两个最近的点，直到终止条件
-outlier 有时忽略处理或者自成一类
-picking K Smax？ can s be negative? summary </div><div class="post-footer">
-        <a href="/datal24/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item active">
                     <span class="page-link">
                         <a href="/">1</a>

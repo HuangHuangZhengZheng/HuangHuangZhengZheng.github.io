@@ -32,3 +32,7 @@ $$
 - `Range Search`借鉴`Equality Search`的思想，对于heap files，*always go through to find all*；对于sorted files，二分查找下界然后 *scan right*
 - `Insert`对于heap files: 假设知道free space，一个读，一个写；对于sorted files: 假设中间插入，读写各占 $B/2$
 - `Delete`同样借鉴`Equality Search`的思想，对于heap files， $+1$ 是删除（“写”）；对于sorted files， 过程和`Insert`一样
+
+
+
+**time-stamp: 01h13min26s**

@@ -100,6 +100,15 @@
         alt="/avatar.jpg"
         title="/avatar.jpg" width="1920" height="1280" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/ZhengTMHuang" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/datal24/">DATA100-L24: Clustering</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">introduction to clustering no label at all &#x1f622;
+K-means clustering 算法动画演示
+K-Means vs KNN minimizing inertia convex?? 损失函数不一定凸，梯度下降难顶 how to see which one is better &#x2753; 但是找到全局最优解非常困难 agglomerative clustering 演示见上面链接以及lec code！
+和CS61B的minimum spanning tree类似，每次合并两个最近的点，直到终止条件
+outlier 有时忽略处理或者自成一类
+picking K Smax？ can s be negative? summary </div><div class="post-footer">
+        <a href="/datal24/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/datal25/">DATA100-L25: Data Regulations</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">impetus for regulation why &ldquo;you&rdquo; should care Because you are gonna to be a data scientist and product owner!
 regulations: Privacy laws GDPR (General Data Protection Regulation) CCPA (California Consumer Privacy Act) Cyber Security Law in China
@@ -138,15 +147,6 @@ performance metrics accuracy 1 2 # using sklearn model.score(X_test, y_test) imb
 1 2 3 4 5 6 7 8 9 import pandas as pd import sqlalchmey engine = sqlalchemy.create_engine(&#39;sqlite:///mydatabase.db&#39;) connection = engine.connect() pd.read_sql(&#34;&#34;&#34; SELECT * FROM mytable GROUP BY column1, column2 &#34;&#34;&#34;, connection) LIKE and CAST LIKE: search for a pattern in a column
 1 2 SELECT * FROM mytable WHERE column1 LIKE &#39;%value%&#39; CAST: convert data type SQL Joins Cross Join 1 2 3 SELECT * FROM table1 CROSS JOIN table2 Inner Join 1 2 3 4 SELECT * FROM table1 INNER JOIN table2 ON table1.</div><div class="post-footer">
         <a href="/datal19/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/datal20/">DATA100-L20: PCA II</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">recap and Goals approximate factorization $W\ L\rightarrow (W+L)/ 2$ rank 下降使得信息缺失了
-所以 $M_{100 \times 4} = N_{100 \times P} \times Q_{P \times 4}$ P的值尽量不要小于原来的&quot;秩&quot;
-singular value decomposition (SVD) low rank approximation no bad! seem good!
-SVD theory 验证orthonormal set
-V@V.T = I 当相乘的时候本质上是旋转，不会拉伸
-Principal Components 零中心化再来看PCA Principal Components and Variance PCA example Why is useful? &#x1f914; </div><div class="post-footer">
-        <a href="/datal20/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
