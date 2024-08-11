@@ -3,7 +3,17 @@
         <title>CS186 - Category - HHZZ`s space</title>
         <link>http://example.org/categories/cs186/</link>
         <description>CS186 - Category - HHZZ`s space</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 11 Aug 2024 08:46:58 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/cs186/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 11 Aug 2024 13:09:05 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/cs186/" rel="self" type="application/rss+xml" /><item>
+    <title>CS186-L4: Disks, Buffers, Files II</title>
+    <link>http://example.org/databasel4/</link>
+    <pubDate>Sun, 11 Aug 2024 13:09:05 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/databasel4/</guid>
+    <description><![CDATA[cost model and analysis 基本量化指标定义 基本假设
+single record insert and delete equality selection - exactly one match for heap files: insert always appends for sorted files: packed: files compacted after deletions sorted according to search key 以下是计算时间，类似渐进记法，但是有细节 &#x1f60e; side note:
+$\times D$ 是简化了每次“操作”的时间，“操作”指的是“读”与“写” 考虑随机变量 操作次数 $N$ 及其 $\mathbb{E}(N)$ Equality Search对于sorted files: $$ \begin{equation} \begin{aligned} \mathbb{E}(N) &amp;= \sum_{i=1}^{log_2B} i \times \frac{2^{i-1}}{B} \notag\ &amp;= log_2B - \frac{B-1}{B}\ &amp;\approx log_2B \end{aligned} \end{equation} $$]]></description>
+</item>
+<item>
     <title>CS186-L3: Disk, Buffers, Files I</title>
     <link>http://example.org/databasel3/</link>
     <pubDate>Sun, 11 Aug 2024 08:46:58 &#43;0800</pubDate>

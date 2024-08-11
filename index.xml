@@ -3,9 +3,19 @@
         <title>HHZZ`s space</title>
         <link>http://example.org/</link>
         <description>This is my cool site</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 11 Aug 2024 08:46:58 &#43;0800</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 11 Aug 2024 13:09:05 &#43;0800</lastBuildDate>
             <atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>CS186-L4: Disks, Buffers, Files II</title>
+    <link>http://example.org/databasel4/</link>
+    <pubDate>Sun, 11 Aug 2024 13:09:05 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/databasel4/</guid>
+    <description><![CDATA[cost model and analysis 基本量化指标定义 基本假设
+single record insert and delete equality selection - exactly one match for heap files: insert always appends for sorted files: packed: files compacted after deletions sorted according to search key 以下是计算时间，类似渐进记法，但是有细节 &#x1f60e; side note:
+$\times D$ 是简化了每次“操作”的时间，“操作”指的是“读”与“写” 考虑随机变量 操作次数 $N$ 及其 $\mathbb{E}(N)$ Equality Search对于sorted files: $$ \begin{equation} \begin{aligned} \mathbb{E}(N) &amp;= \sum_{i=1}^{log_2B} i \times \frac{2^{i-1}}{B} \notag\ &amp;= log_2B - \frac{B-1}{B}\ &amp;\approx log_2B \end{aligned} \end{equation} $$]]></description>
+</item>
+<item>
     <title>CS186-L3: Disk, Buffers, Files I</title>
     <link>http://example.org/databasel3/</link>
     <pubDate>Sun, 11 Aug 2024 08:46:58 &#43;0800</pubDate>
@@ -112,16 +122,6 @@ MLE: high-level, detailed (recorded) linear separability and regularization 线�
 超平面的维度和数据集的维度相同 $$ C $$ 注意对“push”的理解！
 另一种理解正则化的角度 这里是避免loss出现无限大的情况（梯度爆炸？），避免出现使前面情况发生的参数（infinite theta）出现，所以在loss里面预先加入正则化项。
 performance metrics accuracy 1 2 # using sklearn model.score(X_test, y_test) imbalanced data, precision, recall Acc is not a good metric for imbalanced data, use precision and recall instead!!! $$ acc= \frac{TP+TN}{n}\ precision(精确率)=\frac{TP}{TP+FP}\ recall(召回率)=\frac{TP}{TP+FN} $$ adjusting the classification threshold(阈值界限) a case study 变界限可能是因为imbalanced data导致的]]></description>
-</item>
-<item>
-    <title>DATA100-L19: SQL II and PCA I</title>
-    <link>http://example.org/datal19/</link>
-    <pubDate>Fri, 19 Jul 2024 11:32:11 &#43;0800</pubDate>
-    <author>HHZZ</author>
-    <guid>http://example.org/datal19/</guid>
-    <description><![CDATA[SQL II sql and pandas how to connect sql to python
-1 2 3 4 5 6 7 8 9 import pandas as pd import sqlalchmey engine = sqlalchemy.create_engine(&#39;sqlite:///mydatabase.db&#39;) connection = engine.connect() pd.read_sql(&#34;&#34;&#34; SELECT * FROM mytable GROUP BY column1, column2 &#34;&#34;&#34;, connection) LIKE and CAST LIKE: search for a pattern in a column
-1 2 SELECT * FROM mytable WHERE column1 LIKE &#39;%value%&#39; CAST: convert data type SQL Joins Cross Join 1 2 3 SELECT * FROM table1 CROSS JOIN table2 Inner Join 1 2 3 4 SELECT * FROM table1 INNER JOIN table2 ON table1.]]></description>
 </item>
 </channel>
 </rss>
