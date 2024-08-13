@@ -12,23 +12,10 @@ grader = otter.Notebook("lab06.ipynb")
 
 
 
-```python
-from IPython.display import YouTubeVideo
-YouTubeVideo("IkkhAr3e19Q", list = 'PLQCcNQgUcDfpuwnASdUyvQky51ZcYMWSy', listType = 'playlist')
-```
 
 
 
 
-
-<iframe
-    width="400"
-    height="300"
-    src="https://www.youtube.com/embed/IkkhAr3e19Q?list=PLQCcNQgUcDfpuwnASdUyvQky51ZcYMWSy&listType=playlist"
-    frameborder="0"
-    allowfullscreen
-
-></iframe>
 
 
 

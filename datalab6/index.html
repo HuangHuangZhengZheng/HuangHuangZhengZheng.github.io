@@ -7,16 +7,20 @@
         <title>DATA100-lab6: Linear Regression - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/datalab6/">
   <meta property="og:site_name" content="HHZZ`s space">
   <meta property="og:title" content="DATA100-lab6: Linear Regression">
-  <meta property="og:description" content=" 1 2 3 # Initialize Otter import otter grader = otter.Notebook(&amp;#34;lab06.ipynb&amp;#34;) Lab 6: Linear Regression 1 2 from IPython.display import YouTubeVideo YouTubeVideo(&amp;#34;IkkhAr3e19Q&amp;#34;, list = &amp;#39;PLQCcNQgUcDfpuwnASdUyvQky51ZcYMWSy&amp;#39;, listType = &amp;#39;playlist&amp;#39;) ">
+  <meta property="og:description" content="1 2 3 # Initialize Otter import otter grader = otter.Notebook(&amp;#34;lab06.ipynb&amp;#34;) Lab 6: Linear Regression Objectives In this lab, you will review the details of linear regresison as described in Lectures 10 and 11. In particular:
+Matrix formulation and solution to Ordinary Least Squares sns.lmplot as a quick visual for simple linear regression scikit-learn, a real world data science tool that is more robust and flexible than analytical/scipy.optimize solutions You will also practice interpreting residual plots (vs.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2024-08-13T15:19:33+08:00">
     <meta property="article:modified_time" content="2024-08-13T15:19:33+08:00">
+    <meta property="article:tag" content="Scikit-Learn">
+    <meta property="article:tag" content="Seaborn">
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="DATA100-lab6: Linear Regression">
-<meta name="twitter:description" content=" 1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab06.ipynb&#34;) Lab 6: Linear Regression 1 2 from IPython.display import YouTubeVideo YouTubeVideo(&#34;IkkhAr3e19Q&#34;, list = &#39;PLQCcNQgUcDfpuwnASdUyvQky51ZcYMWSy&#39;, listType = &#39;playlist&#39;) ">
+<meta name="twitter:description" content="1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab06.ipynb&#34;) Lab 6: Linear Regression Objectives In this lab, you will review the details of linear regresison as described in Lectures 10 and 11. In particular:
+Matrix formulation and solution to Ordinary Least Squares sns.lmplot as a quick visual for simple linear regression scikit-learn, a real world data science tool that is more robust and flexible than analytical/scipy.optimize solutions You will also practice interpreting residual plots (vs.">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -31,7 +35,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/datalab6\/"
-        },"genre": "posts","wordcount":  28 ,
+        },"genre": "posts","keywords": "Scikit-learn, Seaborn","wordcount":  3317 ,
         "url": "http:\/\/example.org\/datalab6\/","datePublished": "2024-08-13T15:19:33+08:00","dateModified": "2024-08-13T15:19:33+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -105,8 +109,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">DATA100-lab6: Linear Regression</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-13">2024-08-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;28 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-13">2024-08-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3317 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;16 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -162,25 +166,6 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h1 id="lab-6-linear-regression">Lab 6: Linear Regression</h1>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
-</span></span><span class="line"><span class="cl"><span class="n">YouTubeVideo</span><span class="p">(</span><span class="s2">&#34;IkkhAr3e19Q&#34;</span><span class="p">,</span> <span class="nb">list</span> <span class="o">=</span> <span class="s1">&#39;PLQCcNQgUcDfpuwnASdUyvQky51ZcYMWSy&#39;</span><span class="p">,</span> <span class="n">listType</span> <span class="o">=</span> <span class="s1">&#39;playlist&#39;</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><iframe
-    width="400"
-    height="300"
-    src="https://www.youtube.com/embed/IkkhAr3e19Q?list=PLQCcNQgUcDfpuwnASdUyvQky51ZcYMWSy&listType=playlist"
-    frameborder="0"
-    allowfullscreen
-<blockquote>
-</iframe>
-</blockquote>
 <p><br/><br/></p>
 <hr style="border: 5px solid #003262;" />
 <hr style="border: 1px solid #fdb515;" />
@@ -2171,13 +2156,13 @@ Multiple R^2 using hp, hp^2, model year, and acceleration:  0.8163086433998654
                             <a class="link-to-markdown" href="/datalab6/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/datalab6/" data-title="DATA100-lab6: Linear Regression"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/datalab6/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/datalab6/" data-title="DATA100-lab6: Linear Regression"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/datalab6/" data-title="DATA100-lab6: Linear Regression"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/datalab6/" data-title="DATA100-lab6: Linear Regression"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/datalab6/" data-title="DATA100-lab6: Linear Regression" data-hashtags="Scikit-learn,Seaborn"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/datalab6/" data-hashtag="Scikit-learn"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/datalab6/" data-title="DATA100-lab6: Linear Regression"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/datalab6/" data-title="DATA100-lab6: Linear Regression"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/datalab6/" data-title="DATA100-lab6: Linear Regression"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/scikit-learn/">Scikit-Learn</a>,&nbsp;<a href="/tags/seaborn/">Seaborn</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
