@@ -9,8 +9,9 @@
     <pubDate>Sat, 13 Jul 2024 13:27:45 &#43;0800</pubDate>
     <author>HHZZ</author>
     <guid>http://example.org/datalab1/</guid>
-    <description><![CDATA[ 1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab01.ipynb&#34;) Lab 01 Welcome to the first lab of Data 100! This lab is meant to help you familiarize yourself with JupyterHub, review Python and numpy, and introduce you to matplotlib, a Python visualization library.
-Lab Walk-Through 1 2 from IPython.display import YouTubeVideo YouTubeVideo(&#34;PS7lPZUnNBo&#34;, list = &#39;PLQCcNQgUcDfrhStFqvgpvLNhOS43bnSQq&#39;, listType = &#39;playlist&#39;) ]]></description>
+    <description><![CDATA[1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab01.ipynb&#34;) Lab 01 Welcome to the first lab of Data 100! This lab is meant to help you familiarize yourself with JupyterHub, review Python and numpy, and introduce you to matplotlib, a Python visualization library.
+Part 1: Jupyter Tips Viewing Documentation To output the documentation for a function, use the help function.
+1 2 # help(print) ?print You can also use Jupyter to view function documentation inside your notebook.]]></description>
 </item>
 </channel>
 </rss>

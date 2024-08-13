@@ -10,27 +10,6 @@ grader = otter.Notebook("lab01.ipynb")
 
 Welcome to the first lab of Data 100! This lab is meant to help you familiarize yourself with JupyterHub, review Python and `numpy`, and introduce you to `matplotlib`, a Python visualization library. 
 
-### Lab Walk-Through
-
-
-```python
-from IPython.display import YouTubeVideo
-YouTubeVideo("PS7lPZUnNBo", list = 'PLQCcNQgUcDfrhStFqvgpvLNhOS43bnSQq', listType = 'playlist')
-```
-
-
-
-
-
-<iframe
-    width="400"
-    height="300"
-    src="https://www.youtube.com/embed/PS7lPZUnNBo?list=PLQCcNQgUcDfrhStFqvgpvLNhOS43bnSQq&listType=playlist"
-    frameborder="0"
-    allowfullscreen
-
-></iframe>
-
 
 
 

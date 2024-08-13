@@ -12,15 +12,6 @@ To receive credit for a lab, answer all questions correctly and submit before th
 
 **This lab is due  Tuesday, Feb 1st at 11:59 PM.**
 
-### Lab Walk-Through
-
-In addition to the lab notebook, we have also released a prerecorded walk-through video of the lab. We encourage you to reference this video as you work through the lab. Run the cell below to display the video.
-
-
-```python
-# from IPython.display import YouTubeVideo
-# YouTubeVideo("MLUNk_D7KW0", list = 'PLQCcNQgUcDfoWO3WVtznI7CBJmtNUqbAN', listType = 'playlist')
-```
 
 ### Collaboration Policy
 
