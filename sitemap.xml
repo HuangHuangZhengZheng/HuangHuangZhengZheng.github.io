@@ -2,19 +2,31 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>http://example.org/categories/</loc><lastmod>2024-08-11T14:40:46&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/categories/</loc><lastmod>2024-08-13T15:19:37&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/categories/data100/</loc><lastmod>2024-08-13T15:19:37&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/datalab13/</loc><lastmod>2024-08-13T15:19:37&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/datalab14/</loc><lastmod>2024-08-13T15:19:37&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/</loc><lastmod>2024-08-13T15:19:37&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/posts/</loc><lastmod>2024-08-13T15:19:37&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/datalab11/</loc><lastmod>2024-08-13T15:19:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/datalab12/</loc><lastmod>2024-08-13T15:19:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/datalab10/</loc><lastmod>2024-08-13T15:19:35&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/datalab9/</loc><lastmod>2024-08-13T15:19:35&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/datalab7/</loc><lastmod>2024-08-13T15:19:34&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/datalab8/</loc><lastmod>2024-08-13T15:19:34&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/datalab5/</loc><lastmod>2024-08-13T15:19:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/datalab6/</loc><lastmod>2024-08-13T15:19:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/datalab3/</loc><lastmod>2024-08-13T15:19:32&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/datalab4/</loc><lastmod>2024-08-13T15:19:32&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://example.org/categories/cs186/</loc><lastmod>2024-08-11T14:40:46&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://example.org/databasel5/</loc><lastmod>2024-08-11T14:40:46&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://example.org/</loc><lastmod>2024-08-11T14:40:46&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://example.org/posts/</loc><lastmod>2024-08-11T14:40:46&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://example.org/databasel4/</loc><lastmod>2024-08-11T13:09:05&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://example.org/databasel3/</loc><lastmod>2024-08-11T08:46:58&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://example.org/tools/costar/</loc><lastmod>2024-07-24T20:48:55&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
             <loc>http://example.org/tools/</loc><lastmod>2024-07-24T20:48:55&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
             <loc>http://example.org/categories/tools/</loc><lastmod>2024-07-24T20:48:55&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>http://example.org/databasel2/</loc><lastmod>2024-07-22T21:33:38&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>http://example.org/databasel1/</loc><lastmod>2024-07-22T14:39:02&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>http://example.org/categories/data100/</loc><lastmod>2024-07-19T11:32:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
+            <loc>http://example.org/databasel2/</loc><lastmod>2024-07-22T21:33:38&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
+            <loc>http://example.org/databasel1/</loc><lastmod>2024-07-22T14:39:02&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
             <loc>http://example.org/datal26/</loc><lastmod>2024-07-19T11:32:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
             <loc>http://example.org/datal24/</loc><lastmod>2024-07-19T11:32:14&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
             <loc>http://example.org/datal25/</loc><lastmod>2024-07-19T11:32:14&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
@@ -35,31 +47,31 @@
             <loc>http://example.org/datal9/</loc><lastmod>2024-07-18T15:42:18&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
             <loc>http://example.org/papers/</loc><lastmod>2024-07-18T14:44:32&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
             <loc>http://example.org/datal8/</loc><lastmod>2024-07-16T19:57:02&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://example.org/datalab02/</loc><lastmod>2024-07-15T18:20:24&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://example.org/datal7/</loc><lastmod>2024-07-15T16:05:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://example.org/datal6/</loc><lastmod>2024-07-15T14:13:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://example.org/datadisc02/</loc><lastmod>2024-07-15T08:37:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://example.org/datal5/</loc><lastmod>2024-07-14T21:39:44&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://example.org/61b-14/</loc><lastmod>2024-07-14T21:29:34&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://example.org/61b-15/</loc><lastmod>2024-07-14T21:29:34&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://example.org/61b-16/</loc><lastmod>2024-07-14T21:29:34&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://example.org/categories/ucb-cs61b/</loc><lastmod>2024-07-14T21:29:34&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://example.org/61b-12/</loc><lastmod>2024-07-14T21:29:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://example.org/61b-13/</loc><lastmod>2024-07-14T21:29:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://example.org/61b-10/</loc><lastmod>2024-07-14T21:29:32&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://example.org/61b-11/</loc><lastmod>2024-07-14T21:29:32&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://example.org/61b-9/</loc><lastmod>2024-07-14T21:29:32&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://example.org/61b-7/</loc><lastmod>2024-07-14T21:29:31&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://example.org/61b-8/</loc><lastmod>2024-07-14T21:29:31&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://example.org/61b-4/</loc><lastmod>2024-07-14T21:29:30&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://example.org/61b-5/</loc><lastmod>2024-07-14T21:29:30&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://example.org/61b-6/</loc><lastmod>2024-07-14T21:29:30&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://example.org/61b-1/</loc><lastmod>2024-07-14T21:29:29&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://example.org/61b-2/</loc><lastmod>2024-07-14T21:29:29&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://example.org/61b-3/</loc><lastmod>2024-07-14T21:29:29&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://example.org/beyondcode/</loc><lastmod>2024-07-14T20:50:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://example.org/beyondcode/thinking1/</loc><lastmod>2024-07-14T20:50:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://example.org/beyondcode/thinking0/</loc><lastmod>2024-07-14T20:40:24&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
+            <loc>http://example.org/datalab2/</loc><lastmod>2024-07-15T18:20:24&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>http://example.org/datal7/</loc><lastmod>2024-07-15T16:05:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>http://example.org/datal6/</loc><lastmod>2024-07-15T14:13:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>http://example.org/datadisc02/</loc><lastmod>2024-07-15T08:37:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>http://example.org/datal5/</loc><lastmod>2024-07-14T21:39:44&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>http://example.org/61b-14/</loc><lastmod>2024-07-14T21:29:34&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>http://example.org/61b-15/</loc><lastmod>2024-07-14T21:29:34&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>http://example.org/61b-16/</loc><lastmod>2024-07-14T21:29:34&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>http://example.org/categories/ucb-cs61b/</loc><lastmod>2024-07-14T21:29:34&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>http://example.org/61b-12/</loc><lastmod>2024-07-14T21:29:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>http://example.org/61b-13/</loc><lastmod>2024-07-14T21:29:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>http://example.org/61b-10/</loc><lastmod>2024-07-14T21:29:32&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>http://example.org/61b-11/</loc><lastmod>2024-07-14T21:29:32&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>http://example.org/61b-9/</loc><lastmod>2024-07-14T21:29:32&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>http://example.org/61b-7/</loc><lastmod>2024-07-14T21:29:31&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>http://example.org/61b-8/</loc><lastmod>2024-07-14T21:29:31&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>http://example.org/61b-4/</loc><lastmod>2024-07-14T21:29:30&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>http://example.org/61b-5/</loc><lastmod>2024-07-14T21:29:30&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>http://example.org/61b-6/</loc><lastmod>2024-07-14T21:29:30&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>http://example.org/61b-1/</loc><lastmod>2024-07-14T21:29:29&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>http://example.org/61b-2/</loc><lastmod>2024-07-14T21:29:29&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>http://example.org/61b-3/</loc><lastmod>2024-07-14T21:29:29&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>http://example.org/beyondcode/</loc><lastmod>2024-07-14T20:50:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>http://example.org/beyondcode/thinking1/</loc><lastmod>2024-07-14T20:50:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>http://example.org/beyondcode/thinking0/</loc><lastmod>2024-07-14T20:40:24&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
             <loc>http://example.org/datal4/</loc><lastmod>2024-07-14T10:55:10&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
             <loc>http://example.org/tags/pandas/</loc><lastmod>2024-07-14T10:55:10&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
             <loc>http://example.org/tags/</loc><lastmod>2024-07-14T10:55:10&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
@@ -84,12 +96,10 @@
             <loc>http://example.org/61b-20/</loc><lastmod>2024-07-13T14:18:51&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
             <loc>http://example.org/61b-18/</loc><lastmod>2024-07-13T14:18:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
             <loc>http://example.org/61b-17/</loc><lastmod>2024-07-13T14:15:20&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
-            <loc>http://example.org/tags/data-100/</loc><lastmod>2024-07-13T13:27:45&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
-            <loc>http://example.org/datalab01/</loc><lastmod>2024-07-13T13:27:45&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
-            <loc>http://example.org/tags/jupyterhub/</loc><lastmod>2024-07-13T13:27:45&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>http://example.org/datalab1/</loc><lastmod>2024-07-13T13:27:45&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>http://example.org/tags/jupyter/</loc><lastmod>2024-07-13T13:27:45&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
             <loc>http://example.org/tags/matplotlib/</loc><lastmod>2024-07-13T13:27:45&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
             <loc>http://example.org/tags/numpy/</loc><lastmod>2024-07-13T13:27:45&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
-            <loc>http://example.org/tags/python/</loc><lastmod>2024-07-13T13:27:45&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
             <loc>http://example.org/datal2/</loc><lastmod>2024-07-13T08:38:42&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
             <loc>http://example.org/categories/nndl/</loc><lastmod>2024-07-12T22:51:22&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
             <loc>http://example.org/nndl/</loc><lastmod>2024-07-12T22:51:22&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>

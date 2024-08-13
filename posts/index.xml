@@ -3,123 +3,85 @@
         <title>All Posts - HHZZ`s space</title>
         <link>http://example.org/posts/</link>
         <description>All Posts | HHZZ`s space</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 11 Aug 2024 14:40:46 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
-    <title>CS186-L5: B&#43; Trees</title>
-    <link>http://example.org/databasel5/</link>
-    <pubDate>Sun, 11 Aug 2024 14:40:46 &#43;0800</pubDate>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 13 Aug 2024 15:19:37 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>DATA100-lab13</title>
+    <link>http://example.org/datalab13/</link>
+    <pubDate>Tue, 13 Aug 2024 15:19:37 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/databasel5/</guid>
-    <description><![CDATA[Index 竟然是一种数据结构？ search and insertion in ISAM indexed sequential access method 注意建立了许多索引，沿用BST的思想，但是insert的时候会出现overflow pages （IBM in 1960s）
-B+ Tree 和B Tree的区别在于：B+只有叶子存放数据，而B Tree的中间节点也存放数据。
-几乎和上面一样，但是多了
-dynamic tree index always balanced support efficient insertions and deletions grows at root not leaves 注意:
-占有率：几乎半满，除了root 底部DLL $max\ fan\ out = 2d + 1$ 工业实际情况 &#x1f914; B+ Tree Operations search, 同上 insert 没有overflow，直接插入 满了，分裂成两个节点，中间节点存放 中间key（过程中可能是右边最小的那个key），左右节点存放左右key 递归向上分裂，直到根节点 叶子 $\xrightarrow{copy}$ 父节点 ，父节点 $\xrightarrow{push}$ 新父节点 delete &#x1f609; bulk loading 批量加载 精髓在于先排序，后构建 time-stamp: 01h09min02s]]></description>
+    <guid>http://example.org/datalab13/</guid>
+    <description><![CDATA[]]></description>
 </item>
 <item>
-    <title>CS186-L4: Disks, Buffers, Files II</title>
-    <link>http://example.org/databasel4/</link>
-    <pubDate>Sun, 11 Aug 2024 13:09:05 &#43;0800</pubDate>
+    <title>DATA100-lab14</title>
+    <link>http://example.org/datalab14/</link>
+    <pubDate>Tue, 13 Aug 2024 15:19:37 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/databasel4/</guid>
-    <description><![CDATA[cost model and analysis 基本量化指标定义 基本假设
-single record insert and delete equality selection - exactly one match for heap files: insert always appends for sorted files: packed: files compacted after deletions sorted according to search key 以下是计算时间，类似渐进记法，但是有细节 &#x1f60e; side note:
-$\times D$ 是简化了每次“操作”的时间，“操作”指的是“读”与“写” 考虑随机变量 操作次数 $N$ 及其 $\mathbb{E}(N)$ Equality Search对于sorted files: $$ \begin{equation} \begin{aligned} \mathbb{E}(N) &amp;= \sum_{i=1}^{log_2B} i \times \frac{2^{i-1}}{B} \notag\ &amp;= log_2B - \frac{B-1}{B}\ &amp;\approx log_2B \end{aligned} \end{equation} $$]]></description>
+    <guid>http://example.org/datalab14/</guid>
+    <description><![CDATA[]]></description>
 </item>
 <item>
-    <title>CS186-L3: Disk, Buffers, Files I</title>
-    <link>http://example.org/databasel3/</link>
-    <pubDate>Sun, 11 Aug 2024 08:46:58 &#43;0800</pubDate>
+    <title>DATA100-lab11</title>
+    <link>http://example.org/datalab11/</link>
+    <pubDate>Tue, 13 Aug 2024 15:19:36 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/databasel3/</guid>
-    <description><![CDATA[big picture sql client -&gt; DBMS -&gt; database &#x1f913;
-DBMS parsing &amp; optimization 执行SQL语句时，DBMS需要解析SQL语句，并将其转换为执行计划。优化器会根据统计信息、查询模式、索引等因素，选择最优的执行计划。 relational operators 处理数据流 or 关系运算符？ files and index management buffer management disk space management 事实上纵向还有两个模块：concurrency control和recovery。 省流：从RAM &amp; DISK获取数据非常慢， 相对于CPU
-Disk 注意sector, disk head， 其中后者似乎只能单次读写 access time flash SSD 注意：
-read很快，随着数据变大，可以预测
-write很慢，slower for random，写入放大 disk space management block level storage block: unit of transfer for disk read/write (64~128KB in 2018)
-page: a common synonym for block, in some contexts, it means in RAM]]></description>
+    <guid>http://example.org/datalab11/</guid>
+    <description><![CDATA[]]></description>
 </item>
 <item>
-    <title>CS186-L2: SQLⅡ</title>
-    <link>http://example.org/databasel2/</link>
-    <pubDate>Mon, 22 Jul 2024 21:33:38 &#43;0800</pubDate>
+    <title>DATA100-lab12</title>
+    <link>http://example.org/datalab12/</link>
+    <pubDate>Tue, 13 Aug 2024 15:19:36 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/databasel2/</guid>
-    <description><![CDATA[怎么读懂SQL语句？ FROM WHERE, to eliminate rows SELECT GROUP BY HAVING, to eliminate groups DISTINCT ORDER BY, LIMIT, OFFSET等等格式化输出 Join Queries cross product 生成所有的组合，然后过滤掉不符合条件的组合，但是低效
-考虑以下sql，更加简洁
-1 2 3 SELECT S.sid, sname, bid FROM Sailors AS S, Reserves AS R WHERE S.sid = R.sid self join and more aliases 1 2 3 4 SELECT x.sname, x.age, y.sname AS sname2, y.age AS age2 FROM Sailors AS x, Sailors AS y WHERE x.age &gt; y.]]></description>
+    <guid>http://example.org/datalab12/</guid>
+    <description><![CDATA[]]></description>
 </item>
 <item>
-    <title>CS186-L1: Introduction &#43; SQL I</title>
-    <link>http://example.org/databasel1/</link>
-    <pubDate>Mon, 22 Jul 2024 14:39:02 &#43;0800</pubDate>
+    <title>DATA100-lab10</title>
+    <link>http://example.org/datalab10/</link>
+    <pubDate>Tue, 13 Aug 2024 15:19:35 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/databasel1/</guid>
-    <description><![CDATA[大纲进程： sheet
-SQL I pros and cons relational Terminology and concepts database: set of name relations relation(table): schema: descriptions &ldquo;metadata&rdquo; fixed, unique attribute names, atomic types instance: set of data 符合description often changed, can duplicate multiset of tuples or &ldquo;rows&rdquo; attribute (column,field) tuple (row,record),怀疑一些python概念也来自于此 DDL (Data Definition Language) 1 2 3 4 5 6 7 8 9 10 CREATE TABLE myTable ( ID INTEGER, myName CHAR(50), Age INTEGER, Salary FLOAT, PRIMARY KEY (ID, myName), FOREIGN KEY (ID) REFERENCES myOtherTable(ID), FOREIGN KEY (myName) REFERENCES myOtherTable(myName) ); 1 2 3 SELECT [DISTINCT] &lt;column expression list&gt; FROM &lt;single_table&gt; [WHERE &lt;predicate&gt;] ORDER BY Lexicographic order by default 字典序 LIMIT Aggregation functions AVG: average COUNT: count the number of rows MAX: maximum value MIN: minimum value SUM: sum of values 1 2 SELECT AVG(Salary) FROM myTable; GROUP BY HAVING]]></description>
+    <guid>http://example.org/datalab10/</guid>
+    <description><![CDATA[]]></description>
 </item>
 <item>
-    <title>DATA100-L26: Parallel Data Analytics; Conclusion</title>
-    <link>http://example.org/datal26/</link>
-    <pubDate>Fri, 19 Jul 2024 11:32:15 &#43;0800</pubDate>
+    <title>DATA100-lab9</title>
+    <link>http://example.org/datalab9/</link>
+    <pubDate>Tue, 13 Aug 2024 15:19:35 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/datal26/</guid>
-    <description><![CDATA[mapreduce MapReduce是一种编程模型,用于大规模数据集的并行运算[1][2][3]。它将复杂的并行计算过程抽象为两个函数:Map和Reduce[4]。
-Map函数将输入数据集拆分成独立的块,并对每个块应用映射操作,生成一组中间键值对[1][2][3]。Reduce函数会对所有Map的输出进行合并操作,生成最终结果[1][2][3]。
-MapReduce的主要特点包括[4][5]:
-易于编程:程序员只需描述做什么,具体怎么做由系统的执行框架处理 良好的扩展性:可通过添加节点扩展集群能力 高容错性:通过计算迁移或数据迁移等策略提高集群的可用性与容错性 MapReduce采用&quot;分而治之&quot;策略,将大规模数据集切分成多个独立的分片,这些分片可以被多个Map任务并行处理[4]。它设计的一个理念是&quot;计算向数据靠拢&quot;,移动数据需要大量的网络传输开销[4]。
-总之,MapReduce是一种简单、可扩展的并行计算模型,通过抽象Map和Reduce函数,使得程序员可以轻松编写大规模并行应用程序,而无需关注底层的分布式细节[1][2][3][4][5]。
-Citations: [1] https://baike.baidu.com/item/MapReduce/133425 [2] https://zh.wikipedia.org/zh-hans/MapReduce [3] https://www.ibm.com/cn-zh/topics/mapreduce [4] https://cshihong.github.io/2018/05/11/MapReduce%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86/ [5] https://cloud.tencent.com/developer/article/1778549
-apache spark lazy strategy: 延迟计算策略,Spark默认采用这种策略,即只有当数据真正被使用时才会计算。 编译优化语句执行顺序！ Conclusion 工具链 What is next? 有用的data science链接 http://kaggle.com https://github.com/awesomedata/awesome-public-datasets http://toolbox.google.com/datasetsearch https://towardsdatascience.com https://www.reddit.com/r/dataisbeautiful/ https://fivethirtyeight.com]]></description>
+    <guid>http://example.org/datalab9/</guid>
+    <description><![CDATA[]]></description>
 </item>
 <item>
-    <title>DATA100-L24: Clustering</title>
-    <link>http://example.org/datal24/</link>
-    <pubDate>Fri, 19 Jul 2024 11:32:14 &#43;0800</pubDate>
+    <title>DATA100-lab7</title>
+    <link>http://example.org/datalab7/</link>
+    <pubDate>Tue, 13 Aug 2024 15:19:34 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/datal24/</guid>
-    <description><![CDATA[introduction to clustering no label at all &#x1f622;
-K-means clustering 算法动画演示
-K-Means vs KNN minimizing inertia convex?? 损失函数不一定凸，梯度下降难顶 how to see which one is better &#x2753; 但是找到全局最优解非常困难 agglomerative clustering 演示见上面链接以及lec code！
-和CS61B的minimum spanning tree类似，每次合并两个最近的点，直到终止条件
-outlier 有时忽略处理或者自成一类
-picking K Smax？ can s be negative? summary ]]></description>
+    <guid>http://example.org/datalab7/</guid>
+    <description><![CDATA[]]></description>
 </item>
 <item>
-    <title>DATA100-L25: Data Regulations</title>
-    <link>http://example.org/datal25/</link>
-    <pubDate>Fri, 19 Jul 2024 11:32:14 &#43;0800</pubDate>
+    <title>DATA100-lab8</title>
+    <link>http://example.org/datalab8/</link>
+    <pubDate>Tue, 13 Aug 2024 15:19:34 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/datal25/</guid>
-    <description><![CDATA[impetus for regulation why &ldquo;you&rdquo; should care Because you are gonna to be a data scientist and product owner!
-regulations: Privacy laws GDPR (General Data Protection Regulation) CCPA (California Consumer Privacy Act) Cyber Security Law in China
-deletion can be more difficult than you think &#x1f60f; 传输也要监管 fully take advantage of the &ldquo;regulations&rdquo;
-take care of gray areas &#x1f914; work with dear NGO and GO other regulations/ regulatory bodies ]]></description>
+    <guid>http://example.org/datalab8/</guid>
+    <description><![CDATA[]]></description>
 </item>
 <item>
-    <title>DATA100-L23: Decision Trees</title>
-    <link>http://example.org/datal23/</link>
-    <pubDate>Fri, 19 Jul 2024 11:32:13 &#43;0800</pubDate>
+    <title>DATA100-lab5</title>
+    <link>http://example.org/datalab5/</link>
+    <pubDate>Tue, 13 Aug 2024 15:19:33 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/datal23/</guid>
-    <description><![CDATA[Multiclass Classification 多分类问题 但是没有softmax &#x1f622; Decision Trees (conceptually) Decision Tree Demo Creating Decision Trees in sklearn 可视化代码见lecture code
-Evaluating Tree Accuracy Overfit Decision Tree Example tree is too complex to generalize well to new data too tall and narrow
-有用的特征越多，树的结构可能比较简单&#x1f914;
-The Decision Tree Generation Algorithm Intuitively Evaluating Split Quality 分割怎么样“更明显”？
-Entropy 沿着树向下，信息熵越小？可能变大！ Generating Trees Using Entropy Weighted entropy can decrease!
-Traditional decision tree generation algorithm:
-All of the data starts in the root node.]]></description>
+    <guid>http://example.org/datalab5/</guid>
+    <description><![CDATA[]]></description>
 </item>
 <item>
-    <title>DATA100-L21: Classification and Logistic Regression I</title>
-    <link>http://example.org/datal21/</link>
-    <pubDate>Fri, 19 Jul 2024 11:32:12 &#43;0800</pubDate>
+    <title>DATA100-lab6</title>
+    <link>http://example.org/datalab6/</link>
+    <pubDate>Tue, 13 Aug 2024 15:19:33 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/datal21/</guid>
-    <description><![CDATA[Regression vs. Classification 全攻略&#x1f60b; intuition: the coin flip 重新定义概率，只需要满足一些性质即可。参考 概率论与数理统计
-deriving the logistic regression model knn一瞥 这说明可以从某些变化转换为线性性质
-考虑 probability $p$ 考虑 odds $\frac{p}{1-p}$ 考虑 log odds 广义线性由此可见
-Graph of Averages the sigmoid function $$ \sigma(t)=\frac{1}{1+e^{-t}} $$
-the logistic regression model comparison to linear regression parameter estimation pitfalls of squared loss non-convex bounded, MSE ∈[0，1] conceptually questionable, not matching the &ldquo;Probability and 0/1 labels&rdquo; cross-entropy loss $$ -\frac{1}{N}\sum_{i=1}^N[y_i\log(p_i)+(1-y_i)\log(1-p_i)] $$ Loss function should penalize well!]]></description>
+    <guid>http://example.org/datalab6/</guid>
+    <description><![CDATA[]]></description>
 </item>
 </channel>
 </rss>

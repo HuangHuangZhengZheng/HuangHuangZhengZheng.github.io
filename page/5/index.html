@@ -100,43 +100,51 @@
         alt="/avatar.jpg"
         title="/avatar.jpg" width="1920" height="1280" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/ZhengTMHuang" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/datalab02/">DATA100-lab02</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-15">2024-07-15</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab02.ipynb&#34;) Lab 2: Pandas Overview 基础操作，注意numpy版本可能过高 To receive credit for a lab, answer all questions correctly and submit before the deadline.
-This lab is due Tuesday, Feb 1st at 11:59 PM.
-Lab Walk-Through In addition to the lab notebook, we have also released a prerecorded walk-through video of the lab. We encourage you to reference this video as you work through the lab.</div><div class="post-footer">
-        <a href="/datalab02/">Read More</a></div>
+        <a href="/datal20/">DATA100-L20: PCA II</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">recap and Goals approximate factorization $W\ L\rightarrow (W+L)/ 2$ rank 下降使得信息缺失了
+所以 $M_{100 \times 4} = N_{100 \times P} \times Q_{P \times 4}$ P的值尽量不要小于原来的&quot;秩&quot;
+singular value decomposition (SVD) low rank approximation no bad! seem good!
+SVD theory 验证orthonormal set
+V@V.T = I 当相乘的时候本质上是旋转，不会拉伸
+Principal Components 零中心化再来看PCA Principal Components and Variance PCA example Why is useful? &#x1f914; </div><div class="post-footer">
+        <a href="/datal20/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/datal7/">DATA100-L7: Visualization Ⅰ</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-15">2024-07-15</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">distribution 定义 bar plots for distribution data8 example compound way seaborn example 1 2 3 4 import seaborn as sns sns.countplot(x=&#39;variable&#39;, data=df) # rug plot sns.rugplot(x=&#39;variable&#39;, data=df, color=&#39;black&#39;) plotly example 处理异常值（outliers）和峰值（mode） density curve 密度曲线看峰 箱型图 1 2 import seaborn as sns sns.boxplot(x=&#39;variable&#39;, data=df) violin plot 和箱型图对比来看，violin plot宽度有意义 1 2 import seaborn as sns sns.violinplot(x=&#39;variable&#39;, data=df) 处理overplotting random jitter </div><div class="post-footer">
-        <a href="/datal7/">Read More</a></div>
+        <a href="/datal17/">DATA100-L17: Estimators, Bias, and Variance</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">sample statistics (from last time) 参考 概率论与数理统计
+prediction vs. inference modeling: assumptions of randomness the bias-variance tradeoff $$ model\ risk = observation\ variance + (model\ bias)^2+model\ variance $$ $$ \mathbb{E}[(Y-\hat{Y}(x))^2] = \sigma^2+(\mathbb{E}[\hat{Y}(x)]-g(x))^2+Var(\hat{Y}(x)) $$ interpreting slopes slope == 0? 假设检验证明是否无关 [Extra]review of the Bootstrap [Extra]derivation of Bias-Variance decomposition https://docs.google.com/presentation/d/1gzgxGO_nbCDajYs7qIpjzjQfJqKadliBOat7Es10Ll8/edit#slide=id.g11df3da7bd7_0_467</div><div class="post-footer">
+        <a href="/datal17/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/datal6/">DATA100-L6: Regex</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-15">2024-07-15</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">text data python string methods .replace(str1, str2)
-.split('/') regex 参考Tools正则表达式笔记
-| 优先级较低 感兴趣的练习↓ https://alf.nu/RegexGolf
-python re .sub() pattern(r&quot;......&quot;) is a raw string, which means that backslashes are not interpreted as escape characters. eg: &ldquo;\\section&rdquo; in regular str, &ldquo;\section&rdquo; in raw str.
-.findall(pattern, string) 1 2 3 4 5 6 7 import re pattern = r&#39;\b\w{3}\b&#39; string = &#39;The quick brown fox jumps over the lazy dog&#39; matches = re.findall(pattern, string) print(matches) Output:</div><div class="post-footer">
-        <a href="/datal6/">Read More</a></div>
+        <a href="/datal18/">DATA100-L18: SQL I</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">why databases structured query language (SQL) &#x1f60b;
+DBMS: database management system sql example type
+INT for integer REAL for decimal TEXT for string BLOB for ARBITRARY data DATETIME for date and time different implementations of sql support different types
+sql table use singular, CamelCase for SQL tables! basic sql queries 通配
+1 SELECT * FROM table_name; 选定子集
+1 SELECT column1, column2 FROM table_name; AS rename columns
+1 2 3 SELECT cute AS cuteness, smart AS intelligence FROM table_name; WHERE filter rows</div><div class="post-footer">
+        <a href="/datal18/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/datadisc02/">DATA100-disc02</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-15">2024-07-15</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">Discussion 2: Pandas Practice We will begin our discussion of Pandas. You will practice:
-Selecting columns Filtering with boolean conditions Counting with value_counts 1 2 import pandas as pd import numpy as np Pandas Practise In the first Pandas question, we will be working with the elections dataset from lecture.
-1 2 elections = pd.read_csv(&#34;elections.csv&#34;) # read in the elections data into a pandas dataframe! elections.head(5) Year Candidate Party Popular vote Result % 0 1824 Andrew Jackson Democratic-Republican 151271 loss 57.</div><div class="post-footer">
-        <a href="/datadisc02/">Read More</a></div>
+        <a href="/datal15/">DATA100-L15: Cross Validation, Regularization</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">Cross Validation the holdout method 1 2 from sklearn.utils import shuffle training_set, dev_set = np.split(shuffle(data), [int(.8*len(data))]) 比较validation error和training error，选择最优的模型。
+K-fold cross validation K=1 is equivalent to holdout method.
+Test sets provide an unbiased estimate of the model&rsquo;s performance on new, unseen data. Regularization L2 regularization (Ridge) the small the ball, the simpler the model 拉格朗日思想，$\alpha$ 越大，约束越强，模型越简单。 岭回归
+scaling data for regularization 标准化数据，be on the same scale
+L1 regularization (Lasso) summary </div><div class="post-footer">
+        <a href="/datal15/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/datal5/">DATA100-L5: Data Wrangling and EDA</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-14">2024-07-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">EDA: Exploratory Data Analysis
-Infinite loop DW &amp; EDA&hellip;&hellip;
-DW: raw data -&gt; clean data -&gt; usable data
-key data properties to consider in EDA structure file format rectangular data: tables and matrices CSV, TabSV/TSV, json(is a dict) txt, XML 1 pd.read_csv(&#39;filename.tsv&#39;,delimiter=&#39;\t&#39;) turn to lec jupyter notebook to see more details
-变量种类 注意：不唯一，不全面 multiple files 主键？ granularity(颗粒度？) scope and temporality 颗粒度 scope: sampling frame temporality: time-series data unix time posix time</div><div class="post-footer">
-        <a href="/datal5/">Read More</a></div>
+        <a href="/datal16/">DATA100-L16: Probability I: Random Variables</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">随机变量及其分布 参考 概率论与数理统计 课程即可
+期望与方差 $$ \mathbb{E}[X] 和 Var(X) $$ 参考 概率论与数理统计 课程即可
+随机变量的和 equality vs Identically distributed vs IID 有意思的分析 &#x1f60f;
+期望和方差的性质 协方差与相关系数 伯努利（0-1）和Binomial分布 Sample Statistics sample mean central limit theorem </div><div class="post-footer">
+        <a href="/datal16/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/61b-14/">61B-14: Exceptions, Iterators, Iterables</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-14">2024-07-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">Exceptions throw statement: throws an exception
-1 2 3 4 5 6 public V get(K key) { int location = findKey(key); if (location &lt; 0) { throw new IllegalArgumentException(&#34;Key &#34; + key + &#34; does not exist in map.&#34;); } return values[findKey(key)]; } 显式抛出异常
-1 2 3 4 public static void main(String[] args) { System.out.println(&#34;ayyy lmao&#34;); throw new RuntimeException(&#34;For no reason.&#34;); } What has been Thrown, can be Caught 1 2 3 4 5 6 7 8 9 10 11 Dog d = new Dog(&#34;Lucy&#34;, &#34;Retriever&#34;, 80); d.</div><div class="post-footer">
-        <a href="/61b-14/">Read More</a></div>
+        <a href="/datal13/">DATA100-L13: Gradient Descent, Feature Engineering</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content"> $\downarrow{shuffle}$ SGD: Stochastic Gradient Descent(but size == 1)
+convexity (凹凸性) feature engineering 在于怎么使用transforming
+feature function see website code
+non-numeric features one-hot encoding concat high order polynomials detect overfitting collect more data more see next lecture </div><div class="post-footer">
+        <a href="/datal13/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -167,7 +175,7 @@ key data properties to consider in EDA structure file format rectangular data: t
                     <span class="page-link" aria-hidden="true">&hellip;</span>
                 </li><li class="page-item ">
                     <span class="page-link">
-                        <a href="/page/13/">13</a>
+                        <a href="/page/15/">15</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">

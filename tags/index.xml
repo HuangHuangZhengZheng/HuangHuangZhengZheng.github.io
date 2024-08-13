@@ -28,19 +28,11 @@
     <description><![CDATA[]]></description>
 </item>
 <item>
-    <title>Data 100</title>
-    <link>http://example.org/tags/data-100/</link>
+    <title>Jupyter</title>
+    <link>http://example.org/tags/jupyter/</link>
     <pubDate>Sat, 13 Jul 2024 13:27:45 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/tags/data-100/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>JupyterHub</title>
-    <link>http://example.org/tags/jupyterhub/</link>
-    <pubDate>Sat, 13 Jul 2024 13:27:45 &#43;0800</pubDate>
-    <author>HHZZ</author>
-    <guid>http://example.org/tags/jupyterhub/</guid>
+    <guid>http://example.org/tags/jupyter/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
@@ -57,14 +49,6 @@
     <pubDate>Sat, 13 Jul 2024 13:27:45 &#43;0800</pubDate>
     <author>HHZZ</author>
     <guid>http://example.org/tags/numpy/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Python</title>
-    <link>http://example.org/tags/python/</link>
-    <pubDate>Sat, 13 Jul 2024 13:27:45 &#43;0800</pubDate>
-    <author>HHZZ</author>
-    <guid>http://example.org/tags/python/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
