@@ -4,19 +4,23 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>DATA100-lab4 - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/datalab4/">
+        <title>DATA100-lab4: Visualization, Transformations, and KDEs - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/datalab4/">
   <meta property="og:site_name" content="HHZZ`s space">
-  <meta property="og:title" content="DATA100-lab4">
-  <meta property="og:description" content="This is my cool site">
+  <meta property="og:title" content="DATA100-lab4: Visualization, Transformations, and KDEs">
+  <meta property="og:description" content="1 2 3 # Initialize Otter import otter grader = otter.Notebook(&amp;#34;lab04.ipynb&amp;#34;) Lab 4: Visualization, Transformations, and KDEs Objective In this lab you will get some practice plotting, applying data transformations, and working with kernel density estimators (KDEs). We will be working with data from the World Bank containing various statistics for countries and territories around the world.
+1 2 3 4 5 6 7 8 9 10 import pandas as pd import numpy as np import seaborn as sns import matplotlib.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2024-08-13T15:19:32+08:00">
     <meta property="article:modified_time" content="2024-08-13T15:19:32+08:00">
+    <meta property="article:tag" content="Seaborn">
+    <meta property="article:tag" content="Plotly">
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="DATA100-lab4">
-<meta name="twitter:description" content="">
+<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="DATA100-lab4: Visualization, Transformations, and KDEs">
+<meta name="twitter:description" content="1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab04.ipynb&#34;) Lab 4: Visualization, Transformations, and KDEs Objective In this lab you will get some practice plotting, applying data transformations, and working with kernel density estimators (KDEs). We will be working with data from the World Bank containing various statistics for countries and territories around the world.
+1 2 3 4 5 6 7 8 9 10 import pandas as pd import numpy as np import seaborn as sns import matplotlib.">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -26,12 +30,12 @@
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "DATA100-lab4",
+        "headline": "DATA100-lab4: Visualization, Transformations, and KDEs",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/datalab4\/"
-        },"genre": "posts","wordcount":  0 ,
+        },"genre": "posts","keywords": "Seaborn, Plotly","wordcount":  4419 ,
         "url": "http:\/\/example.org\/datalab4\/","datePublished": "2024-08-13T15:19:32+08:00","dateModified": "2024-08-13T15:19:32+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -103,17 +107,1243 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">DATA100-lab4</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">DATA100-lab4: Visualization, Transformations, and KDEs</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-13">2024-08-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;0 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;0 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-13">2024-08-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;4419 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;21 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"></div><div class="post-footer" id="post-footer">
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#objective">Objective</a></li>
+      </ul>
+    </li>
+    <li><a href="#loading-data">Loading Data</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#question-1a">Question 1a</a></li>
+    <li><a href="#question-1b">Question 1b</a></li>
+    <li><a href="#question-1c">Question 1c</a></li>
+    <li><a href="#question-1d">Question 1d</a></li>
+    <li><a href="#双变换思路打开">双变换，思路打开</a></li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#overview">Overview</a>
+          <ul>
+            <li><a href="#调整bandwidth">调整bandwidth</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#question-2a">Question 2a</a></li>
+    <li><a href="#question-2b">Question 2b</a></li>
+    <li><a href="#optional--px用法讲解">Optional&ndash;px用法讲解</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Initialize Otter</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">otter</span>
+</span></span><span class="line"><span class="cl"><span class="n">grader</span> <span class="o">=</span> <span class="n">otter</span><span class="o">.</span><span class="n">Notebook</span><span class="p">(</span><span class="s2">&#34;lab04.ipynb&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="lab-4-visualization-transformations-and-kdes">Lab 4: Visualization, Transformations, and KDEs</h1>
+<h3 id="objective">Objective</h3>
+<p>In this lab you will get some practice plotting, applying data transformations, and working with kernel density estimators (KDEs).  We will be working with data from the World Bank containing various statistics for countries and territories around the world.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">ds100_utils</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;fivethirtyeight&#39;</span><span class="p">)</span> <span class="c1"># Use plt.style.available to see more styles</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&#34;talk&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="loading-data">Loading Data</h2>
+<p>Let us load some World Bank data into a <code>pd.DataFrame</code> object named <code>wb</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">wb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&#34;data/world_bank_misc.csv&#34;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">wb</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Primary completion rate: Male: % of relevant age group: 2015</th>
+      <th>Primary completion rate: Female: % of relevant age group: 2015</th>
+      <th>Lower secondary completion rate: Male: % of relevant age group: 2015</th>
+      <th>Lower secondary completion rate: Female: % of relevant age group: 2015</th>
+      <th>Youth literacy rate: Male: % of ages 15-24: 2005-14</th>
+      <th>Youth literacy rate: Female: % of ages 15-24: 2005-14</th>
+      <th>Adult literacy rate: Male: % ages 15 and older: 2005-14</th>
+      <th>Adult literacy rate: Female: % ages 15 and older: 2005-14</th>
+      <th>Students at lowest proficiency on PISA: Mathematics: % of 15 year-olds: 2015</th>
+      <th>Students at lowest proficiency on PISA: Reading: % of 15 year-olds: 2015</th>
+      <th>...</th>
+      <th>Access to improved sanitation facilities: % of population: 1990</th>
+      <th>Access to improved sanitation facilities: % of population: 2015</th>
+      <th>Child immunization rate: Measles: % of children ages 12-23 months: 2015</th>
+      <th>Child immunization rate: DTP3: % of children ages 12-23 months: 2015</th>
+      <th>Children with acute respiratory infection taken to health provider: % of children under age 5 with ARI: 2009-2016</th>
+      <th>Children with diarrhea who received oral rehydration and continuous feeding: % of children under age 5 with diarrhea: 2009-2016</th>
+      <th>Children sleeping under treated bed nets: % of children under age 5: 2009-2016</th>
+      <th>Children with fever receiving antimalarial drugs: % of children under age 5 with fever: 2009-2016</th>
+      <th>Tuberculosis: Treatment success rate: % of new cases: 2014</th>
+      <th>Tuberculosis: Cases detection rate: % of new estimated cases: 2015</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Afghanistan</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>62.0</td>
+      <td>32.0</td>
+      <td>45.0</td>
+      <td>18.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>21.0</td>
+      <td>32.0</td>
+      <td>68.0</td>
+      <td>78.0</td>
+      <td>62.0</td>
+      <td>41.0</td>
+      <td>4.6</td>
+      <td>11.8</td>
+      <td>87.0</td>
+      <td>58.0</td>
+    </tr>
+    <tr>
+      <th>Albania</th>
+      <td>108.0</td>
+      <td>105.0</td>
+      <td>97.0</td>
+      <td>97.0</td>
+      <td>99.0</td>
+      <td>99.0</td>
+      <td>98.0</td>
+      <td>96.0</td>
+      <td>26.0</td>
+      <td>7.0</td>
+      <td>...</td>
+      <td>78.0</td>
+      <td>93.0</td>
+      <td>98.0</td>
+      <td>98.0</td>
+      <td>70.0</td>
+      <td>63.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>88.0</td>
+      <td>76.0</td>
+    </tr>
+    <tr>
+      <th>Algeria</th>
+      <td>106.0</td>
+      <td>105.0</td>
+      <td>68.0</td>
+      <td>85.0</td>
+      <td>96.0</td>
+      <td>92.0</td>
+      <td>83.0</td>
+      <td>68.0</td>
+      <td>51.0</td>
+      <td>11.0</td>
+      <td>...</td>
+      <td>80.0</td>
+      <td>88.0</td>
+      <td>95.0</td>
+      <td>95.0</td>
+      <td>66.0</td>
+      <td>42.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>88.0</td>
+      <td>80.0</td>
+    </tr>
+    <tr>
+      <th>American Samoa</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>61.0</td>
+      <td>63.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>87.0</td>
+    </tr>
+    <tr>
+      <th>Andorra</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>96.0</td>
+      <td>97.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>83.0</td>
+      <td>87.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 45 columns</p>
+</div>
+<p>This table contains some interesting columns.  Take a look:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nb">list</span><span class="p">(</span><span class="n">wb</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>['Primary completion rate: Male: % of relevant age group: 2015',
+ 'Primary completion rate: Female: % of relevant age group: 2015',
+ 'Lower secondary completion rate: Male: % of relevant age group: 2015',
+ 'Lower secondary completion rate: Female: % of relevant age group: 2015',
+ 'Youth literacy rate: Male: % of ages 15-24: 2005-14',
+ 'Youth literacy rate: Female: % of ages 15-24: 2005-14',
+ 'Adult literacy rate: Male: % ages 15 and older: 2005-14',
+ 'Adult literacy rate: Female: % ages 15 and older: 2005-14',
+ 'Students at lowest proficiency on PISA: Mathematics: % of 15 year-olds: 2015',
+ 'Students at lowest proficiency on PISA: Reading: % of 15 year-olds: 2015',
+ 'Students at lowest proficiency on PISA: Science: % of 15 year-olds: 2015',
+ 'Population: millions: 2016',
+ 'Surface area: sq. km thousands: 2016',
+ 'Population density: people per sq. km: 2016',
+ 'Gross national income, Atlas method: $ billions: 2016',
+ 'Gross national income per capita, Atlas method: $: 2016',
+ 'Purchasing power parity gross national income: $ billions: 2016',
+ 'per capita: $: 2016',
+ 'Gross domestic product: % growth : 2016',
+ 'per capita: % growth: 2016',
+ 'Prevalence of smoking: Male: % of adults: 2015',
+ 'Prevalence of smoking: Female: % of adults: 2015',
+ 'Incidence of tuberculosis: per 100,000 people: 2015',
+ 'Prevalence of diabetes: % of population ages 20 to 79: 2015',
+ 'Incidence of HIV: Total: % of uninfected population ages 15-49: 2015',
+ 'Prevalence of HIV: Total: % of population ages 15-49: 2015',
+ &quot;Prevalence of HIV: Women's share of population ages 15+ living with HIV: %: 2015&quot;,
+ 'Prevalence of HIV: Youth, Male: % of population ages 15-24: 2015',
+ 'Prevalence of HIV: Youth, Female: % of population ages 15-24: 2015',
+ 'Antiretroviral therapy coverage: % of people living with HIV: 2015',
+ 'Cause of death: Communicable diseases and maternal, prenatal, and nutrition conditions: % of population: 2015',
+ 'Cause of death: Non-communicable diseases: % of population: 2015',
+ 'Cause of death: Injuries: % of population: 2015',
+ 'Access to an improved water source: % of population: 1990',
+ 'Access to an improved water source: % of population: 2015',
+ 'Access to improved sanitation facilities: % of population: 1990',
+ 'Access to improved sanitation facilities: % of population: 2015',
+ 'Child immunization rate: Measles: % of children ages 12-23 months: 2015',
+ 'Child immunization rate: DTP3: % of children ages 12-23 months: 2015',
+ 'Children with acute respiratory infection taken to health provider: % of children under age 5 with ARI: 2009-2016',
+ 'Children with diarrhea who received oral rehydration and continuous feeding: % of children under age 5 with diarrhea: 2009-2016',
+ 'Children sleeping under treated bed nets: % of children under age 5: 2009-2016',
+ 'Children with fever receiving antimalarial drugs: % of children under age 5 with fever: 2009-2016',
+ 'Tuberculosis: Treatment success rate: % of new cases: 2014',
+ 'Tuberculosis: Cases detection rate: % of new estimated cases: 2015']
+</code></pre>
+<h1 id="part-1-scaling">Part 1: Scaling</h1>
+<p>In the first part of this assignment we will look at the distribution of values for combined adult literacy rate as well as the gross national income per capita. The code below creates a copy of the DataFrame that contains only the two Series we want, and then drops all rows that contain null values in either column.</p>
+<p><strong>Note:</strong> <em>For this lab we are dropping null values without investigating them further. However, this is generally not the best practice and can severely affect our analyses.</em></p>
+<p>Here the combined literacy rate is the sum of the female and male literacy rates as reported by the World Bank. 0 represents no literacy, and 200 would represent total literacy by both genders that are included in the World Bank&rsquo;s dataset.</p>
+<p>In this lab, we will be using the <code>sns.histplot</code>, <code>sns.rugplot</code>, and <code>sns.displot</code> function to visualize distributions. You may find it useful to consult the seaborn documentation on <a href="https://seaborn.pydata.org/tutorial/distributions.html" target="_blank" rel="noopener noreffer ">distributions</a> and <a href="https://seaborn.pydata.org/tutorial/function_overview.html" target="_blank" rel="noopener noreffer ">functions</a> for more details.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1">#creates a DataFrame with the appropriate index</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">wb</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#copies the Series we want</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span><span class="p">[</span><span class="s1">&#39;lit&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">wb</span><span class="p">[</span><span class="s1">&#39;Adult literacy rate: Female: </span><span class="si">% a</span><span class="s1">ges 15 and older: 2005-14&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">wb</span><span class="p">[</span><span class="s2">&#34;Adult literacy rate: Male: </span><span class="si">% a</span><span class="s2">ges 15 and older: 2005-14&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span><span class="p">[</span><span class="s1">&#39;inc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">wb</span><span class="p">[</span><span class="s1">&#39;Gross national income per capita, Atlas method: $: 2016&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#the line below drops all records that have a NaN value in either column</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Original records:&#34;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">wb</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Final records:&#34;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>Original records: 216
+Final records: 147
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>lit</th>
+      <th>inc</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Afghanistan</th>
+      <td>63.0</td>
+      <td>580.0</td>
+    </tr>
+    <tr>
+      <th>Albania</th>
+      <td>194.0</td>
+      <td>4250.0</td>
+    </tr>
+    <tr>
+      <th>Algeria</th>
+      <td>151.0</td>
+      <td>4270.0</td>
+    </tr>
+    <tr>
+      <th>Angola</th>
+      <td>142.0</td>
+      <td>3440.0</td>
+    </tr>
+    <tr>
+      <th>Antigua and Barbuda</th>
+      <td>197.0</td>
+      <td>13400.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<h2 id="question-1a">Question 1a</h2>
+<p>Suppose we wanted to build a histogram of our data to understand the distribution of literacy rates and income per capita individually. We can use <a href="https://seaborn.pydata.org/generated/seaborn.countplot.html" target="_blank" rel="noopener noreffer "><code>countplot</code></a> in seaborn to create bar charts from categorical data.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&#34;lit&#34;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&#34;Combined literacy rate: </span><span class="si">% a</span><span class="s2">ges 15 and older: 2005-14&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;World Bank Combined Adult Literacy Rate&#39;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>Text(0.5, 1.0, 'World Bank Combined Adult Literacy Rate')
+</code></pre>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab4/lab04_files/lab04_13_1.png"
+        data-srcset="/datalab4/lab04_files/lab04_13_1.png, /datalab4/lab04_files/lab04_13_1.png 1.5x, /datalab4/lab04_files/lab04_13_1.png 2x"
+        data-sizes="auto"
+        alt="/datalab4/lab04_files/lab04_13_1.png"
+        title="png" width="672" height="501" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&#34;inc&#34;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Gross national income per capita, Atlas method: $: 2016&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;World Bank Gross National Income Per Capita&#39;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>Text(0.5, 1.0, 'World Bank Gross National Income Per Capita')
+</code></pre>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab4/lab04_files/lab04_14_1.png"
+        data-srcset="/datalab4/lab04_files/lab04_14_1.png, /datalab4/lab04_files/lab04_14_1.png 1.5x, /datalab4/lab04_files/lab04_14_1.png 2x"
+        data-sizes="auto"
+        alt="/datalab4/lab04_files/lab04_14_1.png"
+        title="png" width="693" height="502" /></p>
+<p>In the cell below, explain why <code>countplot</code> is NOT the right tool for visualizing the distribution of our data.</p>
+<!--
+BEGIN QUESTION
+name: q1a
+-->
+<p><em>It is so overwhelming! And ugly!</em></p>
+<h2 id="question-1b">Question 1b</h2>
+<p>In the cell below, create a plot of <strong>income per capita</strong> (the second plot above) using the <a href="https://seaborn.pydata.org/generated/seaborn.histplot.html" target="_blank" rel="noopener noreffer "><code>histplot</code></a> function. As above, you should have two subplots, where the left subplot is literacy, and the right subplot is income.</p>
+<p>Don&rsquo;t forget to title the plot and label axes!</p>
+<p><strong>Hint:</strong> <em>Copy and paste from above to start.</em></p>
+<!--
+BEGIN QUESTION
+name: q1b1
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&#34;inc&#34;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Gross national income per capita, Atlas method: $: 2016&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;World Bank Gross National Income Per Capita&#39;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab4/lab04_files/lab04_18_0.png"
+        data-srcset="/datalab4/lab04_files/lab04_18_0.png, /datalab4/lab04_files/lab04_18_0.png 1.5x, /datalab4/lab04_files/lab04_18_0.png 2x"
+        data-sizes="auto"
+        alt="/datalab4/lab04_files/lab04_18_0.png"
+        title="png" width="648" height="502" /></p>
+<p>You should see histograms that show the counts of how many data points appear in each bin. <code>distplot</code> uses a heuristic called the Freedman-Diaconis rule to automatically identify the best bin sizes, though it is possible to set the bins yourself (we won&rsquo;t).</p>
+<p>In the cell below, we explore overlaying a rug plot on top of a histogram using <code>rugplot</code>. Note that the rug plot is hard to see.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&#34;inc&#34;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">rugplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&#34;inc&#34;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Gross national income per capita, Atlas method: $: 2016&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;World Bank Gross National Income Per Capita&#39;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>Text(0.5, 1.0, 'World Bank Gross National Income Per Capita')
+</code></pre>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab4/lab04_files/lab04_20_1.png"
+        data-srcset="/datalab4/lab04_files/lab04_20_1.png, /datalab4/lab04_files/lab04_20_1.png 1.5x, /datalab4/lab04_files/lab04_20_1.png 2x"
+        data-sizes="auto"
+        alt="/datalab4/lab04_files/lab04_20_1.png"
+        title="png" width="648" height="502" /></p>
+<p>One way to make it easier to see the difference between the rug plot and the bars is to set a different <em>color</em>, for example:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&#34;inc&#34;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&#34;lightsteelblue&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">rugplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&#34;inc&#34;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Gross national income per capita, Atlas method: $: 2016&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;World Bank Gross National Income Per Capita&#39;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>Text(0.5, 1.0, 'World Bank Gross National Income Per Capita')
+</code></pre>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab4/lab04_files/lab04_22_1.png"
+        data-srcset="/datalab4/lab04_files/lab04_22_1.png, /datalab4/lab04_files/lab04_22_1.png 1.5x, /datalab4/lab04_files/lab04_22_1.png 2x"
+        data-sizes="auto"
+        alt="/datalab4/lab04_files/lab04_22_1.png"
+        title="png" width="648" height="502" /></p>
+<p>There is also another function called <code>kdeplot</code> which plots a Kernel Density Estimate as described in class, and covered in more detail later in this lab.</p>
+<p>Rather than manually calling <code>histplot</code>, <code>rugplot</code>, and <code>kdeplot</code> to plot histograms, rug plots, and KDE plots, respectively, we can instead use <code>displot</code>, which can simultaneously plot histogram bars, a rug plot, and a KDE plot, and adjust all the colors automatically for visbility. Using the documentation for <a href="https://seaborn.pydata.org/generated/seaborn.displot.html" target="_blank" rel="noopener noreffer "><code>displot</code></a> (<a href="https://seaborn.pydata.org/generated/seaborn.displot.html" target="_blank" rel="noopener noreffer ">Link</a>), make a plot of the income data that includes a histogram, rug plot, and KDE plot.</p>
+<p><strong>Hint</strong>: <em>You&rsquo;ll need to set two parameters to <code>True</code>.</em></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;inc&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">rug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Gross national income per capita, Atlas method: $: 2016&#39;</span><span class="p">)</span> <span class="c1"># 太长了，显示不全？</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;World Bank Gross National Income Per Capita&#39;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>Text(0.5, 1.0, 'World Bank Gross National Income Per Capita')
+</code></pre>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab4/lab04_files/lab04_24_1.png"
+        data-srcset="/datalab4/lab04_files/lab04_24_1.png, /datalab4/lab04_files/lab04_24_1.png 1.5x, /datalab4/lab04_files/lab04_24_1.png 2x"
+        data-sizes="auto"
+        alt="/datalab4/lab04_files/lab04_24_1.png"
+        title="png" width="536" height="493" /></p>
+<p>You should see roughly the same histogram as before. However, now you should see an overlaid smooth line. This is the kernel density estimate discussed in class.</p>
+<p>Above, the y-axis is labeled by the counts. We can also label the y-axis by the density. An example is given below, this time using the literacy data from the beginning of this lab.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&#34;lit&#34;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span> <span class="n">rug</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">kde</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">stat</span> <span class="o">=</span> <span class="s2">&#34;density&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&#34;Adult literacy rate: Combined: </span><span class="si">% a</span><span class="s2">ges 15 and older: 2005-14&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;World Bank Combined Adult Literacy Rate&#39;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>Text(0.5, 1.0, 'World Bank Combined Adult Literacy Rate')
+</code></pre>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab4/lab04_files/lab04_27_1.png"
+        data-srcset="/datalab4/lab04_files/lab04_27_1.png, /datalab4/lab04_files/lab04_27_1.png 1.5x, /datalab4/lab04_files/lab04_27_1.png 2x"
+        data-sizes="auto"
+        alt="/datalab4/lab04_files/lab04_27_1.png"
+        title="png" width="527" height="492" /></p>
+<p>Observations:</p>
+<ul>
+<li>
+<p>You&rsquo;ll also see that the y-axis value is no longer the count. Instead it is a value such that the total <strong>area</strong> in the histogram is 1. For example, the area of the last bar is approximately 22.22 * 0.028 = 0.62</p>
+</li>
+<li>
+<p>The KDE is a smooth estimate of the distribution of the given variable. The area under the KDE is also 1. While it is not obvious from the figure, some of the area under the KDE is beyond the 100% literacy. In other words, the KDE is non-zero for values greater than 100%. This, of course, makes no physical sense. Nonetheless, it is a mathematical feature of the KDE.</p>
+</li>
+</ul>
+<p>We&rsquo;ll talk more about KDEs later in this lab.</p>
+<h2 id="question-1c">Question 1c</h2>
+<p>Looking at the income data, it is difficult to see the distribution among low income countries because they are all scrunched up at the left side of the plot. The KDE also has a problem where the density function has a lot of area below 0.</p>
+<p>Transforming the <code>inc</code> data logarithmically gives us a more symmetric distribution of values. This can make it easier to see patterns.</p>
+<p>In addition, summary statistics like the mean and standard deviation (square-root of the variance) are more stable with symmetric distributions.</p>
+<p>In the cell below, make a distribution plot of <code>inc</code> with the data transformed using <code>np.log10</code> and <code>kde=True</code>. If you want to see the exact counts, just set <code>kde=False</code>. If you don&rsquo;t specify the <code>kde</code> parameter, it is by default set to True.</p>
+<p><strong>Hint:</strong> Unlike the examples above, you can pass a series to the <code>displot</code> function, i.e. rather than passing an entire DataFrame as <code>data</code> and a column as <code>x</code>, you can instead pass a series.</p>
+<!--
+BEGIN QUESTION
+name: q1c
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;inc&#39;</span><span class="p">]),</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;World Bank Gross National Income Per Capita&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Log Gross national income per capita, Atlas method: $: 2016&#39;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab4/lab04_files/lab04_30_0.png"
+        data-srcset="/datalab4/lab04_files/lab04_30_0.png, /datalab4/lab04_files/lab04_30_0.png 1.5x, /datalab4/lab04_files/lab04_30_0.png 2x"
+        data-sizes="auto"
+        alt="/datalab4/lab04_files/lab04_30_0.png"
+        title="png" width="535" height="493" /></p>
+<p>When a distribution has a long right tail, a <em><strong>log-transformation</strong></em> often does a good job of symmetrizing the distribution, as it did here.  Long right tails are common with variables that have a lower limit on the values.</p>
+<p>On the other hand, long left tails are common with distributions of variables that have an upper limit, such as percentages (can&rsquo;t be higher than 100%) and GPAs (can&rsquo;t be higher than 4).  That is the case for the literacy rate. Typically taking a <em><strong>power-transformation</strong></em> such
+as squaring or cubing the values can help symmetrize the left skew distribution.</p>
+<p>In the cell below, we will make a distribution plot of <code>lit</code> with the data transformed using a power, i.e., raise <code>lit</code> to the 2nd, 3rd, and 4th power. We plot the transformation with the 4th power below.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;lit&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">4</span><span class="p">),</span> <span class="n">kde</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="c1"># 经典向量化numpy</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&#34;Adult literacy rate: Combined: </span><span class="si">% a</span><span class="s2">ges 15 and older: 2005-14&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;World Bank Combined Adult Literacy Rate (4th power)&#39;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">30</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab4/lab04_files/lab04_32_0.png"
+        data-srcset="/datalab4/lab04_files/lab04_32_0.png, /datalab4/lab04_files/lab04_32_0.png 1.5x, /datalab4/lab04_files/lab04_32_0.png 2x"
+        data-sizes="auto"
+        alt="/datalab4/lab04_files/lab04_32_0.png"
+        title="png" width="621" height="525" /></p>
+<h2 id="question-1d">Question 1d</h2>
+<p>If we want to examine the relationship between the female adult literacy rate and the gross national income per capita, we need to make a scatter plot.</p>
+<p>In the cell below, create a scatter plot of untransformed income per capita and literacy rate using the <code>sns.scatterplot</code> function. Make  sure to label both axes using <code>plt.xlabel</code> and <code>plt.ylabel</code>.</p>
+<!--
+BEGIN QUESTION
+name: q1d
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;lit&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;inc&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&#34;Adult literacy rate: Combined: </span><span class="si">% a</span><span class="s2">ges 15 and older&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Gross national income per capita (non-log scale)&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;World Bank: Gross National Income Per Capita vs</span><span class="se">\n</span><span class="s1"> Combined Adult Literacy Rate&#39;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab4/lab04_files/lab04_34_0.png"
+        data-srcset="/datalab4/lab04_files/lab04_34_0.png, /datalab4/lab04_files/lab04_34_0.png 1.5x, /datalab4/lab04_files/lab04_34_0.png 2x"
+        data-sizes="auto"
+        alt="/datalab4/lab04_files/lab04_34_0.png"
+        title="png" width="686" height="527" /></p>
+<p>We can better assess the relationship between two variables when they have been straightened because it is easier for us to recognize linearity.</p>
+<p>In the cell below, we see a scatter plot of log-transformed income per capita against literacy rate.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;lit&#39;</span><span class="p">],</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;inc&#39;</span><span class="p">]))</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&#34;Adult literacy rate: Combined: </span><span class="si">% a</span><span class="s2">ges 15 and older&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Gross national income per capita (log scale)&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;World Bank: Gross National Income Per Capita vs</span><span class="se">\n</span><span class="s1"> Combined Adult Literacy Rate&#39;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab4/lab04_files/lab04_36_0.png"
+        data-srcset="/datalab4/lab04_files/lab04_36_0.png, /datalab4/lab04_files/lab04_36_0.png 1.5x, /datalab4/lab04_files/lab04_36_0.png 2x"
+        data-sizes="auto"
+        alt="/datalab4/lab04_files/lab04_36_0.png"
+        title="png" width="654" height="527" /></p>
+<h2 id="双变换思路打开">双变换，思路打开</h2>
+<p>This scatter plot looks better. The relationship is closer to linear.</p>
+<p>We can think of the log-linear relationship between x and y, as follows: a constant change in x corresponds to a percent (scaled) change in y.</p>
+<p>We can also see that the long left tail of literacy is represented in this plot by a lot of the points being bunched up near 100. Try squaring literacy and taking the log of income. Does the plot look better?</p>
+<!--
+BEGIN QUESTION
+name: q1d2
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;lit&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;inc&#39;</span><span class="p">]))</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&#34;Adult literacy rate: Combined: </span><span class="si">% a</span><span class="s2">ges 15 and older&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Gross national income per capita (log vs. ^2)&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;World Bank: Gross National Income Per Capita vs</span><span class="se">\n</span><span class="s1"> Combined Adult Literacy Rate&#39;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab4/lab04_files/lab04_38_0.png"
+        data-srcset="/datalab4/lab04_files/lab04_38_0.png, /datalab4/lab04_files/lab04_38_0.png 1.5x, /datalab4/lab04_files/lab04_38_0.png 2x"
+        data-sizes="auto"
+        alt="/datalab4/lab04_files/lab04_38_0.png"
+        title="png" width="967" height="543" /></p>
+<p>Choosing the best transformation for a relationship is often a balance between keeping the model simple and straightening the scatter plot.</p>
+<h1 id="part-2-kernel-density-estimation">Part 2: Kernel Density Estimation</h1>
+<p>In this part of the lab you will develop a deeper understanding of how kernel density estimation works.</p>
+<ul>
+<li>Explain KDE briefly within the lab</li>
+</ul>
+<h3 id="overview">Overview</h3>
+<p>Kernel density estimation is used to estimate a probability density function (i.e. a density curve) from a set of data. Just like a histogram, a density function&rsquo;s total area must sum to 1.</p>
+<p>KDE centrally revolves around this idea of a &ldquo;kernel&rdquo;. A kernel is a function whose area sums to 1. The three steps involved in building a kernel density estimate are:</p>
+<ol>
+<li>Placing a kernel at each observation</li>
+<li>Normalizing kernels so that the sum of their areas is 1</li>
+<li>Summing all kernels together</li>
+</ol>
+<p>&#x1f60b;</p>
+<p>The end result is a function, that takes in some value <code>x</code> and returns a density estimate at the point <code>x</code>.</p>
+<p>When constructing a KDE, there are several choices to make regarding the kernel. Specifically, we need to choose the function we want to use as our kernel, as well as a bandwidth parameter, which tells us how wide or narrow each kernel should be. We will explore these ideas now.</p>
+<p>Suppose we have 3 data points with values 2, 4, and 9. We can compute the (useless) histogram with a KDE as shown below.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">data3pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">data3pts</span><span class="p">,</span> <span class="n">kde</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">stat</span> <span class="o">=</span> <span class="s2">&#34;density&#34;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab4/lab04_files/lab04_42_0.png"
+        data-srcset="/datalab4/lab04_files/lab04_42_0.png, /datalab4/lab04_files/lab04_42_0.png 1.5x, /datalab4/lab04_files/lab04_42_0.png 2x"
+        data-sizes="auto"
+        alt="/datalab4/lab04_files/lab04_42_0.png"
+        title="png" width="466" height="466" /></p>
+<p>To understand how KDEs are computed, we need to see the KDE outside the given range. The easiest way to do this is to use an old function called <code>distplot</code>. During the Spring 2022 offering of this course, <code>distplot</code> was still a working function in Seaborn, but it will be removed at a future date. If you get an error that says that <code>distplot</code> is not a valid function, sorry, you are too far in the future to do this lab exercise.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">data3pts</span><span class="p">,</span> <span class="n">kde</span> <span class="o">=</span> <span class="kc">True</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>C:\Users\86135\AppData\Local\Temp\ipykernel_9696\4279347623.py:1: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  sns.distplot(data3pts, kde = True);
+</code></pre>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab4/lab04_files/lab04_44_1.png"
+        data-srcset="/datalab4/lab04_files/lab04_44_1.png, /datalab4/lab04_files/lab04_44_1.png 1.5x, /datalab4/lab04_files/lab04_44_1.png 2x"
+        data-sizes="auto"
+        alt="/datalab4/lab04_files/lab04_44_1.png"
+        title="png" width="680" height="454" /></p>
+<h4 id="调整bandwidth">调整bandwidth</h4>
+<p>One question you might be wondering is how the kernel density estimator decides how &ldquo;wide&rdquo; each point should be. <em>It turns out this is a parameter you can set called <code>bw</code>, which stands for bandwith.</em> For example, the code below gives a bandwith value of 0.5 to each data point. You&rsquo;ll see the resulting KDE is quite different. Try experimenting with different values of bandwidth and see what happens.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">data3pts</span><span class="p">,</span> <span class="n">kde</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">kde_kws</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;bw&#34;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">});</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>C:\Users\86135\AppData\Local\Temp\ipykernel_9696\942060009.py:1: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  sns.distplot(data3pts, kde = True, kde_kws = {&quot;bw&quot;: 0.5});
+d:\miniconda3\envs\ds100\Lib\site-packages\seaborn\distributions.py:2496: UserWarning: 
+
+The `bw` parameter is deprecated in favor of `bw_method` and `bw_adjust`.
+Setting `bw_method=0.5`, but please see the docs for the new parameters
+and update your code. This will become an error in seaborn v0.14.0.
+
+  kdeplot(**{axis: a}, ax=ax, color=kde_color, **kde_kws)
+</code></pre>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab4/lab04_files/lab04_46_1.png"
+        data-srcset="/datalab4/lab04_files/lab04_46_1.png, /datalab4/lab04_files/lab04_46_1.png 1.5x, /datalab4/lab04_files/lab04_46_1.png 2x"
+        data-sizes="auto"
+        alt="/datalab4/lab04_files/lab04_46_1.png"
+        title="png" width="693" height="454" /></p>
+<h2 id="question-2a">Question 2a</h2>
+<p>As mentioned above, the kernel density estimate (KDE) is just the sum of a bunch of copies of the kernel, each centered on our data points. The default kernel used by the <code>distplot</code> function (as well as <code>kdeplot</code>) is the Gaussian kernel, given by:</p>
+<p>$$\Large
+K_\alpha(x, z) = \frac{1}{\sqrt{2 \pi \alpha^2}} \exp\left(-\frac{(x - z)^2}{2  \alpha ^2} \right)
+$$</p>
+<p>We&rsquo;ve implemented the Gaussian kernel for you in Python below. Here, <code>alpha</code> is the smoothing or bandwidth parameter $\alpha$ for the KDE, <code>z</code> is the center of the Gaussian (i.e. a data point or an array of data points), and <code>x</code> is an array of values of the variable whose distribution we are plotting.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">gaussian_kernel</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mf">1.0</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">alpha</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">z</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">alpha</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>For example, we can plot the Gaussian kernel centered at 9 with $\alpha$ = 0.5 as below:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span>
+</span></span><span class="line"><span class="cl"><span class="n">kde_curve</span> <span class="o">=</span> <span class="p">[</span><span class="n">gaussian_kernel</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xs</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">kde_curve</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab4/lab04_files/lab04_52_0.png"
+        data-srcset="/datalab4/lab04_files/lab04_52_0.png, /datalab4/lab04_files/lab04_52_0.png 1.5x, /datalab4/lab04_files/lab04_52_0.png 2x"
+        data-sizes="auto"
+        alt="/datalab4/lab04_files/lab04_52_0.png"
+        title="png" width="626" height="446" /></p>
+<p>In the cell below, plot the 3 kernel density functions corresponding to our 3 data points on the same axis. Use an <code>alpha</code> value of 0.5. Recall that our three data points are 2, 4, and 9.</p>
+<p><strong>Note:</strong> Make sure to normalize your kernels! This means that the area under each of your kernels should be $\frac{1}{3}$ since there are three data points.</p>
+<p>You don&rsquo;t have to use the following hints, but they might be helpful in simplifying your code.</p>
+<p><strong>Hint:</strong> The <code>gaussian_kernel</code> function can also take a numpy array as an argument for <code>z</code>.</p>
+<p><strong>Hint:</strong> To plot multiple plots at once, you can use <code>plt.plot(xs, y)</code> with a two dimensional array as <code>y</code>.</p>
+<!--
+BEGIN QUESTION
+name: q2a
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span>
+</span></span><span class="line"><span class="cl"><span class="n">kde_curve</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="o">*</span><span class="n">gaussian_kernel</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">data3pts</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xs</span><span class="p">]</span> <span class="c1"># 注意“正则化”！</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">kde_curve</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab4/lab04_files/lab04_54_0.png"
+        data-srcset="/datalab4/lab04_files/lab04_54_0.png, /datalab4/lab04_files/lab04_54_0.png 1.5x, /datalab4/lab04_files/lab04_54_0.png 2x"
+        data-sizes="auto"
+        alt="/datalab4/lab04_files/lab04_54_0.png"
+        title="png" width="638" height="446" /></p>
+<p>In the cell below, we see a plot that shows the sum of all three of the kernels above. The plot resembles the kde shown when you called <code>distplot</code> function with bandwidth 0.5 earlier. The area under the final curve will be 1 since the area under each of the three normalized kernels is $\frac{1}{3}$.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span>
+</span></span><span class="line"><span class="cl"><span class="n">kde_curve</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span> <span class="o">*</span> <span class="n">gaussian_kernel</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">data3pts</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xs</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">kde_curve</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">));</span> <span class="c1"># 叠加曲线！</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab4/lab04_files/lab04_56_0.png"
+        data-srcset="/datalab4/lab04_files/lab04_56_0.png, /datalab4/lab04_files/lab04_56_0.png 1.5x, /datalab4/lab04_files/lab04_56_0.png 2x"
+        data-sizes="auto"
+        alt="/datalab4/lab04_files/lab04_56_0.png"
+        title="png" width="638" height="446" /></p>
+<p>Recall that earlier we plotted the kernel density estimation for the logarithm of the income data, as shown again below.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;inc&#39;</span><span class="p">]),</span> <span class="n">kind</span> <span class="o">=</span> <span class="s2">&#34;kde&#34;</span><span class="p">,</span> <span class="n">rug</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;World Bank Gross National Income Per Capita&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Log Gross national income per capita, Atlas method: $: 2016&#39;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab4/lab04_files/lab04_58_0.png"
+        data-srcset="/datalab4/lab04_files/lab04_58_0.png, /datalab4/lab04_files/lab04_58_0.png 1.5x, /datalab4/lab04_files/lab04_58_0.png 2x"
+        data-sizes="auto"
+        alt="/datalab4/lab04_files/lab04_58_0.png"
+        title="png" width="539" height="493" /></p>
+<p>In the cell below, a similar plot is shown using what was done in 2a. Try out different values of alpha in {0.1, 0.2, 0.3, 0.4, 0.5}. You will see that when alpha=0.2, the graph matches the previous graph well, except that the <code>displot</code> function hides the KDE values outside the range of the available data.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span>
+</span></span><span class="line"><span class="cl"><span class="n">kde_curve</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;inc&#39;</span><span class="p">])</span> <span class="o">*</span> <span class="n">gaussian_kernel</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;inc&#39;</span><span class="p">]))</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xs</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;World Bank Gross National Income Per Capita&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Log Gross national income per capita, Atlas method: $: 2016&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">kde_curve</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">));</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab4/lab04_files/lab04_60_0.png"
+        data-srcset="/datalab4/lab04_files/lab04_60_0.png, /datalab4/lab04_files/lab04_60_0.png 1.5x, /datalab4/lab04_files/lab04_60_0.png 2x"
+        data-sizes="auto"
+        alt="/datalab4/lab04_files/lab04_60_0.png"
+        title="png" width="626" height="502" /></p>
+<h2 id="question-2b">Question 2b</h2>
+<p>In your answers above, you hard-coded a lot of your work. In this problem, you&rsquo;ll build a more general kernel density estimator function.</p>
+<p>Implement the KDE function which computes:</p>
+<p>$$\Large
+f_\alpha(x) = \frac{1}{n} \sum_{i=1}^n K_\alpha(x, z_i)
+$$</p>
+<p>Where $z_i$ are the data, $\alpha$ is a parameter to control the smoothness, and $K_\alpha$ is the kernel density function passed as <code>kernel</code>.</p>
+<!--
+BEGIN QUESTION
+name: q2b
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">kde</span><span class="p">(</span><span class="n">kernel</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Compute the kernel density estimate for the single query point x.
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Args:
+</span></span></span><span class="line"><span class="cl"><span class="s2">        kernel: a kernel function with 3 parameters: alpha, x, data
+</span></span></span><span class="line"><span class="cl"><span class="s2">        alpha: the smoothing parameter to pass to the kernel
+</span></span></span><span class="line"><span class="cl"><span class="s2">        x: a single query point (in one dimension)
+</span></span></span><span class="line"><span class="cl"><span class="s2">        data: a numpy array of data points
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Returns:
+</span></span></span><span class="line"><span class="cl"><span class="s2">        The smoothed estimate at the query point x
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>    
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">kernel</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">zi</span><span class="p">)</span> <span class="k">for</span> <span class="n">zi</span> <span class="ow">in</span> <span class="n">data</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q2b&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Assuming you implemented <code>kde</code> correctly, the code below should generate the <code>kde</code> of the log of the income data as before.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span><span class="p">[</span><span class="s1">&#39;trans_inc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;inc&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;trans_inc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;trans_inc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">1000</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">curve</span> <span class="o">=</span> <span class="p">[</span><span class="n">kde</span><span class="p">(</span><span class="n">gaussian_kernel</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;trans_inc&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xs</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;trans_inc&#39;</span><span class="p">],</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;World Bank Gross National Income Per Capita&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Log Gross national income per capita, Atlas method: $: 2016&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">curve</span><span class="p">,</span> <span class="s1">&#39;k-&#39;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab4/lab04_files/lab04_67_0.png"
+        data-srcset="/datalab4/lab04_files/lab04_67_0.png, /datalab4/lab04_files/lab04_67_0.png 1.5x, /datalab4/lab04_files/lab04_67_0.png 2x"
+        data-sizes="auto"
+        alt="/datalab4/lab04_files/lab04_67_0.png"
+        title="png" width="641" height="502" /></p>
+<p>And the code below should show a 3 x 3 set of plots showing the output of the kde for different <code>alpha</code> values. small to large</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">15</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">alphas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">alpha</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">alphas</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;trans_inc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;trans_inc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">1000</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">curve</span> <span class="o">=</span> <span class="p">[</span><span class="n">kde</span><span class="p">(</span><span class="n">gaussian_kernel</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;trans_inc&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xs</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;trans_inc&#39;</span><span class="p">],</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">curve</span><span class="p">,</span> <span class="s1">&#39;k-&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab4/lab04_files/lab04_69_0.png"
+        data-srcset="/datalab4/lab04_files/lab04_69_0.png, /datalab4/lab04_files/lab04_69_0.png 1.5x, /datalab4/lab04_files/lab04_69_0.png 2x"
+        data-sizes="auto"
+        alt="/datalab4/lab04_files/lab04_69_0.png"
+        title="png" width="1380" height="1272" /></p>
+<p>Let&rsquo;s take a look at another kernel, the Boxcar kernel.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">boxcar_kernel</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">(((</span><span class="n">x</span><span class="o">-</span><span class="n">z</span><span class="p">)</span><span class="o">&gt;=-</span><span class="n">alpha</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">&amp;</span><span class="p">((</span><span class="n">x</span><span class="o">-</span><span class="n">z</span><span class="p">)</span><span class="o">&lt;=</span><span class="n">alpha</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="n">alpha</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Run the cell below to enable interactive plots. It should give you a green &lsquo;OK&rsquo; when it&rsquo;s finished.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">interact</span>
+</span></span><span class="line"><span class="cl"><span class="err">!</span><span class="n">jupyter</span> <span class="n">nbextension</span> <span class="n">enable</span> <span class="o">--</span><span class="n">py</span> <span class="n">widgetsnbextension</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 这个是要notebook降级处理的插件</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>Enabling notebook extension jupyter-js-widgets/extension...
+      - Validating: ok
+</code></pre>
+<p>Now, we can plot the Boxcar and Gaussian kernel functions to see what they look like.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">alpha</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">boxcar_kernel</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Boxcar&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">gaussian_kernel</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Gaussian&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Kernel Function&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">interact</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mf">0.1</span><span class="p">));</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>interactive(children=(FloatSlider(value=5.0, description='alpha', max=10.0, min=1.0), Output()), _dom_classes=…
+</code></pre>
+<p>Using the interactive plot below compare the the two kernel techniques:  (Generating the KDE plot is slow, so you may expect some latency after you move the slider)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;trans_inc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;trans_inc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">1000</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">alpha_g</span><span class="p">,</span> <span class="n">alpha_b</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;trans_inc&#39;</span><span class="p">],</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">g_curve</span> <span class="o">=</span> <span class="p">[</span><span class="n">kde</span><span class="p">(</span><span class="n">gaussian_kernel</span><span class="p">,</span> <span class="n">alpha_g</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;trans_inc&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xs</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">g_curve</span><span class="p">,</span> <span class="s1">&#39;k-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Gaussian&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">b_curve</span> <span class="o">=</span> <span class="p">[</span><span class="n">kde</span><span class="p">(</span><span class="n">boxcar_kernel</span><span class="p">,</span> <span class="n">alpha_b</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;trans_inc&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xs</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">b_curve</span><span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Boxcar&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Kernel Function&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">interact</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">alpha_g</span><span class="o">=</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">.5</span><span class="p">,</span><span class="mf">0.01</span><span class="p">),</span> <span class="n">alpha_b</span><span class="o">=</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mf">0.1</span><span class="p">));</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>interactive(children=(FloatSlider(value=0.25, description='alpha_g', max=0.5, min=0.01, step=0.01), FloatSlide…
+</code></pre>
+<p>Briefly compare and contrast the Gaussian and Boxcar kernels in the cell below. How do the two kernels relate with each other for the same alpha value?</p>
+<p>圆滑问题</p>
+<p><strong>Congrats!</strong> You are finished with this assignment.</p>
+<h2 id="optional--px用法讲解">Optional&ndash;px用法讲解</h2>
+<p>Below are some examples using plotly. Recall that this is <em><strong>Josh&rsquo;s preferred</strong></em> plotting library, though it is not officially covered nor required in this class. This is purely for your future reference if you decide to use plotly on your own.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">px</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s2">&#34;lit&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>In my opinion, distribution plots are the one place where plotly falls short of seaborn. For example, if we want a rug, KDE, and histogram, the code below does this in plotly. I&rsquo;m not personally a fan.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">plotly.figure_factory</span> <span class="k">as</span> <span class="nn">ff</span>
+</span></span><span class="line"><span class="cl"><span class="n">ff</span><span class="o">.</span><span class="n">create_distplot</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s2">&#34;lit&#34;</span><span class="p">]],</span> <span class="p">[</span><span class="s2">&#34;lit&#34;</span><span class="p">])</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>By contrast, I think many of plotly&rsquo;s other features are far superior to seaborn. For example, consider the interactive scatterplot below, where one can mouseover each datapoint in order to see the identity of each country.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s2">&#34;lit&#34;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&#34;inc&#34;</span><span class="p">,</span> <span class="n">hover_name</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="n">labels</span><span class="o">=</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">                     <span class="s2">&#34;lit&#34;</span><span class="p">:</span> <span class="s2">&#34;Adult literacy rate: Combined: </span><span class="si">% a</span><span class="s2">ges 15 and older&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                     <span class="s2">&#34;inc&#34;</span><span class="p">:</span> <span class="s2">&#34;Gross national income per capita&#34;</span>
+</span></span><span class="line"><span class="cl">                 <span class="p">},</span>
+</span></span><span class="line"><span class="cl">                <span class="n">title</span><span class="o">=</span><span class="s2">&#34;World Bank: Gross National Income Per Capita vs</span><span class="se">\n</span><span class="s2"> Combined Adult Literacy Rate&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Naturally there are ways to adjust figure size, text size, marker, etc, but they are not covered here. I just wanted to give you a small taste of plotly.</p>
+<hr>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -124,13 +1354,13 @@
                             <a class="link-to-markdown" href="/datalab4/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/datalab4/" data-title="DATA100-lab4"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/datalab4/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/datalab4/" data-title="DATA100-lab4"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/datalab4/" data-title="DATA100-lab4"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/datalab4/" data-title="DATA100-lab4"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/datalab4/" data-title="DATA100-lab4: Visualization, Transformations, and KDEs" data-hashtags="Seaborn,Plotly"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/datalab4/" data-hashtag="Seaborn"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/datalab4/" data-title="DATA100-lab4: Visualization, Transformations, and KDEs"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/datalab4/" data-title="DATA100-lab4: Visualization, Transformations, and KDEs"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/datalab4/" data-title="DATA100-lab4: Visualization, Transformations, and KDEs"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/seaborn/">Seaborn</a>,&nbsp;<a href="/tags/plotly/">Plotly</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>

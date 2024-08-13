@@ -4,19 +4,25 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>DATA100-lab5 - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/datalab5/">
+        <title>DATA100-lab5: Modeling, Loss Functions, and Summary Statistics - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/datalab5/">
   <meta property="og:site_name" content="HHZZ`s space">
-  <meta property="og:title" content="DATA100-lab5">
-  <meta property="og:description" content="This is my cool site">
+  <meta property="og:title" content="DATA100-lab5: Modeling, Loss Functions, and Summary Statistics">
+  <meta property="og:description" content="1 2 3 # Initialize Otter import otter grader = otter.Notebook(&amp;#34;lab05.ipynb&amp;#34;) Lab 5: Modeling, Loss Functions, and Summary Statistics Predicting Restaurant Tips In this lab, you will try to predict restaurant tips from a set of data in several ways:
+A. Without given any additional information, use a constant model with L2 loss to predict the tip $\hat{y}$ as a summary statistic, $\theta$.
+B. Given one piece of information—the total bill $x$—use a linear model with L2 loss to predict the tip $\hat{y}$ as a linear function of $x$.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2024-08-13T15:19:33+08:00">
     <meta property="article:modified_time" content="2024-08-13T15:19:33+08:00">
+    <meta property="article:tag" content="SciPy">
+    <meta property="article:tag" content="Plotly">
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="DATA100-lab5">
-<meta name="twitter:description" content="">
+<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="DATA100-lab5: Modeling, Loss Functions, and Summary Statistics">
+<meta name="twitter:description" content="1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab05.ipynb&#34;) Lab 5: Modeling, Loss Functions, and Summary Statistics Predicting Restaurant Tips In this lab, you will try to predict restaurant tips from a set of data in several ways:
+A. Without given any additional information, use a constant model with L2 loss to predict the tip $\hat{y}$ as a summary statistic, $\theta$.
+B. Given one piece of information—the total bill $x$—use a linear model with L2 loss to predict the tip $\hat{y}$ as a linear function of $x$.">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -26,12 +32,12 @@
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "DATA100-lab5",
+        "headline": "DATA100-lab5: Modeling, Loss Functions, and Summary Statistics",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/datalab5\/"
-        },"genre": "posts","wordcount":  0 ,
+        },"genre": "posts","keywords": "SciPy, Plotly","wordcount":  4530 ,
         "url": "http:\/\/example.org\/datalab5\/","datePublished": "2024-08-13T15:19:33+08:00","dateModified": "2024-08-13T15:19:33+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -103,17 +109,1345 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">DATA100-lab5</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">DATA100-lab5: Modeling, Loss Functions, and Summary Statistics</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-13">2024-08-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;0 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;0 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-13">2024-08-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;4530 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;22 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"></div><div class="post-footer" id="post-footer">
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#predicting-restaurant-tips">Predicting Restaurant Tips</a></li>
+    <li><a href="#part-a-tips-as-a-summary-statistic">Part A: Tips as a Summary Statistic</a></li>
+    <li><a href="#a1-define-the-model">A.1: Define the model</a></li>
+    <li><a href="#a2-define-the-loss-function-and-risk">A.2: Define the loss function and risk</a></li>
+    <li><a href="#question-1">Question 1</a></li>
+    <li><a href="#question-2">Question 2</a></li>
+    <li><a href="#a3-find-the-theta-that-minimizes-risk">A.3: Find the $\theta$ that minimizes risk</a></li>
+    <li><a href="#question-3">Question 3</a>
+      <ul>
+        <li><a href="#question-3a-visual-solution">Question 3a: Visual Solution</a></li>
+        <li><a href="#numerically-computing-hattheta">Numerically computing $\hat{\theta}$</a></li>
+        <li><a href="#question-3b-numerical-solution">Question 3b: Numerical Solution</a></li>
+        <li><a href="#question-3c-analytical-solution">Question 3c: Analytical Solution</a></li>
+      </ul>
+    </li>
+    <li><a href="#part-b-tips-as-a-linear-function-of-total-bill">Part B: Tips as a Linear Function of Total Bill</a></li>
+    <li><a href="#b1-define-the-model">B.1 Define the model</a></li>
+    <li><a href="#b2-define-the-loss-function-and-risk">B.2: Define the loss function and risk</a></li>
+    <li><a href="#question-4">Question 4</a></li>
+    <li><a href="#b3-find-the-theta-that-minimizes-risk">B.3: Find the $\theta$ that minimizes risk</a></li>
+    <li><a href="#question-5-analytical-solution">Question 5: Analytical Solution</a>
+      <ul>
+        <li><a href="#question-5a">Question 5a</a></li>
+        <li><a href="#question-5b">Question 5b</a></li>
+        <li><a href="#question-5c">Question 5c</a></li>
+      </ul>
+    </li>
+    <li><a href="#numerically-computing-hattheta-1">Numerically computing $\hat{\theta}$</a></li>
+    <li><a href="#question-6-numerical-solution">Question 6: Numerical Solution</a>
+      <ul>
+        <li><a href="#question-6a">Question 6a</a></li>
+        <li><a href="#question-6b">Question 6b</a></li>
+      </ul>
+    </li>
+    <li><a href="#互动可视化">互动可视化</a>
+      <ul>
+        <li><a href="#comparing-constant-model-vs-linear-model">Comparing Constant Model vs Linear Model</a></li>
+      </ul>
+    </li>
+    <li><a href="#part-c-using-a-different-loss-function">Part C: Using a Different Loss Function</a></li>
+    <li><a href="#question-7">Question 7</a>
+      <ul>
+        <li><a href="#question-7a">Question 7a</a></li>
+        <li><a href="#question-7b">Question 7b</a></li>
+        <li><a href="#comparing-mae-to-mse">Comparing MAE to MSE</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#our-observations-on-constant-model-vs-linear-model">Our Observations on Constant Model vs Linear Model</a></li>
+            <li><a href="#our-observations-on-differences-between-mae-vs-mse">Our Observations on Differences Between MAE vs. MSE</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Initialize Otter</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">otter</span>
+</span></span><span class="line"><span class="cl"><span class="n">grader</span> <span class="o">=</span> <span class="n">otter</span><span class="o">.</span><span class="n">Notebook</span><span class="p">(</span><span class="s2">&#34;lab05.ipynb&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="lab-5-modeling-loss-functions-and-summary-statistics">Lab 5: Modeling, Loss Functions, and Summary Statistics</h1>
+<p><br/><br/></p>
+<hr style="border: 5px solid #003262;" />
+<hr style="border: 1px solid #fdb515;" />
+<h2 id="predicting-restaurant-tips">Predicting Restaurant Tips</h2>
+<p>In this lab, you will try to predict restaurant tips from a set of data in several ways:</p>
+<p>A. Without given any additional information, use a <strong>constant model with L2 loss</strong> to predict the tip $\hat{y}$ as a summary statistic, $\theta$.</p>
+<p>B. Given one piece of information—the total bill $x$—<strong>use a linear model with L2 loss</strong> to predict the tip $\hat{y}$ as a linear function of $x$.</p>
+<p>C. See if a <strong>constant model with L1 loss</strong> changes our predictions.</p>
+<p>First, let&rsquo;s load in the data.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;fivethirtyeight&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&#34;talk&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">tips</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&#34;tips&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">tips</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>total_bill</th>
+      <th>tip</th>
+      <th>sex</th>
+      <th>smoker</th>
+      <th>day</th>
+      <th>time</th>
+      <th>size</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>16.99</td>
+      <td>1.01</td>
+      <td>Female</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10.34</td>
+      <td>1.66</td>
+      <td>Male</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>21.01</td>
+      <td>3.50</td>
+      <td>Male</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>23.68</td>
+      <td>3.31</td>
+      <td>Male</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>24.59</td>
+      <td>3.61</td>
+      <td>Female</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<p><strong>Quick EDA</strong>: Note that this dataset is likely from the United States. The below plot graphs the distribution of tips in this dataset, both in absolute amounts ($) and as a fraction of the total bill (post-tax, but pre-tip).</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">tips</span><span class="p">[</span><span class="s1">&#39;tip&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">stat</span><span class="o">=</span><span class="s2">&#34;proportion&#34;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">tips</span><span class="p">[</span><span class="s1">&#39;tip&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">tips</span><span class="p">[</span><span class="s1">&#39;total_bill&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">stat</span><span class="o">=</span><span class="s2">&#34;proportion&#34;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&#34;Amount ($)&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&#34;Fraction of total bill&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&#34;&#34;</span><span class="p">)</span> <span class="c1"># for cleaner visualization</span>
+</span></span><span class="line"><span class="cl"><span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&#34;Restaurant Tips&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab5/lab05_files/lab05_6_0.png"
+        data-srcset="/datalab5/lab05_files/lab05_6_0.png, /datalab5/lab05_files/lab05_6_0.png 1.5x, /datalab5/lab05_files/lab05_6_0.png 2x"
+        data-sizes="auto"
+        alt="/datalab5/lab05_files/lab05_6_0.png"
+        title="png" width="980" height="451" /></p>
+<p>In this lab we&rsquo;ll estimate the tip in <strong>absolute amounts ($)</strong>. The above plot is just to confirm your expectations about the <code>tips</code> dataset.</p>
+<p><br/><br/></p>
+<hr style="border: 5px solid #003262;" />
+<hr style="border: 1px solid #fdb515;" />
+<h2 id="part-a-tips-as-a-summary-statistic">Part A: Tips as a Summary Statistic</h2>
+<p>Let&rsquo;s first predict any restaurant tip using one single number: in other words, let&rsquo;s try to find the best statistic $\hat{\theta}$ to represent (i.e., <strong>summarize</strong>) the tips from our dataset.</p>
+<p>Each actual tip in our dataset is $y$, which is what we call the <strong>observed value</strong>. We want to predict each observed value as $\hat{y}$. We&rsquo;ll save the observed tip values in a NumPy array <code>y_tips</code>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">y_tips</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">tips</span><span class="p">[</span><span class="s1">&#39;tip&#39;</span><span class="p">])</span> <span class="c1"># array of observed tips</span>
+</span></span><span class="line"><span class="cl"><span class="n">y_tips</span><span class="o">.</span><span class="n">shape</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>(244,)
+</code></pre>
+<p>Recall the three-step process for modeling as covered in lecture:</p>
+<ol>
+<li>
+<p>Define a <strong>model.</strong></p>
+</li>
+<li>
+<p>Define a <strong>loss function</strong> and the associated <strong>risk</strong> on our training dataset (i.e., average loss).</p>
+</li>
+<li>
+<p>Find the best value of $\theta$, known as $\hat{\theta}$, that <strong>minimizes</strong> risk.</p>
+</li>
+</ol>
+<p>We&rsquo;ll go through each step of this process next.</p>
+<br/>
+<hr style="border: 1px solid #fdb515;" />
+<h2 id="a1-define-the-model">A.1: Define the model</h2>
+<p>We will define our model as the <strong>constant model</strong>:</p>
+<p>$$\Large
+\hat{y} = \theta
+$$</p>
+<p>In other words, regardless of any other details (i.e., features) about their meal, we will always predict our tip $\hat{y}$ as one single value: $\theta$.</p>
+<p>$\theta$ is what we call a <strong>parameter</strong>. Our modeling goal is to find the value of our parameter(s) that <strong>best fit our data</strong>.
+We have choice over which $\theta$ we pick (using the data at hand), but ultimately we can only pick one to report, so we want to find the optimal parameter(s) $\hat{\theta}$.</p>
+<p>We call the constant model a <strong>summary statistic</strong>, as we are determining one number that best &ldquo;summarizes&rdquo; a set of values.</p>
+<p>No code to write here!</p>
+<br/>
+<hr style="border: 1px solid #fdb515;" />
+<h2 id="a2-define-the-loss-function-and-risk">A.2: Define the loss function and risk</h2>
+<p>Next, in order to pick our $\theta$, we need to define a <strong>loss function</strong>, which is a measure of how well a model is able to predict the expected outcome. In other words, it measures the deviation of a predicted value $\hat{y}$ from the observed value $y$.</p>
+<p>We will use <strong>squared loss</strong> (also known as the $L_2$ loss, pronounced &ldquo;ell-two&rdquo;). For an observed tip value $y$ (i.e., the real tip), our prediction of the tip $\hat{y}$ would give an $L_2$ loss of:</p>
+<p>$$\Large L_2(y, \hat{y}) = (y - \hat{y})^2$$</p>
+<hr>
+<h2 id="question-1">Question 1</h2>
+<p>In our constant model  $\hat{y} = \theta$, we always predict the tip as $\theta$. Therefore our $L_2$ loss for some actual, observed value $y$ can be rewritten as:</p>
+<p>$$\Large L_2(y, \theta) = (y - \theta)^2$$</p>
+<p>Use the function description below to implement the squared loss function for this single datapoint, assuming the constant model. Your answer should not use any loops.</p>
+<!--
+BEGIN QUESTION
+name: q1
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">squared_loss</span><span class="p">(</span><span class="n">y_obs</span><span class="p">,</span> <span class="n">theta</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Calculate the squared loss of the observed data and a summary statistic.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Parameters
+</span></span></span><span class="line"><span class="cl"><span class="s2">    ------------
+</span></span></span><span class="line"><span class="cl"><span class="s2">    y_obs: an observed value
+</span></span></span><span class="line"><span class="cl"><span class="s2">    theta : some constant representing a summary statistic
+</span></span></span><span class="line"><span class="cl"><span class="s2">    
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Returns
+</span></span></span><span class="line"><span class="cl"><span class="s2">    ------------
+</span></span></span><span class="line"><span class="cl"><span class="s2">    The squared loss between the observation and the summary statistic.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">(</span><span class="n">y_obs</span> <span class="o">-</span> <span class="n">theta</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q1&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><br/><br/></p>
+<p>We just defined loss for a single datapoint. Let&rsquo;s extend the above loss function to our entire dataset by taking the <strong>average loss</strong> across the dataset.</p>
+<p>Let the dataset $\mathcal{D}$ be the set of observations: $\mathcal{D} = {y_1, \ldots, y_n}$, where $y_i$ is the $i^{th}$ tip (this is the <code>y_tips</code> array defined at the beginning of Part A).</p>
+<p>We can define the average loss (aka <strong>risk</strong>) over the dataset as:</p>
+<p>$$\Large
+R\left(\theta\right) = \frac{1}{n} \sum_{i=1}^n L(y_i, \hat{y_i})
+$$</p>
+<p>If we use $L_2$ loss per datapoint ($L = L_2$), then the risk is also known as <strong>mean squared error</strong> (MSE). For the constant model $\hat{y}=\theta$:</p>
+<p>$$\Large
+R\left(\theta\right) = \frac{1}{n} \sum_{i=1}^n (y_i - \theta)^2
+$$</p>
+<hr>
+<h2 id="question-2">Question 2</h2>
+<p>Define the <code>mse_tips_constant</code> function which computes $R(\theta)$ as the <strong>mean squared error</strong> on the tips data for a constant model with parameter $\theta$.</p>
+<p>Notes/Hints:</p>
+<ul>
+<li>This function takes in one parameter, <code>theta</code>; <code>data</code> is defined for you as a NumPy array that contains the observed tips values in the data.</li>
+<li>Use the <code>squared_loss</code> function you defined in the previous question.</li>
+</ul>
+<!--
+BEGIN QUESTION
+name: q2
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">mse_tips_constant</span><span class="p">(</span><span class="n">theta</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">data</span> <span class="o">=</span> <span class="n">y_tips</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">squared_loss</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">theta</span><span class="p">))</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">mse_tips_constant</span><span class="p">(</span><span class="mf">5.3</span><span class="p">)</span> <span class="c1"># arbitrarily pick theta = 5.3</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>np.float64(7.204529508196728)
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q2&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><br/>
+<hr style="border: 1px solid #fdb515;" />
+<h2 id="a3-find-the-theta-that-minimizes-risk">A.3: Find the $\theta$ that minimizes risk</h2>
+<h2 id="question-3">Question 3</h2>
+<p>Now we can go about choosing our &ldquo;best&rdquo; value of $\theta$, which we call $\hat{\theta}$, that minimizes our defined risk (which we defined as mean squared error). There are several approaches to computing $\hat{\theta}$ that we&rsquo;ll explore in this problem.</p>
+<hr>
+<h3 id="question-3a-visual-solution">Question 3a: Visual Solution</h3>
+<p>In the cell below  we plot the mean squared error for different thetas:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">theta_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">mse</span> <span class="o">=</span> <span class="p">[</span><span class="n">mse_tips_constant</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="k">for</span> <span class="n">theta</span> <span class="ow">in</span> <span class="n">theta_values</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">theta_values</span><span class="p">,</span> <span class="n">mse</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\theta$&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;average L2 loss&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;MSE for different values of $\theta$&#39;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab5/lab05_files/lab05_21_0.png"
+        data-srcset="/datalab5/lab05_files/lab05_21_0.png, /datalab5/lab05_files/lab05_21_0.png 1.5x, /datalab5/lab05_files/lab05_21_0.png 2x"
+        data-sizes="auto"
+        alt="/datalab5/lab05_files/lab05_21_0.png"
+        title="png" width="648" height="501" /></p>
+<p>Find the value of <code>theta</code> that minimizes the mean squared error via observation of the plot above. Round your answer to the nearest integer.</p>
+<!--
+BEGIN QUESTION
+name: q3a
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">min_observed_mse</span> <span class="o">=</span> <span class="mi">3</span>
+</span></span><span class="line"><span class="cl"><span class="n">min_observed_mse</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>3
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q3a&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong><pre style='display: inline;'>q3a</pre></strong> passed! 💯</p>
+<br/>
+<h3 id="numerically-computing-hattheta">Numerically computing $\hat{\theta}$</h3>
+<p><code>scipy.optimize.minimize</code> is a powerful method that can determine the optimal value of a variety of different functions. In practice, it is used to minimize functions that have no (or difficult to obtain) analytical solutions (it is a <strong>numerical method</strong>).</p>
+<p>It is overkill for our simple example, but nonetheless, we will show you how to use it, as it will become useful in the near future.</p>
+<p>The cell below plots some arbitrary 4th degree polynomial function.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">x_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">fx</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">4</span> <span class="o">+</span> <span class="mf">0.2</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="mf">0.2</span> <span class="o">*</span> <span class="n">x</span> <span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">10</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_values</span><span class="p">,</span> <span class="n">fx</span><span class="p">(</span><span class="n">x_values</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&#34;Arbitrary 4th degree polynomial&#34;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab5/lab05_files/lab05_27_0.png"
+        data-srcset="/datalab5/lab05_files/lab05_27_0.png, /datalab5/lab05_files/lab05_27_0.png 1.5x, /datalab5/lab05_files/lab05_27_0.png 2x"
+        data-sizes="auto"
+        alt="/datalab5/lab05_files/lab05_27_0.png"
+        title="png" width="619" height="472" /></p>
+<p>By looking at the plot, we see that the x that minimizes the function is slightly larger than -2. What if we want the exact value? We will demonstrate how to grab the minimum value and the optimal <code>x</code> in the following cell.</p>
+<p>The function <code>minimize</code> from <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html" target="_blank" rel="noopener noreffer "><code>scipy.optimize</code></a> will attempt to minimize any function you throw at it. Try running the cell below, and you will see that <code>minimize</code> seems to get the answer correct.</p>
+<p>Note: For today, we&rsquo;ll let <code>minimize</code> work as if by magic. We&rsquo;ll discuss how <code>minimize</code> works later in the course.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">minimize</span>
+</span></span><span class="line"><span class="cl"><span class="n">minimize</span><span class="p">(</span><span class="n">fx</span><span class="p">,</span> <span class="n">x0</span> <span class="o">=</span> <span class="mf">1.1</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>  message: Optimization terminated successfully.
+  success: True
+   status: 0
+      fun: 8.728505719866614
+        x: [-1.747e+00]
+      nit: 6
+      jac: [ 1.192e-07]
+ hess_inv: [[ 5.088e-01]]
+     nfev: 16
+     njev: 8
+</code></pre>
+<p>Notes:<br/>
+[1] <code>fun</code>: the minimum value of the function. <br/>
+[2] <code>x</code>: the x which minimizes the function. We can index into the object returned by <code>minimize</code> to get these values. We have to add the additional <code>[0]</code> at the end because the minimizing x is returned as an array, but this is not necessarily the case for other attributes (i.e. <code>fun</code>), shown in the cell below.</p>
+<p>Note [2] means that <code>minimize</code> can also minimize multivariable functions, which we&rsquo;ll see in the second half of this lab.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">min_result</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">fx</span><span class="p">,</span> <span class="n">x0</span> <span class="o">=</span> <span class="mf">1.1</span><span class="p">)</span> <span class="c1"># 返回一个字典，包括最优值fun和最优解x</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">min_of_fx</span> <span class="o">=</span> <span class="n">min_result</span><span class="p">[</span><span class="s1">&#39;fun&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">x_which_minimizes_fx</span> <span class="o">=</span> <span class="n">min_result</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">min_of_fx</span><span class="p">,</span> <span class="n">x_which_minimizes_fx</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>(8.728505719866614, np.float64(-1.746827786380178))
+</code></pre>
+<p><strong>Initial guess</strong>: The parameter <code>x0</code> that we passed to the <code>minimize</code> function is where the <code>minimize</code> function starts looking as it tries to find the minimum. For example, above, <code>minimize</code> started its search at x = 1.1 because that&rsquo;s where we told it to start. For the function above, it doesn&rsquo;t really matter what x we start at because the function is nice and has only a single local minimum. More technically, the function is nice because it is <a href="https://en.wikipedia.org/wiki/Convex_function" target="_blank" rel="noopener noreffer ">convex</a>, a property of functions that we will discuss later in the course.</p>
+<p><strong>Local minima</strong>: <code>minimize</code> isn&rsquo;t perfect. For example, if we give it a function with many valleys (also known as local minima) it can get stuck. For example, consider the function below:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">w_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">fw</span><span class="p">(</span><span class="n">w</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="n">w</span><span class="o">**</span><span class="mi">4</span> <span class="o">-</span> <span class="mf">1.5</span><span class="o">*</span><span class="n">w</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">6</span> <span class="o">*</span> <span class="n">w</span> <span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">w</span> <span class="o">+</span> <span class="mi">10</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">w_values</span><span class="p">,</span> <span class="n">fw</span><span class="p">(</span><span class="n">w_values</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&#34;Arbitrary function with local minima&#34;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab5/lab05_files/lab05_33_0.png"
+        data-srcset="/datalab5/lab05_files/lab05_33_0.png, /datalab5/lab05_files/lab05_33_0.png 1.5x, /datalab5/lab05_files/lab05_33_0.png 2x"
+        data-sizes="auto"
+        alt="/datalab5/lab05_files/lab05_33_0.png"
+        title="png" width="632" height="472" /></p>
+<p>If we start the minimization at <code>w</code> = <code>6.5</code>, we&rsquo;ll get stuck in the local minimum at w = <code>7.03</code>. Note that no matter what your actual variable is called in your function (<code>w</code> in this case), the <code>minimize</code> routine still expects a starting point parameter called <code>x0</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">minimize</span><span class="p">(</span><span class="n">fw</span><span class="p">,</span> <span class="n">x0</span> <span class="o">=</span> <span class="mf">6.5</span><span class="p">)</span>    <span class="c1"># initial w is 6.5</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>  message: Optimization terminated successfully.
+  success: True
+   status: 0
+      fun: 22.594302881719713
+        x: [ 7.038e+00]
+      nit: 4
+      jac: [-3.815e-06]
+ hess_inv: [[ 1.231e-01]]
+     nfev: 12
+     njev: 6
+</code></pre>
+<hr>
+<h3 id="question-3b-numerical-solution">Question 3b: Numerical Solution</h3>
+<p>Using the <code>minimize</code> function, find the value of <code>theta</code> that minimizes the mean squared error for our <code>tips</code> dataset. In other words, you want to find the exact minimum of the plot that you saw in the previous part.</p>
+<p>Notes:</p>
+<ul>
+<li>You should use the function you defined earlier: <code>mse_tips_constant</code>.</li>
+<li>For autograding purposes, assign <code>min_scipy</code> to the value of <code>theta</code> that minimizes the MSE according to the <code>minimize</code> function, called with initial <code>x0=0.0</code>.</li>
+</ul>
+<!--
+BEGIN QUESTION
+name: q3b
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># call minimize with initial x0 = 0.0</span>
+</span></span><span class="line"><span class="cl"><span class="n">min_scipy</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">mse_tips_constant</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)[</span><span class="s1">&#39;x&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">min_scipy</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>np.float64(2.9982777037277204)
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q3b&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h3 id="question-3c-analytical-solution">Question 3c: Analytical Solution</h3>
+<p>In lecture, we used calculus to show that the value of theta that minimizes the mean squared error for the constant model is the average (mean) of the data. Assign <code>min_computed</code> to the mean of the observed <code>y_tips</code> data, and compare this to the values you observed in questions 3a and 3b.</p>
+<!--
+BEGIN QUESTION
+name: q3c
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">min_computed</span> <span class="o">=</span> <span class="n">y_tips</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">min_computed</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>np.float64(2.99827868852459)
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q3c&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><br/><br/>
+Reflecting on the lab so far, we used a 3-step approach to find the &ldquo;best&rdquo; summary statistic $\theta$:</p>
+<ol>
+<li>
+<p>Define the constant model $\hat{y}=\theta$.</p>
+</li>
+<li>
+<p>Define &ldquo;best&rdquo;: Define loss per datapoint (L2 loss) and consequently define risk $R(\theta)$ over a given data array as the mean squared error, or MSE.</p>
+</li>
+<li>
+<p>Find the $\theta = \hat{\theta}$ that minimizes the MSE $R(\theta)$ in several ways:</p>
+<ul>
+<li>Visually: Create a plot of $R(\theta)$ vs. $\theta$ and eyeball the minimizing $\hat{\theta}$.</li>
+<li>Numerically: Create a function that returns $R(\theta)$, the MSE for the given data array for a given $\theta$, and use the scipy minimize function to find the minimizing $\hat{\theta}$.</li>
+<li>Analytically: Simply compute $\hat{\theta}$ the mean of the given data array, since this minimizes the defined $R(\theta)$.</li>
+<li>(a fourth analytical option) Use calculus to find $\hat{\theta}$ that minimizes MSE $R(\theta)$.</li>
+</ul>
+</li>
+</ol>
+<p>At this point, you&rsquo;ve hopefully convinced yourself that the mean of the data is the summary statistic that minimizes mean squared error.</p>
+<p><strong>Our prediction for every meal&rsquo;s tip</strong>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">predict_tip_constant</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">min_computed</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># do not edit below this line</span>
+</span></span><span class="line"><span class="cl"><span class="n">bill</span> <span class="o">=</span> <span class="mi">20</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;&#34;&#34;No matter what meal you have, Part A&#39;s modeling process
+</span></span></span><span class="line"><span class="cl"><span class="s2">    predicts that you will pay a tip of $</span><span class="si">{</span><span class="n">predict_tip_constant</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">.&#34;&#34;&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>No matter what meal you have, Part A's modeling process
+    predicts that you will pay a tip of $3.00.
+</code></pre>
+<p><br/><br/></p>
+<hr style="border: 5px solid #003262;" />
+<hr style="border: 1px solid #fdb515;" />
+<h2 id="part-b-tips-as-a-linear-function-of-total-bill">Part B: Tips as a Linear Function of Total Bill</h2>
+<p>In this section, you will follow the exact same modeling process but instead use total bill to predict tip.</p>
+<p>We&rsquo;ll save the observed total bill values (post-tax but pre-tip) and the observed tip values in two NumPy arrays, <code>x_total_bills</code> and <code>y_tips</code>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">x_total_bills</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">tips</span><span class="p">[</span><span class="s1">&#39;total_bill&#39;</span><span class="p">])</span> <span class="c1"># array of total bill amounts</span>
+</span></span><span class="line"><span class="cl"><span class="n">y_tips</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">tips</span><span class="p">[</span><span class="s1">&#39;tip&#39;</span><span class="p">])</span>              <span class="c1"># array of observed tips</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;total bills&#34;</span><span class="p">,</span> <span class="n">x_total_bills</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;tips&#34;</span><span class="p">,</span> <span class="n">y_tips</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>total bills (244,)
+tips (244,)
+</code></pre>
+<br/>
+<hr style="border: 1px solid #fdb515;" />
+<h2 id="b1-define-the-model">B.1 Define the model</h2>
+<p>We will define our model as the <strong>linear model</strong> that takes a single input feature, <code>total_bill</code> ($x$):</p>
+<p>$$\Large
+\hat{y} = a + b x
+$$</p>
+<p>Our &ldquo;parameter&rdquo; $\theta$ is actually two parameters: $a$ and $b$. You may see this written as $\theta = (a, b)$.</p>
+<p>Our modeling task is then to pick the best values $a = \hat{a}$ and $b = \hat{b}$ from our data. Then, given the total bill $x$, we can predict the tip as $\hat{y} = \hat{a} + \hat{b} x$.</p>
+<p>No code to write here!</p>
+<br/>
+<hr style="border: 1px solid #fdb515;" />
+<h2 id="b2-define-the-loss-function-and-risk">B.2: Define the loss function and risk</h2>
+<p>Next, we&rsquo;ll define our loss function $L(y, \hat{y})$ and consequently our risk function $R(\theta) = R(a, b)$.</p>
+<p>Similar to our approach to Part A, we&rsquo;ll use L2 Loss and Mean Squared Error. Let the dataset $\mathcal{D}$ be the set of observations: $\mathcal{D} = {(x_1, y_1), \ldots, (x_n, y_n)}$, where $(x_i, y_i)$ are the $i^{th}$ total bill and tip, respectively, in our dataset.</p>
+<p>Our L2 Loss and Mean Squared Error are therefore:</p>
+<p>\begin{align}
+\large L_2(y, \hat{y}) = \large (y - \hat{y})^2 &amp;= \large (y - (a + bx))^2 \
+\large R(a, b) = \large \frac{1}{n} \sum_{i=1}^n L(y_i, \hat{y_i}) &amp;= \large  \frac{1}{n} \sum_{i = 1}^n(y_i - (a + b x_i))^2
+\end{align}</p>
+<p>Notice that because our model is now the linear model $\hat{y} = a + bx$, our final expressions for Loss and MSE are different from Part A.</p>
+<hr>
+<h2 id="question-4">Question 4</h2>
+<p>Define the <code>mse_tips_linear</code> function which computes $R(a, b)$ as the <strong>mean squared error</strong> on the tips data for a linear model with parameters $a$ and $b$.</p>
+<p>Notes:</p>
+<ul>
+<li>This function takes in two parameters <code>a</code> and <code>b</code>.</li>
+<li>You should use the NumPy arrays <code>x_total_bills</code> and <code>y_tips</code> defined at the beginning of Part B.</li>
+<li>We&rsquo;ve included some skeleton code, but feel free to write your own as well.</li>
+</ul>
+<!--
+BEGIN QUESTION
+name: q4
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">mse_tips_linear</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Returns average L2 loss between
+</span></span></span><span class="line"><span class="cl"><span class="s2">    predicted y_hat values (using x_total_bills and parameters a, b)
+</span></span></span><span class="line"><span class="cl"><span class="s2">    and actual y values (y_tips)
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y_hats</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">*</span> <span class="n">x_total_bills</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">((</span><span class="n">y_hats</span> <span class="o">-</span> <span class="n">y_tips</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="o">...</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">mse_tips_linear</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span> <span class="c1"># arbitrarily pick a = 0.9, b = 0.1</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>np.float64(1.052336405737705)
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q4&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><br/>
+<hr style="border: 1px solid #fdb515;" />
+<h2 id="b3-find-the-theta-that-minimizes-risk">B.3: Find the $\theta$ that minimizes risk</h2>
+<p>Similar to before, we&rsquo;d like to try out different approaches to finding the optimal parameters $\hat{a}$ and $\hat{b}$ that minimize MSE.</p>
+<br/>
+<hr>
+<h2 id="question-5-analytical-solution">Question 5: Analytical Solution</h2>
+<p>In lecture, we derived the following expression for the line of best fit:</p>
+<p>$$\Large \hat{y_i} = \bar{y} + r \frac{SD(y)}{SD(x)} (x_i - \bar{x})$$</p>
+<p>where $\bar{x}$, $\bar{y}$, $SD(x)$, $SD(y)$ correspond to the means and standard deviations of $x$ and $y$, respectively, and $r$ is the correlation coefficient.</p>
+<h3 id="question-5a">Question 5a</h3>
+<p>Assign <code>x_bar</code>, <code>y_bar</code>, <code>std_x</code>, <code>std_y</code>, and <code>r</code>, for our dataset. Note: Make sure to use <code>np.std</code>, and not <code>&lt;Series name&gt;.std()</code>.</p>
+<ul>
+<li>Hint: Remember, in our case, <code>y</code> is <code>y_tips</code>, and <code>x</code> is <code>x_total_bills</code>.</li>
+<li>Hint: You may find <code>np.corrcoef</code> (<a href="https://numpy.org/doc/stable/reference/generated/numpy.corrcoef.html" target="_blank" rel="noopener noreffer ">documentation</a>) handy in computing <code>r</code>. Note that the output of <code>np.corrcoef</code> is a matrix, not a number, so you&rsquo;ll need to collect the correlation coefficient by indexing into the returned matrix.</li>
+</ul>
+<!--
+BEGIN QUESTION
+name: q5a
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">x_bar</span> <span class="o">=</span> <span class="n">x_total_bills</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">y_bar</span> <span class="o">=</span> <span class="n">y_tips</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">std_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">x_total_bills</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">std_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">y_tips</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">x_total_bills</span><span class="p">,</span> <span class="n">y_tips</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q5a&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="question-5b">Question 5b</h3>
+<p>Now, set <code>b_hat</code> and <code>a_hat</code> correctly, in terms of the variables you defined above.</p>
+<p>Hints:</p>
+<ul>
+<li>Try and match the slope and intercept in $\hat{y_i} = \hat{a} + \hat{b}x_i$ to the slope and intercept in $\hat{y_i} = \bar{y} + r \frac{SD(y)}{SD(x)} (x_i - \bar{x})$.</li>
+<li>You may want to define <code>a_hat</code> in terms of <code>b_hat</code>.</li>
+</ul>
+<!--
+BEGIN QUESTION
+name: q5b
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">b_hat</span> <span class="o">=</span> <span class="n">r</span><span class="o">*</span><span class="n">std_y</span><span class="o">/</span><span class="n">std_x</span>
+</span></span><span class="line"><span class="cl"><span class="n">a_hat</span> <span class="o">=</span> <span class="n">y_bar</span> <span class="o">-</span> <span class="n">b_hat</span><span class="o">*</span><span class="n">x_bar</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q5b&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h3 id="question-5c">Question 5c</h3>
+<p>Now, use <code>a_hat</code> and <code>b_hat</code> to implement the <code>predict_tip_linear</code> function, which predicts the tip for a total bill amount of <code>bill</code>.</p>
+<!--
+BEGIN QUESTION
+name: q5c
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">predict_tip_linear</span><span class="p">(</span><span class="n">bill</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">a_hat</span> <span class="o">+</span> <span class="n">b_hat</span> <span class="o">*</span> <span class="n">bill</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># do not edit below this line</span>
+</span></span><span class="line"><span class="cl"><span class="n">bill</span> <span class="o">=</span> <span class="mi">20</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;&#34;&#34;If you have a $</span><span class="si">{</span><span class="n">bill</span><span class="si">}</span><span class="s2"> bill, Part B&#39;s modeling process
+</span></span></span><span class="line"><span class="cl"><span class="s2">    predicts that you will pay a tip of $</span><span class="si">{</span><span class="n">predict_tip_linear</span><span class="p">(</span><span class="n">bill</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">.&#34;&#34;&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>If you have a $20 bill, Part B's modeling process
+    predicts that you will pay a tip of $3.02.
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q5c&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><br/>
+<hr>
+<h2 id="numerically-computing-hattheta-1">Numerically computing $\hat{\theta}$</h2>
+<p>The <code>minimize</code> function we introduced earlier can also minimize functions of multiple variables (useful for numerically computing $\hat{a}$ and $\hat{b}$. There&rsquo;s one quirk, however, which is that the function has to accept its parameters as a single list.</p>
+<p>For example, consider the multivariate $f(u, v) = u^2 - 2 u v - 3 v + 2 v^2$. It turns out this function&rsquo;s minimum is at $(1.5, 1.5)$. To minimize this function, we create <code>f</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">theta</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">u</span> <span class="o">=</span> <span class="n">theta</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">v</span> <span class="o">=</span> <span class="n">theta</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">u</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">u</span> <span class="o">*</span> <span class="n">v</span> <span class="o">-</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">v</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">v</span><span class="o">**</span><span class="mi">2</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">minimize</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x0</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span> 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>  message: Optimization terminated successfully.
+  success: True
+   status: 0
+      fun: -2.2499999999999982
+        x: [ 1.500e+00  1.500e+00]
+      nit: 3
+      jac: [-5.960e-08  0.000e+00]
+ hess_inv: [[ 1.000e+00  5.000e-01]
+            [ 5.000e-01  5.000e-01]]
+     nfev: 12
+     njev: 4
+</code></pre>
+<hr>
+<h2 id="question-6-numerical-solution">Question 6: Numerical Solution</h2>
+<h3 id="question-6a">Question 6a</h3>
+<p>Implement the <code>mse_tips_linear_list</code> function, which is exactly like <code>mse_tips_linear</code> defined in Question 4 except that it takes in a single list of 2 variables rather than two separate variables. For example <code>mse_tips_linear_list([2, 3])</code> should return the same value as <code>mse_tips_linear(2, 3)</code>.</p>
+<!--
+BEGIN QUESTION
+name: q6a
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">mse_tips_linear_list</span><span class="p">(</span><span class="n">theta</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Returns average L2 loss between
+</span></span></span><span class="line"><span class="cl"><span class="s2">    predicted y_hat values (using x_total_bills and linear params theta)
+</span></span></span><span class="line"><span class="cl"><span class="s2">    and actual y values (y_tips)
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y_hat</span> <span class="o">=</span> <span class="n">theta</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">theta</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span>  <span class="n">x_total_bills</span>
+</span></span><span class="line"><span class="cl">    <span class="n">mse</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">y_hat</span> <span class="o">-</span> <span class="n">y_tips</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_tips</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">mse</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q6a&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h3 id="question-6b">Question 6b</h3>
+<p>Now, set <code>min_scipy_linear</code> to the result of calling minimize to optimize the risk function you just implemented.</p>
+<p>Hint: Make sure to set <code>x0</code>, say, to <code>[0.0, 0.0]</code>.</p>
+<!--
+BEGIN QUESTION
+name: q6b
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># call minimize with initial x0 = [0.0, 0.0]</span>
+</span></span><span class="line"><span class="cl"><span class="n">min_scipy_linear</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">mse_tips_linear_list</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">min_scipy_linear</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>  message: Optimization terminated successfully.
+  success: True
+   status: 0
+      fun: 1.036019442011604
+        x: [ 9.203e-01  1.050e-01]
+      nit: 3
+      jac: [ 1.490e-08  0.000e+00]
+ hess_inv: [[ 2.980e+00 -1.253e-01]
+            [-1.253e-01  6.335e-03]]
+     nfev: 15
+     njev: 5
+</code></pre>
+<p>Based on the above output from your call to <code>minimize</code>, running the following cell will set and print the values of <code>a_hat</code> and <code>b_hat</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">a_hat_scipy</span> <span class="o">=</span> <span class="n">min_scipy_linear</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">b_hat_scipy</span> <span class="o">=</span> <span class="n">min_scipy_linear</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">a_hat_scipy</span><span class="p">,</span> <span class="n">b_hat_scipy</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>(np.float64(0.9202707061277714), np.float64(0.1050244640398299))
+</code></pre>
+<br/>
+<br/>
+<p>The following cell will print out the values of <code>a_hat</code> and <code>b_hat</code> computed from both methods (&ldquo;manual&rdquo; refers to the analytical solution in Question 5; &ldquo;scipy&rdquo; refers to the numerical solution in Question 6). If you&rsquo;ve done everything correctly, these should be very close to one another.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a_hat_scipy: &#39;</span><span class="p">,</span> <span class="n">a_hat_scipy</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a_hat_manual: &#39;</span><span class="p">,</span> <span class="n">a_hat</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;b_hat_scipy: &#39;</span><span class="p">,</span> <span class="n">b_hat_scipy</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;b_hat_manual: &#39;</span><span class="p">,</span> <span class="n">b_hat</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>a_hat_scipy:  0.9202707061277714
+a_hat_manual:  0.9202696135546735
+
+
+b_hat_scipy:  0.1050244640398299
+b_hat_manual:  0.10502451738435334
+</code></pre>
+<hr>
+<h2 id="互动可视化">互动可视化</h2>
+<p><strong>Visual Solution</strong> (not graded): Feel free to interact with the below plot and verify that the $\hat{a}$ and $\hat{b}$ you computed using either method above minimize the MSE. In the cell below  we plot the mean squared error for different parameter values. Note that now that we have two parameters, we have a 3D MSE surface plot.</p>
+<p>Rotate the data around and zoom in and out using your trackpad or the controls at the top right of the figure. If you get an error that your browser does not support webgl, you may need to restart your kernel and/or browser.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">itertools</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">a_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">80</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">b_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="mi">80</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">mse_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">mse_tips_linear</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> \
+</span></span><span class="line"><span class="cl">              <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="n">a_values</span><span class="p">,</span> <span class="n">b_values</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl"><span class="n">mse_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">mse_values</span><span class="p">,</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a_values</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">b_values</span><span class="p">)),</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">go</span><span class="o">.</span><span class="n">Surface</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">a_values</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">b_values</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="n">mse_values</span><span class="p">)])</span>
+</span></span><span class="line"><span class="cl"><span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">title</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;MSE for different values of $a, b$&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">autosize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">scene</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">xaxis_title</span><span class="o">=</span><span class="s1">&#39;x=a&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">yaxis_title</span><span class="o">=</span><span class="s1">&#39;y=b&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">zaxis_title</span><span class="o">=</span><span class="s1">&#39;z=MSE&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">width</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">margin</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">r</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">10</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><br/>
+<hr>
+<h3 id="comparing-constant-model-vs-linear-model">Comparing Constant Model vs Linear Model</h3>
+<p>At this point, we can actually compare our two models! Both the linear model and constant model were optimized using the same L2 loss function but predict different values for different tips.</p>
+<p>Run the cell below:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x_total_bills</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y_tips</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;observed&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># the below plot expects you&#39;ve run all of Question 5</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_total_bills</span><span class="p">,</span> <span class="n">predict_tip_linear</span><span class="p">(</span><span class="n">x_total_bills</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># the below function expects you&#39;ve run the cell right before part B</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">predict_tip_constant</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&#34;total bill&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&#34;tip&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&#34;Tips: Linear vs Constant Models&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab5/lab05_files/lab05_81_0.png"
+        data-srcset="/datalab5/lab05_files/lab05_81_0.png, /datalab5/lab05_files/lab05_81_0.png 1.5x, /datalab5/lab05_files/lab05_81_0.png 2x"
+        data-sizes="auto"
+        alt="/datalab5/lab05_files/lab05_81_0.png"
+        title="png" width="648" height="501" /></p>
+<p>Note that while we plot tip by total bill, the constant model doesn&rsquo;t use the total bill in its prediction and therefore shows up as a horizontal line.</p>
+<p><strong>Thought question</strong>: For predicting tip on this data, would you rather use the constant model or the linear model, assuming an L2 loss function for both? This might be more fun with a partner. Note, your answer will not be graded, so don&rsquo;t worry about writing a detailed answer. If you want to see our answer, see the very end of this lab notebook.</p>
+<br/>
+<p>In the not-so-distant future of this class, you will learn more quantitative metrics to compare model performance. Stay tuned!</p>
+<p><br/><br/></p>
+<hr style="border: 5px solid #003262;" />
+<hr style="border: 1px solid #fdb515;" />
+<h2 id="part-c-using-a-different-loss-function">Part C: Using a Different Loss Function</h2>
+<p>In this last (short) section, we&rsquo;ll consider how the optimal parameters for the <strong>constant model</strong> would change if we used a different loss function.</p>
+<p>We will now use <strong>absolute loss</strong> (also known as the $L_1$ loss, pronounced &ldquo;ell-one&rdquo;). For an observed tip value $y$ (i.e., the real tip), our prediction of the tip $\hat{y}$ would give an $L_1$ loss of:</p>
+<p>$$\Large L_1(y, \hat{y}) = |y - \hat{y}|$$</p>
+<br/>
+<p>While we still define <strong>risk</strong> as <strong>average loss</strong>, since we now use $L_1$ loss per datapoint in our datset $\mathcal{D} = {y_1, \ldots, y_n}$, our risk is now known as <strong>mean absolute error</strong> (MAE).</p>
+<p>For the constant model $\hat{y} = \theta$ (i.e., we predict our tip as a summary statistic):</p>
+<p>\begin{align}
+\Large R\left(\theta\right) &amp;= \Large \frac{1}{n} \sum_{i=1}^n L_1(y_i, \hat{y_i}) \
+&amp;= \Large \frac{1}{n} \sum_{i=1}^n |y_i - \theta|
+\end{align}</p>
+<p>Note: the last line results from using the constant model for $\hat{y}$. If we decided to use the linear model, we would have a different expression.</p>
+<hr>
+<h2 id="question-7">Question 7</h2>
+<h3 id="question-7a">Question 7a</h3>
+<p>Define the <code>mae_tips_constant</code> function which computes $R(\theta)$ as the <strong>mean absolute error</strong> (MAE) on the tips data for a constant model with parameter $\theta$.</p>
+<p>Hint: You may want to check out your solution from Question 2, which computed mean squared error (MSE).</p>
+<!--
+BEGIN QUESTION
+name: q7
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">mae_tips_constant</span><span class="p">(</span><span class="n">theta</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">data</span> <span class="o">=</span> <span class="n">y_tips</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">data</span> <span class="o">-</span> <span class="n">theta</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">mae_tips_constant</span><span class="p">(</span><span class="mf">5.3</span><span class="p">)</span> <span class="c1"># arbitrarily pick theta = 5.3</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>np.float64(2.4527868852459016)
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q7&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><br/>
+<hr>
+<h3 id="question-7b">Question 7b</h3>
+<p>In lecture, we saw that the value of theta that minimizes mean <em>absolute</em> error for the constant model is the median of the data. Assign <code>min_computed_mae</code> to the median of the observed <code>y_tips</code> data.</p>
+<!--
+BEGIN QUESTION
+name: q7b
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">min_computed_mae</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">y_tips</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">min_computed_mae</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>np.float64(2.9)
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q7b&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><br/>
+<h3 id="comparing-mae-to-mse">Comparing MAE to MSE</h3>
+<p>Now run the below cell to compare MAE with MSE on the constant model.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">((</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl"><span class="n">theta_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">mse</span> <span class="o">=</span> <span class="p">[</span><span class="n">mse_tips_constant</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="k">for</span> <span class="n">theta</span> <span class="ow">in</span> <span class="n">theta_values</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">theta_values</span><span class="p">,</span> <span class="n">mse</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">min_computed</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\hat{\theta}$&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&#34;avg L2 loss (MSE)&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">mae</span> <span class="o">=</span> <span class="p">[</span><span class="n">mae_tips_constant</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="k">for</span> <span class="n">theta</span> <span class="ow">in</span> <span class="n">theta_values</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">theta_values</span><span class="p">,</span> <span class="n">mae</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">min_computed_mae</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\hat{\theta}$&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&#34;avg L1 loss (MAE)&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\theta$&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="sa">r</span><span class="s2">&#34;MAE vs MSE (constant model) for different values of $\theta$&#34;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab5/lab05_files/lab05_93_0.png"
+        data-srcset="/datalab5/lab05_files/lab05_93_0.png, /datalab5/lab05_files/lab05_93_0.png 1.5x, /datalab5/lab05_files/lab05_93_0.png 2x"
+        data-sizes="auto"
+        alt="/datalab5/lab05_files/lab05_93_0.png"
+        title="png" width="745" height="813" /></p>
+<p><strong>Thought question</strong> You should see that the MAE plot (below) looks somewhat similar the MSE plot (above). Try to identify any key differences you observe and write them down below. This might be more fun with a partner. Note, your answer will not be graded, so don&rsquo;t worry about writing a detailed answer. If you want to see our answer, see the very end of this lab notebook.</p>
+<p><em>Write your answer here, replacing this text.</em></p>
+<h1 id="congratulations-you-finished-the-lab">Congratulations! You finished the lab!</h1>
+<h1 id="extra-notes">Extra Notes</h1>
+<hr>
+<h4 id="our-observations-on-constant-model-vs-linear-model">Our Observations on Constant Model vs Linear Model</h4>
+<p>Earlier in this lab, we said we&rsquo;d describe our observations about whether to use Constant Model or Linear Model (both trained with MSE). Here are some thoughts:</p>
+<p>Recall that $r$ is the correlation coefficient, where values closer to -1 or 1 imply a very linear relationship:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># you computed this in Q5a</span>
+</span></span><span class="line"><span class="cl"><span class="n">r</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>np.float64(0.6757341092113641)
+</code></pre>
+<p>The relationship between $x$ and $y$ is <em>somewhat</em> linear; you can see this more clearly through the scatter plot, where there are many points that don&rsquo;t fall close to the linear model line. With this in mind:</p>
+<ul>
+<li>The linear model seems to work well for most bills.</li>
+<li>However, as bills get bigger, some datapoints seem to suggest that the constant model works better.</li>
+<li>In the wild, a tip predictor may use a combination of both the constant and linear models we trained: an average prediction, or a random coin flip to pick the model, or some heuristic decision to choose one model if the total bill exceeds a certain threshold. （集成学习思想？）</li>
+</ul>
+<p>In the not-so-distant future of this class, you will learn more quantitative metrics to compare model performance. You will have an opportunity to explore your own models in a future assignment!</p>
+<hr>
+<h4 id="our-observations-on-differences-between-mae-vs-mse">Our Observations on Differences Between MAE vs. MSE</h4>
+<p>Earlier in this lab, we said we&rsquo;d describe our observations about the differences between the MAE and MSE.</p>
+<p>There are three key differences that we identified between the plots of the MSE and MAE.</p>
+<ol>
+<li>The minimizing $\theta = \hat{\theta}$ is different.</li>
+<li>The plot for MAE increases linearly instead of quadratically as we move far away from the minimizing $\theta$.</li>
+<li>The plot for MAE is piecewise linear instead of smooth. Each change in slope happens at the same $\theta$ value as a data point in our dataset.</li>
+</ol>
+<hr>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -124,19 +1458,19 @@
                             <a class="link-to-markdown" href="/datalab5/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/datalab5/" data-title="DATA100-lab5"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/datalab5/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/datalab5/" data-title="DATA100-lab5"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/datalab5/" data-title="DATA100-lab5"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/datalab5/" data-title="DATA100-lab5"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/datalab5/" data-title="DATA100-lab5: Modeling, Loss Functions, and Summary Statistics" data-hashtags="SciPy,Plotly"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/datalab5/" data-hashtag="SciPy"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/datalab5/" data-title="DATA100-lab5: Modeling, Loss Functions, and Summary Statistics"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/datalab5/" data-title="DATA100-lab5: Modeling, Loss Functions, and Summary Statistics"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/datalab5/" data-title="DATA100-lab5: Modeling, Loss Functions, and Summary Statistics"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/scipy/">SciPy</a>,&nbsp;<a href="/tags/plotly/">Plotly</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/datalab6/" class="prev" rel="prev" title="DATA100-lab6"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>DATA100-lab6</a>
+    <div class="post-nav"><a href="/datalab6/" class="prev" rel="prev" title="DATA100-lab6: Linear Regression"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>DATA100-lab6: Linear Regression</a>
             <a href="/datalab8/" class="next" rel="next" title="DATA100-lab8">DATA100-lab8<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>

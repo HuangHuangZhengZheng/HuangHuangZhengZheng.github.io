@@ -4,10 +4,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>DATA100-lab6 - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/datalab6/">
+        <title>DATA100-lab6: Linear Regression - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/datalab6/">
   <meta property="og:site_name" content="HHZZ`s space">
-  <meta property="og:title" content="DATA100-lab6">
-  <meta property="og:description" content="This is my cool site">
+  <meta property="og:title" content="DATA100-lab6: Linear Regression">
+  <meta property="og:description" content=" 1 2 3 # Initialize Otter import otter grader = otter.Notebook(&amp;#34;lab06.ipynb&amp;#34;) Lab 6: Linear Regression 1 2 from IPython.display import YouTubeVideo YouTubeVideo(&amp;#34;IkkhAr3e19Q&amp;#34;, list = &amp;#39;PLQCcNQgUcDfpuwnASdUyvQky51ZcYMWSy&amp;#39;, listType = &amp;#39;playlist&amp;#39;) ">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
@@ -15,8 +15,8 @@
     <meta property="article:modified_time" content="2024-08-13T15:19:33+08:00">
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="DATA100-lab6">
-<meta name="twitter:description" content="">
+<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="DATA100-lab6: Linear Regression">
+<meta name="twitter:description" content=" 1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab06.ipynb&#34;) Lab 6: Linear Regression 1 2 from IPython.display import YouTubeVideo YouTubeVideo(&#34;IkkhAr3e19Q&#34;, list = &#39;PLQCcNQgUcDfpuwnASdUyvQky51ZcYMWSy&#39;, listType = &#39;playlist&#39;) ">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -26,12 +26,12 @@
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "DATA100-lab6",
+        "headline": "DATA100-lab6: Linear Regression",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/datalab6\/"
-        },"genre": "posts","wordcount":  0 ,
+        },"genre": "posts","wordcount":  28 ,
         "url": "http:\/\/example.org\/datalab6\/","datePublished": "2024-08-13T15:19:33+08:00","dateModified": "2024-08-13T15:19:33+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -103,17 +103,2064 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">DATA100-lab6</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">DATA100-lab6: Linear Regression</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-13">2024-08-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;0 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;0 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-13">2024-08-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;28 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"></div><div class="post-footer" id="post-footer">
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#objectives">Objectives</a></li>
+    <li><a href="#question-1-ordinary-least-squares">Question 1: Ordinary Least Squares</a>
+      <ul>
+        <li><a href="#question-1a-construct-mathbbx-with-an-intercept-term">Question 1a: Construct $\mathbb{X}$ with an intercept term</a></li>
+        <li><a href="#question-1b-define-the-ols-model">Question 1b: Define the OLS Model</a></li>
+        <li><a href="#question-1c-least-squares-estimate-analytically-常见的矩阵操作">Question 1c: Least Squares Estimate, Analytically, 常见的矩阵操作</a></li>
+        <li><a href="#question-1d">Question 1d</a></li>
+      </ul>
+    </li>
+    <li><a href="#question-2-transform-a-single-feature">Question 2: Transform a Single Feature</a>
+      <ul>
+        <li><a href="#question-2a">Question 2a</a></li>
+        <li><a href="#introduction-to-sklearn">Introduction to <code>sklearn</code></a></li>
+        <li><a href="#question-2b">Question 2b</a></li>
+      </ul>
+    </li>
+    <li><a href="#add-an-additional-feature">Add an Additional Feature</a></li>
+    <li><a href="#question-3">Question 3</a>
+      <ul>
+        <li><a href="#question-3a">Question 3a</a></li>
+        <li><a href="#question-3b">Question 3b</a></li>
+        <li><a href="#question-3c">Question 3c</a></li>
+      </ul>
+    </li>
+    <li><a href="#faulty-feature-engineering-redundant-features">Faulty Feature Engineering: Redundant Features</a></li>
+    <li><a href="#question-4">Question 4</a>
+      <ul>
+        <li><a href="#question-4a-linear-algebra">Question 4a: Linear Algebra</a></li>
+        <li><a href="#question-4b">Question 4b</a></li>
+      </ul>
+    </li>
+    <li><a href="#overfitting-with-too-many-features">Overfitting with Too Many Features</a></li>
+    <li><a href="#question-5-comparing-r2">Question 5: Comparing $R^2$</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Initialize Otter</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">otter</span>
+</span></span><span class="line"><span class="cl"><span class="n">grader</span> <span class="o">=</span> <span class="n">otter</span><span class="o">.</span><span class="n">Notebook</span><span class="p">(</span><span class="s2">&#34;lab06.ipynb&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="lab-6-linear-regression">Lab 6: Linear Regression</h1>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+</span></span><span class="line"><span class="cl"><span class="n">YouTubeVideo</span><span class="p">(</span><span class="s2">&#34;IkkhAr3e19Q&#34;</span><span class="p">,</span> <span class="nb">list</span> <span class="o">=</span> <span class="s1">&#39;PLQCcNQgUcDfpuwnASdUyvQky51ZcYMWSy&#39;</span><span class="p">,</span> <span class="n">listType</span> <span class="o">=</span> <span class="s1">&#39;playlist&#39;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><iframe
+    width="400"
+    height="300"
+    src="https://www.youtube.com/embed/IkkhAr3e19Q?list=PLQCcNQgUcDfpuwnASdUyvQky51ZcYMWSy&listType=playlist"
+    frameborder="0"
+    allowfullscreen
+<blockquote>
+</iframe>
+</blockquote>
+<p><br/><br/></p>
+<hr style="border: 5px solid #003262;" />
+<hr style="border: 1px solid #fdb515;" />
+<h2 id="objectives">Objectives</h2>
+<p>In this lab, you will review the details of linear regresison as described in Lectures 10 and 11. In particular:</p>
+<ul>
+<li>Matrix formulation and solution to Ordinary Least Squares</li>
+<li><code>sns.lmplot</code> as a quick visual for simple linear regression</li>
+<li><code>scikit-learn</code>, a real world data science tool that is more robust and flexible than analytical/<code>scipy.optimize</code> solutions</li>
+</ul>
+<p>You will also practice interpreting residual plots (vs. fitted values) and the Multiple $R^2$ metric used in Multiple Linear Regression.</p>
+<br/>
+<p>For the first part of this lab, you will predict fuel efficiency (<code>mpg</code>) of several models of automobiles using a <strong>single feature</strong>: engine power (<code>horsepower</code>). For the second part, you will perform feature engineering on <strong>multiple features</strong> to better predict fuel efficiency.</p>
+<p>First, let&rsquo;s load in the data.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</span></span><span class="line"><span class="cl"><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Here, we load the fuel dataset, and drop any rows that have missing data</span>
+</span></span><span class="line"><span class="cl"><span class="n">vehicle_data</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;mpg&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">vehicle_data</span> <span class="o">=</span> <span class="n">vehicle_data</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;horsepower&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">vehicle_data</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mpg</th>
+      <th>cylinders</th>
+      <th>displacement</th>
+      <th>horsepower</th>
+      <th>weight</th>
+      <th>acceleration</th>
+      <th>model_year</th>
+      <th>origin</th>
+      <th>name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>102</th>
+      <td>26.0</td>
+      <td>4</td>
+      <td>97.0</td>
+      <td>46.0</td>
+      <td>1950</td>
+      <td>21.0</td>
+      <td>73</td>
+      <td>europe</td>
+      <td>volkswagen super beetle</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>26.0</td>
+      <td>4</td>
+      <td>97.0</td>
+      <td>46.0</td>
+      <td>1835</td>
+      <td>20.5</td>
+      <td>70</td>
+      <td>europe</td>
+      <td>volkswagen 1131 deluxe sedan</td>
+    </tr>
+    <tr>
+      <th>325</th>
+      <td>44.3</td>
+      <td>4</td>
+      <td>90.0</td>
+      <td>48.0</td>
+      <td>2085</td>
+      <td>21.7</td>
+      <td>80</td>
+      <td>europe</td>
+      <td>vw rabbit c (diesel)</td>
+    </tr>
+    <tr>
+      <th>326</th>
+      <td>43.4</td>
+      <td>4</td>
+      <td>90.0</td>
+      <td>48.0</td>
+      <td>2335</td>
+      <td>23.7</td>
+      <td>80</td>
+      <td>europe</td>
+      <td>vw dasher (diesel)</td>
+    </tr>
+    <tr>
+      <th>244</th>
+      <td>43.1</td>
+      <td>4</td>
+      <td>90.0</td>
+      <td>48.0</td>
+      <td>1985</td>
+      <td>21.5</td>
+      <td>78</td>
+      <td>europe</td>
+      <td>volkswagen rabbit custom diesel</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<p>We have 392 datapoints and 8 potential features (plus our observations, <code>mpg</code>).</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">vehicle_data</span><span class="o">.</span><span class="n">shape</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>(392, 9)
+</code></pre>
+<p>Let us try to fit a line to the below plot, which shows <code>mpg</code> vs. <code>horsepower</code> for several models of automobiles.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;horsepower&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;mpg&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">vehicle_data</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab6/lab06_files/lab06_9_0.png"
+        data-srcset="/datalab6/lab06_files/lab06_9_0.png, /datalab6/lab06_files/lab06_9_0.png 1.5x, /datalab6/lab06_files/lab06_9_0.png 2x"
+        data-sizes="auto"
+        alt="/datalab6/lab06_files/lab06_9_0.png"
+        title="png" width="562" height="432" /></p>
+<p><br/><br/></p>
+<hr style="border: 5px solid #003262;" />
+<hr style="border: 1px solid #fdb515;" />
+<h2 id="question-1-ordinary-least-squares">Question 1: Ordinary Least Squares</h2>
+<p>Instead of using the SLR formulation, in this lab we will practice linear algebra with Ordinary Least Squares. Recall that the Simple Linear Regression model is written as follows:</p>
+<p>$$\hat{y} = \theta_0 + \theta_1 x$$</p>
+<p>We now use $\theta = (\theta_0, \theta_1)$ so that the formulation more closely matches our multiple linear regression model:</p>
+<p>$$\hat{y} = \theta_0 + \theta_1 x_1 + \dots + \theta_p x_p$$</p>
+<p>We can rewrite our multiple linear regression model using matrix notation. Let $\mathbb{Y}$ be a vector of all $n$ observations in our sample. Then our prediction vector $\hat{\mathbb{Y}}$ is</p>
+<p>$$\Large \hat{\mathbb{Y}} = \mathbb{X} \theta$$</p>
+<p>where $\mathbb{X}$ is the <strong>design matrix</strong> representing the $p$ features for all $n$ datapoints in our sample.</p>
+<p>Note that for our SLR model, $p = 1$ and therefore the matrix notation seems rather silly. Nevertheless it is valuable to start small and build on our intuition.</p>
+<hr>
+<h3 id="question-1a-construct-mathbbx-with-an-intercept-term">Question 1a: Construct $\mathbb{X}$ with an intercept term</h3>
+<p>Because we have an intercept term $\theta_0$ in our parameter vector $\theta$, our design matrix $\mathbb{X}$ for $p$ features actually has dimension</p>
+<p>$$ \Large \mathbb{X} \in \mathbb{R}^{n \times (p + 1)}$$</p>
+<p>Therefore, the resulting matrix expression $\hat{\mathbb{Y}} = \mathbb{X} \theta$ represents $n$ linear equations, where equation $i$ is $\hat{y_i} = \theta_0 \cdot 1 + \theta_1 \cdot x_1 + \dots + \theta_p x_p$. The constant all-ones column of $\mathbb{X}$ is sometimes called the bias feature; $\theta_0$ is frequently called the <strong>bias or intercept term</strong>.</p>
+<br/>
+<p>Below, implement <code>add_intercept</code>, which computes a design matrix such that the first (left-most) column is all ones. The function has two lines: you are responsible for constructing the all-ones column <code>bias_feature</code> using the <code>np.ones</code> function (NumPy <a href="https://numpy.org/doc/stable/reference/generated/numpy.ones.html?highlight=ones" target="_blank" rel="noopener noreffer ">documentation</a>). This is then piped into a call to <code>np.concatenate</code> (<a href="https://numpy.org/doc/stable/reference/generated/numpy.concatenate.html" target="_blank" rel="noopener noreffer ">documentation</a>), which we&rsquo;ve implemented for you.</p>
+<p>Note: <code>bias_feature</code> should be a matrix of dimension <code>(n,1)</code>, not a vector of dimension <code>(n,)</code>.</p>
+<!--
+BEGIN QUESTION
+name: q1a
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">add_intercept</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Return X with a bias feature.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Parameters
+</span></span></span><span class="line"><span class="cl"><span class="s2">    -----------
+</span></span></span><span class="line"><span class="cl"><span class="s2">    X: a 2D dataframe of p numeric features
+</span></span></span><span class="line"><span class="cl"><span class="s2">    (may also be a 2D numpy array) of shape n x p
+</span></span></span><span class="line"><span class="cl"><span class="s2">    
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Returns
+</span></span></span><span class="line"><span class="cl"><span class="s2">    -----------
+</span></span></span><span class="line"><span class="cl"><span class="s2">    A 2D matrix of shape n x (p + 1), where the leftmost
+</span></span></span><span class="line"><span class="cl"><span class="s2">    column is a column vector of 1&#39;s
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">bias_feature</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">bias_feature</span><span class="p">,</span> <span class="n">X</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># 矩阵拼接</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Note the [[ ]] brackets below: the argument needs to be</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># a matrix (DataFrame), as opposed to a single array (Series).</span>
+</span></span><span class="line"><span class="cl"><span class="n">X</span> <span class="o">=</span> <span class="n">add_intercept</span><span class="p">(</span><span class="n">vehicle_data</span><span class="p">[[</span><span class="s1">&#39;horsepower&#39;</span><span class="p">]])</span>
+</span></span><span class="line"><span class="cl"><span class="n">X</span><span class="o">.</span><span class="n">shape</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>(392, 2)
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q1a&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h3 id="question-1b-define-the-ols-model">Question 1b: Define the OLS Model</h3>
+<p>The predictions for all $n$ points in our data are (note $\theta = (\theta_0, \theta_1, \dots, \theta_p)$) :
+$$ \Large \hat{\mathbb{Y}} = \mathbb{X}\theta $$</p>
+<p>Below, implement the <code>linear_model</code> function to evaluate this product.</p>
+<p><strong>Hint</strong>: You can use <a href="https://numpy.org/doc/stable/reference/generated/numpy.dot.html" target="_blank" rel="noopener noreffer ">np.dot</a>, <a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.dot.html" target="_blank" rel="noopener noreffer ">pd.DataFrame.dot</a>, or the <code>@</code> operator to multiply matrices/vectors. However, while the <code>@</code> operator can be used to multiply <code>numpy</code> arrays, it generally will not work between two <code>pandas</code> objects, so keep that in mind when computing matrix-vector products!</p>
+<!--
+BEGIN QUESTION
+name: q1b
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">linear_model</span><span class="p">(</span><span class="n">thetas</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Return the linear combination of thetas and features as defined above.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Parameters
+</span></span></span><span class="line"><span class="cl"><span class="s2">    -----------
+</span></span></span><span class="line"><span class="cl"><span class="s2">    thetas: a 1D vector representing the parameters of our model ([theta1, theta2, ...])
+</span></span></span><span class="line"><span class="cl"><span class="s2">    X: a 2D dataframe of numeric features (may also be a 2D numpy array)
+</span></span></span><span class="line"><span class="cl"><span class="s2">    
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Returns
+</span></span></span><span class="line"><span class="cl"><span class="s2">    -----------
+</span></span></span><span class="line"><span class="cl"><span class="s2">    A 1D vector representing the linear combination of thetas and features as defined above.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">thetas</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q1b&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h3 id="question-1c-least-squares-estimate-analytically-常见的矩阵操作">Question 1c: Least Squares Estimate, Analytically, 常见的矩阵操作</h3>
+<p>Recall from lecture that Ordinary Least Squares is when we fit a linear model with mean squared error, which is equivalent to the following optimization problem:</p>
+<p>$$\Large \min_{\theta} ||\Bbb{X}\theta - \Bbb{Y}||^2$$</p>
+<p>We showed in Lecture that the optimal estimate $\hat{\theta}$ when $X^TX$ is invertible is given by the equation:</p>
+<p>$$ \Large \hat{\theta} = (\Bbb{X}^T\Bbb{X})^{-1}\Bbb{X}^T\Bbb{Y}$$</p>
+<p>Below, implement the analytic solution to $\hat{\theta}$ using <code>np.linalg.inv</code> (<a href="https://numpy.org/doc/stable/reference/generated/numpy.linalg.inv.html" target="_blank" rel="noopener noreffer ">link</a>) to compute the inverse of $\Bbb{X}^T\Bbb{X}$.</p>
+<p>Reminder: To compute the transpose of a matrix, you can use <code>X.T</code> or <code>X.transpose()</code> (<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.T.html#numpy.ndarray.T" target="_blank" rel="noopener noreffer ">link</a>).</p>
+<p>Note: You can also consider using <code>np.linalg.solve</code> (<a href="https://numpy.org/doc/stable/reference/generated/numpy.linalg.solve.html" target="_blank" rel="noopener noreffer ">link</a>) instead of <code>np.linalg.inv</code> because it is more robust (more on StackOverflow <a href="https://stackoverflow.com/questions/31256252/why-does-numpy-linalg-solve-offer-more-precise-matrix-inversions-than-numpy-li" target="_blank" rel="noopener noreffer ">here</a>).</p>
+<!--
+BEGIN QUESTION
+name: q1c
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get_analytical_sol</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Computes the analytical solution to our
+</span></span></span><span class="line"><span class="cl"><span class="s2">    least squares problem
+</span></span></span><span class="line"><span class="cl"><span class="s2">    
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Parameters
+</span></span></span><span class="line"><span class="cl"><span class="s2">    -----------
+</span></span></span><span class="line"><span class="cl"><span class="s2">    X: a 2D dataframe (or numpy array) of numeric features
+</span></span></span><span class="line"><span class="cl"><span class="s2">    y: a 1D vector of tip amounts
+</span></span></span><span class="line"><span class="cl"><span class="s2">    
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Returns
+</span></span></span><span class="line"><span class="cl"><span class="s2">    -----------
+</span></span></span><span class="line"><span class="cl"><span class="s2">    The estimate for theta (a 1D vector) computed using the
+</span></span></span><span class="line"><span class="cl"><span class="s2">    equation mentioned above.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">X</span><span class="p">)</span> <span class="o">@</span> <span class="n">X</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">y</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Y</span> <span class="o">=</span> <span class="n">vehicle_data</span><span class="p">[</span><span class="s1">&#39;mpg&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">analytical_thetas</span> <span class="o">=</span> <span class="n">get_analytical_sol</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">analytical_thetas</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>array([39.93586102, -0.15784473])
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q1c&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><br/><br/></p>
+<p>Now, let&rsquo;s analyze our model&rsquo;s performance. Your task will be to interpret the model&rsquo;s performance using the two visualizations and one performance metric we&rsquo;ve implemented below.</p>
+<p>First, we run <strong><code>sns.lmplot</code></strong>, which will both provide a scatterplot of <code>mpg</code> vs <code>horsepower</code> and display the least-squares line of best fit. (If you&rsquo;d like to verify the OLS fit you found above is the same line found through Seaborn, change <code>include_OLS</code> to <code>True</code>.)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">include_OLS</span> <span class="o">=</span> <span class="kc">True</span> <span class="c1"># change this flag to visualize OLS fit</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;horsepower&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;mpg&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">vehicle_data</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">predicted_mpg_hp_only</span> <span class="o">=</span> <span class="n">linear_model</span><span class="p">(</span><span class="n">analytical_thetas</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="n">include_OLS</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># if flag is on, add OLS fit as a dotted red line</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">vehicle_data</span><span class="p">[</span><span class="s1">&#39;horsepower&#39;</span><span class="p">],</span> <span class="n">predicted_mpg_hp_only</span><span class="p">,</span> <span class="s1">&#39;r--&#39;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab6/lab06_files/lab06_21_0.png"
+        data-srcset="/datalab6/lab06_files/lab06_21_0.png, /datalab6/lab06_files/lab06_21_0.png 1.5x, /datalab6/lab06_files/lab06_21_0.png 2x"
+        data-sizes="auto"
+        alt="/datalab6/lab06_files/lab06_21_0.png"
+        title="png" width="489" height="489" /></p>
+<p>Next, we <strong>plot the residuals.</strong> While in Simple Linear Regression we have the option to plot residuals vs. the single input feature, in Multiple Linear Regression we often plot residuals vs fitted values $\hat{\mathbb{Y}}$. In this lab, we opt for the latter.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">predicted_mpg_hp_only</span><span class="p">,</span> <span class="n">Y</span> <span class="o">-</span> <span class="n">predicted_mpg_hp_only</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Fitted Values $\hat{\mathbb</span><span class="si">{Y}</span><span class="s1">}$&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Residuals $\mathbb</span><span class="si">{Y}</span><span class="s1"> - \hat{\mathbb</span><span class="si">{Y}</span><span class="s1">}$&#39;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab6/lab06_files/lab06_23_0.png"
+        data-srcset="/datalab6/lab06_files/lab06_23_0.png, /datalab6/lab06_files/lab06_23_0.png 1.5x, /datalab6/lab06_files/lab06_23_0.png 2x"
+        data-sizes="auto"
+        alt="/datalab6/lab06_files/lab06_23_0.png"
+        title="png" width="578" height="437" /></p>
+<p>Finally, we compute the <strong>Multiple $R^2$</strong> metric. As described in Lecture 11 (<a href="https://docs.google.com/presentation/d/15eEbroVt2r36TXh28C2wm6wgUHlCBCsODR09kLHhDJ8/edit#slide=id.g1163459c7f0_0_86" target="_blank" rel="noopener noreffer ">link</a>),</p>
+<p>$$R^2 = \frac{\text{variance of fitted values}}{\text{variance of true } y} = \frac{\sigma_{\hat{y}}^2}{\sigma_y^2}$$</p>
+<p>$R^2$  can be used
+in the multiple regression setting, whereas $r$ (the correlation coefficient) is restricted to SLR since it depends on a single input feature.  In SLR, $r^{2}$ and Multiple $R^{2}$ are
+equivalent; the proof is left to you.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">r2_hp_only</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">predicted_mpg_hp_only</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Multiple R^2 using only horsepower: &#39;</span><span class="p">,</span> <span class="n">r2_hp_only</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>Multiple R^2 using only horsepower:  0.6059482578894348
+</code></pre>
+<hr>
+<h3 id="question-1d">Question 1d</h3>
+<p>In the cell below, comment on the above visualization and performance metrics, and whether <code>horsepower</code> and <code>mpg</code> have a good linear fit.</p>
+<!--
+BEGIN QUESTION
+name: q1d
+-->
+<p><em>poor performance</em></p>
+<p><br/><br/></p>
+<hr style="border: 5px solid #003262;" />
+<hr style="border: 1px solid #fdb515;" />
+<h2 id="question-2-transform-a-single-feature">Question 2: Transform a Single Feature</h2>
+<p>The Tukey-Mosteller Bulge Diagram tells us to transform our $\mathbb{X}$ or $\mathbb{Y}$ to find a linear fit.</p>
+<p>Let&rsquo;s consider the following linear model:</p>
+<p>$$\text{predicted mpg} = \theta_0 + \theta_1 \sqrt{\text{horsepower}}$$</p>
+<hr>
+<h3 id="question-2a">Question 2a</h3>
+<p>In the cell below, explain why we use the term &ldquo;linear&rdquo; to describe the model above, even though it incorporates a square-root of horsepower  as a feature.</p>
+<!--
+BEGIN QUESTION
+name: q2a
+-->
+<p><em>泛化线性模型</em></p>
+<h3 id="introduction-to-sklearn">Introduction to <code>sklearn</code></h3>
+<p>Yet another way to fit a linear regression model is to use <strong>scikit learn</strong>, an industry standard package for machine learning applications. Because it is application-specific, <code>sklearn</code> is often faster and more robust than the analytical/<code>scipy</code>-based computation methods we&rsquo;ve used thus far.</p>
+<p>To use <code>sklearn</code>:</p>
+<ol>
+<li>Create an <code>sklearn</code> object</li>
+<li><code>fit</code> the object to data</li>
+<li>Analyze fit or call <code>predict</code>.</li>
+</ol>
+<p><strong>1. Create object.</strong> We first create a <code>LinearRegression</code> object. Here&rsquo;s the sklearn <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html" target="_blank" rel="noopener noreffer ">documentation</a>. Note that by default, the object will include an intercept term when fitting.</p>
+<p>Here, <code>model</code> is like a &ldquo;blank slate&rdquo; for a linear model.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># 1. just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+</span></span><span class="line"><span class="cl"><span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">(</span><span class="n">fit_intercept</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>2. <code>fit</code> the object to data.</strong> Now, we need to tell <code>model</code> to &ldquo;fit&rdquo; itself to the data. Essentially, this is doing exactly what you did in the previous part of this lab (creating a risk function and finding the parameters that minimize that risk).</p>
+<p><em><strong>Note</strong>: <code>X</code> needs to be a matrix (or DataFrame), as opposed to a single array (or Series). This is because <code>sklearn.linear_model</code> is robust enough to be used for multiple regression, which we will look at later this lab.</em></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># 2. run this cell to add sqrt(hp) column for each car in the dataset</span>
+</span></span><span class="line"><span class="cl"><span class="n">vehicle_data</span><span class="p">[</span><span class="s1">&#39;sqrt(hp)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">vehicle_data</span><span class="p">[</span><span class="s1">&#39;horsepower&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">vehicle_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mpg</th>
+      <th>cylinders</th>
+      <th>displacement</th>
+      <th>horsepower</th>
+      <th>weight</th>
+      <th>acceleration</th>
+      <th>model_year</th>
+      <th>origin</th>
+      <th>name</th>
+      <th>sqrt(hp)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>102</th>
+      <td>26.0</td>
+      <td>4</td>
+      <td>97.0</td>
+      <td>46.0</td>
+      <td>1950</td>
+      <td>21.0</td>
+      <td>73</td>
+      <td>europe</td>
+      <td>volkswagen super beetle</td>
+      <td>6.782330</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>26.0</td>
+      <td>4</td>
+      <td>97.0</td>
+      <td>46.0</td>
+      <td>1835</td>
+      <td>20.5</td>
+      <td>70</td>
+      <td>europe</td>
+      <td>volkswagen 1131 deluxe sedan</td>
+      <td>6.782330</td>
+    </tr>
+    <tr>
+      <th>325</th>
+      <td>44.3</td>
+      <td>4</td>
+      <td>90.0</td>
+      <td>48.0</td>
+      <td>2085</td>
+      <td>21.7</td>
+      <td>80</td>
+      <td>europe</td>
+      <td>vw rabbit c (diesel)</td>
+      <td>6.928203</td>
+    </tr>
+    <tr>
+      <th>326</th>
+      <td>43.4</td>
+      <td>4</td>
+      <td>90.0</td>
+      <td>48.0</td>
+      <td>2335</td>
+      <td>23.7</td>
+      <td>80</td>
+      <td>europe</td>
+      <td>vw dasher (diesel)</td>
+      <td>6.928203</td>
+    </tr>
+    <tr>
+      <th>244</th>
+      <td>43.1</td>
+      <td>4</td>
+      <td>90.0</td>
+      <td>48.0</td>
+      <td>1985</td>
+      <td>21.5</td>
+      <td>78</td>
+      <td>europe</td>
+      <td>volkswagen rabbit custom diesel</td>
+      <td>6.928203</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># 2. run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span> <span class="o">=</span> <span class="n">vehicle_data</span><span class="p">[[</span><span class="s1">&#39;sqrt(hp)&#39;</span><span class="p">]],</span> <span class="n">y</span><span class="o">=</span> <span class="n">vehicle_data</span><span class="p">[</span><span class="s1">&#39;mpg&#39;</span><span class="p">])</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><style>#sk-container-id-1 {
+  /* Definition of color scheme common for light and dark mode */
+  --sklearn-color-text: black;
+  --sklearn-color-line: gray;
+  /* Definition of color scheme for unfitted estimators */
+  --sklearn-color-unfitted-level-0: #fff5e6;
+  --sklearn-color-unfitted-level-1: #f6e4d2;
+  --sklearn-color-unfitted-level-2: #ffe0b3;
+  --sklearn-color-unfitted-level-3: chocolate;
+  /* Definition of color scheme for fitted estimators */
+  --sklearn-color-fitted-level-0: #f0f8ff;
+  --sklearn-color-fitted-level-1: #d4ebff;
+  --sklearn-color-fitted-level-2: #b3dbfd;
+  --sklearn-color-fitted-level-3: cornflowerblue;
+
+  /* Specific color for light theme */
+  --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
+  --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-icon: #696969;
+
+  @media (prefers-color-scheme: dark) {
+    /* Redefinition of color scheme for dark theme */
+    --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
+    --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-icon: #878787;
+  }
+}
+
+#sk-container-id-1 {
+  color: var(--sklearn-color-text);
+}
+
+#sk-container-id-1 pre {
+  padding: 0;
+}
+
+#sk-container-id-1 input.sk-hidden--visually {
+  border: 0;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+#sk-container-id-1 div.sk-dashed-wrapped {
+  border: 1px dashed var(--sklearn-color-line);
+  margin: 0 0.4em 0.5em 0.4em;
+  box-sizing: border-box;
+  padding-bottom: 0.4em;
+  background-color: var(--sklearn-color-background);
+}
+
+#sk-container-id-1 div.sk-container {
+  /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
+     but bootstrap.min.css set `[hidden] { display: none !important; }`
+     so we also need the `!important` here to be able to override the
+     default hidden behavior on the sphinx rendered scikit-learn.org.
+     See: https://github.com/scikit-learn/scikit-learn/issues/21755 */
+  display: inline-block !important;
+  position: relative;
+}
+
+#sk-container-id-1 div.sk-text-repr-fallback {
+  display: none;
+}
+
+div.sk-parallel-item,
+div.sk-serial,
+div.sk-item {
+  /* draw centered vertical line to link estimators */
+  background-image: linear-gradient(var(--sklearn-color-text-on-default-background), var(--sklearn-color-text-on-default-background));
+  background-size: 2px 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* Parallel-specific style estimator block */
+
+#sk-container-id-1 div.sk-parallel-item::after {
+  content: "";
+  width: 100%;
+  border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
+  flex-grow: 1;
+}
+
+#sk-container-id-1 div.sk-parallel {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  background-color: var(--sklearn-color-background);
+  position: relative;
+}
+
+#sk-container-id-1 div.sk-parallel-item {
+  display: flex;
+  flex-direction: column;
+}
+
+#sk-container-id-1 div.sk-parallel-item:first-child::after {
+  align-self: flex-end;
+  width: 50%;
+}
+
+#sk-container-id-1 div.sk-parallel-item:last-child::after {
+  align-self: flex-start;
+  width: 50%;
+}
+
+#sk-container-id-1 div.sk-parallel-item:only-child::after {
+  width: 0;
+}
+
+/* Serial-specific style estimator block */
+
+#sk-container-id-1 div.sk-serial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--sklearn-color-background);
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+
+/* Toggleable style: style used for estimator/Pipeline/ColumnTransformer box that is
+clickable and can be expanded/collapsed.
+- Pipeline and ColumnTransformer use this feature and define the default style
+- Estimators will overwrite some part of the style using the `sk-estimator` class
+*/
+
+/* Pipeline and ColumnTransformer style (default) */
+
+#sk-container-id-1 div.sk-toggleable {
+  /* Default theme specific background. It is overwritten whether we have a
+  specific estimator or a Pipeline/ColumnTransformer */
+  background-color: var(--sklearn-color-background);
+}
+
+/* Toggleable label */
+#sk-container-id-1 label.sk-toggleable__label {
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+  padding: 0.5em;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+#sk-container-id-1 label.sk-toggleable__label-arrow:before {
+  /* Arrow on the left of the label */
+  content: "▸";
+  float: left;
+  margin-right: 0.25em;
+  color: var(--sklearn-color-icon);
+}
+
+#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {
+  color: var(--sklearn-color-text);
+}
+
+/* Toggleable content - dropdown */
+
+#sk-container-id-1 div.sk-toggleable__content {
+  max-height: 0;
+  max-width: 0;
+  overflow: hidden;
+  text-align: left;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-1 div.sk-toggleable__content.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-1 div.sk-toggleable__content pre {
+  margin: 0.2em;
+  border-radius: 0.25em;
+  color: var(--sklearn-color-text);
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-1 div.sk-toggleable__content.fitted pre {
+  /* unfitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+  /* Expand drop-down */
+  max-height: 200px;
+  max-width: 100%;
+  overflow: auto;
+}
+
+#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+  content: "▾";
+}
+
+/* Pipeline/ColumnTransformer-specific style */
+
+#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-1 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator-specific style */
+
+/* Colorize estimator box */
+#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-1 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+#sk-container-id-1 div.sk-label label.sk-toggleable__label,
+#sk-container-id-1 div.sk-label label {
+  /* The background is the default theme color */
+  color: var(--sklearn-color-text-on-default-background);
+}
+
+/* On hover, darken the color of the background */
+#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+/* Label box, darken color on hover, fitted */
+#sk-container-id-1 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator label */
+
+#sk-container-id-1 div.sk-label label {
+  font-family: monospace;
+  font-weight: bold;
+  display: inline-block;
+  line-height: 1.2em;
+}
+
+#sk-container-id-1 div.sk-label-container {
+  text-align: center;
+}
+
+/* Estimator-specific */
+#sk-container-id-1 div.sk-estimator {
+  font-family: monospace;
+  border: 1px dotted var(--sklearn-color-border-box);
+  border-radius: 0.25em;
+  box-sizing: border-box;
+  margin-bottom: 0.5em;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-1 div.sk-estimator.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+/* on hover */
+#sk-container-id-1 div.sk-estimator:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-1 div.sk-estimator.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Specification for estimator info (e.g. "i" and "?") */
+
+/* Common style for "i" and "?" */
+
+.sk-estimator-doc-link,
+a:link.sk-estimator-doc-link,
+a:visited.sk-estimator-doc-link {
+  float: right;
+  font-size: smaller;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1em;
+  height: 1em;
+  width: 1em;
+  text-decoration: none !important;
+  margin-left: 1ex;
+  /* unfitted */
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+  color: var(--sklearn-color-unfitted-level-1);
+}
+
+.sk-estimator-doc-link.fitted,
+a:link.sk-estimator-doc-link.fitted,
+a:visited.sk-estimator-doc-link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+div.sk-estimator:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover,
+div.sk-label-container:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+div.sk-estimator.fitted:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover,
+div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+/* Span, style for the box shown on hovering the info icon */
+.sk-estimator-doc-link span {
+  display: none;
+  z-index: 9999;
+  position: relative;
+  font-weight: normal;
+  right: .2ex;
+  padding: .5ex;
+  margin: .5ex;
+  width: min-content;
+  min-width: 20ex;
+  max-width: 50ex;
+  color: var(--sklearn-color-text);
+  box-shadow: 2pt 2pt 4pt #999;
+  /* unfitted */
+  background: var(--sklearn-color-unfitted-level-0);
+  border: .5pt solid var(--sklearn-color-unfitted-level-3);
+}
+
+.sk-estimator-doc-link.fitted span {
+  /* fitted */
+  background: var(--sklearn-color-fitted-level-0);
+  border: var(--sklearn-color-fitted-level-3);
+}
+
+.sk-estimator-doc-link:hover span {
+  display: block;
+}
+
+/* "?"-specific style due to the `<a>` HTML tag */
+
+#sk-container-id-1 a.estimator_doc_link {
+  float: right;
+  font-size: 1rem;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1rem;
+  height: 1rem;
+  width: 1rem;
+  text-decoration: none;
+  /* unfitted */
+  color: var(--sklearn-color-unfitted-level-1);
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+}
+
+#sk-container-id-1 a.estimator_doc_link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+#sk-container-id-1 a.estimator_doc_link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+#sk-container-id-1 a.estimator_doc_link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+}
+</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>LinearRegression()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;&nbsp;LinearRegression<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.5/modules/generated/sklearn.linear_model.LinearRegression.html">?<span>Documentation for LinearRegression</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></label><div class="sk-toggleable__content fitted"><pre>LinearRegression()</pre></div> </div></div></div></div>
+<p><strong>3. Analyze fit.</strong> Now that the model exists, we can look at the $\hat{\theta_0}$ and $\hat{\theta_1}$ values it found, which are given in the attributes <code>intercept</code> and <code>coef</code>, respectively.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">model</span><span class="o">.</span><span class="n">intercept_</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>np.float64(58.705172037217466)
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">model</span><span class="o">.</span><span class="n">coef_</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>array([-3.50352375])
+</code></pre>
+<p><strong>3 (continued). Call <code>predict</code>.</strong> To use the <code>scikit-learn</code> linear regression model to make predictions, you can use the <code>model.predict</code> method.</p>
+<p>Below, we find the estimated <code>mpg</code> for a single datapoint with a <code>sqrt(hp)</code> of 6.78 (i.e., horsepower 46).</p>
+<p>Note that unlike the linear algebra approach, we do not need to manually add an intercept term, because our <code>model</code> (which was created with <code>fit_intercept=True</code>) will auto-add one.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">single_datapoint</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">6.78</span><span class="p">]]</span> <span class="c1"># needs to be a 2D array since the X in step 2 was a 2D array. [[ ]] trick</span>
+</span></span><span class="line"><span class="cl"><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">single_datapoint</span><span class="p">)</span> 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>d:\miniconda3\Lib\site-packages\sklearn\base.py:493: UserWarning: X does not have valid feature names, but LinearRegression was fitted with feature names
+  warnings.warn(
+
+
+
+
+
+array([34.95128104])
+</code></pre>
+<hr>
+<h3 id="question-2b">Question 2b</h3>
+<p>Using the model defined above, set <code>predicted_mpg</code> to the predicted <code>mpg</code> for the data below. Running the cell will then compute the multiple $R^2$ value and create a linear regression plot for this new square root feature, overlaid on the original least squares estimate (used in Question 1c).</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">predicted_mpg_hp_sqrt</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">vehicle_data</span><span class="p">[[</span><span class="s1">&#39;sqrt(hp)&#39;</span><span class="p">]])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># do not modify below this line</span>
+</span></span><span class="line"><span class="cl"><span class="n">r2_hp_sqrt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">predicted_mpg_hp_sqrt</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">vehicle_data</span><span class="p">[</span><span class="s1">&#39;mpg&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Multiple R^2 using sqrt(hp): &#39;</span><span class="p">,</span> <span class="n">r2_hp_sqrt</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;horsepower&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;mpg&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">vehicle_data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">vehicle_data</span><span class="p">[</span><span class="s1">&#39;horsepower&#39;</span><span class="p">],</span>  <span class="n">predicted_mpg_hp_sqrt</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;sqrt(hp) fit&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>Multiple R^2 using sqrt(hp):  0.6437035832706468
+</code></pre>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab6/lab06_files/lab06_43_1.png"
+        data-srcset="/datalab6/lab06_files/lab06_43_1.png, /datalab6/lab06_files/lab06_43_1.png 1.5x, /datalab6/lab06_files/lab06_43_1.png 2x"
+        data-sizes="auto"
+        alt="/datalab6/lab06_files/lab06_43_1.png"
+        title="png" width="489" height="490" /></p>
+<p>The visualization shows a slight improvement, but note that the underlying pattern is parabolic&ndash;suggesting that perhaps we should try a quadratic feature. Next, we use the power of multiple linear regression to <strong>add an additional feature.</strong></p>
+<p><br/><br/></p>
+<hr style="border: 5px solid #003262;" />
+<hr style="border: 1px solid #fdb515;" />
+<h2 id="add-an-additional-feature">Add an Additional Feature</h2>
+<p>For the second part of this lab, we move from SLR to multiple linear regression.</p>
+<p>Until now, we have established relationships between one independent explanatory variable and one response variable. However, with real-world problems you will often want to use <strong>multiple features</strong> to model and predict a response variable. Multiple linear regression attempts to model the relationship between two or more explanatory variables and a response variable by fitting a linear equation to the observed data.</p>
+<p>We can consider including functions of existing features as <strong>new features</strong> to help improve the predictive power of our model. (This is something we will discuss in further detail in the Feature Engineering lecture.)</p>
+<p>The cell below adds a column which contains the square of the horsepower for each car in the dataset.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">vehicle_data</span><span class="p">[</span><span class="s1">&#39;hp^2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">vehicle_data</span><span class="p">[</span><span class="s1">&#39;horsepower&#39;</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl"><span class="n">vehicle_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mpg</th>
+      <th>cylinders</th>
+      <th>displacement</th>
+      <th>horsepower</th>
+      <th>weight</th>
+      <th>acceleration</th>
+      <th>model_year</th>
+      <th>origin</th>
+      <th>name</th>
+      <th>sqrt(hp)</th>
+      <th>hp^2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>102</th>
+      <td>26.0</td>
+      <td>4</td>
+      <td>97.0</td>
+      <td>46.0</td>
+      <td>1950</td>
+      <td>21.0</td>
+      <td>73</td>
+      <td>europe</td>
+      <td>volkswagen super beetle</td>
+      <td>6.782330</td>
+      <td>2116.0</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>26.0</td>
+      <td>4</td>
+      <td>97.0</td>
+      <td>46.0</td>
+      <td>1835</td>
+      <td>20.5</td>
+      <td>70</td>
+      <td>europe</td>
+      <td>volkswagen 1131 deluxe sedan</td>
+      <td>6.782330</td>
+      <td>2116.0</td>
+    </tr>
+    <tr>
+      <th>325</th>
+      <td>44.3</td>
+      <td>4</td>
+      <td>90.0</td>
+      <td>48.0</td>
+      <td>2085</td>
+      <td>21.7</td>
+      <td>80</td>
+      <td>europe</td>
+      <td>vw rabbit c (diesel)</td>
+      <td>6.928203</td>
+      <td>2304.0</td>
+    </tr>
+    <tr>
+      <th>326</th>
+      <td>43.4</td>
+      <td>4</td>
+      <td>90.0</td>
+      <td>48.0</td>
+      <td>2335</td>
+      <td>23.7</td>
+      <td>80</td>
+      <td>europe</td>
+      <td>vw dasher (diesel)</td>
+      <td>6.928203</td>
+      <td>2304.0</td>
+    </tr>
+    <tr>
+      <th>244</th>
+      <td>43.1</td>
+      <td>4</td>
+      <td>90.0</td>
+      <td>48.0</td>
+      <td>1985</td>
+      <td>21.5</td>
+      <td>78</td>
+      <td>europe</td>
+      <td>volkswagen rabbit custom diesel</td>
+      <td>6.928203</td>
+      <td>2304.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<hr>
+<h2 id="question-3">Question 3</h2>
+<h3 id="question-3a">Question 3a</h3>
+<p>Using scikit learn&rsquo;s <code>LinearRegression</code>, create and fit a model that tries to predict <code>mpg</code> from <code>horsepower</code> AND <code>hp^2</code> using the DataFrame <code>vehicle_data</code>. Name your model <code>model_multi</code>.</p>
+<p><strong>Hint</strong>: We did something very similar in Question 2.</p>
+<!--
+BEGIN QUESTION
+name: q3a
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">model_multi</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span> <span class="c1"># by default, fit_intercept=True</span>
+</span></span><span class="line"><span class="cl"><span class="n">model_multi</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span> <span class="o">=</span> <span class="n">vehicle_data</span><span class="p">[[</span><span class="s1">&#39;horsepower&#39;</span><span class="p">,</span> <span class="s1">&#39;hp^2&#39;</span><span class="p">]],</span> <span class="n">y</span><span class="o">=</span> <span class="n">vehicle_data</span><span class="p">[</span><span class="s1">&#39;mpg&#39;</span><span class="p">])</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><style>#sk-container-id-2 {
+  /* Definition of color scheme common for light and dark mode */
+  --sklearn-color-text: black;
+  --sklearn-color-line: gray;
+  /* Definition of color scheme for unfitted estimators */
+  --sklearn-color-unfitted-level-0: #fff5e6;
+  --sklearn-color-unfitted-level-1: #f6e4d2;
+  --sklearn-color-unfitted-level-2: #ffe0b3;
+  --sklearn-color-unfitted-level-3: chocolate;
+  /* Definition of color scheme for fitted estimators */
+  --sklearn-color-fitted-level-0: #f0f8ff;
+  --sklearn-color-fitted-level-1: #d4ebff;
+  --sklearn-color-fitted-level-2: #b3dbfd;
+  --sklearn-color-fitted-level-3: cornflowerblue;
+
+  /* Specific color for light theme */
+  --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
+  --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-icon: #696969;
+
+  @media (prefers-color-scheme: dark) {
+    /* Redefinition of color scheme for dark theme */
+    --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
+    --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-icon: #878787;
+  }
+}
+
+#sk-container-id-2 {
+  color: var(--sklearn-color-text);
+}
+
+#sk-container-id-2 pre {
+  padding: 0;
+}
+
+#sk-container-id-2 input.sk-hidden--visually {
+  border: 0;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+#sk-container-id-2 div.sk-dashed-wrapped {
+  border: 1px dashed var(--sklearn-color-line);
+  margin: 0 0.4em 0.5em 0.4em;
+  box-sizing: border-box;
+  padding-bottom: 0.4em;
+  background-color: var(--sklearn-color-background);
+}
+
+#sk-container-id-2 div.sk-container {
+  /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
+     but bootstrap.min.css set `[hidden] { display: none !important; }`
+     so we also need the `!important` here to be able to override the
+     default hidden behavior on the sphinx rendered scikit-learn.org.
+     See: https://github.com/scikit-learn/scikit-learn/issues/21755 */
+  display: inline-block !important;
+  position: relative;
+}
+
+#sk-container-id-2 div.sk-text-repr-fallback {
+  display: none;
+}
+
+div.sk-parallel-item,
+div.sk-serial,
+div.sk-item {
+  /* draw centered vertical line to link estimators */
+  background-image: linear-gradient(var(--sklearn-color-text-on-default-background), var(--sklearn-color-text-on-default-background));
+  background-size: 2px 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* Parallel-specific style estimator block */
+
+#sk-container-id-2 div.sk-parallel-item::after {
+  content: "";
+  width: 100%;
+  border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
+  flex-grow: 1;
+}
+
+#sk-container-id-2 div.sk-parallel {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  background-color: var(--sklearn-color-background);
+  position: relative;
+}
+
+#sk-container-id-2 div.sk-parallel-item {
+  display: flex;
+  flex-direction: column;
+}
+
+#sk-container-id-2 div.sk-parallel-item:first-child::after {
+  align-self: flex-end;
+  width: 50%;
+}
+
+#sk-container-id-2 div.sk-parallel-item:last-child::after {
+  align-self: flex-start;
+  width: 50%;
+}
+
+#sk-container-id-2 div.sk-parallel-item:only-child::after {
+  width: 0;
+}
+
+/* Serial-specific style estimator block */
+
+#sk-container-id-2 div.sk-serial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--sklearn-color-background);
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+
+/* Toggleable style: style used for estimator/Pipeline/ColumnTransformer box that is
+clickable and can be expanded/collapsed.
+- Pipeline and ColumnTransformer use this feature and define the default style
+- Estimators will overwrite some part of the style using the `sk-estimator` class
+*/
+
+/* Pipeline and ColumnTransformer style (default) */
+
+#sk-container-id-2 div.sk-toggleable {
+  /* Default theme specific background. It is overwritten whether we have a
+  specific estimator or a Pipeline/ColumnTransformer */
+  background-color: var(--sklearn-color-background);
+}
+
+/* Toggleable label */
+#sk-container-id-2 label.sk-toggleable__label {
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+  padding: 0.5em;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+#sk-container-id-2 label.sk-toggleable__label-arrow:before {
+  /* Arrow on the left of the label */
+  content: "▸";
+  float: left;
+  margin-right: 0.25em;
+  color: var(--sklearn-color-icon);
+}
+
+#sk-container-id-2 label.sk-toggleable__label-arrow:hover:before {
+  color: var(--sklearn-color-text);
+}
+
+/* Toggleable content - dropdown */
+
+#sk-container-id-2 div.sk-toggleable__content {
+  max-height: 0;
+  max-width: 0;
+  overflow: hidden;
+  text-align: left;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-2 div.sk-toggleable__content.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-2 div.sk-toggleable__content pre {
+  margin: 0.2em;
+  border-radius: 0.25em;
+  color: var(--sklearn-color-text);
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-2 div.sk-toggleable__content.fitted pre {
+  /* unfitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-2 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+  /* Expand drop-down */
+  max-height: 200px;
+  max-width: 100%;
+  overflow: auto;
+}
+
+#sk-container-id-2 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+  content: "▾";
+}
+
+/* Pipeline/ColumnTransformer-specific style */
+
+#sk-container-id-2 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-2 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator-specific style */
+
+/* Colorize estimator box */
+#sk-container-id-2 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-2 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+#sk-container-id-2 div.sk-label label.sk-toggleable__label,
+#sk-container-id-2 div.sk-label label {
+  /* The background is the default theme color */
+  color: var(--sklearn-color-text-on-default-background);
+}
+
+/* On hover, darken the color of the background */
+#sk-container-id-2 div.sk-label:hover label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+/* Label box, darken color on hover, fitted */
+#sk-container-id-2 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator label */
+
+#sk-container-id-2 div.sk-label label {
+  font-family: monospace;
+  font-weight: bold;
+  display: inline-block;
+  line-height: 1.2em;
+}
+
+#sk-container-id-2 div.sk-label-container {
+  text-align: center;
+}
+
+/* Estimator-specific */
+#sk-container-id-2 div.sk-estimator {
+  font-family: monospace;
+  border: 1px dotted var(--sklearn-color-border-box);
+  border-radius: 0.25em;
+  box-sizing: border-box;
+  margin-bottom: 0.5em;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-2 div.sk-estimator.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+/* on hover */
+#sk-container-id-2 div.sk-estimator:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-2 div.sk-estimator.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Specification for estimator info (e.g. "i" and "?") */
+
+/* Common style for "i" and "?" */
+
+.sk-estimator-doc-link,
+a:link.sk-estimator-doc-link,
+a:visited.sk-estimator-doc-link {
+  float: right;
+  font-size: smaller;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1em;
+  height: 1em;
+  width: 1em;
+  text-decoration: none !important;
+  margin-left: 1ex;
+  /* unfitted */
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+  color: var(--sklearn-color-unfitted-level-1);
+}
+
+.sk-estimator-doc-link.fitted,
+a:link.sk-estimator-doc-link.fitted,
+a:visited.sk-estimator-doc-link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+div.sk-estimator:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover,
+div.sk-label-container:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+div.sk-estimator.fitted:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover,
+div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+/* Span, style for the box shown on hovering the info icon */
+.sk-estimator-doc-link span {
+  display: none;
+  z-index: 9999;
+  position: relative;
+  font-weight: normal;
+  right: .2ex;
+  padding: .5ex;
+  margin: .5ex;
+  width: min-content;
+  min-width: 20ex;
+  max-width: 50ex;
+  color: var(--sklearn-color-text);
+  box-shadow: 2pt 2pt 4pt #999;
+  /* unfitted */
+  background: var(--sklearn-color-unfitted-level-0);
+  border: .5pt solid var(--sklearn-color-unfitted-level-3);
+}
+
+.sk-estimator-doc-link.fitted span {
+  /* fitted */
+  background: var(--sklearn-color-fitted-level-0);
+  border: var(--sklearn-color-fitted-level-3);
+}
+
+.sk-estimator-doc-link:hover span {
+  display: block;
+}
+
+/* "?"-specific style due to the `<a>` HTML tag */
+
+#sk-container-id-2 a.estimator_doc_link {
+  float: right;
+  font-size: 1rem;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1rem;
+  height: 1rem;
+  width: 1rem;
+  text-decoration: none;
+  /* unfitted */
+  color: var(--sklearn-color-unfitted-level-1);
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+}
+
+#sk-container-id-2 a.estimator_doc_link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+#sk-container-id-2 a.estimator_doc_link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+#sk-container-id-2 a.estimator_doc_link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+}
+</style><div id="sk-container-id-2" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>LinearRegression()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" checked><label for="sk-estimator-id-2" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;&nbsp;LinearRegression<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.5/modules/generated/sklearn.linear_model.LinearRegression.html">?<span>Documentation for LinearRegression</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></label><div class="sk-toggleable__content fitted"><pre>LinearRegression()</pre></div> </div></div></div></div>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q3a&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>After fitting, we can see the coefficients and intercept. Note, there are now two elements in <code>model_multi.coef_</code>, since there are two features.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">model_multi</span><span class="o">.</span><span class="n">intercept_</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>np.float64(56.90009970211301)
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">model_multi</span><span class="o">.</span><span class="n">coef_</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>array([-0.46618963,  0.00123054])
+</code></pre>
+<hr>
+<h3 id="question-3b">Question 3b</h3>
+<p>Using the above values, in LaTeX, write out the function that the model is using to predict <code>mpg</code> from <code>horsepower</code> and <code>hp^2</code>.</p>
+<!--
+BEGIN QUESTION
+name: q3b
+-->
+<p>$$
+mpg_{predicted} = 56.90 - 0.47 \times horsepower + 0.001 \times hp^2
+$$</p>
+<p><br/><br/></p>
+<p>The plot below shows the prediction of our model. It&rsquo;s much better!</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">predicted_mpg_multi</span> <span class="o">=</span> <span class="n">model_multi</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">vehicle_data</span><span class="p">[[</span><span class="s1">&#39;horsepower&#39;</span><span class="p">,</span> <span class="s1">&#39;hp^2&#39;</span><span class="p">]])</span>
+</span></span><span class="line"><span class="cl"><span class="n">r2_multi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">predicted_mpg_multi</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">vehicle_data</span><span class="p">[</span><span class="s1">&#39;mpg&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Multiple R^2 using both horsepower and horsepower squared: &#39;</span><span class="p">,</span> <span class="n">r2_multi</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;horsepower&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;mpg&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">vehicle_data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">vehicle_data</span><span class="p">[</span><span class="s1">&#39;horsepower&#39;</span><span class="p">],</span>  <span class="n">predicted_mpg_hp_only</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;hp only&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">vehicle_data</span><span class="p">[</span><span class="s1">&#39;horsepower&#39;</span><span class="p">],</span>  <span class="n">predicted_mpg_hp_sqrt</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;sqrt(hp) fit&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">vehicle_data</span><span class="p">[</span><span class="s1">&#39;horsepower&#39;</span><span class="p">],</span>  <span class="n">predicted_mpg_multi</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;gold&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;hp and hp^2&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>Multiple R^2 using both horsepower and horsepower squared:  0.6875590305127548
+</code></pre>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab6/lab06_files/lab06_57_1.png"
+        data-srcset="/datalab6/lab06_files/lab06_57_1.png, /datalab6/lab06_files/lab06_57_1.png 1.5x, /datalab6/lab06_files/lab06_57_1.png 2x"
+        data-sizes="auto"
+        alt="/datalab6/lab06_files/lab06_57_1.png"
+        title="png" width="562" height="432" /></p>
+<hr>
+<h3 id="question-3c">Question 3c</h3>
+<p>In the cell below, we assign the mean of the <code>mpg</code> column of the vehicle <code>data</code> dataframe to <code>mean_mpg</code>. Given this information, what is the mean of the <code>mean_predicted_mpg_hp_only</code>, <code>predicted_mpg_hp_sqrt</code>, and <code>predicted_mpg_multi</code> arrays?</p>
+<p>Hint: You should not have to call <code>np.mean</code> in your code.</p>
+<!--
+BEGIN QUESTION
+name: q3c
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">mean_mpg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">vehicle_data</span><span class="p">[</span><span class="s1">&#39;mpg&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">mean_predicted_mpg_hp_only</span> <span class="o">=</span> <span class="n">mean_mpg</span> <span class="c1"># 最小二乘性质决定的 y_bar = a + b * x_bar</span>
+</span></span><span class="line"><span class="cl"><span class="n">mean_predicted_mpg_hp_sqrt</span> <span class="o">=</span> <span class="n">mean_mpg</span> 
+</span></span><span class="line"><span class="cl"><span class="n">mean_predicted_mpg_multi</span> <span class="o">=</span> <span class="n">mean_mpg</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># print(np.mean(predicted_mpg_hp_sqrt))</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># print(mean_mpg)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># print(np.mean(predicted_mpg_multi))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>23.445918367346934
+23.445918367346938
+23.445918367346938
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q3c&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><br/><br/></p>
+<hr style="border: 5px solid #003262;" />
+<hr style="border: 1px solid #fdb515;" />
+<h2 id="faulty-feature-engineering-redundant-features">Faulty Feature Engineering: Redundant Features</h2>
+<p>Suppose we used the following linear model:</p>
+<p>\begin{align}
+\text{mpg} &amp;= \theta_0 + \theta_1 \cdot \text{horsepower} + \
+&amp;\theta_2 \cdot \text{horsepower}^2 + \theta_3 \cdot \text{horsepower}
+\end{align}</p>
+<p>Notice that <code>horsepower</code> appears twice in our model!! We will explore how this redundant feature affects our modeling.</p>
+<hr>
+<h2 id="question-4">Question 4</h2>
+<h3 id="question-4a-linear-algebra">Question 4a: Linear Algebra</h3>
+<p>Construct a matrix <code>X_redundant</code> that uses the vehicle <code>data</code> DataFrame to encode the &ldquo;three&rdquo; features above, as well as a bias feature.</p>
+<p><strong>Hint</strong>: Use the <code>add_intercept</code> term you implemented in Question 1a.</p>
+<!--
+BEGIN QUESTION
+name: q4a
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">X_redundant</span> <span class="o">=</span> <span class="n">add_intercept</span><span class="p">(</span><span class="n">vehicle_data</span><span class="p">[[</span><span class="s1">&#39;horsepower&#39;</span><span class="p">,</span> <span class="s1">&#39;hp^2&#39;</span><span class="p">,</span> <span class="s1">&#39;horsepower&#39;</span><span class="p">]])</span>
+</span></span><span class="line"><span class="cl"><span class="n">X_redundant</span><span class="o">.</span><span class="n">shape</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>(392, 4)
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q4a&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong><pre style='display: inline;'>q4a</pre></strong> passed! 🚀</p>
+<p><br/><br/>
+Now, run the cell below to find the analytical OLS Estimate using the <code>get_analytical_sol</code> function you wrote in Question 1c.</p>
+<p>Depending on the machine that you run your code on, you should either see a singular matrix error or end up with thetas that are nonsensical (magnitudes greater than 10^15). This is not good!</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># the try-except block suppresses errors during submission</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">traceback</span>
+</span></span><span class="line"><span class="cl"><span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">analytical_thetas</span> <span class="o">=</span> <span class="n">get_analytical_sol</span><span class="p">(</span><span class="n">X_redundant</span><span class="p">,</span> <span class="n">vehicle_data</span><span class="p">[</span><span class="s1">&#39;mpg&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">    <span class="n">analytical_thetas</span>
+</span></span><span class="line"><span class="cl"><span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">())</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h3 id="question-4b">Question 4b</h3>
+<p>In the cell below, explain why we got the error above when trying to calculate the analytical solution to predict <code>mpg</code>.</p>
+<!--
+BEGIN QUESTION
+name: q4b
+-->
+<p><em>解析方法不一定正确，比较理想但不现实（但是上面并没有error诶）</em></p>
+<br/>
+Note: While we encountered errors when using the linear algebra approach, a model fitted with `sklearn` will not encounter matrix singularity errors since it uses numerical methods to find optimums (to be covered in Gradient Descent lecture).
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># sklearn finds optimal parameters despite redundant features</span>
+</span></span><span class="line"><span class="cl"><span class="n">model_redundant</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">(</span><span class="n">fit_intercept</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># X_redundant already has an intercept column</span>
+</span></span><span class="line"><span class="cl"><span class="n">model_redundant</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span> <span class="o">=</span> <span class="n">X_redundant</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">vehicle_data</span><span class="p">[</span><span class="s1">&#39;mpg&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">model_redundant</span><span class="o">.</span><span class="n">coef_</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>array([ 5.69000997e+01, -2.33094815e-01,  1.23053610e-03, -2.33094815e-01])
+</code></pre>
+<p><br/><br/></p>
+<hr style="border: 5px solid #003262;" />
+<hr style="border: 1px solid #fdb515;" />
+<h2 id="overfitting-with-too-many-features">Overfitting with Too Many Features</h2>
+<p>Let&rsquo;s take what we&rsquo;ve learned so far and go one step further: introduce even more features.</p>
+<p>Again, using scikit learn&rsquo;s <code>LinearRegression</code>, we fit a model that tries to predict <code>mpg</code> using each of the following as features:</p>
+<ul>
+<li><code>horsepower</code></li>
+<li><code>hp^2</code></li>
+<li><code>model_year</code></li>
+<li><code>acceleration</code></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">desired_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;horsepower&#39;</span><span class="p">,</span> <span class="s1">&#39;hp^2&#39;</span><span class="p">,</span> <span class="s1">&#39;model_year&#39;</span><span class="p">,</span> <span class="s1">&#39;acceleration&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">model_overfit</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">model_overfit</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span> <span class="o">=</span> <span class="n">vehicle_data</span><span class="p">[</span><span class="n">desired_columns</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span> <span class="n">vehicle_data</span><span class="p">[</span><span class="s1">&#39;mpg&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">predicted_mpg_overfit</span> <span class="o">=</span> <span class="n">model_overfit</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">vehicle_data</span><span class="p">[[</span><span class="s1">&#39;horsepower&#39;</span><span class="p">,</span> <span class="s1">&#39;hp^2&#39;</span><span class="p">,</span> <span class="s1">&#39;model_year&#39;</span><span class="p">,</span> <span class="s1">&#39;acceleration&#39;</span><span class="p">]])</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><br/>
+The plot below shows the prediction of our more sophisticated model. Note we arbitrarily plot against horsepower for the ease of keeping our plots 2-dimensional.
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;horsepower&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;mpg&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">vehicle_data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">vehicle_data</span><span class="p">[</span><span class="s1">&#39;horsepower&#39;</span><span class="p">],</span>  <span class="n">predicted_mpg_overfit</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;r&#39;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab6/lab06_files/lab06_75_0.png"
+        data-srcset="/datalab6/lab06_files/lab06_75_0.png, /datalab6/lab06_files/lab06_75_0.png 1.5x, /datalab6/lab06_files/lab06_75_0.png 2x"
+        data-sizes="auto"
+        alt="/datalab6/lab06_files/lab06_75_0.png"
+        title="png" width="562" height="432" /></p>
+<p>Think about what you see in the above plot. Why is the shape of our prediction curve so jagged? Do you think this is a good model to predict the <code>mpg</code> of some car we don&rsquo;t already have information on?</p>
+<p>This idea –the <strong>bias-variance tradeoff</strong>– is an idea we will explore in the coming weeks.</p>
+<hr>
+<h2 id="question-5-comparing-r2">Question 5: Comparing $R^2$</h2>
+<p>Lastly, set <code>r2_overfit</code> to be the multiple $R^2$ coefficient obtained by using <code>model_overfit</code>.</p>
+<ul>
+<li>Hint: This is very similar to several pre-computed cells in Questions 1c, 2b, and 3b.</li>
+</ul>
+<!--
+BEGIN QUESTION
+name: q5
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">r2_overfit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">predicted_mpg_overfit</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">vehicle_data</span><span class="p">[</span><span class="s1">&#39;mpg&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">r2_overfit</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>np.float64(0.8163086433998654)
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q5&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Comparing this model with previous models:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># compares q1, q2, q3, and overfit models (ignores redundant model)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Multiple R^2 using only horsepower: &#39;</span><span class="p">,</span> <span class="n">r2_hp_only</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Multiple R^2 using sqrt(hp): &#39;</span><span class="p">,</span> <span class="n">r2_hp_sqrt</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Multiple R^2 using both hp and hp^2: &#39;</span><span class="p">,</span> <span class="n">r2_multi</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Multiple R^2 using hp, hp^2, model year, and acceleration: &#39;</span><span class="p">,</span> <span class="n">r2_overfit</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>Multiple R^2 using only horsepower:  0.6059482578894348
+Multiple R^2 using sqrt(hp):  0.6437035832706468
+Multiple R^2 using both hp and hp^2:  0.6875590305127548
+Multiple R^2 using hp, hp^2, model year, and acceleration:  0.8163086433998654
+</code></pre>
+<p>If everything was done correctly, the multiple $R^2$ of our latest model should be substantially higher than that of the previous models. This is because multiple $R^2$ increases with the number of covariates (i.e., features) we add to our model.</p>
+<br/>
+<p><strong>A Word on Overfitting</strong>: We might not always want to use models with large multiple $R^2$ values because these models could be <strong>overfitting</strong> to our specific sample data, and won&rsquo;t generalize well to unseen data from the population. Again, this is an idea we will explore in future lectures and assignments.</p>
+<h1 id="congratulations-you-finished-the-lab">Congratulations! You finished the lab!</h1>
+<hr>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -124,7 +2171,7 @@
                             <a class="link-to-markdown" href="/datalab6/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/datalab6/" data-title="DATA100-lab6"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/datalab6/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/datalab6/" data-title="DATA100-lab6"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/datalab6/" data-title="DATA100-lab6"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/datalab6/" data-title="DATA100-lab6"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/datalab6/" data-title="DATA100-lab6: Linear Regression"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/datalab6/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/datalab6/" data-title="DATA100-lab6: Linear Regression"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/datalab6/" data-title="DATA100-lab6: Linear Regression"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/datalab6/" data-title="DATA100-lab6: Linear Regression"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -137,7 +2184,7 @@
     </div>
 
     <div class="post-nav"><a href="/datalab3/" class="prev" rel="prev" title="DATA100-lab3: Data Cleaning and EDA"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>DATA100-lab3: Data Cleaning and EDA</a>
-            <a href="/datalab5/" class="next" rel="next" title="DATA100-lab5">DATA100-lab5<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+            <a href="/datalab5/" class="next" rel="next" title="DATA100-lab5: Modeling, Loss Functions, and Summary Statistics">DATA100-lab5: Modeling, Loss Functions, and Summary Statistics<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
