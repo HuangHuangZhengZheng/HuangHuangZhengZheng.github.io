@@ -7,20 +7,19 @@
         <title>DATA100-lab2 - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/datalab2/">
   <meta property="og:site_name" content="HHZZ`s space">
   <meta property="og:title" content="DATA100-lab2">
-  <meta property="og:description" content="1 2 3 # Initialize Otter import otter grader = otter.Notebook(&amp;#34;lab02.ipynb&amp;#34;) Lab 2: Pandas Overview 基础操作，注意numpy版本可能过高 To receive credit for a lab, answer all questions correctly and submit before the deadline.
-This lab is due Tuesday, Feb 1st at 11:59 PM.
-Collaboration Policy Data science is a collaborative activity. While you may talk with others about the labs, we ask that you write your solutions individually. If you do discuss the assignments with others please include their names below.">
+  <meta property="og:description" content="1 2 3 # Initialize Otter import otter grader = otter.Notebook(&amp;#34;lab02.ipynb&amp;#34;) Pandas is one of the most widely used Python libraries in data science. In this lab, you will review commonly used data wrangling operations/tools in Pandas. We aim to give you familiarity with:
+Creating DataFrames Slicing DataFrames (i.e. selecting rows and columns) Filtering data (using boolean arrays and groupby.filter) Aggregating (using groupby.agg) In this lab you are going to use several pandas methods.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2024-07-15T18:20:24+08:00">
     <meta property="article:modified_time" content="2024-07-15T18:20:24+08:00">
+    <meta property="article:tag" content="Pandas">
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="DATA100-lab2">
-<meta name="twitter:description" content="1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab02.ipynb&#34;) Lab 2: Pandas Overview 基础操作，注意numpy版本可能过高 To receive credit for a lab, answer all questions correctly and submit before the deadline.
-This lab is due Tuesday, Feb 1st at 11:59 PM.
-Collaboration Policy Data science is a collaborative activity. While you may talk with others about the labs, we ask that you write your solutions individually. If you do discuss the assignments with others please include their names below.">
+<meta name="twitter:description" content="1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab02.ipynb&#34;) Pandas is one of the most widely used Python libraries in data science. In this lab, you will review commonly used data wrangling operations/tools in Pandas. We aim to give you familiarity with:
+Creating DataFrames Slicing DataFrames (i.e. selecting rows and columns) Filtering data (using boolean arrays and groupby.filter) Aggregating (using groupby.agg) In this lab you are going to use several pandas methods.">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -35,7 +34,7 @@ Collaboration Policy Data science is a collaborative activity. While you may tal
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/datalab2\/"
-        },"genre": "posts","wordcount":  9780 ,
+        },"genre": "posts","keywords": "Pandas","wordcount":  6785 ,
         "url": "http:\/\/example.org\/datalab2\/","datePublished": "2024-07-15T18:20:24+08:00","dateModified": "2024-07-15T18:20:24+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -109,8 +108,8 @@ Collaboration Policy Data science is a collaborative activity. While you may tal
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">DATA100-lab2</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-15">2024-07-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;9780 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;46 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-15">2024-07-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;6785 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;32 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -118,11 +117,6 @@ Collaboration Policy Data science is a collaborative activity. While you may tal
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#lab-2-pandas-overview-基础操作注意numpy版本可能过高">Lab 2: Pandas Overview 基础操作，注意numpy版本可能过高</a>
-      <ul>
-        <li><a href="#collaboration-policy">Collaboration Policy</a></li>
-      </ul>
-    </li>
     <li><a href="#creating-dataframes--basic-manipulations">Creating DataFrames &amp; Basic Manipulations</a>
       <ul>
         <li><a href="#review-selecting-rows-and-columns-in-pandas">REVIEW: Selecting Rows and Columns in Pandas</a>
@@ -188,13 +182,7 @@ Collaboration Policy Data science is a collaborative activity. While you may tal
 </span></span><span class="line"><span class="cl"><span class="n">grader</span> <span class="o">=</span> <span class="n">otter</span><span class="o">.</span><span class="n">Notebook</span><span class="p">(</span><span class="s2">&#34;lab02.ipynb&#34;</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="lab-2-pandas-overview-基础操作注意numpy版本可能过高">Lab 2: Pandas Overview 基础操作，注意numpy版本可能过高</h2>
-<p>To receive credit for a lab, answer all questions correctly and submit before the deadline.</p>
-<p><strong>This lab is due  Tuesday, Feb 1st at 11:59 PM.</strong></p>
-<h3 id="collaboration-policy">Collaboration Policy</h3>
-<p>Data science is a collaborative activity. While you may talk with others about the labs, we ask that you <strong>write your solutions individually</strong>. If you do discuss the assignments with others please <strong>include their names</strong> below. (That&rsquo;s a good way to learn your classmates&rsquo; names.)</p>
-<p><strong>Collaborators</strong>: <em>list collaborators here</em></p>
-<hr>
+</div><hr>
 <p><a href="https://pandas.pydata.org/" target="_blank" rel="noopener noreffer ">Pandas</a> is one of the most widely used Python libraries in data science. In this lab, you will review commonly used data wrangling operations/tools in Pandas. We aim to give you familiarity with:</p>
 <ul>
 <li>Creating DataFrames</li>
@@ -299,6 +287,7 @@ Collaboration Policy Data science is a collaborative activity. While you may tal
 </div>
 <p><strong>Syntax 2:</strong> You can also define a DataFrame by specifying the rows as shown below.</p>
 <p>Each row corresponds to a distinct <em><strong>tuple</strong></em>, and the columns are specified separately.</p>
+<p>这里可以看出<code>columns</code>是个参数</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -395,7 +384,7 @@ Collaboration Policy Data science is a collaborative activity. While you may tal
 <h3 id="review-selecting-rows-and-columns-in-pandas">REVIEW: Selecting Rows and Columns in Pandas</h3>
 <p>As you&rsquo;ve seen in lecture and discussion, there are two verbose operators in Python for selecting rows: <code>loc</code> and <code>iloc</code>. Let&rsquo;s review them briefly.</p>
 <h4 id="approach-1-loc">Approach 1: <code>loc</code></h4>
-<p>The first of the two verbose operators is <code>loc</code>, which takes two arguments. The first is one or more row <strong>labels</strong>, the second is one or more column <strong>labels</strong>.</p>
+<p>The first of the two verbose operators is <code>loc</code>, which takes two arguments. The first is <em>one or more</em> <strong>row labels</strong>, the second is <em>one or more</em> <strong>column labels</strong>.</p>
 <p>The desired rows or columns can be provided individually, in slice notation, or as a list. Some examples are given below.</p>
 <p>Note that <strong>slicing in <code>loc</code> is inclusive</strong> on the provided labels.</p>
 <div class="highlight"><div class="chroma">
@@ -611,13 +600,13 @@ Collaboration Policy Data science is a collaborative activity. While you may tal
 2    banana
 Name: fruit, dtype: object
 </code></pre>
-<p>If we provide only one argument to <code>loc</code>, it uses the provided argument to select rows, and returns all columns.</p>
+<p>If we provide only one argument to <code>loc</code>, it uses the provided argument to select rows, and returns all columns.可以只给行， 不可以只给列</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">fruit_info</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># 可以只给行， 不可以只给列</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">fruit_info</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><div>
@@ -1006,14 +995,14 @@ Name: fruit, dtype: object
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">fruit_info_sorted</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="mi">0</span><span class="p">]</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">fruit_info_sorted</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="mi">0</span><span class="p">]</span> <span class="c1"># 别和数学表达混淆！</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><pre><code>3    raspberry
 1       orange
 Name: fruit, dtype: object
 </code></pre>
-<p>Lastly, similar to with <code>loc</code>, the second argument to <code>iloc</code> is optional. That is, if you provide only one argument to <code>iloc</code>, it treats the argument you provide as a set of desired row numbers, not column numbers.</p>
+<p>Lastly, similar to with <code>loc</code>, the second argument to <code>iloc</code> is optional. That is, if you provide only one argument to <code>iloc</code>, it treats the argument you provide as a set of desired row numbers, not column numbers. 可以只给行，不可给列</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1987,22 +1976,8 @@ name: q4
 <pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q4&#34;</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><strong style='color: red;'><pre style='display: inline;'>q4</pre> results:</strong></p><p><strong><pre style='display: inline;'>q4 - 1</pre> result:</strong></p><pre>    ✅ Test case passed</pre><p><strong><pre style='display: inline;'>q4 - 2</pre> result:</strong></p><pre>    ✅ Test case passed</pre><p><strong><pre style='display: inline;'>q4 - 3</pre> result:</strong></p><pre>    ❌ Test case failed
-    Trying:
-        name_and_year.loc[0, "Year"] 
-    Expecting:
-        1910
-    **********************************************************************
-    Line 1, in q4 2
-    Failed example:
-        name_and_year.loc[0, "Year"] 
-    Expected:
-        1910
-    Got:
-        np.int64(1910)
-</pre>
-<p>Now repeat the same selection using the plain <code>[]</code> notation.</p>
-<p>接受一个list of column</p>
+</div><p>Now repeat the same selection using the plain <code>[]</code> notation.</p>
+<p>接受一个list of columns</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -2124,7 +2099,7 @@ name: q4
 </tr>
 </tbody>
 </table>
-<p>In the following we construct the DataFrame containing only names registered in California</p>
+<p>In the following we construct the DataFrame containing only names registered in California注意这里十分重要！</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -2301,34 +2276,7 @@ name: q5
 </span></span><span class="line"><span class="cl"><span class="c1"># 依旧是版本问题</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><strong style='color: red;'><pre style='display: inline;'>q5</pre> results:</strong></p><p><strong><pre style='display: inline;'>q5 - 1</pre> result:</strong></p><pre>    ✅ Test case passed</pre><p><strong><pre style='display: inline;'>q5 - 2</pre> result:</strong></p><pre>    ❌ Test case failed
-    Trying:
-        result["Count"].sum()
-    Expecting:
-        39000
-    **********************************************************************
-    Line 1, in q5 1
-    Failed example:
-        result["Count"].sum()
-    Expected:
-        39000
-    Got:
-        np.int64(39000)
-</pre><p><strong><pre style='display: inline;'>q5 - 3</pre> result:</strong></p><pre>    ❌ Test case failed
-    Trying:
-        result["Count"].iloc[0]
-    Expecting:
-        4342
-    **********************************************************************
-    Line 1, in q5 2
-    Failed example:
-        result["Count"].iloc[0]
-    Expected:
-        4342
-    Got:
-        np.int64(4342)
-</pre>
-<h4 id="query-review">Query Review</h4>
+</div><h4 id="query-review">Query Review</h4>
 <p>Recall that pandas also has a query command. For example, we can get California baby names with the code below.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -3486,198 +3434,7 @@ name: q5
 <pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">elections</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&#34;Year &gt;= 1980&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&#34;Party&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><pre><code>C:\Users\86135\AppData\Local\Temp\ipykernel_61736\4206656687.py:1: FutureWarning: The provided callable &lt;function mean at 0x00000133CD918040&gt; is currently using DataFrameGroupBy.mean. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string &quot;mean&quot; instead.
-  elections.query(&quot;Year &gt;= 1980&quot;).groupby(&quot;Party&quot;).agg(np.mean)
-
-
-
----------------------------------------------------------------------------
-
-TypeError                                 Traceback (most recent call last)
-
-File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:1942, in GroupBy._agg_py_fallback(self, how, values, ndim, alt)
-   1941 try:
--&gt; 1942     res_values = self._grouper.agg_series(ser, alt, preserve_dtype=True)
-   1943 except Exception as err:
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\groupby\ops.py:864, in BaseGrouper.agg_series(self, obj, func, preserve_dtype)
-    862     preserve_dtype = True
---&gt; 864 result = self._aggregate_series_pure_python(obj, func)
-    866 npvalues = lib.maybe_convert_objects(result, try_float=False)
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\groupby\ops.py:885, in BaseGrouper._aggregate_series_pure_python(self, obj, func)
-    884 for i, group in enumerate(splitter):
---&gt; 885     res = func(group)
-    886     res = extract_result(res)
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:2454, in GroupBy.mean.&lt;locals&gt;.&lt;lambda&gt;(x)
-   2451 else:
-   2452     result = self._cython_agg_general(
-   2453         &quot;mean&quot;,
--&gt; 2454         alt=lambda x: Series(x, copy=False).mean(numeric_only=numeric_only),
-   2455         numeric_only=numeric_only,
-   2456     )
-   2457     return result.__finalize__(self.obj, method=&quot;groupby&quot;)
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\series.py:6549, in Series.mean(self, axis, skipna, numeric_only, **kwargs)
-   6541 @doc(make_doc(&quot;mean&quot;, ndim=1))
-   6542 def mean(
-   6543     self,
-   (...)
-   6547     **kwargs,
-   6548 ):
--&gt; 6549     return NDFrame.mean(self, axis, skipna, numeric_only, **kwargs)
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\generic.py:12420, in NDFrame.mean(self, axis, skipna, numeric_only, **kwargs)
-  12413 def mean(
-  12414     self,
-  12415     axis: Axis | None = 0,
-   (...)
-  12418     **kwargs,
-  12419 ) -&gt; Series | float:
-&gt; 12420     return self._stat_function(
-  12421         &quot;mean&quot;, nanops.nanmean, axis, skipna, numeric_only, **kwargs
-  12422     )
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\generic.py:12377, in NDFrame._stat_function(self, name, func, axis, skipna, numeric_only, **kwargs)
-  12375 validate_bool_kwarg(skipna, &quot;skipna&quot;, none_allowed=False)
-&gt; 12377 return self._reduce(
-  12378     func, name=name, axis=axis, skipna=skipna, numeric_only=numeric_only
-  12379 )
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\series.py:6457, in Series._reduce(self, op, name, axis, skipna, numeric_only, filter_type, **kwds)
-   6453     raise TypeError(
-   6454         f&quot;Series.{name} does not allow {kwd_name}={numeric_only} &quot;
-   6455         &quot;with non-numeric dtypes.&quot;
-   6456     )
--&gt; 6457 return op(delegate, skipna=skipna, **kwds)
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\nanops.py:147, in bottleneck_switch.__call__.&lt;locals&gt;.f(values, axis, skipna, **kwds)
-    146 else:
---&gt; 147     result = alt(values, axis=axis, skipna=skipna, **kwds)
-    149 return result
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\nanops.py:404, in _datetimelike_compat.&lt;locals&gt;.new_func(values, axis, skipna, mask, **kwargs)
-    402     mask = isna(values)
---&gt; 404 result = func(values, axis=axis, skipna=skipna, mask=mask, **kwargs)
-    406 if datetimelike:
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\nanops.py:720, in nanmean(values, axis, skipna, mask)
-    719 the_sum = values.sum(axis, dtype=dtype_sum)
---&gt; 720 the_sum = _ensure_numeric(the_sum)
-    722 if axis is not None and getattr(the_sum, &quot;ndim&quot;, False):
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\nanops.py:1701, in _ensure_numeric(x)
-   1699 if isinstance(x, str):
-   1700     # GH#44008, GH#36703 avoid casting e.g. strings to numeric
--&gt; 1701     raise TypeError(f&quot;Could not convert string '{x}' to numeric&quot;)
-   1702 try:
-
-
-TypeError: Could not convert string 'Barry Commoner' to numeric
-
-
-The above exception was the direct cause of the following exception:
-
-
-TypeError                                 Traceback (most recent call last)
-
-Cell In[88], line 1
-----&gt; 1 elections.query(&quot;Year &gt;= 1980&quot;).groupby(&quot;Party&quot;).agg(np.mean)
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\groupby\generic.py:1432, in DataFrameGroupBy.aggregate(self, func, engine, engine_kwargs, *args, **kwargs)
-   1429     kwargs[&quot;engine_kwargs&quot;] = engine_kwargs
-   1431 op = GroupByApply(self, func, args=args, kwargs=kwargs)
--&gt; 1432 result = op.agg()
-   1433 if not is_dict_like(func) and result is not None:
-   1434     # GH #52849
-   1435     if not self.as_index and is_list_like(func):
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\apply.py:199, in Apply.agg(self)
-    197     if f and not args and not kwargs:
-    198         warn_alias_replacement(obj, func, f)
---&gt; 199         return getattr(obj, f)()
-    201 # caller can react
-    202 return None
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:2452, in GroupBy.mean(self, numeric_only, engine, engine_kwargs)
-   2445     return self._numba_agg_general(
-   2446         grouped_mean,
-   2447         executor.float_dtype_mapping,
-   2448         engine_kwargs,
-   2449         min_periods=0,
-   2450     )
-   2451 else:
--&gt; 2452     result = self._cython_agg_general(
-   2453         &quot;mean&quot;,
-   2454         alt=lambda x: Series(x, copy=False).mean(numeric_only=numeric_only),
-   2455         numeric_only=numeric_only,
-   2456     )
-   2457     return result.__finalize__(self.obj, method=&quot;groupby&quot;)
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:1998, in GroupBy._cython_agg_general(self, how, alt, numeric_only, min_count, **kwargs)
-   1995     result = self._agg_py_fallback(how, values, ndim=data.ndim, alt=alt)
-   1996     return result
--&gt; 1998 new_mgr = data.grouped_reduce(array_func)
-   1999 res = self._wrap_agged_manager(new_mgr)
-   2000 if how in [&quot;idxmin&quot;, &quot;idxmax&quot;]:
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\internals\managers.py:1469, in BlockManager.grouped_reduce(self, func)
-   1465 if blk.is_object:
-   1466     # split on object-dtype blocks bc some columns may raise
-   1467     #  while others do not.
-   1468     for sb in blk._split():
--&gt; 1469         applied = sb.apply(func)
-   1470         result_blocks = extend_blocks(applied, result_blocks)
-   1471 else:
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\internals\blocks.py:393, in Block.apply(self, func, **kwargs)
-    387 @final
-    388 def apply(self, func, **kwargs) -&gt; list[Block]:
-    389     &quot;&quot;&quot;
-    390     apply the function to my values; return a block if we are not
-    391     one
-    392     &quot;&quot;&quot;
---&gt; 393     result = func(self.values, **kwargs)
-    395     result = maybe_coerce_values(result)
-    396     return self._split_op_result(result)
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:1995, in GroupBy._cython_agg_general.&lt;locals&gt;.array_func(values)
-   1992     return result
-   1994 assert alt is not None
--&gt; 1995 result = self._agg_py_fallback(how, values, ndim=data.ndim, alt=alt)
-   1996 return result
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:1946, in GroupBy._agg_py_fallback(self, how, values, ndim, alt)
-   1944     msg = f&quot;agg function failed [how-&gt;{how},dtype-&gt;{ser.dtype}]&quot;
-   1945     # preserve the kind of exception that raised
--&gt; 1946     raise type(err)(msg) from err
-   1948 if ser.dtype == object:
-   1949     res_values = res_values.astype(object, copy=False)
-
-
-TypeError: agg function failed [how-&gt;mean,dtype-&gt;object]
-</code></pre>
-<p>Equivalently we can use one of the shorthand aggregation functions, e.g. <code>.mean()</code>:</p>
+</div><p>Equivalently we can use one of the shorthand aggregation functions, e.g. <code>.mean()</code>:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -3686,176 +3443,7 @@ TypeError: agg function failed [how-&gt;mean,dtype-&gt;object]
 <pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">elections</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&#34;Year &gt;= 1980&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&#34;Party&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><pre><code>---------------------------------------------------------------------------
-
-TypeError                                 Traceback (most recent call last)
-
-File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:1942, in GroupBy._agg_py_fallback(self, how, values, ndim, alt)
-   1941 try:
--&gt; 1942     res_values = self._grouper.agg_series(ser, alt, preserve_dtype=True)
-   1943 except Exception as err:
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\groupby\ops.py:864, in BaseGrouper.agg_series(self, obj, func, preserve_dtype)
-    862     preserve_dtype = True
---&gt; 864 result = self._aggregate_series_pure_python(obj, func)
-    866 npvalues = lib.maybe_convert_objects(result, try_float=False)
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\groupby\ops.py:885, in BaseGrouper._aggregate_series_pure_python(self, obj, func)
-    884 for i, group in enumerate(splitter):
---&gt; 885     res = func(group)
-    886     res = extract_result(res)
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:2454, in GroupBy.mean.&lt;locals&gt;.&lt;lambda&gt;(x)
-   2451 else:
-   2452     result = self._cython_agg_general(
-   2453         &quot;mean&quot;,
--&gt; 2454         alt=lambda x: Series(x, copy=False).mean(numeric_only=numeric_only),
-   2455         numeric_only=numeric_only,
-   2456     )
-   2457     return result.__finalize__(self.obj, method=&quot;groupby&quot;)
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\series.py:6549, in Series.mean(self, axis, skipna, numeric_only, **kwargs)
-   6541 @doc(make_doc(&quot;mean&quot;, ndim=1))
-   6542 def mean(
-   6543     self,
-   (...)
-   6547     **kwargs,
-   6548 ):
--&gt; 6549     return NDFrame.mean(self, axis, skipna, numeric_only, **kwargs)
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\generic.py:12420, in NDFrame.mean(self, axis, skipna, numeric_only, **kwargs)
-  12413 def mean(
-  12414     self,
-  12415     axis: Axis | None = 0,
-   (...)
-  12418     **kwargs,
-  12419 ) -&gt; Series | float:
-&gt; 12420     return self._stat_function(
-  12421         &quot;mean&quot;, nanops.nanmean, axis, skipna, numeric_only, **kwargs
-  12422     )
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\generic.py:12377, in NDFrame._stat_function(self, name, func, axis, skipna, numeric_only, **kwargs)
-  12375 validate_bool_kwarg(skipna, &quot;skipna&quot;, none_allowed=False)
-&gt; 12377 return self._reduce(
-  12378     func, name=name, axis=axis, skipna=skipna, numeric_only=numeric_only
-  12379 )
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\series.py:6457, in Series._reduce(self, op, name, axis, skipna, numeric_only, filter_type, **kwds)
-   6453     raise TypeError(
-   6454         f&quot;Series.{name} does not allow {kwd_name}={numeric_only} &quot;
-   6455         &quot;with non-numeric dtypes.&quot;
-   6456     )
--&gt; 6457 return op(delegate, skipna=skipna, **kwds)
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\nanops.py:147, in bottleneck_switch.__call__.&lt;locals&gt;.f(values, axis, skipna, **kwds)
-    146 else:
---&gt; 147     result = alt(values, axis=axis, skipna=skipna, **kwds)
-    149 return result
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\nanops.py:404, in _datetimelike_compat.&lt;locals&gt;.new_func(values, axis, skipna, mask, **kwargs)
-    402     mask = isna(values)
---&gt; 404 result = func(values, axis=axis, skipna=skipna, mask=mask, **kwargs)
-    406 if datetimelike:
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\nanops.py:720, in nanmean(values, axis, skipna, mask)
-    719 the_sum = values.sum(axis, dtype=dtype_sum)
---&gt; 720 the_sum = _ensure_numeric(the_sum)
-    722 if axis is not None and getattr(the_sum, &quot;ndim&quot;, False):
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\nanops.py:1701, in _ensure_numeric(x)
-   1699 if isinstance(x, str):
-   1700     # GH#44008, GH#36703 avoid casting e.g. strings to numeric
--&gt; 1701     raise TypeError(f&quot;Could not convert string '{x}' to numeric&quot;)
-   1702 try:
-
-
-TypeError: Could not convert string 'Barry Commoner' to numeric
-
-
-The above exception was the direct cause of the following exception:
-
-
-TypeError                                 Traceback (most recent call last)
-
-Cell In[85], line 1
-----&gt; 1 elections.query(&quot;Year &gt;= 1980&quot;).groupby(&quot;Party&quot;).mean()
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:2452, in GroupBy.mean(self, numeric_only, engine, engine_kwargs)
-   2445     return self._numba_agg_general(
-   2446         grouped_mean,
-   2447         executor.float_dtype_mapping,
-   2448         engine_kwargs,
-   2449         min_periods=0,
-   2450     )
-   2451 else:
--&gt; 2452     result = self._cython_agg_general(
-   2453         &quot;mean&quot;,
-   2454         alt=lambda x: Series(x, copy=False).mean(numeric_only=numeric_only),
-   2455         numeric_only=numeric_only,
-   2456     )
-   2457     return result.__finalize__(self.obj, method=&quot;groupby&quot;)
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:1998, in GroupBy._cython_agg_general(self, how, alt, numeric_only, min_count, **kwargs)
-   1995     result = self._agg_py_fallback(how, values, ndim=data.ndim, alt=alt)
-   1996     return result
--&gt; 1998 new_mgr = data.grouped_reduce(array_func)
-   1999 res = self._wrap_agged_manager(new_mgr)
-   2000 if how in [&quot;idxmin&quot;, &quot;idxmax&quot;]:
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\internals\managers.py:1469, in BlockManager.grouped_reduce(self, func)
-   1465 if blk.is_object:
-   1466     # split on object-dtype blocks bc some columns may raise
-   1467     #  while others do not.
-   1468     for sb in blk._split():
--&gt; 1469         applied = sb.apply(func)
-   1470         result_blocks = extend_blocks(applied, result_blocks)
-   1471 else:
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\internals\blocks.py:393, in Block.apply(self, func, **kwargs)
-    387 @final
-    388 def apply(self, func, **kwargs) -&gt; list[Block]:
-    389     &quot;&quot;&quot;
-    390     apply the function to my values; return a block if we are not
-    391     one
-    392     &quot;&quot;&quot;
---&gt; 393     result = func(self.values, **kwargs)
-    395     result = maybe_coerce_values(result)
-    396     return self._split_op_result(result)
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:1995, in GroupBy._cython_agg_general.&lt;locals&gt;.array_func(values)
-   1992     return result
-   1994 assert alt is not None
--&gt; 1995 result = self._agg_py_fallback(how, values, ndim=data.ndim, alt=alt)
-   1996 return result
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:1946, in GroupBy._agg_py_fallback(self, how, values, ndim, alt)
-   1944     msg = f&quot;agg function failed [how-&gt;{how},dtype-&gt;{ser.dtype}]&quot;
-   1945     # preserve the kind of exception that raised
--&gt; 1946     raise type(err)(msg) from err
-   1948 if ser.dtype == object:
-   1949     res_values = res_values.astype(object, copy=False)
-
-
-TypeError: agg function failed [how-&gt;mean,dtype-&gt;object]
-</code></pre>
-<p>Note that the index of the dataframe returned by an <code>groupby.agg</code> call is no longer a set of numeric indices from 0 to N-1. Instead, we see that the index for the example above is now the <code>Party</code>. If we want to restore our DataFrame so that <code>Party</code> is a column rather than the index, we can use <code>reset_index</code>.</p>
+</div><p>Note that the index of the dataframe returned by an <code>groupby.agg</code> call is no longer a set of numeric indices from 0 to N-1. Instead, we see that the index for the example above is now the <code>Party</code>. If we want to restore our DataFrame so that <code>Party</code> is a column rather than the index, we can use <code>reset_index</code>.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -3883,181 +3471,7 @@ TypeError: agg function failed [how-&gt;mean,dtype-&gt;object]
 </span></span><span class="line"><span class="cl"><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><pre><code>---------------------------------------------------------------------------
-
-TypeError                                 Traceback (most recent call last)
-
-File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:1942, in GroupBy._agg_py_fallback(self, how, values, ndim, alt)
-   1941 try:
--&gt; 1942     res_values = self._grouper.agg_series(ser, alt, preserve_dtype=True)
-   1943 except Exception as err:
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\groupby\ops.py:864, in BaseGrouper.agg_series(self, obj, func, preserve_dtype)
-    862     preserve_dtype = True
---&gt; 864 result = self._aggregate_series_pure_python(obj, func)
-    866 npvalues = lib.maybe_convert_objects(result, try_float=False)
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\groupby\ops.py:885, in BaseGrouper._aggregate_series_pure_python(self, obj, func)
-    884 for i, group in enumerate(splitter):
---&gt; 885     res = func(group)
-    886     res = extract_result(res)
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:2454, in GroupBy.mean.&lt;locals&gt;.&lt;lambda&gt;(x)
-   2451 else:
-   2452     result = self._cython_agg_general(
-   2453         &quot;mean&quot;,
--&gt; 2454         alt=lambda x: Series(x, copy=False).mean(numeric_only=numeric_only),
-   2455         numeric_only=numeric_only,
-   2456     )
-   2457     return result.__finalize__(self.obj, method=&quot;groupby&quot;)
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\series.py:6549, in Series.mean(self, axis, skipna, numeric_only, **kwargs)
-   6541 @doc(make_doc(&quot;mean&quot;, ndim=1))
-   6542 def mean(
-   6543     self,
-   (...)
-   6547     **kwargs,
-   6548 ):
--&gt; 6549     return NDFrame.mean(self, axis, skipna, numeric_only, **kwargs)
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\generic.py:12420, in NDFrame.mean(self, axis, skipna, numeric_only, **kwargs)
-  12413 def mean(
-  12414     self,
-  12415     axis: Axis | None = 0,
-   (...)
-  12418     **kwargs,
-  12419 ) -&gt; Series | float:
-&gt; 12420     return self._stat_function(
-  12421         &quot;mean&quot;, nanops.nanmean, axis, skipna, numeric_only, **kwargs
-  12422     )
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\generic.py:12377, in NDFrame._stat_function(self, name, func, axis, skipna, numeric_only, **kwargs)
-  12375 validate_bool_kwarg(skipna, &quot;skipna&quot;, none_allowed=False)
-&gt; 12377 return self._reduce(
-  12378     func, name=name, axis=axis, skipna=skipna, numeric_only=numeric_only
-  12379 )
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\series.py:6457, in Series._reduce(self, op, name, axis, skipna, numeric_only, filter_type, **kwds)
-   6453     raise TypeError(
-   6454         f&quot;Series.{name} does not allow {kwd_name}={numeric_only} &quot;
-   6455         &quot;with non-numeric dtypes.&quot;
-   6456     )
--&gt; 6457 return op(delegate, skipna=skipna, **kwds)
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\nanops.py:147, in bottleneck_switch.__call__.&lt;locals&gt;.f(values, axis, skipna, **kwds)
-    146 else:
---&gt; 147     result = alt(values, axis=axis, skipna=skipna, **kwds)
-    149 return result
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\nanops.py:404, in _datetimelike_compat.&lt;locals&gt;.new_func(values, axis, skipna, mask, **kwargs)
-    402     mask = isna(values)
---&gt; 404 result = func(values, axis=axis, skipna=skipna, mask=mask, **kwargs)
-    406 if datetimelike:
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\nanops.py:720, in nanmean(values, axis, skipna, mask)
-    719 the_sum = values.sum(axis, dtype=dtype_sum)
---&gt; 720 the_sum = _ensure_numeric(the_sum)
-    722 if axis is not None and getattr(the_sum, &quot;ndim&quot;, False):
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\nanops.py:1701, in _ensure_numeric(x)
-   1699 if isinstance(x, str):
-   1700     # GH#44008, GH#36703 avoid casting e.g. strings to numeric
--&gt; 1701     raise TypeError(f&quot;Could not convert string '{x}' to numeric&quot;)
-   1702 try:
-
-
-TypeError: Could not convert string 'Barry Commoner' to numeric
-
-
-The above exception was the direct cause of the following exception:
-
-
-TypeError                                 Traceback (most recent call last)
-
-Cell In[89], line 4
-      1 # pandas method chaining
-      2 (
-      3 elections.query(&quot;Year &gt;= 1980&quot;).groupby(&quot;Party&quot;) 
-----&gt; 4                                .mean()            ## computes the mean values by party
-      5                                .reset_index()     ## reset to a numerical index
-      6 )
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:2452, in GroupBy.mean(self, numeric_only, engine, engine_kwargs)
-   2445     return self._numba_agg_general(
-   2446         grouped_mean,
-   2447         executor.float_dtype_mapping,
-   2448         engine_kwargs,
-   2449         min_periods=0,
-   2450     )
-   2451 else:
--&gt; 2452     result = self._cython_agg_general(
-   2453         &quot;mean&quot;,
-   2454         alt=lambda x: Series(x, copy=False).mean(numeric_only=numeric_only),
-   2455         numeric_only=numeric_only,
-   2456     )
-   2457     return result.__finalize__(self.obj, method=&quot;groupby&quot;)
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:1998, in GroupBy._cython_agg_general(self, how, alt, numeric_only, min_count, **kwargs)
-   1995     result = self._agg_py_fallback(how, values, ndim=data.ndim, alt=alt)
-   1996     return result
--&gt; 1998 new_mgr = data.grouped_reduce(array_func)
-   1999 res = self._wrap_agged_manager(new_mgr)
-   2000 if how in [&quot;idxmin&quot;, &quot;idxmax&quot;]:
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\internals\managers.py:1469, in BlockManager.grouped_reduce(self, func)
-   1465 if blk.is_object:
-   1466     # split on object-dtype blocks bc some columns may raise
-   1467     #  while others do not.
-   1468     for sb in blk._split():
--&gt; 1469         applied = sb.apply(func)
-   1470         result_blocks = extend_blocks(applied, result_blocks)
-   1471 else:
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\internals\blocks.py:393, in Block.apply(self, func, **kwargs)
-    387 @final
-    388 def apply(self, func, **kwargs) -&gt; list[Block]:
-    389     &quot;&quot;&quot;
-    390     apply the function to my values; return a block if we are not
-    391     one
-    392     &quot;&quot;&quot;
---&gt; 393     result = func(self.values, **kwargs)
-    395     result = maybe_coerce_values(result)
-    396     return self._split_op_result(result)
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:1995, in GroupBy._cython_agg_general.&lt;locals&gt;.array_func(values)
-   1992     return result
-   1994 assert alt is not None
--&gt; 1995 result = self._agg_py_fallback(how, values, ndim=data.ndim, alt=alt)
-   1996 return result
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:1946, in GroupBy._agg_py_fallback(self, how, values, ndim, alt)
-   1944     msg = f&quot;agg function failed [how-&gt;{how},dtype-&gt;{ser.dtype}]&quot;
-   1945     # preserve the kind of exception that raised
--&gt; 1946     raise type(err)(msg) from err
-   1948 if ser.dtype == object:
-   1949     res_values = res_values.astype(object, copy=False)
-
-
-TypeError: agg function failed [how-&gt;mean,dtype-&gt;object]
-</code></pre>
-<p>Note that I&rsquo;ve surrounded the entire call by a big set of parentheses so that Python doesn&rsquo;t complain about the indentation. An alternative is to use the \ symbol to indicate to Python that your code continues on to the next line.</p>
+</div><p>Note that I&rsquo;ve surrounded the entire call by a big set of parentheses so that Python doesn&rsquo;t complain about the indentation. An alternative is to use the \ symbol to indicate to Python that your code continues on to the next line.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -4072,179 +3486,7 @@ TypeError: agg function failed [how-&gt;mean,dtype-&gt;object]
 </span></span><span class="line"><span class="cl">                               <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>     
 </span></span></code></pre></td></tr></table>
 </div>
-</div><pre><code>---------------------------------------------------------------------------
-
-TypeError                                 Traceback (most recent call last)
-
-File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:1942, in GroupBy._agg_py_fallback(self, how, values, ndim, alt)
-   1941 try:
--&gt; 1942     res_values = self._grouper.agg_series(ser, alt, preserve_dtype=True)
-   1943 except Exception as err:
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\groupby\ops.py:864, in BaseGrouper.agg_series(self, obj, func, preserve_dtype)
-    862     preserve_dtype = True
---&gt; 864 result = self._aggregate_series_pure_python(obj, func)
-    866 npvalues = lib.maybe_convert_objects(result, try_float=False)
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\groupby\ops.py:885, in BaseGrouper._aggregate_series_pure_python(self, obj, func)
-    884 for i, group in enumerate(splitter):
---&gt; 885     res = func(group)
-    886     res = extract_result(res)
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:2454, in GroupBy.mean.&lt;locals&gt;.&lt;lambda&gt;(x)
-   2451 else:
-   2452     result = self._cython_agg_general(
-   2453         &quot;mean&quot;,
--&gt; 2454         alt=lambda x: Series(x, copy=False).mean(numeric_only=numeric_only),
-   2455         numeric_only=numeric_only,
-   2456     )
-   2457     return result.__finalize__(self.obj, method=&quot;groupby&quot;)
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\series.py:6549, in Series.mean(self, axis, skipna, numeric_only, **kwargs)
-   6541 @doc(make_doc(&quot;mean&quot;, ndim=1))
-   6542 def mean(
-   6543     self,
-   (...)
-   6547     **kwargs,
-   6548 ):
--&gt; 6549     return NDFrame.mean(self, axis, skipna, numeric_only, **kwargs)
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\generic.py:12420, in NDFrame.mean(self, axis, skipna, numeric_only, **kwargs)
-  12413 def mean(
-  12414     self,
-  12415     axis: Axis | None = 0,
-   (...)
-  12418     **kwargs,
-  12419 ) -&gt; Series | float:
-&gt; 12420     return self._stat_function(
-  12421         &quot;mean&quot;, nanops.nanmean, axis, skipna, numeric_only, **kwargs
-  12422     )
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\generic.py:12377, in NDFrame._stat_function(self, name, func, axis, skipna, numeric_only, **kwargs)
-  12375 validate_bool_kwarg(skipna, &quot;skipna&quot;, none_allowed=False)
-&gt; 12377 return self._reduce(
-  12378     func, name=name, axis=axis, skipna=skipna, numeric_only=numeric_only
-  12379 )
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\series.py:6457, in Series._reduce(self, op, name, axis, skipna, numeric_only, filter_type, **kwds)
-   6453     raise TypeError(
-   6454         f&quot;Series.{name} does not allow {kwd_name}={numeric_only} &quot;
-   6455         &quot;with non-numeric dtypes.&quot;
-   6456     )
--&gt; 6457 return op(delegate, skipna=skipna, **kwds)
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\nanops.py:147, in bottleneck_switch.__call__.&lt;locals&gt;.f(values, axis, skipna, **kwds)
-    146 else:
---&gt; 147     result = alt(values, axis=axis, skipna=skipna, **kwds)
-    149 return result
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\nanops.py:404, in _datetimelike_compat.&lt;locals&gt;.new_func(values, axis, skipna, mask, **kwargs)
-    402     mask = isna(values)
---&gt; 404 result = func(values, axis=axis, skipna=skipna, mask=mask, **kwargs)
-    406 if datetimelike:
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\nanops.py:720, in nanmean(values, axis, skipna, mask)
-    719 the_sum = values.sum(axis, dtype=dtype_sum)
---&gt; 720 the_sum = _ensure_numeric(the_sum)
-    722 if axis is not None and getattr(the_sum, &quot;ndim&quot;, False):
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\nanops.py:1701, in _ensure_numeric(x)
-   1699 if isinstance(x, str):
-   1700     # GH#44008, GH#36703 avoid casting e.g. strings to numeric
--&gt; 1701     raise TypeError(f&quot;Could not convert string '{x}' to numeric&quot;)
-   1702 try:
-
-
-TypeError: Could not convert string 'Barry Commoner' to numeric
-
-
-The above exception was the direct cause of the following exception:
-
-
-TypeError                                 Traceback (most recent call last)
-
-Cell In[90], line 3
-      1 # pandas method chaining (alternative)
-      2 elections.query(&quot;Year &gt;= 1980&quot;).groupby(&quot;Party&quot;) \
-----&gt; 3                                .mean() \
-      4                                .reset_index()     
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:2452, in GroupBy.mean(self, numeric_only, engine, engine_kwargs)
-   2445     return self._numba_agg_general(
-   2446         grouped_mean,
-   2447         executor.float_dtype_mapping,
-   2448         engine_kwargs,
-   2449         min_periods=0,
-   2450     )
-   2451 else:
--&gt; 2452     result = self._cython_agg_general(
-   2453         &quot;mean&quot;,
-   2454         alt=lambda x: Series(x, copy=False).mean(numeric_only=numeric_only),
-   2455         numeric_only=numeric_only,
-   2456     )
-   2457     return result.__finalize__(self.obj, method=&quot;groupby&quot;)
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:1998, in GroupBy._cython_agg_general(self, how, alt, numeric_only, min_count, **kwargs)
-   1995     result = self._agg_py_fallback(how, values, ndim=data.ndim, alt=alt)
-   1996     return result
--&gt; 1998 new_mgr = data.grouped_reduce(array_func)
-   1999 res = self._wrap_agged_manager(new_mgr)
-   2000 if how in [&quot;idxmin&quot;, &quot;idxmax&quot;]:
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\internals\managers.py:1469, in BlockManager.grouped_reduce(self, func)
-   1465 if blk.is_object:
-   1466     # split on object-dtype blocks bc some columns may raise
-   1467     #  while others do not.
-   1468     for sb in blk._split():
--&gt; 1469         applied = sb.apply(func)
-   1470         result_blocks = extend_blocks(applied, result_blocks)
-   1471 else:
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\internals\blocks.py:393, in Block.apply(self, func, **kwargs)
-    387 @final
-    388 def apply(self, func, **kwargs) -&gt; list[Block]:
-    389     &quot;&quot;&quot;
-    390     apply the function to my values; return a block if we are not
-    391     one
-    392     &quot;&quot;&quot;
---&gt; 393     result = func(self.values, **kwargs)
-    395     result = maybe_coerce_values(result)
-    396     return self._split_op_result(result)
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:1995, in GroupBy._cython_agg_general.&lt;locals&gt;.array_func(values)
-   1992     return result
-   1994 assert alt is not None
--&gt; 1995 result = self._agg_py_fallback(how, values, ndim=data.ndim, alt=alt)
-   1996 return result
-
-
-File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:1946, in GroupBy._agg_py_fallback(self, how, values, ndim, alt)
-   1944     msg = f&quot;agg function failed [how-&gt;{how},dtype-&gt;{ser.dtype}]&quot;
-   1945     # preserve the kind of exception that raised
--&gt; 1946     raise type(err)(msg) from err
-   1948 if ser.dtype == object:
-   1949     res_values = res_values.astype(object, copy=False)
-
-
-TypeError: agg function failed [how-&gt;mean,dtype-&gt;object]
-</code></pre>
-<p><strong>IMPORTANT NOTE:</strong> You should NEVER NEVER solve problems like the one above using loops or list comprehensions. This is slow and also misses the entire point of this part of DS100.</p>
+</div><p><strong>IMPORTANT NOTE:</strong> You should NEVER NEVER solve problems like the one above using loops or list comprehensions. This is slow and also misses the entire point of this part of DS100.</p>
 <p>Before we continue, we&rsquo;ll print out the election dataset again for your convenience.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -4421,34 +3663,7 @@ Name: %, dtype: float64
 <pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q6a&#34;</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><strong style='color: red;'><pre style='display: inline;'>q6a</pre> results:</strong></p><p><strong><pre style='display: inline;'>q6a - 1</pre> result:</strong></p><pre>    ✅ Test case passed</pre><p><strong><pre style='display: inline;'>q6a - 2</pre> result:</strong></p><pre>    ❌ Test case failed
-    Trying:
-        best_result_percentage_only["Independent"].sum()
-    Expecting:
-        18.95629754
-    **********************************************************************
-    Line 1, in q6a 1
-    Failed example:
-        best_result_percentage_only["Independent"].sum()
-    Expected:
-        18.95629754
-    Got:
-        np.float64(18.95629754)
-</pre><p><strong><pre style='display: inline;'>q6a - 3</pre> result:</strong></p><pre>    ❌ Test case failed
-    Trying:
-        best_result_percentage_only.iloc[0]
-    Expecting:
-        61.34470329
-    **********************************************************************
-    Line 1, in q6a 2
-    Failed example:
-        best_result_percentage_only.iloc[0]
-    Expected:
-        61.34470329
-    Got:
-        np.float64(61.34470329)
-</pre>
-<h3 id="question-6b">Question 6b</h3>
+</div><h3 id="question-6b">Question 6b</h3>
 <p>Repeat Question 6a. However, this time, your result should be a DataFrame showing all available information rather than only the percentage as a series.</p>
 <p>This question is trickier than Question 6a. Make sure to check the Lecture 4 slides if you&rsquo;re stuck! It&rsquo;s very easy to make a subtle mistake that shows Woodrow Wilson and Howard Taft both winning the 2020 election.</p>
 <p>For example, the first 3 rows of your table should be:</p>
@@ -4674,21 +3889,7 @@ name: q6b
 <pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q6b&#34;</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><strong style='color: red;'><pre style='display: inline;'>q6b</pre> results:</strong></p><p><strong><pre style='display: inline;'>q6b - 1</pre> result:</strong></p><pre>    ✅ Test case passed</pre><p><strong><pre style='display: inline;'>q6b - 2</pre> result:</strong></p><pre>    ❌ Test case failed
-    Trying:
-        best_result["Popular vote"].sum() 
-    Expecting:
-        135020916
-    **********************************************************************
-    Line 1, in q6b 1
-    Failed example:
-        best_result["Popular vote"].sum() 
-    Expected:
-        135020916
-    Got:
-        np.int64(135020916)
-</pre><p><strong><pre style='display: inline;'>q6b - 3</pre> result:</strong></p><pre>    ✅ Test case passed</pre>
-<h3 id="question-6c">Question 6c</h3>
+</div><h3 id="question-6c">Question 6c</h3>
 <p>Our DataFrame contains a number of parties which have never had a successful presidential run. For example, the 2020 elections included candiates from the Libertarian and Green parties, neither of which have elected a president.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -5125,21 +4326,7 @@ name: q6c
 <pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q6c&#34;</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><strong style='color: red;'><pre style='display: inline;'>q6c</pre> results:</strong></p><p><strong><pre style='display: inline;'>q6c - 1</pre> result:</strong></p><pre>    ✅ Test case passed</pre><p><strong><pre style='display: inline;'>q6c - 2</pre> result:</strong></p><pre>    ❌ Test case failed
-    Trying:
-        major_party_results_since_1988["%"].min() 
-    Expecting:
-        0.098088334
-    **********************************************************************
-    Line 1, in q6c 1
-    Failed example:
-        major_party_results_since_1988["%"].min() 
-    Expected:
-        0.098088334
-    Got:
-        np.float64(0.098088334)
-</pre><p><strong><pre style='display: inline;'>q6c - 3</pre> result:</strong></p><pre>    ✅ Test case passed</pre>
-<h3 id="question-7">Question 7</h3>
+</div><h3 id="question-7">Question 7</h3>
 <p>Pandas provides special purpose functions for working with specific common data types such as strings and dates. For example, the code below provides the length of every Candidate&rsquo;s name from our elections dataset.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -5176,13 +4363,11 @@ name: q7
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
-</span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">elections_with_first_name</span> <span class="o">=</span> <span class="n">elections</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># your code here</span>
 </span></span><span class="line"><span class="cl"><span class="n">elections_with_first_name</span><span class="p">[</span><span class="s1">&#39;First Name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">elections_with_first_name</span><span class="p">[</span><span class="s1">&#39;Candidate&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># elections_with_first_name[&#39;First Name&#39;] = </span>
 </span></span><span class="line"><span class="cl"><span class="c1"># end your code</span>
 </span></span><span class="line"><span class="cl"><span class="n">elections_with_first_name</span>
 </span></span></code></pre></td></tr></table>
@@ -5633,33 +4818,9 @@ name: q8
 <pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q8&#34;</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><strong style='color: red;'><pre style='display: inline;'>q8</pre> results:</strong></p><p><strong><pre style='display: inline;'>q8 - 1</pre> result:</strong></p><pre>    ✅ Test case passed</pre><p><strong><pre style='display: inline;'>q8 - 2</pre> result:</strong></p><pre>    ✅ Test case passed</pre><p><strong><pre style='display: inline;'>q8 - 3</pre> result:</strong></p><pre>    ❌ Test case failed
-    Trying:
-        presidential_candidates_and_name_popularity[presidential_candidates_and_name_popularity["Candidate"] == "Jo Jorgensen"].iloc[0]["Count"]
-    Expecting:
-        6
-    **********************************************************************
-    Line 1, in q8 2
-    Failed example:
-        presidential_candidates_and_name_popularity[presidential_candidates_and_name_popularity["Candidate"] == "Jo Jorgensen"].iloc[0]["Count"]
-    Expected:
-        6
-    Got:
-        np.int64(6)
-</pre>
-<p>Just for fun: Which historical presidential candidates have names that were the least and most popular in 2020? Note: Here you&rsquo;ll observe a common problem in data science &ndash; one of the least popular names is actually due to the fact that one recent president was so commonly known by his nickname that he appears named as such in the database from which you pulled election results.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># your optional code here</span>
-</span></span><span class="line"><span class="cl"><span class="o">...</span>
-</span></span></code></pre></td></tr></table>
-</div>
 </div><h2 id="bonus-exercises">Bonus Exercises</h2>
 <p>The following exercises are optional and use the <code>ca_baby_names</code> dataset defined below.</p>
+<p>perhaps next time! &#x1f60e;</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -5923,13 +5084,13 @@ name: q8
                             <a class="link-to-markdown" href="/datalab2/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/datalab2/" data-title="DATA100-lab2"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/datalab2/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/datalab2/" data-title="DATA100-lab2"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/datalab2/" data-title="DATA100-lab2"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/datalab2/" data-title="DATA100-lab2"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/datalab2/" data-title="DATA100-lab2" data-hashtags="Pandas"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/datalab2/" data-hashtag="Pandas"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/datalab2/" data-title="DATA100-lab2"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/datalab2/" data-title="DATA100-lab2"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/datalab2/" data-title="DATA100-lab2"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/pandas/">Pandas</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>

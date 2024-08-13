@@ -3,7 +3,25 @@
         <title>Pandas - Tag - HHZZ`s space</title>
         <link>http://example.org/tags/pandas/</link>
         <description>Pandas - Tag - HHZZ`s space</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 14 Jul 2024 10:55:10 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/pandas/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 13 Aug 2024 15:19:32 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/pandas/" rel="self" type="application/rss+xml" /><item>
+    <title>DATA100-lab3: Data Cleaning and EDA</title>
+    <link>http://example.org/datalab3/</link>
+    <pubDate>Tue, 13 Aug 2024 15:19:32 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/datalab3/</guid>
+    <description><![CDATA[1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab03.ipynb&#34;) Lab 3: Data Cleaning and EDA In this lab you will be working on visualizing a dataset from the City of Berkeley containing data on calls to the Berkeley Police Department. Information about the dataset can be found at this link.
+Content Warning This lab includes an analysis of crime in Berkeley. If you feel uncomfortable with this topic, please contact your GSI or the instructors.]]></description>
+</item>
+<item>
+    <title>DATA100-lab2</title>
+    <link>http://example.org/datalab2/</link>
+    <pubDate>Mon, 15 Jul 2024 18:20:24 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/datalab2/</guid>
+    <description><![CDATA[1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab02.ipynb&#34;) Pandas is one of the most widely used Python libraries in data science. In this lab, you will review commonly used data wrangling operations/tools in Pandas. We aim to give you familiarity with:
+Creating DataFrames Slicing DataFrames (i.e. selecting rows and columns) Filtering data (using boolean arrays and groupby.filter) Aggregating (using groupby.agg) In this lab you are going to use several pandas methods.]]></description>
+</item>
+<item>
     <title>DATA100-L4: Pandas Ⅱ</title>
     <link>http://example.org/datal4/</link>
     <pubDate>Sun, 14 Jul 2024 10:55:10 &#43;0800</pubDate>

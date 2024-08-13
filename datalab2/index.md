@@ -1,23 +1,11 @@
 # DATA100-lab2
 
+
 ```python
 # Initialize Otter
 import otter
 grader = otter.Notebook("lab02.ipynb")
 ```
-
-## Lab 2: Pandas Overview 基础操作，注意numpy版本可能过高
-
-To receive credit for a lab, answer all questions correctly and submit before the deadline.
-
-**This lab is due  Tuesday, Feb 1st at 11:59 PM.**
-
-
-### Collaboration Policy
-
-Data science is a collaborative activity. While you may talk with others about the labs, we ask that you **write your solutions individually**. If you do discuss the assignments with others please **include their names** below. (That's a good way to learn your classmates' names.)
-
-**Collaborators**: *list collaborators here*
 
 ---
 [Pandas](https://pandas.pydata.org/) is one of the most widely used Python libraries in data science. In this lab, you will review commonly used data wrangling operations/tools in Pandas. We aim to give you familiarity with:
@@ -127,6 +115,8 @@ fruit_info
 
 Each row corresponds to a distinct ***tuple***, and the columns are specified separately.
 
+这里可以看出`columns`是个参数
+
 
 ```python
 fruit_info2 = pd.DataFrame(
@@ -232,7 +222,7 @@ As you've seen in lecture and discussion, there are two verbose operators in Pyt
 
 #### Approach 1: `loc`
 
-The first of the two verbose operators is `loc`, which takes two arguments. The first is one or more row **labels**, the second is one or more column **labels**.
+The first of the two verbose operators is `loc`, which takes two arguments. The first is *one or more* **row labels**, the second is *one or more* **column labels**.
 
 The desired rows or columns can be provided individually, in slice notation, or as a list. Some examples are given below.
 
@@ -461,11 +451,11 @@ fruit_info.loc[[0, 2], 'fruit']
 
 
 
-If we provide only one argument to `loc`, it uses the provided argument to select rows, and returns all columns.
+If we provide only one argument to `loc`, it uses the provided argument to select rows, and returns all columns.可以只给行， 不可以只给列
 
 
 ```python
-fruit_info.loc[0:1] # 可以只给行， 不可以只给列
+fruit_info.loc[0:1]
 ```
 
 
@@ -877,7 +867,7 @@ If we request the rows in positions 0 and 2 using `iloc`,  **we're indexing usin
 
 
 ```python
-fruit_info_sorted.iloc[[0, 2], 0]
+fruit_info_sorted.iloc[[0, 2], 0] # 别和数学表达混淆！
 ```
 
 
@@ -889,7 +879,7 @@ fruit_info_sorted.iloc[[0, 2], 0]
 
 
 
-Lastly, similar to with `loc`, the second argument to `iloc` is optional. That is, if you provide only one argument to `iloc`, it treats the argument you provide as a set of desired row numbers, not column numbers.
+Lastly, similar to with `loc`, the second argument to `iloc` is optional. That is, if you provide only one argument to `iloc`, it treats the argument you provide as a set of desired row numbers, not column numbers. 可以只给行，不可给列
 
 
 ```python
@@ -1884,29 +1874,9 @@ name_and_year[:5]
 grader.check("q4")
 ```
 
-
-
-
-<p><strong style='color: red;'><pre style='display: inline;'>q4</pre> results:</strong></p><p><strong><pre style='display: inline;'>q4 - 1</pre> result:</strong></p><pre>    ✅ Test case passed</pre><p><strong><pre style='display: inline;'>q4 - 2</pre> result:</strong></p><pre>    ✅ Test case passed</pre><p><strong><pre style='display: inline;'>q4 - 3</pre> result:</strong></p><pre>    ❌ Test case failed
-    Trying:
-        name_and_year.loc[0, "Year"] 
-    Expecting:
-        1910
-    **********************************************************************
-    Line 1, in q4 2
-    Failed example:
-        name_and_year.loc[0, "Year"] 
-    Expected:
-        1910
-    Got:
-        np.int64(1910)
-</pre>
-
-
-
 Now repeat the same selection using the plain `[]` notation.
 
-接受一个list of column
+接受一个list of columns
 
 
 ```python
@@ -1991,7 +1961,7 @@ Symbol | Usage      | Meaning
 &    | p & q    | p AND q
 ^  | p ^ q | p XOR q (exclusive or)
 
-In the following we construct the DataFrame containing only names registered in California
+In the following we construct the DataFrame containing only names registered in California注意这里十分重要！
 
 
 ```python
@@ -2172,39 +2142,6 @@ result.head()
 grader.check("q5")
 # 依旧是版本问题
 ```
-
-
-
-
-<p><strong style='color: red;'><pre style='display: inline;'>q5</pre> results:</strong></p><p><strong><pre style='display: inline;'>q5 - 1</pre> result:</strong></p><pre>    ✅ Test case passed</pre><p><strong><pre style='display: inline;'>q5 - 2</pre> result:</strong></p><pre>    ❌ Test case failed
-    Trying:
-        result["Count"].sum()
-    Expecting:
-        39000
-    **********************************************************************
-    Line 1, in q5 1
-    Failed example:
-        result["Count"].sum()
-    Expected:
-        39000
-    Got:
-        np.int64(39000)
-</pre><p><strong><pre style='display: inline;'>q5 - 3</pre> result:</strong></p><pre>    ❌ Test case failed
-    Trying:
-        result["Count"].iloc[0]
-    Expecting:
-        4342
-    **********************************************************************
-    Line 1, in q5 2
-    Failed example:
-        result["Count"].iloc[0]
-    Expected:
-        4342
-    Got:
-        np.int64(4342)
-</pre>
-
-
 
 #### Query Review
 
@@ -3420,375 +3357,12 @@ For columns which are non-numeric, e.g. "Result", the column is dropped because 
 elections.query("Year >= 1980").groupby("Party").agg(np.mean)
 ```
 
-    C:\Users\86135\AppData\Local\Temp\ipykernel_61736\4206656687.py:1: FutureWarning: The provided callable <function mean at 0x00000133CD918040> is currently using DataFrameGroupBy.mean. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string "mean" instead.
-      elections.query("Year >= 1980").groupby("Party").agg(np.mean)
-    
-
-
-    ---------------------------------------------------------------------------
-
-    TypeError                                 Traceback (most recent call last)
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:1942, in GroupBy._agg_py_fallback(self, how, values, ndim, alt)
-       1941 try:
-    -> 1942     res_values = self._grouper.agg_series(ser, alt, preserve_dtype=True)
-       1943 except Exception as err:
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\groupby\ops.py:864, in BaseGrouper.agg_series(self, obj, func, preserve_dtype)
-        862     preserve_dtype = True
-    --> 864 result = self._aggregate_series_pure_python(obj, func)
-        866 npvalues = lib.maybe_convert_objects(result, try_float=False)
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\groupby\ops.py:885, in BaseGrouper._aggregate_series_pure_python(self, obj, func)
-        884 for i, group in enumerate(splitter):
-    --> 885     res = func(group)
-        886     res = extract_result(res)
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:2454, in GroupBy.mean.<locals>.<lambda>(x)
-       2451 else:
-       2452     result = self._cython_agg_general(
-       2453         "mean",
-    -> 2454         alt=lambda x: Series(x, copy=False).mean(numeric_only=numeric_only),
-       2455         numeric_only=numeric_only,
-       2456     )
-       2457     return result.__finalize__(self.obj, method="groupby")
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\series.py:6549, in Series.mean(self, axis, skipna, numeric_only, **kwargs)
-       6541 @doc(make_doc("mean", ndim=1))
-       6542 def mean(
-       6543     self,
-       (...)
-       6547     **kwargs,
-       6548 ):
-    -> 6549     return NDFrame.mean(self, axis, skipna, numeric_only, **kwargs)
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\generic.py:12420, in NDFrame.mean(self, axis, skipna, numeric_only, **kwargs)
-      12413 def mean(
-      12414     self,
-      12415     axis: Axis | None = 0,
-       (...)
-      12418     **kwargs,
-      12419 ) -> Series | float:
-    > 12420     return self._stat_function(
-      12421         "mean", nanops.nanmean, axis, skipna, numeric_only, **kwargs
-      12422     )
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\generic.py:12377, in NDFrame._stat_function(self, name, func, axis, skipna, numeric_only, **kwargs)
-      12375 validate_bool_kwarg(skipna, "skipna", none_allowed=False)
-    > 12377 return self._reduce(
-      12378     func, name=name, axis=axis, skipna=skipna, numeric_only=numeric_only
-      12379 )
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\series.py:6457, in Series._reduce(self, op, name, axis, skipna, numeric_only, filter_type, **kwds)
-       6453     raise TypeError(
-       6454         f"Series.{name} does not allow {kwd_name}={numeric_only} "
-       6455         "with non-numeric dtypes."
-       6456     )
-    -> 6457 return op(delegate, skipna=skipna, **kwds)
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\nanops.py:147, in bottleneck_switch.__call__.<locals>.f(values, axis, skipna, **kwds)
-        146 else:
-    --> 147     result = alt(values, axis=axis, skipna=skipna, **kwds)
-        149 return result
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\nanops.py:404, in _datetimelike_compat.<locals>.new_func(values, axis, skipna, mask, **kwargs)
-        402     mask = isna(values)
-    --> 404 result = func(values, axis=axis, skipna=skipna, mask=mask, **kwargs)
-        406 if datetimelike:
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\nanops.py:720, in nanmean(values, axis, skipna, mask)
-        719 the_sum = values.sum(axis, dtype=dtype_sum)
-    --> 720 the_sum = _ensure_numeric(the_sum)
-        722 if axis is not None and getattr(the_sum, "ndim", False):
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\nanops.py:1701, in _ensure_numeric(x)
-       1699 if isinstance(x, str):
-       1700     # GH#44008, GH#36703 avoid casting e.g. strings to numeric
-    -> 1701     raise TypeError(f"Could not convert string '{x}' to numeric")
-       1702 try:
-    
-
-    TypeError: Could not convert string 'Barry Commoner' to numeric
-
-    
-    The above exception was the direct cause of the following exception:
-    
-
-    TypeError                                 Traceback (most recent call last)
-
-    Cell In[88], line 1
-    ----> 1 elections.query("Year >= 1980").groupby("Party").agg(np.mean)
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\groupby\generic.py:1432, in DataFrameGroupBy.aggregate(self, func, engine, engine_kwargs, *args, **kwargs)
-       1429     kwargs["engine_kwargs"] = engine_kwargs
-       1431 op = GroupByApply(self, func, args=args, kwargs=kwargs)
-    -> 1432 result = op.agg()
-       1433 if not is_dict_like(func) and result is not None:
-       1434     # GH #52849
-       1435     if not self.as_index and is_list_like(func):
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\apply.py:199, in Apply.agg(self)
-        197     if f and not args and not kwargs:
-        198         warn_alias_replacement(obj, func, f)
-    --> 199         return getattr(obj, f)()
-        201 # caller can react
-        202 return None
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:2452, in GroupBy.mean(self, numeric_only, engine, engine_kwargs)
-       2445     return self._numba_agg_general(
-       2446         grouped_mean,
-       2447         executor.float_dtype_mapping,
-       2448         engine_kwargs,
-       2449         min_periods=0,
-       2450     )
-       2451 else:
-    -> 2452     result = self._cython_agg_general(
-       2453         "mean",
-       2454         alt=lambda x: Series(x, copy=False).mean(numeric_only=numeric_only),
-       2455         numeric_only=numeric_only,
-       2456     )
-       2457     return result.__finalize__(self.obj, method="groupby")
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:1998, in GroupBy._cython_agg_general(self, how, alt, numeric_only, min_count, **kwargs)
-       1995     result = self._agg_py_fallback(how, values, ndim=data.ndim, alt=alt)
-       1996     return result
-    -> 1998 new_mgr = data.grouped_reduce(array_func)
-       1999 res = self._wrap_agged_manager(new_mgr)
-       2000 if how in ["idxmin", "idxmax"]:
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\internals\managers.py:1469, in BlockManager.grouped_reduce(self, func)
-       1465 if blk.is_object:
-       1466     # split on object-dtype blocks bc some columns may raise
-       1467     #  while others do not.
-       1468     for sb in blk._split():
-    -> 1469         applied = sb.apply(func)
-       1470         result_blocks = extend_blocks(applied, result_blocks)
-       1471 else:
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\internals\blocks.py:393, in Block.apply(self, func, **kwargs)
-        387 @final
-        388 def apply(self, func, **kwargs) -> list[Block]:
-        389     """
-        390     apply the function to my values; return a block if we are not
-        391     one
-        392     """
-    --> 393     result = func(self.values, **kwargs)
-        395     result = maybe_coerce_values(result)
-        396     return self._split_op_result(result)
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:1995, in GroupBy._cython_agg_general.<locals>.array_func(values)
-       1992     return result
-       1994 assert alt is not None
-    -> 1995 result = self._agg_py_fallback(how, values, ndim=data.ndim, alt=alt)
-       1996 return result
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:1946, in GroupBy._agg_py_fallback(self, how, values, ndim, alt)
-       1944     msg = f"agg function failed [how->{how},dtype->{ser.dtype}]"
-       1945     # preserve the kind of exception that raised
-    -> 1946     raise type(err)(msg) from err
-       1948 if ser.dtype == object:
-       1949     res_values = res_values.astype(object, copy=False)
-    
-
-    TypeError: agg function failed [how->mean,dtype->object]
-
-
 Equivalently we can use one of the shorthand aggregation functions, e.g. `.mean()`: 
 
 
 ```python
 elections.query("Year >= 1980").groupby("Party").mean()
 ```
-
-
-    ---------------------------------------------------------------------------
-
-    TypeError                                 Traceback (most recent call last)
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:1942, in GroupBy._agg_py_fallback(self, how, values, ndim, alt)
-       1941 try:
-    -> 1942     res_values = self._grouper.agg_series(ser, alt, preserve_dtype=True)
-       1943 except Exception as err:
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\groupby\ops.py:864, in BaseGrouper.agg_series(self, obj, func, preserve_dtype)
-        862     preserve_dtype = True
-    --> 864 result = self._aggregate_series_pure_python(obj, func)
-        866 npvalues = lib.maybe_convert_objects(result, try_float=False)
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\groupby\ops.py:885, in BaseGrouper._aggregate_series_pure_python(self, obj, func)
-        884 for i, group in enumerate(splitter):
-    --> 885     res = func(group)
-        886     res = extract_result(res)
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:2454, in GroupBy.mean.<locals>.<lambda>(x)
-       2451 else:
-       2452     result = self._cython_agg_general(
-       2453         "mean",
-    -> 2454         alt=lambda x: Series(x, copy=False).mean(numeric_only=numeric_only),
-       2455         numeric_only=numeric_only,
-       2456     )
-       2457     return result.__finalize__(self.obj, method="groupby")
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\series.py:6549, in Series.mean(self, axis, skipna, numeric_only, **kwargs)
-       6541 @doc(make_doc("mean", ndim=1))
-       6542 def mean(
-       6543     self,
-       (...)
-       6547     **kwargs,
-       6548 ):
-    -> 6549     return NDFrame.mean(self, axis, skipna, numeric_only, **kwargs)
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\generic.py:12420, in NDFrame.mean(self, axis, skipna, numeric_only, **kwargs)
-      12413 def mean(
-      12414     self,
-      12415     axis: Axis | None = 0,
-       (...)
-      12418     **kwargs,
-      12419 ) -> Series | float:
-    > 12420     return self._stat_function(
-      12421         "mean", nanops.nanmean, axis, skipna, numeric_only, **kwargs
-      12422     )
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\generic.py:12377, in NDFrame._stat_function(self, name, func, axis, skipna, numeric_only, **kwargs)
-      12375 validate_bool_kwarg(skipna, "skipna", none_allowed=False)
-    > 12377 return self._reduce(
-      12378     func, name=name, axis=axis, skipna=skipna, numeric_only=numeric_only
-      12379 )
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\series.py:6457, in Series._reduce(self, op, name, axis, skipna, numeric_only, filter_type, **kwds)
-       6453     raise TypeError(
-       6454         f"Series.{name} does not allow {kwd_name}={numeric_only} "
-       6455         "with non-numeric dtypes."
-       6456     )
-    -> 6457 return op(delegate, skipna=skipna, **kwds)
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\nanops.py:147, in bottleneck_switch.__call__.<locals>.f(values, axis, skipna, **kwds)
-        146 else:
-    --> 147     result = alt(values, axis=axis, skipna=skipna, **kwds)
-        149 return result
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\nanops.py:404, in _datetimelike_compat.<locals>.new_func(values, axis, skipna, mask, **kwargs)
-        402     mask = isna(values)
-    --> 404 result = func(values, axis=axis, skipna=skipna, mask=mask, **kwargs)
-        406 if datetimelike:
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\nanops.py:720, in nanmean(values, axis, skipna, mask)
-        719 the_sum = values.sum(axis, dtype=dtype_sum)
-    --> 720 the_sum = _ensure_numeric(the_sum)
-        722 if axis is not None and getattr(the_sum, "ndim", False):
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\nanops.py:1701, in _ensure_numeric(x)
-       1699 if isinstance(x, str):
-       1700     # GH#44008, GH#36703 avoid casting e.g. strings to numeric
-    -> 1701     raise TypeError(f"Could not convert string '{x}' to numeric")
-       1702 try:
-    
-
-    TypeError: Could not convert string 'Barry Commoner' to numeric
-
-    
-    The above exception was the direct cause of the following exception:
-    
-
-    TypeError                                 Traceback (most recent call last)
-
-    Cell In[85], line 1
-    ----> 1 elections.query("Year >= 1980").groupby("Party").mean()
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:2452, in GroupBy.mean(self, numeric_only, engine, engine_kwargs)
-       2445     return self._numba_agg_general(
-       2446         grouped_mean,
-       2447         executor.float_dtype_mapping,
-       2448         engine_kwargs,
-       2449         min_periods=0,
-       2450     )
-       2451 else:
-    -> 2452     result = self._cython_agg_general(
-       2453         "mean",
-       2454         alt=lambda x: Series(x, copy=False).mean(numeric_only=numeric_only),
-       2455         numeric_only=numeric_only,
-       2456     )
-       2457     return result.__finalize__(self.obj, method="groupby")
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:1998, in GroupBy._cython_agg_general(self, how, alt, numeric_only, min_count, **kwargs)
-       1995     result = self._agg_py_fallback(how, values, ndim=data.ndim, alt=alt)
-       1996     return result
-    -> 1998 new_mgr = data.grouped_reduce(array_func)
-       1999 res = self._wrap_agged_manager(new_mgr)
-       2000 if how in ["idxmin", "idxmax"]:
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\internals\managers.py:1469, in BlockManager.grouped_reduce(self, func)
-       1465 if blk.is_object:
-       1466     # split on object-dtype blocks bc some columns may raise
-       1467     #  while others do not.
-       1468     for sb in blk._split():
-    -> 1469         applied = sb.apply(func)
-       1470         result_blocks = extend_blocks(applied, result_blocks)
-       1471 else:
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\internals\blocks.py:393, in Block.apply(self, func, **kwargs)
-        387 @final
-        388 def apply(self, func, **kwargs) -> list[Block]:
-        389     """
-        390     apply the function to my values; return a block if we are not
-        391     one
-        392     """
-    --> 393     result = func(self.values, **kwargs)
-        395     result = maybe_coerce_values(result)
-        396     return self._split_op_result(result)
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:1995, in GroupBy._cython_agg_general.<locals>.array_func(values)
-       1992     return result
-       1994 assert alt is not None
-    -> 1995 result = self._agg_py_fallback(how, values, ndim=data.ndim, alt=alt)
-       1996 return result
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:1946, in GroupBy._agg_py_fallback(self, how, values, ndim, alt)
-       1944     msg = f"agg function failed [how->{how},dtype->{ser.dtype}]"
-       1945     # preserve the kind of exception that raised
-    -> 1946     raise type(err)(msg) from err
-       1948 if ser.dtype == object:
-       1949     res_values = res_values.astype(object, copy=False)
-    
-
-    TypeError: agg function failed [how->mean,dtype->object]
-
 
 Note that the index of the dataframe returned by an `groupby.agg` call is no longer a set of numeric indices from 0 to N-1. Instead, we see that the index for the example above is now the `Party`. If we want to restore our DataFrame so that `Party` is a column rather than the index, we can use `reset_index`.
 
@@ -3809,182 +3383,6 @@ elections.query("Year >= 1980").groupby("Party")
 )
 ```
 
-
-    ---------------------------------------------------------------------------
-
-    TypeError                                 Traceback (most recent call last)
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:1942, in GroupBy._agg_py_fallback(self, how, values, ndim, alt)
-       1941 try:
-    -> 1942     res_values = self._grouper.agg_series(ser, alt, preserve_dtype=True)
-       1943 except Exception as err:
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\groupby\ops.py:864, in BaseGrouper.agg_series(self, obj, func, preserve_dtype)
-        862     preserve_dtype = True
-    --> 864 result = self._aggregate_series_pure_python(obj, func)
-        866 npvalues = lib.maybe_convert_objects(result, try_float=False)
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\groupby\ops.py:885, in BaseGrouper._aggregate_series_pure_python(self, obj, func)
-        884 for i, group in enumerate(splitter):
-    --> 885     res = func(group)
-        886     res = extract_result(res)
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:2454, in GroupBy.mean.<locals>.<lambda>(x)
-       2451 else:
-       2452     result = self._cython_agg_general(
-       2453         "mean",
-    -> 2454         alt=lambda x: Series(x, copy=False).mean(numeric_only=numeric_only),
-       2455         numeric_only=numeric_only,
-       2456     )
-       2457     return result.__finalize__(self.obj, method="groupby")
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\series.py:6549, in Series.mean(self, axis, skipna, numeric_only, **kwargs)
-       6541 @doc(make_doc("mean", ndim=1))
-       6542 def mean(
-       6543     self,
-       (...)
-       6547     **kwargs,
-       6548 ):
-    -> 6549     return NDFrame.mean(self, axis, skipna, numeric_only, **kwargs)
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\generic.py:12420, in NDFrame.mean(self, axis, skipna, numeric_only, **kwargs)
-      12413 def mean(
-      12414     self,
-      12415     axis: Axis | None = 0,
-       (...)
-      12418     **kwargs,
-      12419 ) -> Series | float:
-    > 12420     return self._stat_function(
-      12421         "mean", nanops.nanmean, axis, skipna, numeric_only, **kwargs
-      12422     )
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\generic.py:12377, in NDFrame._stat_function(self, name, func, axis, skipna, numeric_only, **kwargs)
-      12375 validate_bool_kwarg(skipna, "skipna", none_allowed=False)
-    > 12377 return self._reduce(
-      12378     func, name=name, axis=axis, skipna=skipna, numeric_only=numeric_only
-      12379 )
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\series.py:6457, in Series._reduce(self, op, name, axis, skipna, numeric_only, filter_type, **kwds)
-       6453     raise TypeError(
-       6454         f"Series.{name} does not allow {kwd_name}={numeric_only} "
-       6455         "with non-numeric dtypes."
-       6456     )
-    -> 6457 return op(delegate, skipna=skipna, **kwds)
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\nanops.py:147, in bottleneck_switch.__call__.<locals>.f(values, axis, skipna, **kwds)
-        146 else:
-    --> 147     result = alt(values, axis=axis, skipna=skipna, **kwds)
-        149 return result
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\nanops.py:404, in _datetimelike_compat.<locals>.new_func(values, axis, skipna, mask, **kwargs)
-        402     mask = isna(values)
-    --> 404 result = func(values, axis=axis, skipna=skipna, mask=mask, **kwargs)
-        406 if datetimelike:
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\nanops.py:720, in nanmean(values, axis, skipna, mask)
-        719 the_sum = values.sum(axis, dtype=dtype_sum)
-    --> 720 the_sum = _ensure_numeric(the_sum)
-        722 if axis is not None and getattr(the_sum, "ndim", False):
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\nanops.py:1701, in _ensure_numeric(x)
-       1699 if isinstance(x, str):
-       1700     # GH#44008, GH#36703 avoid casting e.g. strings to numeric
-    -> 1701     raise TypeError(f"Could not convert string '{x}' to numeric")
-       1702 try:
-    
-
-    TypeError: Could not convert string 'Barry Commoner' to numeric
-
-    
-    The above exception was the direct cause of the following exception:
-    
-
-    TypeError                                 Traceback (most recent call last)
-
-    Cell In[89], line 4
-          1 # pandas method chaining
-          2 (
-          3 elections.query("Year >= 1980").groupby("Party") 
-    ----> 4                                .mean()            ## computes the mean values by party
-          5                                .reset_index()     ## reset to a numerical index
-          6 )
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:2452, in GroupBy.mean(self, numeric_only, engine, engine_kwargs)
-       2445     return self._numba_agg_general(
-       2446         grouped_mean,
-       2447         executor.float_dtype_mapping,
-       2448         engine_kwargs,
-       2449         min_periods=0,
-       2450     )
-       2451 else:
-    -> 2452     result = self._cython_agg_general(
-       2453         "mean",
-       2454         alt=lambda x: Series(x, copy=False).mean(numeric_only=numeric_only),
-       2455         numeric_only=numeric_only,
-       2456     )
-       2457     return result.__finalize__(self.obj, method="groupby")
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:1998, in GroupBy._cython_agg_general(self, how, alt, numeric_only, min_count, **kwargs)
-       1995     result = self._agg_py_fallback(how, values, ndim=data.ndim, alt=alt)
-       1996     return result
-    -> 1998 new_mgr = data.grouped_reduce(array_func)
-       1999 res = self._wrap_agged_manager(new_mgr)
-       2000 if how in ["idxmin", "idxmax"]:
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\internals\managers.py:1469, in BlockManager.grouped_reduce(self, func)
-       1465 if blk.is_object:
-       1466     # split on object-dtype blocks bc some columns may raise
-       1467     #  while others do not.
-       1468     for sb in blk._split():
-    -> 1469         applied = sb.apply(func)
-       1470         result_blocks = extend_blocks(applied, result_blocks)
-       1471 else:
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\internals\blocks.py:393, in Block.apply(self, func, **kwargs)
-        387 @final
-        388 def apply(self, func, **kwargs) -> list[Block]:
-        389     """
-        390     apply the function to my values; return a block if we are not
-        391     one
-        392     """
-    --> 393     result = func(self.values, **kwargs)
-        395     result = maybe_coerce_values(result)
-        396     return self._split_op_result(result)
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:1995, in GroupBy._cython_agg_general.<locals>.array_func(values)
-       1992     return result
-       1994 assert alt is not None
-    -> 1995 result = self._agg_py_fallback(how, values, ndim=data.ndim, alt=alt)
-       1996 return result
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:1946, in GroupBy._agg_py_fallback(self, how, values, ndim, alt)
-       1944     msg = f"agg function failed [how->{how},dtype->{ser.dtype}]"
-       1945     # preserve the kind of exception that raised
-    -> 1946     raise type(err)(msg) from err
-       1948 if ser.dtype == object:
-       1949     res_values = res_values.astype(object, copy=False)
-    
-
-    TypeError: agg function failed [how->mean,dtype->object]
-
-
 Note that I've surrounded the entire call by a big set of parentheses so that Python doesn't complain about the indentation. An alternative is to use the \ symbol to indicate to Python that your code continues on to the next line.
 
 
@@ -3994,180 +3392,6 @@ elections.query("Year >= 1980").groupby("Party") \
                                .mean() \
                                .reset_index()     
 ```
-
-
-    ---------------------------------------------------------------------------
-
-    TypeError                                 Traceback (most recent call last)
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:1942, in GroupBy._agg_py_fallback(self, how, values, ndim, alt)
-       1941 try:
-    -> 1942     res_values = self._grouper.agg_series(ser, alt, preserve_dtype=True)
-       1943 except Exception as err:
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\groupby\ops.py:864, in BaseGrouper.agg_series(self, obj, func, preserve_dtype)
-        862     preserve_dtype = True
-    --> 864 result = self._aggregate_series_pure_python(obj, func)
-        866 npvalues = lib.maybe_convert_objects(result, try_float=False)
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\groupby\ops.py:885, in BaseGrouper._aggregate_series_pure_python(self, obj, func)
-        884 for i, group in enumerate(splitter):
-    --> 885     res = func(group)
-        886     res = extract_result(res)
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:2454, in GroupBy.mean.<locals>.<lambda>(x)
-       2451 else:
-       2452     result = self._cython_agg_general(
-       2453         "mean",
-    -> 2454         alt=lambda x: Series(x, copy=False).mean(numeric_only=numeric_only),
-       2455         numeric_only=numeric_only,
-       2456     )
-       2457     return result.__finalize__(self.obj, method="groupby")
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\series.py:6549, in Series.mean(self, axis, skipna, numeric_only, **kwargs)
-       6541 @doc(make_doc("mean", ndim=1))
-       6542 def mean(
-       6543     self,
-       (...)
-       6547     **kwargs,
-       6548 ):
-    -> 6549     return NDFrame.mean(self, axis, skipna, numeric_only, **kwargs)
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\generic.py:12420, in NDFrame.mean(self, axis, skipna, numeric_only, **kwargs)
-      12413 def mean(
-      12414     self,
-      12415     axis: Axis | None = 0,
-       (...)
-      12418     **kwargs,
-      12419 ) -> Series | float:
-    > 12420     return self._stat_function(
-      12421         "mean", nanops.nanmean, axis, skipna, numeric_only, **kwargs
-      12422     )
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\generic.py:12377, in NDFrame._stat_function(self, name, func, axis, skipna, numeric_only, **kwargs)
-      12375 validate_bool_kwarg(skipna, "skipna", none_allowed=False)
-    > 12377 return self._reduce(
-      12378     func, name=name, axis=axis, skipna=skipna, numeric_only=numeric_only
-      12379 )
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\series.py:6457, in Series._reduce(self, op, name, axis, skipna, numeric_only, filter_type, **kwds)
-       6453     raise TypeError(
-       6454         f"Series.{name} does not allow {kwd_name}={numeric_only} "
-       6455         "with non-numeric dtypes."
-       6456     )
-    -> 6457 return op(delegate, skipna=skipna, **kwds)
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\nanops.py:147, in bottleneck_switch.__call__.<locals>.f(values, axis, skipna, **kwds)
-        146 else:
-    --> 147     result = alt(values, axis=axis, skipna=skipna, **kwds)
-        149 return result
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\nanops.py:404, in _datetimelike_compat.<locals>.new_func(values, axis, skipna, mask, **kwargs)
-        402     mask = isna(values)
-    --> 404 result = func(values, axis=axis, skipna=skipna, mask=mask, **kwargs)
-        406 if datetimelike:
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\nanops.py:720, in nanmean(values, axis, skipna, mask)
-        719 the_sum = values.sum(axis, dtype=dtype_sum)
-    --> 720 the_sum = _ensure_numeric(the_sum)
-        722 if axis is not None and getattr(the_sum, "ndim", False):
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\nanops.py:1701, in _ensure_numeric(x)
-       1699 if isinstance(x, str):
-       1700     # GH#44008, GH#36703 avoid casting e.g. strings to numeric
-    -> 1701     raise TypeError(f"Could not convert string '{x}' to numeric")
-       1702 try:
-    
-
-    TypeError: Could not convert string 'Barry Commoner' to numeric
-
-    
-    The above exception was the direct cause of the following exception:
-    
-
-    TypeError                                 Traceback (most recent call last)
-
-    Cell In[90], line 3
-          1 # pandas method chaining (alternative)
-          2 elections.query("Year >= 1980").groupby("Party") \
-    ----> 3                                .mean() \
-          4                                .reset_index()     
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:2452, in GroupBy.mean(self, numeric_only, engine, engine_kwargs)
-       2445     return self._numba_agg_general(
-       2446         grouped_mean,
-       2447         executor.float_dtype_mapping,
-       2448         engine_kwargs,
-       2449         min_periods=0,
-       2450     )
-       2451 else:
-    -> 2452     result = self._cython_agg_general(
-       2453         "mean",
-       2454         alt=lambda x: Series(x, copy=False).mean(numeric_only=numeric_only),
-       2455         numeric_only=numeric_only,
-       2456     )
-       2457     return result.__finalize__(self.obj, method="groupby")
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:1998, in GroupBy._cython_agg_general(self, how, alt, numeric_only, min_count, **kwargs)
-       1995     result = self._agg_py_fallback(how, values, ndim=data.ndim, alt=alt)
-       1996     return result
-    -> 1998 new_mgr = data.grouped_reduce(array_func)
-       1999 res = self._wrap_agged_manager(new_mgr)
-       2000 if how in ["idxmin", "idxmax"]:
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\internals\managers.py:1469, in BlockManager.grouped_reduce(self, func)
-       1465 if blk.is_object:
-       1466     # split on object-dtype blocks bc some columns may raise
-       1467     #  while others do not.
-       1468     for sb in blk._split():
-    -> 1469         applied = sb.apply(func)
-       1470         result_blocks = extend_blocks(applied, result_blocks)
-       1471 else:
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\internals\blocks.py:393, in Block.apply(self, func, **kwargs)
-        387 @final
-        388 def apply(self, func, **kwargs) -> list[Block]:
-        389     """
-        390     apply the function to my values; return a block if we are not
-        391     one
-        392     """
-    --> 393     result = func(self.values, **kwargs)
-        395     result = maybe_coerce_values(result)
-        396     return self._split_op_result(result)
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:1995, in GroupBy._cython_agg_general.<locals>.array_func(values)
-       1992     return result
-       1994 assert alt is not None
-    -> 1995 result = self._agg_py_fallback(how, values, ndim=data.ndim, alt=alt)
-       1996 return result
-    
-
-    File d:\miniconda3\Lib\site-packages\pandas\core\groupby\groupby.py:1946, in GroupBy._agg_py_fallback(self, how, values, ndim, alt)
-       1944     msg = f"agg function failed [how->{how},dtype->{ser.dtype}]"
-       1945     # preserve the kind of exception that raised
-    -> 1946     raise type(err)(msg) from err
-       1948 if ser.dtype == object:
-       1949     res_values = res_values.astype(object, copy=False)
-    
-
-    TypeError: agg function failed [how->mean,dtype->object]
-
 
 **IMPORTANT NOTE:** You should NEVER NEVER solve problems like the one above using loops or list comprehensions. This is slow and also misses the entire point of this part of DS100. 
 
@@ -4327,39 +3551,6 @@ best_result_percentage_only
 ```python
 grader.check("q6a")
 ```
-
-
-
-
-<p><strong style='color: red;'><pre style='display: inline;'>q6a</pre> results:</strong></p><p><strong><pre style='display: inline;'>q6a - 1</pre> result:</strong></p><pre>    ✅ Test case passed</pre><p><strong><pre style='display: inline;'>q6a - 2</pre> result:</strong></p><pre>    ❌ Test case failed
-    Trying:
-        best_result_percentage_only["Independent"].sum()
-    Expecting:
-        18.95629754
-    **********************************************************************
-    Line 1, in q6a 1
-    Failed example:
-        best_result_percentage_only["Independent"].sum()
-    Expected:
-        18.95629754
-    Got:
-        np.float64(18.95629754)
-</pre><p><strong><pre style='display: inline;'>q6a - 3</pre> result:</strong></p><pre>    ❌ Test case failed
-    Trying:
-        best_result_percentage_only.iloc[0]
-    Expecting:
-        61.34470329
-    **********************************************************************
-    Line 1, in q6a 2
-    Failed example:
-        best_result_percentage_only.iloc[0]
-    Expected:
-        61.34470329
-    Got:
-        np.float64(61.34470329)
-</pre>
-
-
 
 ### Question 6b  
 Repeat Question 6a. However, this time, your result should be a DataFrame showing all available information rather than only the percentage as a series.
@@ -4556,26 +3747,6 @@ best_result
 ```python
 grader.check("q6b")
 ```
-
-
-
-
-<p><strong style='color: red;'><pre style='display: inline;'>q6b</pre> results:</strong></p><p><strong><pre style='display: inline;'>q6b - 1</pre> result:</strong></p><pre>    ✅ Test case passed</pre><p><strong><pre style='display: inline;'>q6b - 2</pre> result:</strong></p><pre>    ❌ Test case failed
-    Trying:
-        best_result["Popular vote"].sum() 
-    Expecting:
-        135020916
-    **********************************************************************
-    Line 1, in q6b 1
-    Failed example:
-        best_result["Popular vote"].sum() 
-    Expected:
-        135020916
-    Got:
-        np.int64(135020916)
-</pre><p><strong><pre style='display: inline;'>q6b - 3</pre> result:</strong></p><pre>    ✅ Test case passed</pre>
-
-
 
 ### Question 6c
 
@@ -4978,26 +4149,6 @@ major_party_results_since_1988.head()
 grader.check("q6c")
 ```
 
-
-
-
-<p><strong style='color: red;'><pre style='display: inline;'>q6c</pre> results:</strong></p><p><strong><pre style='display: inline;'>q6c - 1</pre> result:</strong></p><pre>    ✅ Test case passed</pre><p><strong><pre style='display: inline;'>q6c - 2</pre> result:</strong></p><pre>    ❌ Test case failed
-    Trying:
-        major_party_results_since_1988["%"].min() 
-    Expecting:
-        0.098088334
-    **********************************************************************
-    Line 1, in q6c 1
-    Failed example:
-        major_party_results_since_1988["%"].min() 
-    Expected:
-        0.098088334
-    Got:
-        np.float64(0.098088334)
-</pre><p><strong><pre style='display: inline;'>q6c - 3</pre> result:</strong></p><pre>    ✅ Test case passed</pre>
-
-
-
 ### Question 7
 
 Pandas provides special purpose functions for working with specific common data types such as strings and dates. For example, the code below provides the length of every Candidate's name from our elections dataset.
@@ -5041,7 +4192,6 @@ name: q7
 elections_with_first_name = elections.copy()
 # your code here
 elections_with_first_name['First Name'] = elections_with_first_name['Candidate'].str.split(' ').str[0].to_frame()
-# elections_with_first_name['First Name'] = 
 # end your code
 elections_with_first_name
 ```
@@ -5500,37 +4650,11 @@ presidential_candidates_and_name_popularity
 grader.check("q8")
 ```
 
-
-
-
-<p><strong style='color: red;'><pre style='display: inline;'>q8</pre> results:</strong></p><p><strong><pre style='display: inline;'>q8 - 1</pre> result:</strong></p><pre>    ✅ Test case passed</pre><p><strong><pre style='display: inline;'>q8 - 2</pre> result:</strong></p><pre>    ✅ Test case passed</pre><p><strong><pre style='display: inline;'>q8 - 3</pre> result:</strong></p><pre>    ❌ Test case failed
-    Trying:
-        presidential_candidates_and_name_popularity[presidential_candidates_and_name_popularity["Candidate"] == "Jo Jorgensen"].iloc[0]["Count"]
-    Expecting:
-        6
-    **********************************************************************
-    Line 1, in q8 2
-    Failed example:
-        presidential_candidates_and_name_popularity[presidential_candidates_and_name_popularity["Candidate"] == "Jo Jorgensen"].iloc[0]["Count"]
-    Expected:
-        6
-    Got:
-        np.int64(6)
-</pre>
-
-
-
-Just for fun: Which historical presidential candidates have names that were the least and most popular in 2020? Note: Here you'll observe a common problem in data science -- one of the least popular names is actually due to the fact that one recent president was so commonly known by his nickname that he appears named as such in the database from which you pulled election results.
-
-
-```python
-# your optional code here
-...
-```
-
 ## Bonus Exercises
 
 The following exercises are optional and use the `ca_baby_names` dataset defined below.
+
+perhaps next time! :sunglasses:
 
 
 ```python
@@ -5761,6 +4885,4 @@ Make sure you have run all cells in your notebook in order before running the ce
 # Save your notebook first, then run this cell to export your submission.
 grader.export(pdf=False)
 ```
-
- 
 
