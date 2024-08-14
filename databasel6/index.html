@@ -4,10 +4,11 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>CS186-L6:  - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/databasel6/">
+        <title>CS186-L6: Indices &amp; B&#43; Tree Refinements - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/databasel6/">
   <meta property="og:site_name" content="HHZZ`s space">
-  <meta property="og:title" content="CS186-L6: ">
-  <meta property="og:description" content="This is my cool site">
+  <meta property="og:title" content="CS186-L6: Indices &amp; B&#43; Tree Refinements">
+  <meta property="og:description" content="General Notes issues to consider in any index structure (not just in B&#43; tree)
+query support: what class of queries can be supported? choice of search key affects how we write the query data entry storage affect performance of the index variable-length keys tricks affect performance of the index cost model for Index vs Heap vs Sorted File query support Indexes basic selection &amp;lt;key&amp;gt;&amp;lt;op&amp;gt;&amp;lt;constant&amp;gt; 诸如=，BETWEEN，&amp;gt;，&amp;lt;，&amp;gt;=，&amp;lt;= more selection 维度灾难&amp;#x1f632; 但是这节课我们只是关注1-d range search, equality， B&#43; tree">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
@@ -15,8 +16,9 @@
     <meta property="article:modified_time" content="2024-08-14T09:36:58+08:00">
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="CS186-L6: ">
-<meta name="twitter:description" content="">
+<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="CS186-L6: Indices &amp; B&#43; Tree Refinements">
+<meta name="twitter:description" content="General Notes issues to consider in any index structure (not just in B&#43; tree)
+query support: what class of queries can be supported? choice of search key affects how we write the query data entry storage affect performance of the index variable-length keys tricks affect performance of the index cost model for Index vs Heap vs Sorted File query support Indexes basic selection &lt;key&gt;&lt;op&gt;&lt;constant&gt; 诸如=，BETWEEN，&gt;，&lt;，&gt;=，&lt;= more selection 维度灾难&#x1f632; 但是这节课我们只是关注1-d range search, equality， B&#43; tree">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -26,12 +28,12 @@
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "CS186-L6: ",
+        "headline": "CS186-L6: Indices \u0026 B+ Tree Refinements",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/databasel6\/"
-        },"genre": "posts","wordcount":  0 ,
+        },"genre": "posts","wordcount":  310 ,
         "url": "http:\/\/example.org\/databasel6\/","datePublished": "2024-08-14T09:36:58+08:00","dateModified": "2024-08-14T09:36:58+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -103,17 +105,265 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">CS186-L6: </h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">CS186-L6: Indices & B+ Tree Refinements</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-14">2024-08-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;0 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;0 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-14">2024-08-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;310 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"></div><div class="post-footer" id="post-footer">
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#general-notes">General Notes</a></li>
+    <li><a href="#query-support">query support</a>
+      <ul>
+        <li><a href="#indexes">Indexes</a></li>
+      </ul>
+    </li>
+    <li><a href="#search-key-and-ordering">Search Key and Ordering</a></li>
+    <li><a href="#data-entry-storage">Data Entry Storage</a>
+      <ul>
+        <li><a href="#intro">intro</a></li>
+        <li><a href="#representation">representation</a>
+          <ul>
+            <li><a href="#alt-1">alt. 1</a></li>
+            <li><a href="#alt-2">alt. 2</a></li>
+            <li><a href="#alt-3">alt. 3</a></li>
+          </ul>
+        </li>
+        <li><a href="#clustered-vs-unclustered-index">clustered vs unclustered index</a></li>
+      </ul>
+    </li>
+    <li><a href="#variable-length-keys-tricks">Variable-length keys tricks</a></li>
+    <li><a href="#b-tree-costs">B+ Tree Costs</a></li>
+    <li><a href="#summary">Summary</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="general-notes">General Notes</h2>
+<p>issues to consider in any index structure (not just in B+ tree)</p>
+<ul>
+<li>query support: what class of queries can be supported?</li>
+<li>choice of search key
+<ul>
+<li>affects how we write the query</li>
+</ul>
+</li>
+<li>data entry storage
+<ul>
+<li>affect performance of the index</li>
+</ul>
+</li>
+<li>variable-length keys tricks
+<ul>
+<li>affect performance of the index</li>
+</ul>
+</li>
+<li>cost model for Index vs Heap vs Sorted File</li>
+</ul>
+<h2 id="query-support">query support</h2>
+<h3 id="indexes">Indexes</h3>
+<ul>
+<li>basic selection
+&lt;key&gt;&lt;op&gt;&lt;constant&gt; 诸如=，BETWEEN，&gt;，&lt;，&gt;=，&lt;=</li>
+<li>more selection
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel6/image.png"
+        data-srcset="/databasel6/image.png, /databasel6/image.png 1.5x, /databasel6/image.png 2x"
+        data-sizes="auto"
+        alt="/databasel6/image.png"
+        title="alt text" width="915" height="258" />
+维度灾难&#x1f632;</li>
+</ul>
+<p>但是这节课我们只是关注1-d range search, equality， B+ tree</p>
+<h2 id="search-key-and-ordering">Search Key and Ordering</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel6/image-1.png"
+        data-srcset="/databasel6/image-1.png, /databasel6/image-1.png 1.5x, /databasel6/image-1.png 2x"
+        data-sizes="auto"
+        alt="/databasel6/image-1.png"
+        title="alt text" width="1070" height="289" />
+注意lexicographic!</p>
+<p>以下给出了一个定义<code>Composite Keys</code>，多列，前等，尾唯一range
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel6/image-2.png"
+        data-srcset="/databasel6/image-2.png, /databasel6/image-2.png 1.5x, /databasel6/image-2.png 2x"
+        data-sizes="auto"
+        alt="/databasel6/image-2.png"
+        title="alt text" width="1053" height="469" />
+注意对<code>Lexicographic Range</code>的强调</p>
+<h2 id="data-entry-storage">Data Entry Storage</h2>
+<h3 id="intro">intro</h3>
+<ul>
+<li>the representation of data?
+<ul>
+<li>itself or pointers to it?</li>
+</ul>
+</li>
+<li>how data is stored?
+<ul>
+<li>clustered or unclustered?</li>
+</ul>
+</li>
+</ul>
+<h3 id="representation">representation</h3>
+<h4 id="alt-1">alt. 1</h4>
+<p>index entry: (key, value)
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel6/image-3.png"
+        data-srcset="/databasel6/image-3.png, /databasel6/image-3.png 1.5x, /databasel6/image-3.png 2x"
+        data-sizes="auto"
+        alt="/databasel6/image-3.png"
+        title="alt text" width="1105" height="529" /></p>
+<h4 id="alt-2">alt. 2</h4>
+<p>index entry: (key, recordID), remember recordID is&hellip;&hellip;
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel6/image-4.png"
+        data-srcset="/databasel6/image-4.png, /databasel6/image-4.png 1.5x, /databasel6/image-4.png 2x"
+        data-sizes="auto"
+        alt="/databasel6/image-4.png"
+        title="alt text" width="716" height="377" /></p>
+<h4 id="alt-3">alt. 3</h4>
+<p>index entry: (key, list of recordIDs)
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel6/image-5.png"
+        data-srcset="/databasel6/image-5.png, /databasel6/image-5.png 1.5x, /databasel6/image-5.png 2x"
+        data-sizes="auto"
+        alt="/databasel6/image-5.png"
+        title="alt text" width="1101" height="375" /></p>
+<h3 id="clustered-vs-unclustered-index">clustered vs unclustered index</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel6/image-6.png"
+        data-srcset="/databasel6/image-6.png, /databasel6/image-6.png 1.5x, /databasel6/image-6.png 2x"
+        data-sizes="auto"
+        alt="/databasel6/image-6.png"
+        title="alt text" width="842" height="322" />
+clustered is more efficient for IOs &#x1f914;, range search and supports &ldquo;compression&rdquo; &#x1f914;
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel6/image-7.png"
+        data-srcset="/databasel6/image-7.png, /databasel6/image-7.png 1.5x, /databasel6/image-7.png 2x"
+        data-sizes="auto"
+        alt="/databasel6/image-7.png"
+        title="alt text" width="998" height="224" /></p>
+<h2 id="variable-length-keys-tricks">Variable-length keys tricks</h2>
+<ul>
+<li>重新定义 Occupancy Invariant （当不是用整数来index时候）
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel6/image-8.png"
+        data-srcset="/databasel6/image-8.png, /databasel6/image-8.png 1.5x, /databasel6/image-8.png 2x"
+        data-sizes="auto"
+        alt="/databasel6/image-8.png"
+        title="alt text" width="988" height="390" /></li>
+<li>get more index entries to shorten the tree (avoiding long-time IOs)
+<ul>
+<li>prefix key compression (only in leaf level &#x1f914;, slightly change the order of keys?)
+<ul>
+<li><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel6/image-9.png"
+        data-srcset="/databasel6/image-9.png, /databasel6/image-9.png 1.5x, /databasel6/image-9.png 2x"
+        data-sizes="auto"
+        alt="/databasel6/image-9.png"
+        title="alt text" width="1116" height="329" /></li>
+</ul>
+</li>
+<li>suffix key compression
+<ul>
+<li><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel6/image-10.png"
+        data-srcset="/databasel6/image-10.png, /databasel6/image-10.png 1.5x, /databasel6/image-10.png 2x"
+        data-sizes="auto"
+        alt="/databasel6/image-10.png"
+        title="alt text" width="927" height="436" /></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="b-tree-costs">B+ Tree Costs</h2>
+<p>这里引入新的假设：</p>
+<ul>
+<li>store by ref (see in alt. 2)</li>
+<li>clustered index with 2/3 full heap file pages
+<ul>
+<li><em>clustered</em> -&gt; heapfile is initially sorted</li>
+<li>fanout is larger ~ $O(Ref)$</li>
+<li>assume static index</li>
+</ul>
+</li>
+</ul>
+<p>符号表达如下：</p>
+<ul>
+<li>$ B $ : num of <em>full</em> data blocks (why full? recall previous lecture)</li>
+<li>$ R $ : num of records per blocks</li>
+<li>$ D $ : Average time to r/w disk block</li>
+<li>$ F $ : avg internal node fanout</li>
+<li>$ E $ : avg num of data entries per leaf</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel6/image-11.png"
+        data-srcset="/databasel6/image-11.png, /databasel6/image-11.png 1.5x, /databasel6/image-11.png 2x"
+        data-sizes="auto"
+        alt="/databasel6/image-11.png"
+        title="alt text" width="769" height="301" />
+side note:</p>
+<ol>
+<li><code>Scan all records</code>: $3/2$来自与占有率2/3， $\frac{2}{3}B&rsquo; = B \Rightarrow B&rsquo; = \frac{3}{2}B \Rightarrow B&rsquo;D = \frac{3}{2}B D$</li>
+<li><code>Equality Search</code>: $1 \Rightarrow 2$ !! 来自于从page中读取slot从而获得具体的index并且读取数值, $log_F(BR/E)$ 是搜索page</li>
+<li><code>Range Search</code>: 应该是 $(log_F(BR/E)+1+3*pages)*D$<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel6/image-14.png"
+        data-srcset="/databasel6/image-14.png, /databasel6/image-14.png 1.5x, /databasel6/image-14.png 2x"
+        data-sizes="auto"
+        alt="/databasel6/image-14.png"
+        title="alt text" width="915" height="486" /></li>
+<li><code>Insert</code>&amp;<code>Delete</code>: 应该是 $(log_F(BR/E)+4)*D$, index 1，读取数值 1，改变数值 1，改变index 1</li>
+</ol>
+<p>big-O notation: &#x1f638;
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel6/image-12.png"
+        data-srcset="/databasel6/image-12.png, /databasel6/image-12.png 1.5x, /databasel6/image-12.png 2x"
+        data-sizes="auto"
+        alt="/databasel6/image-12.png"
+        title="alt text" width="749" height="297" /></p>
+<h2 id="summary">Summary</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel6/image-13.png"
+        data-srcset="/databasel6/image-13.png, /databasel6/image-13.png 1.5x, /databasel6/image-13.png 2x"
+        data-sizes="auto"
+        alt="/databasel6/image-13.png"
+        title="alt text" width="837" height="344" /></p>
+<p><strong>time-stamp: 01h42m07s</strong></p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -124,7 +374,7 @@
                             <a class="link-to-markdown" href="/databasel6/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/databasel6/" data-title="CS186-L6: "><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/databasel6/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/databasel6/" data-title="CS186-L6: "><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/databasel6/" data-title="CS186-L6: "><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/databasel6/" data-title="CS186-L6: "><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/databasel6/" data-title="CS186-L6: Indices &amp; B&#43; Tree Refinements"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/databasel6/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/databasel6/" data-title="CS186-L6: Indices &amp; B&#43; Tree Refinements"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/databasel6/" data-title="CS186-L6: Indices &amp; B&#43; Tree Refinements"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/databasel6/" data-title="CS186-L6: Indices &amp; B&#43; Tree Refinements"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
