@@ -3,7 +3,16 @@
         <title>Pandas - Tag - HHZZ`s space</title>
         <link>http://example.org/tags/pandas/</link>
         <description>Pandas - Tag - HHZZ`s space</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 13 Aug 2024 15:19:32 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/pandas/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 13 Aug 2024 15:19:34 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/pandas/" rel="self" type="application/rss+xml" /><item>
+    <title>DATA100-lab7: Gradient Descent and Feature Engineering</title>
+    <link>http://example.org/datalab7/</link>
+    <pubDate>Tue, 13 Aug 2024 15:19:34 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/datalab7/</guid>
+    <description><![CDATA[1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab07.ipynb&#34;) Lab 7: Gradient Descent and Feature Engineering In this lab, we will work through the process of:
+Defining loss functions Feature engineering Minimizing loss functions using numeric methods and analytical methods Understanding what happens if we use the analytical solution for OLS on a matrix with redundant features Computing a gradient for a nonlinear model Using gradient descent to optimize the nonline model This lab will continue using the toy tips calculation dataset used in Labs 5 and 6.]]></description>
+</item>
+<item>
     <title>DATA100-lab3: Data Cleaning and EDA</title>
     <link>http://example.org/datalab3/</link>
     <pubDate>Tue, 13 Aug 2024 15:19:32 &#43;0800</pubDate>
