@@ -1,4 +1,4 @@
-# DATA100-lab10
+# DATA100-lab10: SQL
 
 
 ```python
