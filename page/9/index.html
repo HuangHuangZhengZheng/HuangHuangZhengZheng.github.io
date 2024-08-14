@@ -100,36 +100,45 @@
         alt="/avatar.jpg"
         title="/avatar.jpg" width="1920" height="1280" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/ZhengTMHuang" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/61b-9/">61B-9: Extends, Casting, Higher Order Functions</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-14">2024-07-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">Implementation Inheritance: Extends extends
-Because of extends, RotatingSLList inherits all members of SLList: All instance and static variables. （注意public, private, protected的区别） All methods. All nested classes. Constructors are not inherited. super
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 public class VengefulSLList&lt;Item&gt; extends SLList&lt;Item&gt; { private SLList&lt;Item&gt; deletedItems; public VengefulSLList() { deletedItems = new SLList&lt;Item&gt;(); } @Override public Item removeLast() { Item oldBack = super.</div><div class="post-footer">
-        <a href="/61b-9/">Read More</a></div>
+        <a href="/datal16/">DATA100-L16: Probability I: Random Variables</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">随机变量及其分布 参考 概率论与数理统计 课程即可
+期望与方差 $$ \mathbb{E}[X] 和 Var(X) $$ 参考 概率论与数理统计 课程即可
+随机变量的和 equality vs Identically distributed vs IID 有意思的分析 &#x1f60f;
+期望和方差的性质 协方差与相关系数 伯努利（0-1）和Binomial分布 Sample Statistics sample mean central limit theorem </div><div class="post-footer">
+        <a href="/datal16/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/61b-7/">61B-7: Testing</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-14">2024-07-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">Ad Hoc Testing vs. JUnit 1 2 3 4 5 6 7 8 9 10 11 12 13 14 public class TestSort { /** Tests the sort method of the Sort class. */ public static testSort() { String[] input = {&#34;cows&#34;, &#34;dwell&#34;, &#34;above&#34;, &#34;clouds&#34;}; String[] expected = {&#34;above&#34;, &#34;cows&#34;, &#34;clouds&#34;, &#34;dwell&#34;}; Sort.sort(input); org.junit.Assert.assertArrayEquals(expected, input); } public static void main(String[] args) { testSort(); } } Selection Sort 简单介绍一下了，关注点在junit Simpler JUnit Tests ADD, TDD, Integration Testing More On JUnit (Extra) </div><div class="post-footer">
-        <a href="/61b-7/">Read More</a></div>
+        <a href="/datal13/">DATA100-L13: Gradient Descent, Feature Engineering</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content"> $\downarrow{shuffle}$ SGD: Stochastic Gradient Descent(but size == 1)
+convexity (凹凸性) feature engineering 在于怎么使用transforming
+feature function see website code
+non-numeric features one-hot encoding concat high order polynomials detect overfitting collect more data more see next lecture </div><div class="post-footer">
+        <a href="/datal13/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/61b-8/">61B-8: Inheritance, Implements</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-14">2024-07-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">but hard to maintain!
-Hypernyms, Hyponyms, and Interface Inheritance interface 1 2 3 4 5 6 7 8 9 10 public interface List61B&lt;Item&gt; { public void addFirst(Item x); public void addLast(Item y); public Item getFirst(); public Item getLast(); public Item removeLast(); public Item get(int i); public void insert(Item x, int position); public int size(); } Overriding vs. Overloading override注意加上@Override!!!
-Interface Inheritance 基类存放指针问题 Answer: If X is a superclass of Y, then memory boxes for X may contain Y.</div><div class="post-footer">
-        <a href="/61b-8/">Read More</a></div>
+        <a href="/datal14/">DATA100-L14: Case Study (HCE): Fairness in Housing Appraisal</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content"> Accuracy is a necessary, but not sufficient, condition for fair system. Fairness and transparency are context-dependent. Learn to work with contexts, and consider how your data analysis will reshape them. Keep in mind the power, and limits, of data analysis. </div><div class="post-footer">
+        <a href="/datal14/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/61b-4/">61B-4: SLLists, Nested Classes, Sentinel Nodes</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-14">2024-07-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">From IntList to SLList 事实是在SLList里面添加一个Intlist数据成员
-Public vs. Private or Nested Classes 介绍了private
-Nested Classes 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 public class SLList { public class IntNode { public int item; public IntNode next; public IntNode(int i, IntNode n) { item = i; next = n; } } private IntNode first; public SLList(int x) { first = new IntNode(x, null); } .</div><div class="post-footer">
-        <a href="/61b-4/">Read More</a></div>
+        <a href="/datal12/">DATA100-L12: Gradient Descent, sklearn</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">开始调包！&#x1f60f;
+1 2 3 4 from sklearn.linear_model import LinearRegression model = LinearRegression() model.fit(df[[&#34;total_bill&#34;]], df[&#34;tip&#34;]) df[&#34;predicted_tip&#34;] = model.predict(df[[&#34;total_bill&#34;]]) 所有的机器学习似乎都在最小化loss function，而梯度下降就是一种优化算法，它通过迭代的方式不断更新模型参数，使得loss function的值不断减小。
+详情见NNDL栏目</div><div class="post-footer">
+        <a href="/datal12/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/61b-5/">61B-5: DLLists, Arrays</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-14">2024-07-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">Doubly Linked Lists 注意只有sentinel时要讨论一些特殊情况，特别是环状链表。
-Generic Lists 泛型列表 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 public class SLList&lt;BleepBlorp&gt; { private IntNode sentinel; private int size; public class IntNode { public BleepBlorp item; public IntNode next; ... } ... } SLList&lt;Integer&gt; s1 = new SLList&lt;&gt;(5); s1.insertFront(10); SLList&lt;String&gt; s2 = new SLList&lt;&gt;(&#34;hi&#34;); s2.insertFront(&#34;apple&#34;); Arrays, AList 介绍了System.arraycopy()用来resize 2D Arrays Arrays vs. Classes array的runtime动态索引（和cpp不一样） class runtime </div><div class="post-footer">
-        <a href="/61b-5/">Read More</a></div>
+        <a href="/datal11/">DATA100-L11: Ordinary Least Squares</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">linear in theta linear combination of parameters $\theta$ define multiple linear regression OLS problem formulation ordinary least squares (OLS)
+用线性代数重写之 $$ \mathbb{\hat{Y}} = \mathbb{X}\theta $$
+multiple linear regression model MSE $$ R(\theta) = \frac{1}{n}||\mathbb{Y}-\hat{\mathbb{Y}}||_2^2 $$
+geometric derivation lin alg review: orthogonality, span $$ span(\mathbb{A})是一个由列向量组成的space $$ 正交 least squares estimate proof performance: residuals, multiple R-squared lec11.ipynb
+$$ R^2∈[0,1] $$ 越大拟合效果越好
+OLS properties residuals the bias/intercept term existence of a unique solution </div><div class="post-footer">
+        <a href="/datal11/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/61b-6/">61B-6: ALists, Resizing, vs. SLists</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-14">2024-07-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">A Last Look at Linked Lists Naive Array Lists 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 public class AList { private int[] items; private int size; public AList() { items = new int[100]; size = 0; } public void addLast(int x) { items[size] = x; size += 1; } public int getLast() { return items[size - 1]; } public int get(int i) { return items[i]; } public int size() { return size; } } Resizing Arrays 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 public void addLast(int x) { if (size == items.</div><div class="post-footer">
-        <a href="/61b-6/">Read More</a></div>
+        <a href="/datal10/">DATA100-L10: Constant Model, Loss, and Transformations</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-18">2024-07-18</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">constant model + MSE 微积分是求最优化的一种方法
+两种记法 constant model + MAE 绝对值求导新视角 $$ \sum_{\theta &lt;y_i} 1=\sum_{\theta &gt;y_i} 1 $$ 是计数！==&gt;中位数
+loss的敏感性问题 revisiting SLR evaluation 画图before modeling！！！
+transformations to fit linear model 经验之谈 introducing notation for multiple linear regression </div><div class="post-footer">
+        <a href="/datal10/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -160,7 +169,7 @@ Generic Lists 泛型列表 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 public c
                     <span class="page-link" aria-hidden="true">&hellip;</span>
                 </li><li class="page-item ">
                     <span class="page-link">
-                        <a href="/page/15/">15</a>
+                        <a href="/page/19/">19</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">

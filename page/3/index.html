@@ -100,49 +100,29 @@
         alt="/avatar.jpg"
         title="/avatar.jpg" width="1920" height="1280" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/ZhengTMHuang" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/databasel5/">CS186-L5: B+ Trees</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-08-11">2024-08-11</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div><div class="content">Index 竟然是一种数据结构？ search and insertion in ISAM indexed sequential access method 注意建立了许多索引，沿用BST的思想，但是insert的时候会出现overflow pages （IBM in 1960s）
-B+ Tree 和B Tree的区别在于：B+只有叶子存放数据，而B Tree的中间节点也存放数据。
-几乎和上面一样，但是多了
-dynamic tree index always balanced support efficient insertions and deletions grows at root not leaves 注意:
-占有率：几乎半满，除了root 底部DLL $max\ fan\ out = 2d + 1$ 工业实际情况 &#x1f914; B+ Tree Operations search, 同上 insert 没有overflow，直接插入 满了，分裂成两个节点，中间节点存放 中间key（过程中可能是右边最小的那个key），左右节点存放左右key 递归向上分裂，直到根节点 叶子 $\xrightarrow{copy}$ 父节点 ，父节点 $\xrightarrow{push}$ 新父节点 delete &#x1f609; bulk loading 批量加载 精髓在于先排序，后构建 time-stamp: 01h09min02s</div><div class="post-footer">
-        <a href="/databasel5/">Read More</a></div>
+        <a href="/databasel15/">CS186-L15: </a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-08-14">2024-08-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div><div class="content"></div><div class="post-footer">
+        <a href="/databasel15/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/databasel4/">CS186-L4: Disks, Buffers, Files II</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-08-11">2024-08-11</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div><div class="content">cost model and analysis 基本量化指标定义 基本假设
-single record insert and delete equality selection - exactly one match for heap files: insert always appends for sorted files: packed: files compacted after deletions sorted according to search key 以下是计算时间，类似渐进记法，但是有细节 &#x1f60e; side note:
-$\times D$ 是简化了每次“操作”的时间，“操作”指的是“读”与“写” 考虑随机变量 操作次数 $N$ 及其 $\mathbb{E}(N)$ Equality Search对于sorted files: $$ \begin{equation} \begin{aligned} \mathbb{E}(N) &amp;= \sum_{i=1}^{log_2B} i \times \frac{2^{i-1}}{B} \notag\ &amp;= log_2B - \frac{B-1}{B}\ &amp;\approx log_2B \end{aligned} \end{equation} $$</div><div class="post-footer">
-        <a href="/databasel4/">Read More</a></div>
+        <a href="/databasel10/">CS186-L10: </a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-08-14">2024-08-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div><div class="content"></div><div class="post-footer">
+        <a href="/databasel10/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/databasel3/">CS186-L3: Disk, Buffers, Files I</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-08-11">2024-08-11</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div><div class="content">big picture sql client -&gt; DBMS -&gt; database &#x1f913;
-DBMS parsing &amp; optimization 执行SQL语句时，DBMS需要解析SQL语句，并将其转换为执行计划。优化器会根据统计信息、查询模式、索引等因素，选择最优的执行计划。 relational operators 处理数据流 or 关系运算符？ files and index management buffer management disk space management 事实上纵向还有两个模块：concurrency control和recovery。 省流：从RAM &amp; DISK获取数据非常慢， 相对于CPU
-Disk 注意sector, disk head， 其中后者似乎只能单次读写 access time flash SSD 注意：
-read很快，随着数据变大，可以预测
-write很慢，slower for random，写入放大 disk space management block level storage block: unit of transfer for disk read/write (64~128KB in 2018)
-page: a common synonym for block, in some contexts, it means in RAM</div><div class="post-footer">
-        <a href="/databasel3/">Read More</a></div>
+        <a href="/databasel11/">CS186-L11: </a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-08-14">2024-08-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div><div class="content"></div><div class="post-footer">
+        <a href="/databasel11/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/databasel2/">CS186-L2: SQLⅡ</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-22">2024-07-22</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div><div class="content">怎么读懂SQL语句？ FROM WHERE, to eliminate rows SELECT GROUP BY HAVING, to eliminate groups DISTINCT ORDER BY, LIMIT, OFFSET等等格式化输出 Join Queries cross product 生成所有的组合，然后过滤掉不符合条件的组合，但是低效
-考虑以下sql，更加简洁
-1 2 3 SELECT S.sid, sname, bid FROM Sailors AS S, Reserves AS R WHERE S.sid = R.sid self join and more aliases 1 2 3 4 SELECT x.sname, x.age, y.sname AS sname2, y.age AS age2 FROM Sailors AS x, Sailors AS y WHERE x.age &gt; y.</div><div class="post-footer">
-        <a href="/databasel2/">Read More</a></div>
+        <a href="/databasel12/">CS186-L12: </a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-08-14">2024-08-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div><div class="content"></div><div class="post-footer">
+        <a href="/databasel12/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/databasel1/">CS186-L1: Introduction + SQL I</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-22">2024-07-22</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div><div class="content">大纲进程： sheet
-SQL I pros and cons relational Terminology and concepts database: set of name relations relation(table): schema: descriptions &ldquo;metadata&rdquo; fixed, unique attribute names, atomic types instance: set of data 符合description often changed, can duplicate multiset of tuples or &ldquo;rows&rdquo; attribute (column,field) tuple (row,record),怀疑一些python概念也来自于此 DDL (Data Definition Language) 1 2 3 4 5 6 7 8 9 10 CREATE TABLE myTable ( ID INTEGER, myName CHAR(50), Age INTEGER, Salary FLOAT, PRIMARY KEY (ID, myName), FOREIGN KEY (ID) REFERENCES myOtherTable(ID), FOREIGN KEY (myName) REFERENCES myOtherTable(myName) ); 1 2 3 SELECT [DISTINCT] &lt;column expression list&gt; FROM &lt;single_table&gt; [WHERE &lt;predicate&gt;] ORDER BY Lexicographic order by default 字典序 LIMIT Aggregation functions AVG: average COUNT: count the number of rows MAX: maximum value MIN: minimum value SUM: sum of values 1 2 SELECT AVG(Salary) FROM myTable; GROUP BY HAVING</div><div class="post-footer">
-        <a href="/databasel1/">Read More</a></div>
+        <a href="/databasel9/">CS186-L9: </a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-08-14">2024-08-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div><div class="content"></div><div class="post-footer">
+        <a href="/databasel9/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/datal26/">DATA100-L26: Parallel Data Analytics; Conclusion</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">mapreduce MapReduce是一种编程模型,用于大规模数据集的并行运算[1][2][3]。它将复杂的并行计算过程抽象为两个函数:Map和Reduce[4]。
-Map函数将输入数据集拆分成独立的块,并对每个块应用映射操作,生成一组中间键值对[1][2][3]。Reduce函数会对所有Map的输出进行合并操作,生成最终结果[1][2][3]。
-MapReduce的主要特点包括[4][5]:
-易于编程:程序员只需描述做什么,具体怎么做由系统的执行框架处理 良好的扩展性:可通过添加节点扩展集群能力 高容错性:通过计算迁移或数据迁移等策略提高集群的可用性与容错性 MapReduce采用&quot;分而治之&quot;策略,将大规模数据集切分成多个独立的分片,这些分片可以被多个Map任务并行处理[4]。它设计的一个理念是&quot;计算向数据靠拢&quot;,移动数据需要大量的网络传输开销[4]。
-总之,MapReduce是一种简单、可扩展的并行计算模型,通过抽象Map和Reduce函数,使得程序员可以轻松编写大规模并行应用程序,而无需关注底层的分布式细节[1][2][3][4][5]。
-Citations: [1] https://baike.baidu.com/item/MapReduce/133425 [2] https://zh.wikipedia.org/zh-hans/MapReduce [3] https://www.ibm.com/cn-zh/topics/mapreduce [4] https://cshihong.github.io/2018/05/11/MapReduce%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86/ [5] https://cloud.tencent.com/developer/article/1778549
-apache spark lazy strategy: 延迟计算策略,Spark默认采用这种策略,即只有当数据真正被使用时才会计算。 编译优化语句执行顺序！ Conclusion 工具链 What is next? 有用的data science链接 http://kaggle.com https://github.com/awesomedata/awesome-public-datasets http://toolbox.google.com/datasetsearch https://towardsdatascience.com https://www.reddit.com/r/dataisbeautiful/ https://fivethirtyeight.com</div><div class="post-footer">
-        <a href="/datal26/">Read More</a></div>
+        <a href="/databasel7/">CS186-L7: </a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-08-14">2024-08-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div><div class="content"></div><div class="post-footer">
+        <a href="/databasel7/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -167,7 +147,7 @@ apache spark lazy strategy: 延迟计算策略,Spark默认采用这种策略,即
                     <span class="page-link" aria-hidden="true">&hellip;</span>
                 </li><li class="page-item ">
                     <span class="page-link">
-                        <a href="/page/15/">15</a>
+                        <a href="/page/19/">19</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">

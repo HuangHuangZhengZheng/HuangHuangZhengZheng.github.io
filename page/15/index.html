@@ -100,37 +100,40 @@
         alt="/avatar.jpg"
         title="/avatar.jpg" width="1920" height="1280" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/ZhengTMHuang" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/61b-37/">61B-37:overview, Tries</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-11">2024-07-11</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">Overview Tries——前缀树/字典树 usages:
-prefix matching approximate matching 1 2 keysWithPrefix(String prefix) // returns all keys in the trie that start with the given prefix longestPrefixOf(String query) // returns the longest key in the trie that is a prefix of the query implementation 1 2 3 4 5 6 7 8 private class Node{ boolean exists; Map&lt;Character, Node&gt; links; public Node(){ links = new TreeMap&lt;&gt;(); exists = false; } } T9 keyboard Ternary search Tries 1 2 3 4 5 6 7 public class TSTSet&lt;Value&gt;{ private Node&lt;Value&gt; root; private static class Node&lt;Value&gt;{ private char c; private Node&lt;Value&gt; lo, mid, hi; } } 但是这种实现方式表现不佳 </div><div class="post-footer">
-        <a href="/61b-37/">Read More</a></div>
+        <a href="/61b-30/">61B-30: Minimum Spanning Trees</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-13">2024-07-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">warm up MST, Cut Property, Generic MST Algorithm MST vs SPT A shortest paths tree depends on the start vertex:
+Because it tells you how to get from a source to EVERYTHING. There is no source for a MST.
+Nonetheless, the MST sometimes happens to be an SPT for a specific vertex.
+两者关系不大？ Cut Property 简单证明 cross bridge 一定在 MST 中。 Generic MST Algorithm Start with no edges in the MST.</div><div class="post-footer">
+        <a href="/61b-30/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/61b-36/">61B-36: Radix Sorts</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-10">2024-07-10</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">radix sort 不用comparisons的排序算法，时间复杂度O(dn)，d为最大数的位数，n为待排序数的个数。
-空间换时间
-bucket sort
-counting sort:
-找出待排序数的最大值max，确定计数数组的长度为max+1。 遍历待排序数，将每个数的个位数值作为索引，将该索引对应的计数数组元素加1。 遍历计数数组，将每个元素的值作为索引，将该索引对应的元素值输出到结果数组中。 runtime: O(n+k)
-LSD radix sort: least significant digit radix sort
-找出待排序数的最大值max，确定计数数组的长度为10。 遍历待排序数，将每个数的个位数值作为索引，将该索引对应的计数数组元素加1。 LSD sort vs merge sort:
-similar strings:LSD sort is better
-dissimilar strings:merge sort is better
-MSD radix sort: most significant digit radix sort
-找出待排序数的最大值max，确定计数数组的长度为10。 遍历待排序数，将每个数的个位数值作为索引，将该索引对应的计数数组元素加1。 遍历计数数组，将每个元素的值作为索引，将该索引对应的元素值输出到结果数组中。 runtime: O(n+k)</div><div class="post-footer">
-        <a href="/61b-36/">Read More</a></div>
+        <a href="/61b-28/">61B-28:  Graph Traversals</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-13">2024-07-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">Depth First Paths “Depth First Search” is a more general term for any graph search algorithm that traverses a graph as deep as possible before backtracking.
+The term is used for several slightly different algorithms. For example: DFS may refer to the version from the previous lecture that doesn’t use any marks (and thus can get caught in a loop). DFS may refer to the version where vertices are marked. DFS may refer to a version where vertices are marked and source edges recorded (as in Depth First Paths).</div><div class="post-footer">
+        <a href="/61b-28/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/csapp_attacklab/">CSAPP_attacklab</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-04-22">2024-04-22</time></span>&nbsp;<span class="post-category">included in <a href="/categories/csapp/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CSAPP</a></span></div><div class="content">实验一：栈溢出攻击实验 栈的基本结构 实验二：ROP攻击实验 </div><div class="post-footer">
-        <a href="/csapp_attacklab/">Read More</a></div>
+        <a href="/61b-26/">61B-26: Midterm 2 Review</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-13">2024-07-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">For BSTs, the most inefficient way to add is in to put it in order.
+在二叉搜索树（BST）中，最低效的方式是按升序或降序插入节点，因为这种方式会导致树变成一条链表，从而使其性能退化到O(n)的时间复杂度。
+这里是一个用Java实现的例子，展示了按升序插入节点的二叉搜索树（BST）会变成链表的情况：
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 // 定义树的节点 class TreeNode { int value; TreeNode left; TreeNode right; TreeNode(int value) { this.</div><div class="post-footer">
+        <a href="/61b-26/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/csapp_bomblab/">CSAPP_bomblab</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-04-22">2024-04-22</time></span>&nbsp;<span class="post-category">included in <a href="/categories/csapp/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CSAPP</a></span></div><div class="content">csapp_bomblab 都是汇编语言，没有什么好说的 注意GDB调试
-核心概念之一：寻址 如何寻址？ $Imm(r_1,r_2,factor)$ 注意值还是地址？ (%rdx)取memory时，$M[R_i]$ 中M一直在最外层 核心概念之二：GDB调试 常用命令 run 运行程序（注意结合数据流pipeline） b +$Addr$ 设置断点 delete 删除断点 next 单步执行 step stepi``finish进入函数 p $eax 打印变量 x /$nxb $Addr$ 打印内存 layout asm 切换到汇编模式有好看的窗口 info registers 打印寄存器 info frame 打印栈帧 info args 打印函数参数 info locals 打印局部变量 info breakpoints 打印断点信息 continue 继续运行 quit stop退出调试 一些些技巧 mov一些奇奇怪怪的地址时，很可能是线索，可以用x /$nxb $Addr$查看内存 jne之类的能不能直接取等擦边通过 常见的基础语句（条件/循环）有一些固定的范式，可以用x /6i $PC等查看指令 </div><div class="post-footer">
-        <a href="/csapp_bomblab/">Read More</a></div>
+        <a href="/61b-27/">61B-27: Graphs</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-13">2024-07-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">intro types of graph terminology 图论问题 s-t Path. Is there a path between vertices s and t? Shortest s-t Path. What is the shortest path between vertices s and t? Cycle. Does the graph contain any cycles? Euler Tour. Is there a cycle that uses every edge exactly once? Hamilton Tour. Is there a cycle that uses every vertex exactly once? Connectivity. Is the graph connected, i.e. is there a path between all vertex pairs?</div><div class="post-footer">
+        <a href="/61b-27/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/csapp_datalab/">CSAPP_datalab</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-04-21">2024-04-21</time></span>&nbsp;<span class="post-category">included in <a href="/categories/csapp/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CSAPP</a></span></div><div class="content">int bit-level operations 德摩根律（位运算和集合论） 与：&amp; 非：~ 两者组合已经可以表示四个基本运算：与、非、或、异或。 移动位运算 注意是否为无符号数，有符号数的移位运算规则与无符号数不同。 有符号数的移位运算规则： 左移：符号位不变，右边补0。 右移：符号位不变，左边补符号位。 无符号数的移位运算规则： 左移：左边补0。 右移：右边补0。 与运算（&amp;）取特定的位数，用于位层面条件判断 减法的实现 A + ~A = -1 &ndash;&gt; A + (~A+1) = 0 减法的描述范围问题 做差取符号位 掩码操作 1 2 3 4 5 int conditional(int x, int y, int z) { int exp1 = ~(!!x) + 1; int exp2 = ~(!x) + 1; return (exp1&amp;y) + (exp2&amp;z); } 位层面分类讨论 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 /* howManyBits - return the minimum number of bits required to represent x in * two&#39;s complement(补码系统) * Examples: howManyBits(12) = 5 * howManyBits(298) = 10 * howManyBits(-5) = 4 负数的话 取反 同理 * howManyBits(0) = 1 * howManyBits(-1) = 1 特殊点?</div><div class="post-footer">
-        <a href="/csapp_datalab/">Read More</a></div>
+        <a href="/61b-24/">61B-24: Priority Queues and Heaps</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-13">2024-07-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">interface
+1 2 3 4 5 6 7 8 9 10 11 12 /** (Min) Priority Queue: Allowing tracking and removal of the * smallest item in a priority queue. */ public interface MinPQ&lt;Item&gt; { /** Adds the item to the priority queue. */ public void add(Item x); /** Returns the smallest item in the priority queue. */ public Item getSmallest(); /** Removes the smallest item from the priority queue. */ public Item removeSmallest(); /** Returns the size of the priority queue.</div><div class="post-footer">
+        <a href="/61b-24/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/61b-25/">61B-25: Advanced Trees, incl. Geometric</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-13">2024-07-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">Traversals Level Order
+Traverse top-to-bottom, left-to-right (like reading in English): We say that the nodes are ‘visited’ in the given order. Depth First Traversals
+Preorder, Inorder, Postorder Basic (rough) idea: Traverse “deep nodes” (e.g. A) before shallow ones (e.g. F). preorder 1 2 3 4 5 6 preOrder(BSTNode x) { if (x == null) return; print(x.key) preOrder(x.left) preOrder(x.right) } D B A C F E G
+inorder 1 2 3 4 5 6 inOrder(BSTNode x) { if (x == null) return; inOrder(x.</div><div class="post-footer">
+        <a href="/61b-25/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -148,6 +151,20 @@ MSD radix sort: most significant digit radix sort
                 </li><li class="page-item active">
                     <span class="page-link">
                         <a href="/page/15/">15</a>
+                    </span>
+                </li><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/page/16/">16</a>
+                    </span>
+                </li><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/page/17/">17</a>
+                    </span>
+                </li><li class="page-item ">
+                    <span class="page-link" aria-hidden="true">&hellip;</span>
+                </li><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/page/19/">19</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">
