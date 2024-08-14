@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Pointnet - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/papers/pointnet/">
+  <meta property="og:site_name" content="HHZZ`s space">
+  <meta property="og:title" content="Pointnet">
+  <meta property="og:description" content="点云的数据格式 一个点云是一个无序的向量集，每个点用三维坐标构成向量，其他信息可以扩展
+有.xyz等格式
+本质上是一个矩阵 $Num \times Dim$
+PointNet和&#43;&#43;的算法具体操作 PointNet算法的具体操作 必须考虑的几个特点 旋转不变性，在仿射变换下点的排列不变 置换不变性(无序的)：应该是对称函数，不考虑顺序 局部结构需要考虑(分割时)，平衡global和local 输入：点云数据 MLP升维，抽取特征 Max对称函数操作，降维，得到全局特征 $N \times 1$ 后续分类or分割 输入：点云数据 T-Net仿射变换（旋转）来保证旋转不变性 MLP升维，抽取特征 maxpooling操作，降维，得到global特征 $N \times 1$ 后续分类走mlp（fcnn）&#43;softmax 走分割的话拼接到feature $N\times 64$ 得到 $N\times 1088$，然后mlp给每个点属于哪几个类别打分 不足之处 maxpooling这一步直接把所有点池化为以一个全局特征，局部点与点的联系没有察觉 PointNet&#43;&#43;算法的具体操作 借鉴了卷积神经网络的思想，对空间化整为零，分而治之 进行多次set abstraction = sampling &#43; grouping &#43; PointNet 走分类，同上PointNet处理 走分割，interpolate插值，然后skip link concatenation拼接到低层次点特征后面，unit pointnet处理,重复几次，回到原始点云，得到分割结果（每个点的评分） 以下逐步分析
+set abstraction
+sampling FPS取点 grouping 聚类ball query， ball query采用metric distance和CNN曼哈顿距离不同，使得前者能泛化能力更好 然后采用pointnet对每个group进行特征提取 提出针对 点 密度分布不均匀的 density adaptive PointNet MSG，对不同大小的区域进行特征抽取并且拼在一起 random input dropout MRG, “堆叠”多个PointNet高维抽取，改进：一个向量是抽取低一层的特征，另一个向量直接抽取底层特征，然后由点密度分布来决定按权重拼接 interpolate &amp;amp; skip link concatenation （特征传播feature propagation）">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+  <meta property="article:section" content="papers">
+    <meta property="article:published_time" content="2024-07-18T14:44:32+08:00">
+    <meta property="article:modified_time" content="2024-07-18T14:44:32+08:00">
+    <meta property="og:image" content="http://example.org/logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="Pointnet">
+<meta name="twitter:description" content="点云的数据格式 一个点云是一个无序的向量集，每个点用三维坐标构成向量，其他信息可以扩展
+有.xyz等格式
+本质上是一个矩阵 $Num \times Dim$
+PointNet和&#43;&#43;的算法具体操作 PointNet算法的具体操作 必须考虑的几个特点 旋转不变性，在仿射变换下点的排列不变 置换不变性(无序的)：应该是对称函数，不考虑顺序 局部结构需要考虑(分割时)，平衡global和local 输入：点云数据 MLP升维，抽取特征 Max对称函数操作，降维，得到全局特征 $N \times 1$ 后续分类or分割 输入：点云数据 T-Net仿射变换（旋转）来保证旋转不变性 MLP升维，抽取特征 maxpooling操作，降维，得到global特征 $N \times 1$ 后续分类走mlp（fcnn）&#43;softmax 走分割的话拼接到feature $N\times 64$ 得到 $N\times 1088$，然后mlp给每个点属于哪几个类别打分 不足之处 maxpooling这一步直接把所有点池化为以一个全局特征，局部点与点的联系没有察觉 PointNet&#43;&#43;算法的具体操作 借鉴了卷积神经网络的思想，对空间化整为零，分而治之 进行多次set abstraction = sampling &#43; grouping &#43; PointNet 走分类，同上PointNet处理 走分割，interpolate插值，然后skip link concatenation拼接到低层次点特征后面，unit pointnet处理,重复几次，回到原始点云，得到分割结果（每个点的评分） 以下逐步分析
+set abstraction
+sampling FPS取点 grouping 聚类ball query， ball query采用metric distance和CNN曼哈顿距离不同，使得前者能泛化能力更好 然后采用pointnet对每个group进行特征提取 提出针对 点 密度分布不均匀的 density adaptive PointNet MSG，对不同大小的区域进行特征抽取并且拼在一起 random input dropout MRG, “堆叠”多个PointNet高维抽取，改进：一个向量是抽取低一层的特征，另一个向量直接抽取底层特征，然后由点密度分布来决定按权重拼接 interpolate &amp; skip link concatenation （特征传播feature propagation）">
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/papers/pointnet/" /><link rel="next" href="http://example.org/papers/ddpm/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Pointnet",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/papers\/pointnet\/"
+        },"genre": "papers","wordcount":  96 ,
+        "url": "http:\/\/example.org\/papers\/pointnet\/","datePublished": "2024-07-18T14:44:32+08:00","dateModified": "2024-07-18T14:44:32+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "HHZZ"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HHZZ`s space">Code and BeyondCode😋</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tools/"> Tools </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/beyondcode/"> BeyondCode😋 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HHZZ`s space">Code and BeyondCode😋</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tools/" title="">Tools</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/beyondcode/" title="">BeyondCode😋</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="page single special"><h1 class="single-title animate__animated animate__pulse animate__faster">Pointnet</h1><div class="content" id="content"><h1 id="点云的数据格式">点云的数据格式</h1>
+<p>一个点云是一个无序的向量集，每个点用三维坐标构成向量，其他信息可以扩展</p>
+<p>有.xyz等格式</p>
+<p>本质上是一个矩阵 $Num \times Dim$</p>
+<h1 id="pointnet和的算法具体操作">PointNet和++的算法具体操作</h1>
+<h2 id="pointnet算法的具体操作">PointNet算法的具体操作</h2>
+<ul>
+<li>必须考虑的几个特点
+<ul>
+<li>旋转不变性，在仿射变换下点的排列不变</li>
+<li>置换不变性(无序的)：应该是对称函数，不考虑顺序</li>
+<li>局部结构需要考虑(分割时)，平衡global和local</li>
+</ul>
+</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/papers/pointnet/image.png"
+        data-srcset="/papers/pointnet/image.png, /papers/pointnet/image.png 1.5x, /papers/pointnet/image.png 2x"
+        data-sizes="auto"
+        alt="/papers/pointnet/image.png"
+        title="alt text" width="624" height="307" /></p>
+<ol>
+<li>输入：点云数据</li>
+<li>MLP升维，抽取特征</li>
+<li>Max对称函数操作，降维，得到全局特征 $N \times 1$</li>
+<li>后续分类or分割</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/papers/pointnet/image-1.png"
+        data-srcset="/papers/pointnet/image-1.png, /papers/pointnet/image-1.png 1.5x, /papers/pointnet/image-1.png 2x"
+        data-sizes="auto"
+        alt="/papers/pointnet/image-1.png"
+        title="alt text" width="832" height="378" /></p>
+<ol>
+<li>输入：点云数据</li>
+<li>T-Net仿射变换（旋转）来保证旋转不变性</li>
+<li>MLP升维，抽取特征</li>
+<li>maxpooling操作，降维，得到global特征 $N \times 1$</li>
+<li>后续分类走mlp（fcnn）+softmax</li>
+<li>走分割的话拼接到feature $N\times 64$ 得到 $N\times 1088$，然后mlp给每个点属于哪几个类别打分</li>
+</ol>
+<ul>
+<li>不足之处
+<ul>
+<li>maxpooling这一步直接把所有点池化为以一个全局特征，局部点与点的联系没有察觉</li>
+</ul>
+</li>
+</ul>
+<h2 id="pointnet算法的具体操作-1">PointNet++算法的具体操作</h2>
+<p>借鉴了卷积神经网络的思想，对空间化整为零，分而治之
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/papers/pointnet/image-3.png"
+        data-srcset="/papers/pointnet/image-3.png, /papers/pointnet/image-3.png 1.5x, /papers/pointnet/image-3.png 2x"
+        data-sizes="auto"
+        alt="/papers/pointnet/image-3.png"
+        title="alt text" width="636" height="265" /></p>
+<ol>
+<li>进行多次set abstraction = sampling + grouping + PointNet</li>
+<li>走分类，同上PointNet处理</li>
+<li>走分割，interpolate插值，然后skip link concatenation拼接到低层次点特征后面，unit pointnet处理,重复几次，回到原始点云，得到分割结果（每个点的评分）</li>
+</ol>
+<p>以下逐步分析</p>
+<ul>
+<li>
+<p>set abstraction</p>
+<ul>
+<li>sampling FPS取点</li>
+<li>grouping 聚类ball query，
+<ul>
+<li>ball query采用<code>metric distance</code>和CNN曼哈顿距离不同，使得前者能泛化能力更好</li>
+</ul>
+</li>
+<li>然后采用pointnet对每个group进行特征提取
+<ul>
+<li>提出针对 点 密度分布不均匀的 density adaptive PointNet
+<ul>
+<li>MSG，对不同大小的区域进行特征抽取并且拼在一起 <code>random input dropout</code></li>
+<li>MRG, “堆叠”多个PointNet高维抽取，改进：一个向量是抽取低一层的特征，另一个向量直接抽取底层特征，然后由点密度分布来决定按权重拼接</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>interpolate &amp; skip link concatenation （特征传播feature propagation）</p>
+<ul>
+<li>在低一层的坐标插入临近几个点的特征加权和，权重采用距离倒数</li>
+<li>和skip link 的点特征进行拼接</li>
+<li>过一层类似1 $\times$ 1的卷积<code>unit pointnet</code></li>
+</ul>
+</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/papers/pointnet/image-2.png"
+        data-srcset="/papers/pointnet/image-2.png, /papers/pointnet/image-2.png 1.5x, /papers/pointnet/image-2.png 2x"
+        data-sizes="auto"
+        alt="/papers/pointnet/image-2.png"
+        title="alt text" width="1083" height="303" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/papers/pointnet/image-4.png"
+        data-srcset="/papers/pointnet/image-4.png, /papers/pointnet/image-4.png 1.5x, /papers/pointnet/image-4.png 2x"
+        data-sizes="auto"
+        alt="/papers/pointnet/image-4.png"
+        title="alt text" width="1040" height="415" /></p>
+<h1 id="两篇的区别">两篇的区别</h1>
+<ol>
+<li>作用域：pointnet关注全局，++侧重关注局部然后才是全局</li>
+<li>点密度：pointnet关注点微小扰动、异常值的影响，++侧重点密度分布不均匀的影响</li>
+<li>层次：++提供的是一个架构，直觉上来讲比pointnet层次高一级，pointnet可以嵌入pointnet++，但也有其他编码方案可以嵌入++？</li>
+</ol>
+<p>$By\ HZ$</p>
+</div></div></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.125.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">HHZZ</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>DDPM - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/papers/ddpm/">
+  <meta property="og:site_name" content="HHZZ`s space">
+  <meta property="og:title" content="DDPM">
+  <meta property="og:description" content="DDPM Ⅰ diffusion model如何运作? sample一张杂讯图 放进去denoise模块 反复迭代，得到更清晰的图片 step xxx → step 1, reverse process denoise模块 反复应用同一个模块 吃图片 吃噪声严重程度（数字） Denoise内部 如何训练noise predictor? Forward/Diffusion process 输入：杂讯图 and 噪声强度 Text to Image? 有很多语言和图片成对出现的训练资料
+此时增加一个文本输入即可 DDPM Ⅱ text to image的framework 三者分开训练
+text encoder &amp;amp; generation model 结论：文字encoder大一点比较好, diffusion model没有太大影响 side note:
+FID, 即feature-wise inception distance, 衡量两个Gaussian分布之间的差异 CLIP, Contrastive Language-Image Pre-training, 衡量两个文本和图片之间的差异 decoder 不需要文字资料训练 中间产物为 小图 $\rightarrow$ 原图 中间产物为 Latent Representation $\rightarrow$ 原图, auto-encoder 事实上的噪音添加 diffusion model的数学原理Ⅰ VAE vs.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+  <meta property="article:section" content="papers">
+    <meta property="article:published_time" content="2024-08-14T11:37:05+08:00">
+    <meta property="article:modified_time" content="2024-08-14T11:37:05+08:00">
+    <meta property="og:image" content="http://example.org/logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="DDPM">
+<meta name="twitter:description" content="DDPM Ⅰ diffusion model如何运作? sample一张杂讯图 放进去denoise模块 反复迭代，得到更清晰的图片 step xxx → step 1, reverse process denoise模块 反复应用同一个模块 吃图片 吃噪声严重程度（数字） Denoise内部 如何训练noise predictor? Forward/Diffusion process 输入：杂讯图 and 噪声强度 Text to Image? 有很多语言和图片成对出现的训练资料
+此时增加一个文本输入即可 DDPM Ⅱ text to image的framework 三者分开训练
+text encoder &amp; generation model 结论：文字encoder大一点比较好, diffusion model没有太大影响 side note:
+FID, 即feature-wise inception distance, 衡量两个Gaussian分布之间的差异 CLIP, Contrastive Language-Image Pre-training, 衡量两个文本和图片之间的差异 decoder 不需要文字资料训练 中间产物为 小图 $\rightarrow$ 原图 中间产物为 Latent Representation $\rightarrow$ 原图, auto-encoder 事实上的噪音添加 diffusion model的数学原理Ⅰ VAE vs.">
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/papers/ddpm/" /><link rel="prev" href="http://example.org/papers/pointnet/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "DDPM",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/papers\/ddpm\/"
+        },"genre": "papers","wordcount":  217 ,
+        "url": "http:\/\/example.org\/papers\/ddpm\/","datePublished": "2024-08-14T11:37:05+08:00","dateModified": "2024-08-14T11:37:05+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "HHZZ"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HHZZ`s space">Code and BeyondCode😋</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tools/"> Tools </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/beyondcode/"> BeyondCode😋 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HHZZ`s space">Code and BeyondCode😋</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tools/" title="">Tools</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/beyondcode/" title="">BeyondCode😋</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="page single special"><h1 class="single-title animate__animated animate__pulse animate__faster">DDPM</h1><div class="content" id="content"><h1 id="ddpm-">DDPM Ⅰ</h1>
+<h2 id="diffusion-model如何运作">diffusion model如何运作?</h2>
+<ul>
+<li>sample一张杂讯图</li>
+<li>放进去denoise模块</li>
+<li>反复迭代，得到更清晰的图片
+<ul>
+<li>step xxx → step 1, <em>reverse process</em></li>
+</ul>
+</li>
+</ul>
+<h2 id="denoise模块">denoise模块</h2>
+<ul>
+<li>反复应用同一个模块
+<ul>
+<li>吃图片</li>
+<li>吃噪声严重程度（数字）</li>
+</ul>
+</li>
+<li>Denoise内部
+<ul>
+<li><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/papers/ddpm/image.png"
+        data-srcset="/papers/ddpm/image.png, /papers/ddpm/image.png 1.5x, /papers/ddpm/image.png 2x"
+        data-sizes="auto"
+        alt="/papers/ddpm/image.png"
+        title="alt text" width="881" height="369" /></li>
+</ul>
+</li>
+</ul>
+<h2 id="如何训练noise-predictor">如何训练noise predictor?</h2>
+<ul>
+<li>Forward/Diffusion process
+<ul>
+<li>输入：杂讯图 and 噪声强度</li>
+<li><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/papers/ddpm/image-1.png"
+        data-srcset="/papers/ddpm/image-1.png, /papers/ddpm/image-1.png 1.5x, /papers/ddpm/image-1.png 2x"
+        data-sizes="auto"
+        alt="/papers/ddpm/image-1.png"
+        title="alt text" width="1067" height="266" /></li>
+</ul>
+</li>
+</ul>
+<h2 id="text-to-image">Text to Image?</h2>
+<p>有很多语言和图片成对出现的训练资料</p>
+<ul>
+<li>此时增加一个文本输入即可
+<ul>
+<li><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/papers/ddpm/image-2.png"
+        data-srcset="/papers/ddpm/image-2.png, /papers/ddpm/image-2.png 1.5x, /papers/ddpm/image-2.png 2x"
+        data-sizes="auto"
+        alt="/papers/ddpm/image-2.png"
+        title="alt text" width="1699" height="713" /></li>
+</ul>
+</li>
+</ul>
+<h1 id="ddpm--1">DDPM Ⅱ</h1>
+<h2 id="text-to-image的framework">text to image的framework</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/papers/ddpm/image-3.png"
+        data-srcset="/papers/ddpm/image-3.png, /papers/ddpm/image-3.png 1.5x, /papers/ddpm/image-3.png 2x"
+        data-sizes="auto"
+        alt="/papers/ddpm/image-3.png"
+        title="alt text" width="958" height="460" />
+三者分开训练</p>
+<h2 id="text-encoder--generation-model">text encoder &amp; generation model</h2>
+<p>结论：文字encoder大一点比较好, diffusion model没有太大影响
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/papers/ddpm/image-4.png"
+        data-srcset="/papers/ddpm/image-4.png, /papers/ddpm/image-4.png 1.5x, /papers/ddpm/image-4.png 2x"
+        data-sizes="auto"
+        alt="/papers/ddpm/image-4.png"
+        title="alt text" width="971" height="448" />
+side note:</p>
+<ul>
+<li>FID, 即feature-wise inception distance, 衡量两个Gaussian分布之间的差异</li>
+<li>CLIP, Contrastive Language-Image Pre-training, 衡量两个文本和图片之间的差异</li>
+</ul>
+<h2 id="decoder">decoder</h2>
+<ul>
+<li>不需要文字资料训练</li>
+<li>中间产物为 小图 $\rightarrow$ 原图</li>
+<li>中间产物为 Latent Representation $\rightarrow$ 原图, auto-encoder
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/papers/ddpm/image-5.png"
+        data-srcset="/papers/ddpm/image-5.png, /papers/ddpm/image-5.png 1.5x, /papers/ddpm/image-5.png 2x"
+        data-sizes="auto"
+        alt="/papers/ddpm/image-5.png"
+        title="alt text" width="976" height="412" /></li>
+</ul>
+<h2 id="事实上的噪音添加">事实上的噪音添加</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/papers/ddpm/image-6.png"
+        data-srcset="/papers/ddpm/image-6.png, /papers/ddpm/image-6.png 1.5x, /papers/ddpm/image-6.png 2x"
+        data-sizes="auto"
+        alt="/papers/ddpm/image-6.png"
+        title="alt text" width="1919" height="1079" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/papers/ddpm/image-7.png"
+        data-srcset="/papers/ddpm/image-7.png, /papers/ddpm/image-7.png 1.5x, /papers/ddpm/image-7.png 2x"
+        data-sizes="auto"
+        alt="/papers/ddpm/image-7.png"
+        title="alt text" width="956" height="579" /></p>
+<h1 id="diffusion-model的数学原理">diffusion model的数学原理Ⅰ</h1>
+<h2 id="vae-vs-ddpm">VAE vs. DDPM</h2>
+<ul>
+<li>VAE是“变分自编码器”（Variational Auto Encoder）的缩写, VAE模型包括编码器和解码器两个部分：编码器负责将输入数据压缩成一个潜在向量，解码器则从这个潜在向量重构原始数据</li>
+<li>Diffusion 的 noise 不需要learn</li>
+</ul>
+<h2 id="算法分析">算法分析</h2>
+<ul>
+<li>
+<p>Training</p>
+<ul>
+<li><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/papers/ddpm/image-8.png"
+        data-srcset="/papers/ddpm/image-8.png, /papers/ddpm/image-8.png 1.5x, /papers/ddpm/image-8.png 2x"
+        data-sizes="auto"
+        alt="/papers/ddpm/image-8.png"
+        title="alt text" width="753" height="509" /></li>
+<li><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/papers/ddpm/image-9.png"
+        data-srcset="/papers/ddpm/image-9.png, /papers/ddpm/image-9.png 1.5x, /papers/ddpm/image-9.png 2x"
+        data-sizes="auto"
+        alt="/papers/ddpm/image-9.png"
+        title="alt text" width="905" height="528" />
+<ul>
+<li>不是一点一点, 而是一次解决</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Inference</p>
+<ul>
+<li><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/papers/ddpm/image-10.png"
+        data-srcset="/papers/ddpm/image-10.png, /papers/ddpm/image-10.png 1.5x, /papers/ddpm/image-10.png 2x"
+        data-sizes="auto"
+        alt="/papers/ddpm/image-10.png"
+        title="alt text" width="1050" height="572" /></li>
+</ul>
+</li>
+</ul>
+<h1 id="diffusion-model的数学原理-1">diffusion model的数学原理Ⅱ</h1>
+<h2 id="映像生成模型本质上的目标">映像生成模型本质上的目标</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/papers/ddpm/image-11.png"
+        data-srcset="/papers/ddpm/image-11.png, /papers/ddpm/image-11.png 1.5x, /papers/ddpm/image-11.png 2x"
+        data-sizes="auto"
+        alt="/papers/ddpm/image-11.png"
+        title="alt text" width="1026" height="402" />
+加了文字相当于加了一个条件condition, 以下讨论忽略之</p>
+<ul>
+<li>MLE来衡量分布之间的差异
+<ul>
+<li><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/papers/ddpm/image-12.png"
+        data-srcset="/papers/ddpm/image-12.png, /papers/ddpm/image-12.png 1.5x, /papers/ddpm/image-12.png 2x"
+        data-sizes="auto"
+        alt="/papers/ddpm/image-12.png"
+        title="alt text" width="978" height="492" /></li>
+<li>找到$\theta^*$使得$p_{\theta}(x)$和$p_{data}(x)$之间的KL散度最小</li>
+<li><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/papers/ddpm/image-13.png"
+        data-srcset="/papers/ddpm/image-13.png, /papers/ddpm/image-13.png 1.5x, /papers/ddpm/image-13.png 2x"
+        data-sizes="auto"
+        alt="/papers/ddpm/image-13.png"
+        title="alt text" width="1703" height="847" />
+<ul>
+<li>side note: $\approx$ 成立是因为数据量很大?</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="vae的数学原理">VAE的数学原理</h2>
+<ul>
+<li><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/papers/ddpm/image-14.png"
+        data-srcset="/papers/ddpm/image-14.png, /papers/ddpm/image-14.png 1.5x, /papers/ddpm/image-14.png 2x"
+        data-sizes="auto"
+        alt="/papers/ddpm/image-14.png"
+        title="alt text" width="999" height="516" />
+<ul>
+<li>def $P_{\theta}(x|z)$</li>
+<li>asm $G(Z)$ 是一个Gaussian分布的 $\mu$</li>
+<li>side note: $f(x) = \frac{1}{\sqrt{2\pi}\sigma} e^{-\frac{(x-\mu)^2}{2\sigma^2}}$</li>
+</ul>
+</li>
+<li>(注意$\theta$被省略了) 根据MLE, 需要使得 $logP_{\theta}(x)$ 大
+<ul>
+<li><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/papers/ddpm/image-15.png"
+        data-srcset="/papers/ddpm/image-15.png, /papers/ddpm/image-15.png 1.5x, /papers/ddpm/image-15.png 2x"
+        data-sizes="auto"
+        alt="/papers/ddpm/image-15.png"
+        title="alt text" width="1618" height="904" /></li>
+</ul>
+</li>
+</ul>
+<h2 id="ddpm的数学原理">DDPM的数学原理</h2>
+<ul>
+<li><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/papers/ddpm/image-16.png"
+        data-srcset="/papers/ddpm/image-16.png, /papers/ddpm/image-16.png 1.5x, /papers/ddpm/image-16.png 2x"
+        data-sizes="auto"
+        alt="/papers/ddpm/image-16.png"
+        title="alt text" width="1029" height="475" /></li>
+<li>side note:
+<ul>
+<li>$P_{\theta}(x_{t-1}|x_{t}) \propto exp(-||G(x_{t}) - x_{t-1}||_{2})$</li>
+<li>$x_1:x_T$ 是从 $x_1$ 到 $x_T$ 的变量积分</li>
+<li>$P_{\theta}(x)$ 和  $P(x)$ 区别! 有 $\theta$ 意味着通过 $\theta$ 求得</li>
+</ul>
+</li>
+<li><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/papers/ddpm/image-17.png"
+        data-srcset="/papers/ddpm/image-17.png, /papers/ddpm/image-17.png 1.5x, /papers/ddpm/image-17.png 2x"
+        data-sizes="auto"
+        alt="/papers/ddpm/image-17.png"
+        title="alt text" width="993" height="469" /></li>
+<li>计算 $q(x_t|x_{t-1})$
+<ul>
+<li>递推和归纳法, 注意iid的Gaussian分布线性组合, 用相同方差和均值代替</li>
+<li><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/papers/ddpm/image-18.png"
+        data-srcset="/papers/ddpm/image-18.png, /papers/ddpm/image-18.png 1.5x, /papers/ddpm/image-18.png 2x"
+        data-sizes="auto"
+        alt="/papers/ddpm/image-18.png"
+        title="alt text" width="1060" height="599" /></li>
+</ul>
+</li>
+<li>回到 $P_{\theta}(x)$ 下界, 省略了 $\theta$ ?</li>
+<li><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/papers/ddpm/image-19.png"
+        data-srcset="/papers/ddpm/image-19.png, /papers/ddpm/image-19.png 1.5x, /papers/ddpm/image-19.png 2x"
+        data-sizes="auto"
+        alt="/papers/ddpm/image-19.png"
+        title="alt text" width="1062" height="585" /></li>
+<li>放大来看<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/papers/ddpm/image-20.png"
+        data-srcset="/papers/ddpm/image-20.png, /papers/ddpm/image-20.png 1.5x, /papers/ddpm/image-20.png 2x"
+        data-sizes="auto"
+        alt="/papers/ddpm/image-20.png"
+        title="alt text" width="988" height="575" /></li>
+<li>由密度函数拆开来硬整, <img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/papers/ddpm/image-21.png"
+        data-srcset="/papers/ddpm/image-21.png, /papers/ddpm/image-21.png 1.5x, /papers/ddpm/image-21.png 2x"
+        data-sizes="auto"
+        alt="/papers/ddpm/image-21.png"
+        title="alt text" width="1919" height="1079" /></li>
+<li>所以有<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/papers/ddpm/image-22.png"
+        data-srcset="/papers/ddpm/image-22.png, /papers/ddpm/image-22.png 1.5x, /papers/ddpm/image-22.png 2x"
+        data-sizes="auto"
+        alt="/papers/ddpm/image-22.png"
+        title="alt text" width="907" height="294" />
+<ul>
+<li>side note:
+<ul>
+<li>$\bar \alpha_t$ 和 $\alpha_t$ 之间有乘法关系约束!注意前面的换元!</li>
+<li>mean: 取决于 $x_t$ 和 $x_{0}$ , 符合直觉</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>回到优化目标<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/papers/ddpm/image-23.png"
+        data-srcset="/papers/ddpm/image-23.png, /papers/ddpm/image-23.png 1.5x, /papers/ddpm/image-23.png 2x"
+        data-sizes="auto"
+        alt="/papers/ddpm/image-23.png"
+        title="alt text" width="997" height="582" />
+<ul>
+<li>有解析解, 但是注意到两个Gaussian分布的特点, 直接靠近mean即可</li>
+<li><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/papers/ddpm/image-24.png"
+        data-srcset="/papers/ddpm/image-24.png, /papers/ddpm/image-24.png 1.5x, /papers/ddpm/image-24.png 2x"
+        data-sizes="auto"
+        alt="/papers/ddpm/image-24.png"
+        title="alt text" width="998" height="336" /></li>
+<li>$G(x_t) \rightarrow LHS$, 注意到 $x_t = \sqrt{\bar \alpha_t}x_0 + \sqrt{1-\bar \alpha_t}\epsilon$, 并且没有用到 $x_{t-1}$</li>
+<li><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/papers/ddpm/image-25.png"
+        data-srcset="/papers/ddpm/image-25.png, /papers/ddpm/image-25.png 1.5x, /papers/ddpm/image-25.png 2x"
+        data-sizes="auto"
+        alt="/papers/ddpm/image-25.png"
+        title="alt text" width="1040" height="542" /></li>
+<li>需要learn的是 $\epsilon$ <img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/papers/ddpm/image-26.png"
+        data-srcset="/papers/ddpm/image-26.png, /papers/ddpm/image-26.png 1.5x, /papers/ddpm/image-26.png 2x"
+        data-sizes="auto"
+        alt="/papers/ddpm/image-26.png"
+        title="alt text" width="1035" height="565" /></li>
+</ul>
+</li>
+<li>注意 $\alpha_t$ 序列没有深入探讨!</li>
+</ul>
+<h1 id="diffusion-model的数学原理-2">diffusion model的数学原理Ⅲ</h1>
+<h2 id="接上去ddpm的数学原理为什么要加入随机性">接上去DDPM的数学原理——为什么要加入随机性?</h2>
+<p>输出的不全是mean, 还叠加了 $\sigma_t \mathbf{z}$</p>
+<p>可能的原因：</p>
+<ul>
+<li>类比LLM<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/papers/ddpm/image-27.png"
+        data-srcset="/papers/ddpm/image-27.png, /papers/ddpm/image-27.png 1.5x, /papers/ddpm/image-27.png 2x"
+        data-sizes="auto"
+        alt="/papers/ddpm/image-27.png"
+        title="alt text" width="982" height="592" /> 几率大 ≠ 效果好</li>
+<li>类比语音合成的dropout形成sampling</li>
+</ul>
+<h2 id="diffusion-model的成功关键">diffusion model的成功关键</h2>
+<h3 id="auto-regressive的思想">auto-regressive的思想</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/papers/ddpm/image-28.png"
+        data-srcset="/papers/ddpm/image-28.png, /papers/ddpm/image-28.png 1.5x, /papers/ddpm/image-28.png 2x"
+        data-sizes="auto"
+        alt="/papers/ddpm/image-28.png"
+        title="alt text" width="951" height="306" />
+<em><strong>non-auto-regressive + auto-regressive</strong></em></p>
+<h2 id="其他应用">其他应用</h2>
+<ul>
+<li><a href="htttps://arxiv.org/abs/2009.00713" target="_blank" rel="noopener noreffer ">语音合成</a></li>
+<li><a href="https://arxiv.org/abs/2205.14217" target="_blank" rel="noopener noreffer ">Text</a>
+<ul>
+<li>Noise on latent space</li>
+<li>mask-predict, <img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/papers/ddpm/image-29.png"
+        data-srcset="/papers/ddpm/image-29.png, /papers/ddpm/image-29.png 1.5x, /papers/ddpm/image-29.png 2x"
+        data-sizes="auto"
+        alt="/papers/ddpm/image-29.png"
+        title="alt text" width="916" height="556" /></li>
+</ul>
+</li>
+</ul>
+</div></div></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.125.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">HHZZ</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
