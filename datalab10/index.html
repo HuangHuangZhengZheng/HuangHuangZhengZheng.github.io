@@ -7,16 +7,21 @@
         <title>DATA100-lab10 - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/datalab10/">
   <meta property="og:site_name" content="HHZZ`s space">
   <meta property="og:title" content="DATA100-lab10">
-  <meta property="og:description" content="This is my cool site">
+  <meta property="og:description" content="1 2 3 # Initialize Otter import otter grader = otter.Notebook(&amp;#34;lab10.ipynb&amp;#34;) Lab 10: SQL In this lab, we are going to practice viewing, sorting, grouping, and merging tables with SQL. We will explore two datasets:
+A &amp;ldquo;minified&amp;rdquo; version of the Internet Movie Database (IMDb). This SQLite database (~10MB) is a tiny sample of the much larger database (more than a few GBs). As a result, disclaimer that we may get wildly different results than if we use the whole database!">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2024-08-13T15:19:35+08:00">
     <meta property="article:modified_time" content="2024-08-13T15:19:35+08:00">
+    <meta property="article:tag" content="Pandas">
+    <meta property="article:tag" content="Sqlite3">
+    <meta property="article:tag" content="Sqlalchemy">
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="DATA100-lab10">
-<meta name="twitter:description" content="">
+<meta name="twitter:description" content="1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab10.ipynb&#34;) Lab 10: SQL In this lab, we are going to practice viewing, sorting, grouping, and merging tables with SQL. We will explore two datasets:
+A &ldquo;minified&rdquo; version of the Internet Movie Database (IMDb). This SQLite database (~10MB) is a tiny sample of the much larger database (more than a few GBs). As a result, disclaimer that we may get wildly different results than if we use the whole database!">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -31,7 +36,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/datalab10\/"
-        },"genre": "posts","wordcount":  0 ,
+        },"genre": "posts","keywords": "Pandas, sqlite3, sqlalchemy","wordcount":  5696 ,
         "url": "http:\/\/example.org\/datalab10\/","datePublished": "2024-08-13T15:19:35+08:00","dateModified": "2024-08-13T15:19:35+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -105,15 +110,2920 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">DATA100-lab10</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-13">2024-08-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;0 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;0 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-13">2024-08-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;5696 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;27 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"></div><div class="post-footer" id="post-footer">
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#sql-query-syntax">SQL Query Syntax</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#1-sql-cell-magic">1. <code>%%sql</code> cell magic</a>
+      <ul>
+        <li><a href="#2-the-pandas-command-pdread_sql">2. The Pandas command <code>pd.read_sql</code></a></li>
+        <li><a href="#3-a-suggested-workflow-for-writing-sql-in-jupyter-notebooks">3. A suggested workflow for writing SQL in Jupyter Notebooks</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#question-1">Question 1</a></li>
+    <li><a href="#question-2">Question 2</a></li>
+    <li><a href="#question-3">Question 3</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#table-descriptions">Table Descriptions</a></li>
+    <li><a href="#tutorial-matching-text-with-like">[Tutorial] Matching Text with <code>LIKE</code></a></li>
+    <li><a href="#question-4">Question 4</a></li>
+    <li><a href="#question-5-joining-tables">Question 5: <code>JOIN</code>ing Tables</a>
+      <ul>
+        <li><a href="#question-5a">Question 5a</a></li>
+        <li><a href="#question-5b">Question 5b</a></li>
+      </ul>
+    </li>
+    <li><a href="#question-6-subqueries-and-grouping">Question 6: Subqueries and Grouping</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Initialize Otter</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">otter</span>
+</span></span><span class="line"><span class="cl"><span class="n">grader</span> <span class="o">=</span> <span class="n">otter</span><span class="o">.</span><span class="n">Notebook</span><span class="p">(</span><span class="s2">&#34;lab10.ipynb&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="lab-10-sql">Lab 10: SQL</h1>
+<p>In this lab, we are going to practice viewing, sorting, grouping, and merging tables with SQL. We will explore two datasets:</p>
+<ol>
+<li>
+<p>A &ldquo;minified&rdquo; version of the <a href="https://www.imdb.com/interfaces/" target="_blank" rel="noopener noreffer ">Internet Movie Database</a> (IMDb). This SQLite database (~10MB) is a tiny sample of the much larger database (more than a few GBs). As a result, disclaimer that we may get wildly different results than if we use the whole database!</p>
+</li>
+<li>
+<p>The money donated during the 2016 election using the <a href="https://www.fec.gov/data/" target="_blank" rel="noopener noreffer ">Federal Election Commission (FEC)&rsquo;s public records</a>. You will be connecting to a SQLite database containing the data. The data we will be working with in this lab is quite small (~16MB); however, it is a sample taken from a much larger database (more than a few GBs).</p>
+</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Run this cell to set up your notebook</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">sqlalchemy</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">ds100_utils</span> <span class="kn">import</span> <span class="n">fetch_and_cache</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+</span></span><span class="line"><span class="cl"><span class="o">%</span><span class="n">load_ext</span> <span class="n">sql</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Unzip the data.</span>
+</span></span><span class="line"><span class="cl"><span class="err">!</span><span class="n">unzip</span> <span class="o">-</span><span class="n">o</span> <span class="n">data</span><span class="o">.</span><span class="n">zip</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>Archive:  data.zip
+  inflating: imdbmini.db             
+  inflating: fec_nyc.db              
+</code></pre>
+<h2 id="sql-query-syntax">SQL Query Syntax</h2>
+<p>Throughout this lab, you will become familiar with the following syntax for the <code>SELECT</code> query:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">SELECT [DISTINCT] 
+</span></span><span class="line"><span class="cl">    {* | expr [[AS] c_alias] 
+</span></span><span class="line"><span class="cl">    {,expr [[AS] c_alias] ...}}
+</span></span><span class="line"><span class="cl">FROM tableref {, tableref}
+</span></span><span class="line"><span class="cl">[[INNER | LEFT ] JOIN table_name
+</span></span><span class="line"><span class="cl">    ON qualification_list]
+</span></span><span class="line"><span class="cl">[WHERE search_condition]
+</span></span><span class="line"><span class="cl">[GROUP BY colname {,colname...}]
+</span></span><span class="line"><span class="cl">[HAVING search condition]
+</span></span><span class="line"><span class="cl">[ORDER BY column_list]
+</span></span><span class="line"><span class="cl">[LIMIT number]
+</span></span><span class="line"><span class="cl">[OFFSET number of rows];
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><br/><br/></p>
+<hr style="border: 5px solid #003262;" />
+<hr style="border: 1px solid #fdb515;" />
+<h1 id="part-0-tutorial-writing-sql-in-jupyter-notebooks">Part 0 [Tutorial]: Writing SQL in Jupyter Notebooks</h1>
+<h2 id="1-sql-cell-magic">1. <code>%%sql</code> cell magic</h2>
+<p>In lecture, we used the <code>sql</code> extension to call <strong><code>%%sql</code> cell magic</strong>, which enables us to connect to SQL databses and issue SQL commands within Jupyter Notebooks.</p>
+<p>Run the below cell to connect to a mini IMDb database.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">%</span><span class="n">sql</span> <span class="n">sqlite</span><span class="p">:</span><span class="o">///</span><span class="n">imdbmini</span><span class="o">.</span><span class="n">db</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><br/>
+<p>Above, prefixing our single-line command with <code>%sql</code> means that the entire line will be treated as a SQL command (this is called &ldquo;line magic&rdquo;). In this class we will most often write multi-line SQL, meaning we need &ldquo;cell magic&rdquo;, where the first line has <code>%%sql</code> (note the double <code>%</code> operator).</p>
+<p>The database <code>imdbmini.db</code> includes several tables, one of which is <code>Title</code>. Running the below cell will return first 5 lines of that table. Note that <code>%%sql</code> is on its own line.</p>
+<p>We&rsquo;ve also included syntax for single-line comments, which are surrounded by <code>--</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">%%</span><span class="k">sql</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * This is a
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * multi-line comment.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- This is a single-line/inline comment. --
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">Name</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code> * sqlite:///imdbmini.db
+Done.
+</code></pre>
+<table>
+    <thead>
+        <tr>
+            <th>nconst</th>
+            <th>primaryName</th>
+            <th>birthYear</th>
+            <th>deathYear</th>
+            <th>primaryProfession</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Fred Astaire</td>
+            <td>1899</td>
+            <td>1987</td>
+            <td>soundtrack,actor,miscellaneous</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Lauren Bacall</td>
+            <td>1924</td>
+            <td>2014</td>
+            <td>actress,soundtrack</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Brigitte Bardot</td>
+            <td>1934</td>
+            <td>None</td>
+            <td>actress,soundtrack,music_department</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>John Belushi</td>
+            <td>1949</td>
+            <td>1982</td>
+            <td>actor,soundtrack,writer</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Ingmar Bergman</td>
+            <td>1918</td>
+            <td>2007</td>
+            <td>writer,director,actor</td>
+        </tr>
+    </tbody>
+</table>
+<p><br/><br/></p>
+<h3 id="2-the-pandas-command-pdread_sql">2. The Pandas command <code>pd.read_sql</code></h3>
+<p>As of 2022, the <code>%sql</code> magic for Jupyter Notebooks is still in development (check out its <a href="https://github.com/catherinedevlin/ipython-sql" target="_blank" rel="noopener noreffer ">GitHub</a>. It is still missing many features that would justify real-world use with Python. In particular, its returned tables are <em>not</em> Pandas dataframes (for example, the query result from the above cell is missing an index).</p>
+<p>The rest of this section describes how data scientists use SQL and Python in practice, using the Pandas command <code>pd.read_sql</code> (<a href="https://pandas.pydata.org/docs/reference/api/pandas.read_sql.html" target="_blank" rel="noopener noreffer ">documentation</a>). <strong>You will see both <code>%sql</code> magic and <code>pd.read_sql</code> in this course</strong>.</p>
+<p>The below cell connects to the same database using the SQLAlchemy Python library, which can connect to several different database management systems, including sqlite3, MySQL, PostgreSQL, and Oracle. The library also supports an advanced feature for generating queries called an <a href="https://docs.sqlalchemy.org/en/latest/orm/tutorial.html" target="_blank" rel="noopener noreffer ">object relational mapper</a> or ORM, which we won&rsquo;t discuss in this course but is quite useful for application development.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># important!!! run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">sqlalchemy</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># create a SQL Alchemy connection to the database</span>
+</span></span><span class="line"><span class="cl"><span class="n">engine</span> <span class="o">=</span> <span class="n">sqlalchemy</span><span class="o">.</span><span class="n">create_engine</span><span class="p">(</span><span class="s2">&#34;sqlite:///imdbmini.db&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">connection</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>With the SQLAlchemy object <code>connection</code>, we can then call <code>pd.read_sql</code> which takes in a <code>query</code> <strong>string</strong>. Note the <code>&quot;&quot;&quot;</code> to define our multi-line string, which allows us to have a query span multiple lines. The resulting <code>df</code> DataFrame stores the results of the same SQL query from the previous section.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">query</span> <span class="o">=</span> <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">SELECT *
+</span></span></span><span class="line"><span class="cl"><span class="s2">FROM Title
+</span></span></span><span class="line"><span class="cl"><span class="s2">LIMIT 5;
+</span></span></span><span class="line"><span class="cl"><span class="s2">&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">engine</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>tconst</th>
+      <th>titleType</th>
+      <th>primaryTitle</th>
+      <th>originalTitle</th>
+      <th>isAdult</th>
+      <th>startYear</th>
+      <th>endYear</th>
+      <th>runtimeMinutes</th>
+      <th>genres</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>417</td>
+      <td>short</td>
+      <td>A Trip to the Moon</td>
+      <td>Le voyage dans la lune</td>
+      <td>0</td>
+      <td>1902</td>
+      <td>None</td>
+      <td>13</td>
+      <td>Action,Adventure,Comedy</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4972</td>
+      <td>movie</td>
+      <td>The Birth of a Nation</td>
+      <td>The Birth of a Nation</td>
+      <td>0</td>
+      <td>1915</td>
+      <td>None</td>
+      <td>195</td>
+      <td>Drama,History,War</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>10323</td>
+      <td>movie</td>
+      <td>The Cabinet of Dr. Caligari</td>
+      <td>Das Cabinet des Dr. Caligari</td>
+      <td>0</td>
+      <td>1920</td>
+      <td>None</td>
+      <td>76</td>
+      <td>Fantasy,Horror,Mystery</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>12349</td>
+      <td>movie</td>
+      <td>The Kid</td>
+      <td>The Kid</td>
+      <td>0</td>
+      <td>1921</td>
+      <td>None</td>
+      <td>68</td>
+      <td>Comedy,Drama,Family</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>13442</td>
+      <td>movie</td>
+      <td>Nosferatu</td>
+      <td>Nosferatu, eine Symphonie des Grauens</td>
+      <td>0</td>
+      <td>1922</td>
+      <td>None</td>
+      <td>94</td>
+      <td>Fantasy,Horror</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<br/>
+<p><strong>Long error messages</strong>: Given that the SQL query is now in the string, the errors become more unintelligible. Consider the below (incorrect) query, which has a semicolon in the wrong place.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># uncomment the below code and check out the error</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># query = &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># SELECT *</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># FROM Title;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># LIMIT 5</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># pd.read_sql(query, engine)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>---------------------------------------------------------------------------
+
+ProgrammingError                          Traceback (most recent call last)
+
+File d:\miniconda3\Lib\site-packages\sqlalchemy\engine\base.py:1967, in Connection._exec_single_context(self, dialect, context, statement, parameters)
+   1966     if not evt_handled:
+-&gt; 1967         self.dialect.do_execute(
+   1968             cursor, str_statement, effective_parameters, context
+   1969         )
+   1971 if self._has_events or self.engine._has_events:
+
+
+File d:\miniconda3\Lib\site-packages\sqlalchemy\engine\default.py:924, in DefaultDialect.do_execute(self, cursor, statement, parameters, context)
+    923 def do_execute(self, cursor, statement, parameters, context=None):
+--&gt; 924     cursor.execute(statement, parameters)
+
+
+ProgrammingError: You can only execute one statement at a time.
+
+
+The above exception was the direct cause of the following exception:
+
+
+ProgrammingError                          Traceback (most recent call last)
+
+Cell In[7], line 8
+      1 # uncomment the below code and check out the error
+      3 query = &quot;&quot;&quot;
+      4 SELECT *
+      5 FROM Title;
+      6 LIMIT 5
+      7 &quot;&quot;&quot;
+----&gt; 8 pd.read_sql(query, engine)
+
+
+File d:\miniconda3\Lib\site-packages\pandas\io\sql.py:734, in read_sql(sql, con, index_col, coerce_float, params, parse_dates, columns, chunksize, dtype_backend, dtype)
+    724     return pandas_sql.read_table(
+    725         sql,
+    726         index_col=index_col,
+   (...)
+    731         dtype_backend=dtype_backend,
+    732     )
+    733 else:
+--&gt; 734     return pandas_sql.read_query(
+    735         sql,
+    736         index_col=index_col,
+    737         params=params,
+    738         coerce_float=coerce_float,
+    739         parse_dates=parse_dates,
+    740         chunksize=chunksize,
+    741         dtype_backend=dtype_backend,
+    742         dtype=dtype,
+    743     )
+
+
+File d:\miniconda3\Lib\site-packages\pandas\io\sql.py:1836, in SQLDatabase.read_query(self, sql, index_col, coerce_float, parse_dates, params, chunksize, dtype, dtype_backend)
+   1779 def read_query(
+   1780     self,
+   1781     sql: str,
+   (...)
+   1788     dtype_backend: DtypeBackend | Literal[&quot;numpy&quot;] = &quot;numpy&quot;,
+   1789 ) -&gt; DataFrame | Iterator[DataFrame]:
+   1790     &quot;&quot;&quot;
+   1791     Read SQL query into a DataFrame.
+   1792 
+   (...)
+   1834 
+   1835     &quot;&quot;&quot;
+-&gt; 1836     result = self.execute(sql, params)
+   1837     columns = result.keys()
+   1839     if chunksize is not None:
+
+
+File d:\miniconda3\Lib\site-packages\pandas\io\sql.py:1659, in SQLDatabase.execute(self, sql, params)
+   1657 args = [] if params is None else [params]
+   1658 if isinstance(sql, str):
+-&gt; 1659     return self.con.exec_driver_sql(sql, *args)
+   1660 return self.con.execute(sql, *args)
+
+
+File d:\miniconda3\Lib\site-packages\sqlalchemy\engine\base.py:1779, in Connection.exec_driver_sql(self, statement, parameters, execution_options)
+   1774 execution_options = self._execution_options.merge_with(
+   1775     execution_options
+   1776 )
+   1778 dialect = self.dialect
+-&gt; 1779 ret = self._execute_context(
+   1780     dialect,
+   1781     dialect.execution_ctx_cls._init_statement,
+   1782     statement,
+   1783     None,
+   1784     execution_options,
+   1785     statement,
+   1786     distilled_parameters,
+   1787 )
+   1789 return ret
+
+
+File d:\miniconda3\Lib\site-packages\sqlalchemy\engine\base.py:1846, in Connection._execute_context(self, dialect, constructor, statement, parameters, execution_options, *args, **kw)
+   1844     return self._exec_insertmany_context(dialect, context)
+   1845 else:
+-&gt; 1846     return self._exec_single_context(
+   1847         dialect, context, statement, parameters
+   1848     )
+
+
+File d:\miniconda3\Lib\site-packages\sqlalchemy\engine\base.py:1986, in Connection._exec_single_context(self, dialect, context, statement, parameters)
+   1983     result = context._setup_result_proxy()
+   1985 except BaseException as e:
+-&gt; 1986     self._handle_dbapi_exception(
+   1987         e, str_statement, effective_parameters, cursor, context
+   1988     )
+   1990 return result
+
+
+File d:\miniconda3\Lib\site-packages\sqlalchemy\engine\base.py:2353, in Connection._handle_dbapi_exception(self, e, statement, parameters, cursor, context, is_sub_exec)
+   2351 elif should_wrap:
+   2352     assert sqlalchemy_exception is not None
+-&gt; 2353     raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+   2354 else:
+   2355     assert exc_info[1] is not None
+
+
+File d:\miniconda3\Lib\site-packages\sqlalchemy\engine\base.py:1967, in Connection._exec_single_context(self, dialect, context, statement, parameters)
+   1965                 break
+   1966     if not evt_handled:
+-&gt; 1967         self.dialect.do_execute(
+   1968             cursor, str_statement, effective_parameters, context
+   1969         )
+   1971 if self._has_events or self.engine._has_events:
+   1972     self.dispatch.after_cursor_execute(
+   1973         self,
+   1974         cursor,
+   (...)
+   1978         context.executemany,
+   1979     )
+
+
+File d:\miniconda3\Lib\site-packages\sqlalchemy\engine\default.py:924, in DefaultDialect.do_execute(self, cursor, statement, parameters, context)
+    923 def do_execute(self, cursor, statement, parameters, context=None):
+--&gt; 924     cursor.execute(statement, parameters)
+
+
+ProgrammingError: (sqlite3.ProgrammingError) You can only execute one statement at a time.
+[SQL: 
+SELECT *
+FROM Title;
+LIMIT 5
+]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+</code></pre>
+<br/>
+<p>Now that&rsquo;s an unruly error message!</p>
+<p><br/><br/></p>
+<h3 id="3-a-suggested-workflow-for-writing-sql-in-jupyter-notebooks">3. A suggested workflow for writing SQL in Jupyter Notebooks</h3>
+<p>Which approach is better, <code>%sql</code> magic or <code>pd.read_sql</code>?</p>
+<p>The SQL database generally contains much more data than what you would analyze in detail. As a Python-fluent data scientist, you will often query SQL databases to perform initial exploratory data analysis, a subset of which you load into Python for further processing.</p>
+<p>In practice, you would likely use a combination of the two approaches. First, you&rsquo;d try out some SQL queries with <code>%sql</code> magic to get an interesting subset of data. Then, you&rsquo;d copy over the query into a <code>pd.read_sql</code> command for visualization, modeling, and export with Pandas, sklearn, and other Python libraries.</p>
+<p>For SQL assignments in this course, to minimize unruly error messages while maximizing Python compatibility, we suggest the following &ldquo;sandboxed&rdquo; workflow:</p>
+<ol>
+<li>
+<p>Create a <code>%%sql</code> magic cell <strong>below</strong> the answer cell. You can copy in the below code:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">%% sql
+</span></span><span class="line"><span class="cl">-- This is a comment. Put your code here... --
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<br/>
+<ol>
+<li>Work on the SQL query in the <code>%%sql</code> cell; e.g., <code>SELECT ... ;</code></li>
+<li>Then, once you&rsquo;re satisfied with your SQL query, copy it into the multi-string query in the answer cell (the one that contains the <code>pd.read_sql</code> call).</li>
+</ol>
+<p>You don&rsquo;t have to follow the above workflow to get full credit on assignments, but we suggest it to reduce debugging headaches. We&rsquo;ve created the scratchwork <code>%%sql</code> cells for you in this assignment, but <strong>do not</strong> add cells between this <code>%%sql</code> cell and the Python cell right below it. It will cause errors when we run the autograder, and it will sometimes cause a failure to generate the PDF file.</p>
+<p><br/><br/></p>
+<hr style="border: 5px solid #003262;" />
+<hr style="border: 1px solid #fdb515;" />
+<h1 id="part-1-the-imdb-mini-dataset">Part 1: The IMDb (mini) Dataset</h1>
+<p>Let&rsquo;s explore a miniature version of the <a href="https://www.imdb.com/interfaces/" target="_blank" rel="noopener noreffer ">IMDb Dataset</a>. This is the same dataset that we will use for the upcoming homework.</p>
+<p>Let&rsquo;s load in the database in two ways (using both Python and cell magic) so that we can flexibly explore the database.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">engine</span> <span class="o">=</span> <span class="n">sqlalchemy</span><span class="o">.</span><span class="n">create_engine</span><span class="p">(</span><span class="s2">&#34;sqlite:///imdbmini.db&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">connection</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">%</span><span class="n">sql</span> <span class="n">sqlite</span><span class="p">:</span><span class="o">///</span><span class="n">imdbmini</span><span class="o">.</span><span class="n">db</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><br/>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">%%</span><span class="k">sql</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">sqlite_master</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="k">type</span><span class="o">=</span><span class="s1">&#39;table&#39;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code> * sqlite:///imdbmini.db
+Done.
+</code></pre>
+<table>
+    <thead>
+        <tr>
+            <th>type</th>
+            <th>name</th>
+            <th>tbl_name</th>
+            <th>rootpage</th>
+            <th>sql</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>table</td>
+            <td>Title</td>
+            <td>Title</td>
+            <td>2</td>
+            <td>CREATE TABLE &quot;Title&quot; (<br>&quot;tconst&quot; INTEGER,<br>  &quot;titleType&quot; TEXT,<br>  &quot;primaryTitle&quot; TEXT,<br>  &quot;originalTitle&quot; TEXT,<br>  &quot;isAdult&quot; TEXT,<br>  &quot;startYear&quot; TEXT,<br>  &quot;endYear&quot; TEXT,<br>  &quot;runtimeMinutes&quot; TEXT,<br>  &quot;genres&quot; TEXT<br>)</td>
+        </tr>
+        <tr>
+            <td>table</td>
+            <td>Name</td>
+            <td>Name</td>
+            <td>12</td>
+            <td>CREATE TABLE &quot;Name&quot; (<br>&quot;nconst&quot; INTEGER,<br>  &quot;primaryName&quot; TEXT,<br>  &quot;birthYear&quot; TEXT,<br>  &quot;deathYear&quot; TEXT,<br>  &quot;primaryProfession&quot; TEXT<br>)</td>
+        </tr>
+        <tr>
+            <td>table</td>
+            <td>Role</td>
+            <td>Role</td>
+            <td>70</td>
+            <td>CREATE TABLE &quot;Role&quot; (<br>tconst INTEGER,<br>ordering TEXT,<br>nconst INTEGER,<br>category TEXT,<br>job TEXT,<br>characters TEXT<br>)</td>
+        </tr>
+        <tr>
+            <td>table</td>
+            <td>Rating</td>
+            <td>Rating</td>
+            <td>41</td>
+            <td>CREATE TABLE &quot;Rating&quot; (<br>tconst INTEGER,<br>averageRating TEXT,<br>numVotes TEXT<br>)</td>
+        </tr>
+    </tbody>
+</table>
+<p>From running the above cell, we see the database has 4 tables: <code>Name</code>, <code>Role</code>, <code>Rating</code>, and <code>Title</code>.</p>
+<details>
+    <summary>[<b>Click to Expand</b>] See descriptions of each table's schema.</summary>
+<p><strong><code>Name</code></strong> – Contains the following information for names of people.</p>
+<ul>
+<li>nconst (text) - alphanumeric unique identifier of the name/person</li>
+<li>primaryName (text)– name by which the person is most often credited</li>
+<li>birthYear (integer) – in YYYY format</li>
+<li>deathYear (integer) – in YYYY format</li>
+</ul>
+<p><strong><code>Role</code></strong> – Contains the principal cast/crew for titles.</p>
+<ul>
+<li>tconst (text) - alphanumeric unique identifier of the title</li>
+<li>ordering (integer) – a number to uniquely identify rows for a given tconst</li>
+<li>nconst (text) - alphanumeric unique identifier of the name/person</li>
+<li>category (text) - the category of job that person was in</li>
+<li>characters (text) - the name of the character played if applicable, else &lsquo;\N&rsquo;</li>
+</ul>
+<p><strong><code>Rating</code></strong> – Contains the IMDb rating and votes information for titles.</p>
+<ul>
+<li>tconst (text) - alphanumeric unique identifier of the title</li>
+<li>averageRating (real) – weighted average of all the individual user ratings</li>
+<li>numVotes (integer) - number of votes (i.e., ratings) the title has received</li>
+</ul>
+<p><strong><code>Title</code></strong> - Contains the following information for titles.</p>
+<ul>
+<li>tconst (text) - alphanumeric unique identifier of the title</li>
+<li>titleType (text) -  the type/format of the title</li>
+<li>primaryTitle (text) -  the more popular title / the title used by the filmmakers on promotional materials at the point of release</li>
+<li>isAdult (text) - 0: non-adult title; 1: adult title</li>
+<li>year (YYYY) – represents the release year of a title.</li>
+<li>runtimeMinutes (integer)  – primary runtime of the title, in minutes</li>
+</ul>
+</details>
+<p><br/><br/>
+From the above descriptions, we can conclude the following:</p>
+<ul>
+<li><code>Name.nconst</code> and <code>Title.tconst</code> are primary keys of the <code>Name</code> and <code>Title</code> tables, respectively.</li>
+<li>that <code>Role.nconst</code> and <code>Role.tconst</code> are <strong>foreign keys</strong> that point to <code>Name.nconst</code> and <code>Title.tconst</code>, respectively.</li>
+</ul>
+<p><br/><br/></p>
+<hr style="border: 1px solid #fdb515;" />
+<h2 id="question-1">Question 1</h2>
+<p>What are the different kinds of <code>titleType</code>s included in the <code>Title</code> table? Write a query to find out all the unique <code>titleType</code>s of films using the <code>DISTINCT</code> keyword.  (<strong>You may not use <code>GROUP BY</code>.</strong>)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">%%</span><span class="k">sql</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Code in this scratchwork cell is __not graded.__
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Copy over any SQL queries you write here into the below Python cell.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Do __not__ insert any new cells in between the SQL/Python cells!
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Doing so may break the autograder.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- Write below this comment. --
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">titleType</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">Title</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code> * sqlite:///imdbmini.db
+Done.
+</code></pre>
+<table>
+    <thead>
+        <tr>
+            <th>titleType</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>short</td>
+        </tr>
+        <tr>
+            <td>movie</td>
+        </tr>
+        <tr>
+            <td>tvSeries</td>
+        </tr>
+        <tr>
+            <td>tvMovie</td>
+        </tr>
+        <tr>
+            <td>tvMiniSeries</td>
+        </tr>
+        <tr>
+            <td>video</td>
+        </tr>
+        <tr>
+            <td>videoGame</td>
+        </tr>
+        <tr>
+            <td>tvEpisode</td>
+        </tr>
+        <tr>
+            <td>tvSpecial</td>
+        </tr>
+    </tbody>
+</table>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">query_q1</span> <span class="o">=</span> <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">SELECT DISTINCT titleType FROM Title;
+</span></span></span><span class="line"><span class="cl"><span class="s2">&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">res_q1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">query_q1</span><span class="p">,</span> <span class="n">engine</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">res_q1</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>titleType</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>short</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>movie</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>tvSeries</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>tvMovie</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>tvMiniSeries</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>video</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>videoGame</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>tvEpisode</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>tvSpecial</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q1&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong><pre style='display: inline;'>q1</pre></strong> passed! 🍀</p>
+<hr>
+<h2 id="question-2">Question 2</h2>
+<p>Before we proceed we want to get a better picture of the kinds of jobs that exist.  To do this examine the <code>Role</code> table by computing the number of records with each job <code>category</code>.  Present the results in descending order by the total counts.</p>
+<p>The top of your table should look like this (however, you should have more rows):</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>category</th>
+<th>total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>0</strong></td>
+<td>actor</td>
+<td>21665</td>
+</tr>
+<tr>
+<td><strong>1</strong></td>
+<td>writer</td>
+<td>13830</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">%%</span><span class="k">sql</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Code in this scratchwork cell is __not graded.__
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Copy over any SQL queries you write here into the below Python cell.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Do __not__ insert any new cells in between the SQL/Python cells!
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Doing so may break the autograder.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- Write below this comment. --
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">category</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">total</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="k">Role</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">category</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code> * sqlite:///imdbmini.db
+Done.
+</code></pre>
+<table>
+    <thead>
+        <tr>
+            <th>category</th>
+            <th>total</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>actor</td>
+            <td>21665</td>
+        </tr>
+        <tr>
+            <td>writer</td>
+            <td>13830</td>
+        </tr>
+        <tr>
+            <td>actress</td>
+            <td>12175</td>
+        </tr>
+        <tr>
+            <td>producer</td>
+            <td>11028</td>
+        </tr>
+        <tr>
+            <td>director</td>
+            <td>6995</td>
+        </tr>
+        <tr>
+            <td>composer</td>
+            <td>4123</td>
+        </tr>
+        <tr>
+            <td>cinematographer</td>
+            <td>2747</td>
+        </tr>
+        <tr>
+            <td>editor</td>
+            <td>1558</td>
+        </tr>
+        <tr>
+            <td>self</td>
+            <td>623</td>
+        </tr>
+        <tr>
+            <td>production_designer</td>
+            <td>410</td>
+        </tr>
+        <tr>
+            <td>archive_footage</td>
+            <td>66</td>
+        </tr>
+        <tr>
+            <td>archive_sound</td>
+            <td>6</td>
+        </tr>
+    </tbody>
+</table>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">query_q2</span> <span class="o">=</span> <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">SELECT category, COUNT(*) AS total
+</span></span></span><span class="line"><span class="cl"><span class="s2">FROM Role
+</span></span></span><span class="line"><span class="cl"><span class="s2">GROUP BY category
+</span></span></span><span class="line"><span class="cl"><span class="s2">ORDER BY total DESC;
+</span></span></span><span class="line"><span class="cl"><span class="s2">&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">res_q2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">query_q2</span><span class="p">,</span> <span class="n">engine</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">res_q2</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>category</th>
+      <th>total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>actor</td>
+      <td>21665</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>writer</td>
+      <td>13830</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>actress</td>
+      <td>12175</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>producer</td>
+      <td>11028</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>director</td>
+      <td>6995</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>composer</td>
+      <td>4123</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>cinematographer</td>
+      <td>2747</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>editor</td>
+      <td>1558</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>self</td>
+      <td>623</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>production_designer</td>
+      <td>410</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>archive_footage</td>
+      <td>66</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>archive_sound</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q2&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong><pre style='display: inline;'>q2</pre></strong> passed! ✨</p>
+<br/>
+If we computed the results correctly we should see a nice horizontal bar chart of the counts per category below:
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">px</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">res_q2</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&#34;total&#34;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&#34;category&#34;</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><br/><br/></p>
+<hr style="border: 1px solid #fdb515;" />
+<h2 id="question-3">Question 3</h2>
+<p>Now that we have a better sense of the basics of our data, we can ask some more interesting questions.</p>
+<p>The <code>Rating</code> table has the <code>numVotes</code> and the <code>averageRating</code> for each title. Which 10 films have the most ratings?</p>
+<p>Write a SQL query that outputs three fields: the <code>title</code>, <code>numVotes</code>, and <code>averageRating</code> for the 10 films that have the highest number of ratings.  Sort the result in descending order by the number of votes.</p>
+<p><em>Hint</em>: The <code>numVotes</code> in the <code>Rating</code> table is not an integer! Use <code>CAST(Rating.numVotes AS int) AS numVotes</code> to convert the attribute to an integer.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">%%</span><span class="k">sql</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Code in this scratchwork cell is __not graded.__
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Copy over any SQL queries you write here into the below Python cell.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Do __not__ insert any new cells in between the SQL/Python cells!
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Doing so may break the autograder.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- Write below this comment. --
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">primaryTitle</span><span class="p">,</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">CAST</span><span class="p">(</span><span class="n">numVotes</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="nb">int</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">numVotes</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">averageRating</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">Rating</span><span class="p">,</span><span class="w"> </span><span class="n">Title</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">Rating</span><span class="p">.</span><span class="n">tconst</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Title</span><span class="p">.</span><span class="n">tconst</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">numVotes</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">query_q3</span> <span class="o">=</span> <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">SELECT primaryTitle AS title, 
+</span></span></span><span class="line"><span class="cl"><span class="s2">CAST(numVotes AS int) AS numVotes,
+</span></span></span><span class="line"><span class="cl"><span class="s2">averageRating
+</span></span></span><span class="line"><span class="cl"><span class="s2">FROM Rating, Title
+</span></span></span><span class="line"><span class="cl"><span class="s2">WHERE Rating.tconst = Title.tconst
+</span></span></span><span class="line"><span class="cl"><span class="s2">ORDER BY numVotes DESC
+</span></span></span><span class="line"><span class="cl"><span class="s2">LIMIT 10;
+</span></span></span><span class="line"><span class="cl"><span class="s2">&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">res_q3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">query_q3</span><span class="p">,</span> <span class="n">engine</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">res_q3</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>title</th>
+      <th>numVotes</th>
+      <th>averageRating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>The Shawshank Redemption</td>
+      <td>2462686</td>
+      <td>9.3</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>The Dark Knight</td>
+      <td>2417875</td>
+      <td>9.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Inception</td>
+      <td>2169255</td>
+      <td>8.8</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Fight Club</td>
+      <td>1939312</td>
+      <td>8.8</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Pulp Fiction</td>
+      <td>1907561</td>
+      <td>8.9</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Forrest Gump</td>
+      <td>1903969</td>
+      <td>8.8</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Game of Thrones</td>
+      <td>1874040</td>
+      <td>9.2</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>The Matrix</td>
+      <td>1756469</td>
+      <td>8.7</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>The Lord of the Rings: The Fellowship of the Ring</td>
+      <td>1730296</td>
+      <td>8.8</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>The Lord of the Rings: The Return of the King</td>
+      <td>1709023</td>
+      <td>8.9</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q3&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><br/><br/></p>
+<hr style="border: 5px solid #003262;" />
+<hr style="border: 1px solid #fdb515;" />
+<h1 id="part-2-election-donations-in-new-york-city">Part 2: Election Donations in New York City</h1>
+<p>Finally, let&rsquo;s analyze the Federal Election Commission (FEC)&rsquo;s public records. We connect to the database in two ways (using both Python and cell magic) so that we can flexibly explore the database.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># important!!! run this cell and the next one</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">sqlalchemy</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># create a SQL Alchemy connection to the database</span>
+</span></span><span class="line"><span class="cl"><span class="n">engine</span> <span class="o">=</span> <span class="n">sqlalchemy</span><span class="o">.</span><span class="n">create_engine</span><span class="p">(</span><span class="s2">&#34;sqlite:///fec_nyc.db&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">connection</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">%</span><span class="n">sql</span> <span class="n">sqlite</span><span class="p">:</span><span class="o">///</span><span class="n">fec_nyc</span><span class="o">.</span><span class="n">db</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="table-descriptions">Table Descriptions</h2>
+<p>Run the below cell to explore the <strong>schemas</strong> of all tables saved in the database.</p>
+<p>If you&rsquo;d like, you can consult the below linked FEC pages for the descriptions of the tables themselves.</p>
+<ul>
+<li><code>cand</code> (<a href="https://www.fec.gov/campaign-finance-data/candidate-summary-file-description/" target="_blank" rel="noopener noreffer ">link</a>): Candidates table. Contains names and party affiliation.</li>
+<li><code>comm</code> (<a href="https://www.fec.gov/campaign-finance-data/committee-summary-file-description/" target="_blank" rel="noopener noreffer ">link</a>): Committees table. Contains committee names and types.</li>
+<li><code>indiv_sample_nyc</code> (<a href="https://www.fec.gov/campaign-finance-data/contributions-individuals-file-description" target="_blank" rel="noopener noreffer ">link</a>): All individual contributions from New York City .</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">%%</span><span class="k">sql</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cm">/* just run this cell */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="k">sql</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">sqlite_master</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="k">type</span><span class="o">=</span><span class="s1">&#39;table&#39;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code> * sqlite:///fec_nyc.db
+   sqlite:///imdbmini.db
+Done.
+</code></pre>
+<table>
+    <thead>
+        <tr>
+            <th>sql</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>CREATE TABLE &quot;cand&quot; (<br>    cand_id character varying(9),<br>    cand_name text,<br>    cand_pty_affiliation character varying(3),<br>    cand_election_yr integer,<br>    cand_office_st character varying(2),<br>    cand_office character(1),<br>    cand_office_district integer,<br>    cand_ici character(1),<br>    cand_status character(1),<br>    cand_pcc character varying(9),<br>    cand_st1 text,<br>    cand_st2 text,<br>    cand_city text,<br>    cand_st character varying(2),<br>    cand_zip character varying(10)<br>)</td>
+        </tr>
+        <tr>
+            <td>CREATE TABLE &quot;comm&quot;(<br>  &quot;cmte_id&quot; TEXT,<br>  &quot;cmte_nm&quot; TEXT,<br>  &quot;tres_nm&quot; TEXT,<br>  &quot;cmte_st1&quot; TEXT,<br>  &quot;cmte_st2&quot; TEXT,<br>  &quot;cmte_city&quot; TEXT,<br>  &quot;cmte_st&quot; TEXT,<br>  &quot;cmte_zip&quot; TEXT,<br>  &quot;cmte_dsgn&quot; TEXT,<br>  &quot;cmte_tp&quot; TEXT,<br>  &quot;cmte_pty_affiliation&quot; TEXT,<br>  &quot;cmte_filing_freq&quot; TEXT,<br>  &quot;org_tp&quot; TEXT,<br>  &quot;connected_org_nm&quot; TEXT,<br>  &quot;cand_id&quot; TEXT<br>)</td>
+        </tr>
+        <tr>
+            <td>CREATE TABLE indiv_sample_nyc (<br>    cmte_id character varying(9),<br>    amndt_ind character(1),<br>    rpt_tp character varying(3),<br>    transaction_pgi character(5),<br>    image_num bigint,<br>    transaction_tp character varying(3),<br>    entity_tp character varying(3),<br>    name text,<br>    city text,<br>    state character(2),<br>    zip_code character varying(12),<br>    employer text,<br>    occupation text,<br>    transaction_dt character varying(9),<br>    transaction_amt integer,<br>    other_id text,<br>    tran_id text,<br>    file_num bigint,<br>    memo_cd text,<br>    memo_text text,<br>    sub_id bigint<br>)</td>
+        </tr>
+    </tbody>
+</table>
+<p><br/><br/></p>
+<p>Let&rsquo;s look at the <code>indiv_sample_nyc</code> table. The below cell displays individual donations made by residents of the state of New York. We use <code>LIMIT 5</code> to avoid loading and displaying a huge table.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">%%</span><span class="k">sql</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cm">/* just run this cell */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">comm</span><span class="p">.</span><span class="n">cmte_id</span><span class="p">,</span><span class="w"> </span><span class="n">cmte_nm</span><span class="p">,</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">transaction_amt</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">total</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">indiv_sample_nyc</span><span class="p">,</span><span class="w"> </span><span class="n">comm</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">indiv_sample_nyc</span><span class="p">.</span><span class="n">cmte_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">comm</span><span class="p">.</span><span class="n">cmte_id</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%TRUMP%&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%DONALD%&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">cmte_nm</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">transaction_amt</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code> * sqlite:///fec_nyc.db
+   sqlite:///imdbmini.db
+Done.
+</code></pre>
+<table>
+    <thead>
+        <tr>
+            <th>cmte_id</th>
+            <th>cmte_nm</th>
+            <th>total</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>C00608489</td>
+            <td>GREAT AMERICA PAC</td>
+            <td>75</td>
+        </tr>
+        <tr>
+            <td>C00369033</td>
+            <td>TEXANS FOR SENATOR JOHN CORNYN INC</td>
+            <td>1000</td>
+        </tr>
+        <tr>
+            <td>C00494229</td>
+            <td>HELLER FOR SENATE</td>
+            <td>2000</td>
+        </tr>
+        <tr>
+            <td>C00554949</td>
+            <td>FRIENDS OF DAVE BRAT INC.</td>
+            <td>2600</td>
+        </tr>
+        <tr>
+            <td>C00230482</td>
+            <td>GRASSLEY COMMITTEE INC</td>
+            <td>5200</td>
+        </tr>
+    </tbody>
+</table>
+<p>You can write a SQL query to return the id and name of the first five candidates from the Democratic party, as below:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">%%</span><span class="k">sql</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cm">/* just run this cell */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">cand_id</span><span class="p">,</span><span class="w"> </span><span class="n">cand_name</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">cand</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">cand_pty_affiliation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;DEM&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code> * sqlite:///fec_nyc.db
+   sqlite:///imdbmini.db
+Done.
+</code></pre>
+<table>
+    <thead>
+        <tr>
+            <th>cand_id</th>
+            <th>cand_name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>H0AL05049</td>
+            <td>CRAMER, ROBERT E &quot;BUD&quot; JR</td>
+        </tr>
+        <tr>
+            <td>H0AL07086</td>
+            <td>SEWELL, TERRYCINA ANDREA</td>
+        </tr>
+        <tr>
+            <td>H0AL07094</td>
+            <td>HILLIARD, EARL FREDERICK JR</td>
+        </tr>
+        <tr>
+            <td>H0AR01091</td>
+            <td>GREGORY, JAMES CHRISTOPHER</td>
+        </tr>
+        <tr>
+            <td>H0AR01109</td>
+            <td>CAUSEY, CHAD</td>
+        </tr>
+    </tbody>
+</table>
+<p><br/><br/></p>
+<hr style="border: 1px solid #fdb515;" />
+<h2 id="tutorial-matching-text-with-like">[Tutorial] Matching Text with <code>LIKE</code></h2>
+<p>First, let&rsquo;s look at 2016 election contributions made by Donald Trump, who was a New York (NY) resident during that year. The following SQL query returns the <code>cmte_id</code>, <code>transaction_amt</code>, and <code>name</code> for every contribution made by any donor with &ldquo;DONALD&rdquo; and &ldquo;TRUMP&rdquo; in their name in the <code>indiv_sample_nyc</code> table.</p>
+<p>Notes:</p>
+<ul>
+<li>We use the <code>WHERE ... LIKE '...'</code> to match fields with text patterns. The <code>%</code> wildcard represents at least zero characters. Compare this to what you know from regex!</li>
+<li>We use <code>pd.read_sql</code> syntax here because we will do some EDA on the result <code>res</code>.</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">example_query</span> <span class="o">=</span> <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">SELECT 
+</span></span></span><span class="line"><span class="cl"><span class="s2">    cmte_id,
+</span></span></span><span class="line"><span class="cl"><span class="s2">    transaction_amt,
+</span></span></span><span class="line"><span class="cl"><span class="s2">    name
+</span></span></span><span class="line"><span class="cl"><span class="s2">FROM indiv_sample_nyc
+</span></span></span><span class="line"><span class="cl"><span class="s2">WHERE name LIKE &#39;%TRUMP%&#39; AND name LIKE &#39;%DONALD%&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="s2">&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">example_res</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">example_query</span><span class="p">,</span> <span class="n">engine</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">example_res</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>cmte_id</th>
+      <th>transaction_amt</th>
+      <th>name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>C00230482</td>
+      <td>2600</td>
+      <td>DONALD, TRUMP</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>C00230482</td>
+      <td>2600</td>
+      <td>DONALD, TRUMP</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>C00014498</td>
+      <td>9000</td>
+      <td>TRUMP, DONALD</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>C00494229</td>
+      <td>2000</td>
+      <td>TRUMP, DONALD MR</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>C00571869</td>
+      <td>2700</td>
+      <td>TRUMP, DONALD J.</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>152</th>
+      <td>C00608489</td>
+      <td>5</td>
+      <td>DONALD J TRUMP FOR PRESIDENT INC</td>
+    </tr>
+    <tr>
+      <th>153</th>
+      <td>C00608489</td>
+      <td>5</td>
+      <td>DONALD J TRUMP FOR PRESIDENT INC</td>
+    </tr>
+    <tr>
+      <th>154</th>
+      <td>C00608489</td>
+      <td>5</td>
+      <td>DONALD J TRUMP FOR PRESIDENT INC</td>
+    </tr>
+    <tr>
+      <th>155</th>
+      <td>C00608489</td>
+      <td>5</td>
+      <td>DONALD J TRUMP FOR PRESIDENT INC</td>
+    </tr>
+    <tr>
+      <th>156</th>
+      <td>C00608489</td>
+      <td>5</td>
+      <td>DONALD J TRUMP FOR PRESIDENT INC</td>
+    </tr>
+  </tbody>
+</table>
+<p>157 rows × 3 columns</p>
+</div>
+<p>If we look at the list above, it appears that some donations were not by Donald Trump himself, but instead by an entity called &ldquo;DONALD J TRUMP FOR PRESIDENT INC&rdquo;. Fortunately, we see that our query only seems to have picked up one such anomalous name.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">example_res</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>name
+TRUMP, DONALD J.                    133
+DONALD J TRUMP FOR PRESIDENT INC     15
+TRUMP, DONALD                         4
+DONALD, TRUMP                         2
+TRUMP, DONALD MR                      1
+TRUMP, DONALD J MR.                   1
+TRUMP, DONALD J MR                    1
+Name: count, dtype: int64
+</code></pre>
+<p><br/><br/></p>
+<hr style="border: 1px solid #fdb515;" />
+<h2 id="question-4">Question 4</h2>
+<p>Revise the above query so that the 15 anomalous donations made by &ldquo;DONALD J TRUMP FOR PRESIDENT INC&rdquo; do not appear. Your resulting table should have 142 rows.</p>
+<p>Hints:</p>
+<ul>
+<li>Consider using the above query as a starting point, or checking out the SQL query skeleton at the top of this lab.</li>
+<li>The <code>NOT</code> keyword may also be useful here.</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">%%</span><span class="k">sql</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Code in this scratchwork cell is __not graded.__
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Copy over any SQL queries you write here into the below Python cell.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Do __not__ insert any new cells in between the SQL/Python cells!
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Doing so may break the autograder.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- Write below this comment. --
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">cmte_id</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">transaction_amt</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">name</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">indiv_sample_nyc</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%TRUMP%&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%DONALD%&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%DONALD J TRUMP FOR PRESIDENT INC%&#39;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">query_q4</span> <span class="o">=</span> <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">SELECT 
+</span></span></span><span class="line"><span class="cl"><span class="s2">    cmte_id,
+</span></span></span><span class="line"><span class="cl"><span class="s2">    transaction_amt,
+</span></span></span><span class="line"><span class="cl"><span class="s2">    name
+</span></span></span><span class="line"><span class="cl"><span class="s2">FROM indiv_sample_nyc
+</span></span></span><span class="line"><span class="cl"><span class="s2">WHERE name LIKE &#39;%TRUMP%&#39; AND name LIKE &#39;%DONALD%&#39; AND name NOT LIKE &#39;%DONALD J TRUMP FOR PRESIDENT INC%&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="s2">&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">res_q4</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">query_q4</span><span class="p">,</span> <span class="n">engine</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">res_q4</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>cmte_id</th>
+      <th>transaction_amt</th>
+      <th>name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>C00230482</td>
+      <td>2600</td>
+      <td>DONALD, TRUMP</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>C00230482</td>
+      <td>2600</td>
+      <td>DONALD, TRUMP</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>C00014498</td>
+      <td>9000</td>
+      <td>TRUMP, DONALD</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>C00494229</td>
+      <td>2000</td>
+      <td>TRUMP, DONALD MR</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>C00571869</td>
+      <td>2700</td>
+      <td>TRUMP, DONALD J.</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>137</th>
+      <td>C00580100</td>
+      <td>9752</td>
+      <td>TRUMP, DONALD J.</td>
+    </tr>
+    <tr>
+      <th>138</th>
+      <td>C00580100</td>
+      <td>2574</td>
+      <td>TRUMP, DONALD J.</td>
+    </tr>
+    <tr>
+      <th>139</th>
+      <td>C00580100</td>
+      <td>23775</td>
+      <td>TRUMP, DONALD J.</td>
+    </tr>
+    <tr>
+      <th>140</th>
+      <td>C00580100</td>
+      <td>2000000</td>
+      <td>TRUMP, DONALD J.</td>
+    </tr>
+    <tr>
+      <th>141</th>
+      <td>C00580100</td>
+      <td>2574</td>
+      <td>TRUMP, DONALD J.</td>
+    </tr>
+  </tbody>
+</table>
+<p>142 rows × 3 columns</p>
+</div>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q4&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong><pre style='display: inline;'>q4</pre></strong> passed! ✨</p>
+<p><br/><br/></p>
+<hr style="border: 1px solid #fdb515;" />
+<h2 id="question-5-joining-tables">Question 5: <code>JOIN</code>ing Tables</h2>
+<p>Let&rsquo;s explore the other two tables in our database: <code>cand</code> and <code>comm</code>.</p>
+<p>The <code>cand</code> table contains summary financial information about each candidate registered with the FEC or appearing on an official state ballot for House, Senate or President.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">%%</span><span class="k">sql</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cm">/* just run this cell */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">indiv_sample_nyc</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code> * sqlite:///fec_nyc.db
+   sqlite:///imdbmini.db
+Done.
+</code></pre>
+<table>
+    <thead>
+        <tr>
+            <th>cmte_id</th>
+            <th>amndt_ind</th>
+            <th>rpt_tp</th>
+            <th>transaction_pgi</th>
+            <th>image_num</th>
+            <th>transaction_tp</th>
+            <th>entity_tp</th>
+            <th>name</th>
+            <th>city</th>
+            <th>state</th>
+            <th>zip_code</th>
+            <th>employer</th>
+            <th>occupation</th>
+            <th>transaction_dt</th>
+            <th>transaction_amt</th>
+            <th>other_id</th>
+            <th>tran_id</th>
+            <th>file_num</th>
+            <th>memo_cd</th>
+            <th>memo_text</th>
+            <th>sub_id</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>C00445015</td>
+            <td>N</td>
+            <td>Q1</td>
+            <td>P    </td>
+            <td>15951128130</td>
+            <td>15</td>
+            <td>IND</td>
+            <td>SINGER, TRIPP MR.</td>
+            <td>NEW YORK</td>
+            <td>NY</td>
+            <td>100214505</td>
+            <td>ATLANTIC MAILBOXES, INC.</td>
+            <td>OWNER</td>
+            <td>01302015</td>
+            <td>1000</td>
+            <td></td>
+            <td>A-CF13736</td>
+            <td>1002485</td>
+            <td></td>
+            <td></td>
+            <td>4041420151241812398</td>
+        </tr>
+        <tr>
+            <td>C00510461</td>
+            <td>N</td>
+            <td>Q1</td>
+            <td>P    </td>
+            <td>15951129284</td>
+            <td>15E</td>
+            <td>IND</td>
+            <td>SIMON, DANIEL A</td>
+            <td>NEW YORK</td>
+            <td>NY</td>
+            <td>100237940</td>
+            <td>N/A</td>
+            <td>RETIRED</td>
+            <td>03292015</td>
+            <td>400</td>
+            <td>C00401224</td>
+            <td>VN8JBDDJBA8</td>
+            <td>1002590</td>
+            <td></td>
+            <td>* EARMARKED CONTRIBUTION: SEE BELOW</td>
+            <td>4041420151241813640</td>
+        </tr>
+        <tr>
+            <td>C00422410</td>
+            <td>N</td>
+            <td>Q1</td>
+            <td>P    </td>
+            <td>15970352211</td>
+            <td>15</td>
+            <td>IND</td>
+            <td>ABDUL RAUF, FEISAL</td>
+            <td>NEW YORK</td>
+            <td>NY</td>
+            <td>101150010</td>
+            <td>THE CORDOBA INITIATIVE</td>
+            <td>CHAIRMAN</td>
+            <td>03042015</td>
+            <td>250</td>
+            <td></td>
+            <td>VN8A3DBSYG6</td>
+            <td>1003643</td>
+            <td></td>
+            <td></td>
+            <td>4041620151241914560</td>
+        </tr>
+        <tr>
+            <td>C00510461</td>
+            <td>N</td>
+            <td>Q1</td>
+            <td>P    </td>
+            <td>15951129280</td>
+            <td>15</td>
+            <td>IND</td>
+            <td>SCHWARZER, FRANK</td>
+            <td>NEW YORK</td>
+            <td>NY</td>
+            <td>100145135</td>
+            <td>METRO HYDRAULIC JACK CO</td>
+            <td>SALES</td>
+            <td>01162015</td>
+            <td>100</td>
+            <td></td>
+            <td>VN8JBDAP4C4</td>
+            <td>1002590</td>
+            <td></td>
+            <td>* EARMARKED CONTRIBUTION: SEE BELOW</td>
+            <td>4041420151241813630</td>
+        </tr>
+        <tr>
+            <td>C00510461</td>
+            <td>N</td>
+            <td>Q1</td>
+            <td>P    </td>
+            <td>15951129281</td>
+            <td>15</td>
+            <td>IND</td>
+            <td>SCHWARZER, FRANK</td>
+            <td>NEW YORK</td>
+            <td>NY</td>
+            <td>100145135</td>
+            <td>METRO HYDRAULIC JACK CO</td>
+            <td>SALES</td>
+            <td>02162015</td>
+            <td>100</td>
+            <td></td>
+            <td>VN8JBDBRDG3</td>
+            <td>1002590</td>
+            <td></td>
+            <td>* EARMARKED CONTRIBUTION: SEE BELOW</td>
+            <td>4041420151241813632</td>
+        </tr>
+    </tbody>
+</table>
+<p>The <code>comm</code> table contains summary financial information about each committee registered with the FEC. Committees are organizations that spend money for political action or parties, or spend money for or against political candidates.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">%%</span><span class="k">sql</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cm">/* just run this cell */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">comm</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code> * sqlite:///fec_nyc.db
+   sqlite:///imdbmini.db
+Done.
+</code></pre>
+<table>
+    <thead>
+        <tr>
+            <th>cmte_id</th>
+            <th>cmte_nm</th>
+            <th>tres_nm</th>
+            <th>cmte_st1</th>
+            <th>cmte_st2</th>
+            <th>cmte_city</th>
+            <th>cmte_st</th>
+            <th>cmte_zip</th>
+            <th>cmte_dsgn</th>
+            <th>cmte_tp</th>
+            <th>cmte_pty_affiliation</th>
+            <th>cmte_filing_freq</th>
+            <th>org_tp</th>
+            <th>connected_org_nm</th>
+            <th>cand_id</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>C00000059</td>
+            <td>HALLMARK CARDS PAC</td>
+            <td>ERIN BROWER</td>
+            <td>2501 MCGEE</td>
+            <td>MD#288</td>
+            <td>KANSAS CITY</td>
+            <td>MO</td>
+            <td>64108</td>
+            <td>U</td>
+            <td>Q</td>
+            <td>UNK</td>
+            <td>M</td>
+            <td>C</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>C00000422</td>
+            <td>AMERICAN MEDICAL ASSOCIATION POLITICAL ACTION COMMITTEE</td>
+            <td>WALKER, KEVIN</td>
+            <td>25 MASSACHUSETTS AVE, NW</td>
+            <td>SUITE 600</td>
+            <td>WASHINGTON</td>
+            <td>DC</td>
+            <td>20001</td>
+            <td>B</td>
+            <td>Q</td>
+            <td></td>
+            <td>M</td>
+            <td>M</td>
+            <td>AMERICAN MEDICAL ASSOCIATION</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>C00000489</td>
+            <td>D R I V E POLITICAL FUND CHAPTER 886</td>
+            <td>TOM RITTER</td>
+            <td>3528 W RENO</td>
+            <td></td>
+            <td>OKLAHOMA CITY</td>
+            <td>OK</td>
+            <td>73107</td>
+            <td>U</td>
+            <td>N</td>
+            <td></td>
+            <td>Q</td>
+            <td>L</td>
+            <td>TEAMSTERS LOCAL UNION 886</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>C00000547</td>
+            <td>KANSAS MEDICAL SOCIETY POLITICAL ACTION COMMITTEE</td>
+            <td>C. RICHARD BONEBRAKE, M.D.</td>
+            <td>623 SW 10TH AVE</td>
+            <td></td>
+            <td>TOPEKA</td>
+            <td>KS</td>
+            <td>66612</td>
+            <td>U</td>
+            <td>Q</td>
+            <td>UNK</td>
+            <td>Q</td>
+            <td>T</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>C00000638</td>
+            <td>INDIANA STATE MEDICAL ASSOCIATION POLITICAL ACTION COMMITTEE</td>
+            <td>VIDYA KORA, M.D.</td>
+            <td>322 CANAL WALK, CANAL LEVEL</td>
+            <td></td>
+            <td>INDIANAPOLIS</td>
+            <td>IN</td>
+            <td>46202</td>
+            <td>U</td>
+            <td>Q</td>
+            <td></td>
+            <td>Q</td>
+            <td>M</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+<hr>
+<h3 id="question-5a">Question 5a</h3>
+<p>Notice that both the <code>cand</code> and <code>comm</code> tables have a <code>cand_id</code> column. Let&rsquo;s try joining these two tables on this column to print out committee information for candidates.</p>
+<p>List the first 5 candidate names (<code>cand_name</code>) in reverse lexicographic order by <code>cand_name</code>, along with their corresponding committee names. <strong>Only select rows that have a matching <code>cand_id</code> in both tables.</strong></p>
+<p>Your output should look similar to the following:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>cand_name</th>
+<th>cmte_nm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>0</strong></td>
+<td>ZUTLER, DANIEL PAUL MR</td>
+<td>CITIZENS TO ELECT DANIEL P ZUTLER FOR PRESIDENT</td>
+</tr>
+<tr>
+<td><strong>1</strong></td>
+<td>ZUMWALT, JAMES</td>
+<td>ZUMWALT FOR CONGRESS</td>
+</tr>
+<tr>
+<td><strong>&hellip;</strong></td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+</tr>
+</tbody>
+</table>
+<p>Consider starting from the following query skeleton, which uses the <code>AS</code> keyword to rename the <code>cand</code> and <code>comm</code> tables to <code>c1</code> and <code>c2</code>, respectively.
+Which join is most appropriate?</p>
+<pre><code>SELECT ...
+FROM cand AS c1
+    [INNER | {LEFT |RIGHT | FULL } {OUTER}] JOIN comm AS c2
+    ON ...
+...
+...;
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">%%</span><span class="k">sql</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Code in this scratchwork cell is __not graded.__
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Copy over any SQL queries you write here into the below Python cell.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Do __not__ insert any new cells in between the SQL/Python cells!
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Doing so may break the autograder.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- Write below this comment. --
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="n">cand_name</span><span class="p">,</span><span class="w"> </span><span class="n">cmte_nm</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">FROM</span><span class="w"> </span><span class="n">cand</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">c1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">comm</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">c2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">ON</span><span class="w"> </span><span class="n">c1</span><span class="p">.</span><span class="n">cand_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c2</span><span class="p">.</span><span class="n">cand_id</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">cand_name</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">query_q5a</span> <span class="o">=</span> <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    SELECT cand_name, cmte_nm
+</span></span></span><span class="line"><span class="cl"><span class="s2">    FROM cand AS c1
+</span></span></span><span class="line"><span class="cl"><span class="s2">        INNER JOIN comm AS c2
+</span></span></span><span class="line"><span class="cl"><span class="s2">        ON c1.cand_id = c2.cand_id
+</span></span></span><span class="line"><span class="cl"><span class="s2">    ORDER BY cand_name DESC
+</span></span></span><span class="line"><span class="cl"><span class="s2">    LIMIT 5;
+</span></span></span><span class="line"><span class="cl"><span class="s2">&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">res_q5a</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">query_q5a</span><span class="p">,</span> <span class="n">engine</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">res_q5a</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>cand_name</th>
+      <th>cmte_nm</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>ZUTLER, DANIEL PAUL MR</td>
+      <td>CITIZENS TO ELECT DANIEL P ZUTLER FOR PRESIDENT</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>ZUMWALT, JAMES</td>
+      <td>ZUMWALT FOR CONGRESS</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>ZUKOWSKI, ANDREW GEORGE</td>
+      <td>ZUKOWSKI FOR CONGRESS</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ZUCCOLO, JOE</td>
+      <td>JOE ZUCCOLO FOR CONGRESS</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>ZORN, ROBERT ERWIN</td>
+      <td>CONSTITUTIONAL COMMITTEE</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q5a&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong><pre style='display: inline;'>q5a</pre></strong> passed! 🎉</p>
+<p><br/><br/></p>
+<hr>
+<h3 id="question-5b">Question 5b</h3>
+<p>Suppose we modify the query from the previous part to include <em>all</em> candidates, <strong>including those that don&rsquo;t have a committee.</strong></p>
+<p>List the first 5 candidate names (<code>cand_name</code>) in reverse lexicographic order by <code>cand_name</code>, along with their corresponding committee names. If the candidate has no committee in the <code>comm</code> table, then <code>cmte_nm</code> should be NULL (or None in the Python representation).</p>
+<p>Your output should look similar to the following:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>cand_name</th>
+<th>cmte_nm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>0</strong></td>
+<td>ZUTLER, DANIEL PAUL MR</td>
+<td>CITIZENS TO ELECT DANIEL P ZUTLER FOR PRESIDENT</td>
+</tr>
+<tr>
+<td><strong>&hellip;</strong></td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td>ZORNOW, TODD MR</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<p>Hint: Start from the same query skeleton as the previous part.
+Which join is most appropriate?</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">%%</span><span class="k">sql</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Code in this scratchwork cell is __not graded.__
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Copy over any SQL queries you write here into the below Python cell.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Do __not__ insert any new cells in between the SQL/Python cells!
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Doing so may break the autograder.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- Write below this comment. --
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="n">cand_name</span><span class="p">,</span><span class="w"> </span><span class="n">cmte_nm</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">FROM</span><span class="w"> </span><span class="n">cand</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">c1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">comm</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">c2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">ON</span><span class="w"> </span><span class="n">c1</span><span class="p">.</span><span class="n">cand_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c2</span><span class="p">.</span><span class="n">cand_id</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">cand_name</span><span class="w"> </span><span class="k">DESC</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code> * sqlite:///fec_nyc.db
+   sqlite:///imdbmini.db
+Done.
+</code></pre>
+<table>
+    <thead>
+        <tr>
+            <th>cand_name</th>
+            <th>cmte_nm</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>ZUTLER, DANIEL PAUL MR</td>
+            <td>CITIZENS TO ELECT DANIEL P ZUTLER FOR PRESIDENT</td>
+        </tr>
+        <tr>
+            <td>ZUMWALT, JAMES</td>
+            <td>ZUMWALT FOR CONGRESS</td>
+        </tr>
+        <tr>
+            <td>ZUKOWSKI, ANDREW GEORGE</td>
+            <td>ZUKOWSKI FOR CONGRESS</td>
+        </tr>
+        <tr>
+            <td>ZUCCOLO, JOE</td>
+            <td>JOE ZUCCOLO FOR CONGRESS</td>
+        </tr>
+        <tr>
+            <td>ZORNOW, TODD MR</td>
+            <td>None</td>
+        </tr>
+    </tbody>
+</table>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">query_q5b</span> <span class="o">=</span> <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    SELECT cand_name, cmte_nm
+</span></span></span><span class="line"><span class="cl"><span class="s2">    FROM cand AS c1
+</span></span></span><span class="line"><span class="cl"><span class="s2">        LEFT JOIN comm AS c2
+</span></span></span><span class="line"><span class="cl"><span class="s2">        ON c1.cand_id = c2.cand_id
+</span></span></span><span class="line"><span class="cl"><span class="s2">    ORDER BY cand_name DESC
+</span></span></span><span class="line"><span class="cl"><span class="s2">    LIMIT 5;
+</span></span></span><span class="line"><span class="cl"><span class="s2">&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">res_q5b</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">query_q5b</span><span class="p">,</span> <span class="n">engine</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">res_q5b</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>cand_name</th>
+      <th>cmte_nm</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>ZUTLER, DANIEL PAUL MR</td>
+      <td>CITIZENS TO ELECT DANIEL P ZUTLER FOR PRESIDENT</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>ZUMWALT, JAMES</td>
+      <td>ZUMWALT FOR CONGRESS</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>ZUKOWSKI, ANDREW GEORGE</td>
+      <td>ZUKOWSKI FOR CONGRESS</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ZUCCOLO, JOE</td>
+      <td>JOE ZUCCOLO FOR CONGRESS</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>ZORNOW, TODD MR</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q5b&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong><pre style='display: inline;'>q5b</pre></strong> passed! 🚀</p>
+<p><br/><br/></p>
+<hr style="border: 1px solid #fdb515;" />
+<h2 id="question-6-subqueries-and-grouping">Question 6: Subqueries and Grouping</h2>
+<p>If we return to our results from Question 4, we see that many of the contributions were to the same committee:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Your SQL query result from Question 4</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># reprinted for your convenience</span>
+</span></span><span class="line"><span class="cl"><span class="n">res_q4</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>cmte_id</th>
+      <th>transaction_amt</th>
+      <th>name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>C00230482</td>
+      <td>2600</td>
+      <td>DONALD, TRUMP</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>C00230482</td>
+      <td>2600</td>
+      <td>DONALD, TRUMP</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>C00014498</td>
+      <td>9000</td>
+      <td>TRUMP, DONALD</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>C00494229</td>
+      <td>2000</td>
+      <td>TRUMP, DONALD MR</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>C00571869</td>
+      <td>2700</td>
+      <td>TRUMP, DONALD J.</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>137</th>
+      <td>C00580100</td>
+      <td>9752</td>
+      <td>TRUMP, DONALD J.</td>
+    </tr>
+    <tr>
+      <th>138</th>
+      <td>C00580100</td>
+      <td>2574</td>
+      <td>TRUMP, DONALD J.</td>
+    </tr>
+    <tr>
+      <th>139</th>
+      <td>C00580100</td>
+      <td>23775</td>
+      <td>TRUMP, DONALD J.</td>
+    </tr>
+    <tr>
+      <th>140</th>
+      <td>C00580100</td>
+      <td>2000000</td>
+      <td>TRUMP, DONALD J.</td>
+    </tr>
+    <tr>
+      <th>141</th>
+      <td>C00580100</td>
+      <td>2574</td>
+      <td>TRUMP, DONALD J.</td>
+    </tr>
+  </tbody>
+</table>
+<p>142 rows × 3 columns</p>
+</div>
+<br/>
+<hr>
+<p>Create a new SQL query that returns the total amount that Donald Trump contributed to each committee.</p>
+<p>Your table should have four columns: <code>cmte_id</code>, <code>total_amount</code> (total amount contributed to that committee), <code>num_donations</code> (total number of donations), and <code>cmte_nm</code> (name of the committee). Your table should be sorted in <strong>decreasing order</strong> of <code>total_amount</code>.</p>
+<p><strong>This is a hard question!</strong> Don&rsquo;t be afraid to reference the lecture slides, or the overall SQL query skeleton at the top of this lab.</p>
+<p>Here are some other hints:</p>
+<ul>
+<li>
+<p>Note that committee names are not available in <code>indiv_sample_nyc</code>, so you will have to obtain information somehow from the <code>comm</code> table (perhaps a <code>JOIN</code> would be useful).</p>
+</li>
+<li>
+<p>Remember that you can compute summary statistics after grouping by using aggregates like <code>COUNT(*)</code>, <code>SUM()</code> as output fields.</p>
+</li>
+<li>
+<p>A <strong>subquery</strong> may be useful to break your question down into subparts. Consider the following query skeleton, which uses the <code>WITH</code> operator to store a subquery&rsquo;s results in a temporary table named <code>donations</code>.</p>
+<pre><code>  WITH donations AS (
+      SELECT ...
+      ...
+  )
+  SELECT ...
+  FROM donations
+  GROUP BY ...
+  ORDER BY ...;
+</code></pre>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">%%</span><span class="k">sql</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cm">/* just run this cell */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">comm</span><span class="p">.</span><span class="n">cmte_id</span><span class="p">,</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">transaction_amt</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">total_amount</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">num_donations</span><span class="p">,</span><span class="w"> </span><span class="n">cmte_nm</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">indiv_sample_nyc</span><span class="p">,</span><span class="w"> </span><span class="n">comm</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">indiv_sample_nyc</span><span class="p">.</span><span class="n">cmte_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">comm</span><span class="p">.</span><span class="n">cmte_id</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%TRUMP%&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%DONALD%&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">cmte_nm</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">total_amount</span><span class="w"> </span><span class="k">DESC</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code> * sqlite:///fec_nyc.db
+   sqlite:///imdbmini.db
+Done.
+</code></pre>
+<table>
+    <thead>
+        <tr>
+            <th>cmte_id</th>
+            <th>total_amount</th>
+            <th>num_donations</th>
+            <th>cmte_nm</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>C00580100</td>
+            <td>18633157</td>
+            <td>131</td>
+            <td>DONALD J. TRUMP FOR PRESIDENT, INC.</td>
+        </tr>
+        <tr>
+            <td>C00055582</td>
+            <td>10000</td>
+            <td>1</td>
+            <td>NY REPUBLICAN FEDERAL CAMPAIGN COMMITTEE</td>
+        </tr>
+        <tr>
+            <td>C00014498</td>
+            <td>9000</td>
+            <td>1</td>
+            <td>REPUBLICAN PARTY OF IOWA</td>
+        </tr>
+        <tr>
+            <td>C00571869</td>
+            <td>5400</td>
+            <td>2</td>
+            <td>DONOVAN FOR CONGRESS</td>
+        </tr>
+        <tr>
+            <td>C00230482</td>
+            <td>5200</td>
+            <td>2</td>
+            <td>GRASSLEY COMMITTEE INC</td>
+        </tr>
+        <tr>
+            <td>C00034033</td>
+            <td>5000</td>
+            <td>1</td>
+            <td>SOUTH CAROLINA REPUBLICAN PARTY</td>
+        </tr>
+        <tr>
+            <td>C00136457</td>
+            <td>5000</td>
+            <td>1</td>
+            <td>NEW HAMPSHIRE REPUBLICAN STATE COMMITTEE</td>
+        </tr>
+        <tr>
+            <td>C00554949</td>
+            <td>2600</td>
+            <td>1</td>
+            <td>FRIENDS OF DAVE BRAT INC.</td>
+        </tr>
+        <tr>
+            <td>C00494229</td>
+            <td>2000</td>
+            <td>1</td>
+            <td>HELLER FOR SENATE</td>
+        </tr>
+        <tr>
+            <td>C00369033</td>
+            <td>1000</td>
+            <td>1</td>
+            <td>TEXANS FOR SENATOR JOHN CORNYN INC</td>
+        </tr>
+    </tbody>
+</table>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">%%</span><span class="k">sql</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Code in this scratchwork cell is __not graded.__
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Copy over any SQL queries you write here into the below Python cell.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Do __not__ insert any new cells in between the SQL/Python cells!
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Doing so may break the autograder.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- Write below this comment. --
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">        </span><span class="k">WITH</span><span class="w"> </span><span class="n">donations</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">SELECT</span><span class="w"> </span><span class="n">c1</span><span class="p">.</span><span class="n">cmte_id</span><span class="p">,</span><span class="n">transaction_amt</span><span class="p">,</span><span class="w"> </span><span class="n">cmte_nm</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">FROM</span><span class="w"> </span><span class="n">indiv_sample_nyc</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">c1</span><span class="p">,</span><span class="w"> </span><span class="n">comm</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">c2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">WHERE</span><span class="w"> </span><span class="n">c1</span><span class="p">.</span><span class="n">cmte_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c2</span><span class="p">.</span><span class="n">cmte_id</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%TRUMP%&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%DONALD%&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">transaction_amt</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">SELECT</span><span class="w"> </span><span class="n">cmte_id</span><span class="p">,</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">transaction_amt</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">total_amount</span><span class="p">,</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">num_donations</span><span class="p">,</span><span class="w"> </span><span class="n">cmte_nm</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">FROM</span><span class="w"> </span><span class="n">donations</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">cmte_nm</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">total_amount</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code> * sqlite:///fec_nyc.db
+   sqlite:///imdbmini.db
+Done.
+</code></pre>
+<table>
+    <thead>
+        <tr>
+            <th>cmte_id</th>
+            <th>total_amount</th>
+            <th>num_donations</th>
+            <th>cmte_nm</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>C00608489</td>
+            <td>75</td>
+            <td>15</td>
+            <td>GREAT AMERICA PAC</td>
+        </tr>
+        <tr>
+            <td>C00369033</td>
+            <td>1000</td>
+            <td>1</td>
+            <td>TEXANS FOR SENATOR JOHN CORNYN INC</td>
+        </tr>
+        <tr>
+            <td>C00494229</td>
+            <td>2000</td>
+            <td>1</td>
+            <td>HELLER FOR SENATE</td>
+        </tr>
+        <tr>
+            <td>C00554949</td>
+            <td>2600</td>
+            <td>1</td>
+            <td>FRIENDS OF DAVE BRAT INC.</td>
+        </tr>
+        <tr>
+            <td>C00136457</td>
+            <td>5000</td>
+            <td>1</td>
+            <td>NEW HAMPSHIRE REPUBLICAN STATE COMMITTEE</td>
+        </tr>
+        <tr>
+            <td>C00034033</td>
+            <td>5000</td>
+            <td>1</td>
+            <td>SOUTH CAROLINA REPUBLICAN PARTY</td>
+        </tr>
+        <tr>
+            <td>C00230482</td>
+            <td>5200</td>
+            <td>2</td>
+            <td>GRASSLEY COMMITTEE INC</td>
+        </tr>
+        <tr>
+            <td>C00571869</td>
+            <td>5400</td>
+            <td>2</td>
+            <td>DONOVAN FOR CONGRESS</td>
+        </tr>
+        <tr>
+            <td>C00014498</td>
+            <td>9000</td>
+            <td>1</td>
+            <td>REPUBLICAN PARTY OF IOWA</td>
+        </tr>
+        <tr>
+            <td>C00055582</td>
+            <td>10000</td>
+            <td>1</td>
+            <td>NY REPUBLICAN FEDERAL CAMPAIGN COMMITTEE</td>
+        </tr>
+    </tbody>
+</table>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">query_q6</span> <span class="o">=</span> <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">SELECT comm.cmte_id, sum(transaction_amt) as total_amount, COUNT(*) as num_donations, cmte_nm
+</span></span></span><span class="line"><span class="cl"><span class="s2">FROM indiv_sample_nyc, comm
+</span></span></span><span class="line"><span class="cl"><span class="s2">WHERE indiv_sample_nyc.cmte_id = comm.cmte_id AND name LIKE &#39;%TRUMP%&#39; AND name LIKE &#39;%DONALD%&#39;
+</span></span></span><span class="line"><span class="cl"><span class="s2">GROUP BY cmte_nm
+</span></span></span><span class="line"><span class="cl"><span class="s2">ORDER BY total_amount DESC
+</span></span></span><span class="line"><span class="cl"><span class="s2">LIMIT 10;
+</span></span></span><span class="line"><span class="cl"><span class="s2">&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">res_q6</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">query_q6</span><span class="p">,</span> <span class="n">engine</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">res_q6</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>cmte_id</th>
+      <th>total_amount</th>
+      <th>num_donations</th>
+      <th>cmte_nm</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>C00580100</td>
+      <td>18633157</td>
+      <td>131</td>
+      <td>DONALD J. TRUMP FOR PRESIDENT, INC.</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>C00055582</td>
+      <td>10000</td>
+      <td>1</td>
+      <td>NY REPUBLICAN FEDERAL CAMPAIGN COMMITTEE</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>C00014498</td>
+      <td>9000</td>
+      <td>1</td>
+      <td>REPUBLICAN PARTY OF IOWA</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>C00571869</td>
+      <td>5400</td>
+      <td>2</td>
+      <td>DONOVAN FOR CONGRESS</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>C00230482</td>
+      <td>5200</td>
+      <td>2</td>
+      <td>GRASSLEY COMMITTEE INC</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>C00034033</td>
+      <td>5000</td>
+      <td>1</td>
+      <td>SOUTH CAROLINA REPUBLICAN PARTY</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>C00136457</td>
+      <td>5000</td>
+      <td>1</td>
+      <td>NEW HAMPSHIRE REPUBLICAN STATE COMMITTEE</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>C00554949</td>
+      <td>2600</td>
+      <td>1</td>
+      <td>FRIENDS OF DAVE BRAT INC.</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>C00494229</td>
+      <td>2000</td>
+      <td>1</td>
+      <td>HELLER FOR SENATE</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>C00369033</td>
+      <td>1000</td>
+      <td>1</td>
+      <td>TEXANS FOR SENATOR JOHN CORNYN INC</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q6&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong><pre style='display: inline;'>q6</pre></strong> passed! 🎉</p>
+<h1 id="congratulations-you-finished-the-lab">Congratulations! You finished the lab!</h1>
+<hr>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -124,19 +3034,19 @@
                             <a class="link-to-markdown" href="/datalab10/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/datalab10/" data-title="DATA100-lab10"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/datalab10/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/datalab10/" data-title="DATA100-lab10"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/datalab10/" data-title="DATA100-lab10"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/datalab10/" data-title="DATA100-lab10"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/datalab10/" data-title="DATA100-lab10" data-hashtags="Pandas,sqlite3,sqlalchemy"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/datalab10/" data-hashtag="Pandas"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/datalab10/" data-title="DATA100-lab10"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/datalab10/" data-title="DATA100-lab10"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/datalab10/" data-title="DATA100-lab10"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/pandas/">Pandas</a>,&nbsp;<a href="/tags/sqlite3/">Sqlite3</a>,&nbsp;<a href="/tags/sqlalchemy/">Sqlalchemy</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/datalab9/" class="prev" rel="prev" title="DATA100-lab9"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>DATA100-lab9</a>
+    <div class="post-nav"><a href="/datalab9/" class="prev" rel="prev" title="DATA100-lab9: Probability and Modeling"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>DATA100-lab9: Probability and Modeling</a>
             <a href="/datalab12/" class="next" rel="next" title="DATA100-lab12">DATA100-lab12<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>

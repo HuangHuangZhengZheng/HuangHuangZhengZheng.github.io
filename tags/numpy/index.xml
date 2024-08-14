@@ -3,7 +3,17 @@
         <title>Numpy - Tag - HHZZ`s space</title>
         <link>http://example.org/tags/numpy/</link>
         <description>Numpy - Tag - HHZZ`s space</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 13 Aug 2024 15:19:34 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/numpy/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 13 Aug 2024 15:19:35 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/numpy/" rel="self" type="application/rss+xml" /><item>
+    <title>DATA100-lab9: Probability and Modeling</title>
+    <link>http://example.org/datalab9/</link>
+    <pubDate>Tue, 13 Aug 2024 15:19:35 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/datalab9/</guid>
+    <description><![CDATA[1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab09.ipynb&#34;) Lab 9: Probability and Modeling In this lab, you will explore estimators and modeling in two parts:
+You will explore if the &ldquo;sample max&rdquo; is a biased estimator for the true max of a population.
+Given a sample (and no access to the population), you will bootstrap the sample correlation estimator to infer properties of the population correlation of two features.]]></description>
+</item>
+<item>
     <title>DATA100-lab7: Gradient Descent and Feature Engineering</title>
     <link>http://example.org/datalab7/</link>
     <pubDate>Tue, 13 Aug 2024 15:19:34 &#43;0800</pubDate>
