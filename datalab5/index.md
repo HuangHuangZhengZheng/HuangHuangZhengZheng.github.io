@@ -21,7 +21,7 @@ In this lab, you will try to predict restaurant tips from a set of data in sever
 
 A. Without given any additional information, use a **constant model with L2 loss** to predict the tip $\hat{y}$ as a summary statistic, $\theta$.
 
-B. Given one piece of information—the total bill $x$—**use a linear model with L2 loss** to predict the tip $\hat{y}$ as a linear function of $x$.
+B. Given one piece of information—the total bill $x$�?*use a linear model with L2 loss** to predict the tip $\hat{y}$ as a linear function of $x$.
 
 C. See if a **constant model with L1 loss** changes our predictions.
 
@@ -965,7 +965,7 @@ print('b_hat_manual: ', b_hat)
 
 
 ---
-## 互动可视化
+## 互动可视�?
 **Visual Solution** (not graded): Feel free to interact with the below plot and verify that the $\hat{a}$ and $\hat{b}$ you computed using either method above minimize the MSE. In the cell below  we plot the mean squared error for different parameter values. Note that now that we have two parameters, we have a 3D MSE surface plot.
 
 Rotate the data around and zoom in and out using your trackpad or the controls at the top right of the figure. If you get an error that your browser does not support webgl, you may need to restart your kernel and/or browser.

@@ -264,8 +264,7 @@ points: 1
 
 
 ```python
-# 用好np向量化
-
+# 用好np向量�?
 def summation(n):
     """Compute the summation i^3 + 3 * i^2 for 1 <= i <= n."""
     arr = np.arange(1, n+1)
@@ -497,7 +496,7 @@ grader.check("q2d")
 
 
 
-<p><strong><pre style='display: inline;'>q2d</pre></strong> passed! ✨</p>
+<p><strong><pre style='display: inline;'>q2d</pre></strong> passed! �?/p>
 
 
 

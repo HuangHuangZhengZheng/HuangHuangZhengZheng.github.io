@@ -129,7 +129,7 @@
     <li><a href="#regularization">Regularization</a>
       <ul>
         <li><a href="#standard-scaling">Standard Scaling</a></li>
-        <li><a href="#归一化">归一化</a></li>
+        <li><a href="#归一">归一�?</a></li>
         <li><a href="#finding-an-optimum-alpha">Finding an Optimum Alpha</a></li>
       </ul>
     </li>
@@ -1403,7 +1403,7 @@ clickable and can be expanded/collapsed.
 
 #sk-container-id-1 label.sk-toggleable__label-arrow:before {
   /* Arrow on the left of the label */
-  content: "▸";
+  content: "�?;
   float: left;
   margin-right: 0.25em;
   color: var(--sklearn-color-icon);
@@ -1450,7 +1450,7 @@ clickable and can be expanded/collapsed.
 }
 
 #sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
-  content: "▾";
+  content: "�?;
 }
 
 /* Pipeline/ColumnTransformer-specific style */
@@ -1701,7 +1701,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
        -8.10128212e-15, -6.45893053e-03, -4.20286900e-02, -2.29035441e-04])
 </code></pre>
 <h3 id="standard-scaling">Standard Scaling</h3>
-<h3 id="归一化">归一化</h3>
+<h3 id="归一">归一�?</h3>
 <p>Recall from lecture that in order to properly regularize a model, the features should be at the same scale. Otherwise the model has to spend more of its parameter budget to use &ldquo;small&rdquo; features (e.g. lengths in inches) compared to &ldquo;large&rdquo; features (e.g. lengths in kilometers).</p>
 <p>To do this we can use a Standard Scaler to create a new version of the DataFrame where every column has zero mean and a standard deviation of 1.</p>
 <div class="highlight"><div class="chroma">
@@ -3041,7 +3041,7 @@ clickable and can be expanded/collapsed.
 
 #sk-container-id-3 label.sk-toggleable__label-arrow:before {
   /* Arrow on the left of the label */
-  content: "▸";
+  content: "�?;
   float: left;
   margin-right: 0.25em;
   color: var(--sklearn-color-icon);
@@ -3088,7 +3088,7 @@ clickable and can be expanded/collapsed.
 }
 
 #sk-container-id-3 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
-  content: "▾";
+  content: "�?;
 }
 
 /* Pipeline/ColumnTransformer-specific style */
@@ -3509,7 +3509,7 @@ clickable and can be expanded/collapsed.
 
 #sk-container-id-4 label.sk-toggleable__label-arrow:before {
   /* Arrow on the left of the label */
-  content: "▸";
+  content: "�?;
   float: left;
   margin-right: 0.25em;
   color: var(--sklearn-color-icon);
@@ -3556,7 +3556,7 @@ clickable and can be expanded/collapsed.
 }
 
 #sk-container-id-4 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
-  content: "▾";
+  content: "�?;
 }
 
 /* Pipeline/ColumnTransformer-specific style */
@@ -3774,7 +3774,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">error_vs_alpha</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s2">&#34;alpha&#34;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;CV Error&#34;</span><span class="p">,</span> <span class="s2">&#34;sklearn CV Score&#34;</span><span class="p">],</span> <span class="n">log_x</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>You&rsquo;ll notice they are exactly the same except that the sklearn CV score is the negative of the error. This is because GridSearchCV is conceptualized as a &ldquo;maximizer&rdquo;, where the goal is to get the highest possible score, whereas our code was a &ldquo;minimizer&rdquo;, where the goal was to get the lowest possible error. In other words, the error is just the negative of the score. 镜像由来！</p>
+</div><p>You&rsquo;ll notice they are exactly the same except that the sklearn CV score is the negative of the error. This is because GridSearchCV is conceptualized as a &ldquo;maximizer&rdquo;, where the goal is to get the highest possible score, whereas our code was a &ldquo;minimizer&rdquo;, where the goal was to get the lowest possible error. In other words, the error is just the negative of the score. 镜像由来�?</p>
 <h3 id="extra-examining-the-residuals-of-our-optimal-alpha-model">Extra: Examining the Residuals of our Optimal Alpha Model</h3>
 <p>The code below plots the residuals of our best model (Ridge with alpha = 0.412) on the test set. Note that they now seem to be better distributed on either size of the line and are generally closer the line, though with a few more extreme outliers.</p>
 <div class="highlight"><div class="chroma">
@@ -4283,7 +4283,7 @@ clickable and can be expanded/collapsed.
 
 #sk-container-id-5 label.sk-toggleable__label-arrow:before {
   /* Arrow on the left of the label */
-  content: "▸";
+  content: "�?;
   float: left;
   margin-right: 0.25em;
   color: var(--sklearn-color-icon);
@@ -4330,7 +4330,7 @@ clickable and can be expanded/collapsed.
 }
 
 #sk-container-id-5 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
-  content: "▾";
+  content: "�?;
 }
 
 /* Pipeline/ColumnTransformer-specific style */
@@ -4720,7 +4720,7 @@ clickable and can be expanded/collapsed.
 
 #sk-container-id-6 label.sk-toggleable__label-arrow:before {
   /* Arrow on the left of the label */
-  content: "▸";
+  content: "�?;
   float: left;
   margin-right: 0.25em;
   color: var(--sklearn-color-icon);
@@ -4767,7 +4767,7 @@ clickable and can be expanded/collapsed.
 }
 
 #sk-container-id-6 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
-  content: "▾";
+  content: "�?;
 }
 
 /* Pipeline/ColumnTransformer-specific style */

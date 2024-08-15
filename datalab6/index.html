@@ -35,7 +35,7 @@ Matrix formulation and solution to Ordinary Least Squares sns.lmplot as a quick 
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/datalab6\/"
-        },"genre": "posts","keywords": "Scikit-learn, Seaborn","wordcount":  3317 ,
+        },"genre": "posts","keywords": "Scikit-learn, Seaborn","wordcount":  3315 ,
         "url": "http:\/\/example.org\/datalab6\/","datePublished": "2024-08-13T15:19:33+08:00","dateModified": "2024-08-13T15:19:33+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -109,7 +109,7 @@ Matrix formulation and solution to Ordinary Least Squares sns.lmplot as a quick 
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">DATA100-lab6: Linear Regression</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-13">2024-08-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3317 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-13">2024-08-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3315 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;16 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
@@ -123,7 +123,7 @@ Matrix formulation and solution to Ordinary Least Squares sns.lmplot as a quick 
       <ul>
         <li><a href="#question-1a-construct-mathbbx-with-an-intercept-term">Question 1a: Construct $\mathbb{X}$ with an intercept term</a></li>
         <li><a href="#question-1b-define-the-ols-model">Question 1b: Define the OLS Model</a></li>
-        <li><a href="#question-1c-least-squares-estimate-analytically-常见的矩阵操作">Question 1c: Least Squares Estimate, Analytically, 常见的矩阵操作</a></li>
+        <li><a href="#question-1c-least-squares-estimate-analytically-常见的矩阵操">Question 1c: Least Squares Estimate, Analytically, 常见的矩阵操�?</a></li>
         <li><a href="#question-1d">Question 1d</a></li>
       </ul>
     </li>
@@ -470,7 +470,7 @@ name: q1b
 </span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
-<h3 id="question-1c-least-squares-estimate-analytically-常见的矩阵操作">Question 1c: Least Squares Estimate, Analytically, 常见的矩阵操作</h3>
+<h3 id="question-1c-least-squares-estimate-analytically-常见的矩阵操">Question 1c: Least Squares Estimate, Analytically, 常见的矩阵操�?</h3>
 <p>Recall from lecture that Ordinary Least Squares is when we fit a linear model with mean squared error, which is equivalent to the following optimization problem:</p>
 <p>$$\Large \min_{\theta} ||\Bbb{X}\theta - \Bbb{Y}||^2$$</p>
 <p>We showed in Lecture that the optimal estimate $\hat{\theta}$ when $X^TX$ is invertible is given by the equation:</p>
@@ -936,7 +936,7 @@ clickable and can be expanded/collapsed.
 
 #sk-container-id-1 label.sk-toggleable__label-arrow:before {
   /* Arrow on the left of the label */
-  content: "▸";
+  content: "�?;
   float: left;
   margin-right: 0.25em;
   color: var(--sklearn-color-icon);
@@ -983,7 +983,7 @@ clickable and can be expanded/collapsed.
 }
 
 #sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
-  content: "▾";
+  content: "�?;
 }
 
 /* Pipeline/ColumnTransformer-specific style */
@@ -1568,7 +1568,7 @@ clickable and can be expanded/collapsed.
 
 #sk-container-id-2 label.sk-toggleable__label-arrow:before {
   /* Arrow on the left of the label */
-  content: "▸";
+  content: "�?;
   float: left;
   margin-right: 0.25em;
   color: var(--sklearn-color-icon);
@@ -1615,7 +1615,7 @@ clickable and can be expanded/collapsed.
 }
 
 #sk-container-id-2 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
-  content: "▾";
+  content: "�?;
 }
 
 /* Pipeline/ColumnTransformer-specific style */
@@ -1910,7 +1910,7 @@ name: q3c
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">mean_mpg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">vehicle_data</span><span class="p">[</span><span class="s1">&#39;mpg&#39;</span><span class="p">])</span>
-</span></span><span class="line"><span class="cl"><span class="n">mean_predicted_mpg_hp_only</span> <span class="o">=</span> <span class="n">mean_mpg</span> <span class="c1"># 最小二乘性质决定的 y_bar = a + b * x_bar</span>
+</span></span><span class="line"><span class="cl"><span class="n">mean_predicted_mpg_hp_only</span> <span class="o">=</span> <span class="n">mean_mpg</span> <span class="c1"># 最小二乘性质决定��?y_bar = a + b * x_bar</span>
 </span></span><span class="line"><span class="cl"><span class="n">mean_predicted_mpg_hp_sqrt</span> <span class="o">=</span> <span class="n">mean_mpg</span> 
 </span></span><span class="line"><span class="cl"><span class="n">mean_predicted_mpg_multi</span> <span class="o">=</span> <span class="n">mean_mpg</span>
 </span></span></code></pre></td></tr></table>
@@ -2085,7 +2085,7 @@ The plot below shows the prediction of our more sophisticated model. Note we arb
         alt="/datalab6/lab06_files/lab06_75_0.png"
         title="png" width="562" height="432" /></p>
 <p>Think about what you see in the above plot. Why is the shape of our prediction curve so jagged? Do you think this is a good model to predict the <code>mpg</code> of some car we don&rsquo;t already have information on?</p>
-<p>This idea –the <strong>bias-variance tradeoff</strong>– is an idea we will explore in the coming weeks.</p>
+<p>This idea –the <strong>bias-variance tradeoff</strong>�?is an idea we will explore in the coming weeks.</p>
 <hr>
 <h2 id="question-5-comparing-r2">Question 5: Comparing $R^2$</h2>
 <p>Lastly, set <code>r2_overfit</code> to be the multiple $R^2$ coefficient obtained by using <code>model_overfit</code>.</p>

@@ -306,7 +306,7 @@ grader.check("q1b")
 
 ---
 
-### Question 1c: Least Squares Estimate, Analytically, 常见的矩阵操作
+### Question 1c: Least Squares Estimate, Analytically, 常见的矩阵操�?
 
 Recall from lecture that Ordinary Least Squares is when we fit a linear model with mean squared error, which is equivalent to the following optimization problem:
 
@@ -759,7 +759,7 @@ clickable and can be expanded/collapsed.
 
 #sk-container-id-1 label.sk-toggleable__label-arrow:before {
   /* Arrow on the left of the label */
-  content: "▸";
+  content: "�?;
   float: left;
   margin-right: 0.25em;
   color: var(--sklearn-color-icon);
@@ -806,7 +806,7 @@ clickable and can be expanded/collapsed.
 }
 
 #sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
-  content: "▾";
+  content: "�?;
 }
 
 /* Pipeline/ColumnTransformer-specific style */
@@ -1401,7 +1401,7 @@ clickable and can be expanded/collapsed.
 
 #sk-container-id-2 label.sk-toggleable__label-arrow:before {
   /* Arrow on the left of the label */
-  content: "▸";
+  content: "�?;
   float: left;
   margin-right: 0.25em;
   color: var(--sklearn-color-icon);
@@ -1448,7 +1448,7 @@ clickable and can be expanded/collapsed.
 }
 
 #sk-container-id-2 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
-  content: "▾";
+  content: "�?;
 }
 
 /* Pipeline/ColumnTransformer-specific style */
@@ -1741,7 +1741,7 @@ name: q3c
 
 ```python
 mean_mpg = np.mean(vehicle_data['mpg'])
-mean_predicted_mpg_hp_only = mean_mpg # 最小二乘性质决定的 y_bar = a + b * x_bar
+mean_predicted_mpg_hp_only = mean_mpg # 最小二乘性质决定�?y_bar = a + b * x_bar
 mean_predicted_mpg_hp_sqrt = mean_mpg 
 mean_predicted_mpg_multi = mean_mpg
 ```
@@ -1910,7 +1910,7 @@ plt.plot(vehicle_data['horsepower'],  predicted_mpg_overfit, color = 'r');
 
 Think about what you see in the above plot. Why is the shape of our prediction curve so jagged? Do you think this is a good model to predict the `mpg` of some car we don't already have information on?
 
-This idea –the **bias-variance tradeoff**– is an idea we will explore in the coming weeks.
+This idea –the **bias-variance tradeoff**�?is an idea we will explore in the coming weeks.
 
 ---
 

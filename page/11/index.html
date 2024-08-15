@@ -100,38 +100,45 @@
         alt="/avatar.jpg"
         title="/avatar.jpg" width="1920" height="1280" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/ZhengTMHuang" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/61b-6/">61B-6: ALists, Resizing, vs. SLists</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-14">2024-07-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">A Last Look at Linked Lists Naive Array Lists 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 public class AList { private int[] items; private int size; public AList() { items = new int[100]; size = 0; } public void addLast(int x) { items[size] = x; size += 1; } public int getLast() { return items[size - 1]; } public int get(int i) { return items[i]; } public int size() { return size; } } Resizing Arrays 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 public void addLast(int x) { if (size == items.</div><div class="post-footer">
-        <a href="/61b-6/">Read More</a></div>
+        <a href="/datal5/">DATA100-L5: Data Wrangling and EDA</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-14">2024-07-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">EDA: Exploratory Data Analysis
+Infinite loop DW &amp; EDA&hellip;&hellip;
+DW: raw data -&gt; clean data -&gt; usable data
+key data properties to consider in EDA structure file format rectangular data: tables and matrices CSV, TabSV/TSV, json(is a dict) txt, XML 1 pd.read_csv(&#39;filename.tsv&#39;,delimiter=&#39;\t&#39;) turn to lec jupyter notebook to see more details
+变量种类 注意：不唯一，不全面 multiple files 主键？ granularity(颗粒度？) scope and temporality 颗粒度 scope: sampling frame temporality: time-series data unix time posix time</div><div class="post-footer">
+        <a href="/datal5/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/61b-1/">61B-1: Intro, Hello World Java</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-14">2024-07-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">java oop Java is an object oriented language with strict requirements:
-Every Java file must contain a class declaration*. All code lives inside a class*, even helper functions, global constants, etc. To run a Java program, you typically define a main method using 1 public static void main(String[] args) *: This is not completely true, e.g. we can also declare “interfaces” in .Java files that may contain code. We’ll cover these later.</div><div class="post-footer">
-        <a href="/61b-1/">Read More</a></div>
+        <a href="/61b-14/">61B-14: Exceptions, Iterators, Iterables</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-14">2024-07-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">Exceptions throw statement: throws an exception
+1 2 3 4 5 6 public V get(K key) { int location = findKey(key); if (location &lt; 0) { throw new IllegalArgumentException(&#34;Key &#34; + key + &#34; does not exist in map.&#34;); } return values[findKey(key)]; } 显式抛出异常
+1 2 3 4 public static void main(String[] args) { System.out.println(&#34;ayyy lmao&#34;); throw new RuntimeException(&#34;For no reason.&#34;); } What has been Thrown, can be Caught 1 2 3 4 5 6 7 8 9 10 11 Dog d = new Dog(&#34;Lucy&#34;, &#34;Retriever&#34;, 80); d.</div><div class="post-footer">
+        <a href="/61b-14/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/61b-2/">61B-2: Defining and Using Classes</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-14">2024-07-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">编译初看 Defining and Instantiating Classes Static vs. Instance Members Static vs. Non-static public static void main(String[] args) Using Libraries </div><div class="post-footer">
-        <a href="/61b-2/">Read More</a></div>
+        <a href="/61b-15/">61B-15: Packages, Access Control, Objects</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-14">2024-07-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">Packages and JAR Files 创建包 At the top of every file in the package, put the package name. Make sure that the file is stored in a folder with the appropriate folder name. For a package with name ug.joshh.animal, use folder ug/joshh/animal. 要用的时候import即可
+default package JAR Files Access Control Object Methods: Equals and toString( ) toString( ) == vs equals( ) == compares references equals( ) compares values, but pay attention to the type!</div><div class="post-footer">
+        <a href="/61b-15/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/61b-3/">61B-3: References, Recursion, and Lists</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-14">2024-07-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">Primitive Types 8 primitive types in Java: byte, short, int, long, float, double, boolean, char Everything else, including arrays, is a reference type.
-The Golden Rule of Equals (GRoE) Given variables y and x:
-y = x copies all the bits from x into y. Reference Types Everything else, including arrays, is a reference type. 和cpp的区别之一不显式使用指针
-Parameter Passing pass by value &#x1f60b; pass by reference（某种意义上java纯纯pass by value &#x1f60f;） Instantiation of Arrays IntList and Linked Data Structures 单链表，不赘述</div><div class="post-footer">
-        <a href="/61b-3/">Read More</a></div>
+        <a href="/61b-16/">61B-16: Encapsulation, Lists, Delegation vs. Extension</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-14">2024-07-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">61B: Writing Efficient Programs Programming cost. How long does it take to develop your programs? How easy is it to read, modify, and maintain your code? More important than you might think! Majority of cost is in maintenance, not development! 自顶向下，逐层抽象，分而治之，化整为零
+ADT Implementations Designing ADTs 虽然extension简单，但是委托delegation更加灵活
+Views 视图 在Java中，&ldquo;view&quot;通常指的是一种数据结构的视图，它提供了一种访问和操作底层数据的方式，而不需要复制整个数据集。视图的主要优点是它们提供了一种高效的方式来操作数据子集，而不需要复制数据，从而节省内存和提高性能。然而，视图也有一些限制，例如固定大小的视图不能添加或删除元素。
+Occasionally, implementation details may allow for views that are too difficult to implement for an abstract type.</div><div class="post-footer">
+        <a href="/61b-16/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/datal4/">DATA100-L4: Pandas Ⅱ</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-14">2024-07-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">lambda function 1 lambda x: x**2 非显式定义函数，可以直接使用lambda表达式来定义一个函数。 This is a lambda function that takes in one argument x and returns the square of x.
-再看sort_values() 注意传递key
-1 df.sort_values(by=&#39;column_name&#39;, keys=lambda x: x.str.lower(), ascending=True) add move modify and so on sort by length of string approach1: create a new column and add to original df 1 2 3 newdf = df[&#34;Name&#34;].str.len() # create a new column with length of each string df[&#39;length&#39;] = newdf df.</div><div class="post-footer">
-        <a href="/datal4/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/pandas/">Pandas</a></div></div>
+        <a href="/61b-12/">61B-12:  Coding in the Real World, Review</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-14">2024-07-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">Programming in the Real World 对技术要敬畏 midterm review Comparing strings for equality using == vs .equals &mdash;&gt; see in autoboxing lecture 在Java中，this 是一个指向当前对象实例的引用。它通常用于引用当前类的实例成员，或者在方法中区分成员变量和局部变量。然而，你不能将 this 重新赋值为另一个对象的引用，因为 this 是一个固定的概念，它代表当前对象本身。
+你提供的代码示例中，尝试将 this 赋值为一个新的 Dog 对象，这是不允许的。Java 编译器会报错，因为它违反了 this 的使用规则。
+1 2 3 4 5 6 7 8 public class Dog { public void f() { this = new Dog(); // 这行代码会导致编译错误，因为不能重新赋值this } } Dog d = new Dog(); d.f(); // 调用f()方法，但由于上面的错误，这行代码实际上无法执行 如果你想要创建一个新的 Dog 对象并将其引用赋给 this，你需要使用另一个变量，比如 anotherDog。下面是修改后的代码示例：</div><div class="post-footer">
+        <a href="/61b-12/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/datahw01/">DATA100-hw01</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-14">2024-07-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;hw01.ipynb&#34;) HW 1: Math Review and Plotting 重点在coding，理论供参考 Due Date: Thursday Jan 27, 11:59 PM Collaboration Policy Data science is a collaborative activity. While you may talk with others about the homework, we ask that you write your solutions individually. If you do discuss the assignments with others please include their names at the top of your notebook.
-Collaborators: list collaborators here</div><div class="post-footer">
-        <a href="/datahw01/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/math/">Math</a>,&nbsp;<a href="/tags/plotting/">Plotting</a></div></div>
+        <a href="/61b-13/">61B-13: Generics, Autoboxing</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-14">2024-07-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">13-16几乎是java语法讲解&#x1f604;
+Primitives Cannot Be Used as Actual Type Arguments Autoboxing Wrapper Types Are (Mostly) Just Like Any Class
+8种基本类型之间转换也存在widening
+Immutability 类似于const在cpp
+1 2 3 4 5 6 7 8 9 public class Date { public final int month; public final int day; public final int year; private boolean contrived = true; public Date(int m, int d, int y) { month = m; day = d; year = y; } } Warning: Declaring a reference as Final does not make object immutable.</div><div class="post-footer">
+        <a href="/61b-13/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -162,7 +169,7 @@ Collaborators: list collaborators here</div><div class="post-footer">
                     <span class="page-link" aria-hidden="true">&hellip;</span>
                 </li><li class="page-item ">
                     <span class="page-link">
-                        <a href="/page/16/">16</a>
+                        <a href="/page/19/">19</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">

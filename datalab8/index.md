@@ -1190,7 +1190,7 @@ clickable and can be expanded/collapsed.
 
 #sk-container-id-1 label.sk-toggleable__label-arrow:before {
   /* Arrow on the left of the label */
-  content: "▸";
+  content: "�?;
   float: left;
   margin-right: 0.25em;
   color: var(--sklearn-color-icon);
@@ -1237,7 +1237,7 @@ clickable and can be expanded/collapsed.
 }
 
 #sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
-  content: "▾";
+  content: "�?;
 }
 
 /* Pipeline/ColumnTransformer-specific style */
@@ -1494,7 +1494,7 @@ regularized_model.coef_
 
 ### Standard Scaling
 
-### 归一化
+### 归一�?
 Recall from lecture that in order to properly regularize a model, the features should be at the same scale. Otherwise the model has to spend more of its parameter budget to use "small" features (e.g. lengths in inches) compared to "large" features (e.g. lengths in kilometers).
 
 To do this we can use a Standard Scaler to create a new version of the DataFrame where every column has zero mean and a standard deviation of 1.
@@ -2786,7 +2786,7 @@ clickable and can be expanded/collapsed.
 
 #sk-container-id-3 label.sk-toggleable__label-arrow:before {
   /* Arrow on the left of the label */
-  content: "▸";
+  content: "�?;
   float: left;
   margin-right: 0.25em;
   color: var(--sklearn-color-icon);
@@ -2833,7 +2833,7 @@ clickable and can be expanded/collapsed.
 }
 
 #sk-container-id-3 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
-  content: "▾";
+  content: "�?;
 }
 
 /* Pipeline/ColumnTransformer-specific style */
@@ -3263,7 +3263,7 @@ clickable and can be expanded/collapsed.
 
 #sk-container-id-4 label.sk-toggleable__label-arrow:before {
   /* Arrow on the left of the label */
-  content: "▸";
+  content: "�?;
   float: left;
   margin-right: 0.25em;
   color: var(--sklearn-color-icon);
@@ -3310,7 +3310,7 @@ clickable and can be expanded/collapsed.
 }
 
 #sk-container-id-4 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
-  content: "▾";
+  content: "�?;
 }
 
 /* Pipeline/ColumnTransformer-specific style */
@@ -3528,7 +3528,7 @@ px.line(error_vs_alpha, x = "alpha", y = ["CV Error", "sklearn CV Score"], log_x
 
 
 
-You'll notice they are exactly the same except that the sklearn CV score is the negative of the error. This is because GridSearchCV is conceptualized as a "maximizer", where the goal is to get the highest possible score, whereas our code was a "minimizer", where the goal was to get the lowest possible error. In other words, the error is just the negative of the score. 镜像由来！
+You'll notice they are exactly the same except that the sklearn CV score is the negative of the error. This is because GridSearchCV is conceptualized as a "maximizer", where the goal is to get the highest possible score, whereas our code was a "minimizer", where the goal was to get the lowest possible error. In other words, the error is just the negative of the score. 镜像由来�?
 
 ### Extra: Examining the Residuals of our Optimal Alpha Model
 
@@ -4032,7 +4032,7 @@ clickable and can be expanded/collapsed.
 
 #sk-container-id-5 label.sk-toggleable__label-arrow:before {
   /* Arrow on the left of the label */
-  content: "▸";
+  content: "�?;
   float: left;
   margin-right: 0.25em;
   color: var(--sklearn-color-icon);
@@ -4079,7 +4079,7 @@ clickable and can be expanded/collapsed.
 }
 
 #sk-container-id-5 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
-  content: "▾";
+  content: "�?;
 }
 
 /* Pipeline/ColumnTransformer-specific style */
@@ -4472,7 +4472,7 @@ clickable and can be expanded/collapsed.
 
 #sk-container-id-6 label.sk-toggleable__label-arrow:before {
   /* Arrow on the left of the label */
-  content: "▸";
+  content: "�?;
   float: left;
   margin-right: 0.25em;
   color: var(--sklearn-color-icon);
@@ -4519,7 +4519,7 @@ clickable and can be expanded/collapsed.
 }
 
 #sk-container-id-6 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
-  content: "▾";
+  content: "�?;
 }
 
 /* Pipeline/ColumnTransformer-specific style */

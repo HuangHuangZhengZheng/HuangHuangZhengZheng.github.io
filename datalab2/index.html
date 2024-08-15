@@ -34,7 +34,7 @@ Creating DataFrames Slicing DataFrames (i.e. selecting rows and columns) Filteri
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/datalab2\/"
-        },"genre": "posts","keywords": "Pandas","wordcount":  6785 ,
+        },"genre": "posts","keywords": "Pandas","wordcount":  7100 ,
         "url": "http:\/\/example.org\/datalab2\/","datePublished": "2024-07-15T18:20:24+08:00","dateModified": "2024-07-15T18:20:24+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -108,8 +108,8 @@ Creating DataFrames Slicing DataFrames (i.e. selecting rows and columns) Filteri
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">DATA100-lab2</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-15">2024-07-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;6785 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;32 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-15">2024-07-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;7100 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;34 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -139,11 +139,7 @@ Creating DataFrames Slicing DataFrames (i.e. selecting rows and columns) Filteri
     <li><a href="#filtering-data">Filtering Data</a>
       <ul>
         <li><a href="#review-filtering-with-boolean-arrays">Review: Filtering with boolean arrays</a></li>
-        <li><a href="#question-5">Question 5</a>
-          <ul>
-            <li><a href="#query-review">Query Review</a></li>
-          </ul>
-        </li>
+        <li><a href="#question-5">Question 5</a></li>
       </ul>
     </li>
     <li><a href="#groupby">Groupby</a>
@@ -389,165 +385,323 @@ Creating DataFrames Slicing DataFrames (i.e. selecting rows and columns) Filteri
 <p>Note that <strong>slicing in <code>loc</code> is inclusive</strong> on the provided labels.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span><span class="lnt">156
+</span><span class="lnt">157
+</span><span class="lnt">158
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1">#get rows 0 through 2 and columns fruit through price</span>
-</span></span><span class="line"><span class="cl"><span class="n">fruit_info</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;fruit&#39;</span><span class="p">:</span><span class="s1">&#39;price&#39;</span><span class="p">]</span> <span class="c1"># 闭区间</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-<pre><code>.dataframe tbody tr th {
-    vertical-align: top;
-}
-
-.dataframe thead th {
-    text-align: right;
-}
-</code></pre>
-<p></style></p>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>fruit</th>
-      <th>color</th>
-      <th>price</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>apple</td>
-      <td>red</td>
-      <td>1.00</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>orange</td>
-      <td>orange</td>
-      <td>0.75</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>banana</td>
-      <td>yellow</td>
-      <td>0.35</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># get rows 0 through 2 and columns fruit and price. </span>
+</span></span><span class="line"><span class="cl"><span class="n">fruit_info</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;fruit&#39;</span><span class="p">:</span><span class="s1">&#39;price&#39;</span><span class="p">]</span> <span class="c1"># 闭区��?```</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="n">style</span> <span class="n">scoped</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">.</span><span class="n">dataframe</span> <span class="n">tbody</span> <span class="n">tr</span> <span class="n">th</span><span class="p">:</span><span class="n">only</span><span class="o">-</span><span class="n">of</span><span class="o">-</span><span class="nb">type</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">vertical</span><span class="o">-</span><span class="n">align</span><span class="p">:</span> <span class="n">middle</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="o">.</span><span class="n">dataframe</span> <span class="n">tbody</span> <span class="n">tr</span> <span class="n">th</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">vertical</span><span class="o">-</span><span class="n">align</span><span class="p">:</span> <span class="n">top</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="o">.</span><span class="n">dataframe</span> <span class="n">thead</span> <span class="n">th</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">text</span><span class="o">-</span><span class="n">align</span><span class="p">:</span> <span class="n">right</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;/</span><span class="n">style</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="n">table</span> <span class="n">border</span><span class="o">=</span><span class="s2">&#34;1&#34;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&#34;dataframe&#34;</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">&lt;</span><span class="n">thead</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="n">tr</span> <span class="n">style</span><span class="o">=</span><span class="s2">&#34;text-align: right;&#34;</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="n">th</span><span class="o">&gt;&lt;/</span><span class="n">th</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="n">th</span><span class="o">&gt;</span><span class="n">fruit</span><span class="o">&lt;/</span><span class="n">th</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="n">th</span><span class="o">&gt;</span><span class="n">color</span><span class="o">&lt;/</span><span class="n">th</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="n">th</span><span class="o">&gt;</span><span class="n">price</span><span class="o">&lt;/</span><span class="n">th</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;/</span><span class="n">tr</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">&lt;/</span><span class="n">thead</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">&lt;</span><span class="n">tbody</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="n">tr</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="n">th</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">&lt;/</span><span class="n">th</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="n">apple</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="n">red</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="mf">1.00</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;/</span><span class="n">tr</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="n">tr</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="n">th</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">th</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="n">orange</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="n">orange</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="mf">0.75</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;/</span><span class="n">tr</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="n">tr</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="n">th</span><span class="o">&gt;</span><span class="mi">2</span><span class="o">&lt;/</span><span class="n">th</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="n">banana</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="n">yellow</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="mf">0.35</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;/</span><span class="n">tr</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">&lt;/</span><span class="n">tbody</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;/</span><span class="n">table</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">```</span><span class="n">python</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># get rows 0 through 2 and columns fruit and price. </span>
 </span></span><span class="line"><span class="cl"><span class="c1"># Note the difference in notation and result from the previous example.</span>
-</span></span><span class="line"><span class="cl"><span class="n">fruit_info</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;fruit&#39;</span><span class="p">,</span> <span class="s1">&#39;price&#39;</span><span class="p">]]</span> <span class="c1"># 离散的</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-<pre><code>.dataframe tbody tr th {
-    vertical-align: top;
-}
-
-.dataframe thead th {
-    text-align: right;
-}
-</code></pre>
-<p></style></p>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>fruit</th>
-      <th>price</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>apple</td>
-      <td>1.00</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>orange</td>
-      <td>0.75</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>banana</td>
-      <td>0.35</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># get rows 0 and 2 and columns fruit and price. </span>
-</span></span><span class="line"><span class="cl"><span class="n">fruit_info</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;fruit&#39;</span><span class="p">,</span> <span class="s1">&#39;price&#39;</span><span class="p">]]</span> <span class="c1"># 更加离散的</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-<pre><code>.dataframe tbody tr th {
-    vertical-align: top;
-}
-
-.dataframe thead th {
-    text-align: right;
-}
-</code></pre>
-<p></style></p>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>fruit</th>
-      <th>price</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>apple</td>
-      <td>1.00</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>banana</td>
-      <td>0.35</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># get rows 0 and 2 and column fruit</span>
+</span></span><span class="line"><span class="cl"><span class="n">fruit_info</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;fruit&#39;</span><span class="p">,</span> <span class="s1">&#39;price&#39;</span><span class="p">]]</span> <span class="c1"># 离散��?```</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="n">style</span> <span class="n">scoped</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">.</span><span class="n">dataframe</span> <span class="n">tbody</span> <span class="n">tr</span> <span class="n">th</span><span class="p">:</span><span class="n">only</span><span class="o">-</span><span class="n">of</span><span class="o">-</span><span class="nb">type</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">vertical</span><span class="o">-</span><span class="n">align</span><span class="p">:</span> <span class="n">middle</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="o">.</span><span class="n">dataframe</span> <span class="n">tbody</span> <span class="n">tr</span> <span class="n">th</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">vertical</span><span class="o">-</span><span class="n">align</span><span class="p">:</span> <span class="n">top</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="o">.</span><span class="n">dataframe</span> <span class="n">thead</span> <span class="n">th</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">text</span><span class="o">-</span><span class="n">align</span><span class="p">:</span> <span class="n">right</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;/</span><span class="n">style</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="n">table</span> <span class="n">border</span><span class="o">=</span><span class="s2">&#34;1&#34;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&#34;dataframe&#34;</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">&lt;</span><span class="n">thead</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="n">tr</span> <span class="n">style</span><span class="o">=</span><span class="s2">&#34;text-align: right;&#34;</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="n">th</span><span class="o">&gt;&lt;/</span><span class="n">th</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="n">th</span><span class="o">&gt;</span><span class="n">fruit</span><span class="o">&lt;/</span><span class="n">th</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="n">th</span><span class="o">&gt;</span><span class="n">price</span><span class="o">&lt;/</span><span class="n">th</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;/</span><span class="n">tr</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">&lt;/</span><span class="n">thead</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">&lt;</span><span class="n">tbody</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="n">tr</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="n">th</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">&lt;/</span><span class="n">th</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="n">apple</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="mf">1.00</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;/</span><span class="n">tr</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="n">tr</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="n">th</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">th</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="n">orange</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="mf">0.75</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;/</span><span class="n">tr</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="n">tr</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="n">th</span><span class="o">&gt;</span><span class="mi">2</span><span class="o">&lt;/</span><span class="n">th</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="n">banana</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="mf">0.35</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;/</span><span class="n">tr</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">&lt;/</span><span class="n">tbody</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;/</span><span class="n">table</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">```</span><span class="n">python</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># get rows 0 and 2 and columns fruit and price. </span>
+</span></span><span class="line"><span class="cl"><span class="n">fruit_info</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;fruit&#39;</span><span class="p">,</span> <span class="s1">&#39;price&#39;</span><span class="p">]]</span> <span class="c1"># 更加离散��?```</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="n">style</span> <span class="n">scoped</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">.</span><span class="n">dataframe</span> <span class="n">tbody</span> <span class="n">tr</span> <span class="n">th</span><span class="p">:</span><span class="n">only</span><span class="o">-</span><span class="n">of</span><span class="o">-</span><span class="nb">type</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">vertical</span><span class="o">-</span><span class="n">align</span><span class="p">:</span> <span class="n">middle</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="o">.</span><span class="n">dataframe</span> <span class="n">tbody</span> <span class="n">tr</span> <span class="n">th</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">vertical</span><span class="o">-</span><span class="n">align</span><span class="p">:</span> <span class="n">top</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="o">.</span><span class="n">dataframe</span> <span class="n">thead</span> <span class="n">th</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">text</span><span class="o">-</span><span class="n">align</span><span class="p">:</span> <span class="n">right</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;/</span><span class="n">style</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="n">table</span> <span class="n">border</span><span class="o">=</span><span class="s2">&#34;1&#34;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&#34;dataframe&#34;</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">&lt;</span><span class="n">thead</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="n">tr</span> <span class="n">style</span><span class="o">=</span><span class="s2">&#34;text-align: right;&#34;</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="n">th</span><span class="o">&gt;&lt;/</span><span class="n">th</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="n">th</span><span class="o">&gt;</span><span class="n">fruit</span><span class="o">&lt;/</span><span class="n">th</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="n">th</span><span class="o">&gt;</span><span class="n">price</span><span class="o">&lt;/</span><span class="n">th</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;/</span><span class="n">tr</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">&lt;/</span><span class="n">thead</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">&lt;</span><span class="n">tbody</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="n">tr</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="n">th</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">&lt;/</span><span class="n">th</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="n">apple</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="mf">1.00</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;/</span><span class="n">tr</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="n">tr</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="n">th</span><span class="o">&gt;</span><span class="mi">2</span><span class="o">&lt;/</span><span class="n">th</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="n">banana</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="mf">0.35</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;/</span><span class="n">tr</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">&lt;/</span><span class="n">tbody</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;/</span><span class="n">table</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">```</span><span class="n">python</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># get rows 0 and 2 and column fruit</span>
 </span></span><span class="line"><span class="cl"><span class="n">fruit_info</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;fruit&#39;</span><span class="p">]]</span>
 </span></span></code></pre></td></tr></table>
 </div>
@@ -989,26 +1143,43 @@ Name: fruit, dtype: object
 </div>
 <p>Observe that the row number 0 now has index 3, row number 1 now has index 2, etc. These indices are the arbitrary numerical index generated when we created the DataFrame. For example, banana was originally in row 2, and so it has row label 2.</p>
 <p>If we request the rows in positions 0 and 2 using <code>iloc</code>,  <strong>we&rsquo;re indexing using the row NUMBERS, not labels.</strong></p>
-<p>这里似乎并不是按照lab所说的那样？</p>
+<p>这里似乎并不是按照lab所说的那样�?</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">fruit_info_sorted</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="mi">0</span><span class="p">]</span> <span class="c1"># 别和数学表达混淆！</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><pre><code>3    raspberry
-1       orange
-Name: fruit, dtype: object
-</code></pre>
-<p>Lastly, similar to with <code>loc</code>, the second argument to <code>iloc</code> is optional. That is, if you provide only one argument to <code>iloc</code>, it treats the argument you provide as a set of desired row numbers, not column numbers. 可以只给行，不可给列</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">fruit_info</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">fruit_info_sorted</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="mi">0</span><span class="p">]</span> <span class="c1"># 别和数学表达混淆��?```</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="mi">3</span>    <span class="n">raspberry</span>
+</span></span><span class="line"><span class="cl">    <span class="mi">1</span>       <span class="n">orange</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Name</span><span class="p">:</span> <span class="n">fruit</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Lastly</span><span class="p">,</span> <span class="n">similar</span> <span class="n">to</span> <span class="k">with</span> <span class="err">`</span><span class="n">loc</span><span class="err">`</span><span class="p">,</span> <span class="n">the</span> <span class="n">second</span> <span class="n">argument</span> <span class="n">to</span> <span class="err">`</span><span class="n">iloc</span><span class="err">`</span> <span class="ow">is</span> <span class="n">optional</span><span class="o">.</span> <span class="n">That</span> <span class="ow">is</span><span class="p">,</span> <span class="k">if</span> <span class="n">you</span> <span class="n">provide</span> <span class="n">only</span> <span class="n">one</span> <span class="n">argument</span> <span class="n">to</span> <span class="err">`</span><span class="n">iloc</span><span class="err">`</span><span class="p">,</span> <span class="n">it</span> <span class="n">treats</span> <span class="n">the</span> <span class="n">argument</span> <span class="n">you</span> <span class="n">provide</span> <span class="k">as</span> <span class="n">a</span> <span class="nb">set</span> <span class="n">of</span> <span class="n">desired</span> <span class="n">row</span> <span class="n">numbers</span><span class="p">,</span> <span class="ow">not</span> <span class="n">column</span> <span class="n">numbers</span><span class="o">.</span> <span class="n">可以只给行</span><span class="err">，</span><span class="n">不可给列</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">```</span><span class="n">python</span>
+</span></span><span class="line"><span class="cl"><span class="n">fruit_info</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><div>
@@ -2099,7 +2270,7 @@ name: q4
 </tr>
 </tbody>
 </table>
-<p>In the following we construct the DataFrame containing only names registered in California注意这里十分重要！</p>
+<p>In the following we construct the DataFrame containing only names registered in California注意这里十分重要�?</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -2268,23 +2439,29 @@ name: q5
 </div>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q5&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># 依旧是版本问题</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h4 id="query-review">Query Review</h4>
-<p>Recall that pandas also has a query command. For example, we can get California baby names with the code below.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">ca</span> <span class="o">=</span> <span class="n">baby_names</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;State == &#34;CA&#34;&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 依旧是版本问��?```</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#### Query Review</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Recall</span> <span class="n">that</span> <span class="n">pandas</span> <span class="n">also</span> <span class="n">has</span> <span class="n">a</span> <span class="n">query</span> <span class="n">command</span><span class="o">.</span> <span class="n">For</span> <span class="n">example</span><span class="p">,</span> <span class="n">we</span> <span class="n">can</span> <span class="n">get</span> <span class="n">California</span> <span class="n">baby</span> <span class="n">names</span> <span class="k">with</span> <span class="n">the</span> <span class="n">code</span> <span class="n">below</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">```</span><span class="n">python</span>
+</span></span><span class="line"><span class="cl"><span class="n">ca</span> <span class="o">=</span> <span class="n">baby_names</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;State == &#34;CA&#34;&#39;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="n">ca</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>

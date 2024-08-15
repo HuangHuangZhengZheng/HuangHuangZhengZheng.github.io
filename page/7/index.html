@@ -100,45 +100,54 @@
         alt="/avatar.jpg"
         title="/avatar.jpg" width="1920" height="1280" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/ZhengTMHuang" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/datal16/">DATA100-L16: Probability I: Random Variables</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">随机变量及其分布 参考 概率论与数理统计 课程即可
-期望与方差 $$ \mathbb{E}[X] 和 Var(X) $$ 参考 概率论与数理统计 课程即可
-随机变量的和 equality vs Identically distributed vs IID 有意思的分析 &#x1f60f;
-期望和方差的性质 协方差与相关系数 伯努利（0-1）和Binomial分布 Sample Statistics sample mean central limit theorem </div><div class="post-footer">
-        <a href="/datal16/">Read More</a></div>
+        <a href="/databasel1/">CS186-L1: Introduction + SQL I</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-22">2024-07-22</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div><div class="content">大纲进程： sheet
+SQL I pros and cons relational Terminology and concepts database: set of name relations relation(table): schema: descriptions &ldquo;metadata&rdquo; fixed, unique attribute names, atomic types instance: set of data 符合description often changed, can duplicate multiset of tuples or &ldquo;rows&rdquo; attribute (column,field) tuple (row,record),怀疑一些python概念也来自于此 DDL (Data Definition Language) 1 2 3 4 5 6 7 8 9 10 CREATE TABLE myTable ( ID INTEGER, myName CHAR(50), Age INTEGER, Salary FLOAT, PRIMARY KEY (ID, myName), FOREIGN KEY (ID) REFERENCES myOtherTable(ID), FOREIGN KEY (myName) REFERENCES myOtherTable(myName) ); 1 2 3 SELECT [DISTINCT] &lt;column expression list&gt; FROM &lt;single_table&gt; [WHERE &lt;predicate&gt;] ORDER BY Lexicographic order by default 字典序 LIMIT Aggregation functions AVG: average COUNT: count the number of rows MAX: maximum value MIN: minimum value SUM: sum of values 1 2 SELECT AVG(Salary) FROM myTable; GROUP BY HAVING</div><div class="post-footer">
+        <a href="/databasel1/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/datal13/">DATA100-L13: Gradient Descent, Feature Engineering</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content"> $\downarrow{shuffle}$ SGD: Stochastic Gradient Descent(but size == 1)
-convexity (凹凸性) feature engineering 在于怎么使用transforming
-feature function see website code
-non-numeric features one-hot encoding concat high order polynomials detect overfitting collect more data more see next lecture </div><div class="post-footer">
-        <a href="/datal13/">Read More</a></div>
+        <a href="/datal26/">DATA100-L26: Parallel Data Analytics; Conclusion</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">mapreduce MapReduce是一种编程模型,用于大规模数据集的并行运算[1][2][3]。它将复杂的并行计算过程抽象为两个函数:Map和Reduce[4]。
+Map函数将输入数据集拆分成独立的块,并对每个块应用映射操作,生成一组中间键值对[1][2][3]。Reduce函数会对所有Map的输出进行合并操作,生成最终结果[1][2][3]。
+MapReduce的主要特点包括[4][5]:
+易于编程:程序员只需描述做什么,具体怎么做由系统的执行框架处理 良好的扩展性:可通过添加节点扩展集群能力 高容错性:通过计算迁移或数据迁移等策略提高集群的可用性与容错性 MapReduce采用&quot;分而治之&quot;策略,将大规模数据集切分成多个独立的分片,这些分片可以被多个Map任务并行处理[4]。它设计的一个理念是&quot;计算向数据靠拢&quot;,移动数据需要大量的网络传输开销[4]。
+总之,MapReduce是一种简单、可扩展的并行计算模型,通过抽象Map和Reduce函数,使得程序员可以轻松编写大规模并行应用程序,而无需关注底层的分布式细节[1][2][3][4][5]。
+Citations: [1] https://baike.baidu.com/item/MapReduce/133425 [2] https://zh.wikipedia.org/zh-hans/MapReduce [3] https://www.ibm.com/cn-zh/topics/mapreduce [4] https://cshihong.github.io/2018/05/11/MapReduce%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86/ [5] https://cloud.tencent.com/developer/article/1778549
+apache spark lazy strategy: 延迟计算策略,Spark默认采用这种策略,即只有当数据真正被使用时才会计算。 编译优化语句执行顺序！ Conclusion 工具链 What is next? 有用的data science链接 http://kaggle.com https://github.com/awesomedata/awesome-public-datasets http://toolbox.google.com/datasetsearch https://towardsdatascience.com https://www.reddit.com/r/dataisbeautiful/ https://fivethirtyeight.com</div><div class="post-footer">
+        <a href="/datal26/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/datal14/">DATA100-L14: Case Study (HCE): Fairness in Housing Appraisal</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content"> Accuracy is a necessary, but not sufficient, condition for fair system. Fairness and transparency are context-dependent. Learn to work with contexts, and consider how your data analysis will reshape them. Keep in mind the power, and limits, of data analysis. </div><div class="post-footer">
-        <a href="/datal14/">Read More</a></div>
+        <a href="/datal24/">DATA100-L24: Clustering</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">introduction to clustering no label at all &#x1f622;
+K-means clustering 算法动画演示
+K-Means vs KNN minimizing inertia convex?? 损失函数不一定凸，梯度下降难顶 how to see which one is better &#x2753; 但是找到全局最优解非常困难 agglomerative clustering 演示见上面链接以及lec code！
+和CS61B的minimum spanning tree类似，每次合并两个最近的点，直到终止条件
+outlier 有时忽略处理或者自成一类
+picking K Smax？ can s be negative? summary </div><div class="post-footer">
+        <a href="/datal24/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/datal12/">DATA100-L12: Gradient Descent, sklearn</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">开始调包！&#x1f60f;
-1 2 3 4 from sklearn.linear_model import LinearRegression model = LinearRegression() model.fit(df[[&#34;total_bill&#34;]], df[&#34;tip&#34;]) df[&#34;predicted_tip&#34;] = model.predict(df[[&#34;total_bill&#34;]]) 所有的机器学习似乎都在最小化loss function，而梯度下降就是一种优化算法，它通过迭代的方式不断更新模型参数，使得loss function的值不断减小。
-详情见NNDL栏目</div><div class="post-footer">
-        <a href="/datal12/">Read More</a></div>
+        <a href="/datal25/">DATA100-L25: Data Regulations</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">impetus for regulation why &ldquo;you&rdquo; should care Because you are gonna to be a data scientist and product owner!
+regulations: Privacy laws GDPR (General Data Protection Regulation) CCPA (California Consumer Privacy Act) Cyber Security Law in China
+deletion can be more difficult than you think &#x1f60f; 传输也要监管 fully take advantage of the &ldquo;regulations&rdquo;
+take care of gray areas &#x1f914; work with dear NGO and GO other regulations/ regulatory bodies </div><div class="post-footer">
+        <a href="/datal25/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/datal11/">DATA100-L11: Ordinary Least Squares</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">linear in theta linear combination of parameters $\theta$ define multiple linear regression OLS problem formulation ordinary least squares (OLS)
-用线性代数重写之 $$ \mathbb{\hat{Y}} = \mathbb{X}\theta $$
-multiple linear regression model MSE $$ R(\theta) = \frac{1}{n}||\mathbb{Y}-\hat{\mathbb{Y}}||_2^2 $$
-geometric derivation lin alg review: orthogonality, span $$ span(\mathbb{A})是一个由列向量组成的space $$ 正交 least squares estimate proof performance: residuals, multiple R-squared lec11.ipynb
-$$ R^2∈[0,1] $$ 越大拟合效果越好
-OLS properties residuals the bias/intercept term existence of a unique solution </div><div class="post-footer">
-        <a href="/datal11/">Read More</a></div>
+        <a href="/datal23/">DATA100-L23: Decision Trees</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">Multiclass Classification 多分类问题 但是没有softmax &#x1f622; Decision Trees (conceptually) Decision Tree Demo Creating Decision Trees in sklearn 可视化代码见lecture code
+Evaluating Tree Accuracy Overfit Decision Tree Example tree is too complex to generalize well to new data too tall and narrow
+有用的特征越多，树的结构可能比较简单&#x1f914;
+The Decision Tree Generation Algorithm Intuitively Evaluating Split Quality 分割怎么样“更明显”？
+Entropy 沿着树向下，信息熵越小？可能变大！ Generating Trees Using Entropy Weighted entropy can decrease!
+Traditional decision tree generation algorithm:
+All of the data starts in the root node.</div><div class="post-footer">
+        <a href="/datal23/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/datal10/">DATA100-L10: Constant Model, Loss, and Transformations</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-18">2024-07-18</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">constant model + MSE 微积分是求最优化的一种方法
-两种记法 constant model + MAE 绝对值求导新视角 $$ \sum_{\theta &lt;y_i} 1=\sum_{\theta &gt;y_i} 1 $$ 是计数！==&gt;中位数
-loss的敏感性问题 revisiting SLR evaluation 画图before modeling！！！
-transformations to fit linear model 经验之谈 introducing notation for multiple linear regression </div><div class="post-footer">
-        <a href="/datal10/">Read More</a></div>
+        <a href="/datal21/">DATA100-L21: Classification and Logistic Regression I</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">Regression vs. Classification 全攻略&#x1f60b; intuition: the coin flip 重新定义概率，只需要满足一些性质即可。参考 概率论与数理统计
+deriving the logistic regression model knn一瞥 这说明可以从某些变化转换为线性性质
+考虑 probability $p$ 考虑 odds $\frac{p}{1-p}$ 考虑 log odds 广义线性由此可见
+Graph of Averages the sigmoid function $$ \sigma(t)=\frac{1}{1+e^{-t}} $$
+the logistic regression model comparison to linear regression parameter estimation pitfalls of squared loss non-convex bounded, MSE ∈[0，1] conceptually questionable, not matching the &ldquo;Probability and 0/1 labels&rdquo; cross-entropy loss $$ -\frac{1}{N}\sum_{i=1}^N[y_i\log(p_i)+(1-y_i)\log(1-p_i)] $$ Loss function should penalize well!</div><div class="post-footer">
+        <a href="/datal21/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -169,7 +178,7 @@ transformations to fit linear model 经验之谈 introducing notation for multip
                     <span class="page-link" aria-hidden="true">&hellip;</span>
                 </li><li class="page-item ">
                     <span class="page-link">
-                        <a href="/page/16/">16</a>
+                        <a href="/page/19/">19</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">

@@ -231,8 +231,7 @@ Note that **slicing in `loc` is inclusive** on the provided labels.
 
 ```python
 #get rows 0 through 2 and columns fruit through price
-fruit_info.loc[0:2, 'fruit':'price'] # 闭区间
-```
+fruit_info.loc[0:2, 'fruit':'price'] # 闭区�?```
 
 
 
@@ -289,8 +288,7 @@ fruit_info.loc[0:2, 'fruit':'price'] # 闭区间
 ```python
 # get rows 0 through 2 and columns fruit and price. 
 # Note the difference in notation and result from the previous example.
-fruit_info.loc[0:2, ['fruit', 'price']] # 离散的
-```
+fruit_info.loc[0:2, ['fruit', 'price']] # 离散�?```
 
 
 
@@ -342,8 +340,7 @@ fruit_info.loc[0:2, ['fruit', 'price']] # 离散的
 
 ```python
 # get rows 0 and 2 and columns fruit and price. 
-fruit_info.loc[[0, 2], ['fruit', 'price']] # 更加离散的
-```
+fruit_info.loc[[0, 2], ['fruit', 'price']] # 更加离散�?```
 
 
 
@@ -863,12 +860,10 @@ Observe that the row number 0 now has index 3, row number 1 now has index 2, etc
 
 If we request the rows in positions 0 and 2 using `iloc`,  **we're indexing using the row NUMBERS, not labels.**
 
-这里似乎并不是按照lab所说的那样？
-
+这里似乎并不是按照lab所说的那样�?
 
 ```python
-fruit_info_sorted.iloc[[0, 2], 0] # 别和数学表达混淆！
-```
+fruit_info_sorted.iloc[[0, 2], 0] # 别和数学表达混淆�?```
 
 
 
@@ -1961,8 +1956,7 @@ Symbol | Usage      | Meaning
 &    | p & q    | p AND q
 ^  | p ^ q | p XOR q (exclusive or)
 
-In the following we construct the DataFrame containing only names registered in California注意这里十分重要！
-
+In the following we construct the DataFrame containing only names registered in California注意这里十分重要�?
 
 ```python
 ca = baby_names[baby_names['State'] == 'CA']
@@ -2140,8 +2134,7 @@ result.head()
 
 ```python
 grader.check("q5")
-# 依旧是版本问题
-```
+# 依旧是版本问�?```
 
 #### Query Review
 
