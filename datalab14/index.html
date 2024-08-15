@@ -4,19 +4,22 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>DATA100-lab14 - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/datalab14/">
+        <title>DATA100-lab14: Clustering - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/datalab14/">
   <meta property="og:site_name" content="HHZZ`s space">
-  <meta property="og:title" content="DATA100-lab14">
-  <meta property="og:description" content="This is my cool site">
+  <meta property="og:title" content="DATA100-lab14: Clustering">
+  <meta property="og:description" content="1 2 3 # Initialize Otter import otter grader = otter.Notebook(&amp;#34;lab14.ipynb&amp;#34;) Ungraded Lab 14: Clustering In this lab you will explore K-Means, Agglomerative Clustering, and Spectral Clustering. Spectral Clustering is out of scope for Spring 2022.ref.
+Note: This is an ungraded assignment. There is no Gradescope submission for this assignment. As this is a bonus and ungraded assignment, there will also be more limited staff office hours devoted to this ungraded homework.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2024-08-13T15:19:37+08:00">
     <meta property="article:modified_time" content="2024-08-13T15:19:37+08:00">
+    <meta property="article:tag" content="Scikit-Learn">
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="DATA100-lab14">
-<meta name="twitter:description" content="">
+<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="DATA100-lab14: Clustering">
+<meta name="twitter:description" content="1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab14.ipynb&#34;) Ungraded Lab 14: Clustering In this lab you will explore K-Means, Agglomerative Clustering, and Spectral Clustering. Spectral Clustering is out of scope for Spring 2022.ref.
+Note: This is an ungraded assignment. There is no Gradescope submission for this assignment. As this is a bonus and ungraded assignment, there will also be more limited staff office hours devoted to this ungraded homework.">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -26,12 +29,12 @@
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "DATA100-lab14",
+        "headline": "DATA100-lab14: Clustering",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/datalab14\/"
-        },"genre": "posts","wordcount":  0 ,
+        },"genre": "posts","keywords": "Scikit-Learn","wordcount":  2497 ,
         "url": "http:\/\/example.org\/datalab14\/","datePublished": "2024-08-13T15:19:37+08:00","dateModified": "2024-08-13T15:19:37+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -103,17 +106,771 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">DATA100-lab14</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">DATA100-lab14: Clustering</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-13">2024-08-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;0 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;0 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-13">2024-08-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2497 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;12 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"></div><div class="post-footer" id="post-footer">
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#toy-data-1-balanced-clusters">Toy Data 1: Balanced Clusters</a></li>
+    <li><a href="#question-1-initial-centers">Question 1: Initial Centers</a></li>
+    <li><a href="#toy-data-2-clusters-of-different-sizes">Toy Data 2: Clusters of Different Sizes</a></li>
+    <li><a href="#question-2">Question 2</a>
+      <ul>
+        <li><a href="#question-2a-k-means">Question 2a: K-Means</a></li>
+        <li><a href="#agglomerative-clustering-the-linkage-criterion">Agglomerative Clustering: The Linkage Criterion</a></li>
+        <li><a href="#question-2b-agglomerative-clustering">Question 2b: Agglomerative Clustering</a></li>
+      </ul>
+    </li>
+    <li><a href="#toy-data-3-oddly-shaped-clusters">Toy Data 3: Oddly Shaped Clusters</a></li>
+    <li><a href="#bonus-question-3-spectral-clustering">(Bonus) Question 3: Spectral Clustering</a></li>
+    <li><a href="#the-world-bank-dataset">The World Bank Dataset</a></li>
+    <li><a href="#question-4">Question 4</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Initialize Otter</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">otter</span>
+</span></span><span class="line"><span class="cl"><span class="n">grader</span> <span class="o">=</span> <span class="n">otter</span><span class="o">.</span><span class="n">Notebook</span><span class="p">(</span><span class="s2">&#34;lab14.ipynb&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="ungraded-lab-14-clustering">Ungraded Lab 14: Clustering</h1>
+<p>In this lab you will explore K-Means, Agglomerative Clustering, and Spectral Clustering. Spectral Clustering is out of scope for Spring 2022.<a href="https://github.com/MartinLwx/Data100-Fall-2021-UCB/blob/main/Labs/lab15.ipynb" target="_blank" rel="noopener noreffer ">ref.</a></p>
+<p><strong>Note: This is an ungraded assignment. There is no Gradescope submission for this assignment.</strong> As this is a bonus and ungraded assignment, there will also be more limited staff office hours devoted to this ungraded homework. We may prioritize students who have other questions.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">cluster</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># more readable exceptions</span>
+</span></span><span class="line"><span class="cl"><span class="o">%</span><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">quiet</span> <span class="n">iwut</span>
+</span></span><span class="line"><span class="cl"><span class="o">%</span><span class="n">load_ext</span> <span class="n">iwut</span>
+</span></span><span class="line"><span class="cl"><span class="o">%</span><span class="n">wut</span> <span class="n">on</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>Note: you may need to restart the kernel to use updated packages.
+</code></pre>
+<p>In the first part of this lab, we work with three different toy datasets, all with different clustering characteristics. In the second part, we explore a real-world dataset from the World Bank.</p>
+<p><br/><br/><br/></p>
+<hr style="border: 5px solid #003262;" />
+<hr style="border: 1px solid #fdb515;" />
+<h2 id="toy-data-1-balanced-clusters">Toy Data 1: Balanced Clusters</h2>
+<p>Let us begin with a toy dataset with three groups that are completely separated with the variables given. There are the same number of points per group and the same variance within each group.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1337</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">c1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">c2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">c3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">,</span> <span class="n">c3</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x1</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x1</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab14/lab14_files/lab14_4_0.png"
+        data-srcset="/datalab14/lab14_files/lab14_4_0.png, /datalab14/lab14_files/lab14_4_0.png 1.5x, /datalab14/lab14_files/lab14_4_0.png 2x"
+        data-sizes="auto"
+        alt="/datalab14/lab14_files/lab14_4_0.png"
+        title="png" width="546" height="416" /></p>
+<p>Below, we create a <code>cluster.KMeans</code> object (<a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html" target="_blank" rel="noopener noreffer ">documentation</a>) which implements the K-Means algorithm.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">kmeans</span> <span class="o">=</span> <span class="n">cluster</span><span class="o">.</span><span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">42</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x1</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x1</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">hue</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">labels_</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">y</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">300</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mi">5</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab14/lab14_files/lab14_6_0.png"
+        data-srcset="/datalab14/lab14_files/lab14_6_0.png, /datalab14/lab14_files/lab14_6_0.png 1.5x, /datalab14/lab14_files/lab14_6_0.png 2x"
+        data-sizes="auto"
+        alt="/datalab14/lab14_files/lab14_6_0.png"
+        title="png" width="546" height="416" /></p>
+<p>We observe that K-Means is able to accurately pick out the three initial clusters.</p>
+<p><br/><br/></p>
+<hr style="border: 1px solid #fdb515;" />
+<h2 id="question-1-initial-centers">Question 1: Initial Centers</h2>
+<p>In the previous example, the K-Means algorithm was able to accurately find the three initial clusters. However, changing the starting centers for K-Means can change the final clusters that K-Means gives us. Change the initial centers to the points <code>[0, 1]</code>, <code>[1, 1]</code>, and <code>[2, 2]</code>; and fit a <code>cluster.KMeans</code> object (<a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html" target="_blank" rel="noopener noreffer ">documentation</a>) called <code>kmeans_q1</code> on the toy dataset from the previous example. Keep the <code>random_state</code> parameter as 42 and the <code>n_clusters</code> parameter as 3.</p>
+<p><strong>Hint:</strong> You will need to change the <code>init</code> and <code>n_init</code> parameters in <code>cluster.KMeans</code>.</p>
+<!--
+BEGIN QUESTION
+name: q1
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">kmeans_q1</span> <span class="o">=</span> <span class="n">cluster</span><span class="o">.</span><span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">42</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]],</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q1&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong><pre style='display: inline;'>q1</pre></strong> passed! 🍀</p>
+<p>Running the K-Means algorithm with these centers gives us a different result from before, and this particular run of K-Means was unable to accurately find the three initial clusters.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x1</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x1</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">hue</span> <span class="o">=</span> <span class="n">kmeans_q1</span><span class="o">.</span><span class="n">labels_</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">kmeans_q1</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">y</span> <span class="o">=</span> <span class="n">kmeans_q1</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">300</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mi">5</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab14/lab14_files/lab14_12_0.png"
+        data-srcset="/datalab14/lab14_files/lab14_12_0.png, /datalab14/lab14_files/lab14_12_0.png 1.5x, /datalab14/lab14_files/lab14_12_0.png 2x"
+        data-sizes="auto"
+        alt="/datalab14/lab14_files/lab14_12_0.png"
+        title="png" width="546" height="416" /></p>
+<p><br/><br/><br/></p>
+<hr style="border: 5px solid #003262;" />
+<hr style="border: 1px solid #fdb515;" />
+<h2 id="toy-data-2-clusters-of-different-sizes">Toy Data 2: Clusters of Different Sizes</h2>
+<p>Sometimes, K-Means will have a difficult time finding the &ldquo;correct&rdquo; clusters even with ideal starting centers. For example, consider the data below.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1337</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">c1</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">c2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">475</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x2</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x2</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab14/lab14_files/lab14_14_0.png"
+        data-srcset="/datalab14/lab14_files/lab14_14_0.png, /datalab14/lab14_files/lab14_14_0.png 1.5x, /datalab14/lab14_files/lab14_14_0.png 2x"
+        data-sizes="auto"
+        alt="/datalab14/lab14_files/lab14_14_0.png"
+        title="png" width="556" height="413" /></p>
+<p>There are two groups of different sizes in two different senses: <strong>variability</strong> (i.e., spread) and <strong>number of datapoints</strong>. The smaller group has both smaller variability and has fewer datapoints, and the larger of the two groups is more diffuse and populated.</p>
+<p><br/><br/></p>
+<hr style="border: 1px solid #fdb515;" />
+<h2 id="question-2">Question 2</h2>
+<h3 id="question-2a-k-means">Question 2a: K-Means</h3>
+<p>Fit a <code>cluster.KMeans</code> object (<a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html" target="_blank" rel="noopener noreffer ">documentation</a>) called <code>kmeans_q2a</code> on the dataset above with two clusters and a <code>random_state</code> parameter of 42.</p>
+<!--
+BEGIN QUESTION
+name: q2a
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">kmeans_q2a</span> <span class="o">=</span> <span class="n">cluster</span><span class="o">.</span><span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q2a&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong><pre style='display: inline;'>q2a</pre></strong> passed! 🍀</p>
+<br/>
+<p>(For notational simplicity we will call the initial cluster on the bottom left $A$ and the initial cluster on the top right $B$. We will call the bottom left cluster found by K-Means as cluster $a$ and the top right cluster found by K-Means as cluster $b$.)</p>
+<p>As seen below, K-Means is unable to find the two intial clusters because cluster $A$ includes points from cluster $B$. Recall that K-Means attempts to minimize inertia (惯性？), so it makes sense that points in the bottom left of cluster $B$ would prefer to be in cluster $A$ rather than cluster $B$. If these points were in cluster $B$ instead, then the resulting cluster assignments would have a larger distortion(歪曲).</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x2</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x2</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">hue</span> <span class="o">=</span> <span class="n">kmeans_q2a</span><span class="o">.</span><span class="n">labels_</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">kmeans_q2a</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">y</span> <span class="o">=</span> <span class="n">kmeans_q2a</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">300</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mi">5</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab14/lab14_files/lab14_20_0.png"
+        data-srcset="/datalab14/lab14_files/lab14_20_0.png, /datalab14/lab14_files/lab14_20_0.png 1.5x, /datalab14/lab14_files/lab14_20_0.png 2x"
+        data-sizes="auto"
+        alt="/datalab14/lab14_files/lab14_20_0.png"
+        title="png" width="556" height="413" /></p>
+<br/>
+<hr>
+<h3 id="agglomerative-clustering-the-linkage-criterion">Agglomerative Clustering: The Linkage Criterion</h3>
+<p>It turns out agglomerative clustering works better for this task, as long as we choose the right definition of distance between two clusters. <em>Recall that agglomerative clustering starts with every data point in its own cluster and iteratively joins the two closest clusters until there are $k$ clusters remaining.</em> However, the &ldquo;distance&rdquo; between two clusters is ambiguous.</p>
+<p>In lecture, we used the maximum distance between a point in the first cluster and a point in the second as this notion of distance, but there are other ways to define the distance between two clusters.</p>
+<p>Our choice of definition for the distance is sometimes called the &ldquo;linkage criterion.&rdquo; We will discuss three linkage criteria, each of which is a different definition of &ldquo;distance&rdquo; between two clusters:</p>
+<ul>
+<li><strong>Complete linkage</strong> considers the distance between two clusters as the <strong>maximum</strong> distance between a point in the first cluster and a point in the second. This is what you will see in Lecture 26.</li>
+<li><strong>Single linkage</strong> considers the distance between two clusters as the <strong>minimum</strong> distance between a point in the first cluster and a point in the second.</li>
+<li><strong>Average linkage</strong> considers the distance between two clusters as the <strong>average</strong> distance between a point in the first cluster and a point in the second.</li>
+</ul>
+<p>Below, we fit a <code>cluster.AgglomerativeClustering</code> object (<a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.AgglomerativeClustering.html" target="_blank" rel="noopener noreffer ">documentation</a>) called <code>agg_complete</code> on the dataset above with two clusters, using the <strong>complete linkage criterion</strong>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">agg_complete</span> <span class="o">=</span> <span class="n">cluster</span><span class="o">.</span><span class="n">AgglomerativeClustering</span><span class="p">(</span><span class="n">n_clusters</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">linkage</span> <span class="o">=</span> <span class="s1">&#39;complete&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Below we visualize the results:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x2</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x2</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">hue</span> <span class="o">=</span> <span class="n">agg_complete</span><span class="o">.</span><span class="n">labels_</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab14/lab14_files/lab14_24_0.png"
+        data-srcset="/datalab14/lab14_files/lab14_24_0.png, /datalab14/lab14_files/lab14_24_0.png 1.5x, /datalab14/lab14_files/lab14_24_0.png 2x"
+        data-sizes="auto"
+        alt="/datalab14/lab14_files/lab14_24_0.png"
+        title="png" width="556" height="413" /></p>
+<p>It looks like complete linkage agglomerative clustering has the same issue as K-Means! The bottom left cluster found by complete linkage agglomerative clustering includes points from the top right cluster. However, we can remedy this by picking a different linkage criterion.</p>
+<br/>
+<hr>
+<h3 id="question-2b-agglomerative-clustering">Question 2b: Agglomerative Clustering</h3>
+<p>Now, use the <strong>single linkage criterion</strong> to fit a <code>cluster.AgglomerativeClustering</code> object called <code>agg_single</code> on the dataset above with two clusters.</p>
+<!--
+BEGIN QUESTION
+name: q2b
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">agg_single</span> <span class="o">=</span> <span class="n">cluster</span><span class="o">.</span><span class="n">AgglomerativeClustering</span><span class="p">(</span><span class="n">n_clusters</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">linkage</span> <span class="o">=</span> <span class="s1">&#39;single&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q2b&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong><pre style='display: inline;'>q2b</pre></strong> passed! 🌟</p>
+<p>Finally, we see that single linkage agglomerative clustering is able to find the two initial clusters.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x2</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x2</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">hue</span> <span class="o">=</span> <span class="n">agg_single</span><span class="o">.</span><span class="n">labels_</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab14/lab14_files/lab14_30_0.png"
+        data-srcset="/datalab14/lab14_files/lab14_30_0.png, /datalab14/lab14_files/lab14_30_0.png 1.5x, /datalab14/lab14_files/lab14_30_0.png 2x"
+        data-sizes="auto"
+        alt="/datalab14/lab14_files/lab14_30_0.png"
+        title="png" width="556" height="413" /></p>
+<p>You might be curious why single linkage &ldquo;works&rdquo; while complete linkage does not in this scenario; we will leave this as an exercise for students who are interested.</p>
+<p><br/><br/><br/></p>
+<hr style="border: 5px solid #003262;" />
+<hr style="border: 1px solid #fdb515;" />
+<h2 id="toy-data-3-oddly-shaped-clusters">Toy Data 3: Oddly Shaped Clusters</h2>
+<p>Another example when k-means fails is when the clusters have odd shapes. For example, look at the following dataset.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">lengths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">ord</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">x3</span> <span class="o">=</span> <span class="n">data</span><span class="p">[(</span><span class="n">lengths</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">)</span> <span class="o">|</span> <span class="p">((</span><span class="n">lengths</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">lengths</span> <span class="o">&lt;</span> <span class="mi">7</span><span class="p">))</span> <span class="o">|</span> <span class="p">((</span><span class="n">lengths</span> <span class="o">&gt;</span> <span class="mi">11</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">lengths</span> <span class="o">&lt;</span> <span class="mi">15</span><span class="p">))]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x3</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x3</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab14/lab14_files/lab14_33_0.png"
+        data-srcset="/datalab14/lab14_files/lab14_33_0.png, /datalab14/lab14_files/lab14_33_0.png 1.5x, /datalab14/lab14_files/lab14_33_0.png 2x"
+        data-sizes="auto"
+        alt="/datalab14/lab14_files/lab14_33_0.png"
+        title="png" width="554" height="413" /></p>
+<p>Looking at this data, we might say there are 3 clusters, corresponding to each of the 3 concentric circles, with the same center. However, k-means will fail.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">kmeans_q3</span> <span class="o">=</span> <span class="n">cluster</span><span class="o">.</span><span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">42</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x3</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x3</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">hue</span> <span class="o">=</span> <span class="n">kmeans_q3</span><span class="o">.</span><span class="n">labels_</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">kmeans_q3</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">y</span> <span class="o">=</span> <span class="n">kmeans_q3</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">300</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mi">5</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab14/lab14_files/lab14_35_0.png"
+        data-srcset="/datalab14/lab14_files/lab14_35_0.png, /datalab14/lab14_files/lab14_35_0.png 1.5x, /datalab14/lab14_files/lab14_35_0.png 2x"
+        data-sizes="auto"
+        alt="/datalab14/lab14_files/lab14_35_0.png"
+        title="png" width="554" height="413" /></p>
+<p><br/><br/></p>
+<hr style="border: 1px solid #fdb515;" />
+<h2 id="bonus-question-3-spectral-clustering">(Bonus) Question 3: Spectral Clustering</h2>
+<p>(Note in Spring 2022 we did not go over Spectral Clustering. Spectral Clustering is out of scope for exams.)</p>
+<p>Let&rsquo;s try spectral clustering instead.</p>
+<p>In the cell below, create and fit a <code>cluster.SpectralClustering</code> object (<a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.SpectralClustering.html" target="_blank" rel="noopener noreffer ">documentation</a>), and assign it to <code>spectral</code>. Use 3 clusters, and make sure you set <code>affinity</code> to <code>&quot;nearest_neighbors&quot;</code> and a <code>random_state</code> of 10.</p>
+<p><strong>Note:</strong> Ignore any warnings about the graph not being fully connected.</p>
+<!--
+BEGIN QUESTION
+name: q3
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">spectral</span> <span class="o">=</span> <span class="n">cluster</span><span class="o">.</span><span class="n">SpectralClustering</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">affinity</span><span class="o">=</span><span class="s1">&#39;nearest_neighbors&#39;</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x3</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>d:\miniconda3\envs\ds100\Lib\site-packages\sklearn\manifold\_spectral_embedding.py:329: UserWarning: Graph is not fully connected, spectral embedding may not work as expected.
+  warnings.warn(
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q3&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong><pre style='display: inline;'>q3</pre></strong> passed! ✨</p>
+<p>Below, we see that spectral clustering is able to find the three rings, when k-means does not.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x3</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x3</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">hue</span> <span class="o">=</span> <span class="n">spectral</span><span class="o">.</span><span class="n">labels_</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab14/lab14_files/lab14_40_0.png"
+        data-srcset="/datalab14/lab14_files/lab14_40_0.png, /datalab14/lab14_files/lab14_40_0.png 1.5x, /datalab14/lab14_files/lab14_40_0.png 2x"
+        data-sizes="auto"
+        alt="/datalab14/lab14_files/lab14_40_0.png"
+        title="png" width="554" height="413" /></p>
+<p><br/><br/><br/></p>
+<hr style="border: 5px solid #003262;" />
+<hr style="border: 1px solid #fdb515;" />
+<h2 id="the-world-bank-dataset">The World Bank Dataset</h2>
+<p>In the previous three questions, we looked at clustering on two dimensional datasets. However, we can easily use clustering on data which have more than two dimensions. For this, let us turn to a World Bank dataset, containing various features for the world&rsquo;s countries.</p>
+<p>This data comes from <a href="https://databank.worldbank.org/source/world-development-indicators#" target="_blank" rel="noopener noreffer ">https://databank.worldbank.org/source/world-development-indicators#</a>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">world_bank_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&#34;world_bank_data.csv&#34;</span><span class="p">,</span> <span class="n">index_col</span> <span class="o">=</span> <span class="s1">&#39;country&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">world_bank_data</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Age dependency ratio (% of working-age population)</th>
+      <th>Age dependency ratio, old (% of working-age population)</th>
+      <th>Age dependency ratio, young (% of working-age population)</th>
+      <th>Bird species, threatened</th>
+      <th>Business extent of disclosure index (0=less disclosure to 10=more disclosure)</th>
+      <th>Contributing family workers, female (% of female employment) (modeled ILO estimate)</th>
+      <th>Contributing family workers, male (% of male employment) (modeled ILO estimate)</th>
+      <th>Contributing family workers, total (% of total employment) (modeled ILO estimate)</th>
+      <th>Cost of business start-up procedures (% of GNI per capita)</th>
+      <th>Cost of business start-up procedures, female (% of GNI per capita)</th>
+      <th>...</th>
+      <th>Unemployment, youth total (% of total labor force ages 15-24) (modeled ILO estimate)</th>
+      <th>Urban population</th>
+      <th>Urban population (% of total population)</th>
+      <th>Urban population growth (annual %)</th>
+      <th>Vulnerable employment, female (% of female employment) (modeled ILO estimate)</th>
+      <th>Vulnerable employment, male (% of male employment) (modeled ILO estimate)</th>
+      <th>Vulnerable employment, total (% of total employment) (modeled ILO estimate)</th>
+      <th>Wage and salaried workers, female (% of female employment) (modeled ILO estimate)</th>
+      <th>Wage and salaried workers, male (% of male employment) (modeled ILO estimate)</th>
+      <th>Wage and salaried workers, total (% of total employment) (modeled ILO estimate)</th>
+    </tr>
+    <tr>
+      <th>country</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Algeria</th>
+      <td>57.508032</td>
+      <td>10.021442</td>
+      <td>47.486590</td>
+      <td>15.0</td>
+      <td>4.0</td>
+      <td>2.720000</td>
+      <td>1.836</td>
+      <td>1.978000</td>
+      <td>0.0</td>
+      <td>11.8</td>
+      <td>...</td>
+      <td>29.952999</td>
+      <td>30670086.0</td>
+      <td>72.629</td>
+      <td>2.804996</td>
+      <td>24.337001</td>
+      <td>27.227001</td>
+      <td>26.762000</td>
+      <td>73.734001</td>
+      <td>68.160004</td>
+      <td>69.056000</td>
+    </tr>
+    <tr>
+      <th>Afghanistan</th>
+      <td>84.077656</td>
+      <td>4.758273</td>
+      <td>79.319383</td>
+      <td>16.0</td>
+      <td>8.0</td>
+      <td>71.780998</td>
+      <td>9.606</td>
+      <td>31.577999</td>
+      <td>0.0</td>
+      <td>6.4</td>
+      <td>...</td>
+      <td>2.639000</td>
+      <td>9477100.0</td>
+      <td>25.495</td>
+      <td>3.350383</td>
+      <td>95.573997</td>
+      <td>85.993001</td>
+      <td>89.378998</td>
+      <td>4.282000</td>
+      <td>13.292000</td>
+      <td>10.108000</td>
+    </tr>
+    <tr>
+      <th>Albania</th>
+      <td>45.810037</td>
+      <td>20.041214</td>
+      <td>25.768823</td>
+      <td>8.0</td>
+      <td>9.0</td>
+      <td>37.987000</td>
+      <td>20.795</td>
+      <td>28.076000</td>
+      <td>0.0</td>
+      <td>11.3</td>
+      <td>...</td>
+      <td>30.979000</td>
+      <td>1728969.0</td>
+      <td>60.319</td>
+      <td>1.317162</td>
+      <td>54.663000</td>
+      <td>54.994001</td>
+      <td>54.854000</td>
+      <td>44.320999</td>
+      <td>41.542999</td>
+      <td>42.720001</td>
+    </tr>
+    <tr>
+      <th>American Samoa</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>8.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>48339.0</td>
+      <td>87.153</td>
+      <td>-0.299516</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Andorra</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>67813.0</td>
+      <td>88.062</td>
+      <td>-0.092859</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 209 columns</p>
+</div>
+<p>There are some missing values. For the sake of convenience and of keeping the lab short, we will fill them all with zeros.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">world_bank_data</span> <span class="o">=</span> <span class="n">world_bank_data</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Like with PCA, it sometimes makes sense to center and scale our data so that features with higher variance don&rsquo;t dominate the analysis. For example, without standardization, statistics like population will completely dominate features like &ldquo;percent of total population that live in urban areas.&rdquo; This is because the range of populations is on the order of billions, whereas percentages are always between 0 and 100. The ultimate effect is that many of our columns are not really considered by our clustering algorithm.</p>
+<p><br/><br/></p>
+<hr style="border: 1px solid #fdb515;" />
+<h2 id="question-4">Question 4</h2>
+<p>Below, fit a <code>cluster.KMeans</code> object called <code>kmeans_q4</code> with four clusters and a <code>random_state</code> parameter of 42.</p>
+<p>Make sure you should use a centered and scaled version of the world bank data. By centered and scaled we mean that the mean in each column should be zero and the variance should be 1.</p>
+<!--
+BEGIN QUESTION
+name: q4
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">world_bank_data</span> <span class="o">=</span> <span class="p">(</span><span class="n">world_bank_data</span> <span class="o">-</span> <span class="n">world_bank_data</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span> <span class="o">/</span> <span class="n">world_bank_data</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">kmeans_q4</span> <span class="o">=</span> <span class="n">cluster</span><span class="o">.</span><span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                           <span class="n">random_state</span> <span class="o">=</span> <span class="mi">42</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">world_bank_data</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nb">sorted</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">kmeans_q4</span><span class="o">.</span><span class="n">labels_</span><span class="p">,</span> <span class="n">return_counts</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>[np.int64(3), np.int64(23), np.int64(85), np.int64(106)]
+</code></pre>
+<p>below is very interesting, note that in ref. all tests passed. &mdash;&gt; maybe Cluster itself changed?</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q4&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong style='color: red;'><pre style='display: inline;'>q4</pre> results:</strong></p><p><strong><pre style='display: inline;'>q4 - 1</pre> result:</strong></p><pre>    ❌ Test case failed
+    Trying:
+        sorted(np.unique(kmeans_q4.labels_, return_counts = True)[1]) == [3, 25, 90, 99]
+    Expecting:
+        True
+    **********************************************************************
+    Line 1, in q4 0
+    Failed example:
+        sorted(np.unique(kmeans_q4.labels_, return_counts = True)[1]) == [3, 25, 90, 99]
+    Expected:
+        True
+    Got:
+        False
+</pre>
+<p>Looking at these new clusters, we see that they seem to correspond to:</p>
+<p>0: Very small countries.</p>
+<p>1: Developed countries.</p>
+<p>2: Less developed countries.</p>
+<p>3: Huge countries.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">labeled_world_bank_data_q4</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">kmeans_q4</span><span class="o">.</span><span class="n">labels_</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s2">&#34;cluster&#34;</span><span class="p">,</span> <span class="n">index</span>  <span class="o">=</span> <span class="n">world_bank_data</span><span class="o">.</span><span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;&gt;&gt;&gt; Cluster </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2">:&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">labeled_world_bank_data_q4</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;cluster == </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>&gt;&gt;&gt; Cluster 0:
+['Afghanistan', 'Angola', 'Bangladesh', 'Belize', 'Benin', 'Bhutan', 'Bolivia', 'Botswana', 'Burkina Faso', 'Burundi', 'Cambodia', 'Cameroon', 'Central African Republic', 'Chad', 'Comoros', 'Congo, Dem. Rep.', 'Congo, Rep.', &quot;Cote d'Ivoire&quot;, 'Djibouti', 'Ecuador', 'Egypt, Arab Rep.', 'Equatorial Guinea', 'Eritrea', 'Eswatini', 'Ethiopia', 'Fiji', 'Gabon', 'Gambia, The', 'Ghana', 'Guatemala', 'Guinea', 'Guinea-Bissau', 'Guyana', 'Haiti', 'Honduras', 'Indonesia', 'Iraq', 'Kenya', 'Kiribati', 'Kyrgyz Republic', 'Lao PDR', 'Lesotho', 'Liberia', 'Madagascar', 'Malawi', 'Mali', 'Mauritania', 'Micronesia, Fed. Sts.', 'Mongolia', 'Morocco', 'Mozambique', 'Myanmar', 'Namibia', 'Nepal', 'Nicaragua', 'Niger', 'Nigeria', 'Pakistan', 'Papua New Guinea', 'Paraguay', 'Philippines', 'Rwanda', 'Samoa', 'Sao Tome and Principe', 'Senegal', 'Sierra Leone', 'Solomon Islands', 'Somalia', 'South Sudan', 'Sudan', 'Syrian Arab Republic', 'Tajikistan', 'Tanzania', 'Timor-Leste', 'Togo', 'Tonga', 'Uganda', 'Uzbekistan', 'Vanuatu', 'Venezuela, RB', 'Vietnam', 'West Bank and Gaza', 'Yemen, Rep.', 'Zambia', 'Zimbabwe']
+
+&gt;&gt;&gt; Cluster 1:
+['China', 'India', 'United States']
+
+&gt;&gt;&gt; Cluster 2:
+['American Samoa', 'Andorra', 'Bermuda', 'British Virgin Islands', 'Cayman Islands', 'Dominica', 'Faroe Islands', 'Gibraltar', 'Greenland', 'Isle of Man', 'Kosovo', 'Liechtenstein', 'Marshall Islands', 'Monaco', 'Nauru', 'Northern Mariana Islands', 'Palau', 'San Marino', 'Sint Maarten (Dutch part)', 'St. Kitts and Nevis', 'St. Martin (French part)', 'Turks and Caicos Islands', 'Tuvalu']
+
+&gt;&gt;&gt; Cluster 3:
+['Algeria', 'Albania', 'Antigua and Barbuda', 'Argentina', 'Armenia', 'Aruba', 'Australia', 'Austria', 'Azerbaijan', 'Bahamas, The', 'Bahrain', 'Barbados', 'Belarus', 'Belgium', 'Bosnia and Herzegovina', 'Brazil', 'Brunei Darussalam', 'Bulgaria', 'Cabo Verde', 'Canada', 'Channel Islands', 'Chile', 'Colombia', 'Costa Rica', 'Croatia', 'Cuba', 'Curacao', 'Cyprus', 'Czech Republic', 'Denmark', 'Dominican Republic', 'El Salvador', 'Estonia', 'Finland', 'France', 'French Polynesia', 'Georgia', 'Germany', 'Greece', 'Grenada', 'Guam', 'Hong Kong SAR, China', 'Hungary', 'Iceland', 'Iran, Islamic Rep.', 'Ireland', 'Israel', 'Italy', 'Jamaica', 'Japan', 'Jordan', 'Kazakhstan', 'Korea, Dem. People’s Rep.', 'Korea, Rep.', 'Kuwait', 'Latvia', 'Lebanon', 'Libya', 'Lithuania', 'Luxembourg', 'Macao SAR, China', 'Malaysia', 'Maldives', 'Malta', 'Mauritius', 'Mexico', 'Moldova', 'Montenegro', 'Netherlands', 'New Caledonia', 'New Zealand', 'North Macedonia', 'Norway', 'Oman', 'Panama', 'Peru', 'Poland', 'Portugal', 'Puerto Rico', 'Qatar', 'Romania', 'Russian Federation', 'Saudi Arabia', 'Serbia', 'Seychelles', 'Singapore', 'Slovak Republic', 'Slovenia', 'South Africa', 'Spain', 'Sri Lanka', 'St. Lucia', 'St. Vincent and the Grenadines', 'Suriname', 'Sweden', 'Switzerland', 'Thailand', 'Trinidad and Tobago', 'Tunisia', 'Turkey', 'Turkmenistan', 'Ukraine', 'United Arab Emirates', 'United Kingdom', 'Uruguay', 'Virgin Islands (U.S.)']
+</code></pre>
+<h1 id="congratulations-you-finished-the-lab">Congratulations! You finished the lab!</h1>
+<hr>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -124,20 +881,20 @@
                             <a class="link-to-markdown" href="/datalab14/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/datalab14/" data-title="DATA100-lab14"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/datalab14/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/datalab14/" data-title="DATA100-lab14"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/datalab14/" data-title="DATA100-lab14"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/datalab14/" data-title="DATA100-lab14"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/datalab14/" data-title="DATA100-lab14: Clustering" data-hashtags="Scikit-Learn"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/datalab14/" data-hashtag="Scikit-Learn"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/datalab14/" data-title="DATA100-lab14: Clustering"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/datalab14/" data-title="DATA100-lab14: Clustering"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/datalab14/" data-title="DATA100-lab14: Clustering"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/scikit-learn/">Scikit-Learn</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/datalab11/" class="prev" rel="prev" title="DATA100-lab11"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>DATA100-lab11</a>
-            <a href="/datalab13/" class="next" rel="next" title="DATA100-lab13">DATA100-lab13<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/datalab11/" class="prev" rel="prev" title="DATA100-lab11: Principal Component Analysis"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>DATA100-lab11: Principal Component Analysis</a>
+            <a href="/datalab13/" class="next" rel="next" title="DATA100-lab13: Decision Trees and Random Forests">DATA100-lab13: Decision Trees and Random Forests<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">

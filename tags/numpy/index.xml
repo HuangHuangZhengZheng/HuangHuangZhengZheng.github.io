@@ -3,7 +3,24 @@
         <title>Numpy - Tag - HHZZ`s space</title>
         <link>http://example.org/tags/numpy/</link>
         <description>Numpy - Tag - HHZZ`s space</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 13 Aug 2024 15:19:35 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/numpy/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 13 Aug 2024 15:19:36 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/numpy/" rel="self" type="application/rss+xml" /><item>
+    <title>DATA100-lab11: Principal Component Analysis</title>
+    <link>http://example.org/datalab11/</link>
+    <pubDate>Tue, 13 Aug 2024 15:19:36 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/datalab11/</guid>
+    <description><![CDATA[1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab11.ipynb&#34;) Lab 11: Principal Component Analysis In this lab assignment, we will walk through two examples that use Principal Component Analysis (PCA): one involving a dataset of iris plants, and another involving an artificial &ldquo;surfboard&rdquo; 3D dataset.
+1 2 3 4 5 6 7 8 9 10 11 12 # Run this cell to set up your notebook from sklearn.]]></description>
+</item>
+<item>
+    <title>DATA100-lab12: Logistic Regression</title>
+    <link>http://example.org/datalab12/</link>
+    <pubDate>Tue, 13 Aug 2024 15:19:36 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/datalab12/</guid>
+    <description><![CDATA[1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab12.ipynb&#34;) Lab 12: Logistic Regression 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 # Run this cell to set up your notebook import numpy as np import pandas as pd import sklearn import sklearn.datasets import matplotlib.pyplot as plt import seaborn as sns import plotly.offline as py import plotly.graph_objs as go import plotly.]]></description>
+</item>
+<item>
     <title>DATA100-lab9: Probability and Modeling</title>
     <link>http://example.org/datalab9/</link>
     <pubDate>Tue, 13 Aug 2024 15:19:35 &#43;0800</pubDate>

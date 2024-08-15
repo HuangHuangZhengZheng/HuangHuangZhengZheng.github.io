@@ -4,19 +4,20 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>DATA100-lab13 - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/datalab13/">
+        <title>DATA100-lab13: Decision Trees and Random Forests - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/datalab13/">
   <meta property="og:site_name" content="HHZZ`s space">
-  <meta property="og:title" content="DATA100-lab13">
-  <meta property="og:description" content="This is my cool site">
+  <meta property="og:title" content="DATA100-lab13: Decision Trees and Random Forests">
+  <meta property="og:description" content="1 2 3 # Initialize Otter import otter grader = otter.Notebook(&amp;#34;lab13.ipynb&amp;#34;) Lab 13: Decision Trees and Random Forests 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 # Run this cell to set up your notebook import numpy as np import pandas as pd import matplotlib.pyplot as plt from matplotlib.colors import ListedColormap import seaborn as sns from sklearn.linear_model import LogisticRegression from sklearn.model_selection import train_test_split from sklearn import tree # you may get a warning from importing ensemble.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2024-08-13T15:19:37+08:00">
     <meta property="article:modified_time" content="2024-08-13T15:19:37+08:00">
+    <meta property="article:tag" content="Scikit-Learn">
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="DATA100-lab13">
-<meta name="twitter:description" content="">
+<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="DATA100-lab13: Decision Trees and Random Forests">
+<meta name="twitter:description" content="1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab13.ipynb&#34;) Lab 13: Decision Trees and Random Forests 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 # Run this cell to set up your notebook import numpy as np import pandas as pd import matplotlib.pyplot as plt from matplotlib.colors import ListedColormap import seaborn as sns from sklearn.linear_model import LogisticRegression from sklearn.model_selection import train_test_split from sklearn import tree # you may get a warning from importing ensemble.">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -26,12 +27,12 @@
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "DATA100-lab13",
+        "headline": "DATA100-lab13: Decision Trees and Random Forests",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/datalab13\/"
-        },"genre": "posts","wordcount":  0 ,
+        },"genre": "posts","keywords": "Scikit-Learn","wordcount":  3078 ,
         "url": "http:\/\/example.org\/datalab13\/","datePublished": "2024-08-13T15:19:37+08:00","dateModified": "2024-08-13T15:19:37+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -103,17 +104,1195 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">DATA100-lab13</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">DATA100-lab13: Decision Trees and Random Forests</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-13">2024-08-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;0 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;0 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-13">2024-08-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3078 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;15 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"></div><div class="post-footer" id="post-footer">
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#objectives">Objectives</a></li>
+    <li><a href="#tutorial-dataset-eda-and-classification-task">[Tutorial] Dataset, EDA, and Classification Task</a>
+      <ul>
+        <li><a href="#3-class-classification">3-class classification</a></li>
+        <li><a href="#data-cleaning-and-visualization">Data Cleaning and Visualization</a></li>
+      </ul>
+    </li>
+    <li><a href="#question-1-evaluating-split-quality">Question 1: Evaluating Split Quality</a>
+      <ul>
+        <li><a href="#question-1a-entropy">Question 1a: Entropy</a></li>
+        <li><a href="#question-1b-gini-impurity">Question 1b: Gini impurity</a></li>
+        <li><a href="#tutorial-variance">[Tutorial] Variance</a></li>
+        <li><a href="#question-1c-weighted-metrics">Question 1c: Weighted Metrics</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#one-vs-rest-logistic-regression">One-vs-Rest Logistic Regression</a>
+      <ul>
+        <li><a href="#question-2a">Question 2a</a></li>
+        <li><a href="#tutorial-visualizing-performance">[Tutorial] Visualizing Performance</a></li>
+      </ul>
+    </li>
+    <li><a href="#decision-trees">Decision Trees</a>
+      <ul>
+        <li><a href="#question-2b">Question 2b</a></li>
+        <li><a href="#tutorial-decision-tree-performance">[Tutorial] Decision Tree Performance</a></li>
+      </ul>
+    </li>
+    <li><a href="#random-forests">Random Forests</a>
+      <ul>
+        <li><a href="#question-2c">Question 2c</a></li>
+        <li><a href="#tutorial-random-forest-performance">[Tutorial] Random Forest Performance</a></li>
+      </ul>
+    </li>
+    <li><a href="#comparecontrast">Compare/Contrast</a>
+      <ul>
+        <li><a href="#question-2d">Question 2d</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Initialize Otter</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">otter</span>
+</span></span><span class="line"><span class="cl"><span class="n">grader</span> <span class="o">=</span> <span class="n">otter</span><span class="o">.</span><span class="n">Notebook</span><span class="p">(</span><span class="s2">&#34;lab13.ipynb&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="lab-13-decision-trees-and-random-forests">Lab 13: Decision Trees and Random Forests</h1>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Run this cell to set up your notebook</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">ListedColormap</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">tree</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># you may get a warning from importing ensemble. It is OK to ignore said warning</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">ensemble</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;fivethirtyeight&#39;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><br/><br/></p>
+<hr style="border: 5px solid #003262;" />
+<hr style="border: 1px solid #fdb515;" />
+<h2 id="objectives">Objectives</h2>
+<p>In this assignment, we will have you train a multi-class classifier with three different models (one-vs-rest logistic regression, decision trees, random forests) and compare the accuracies and decision boundaries created by each.</p>
+<p><br/><br/></p>
+<h2 id="tutorial-dataset-eda-and-classification-task">[Tutorial] Dataset, EDA, and Classification Task</h2>
+<p>We&rsquo;ll be looking at a dataset of per-game stats for all NBA players in the 2018-19 season. This dataset comes from <a href="https://www.basketball-reference.com/" target="_blank" rel="noopener noreffer ">basketball-reference.com</a>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">nba_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&#34;nba18-19.csv&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">nba_data</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Rk</th>
+      <th>Player</th>
+      <th>Pos</th>
+      <th>Age</th>
+      <th>Tm</th>
+      <th>G</th>
+      <th>GS</th>
+      <th>MP</th>
+      <th>FG</th>
+      <th>FGA</th>
+      <th>...</th>
+      <th>FT%</th>
+      <th>ORB</th>
+      <th>DRB</th>
+      <th>TRB</th>
+      <th>AST</th>
+      <th>STL</th>
+      <th>BLK</th>
+      <th>TOV</th>
+      <th>PF</th>
+      <th>PTS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Álex Abrines\abrinal01</td>
+      <td>SG</td>
+      <td>25</td>
+      <td>OKC</td>
+      <td>31</td>
+      <td>2</td>
+      <td>19.0</td>
+      <td>1.8</td>
+      <td>5.1</td>
+      <td>...</td>
+      <td>0.923</td>
+      <td>0.2</td>
+      <td>1.4</td>
+      <td>1.5</td>
+      <td>0.6</td>
+      <td>0.5</td>
+      <td>0.2</td>
+      <td>0.5</td>
+      <td>1.7</td>
+      <td>5.3</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>Quincy Acy\acyqu01</td>
+      <td>PF</td>
+      <td>28</td>
+      <td>PHO</td>
+      <td>10</td>
+      <td>0</td>
+      <td>12.3</td>
+      <td>0.4</td>
+      <td>1.8</td>
+      <td>...</td>
+      <td>0.700</td>
+      <td>0.3</td>
+      <td>2.2</td>
+      <td>2.5</td>
+      <td>0.8</td>
+      <td>0.1</td>
+      <td>0.4</td>
+      <td>0.4</td>
+      <td>2.4</td>
+      <td>1.7</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>Jaylen Adams\adamsja01</td>
+      <td>PG</td>
+      <td>22</td>
+      <td>ATL</td>
+      <td>34</td>
+      <td>1</td>
+      <td>12.6</td>
+      <td>1.1</td>
+      <td>3.2</td>
+      <td>...</td>
+      <td>0.778</td>
+      <td>0.3</td>
+      <td>1.4</td>
+      <td>1.8</td>
+      <td>1.9</td>
+      <td>0.4</td>
+      <td>0.1</td>
+      <td>0.8</td>
+      <td>1.3</td>
+      <td>3.2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>Steven Adams\adamsst01</td>
+      <td>C</td>
+      <td>25</td>
+      <td>OKC</td>
+      <td>80</td>
+      <td>80</td>
+      <td>33.4</td>
+      <td>6.0</td>
+      <td>10.1</td>
+      <td>...</td>
+      <td>0.500</td>
+      <td>4.9</td>
+      <td>4.6</td>
+      <td>9.5</td>
+      <td>1.6</td>
+      <td>1.5</td>
+      <td>1.0</td>
+      <td>1.7</td>
+      <td>2.6</td>
+      <td>13.9</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>Bam Adebayo\adebaba01</td>
+      <td>C</td>
+      <td>21</td>
+      <td>MIA</td>
+      <td>82</td>
+      <td>28</td>
+      <td>23.3</td>
+      <td>3.4</td>
+      <td>5.9</td>
+      <td>...</td>
+      <td>0.735</td>
+      <td>2.0</td>
+      <td>5.3</td>
+      <td>7.3</td>
+      <td>2.2</td>
+      <td>0.9</td>
+      <td>0.8</td>
+      <td>1.5</td>
+      <td>2.5</td>
+      <td>8.9</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 30 columns</p>
+</div>
+<p>Our goal will be to predict a player&rsquo;s <strong>position</strong> given several other features. The 5 positions in basketball are PG, SG, SF, PF, and C (which stand for point guard, shooting guard, small forward, power forward, and center; <a href="https://en.wikipedia.org/wiki/Basketball_positions" target="_blank" rel="noopener noreffer ">Wikipedia</a>).</p>
+<p>This information is contained in the <code>Pos</code> column:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">nba_data</span><span class="p">[</span><span class="s1">&#39;Pos&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>Pos
+SG       176
+PF       147
+PG       139
+C        120
+SF       118
+PF-SF      2
+SF-SG      2
+SG-PF      1
+C-PF       1
+SG-SF      1
+PF-C       1
+Name: count, dtype: int64
+</code></pre>
+<p>There are several features we could use to predict this position; check the <a href="https://en.wikipedia.org/wiki/Basketball_statistics" target="_blank" rel="noopener noreffer ">Basketball statistics</a> page of Wikipedia for more details on the statistics themselves.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">nba_data</span><span class="o">.</span><span class="n">columns</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>Index(['Rk', 'Player', 'Pos', 'Age', 'Tm', 'G', 'GS', 'MP', 'FG', 'FGA', 'FG%',
+       '3P', '3PA', '3P%', '2P', '2PA', '2P%', 'eFG%', 'FT', 'FTA', 'FT%',
+       'ORB', 'DRB', 'TRB', 'AST', 'STL', 'BLK', 'TOV', 'PF', 'PTS'],
+      dtype='object')
+</code></pre>
+<p>In this lab, we will restrict our exploration to two inputs: <a href="https://en.wikipedia.org/wiki/Rebound_%28basketball%29" target="_blank" rel="noopener noreffer ">Rebounds</a> (<code>TRB</code>) and <a href="https://en.wikipedia.org/wiki/Assist_%28basketball%29" target="_blank" rel="noopener noreffer ">Assists</a> (<code>AST</code>). Two-input feature models will make our 2-D visualizations more straightforward.</p>
+<br/>
+<h3 id="3-class-classification">3-class classification</h3>
+<p>While we could set out to try and perform 5-class classification, the results (and visualizations) are slightly more interesting if we try and categorize players into 1 of 3 categories: <strong>Guard</strong>, <strong>Forward</strong>, and <strong>Center</strong>. The below code will take the <code>Pos</code> column of our dataframe and use it to create a new column <code>Pos3</code> that consist of values <code>'G'</code>, <code>'F'</code>, and <code>'C'</code> (which stand for Guard, Forward, and Center).</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">basic_position</span><span class="p">(</span><span class="n">pos</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="s1">&#39;F&#39;</span> <span class="ow">in</span> <span class="n">pos</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s1">&#39;F&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">elif</span> <span class="s1">&#39;G&#39;</span> <span class="ow">in</span> <span class="n">pos</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s1">&#39;G&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="s1">&#39;C&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">nba_data</span><span class="p">[</span><span class="s1">&#39;Pos3&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nba_data</span><span class="p">[</span><span class="s1">&#39;Pos&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">basic_position</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">nba_data</span><span class="p">[</span><span class="s1">&#39;Pos3&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>Pos3
+G    315
+F    273
+C    120
+Name: count, dtype: int64
+</code></pre>
+<p><br/><br/></p>
+<h3 id="data-cleaning-and-visualization">Data Cleaning and Visualization</h3>
+<p>Furthermore, since there are <strong>many</strong> players in the NBA (in the 2018-19 season there were 530 unique players), our visualizations can get noisy and messy. Let&rsquo;s restrict our data to only contain rows for players that averaged 10 or more points per game.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">nba_data</span> <span class="o">=</span> <span class="n">nba_data</span><span class="p">[</span><span class="n">nba_data</span><span class="p">[</span><span class="s1">&#39;PTS&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Now, let&rsquo;s look at a scatterplot of Rebounds (<code>TRB</code>) vs. Assists (<code>AST</code>).</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">nba_data</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;AST&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;TRB&#39;</span><span class="p">,</span> <span class="n">hue</span> <span class="o">=</span> <span class="s1">&#39;Pos3&#39;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab13/lab13_files/lab13_15_0.png"
+        data-srcset="/datalab13/lab13_files/lab13_15_0.png, /datalab13/lab13_files/lab13_15_0.png 1.5x, /datalab13/lab13_files/lab13_15_0.png 2x"
+        data-sizes="auto"
+        alt="/datalab13/lab13_files/lab13_15_0.png"
+        title="png" width="634" height="461" /></p>
+<p>As you can see, when using just rebounds and assists as our features, we see pretty decent cluster separation. That is, Guards, Forward, and Centers appear in different regions of the plot.</p>
+<p><br/><br/></p>
+<hr style="border: 5px solid #003262;" />
+<hr style="border: 1px solid #fdb515;" />
+<h2 id="question-1-evaluating-split-quality">Question 1: Evaluating Split Quality</h2>
+<p>We will explore different ways to evaluate split quality for classification and regression trees in this question.</p>
+<br/>
+<hr>
+<h3 id="question-1a-entropy">Question 1a: Entropy</h3>
+<p>In lecture we defined the entropy $S$ of a node as:</p>
+<p>$$ S = -\sum_{C} p_C \log_{2} p_C $$</p>
+<p>where $p_C$ is the proportion of data points in a node with label $C$. This function is a measure of the unpredictability of a node in a decision tree.</p>
+<p>Implement the <code>entropy</code> function, which outputs the entropy of a node with a given set of labels. The <code>labels</code> parameter is a list of labels in our dataset. For example, <code>labels</code> could be <code>['G', 'G', 'F', 'F', 'C', 'C']</code>.</p>
+<!--
+BEGIN QUESTION
+name: q1a
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">entropy</span><span class="p">(</span><span class="n">labels</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_</span><span class="p">,</span> <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ps</span> <span class="o">=</span> <span class="n">counts</span> <span class="o">/</span> <span class="n">counts</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">ps</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">ps</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">entropy</span><span class="p">(</span><span class="n">nba_data</span><span class="p">[</span><span class="s1">&#39;Pos3&#39;</span><span class="p">])</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>np.float64(1.521555567956027)
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q1a&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><br/>
+<hr>
+<h3 id="question-1b-gini-impurity">Question 1b: Gini impurity</h3>
+<p>Another metric for determining the quality of a split is <strong>Gini impurity</strong>. This is defined as the chance that a sample would be misclassified if randomly assigned at this point. Gini impurity is a popular alternative to entropy for determining the best split at a node, and it is in fact the default criterion for scikit-learn&rsquo;s <code>DecisionTreeClassifier</code>.</p>
+<p>We can calculate the Gini impurity of a node with the formula ($p_C$ is the proportion of data points in a node with label $C$):</p>
+<p>$$ G = 1 - \sum_{C} {p_C}^2 $$</p>
+<p>Note that no logarithms are involved in the calculation of Gini impurity, which can make it faster to compute compared to entropy.</p>
+<p>Implement the <code>gini_impurity</code> function, which outputs the Gini impurity of a node with a given set of labels. The <code>labels</code> parameter is defined similarly to the previous part.</p>
+<!--
+BEGIN QUESTION
+name: q1b
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">gini_impurity</span><span class="p">(</span><span class="n">labels</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_</span><span class="p">,</span> <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ps</span> <span class="o">=</span> <span class="n">counts</span> <span class="o">/</span> <span class="n">counts</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">ps</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">gini_impurity</span><span class="p">(</span><span class="n">nba_data</span><span class="p">[</span><span class="s1">&#39;Pos3&#39;</span><span class="p">])</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>np.float64(0.6383398017253514)
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q1b&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>As an optional exercise in probability, try to think of a way to derive the formula for Gini impurity.</p>
+<br/>
+<hr>
+<h3 id="tutorial-variance">[Tutorial] Variance</h3>
+<p>Are there other splitting metrics beyond entropy and Gini impurity? Yes! A third metric is <strong>variance</strong> (yes, that variance), which is often used for <strong>regression trees</strong>, or <strong>decision tree regressors</strong>, which split data based on a continuous response variable. It makes little sense to use entropy/Gini impurity for regression, as both metrics assume that there are discrete probabilities of responses (and therefore are more suited to classification).</p>
+<p>Recall that the variance is defined as:</p>
+<p>$$ \sigma^2 = \frac{1}{N} \sum_{i=1}^{N} (x_i - \mu)^2 $$</p>
+<p>where $\mu$ is the mean, $N$ is the total number of data points, and $x_i$ is the value of each data point.</p>
+<p>Run the below cell to define the <code>variance</code> function.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">variance</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">values</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">values</span><span class="p">))</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl"><span class="c1"># if we were predicting # points scored per player (regression)</span>
+</span></span><span class="line"><span class="cl"><span class="n">variance</span><span class="p">(</span><span class="n">nba_data</span><span class="p">[</span><span class="s1">&#39;PTS&#39;</span><span class="p">])</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>np.float64(21.023148263588652)
+</code></pre>
+<br/>
+<hr>
+<h3 id="question-1c-weighted-metrics">Question 1c: Weighted Metrics</h3>
+<p>In lecture, we used <strong>weighted entropy</strong> as a loss function to help us determine the best split. Recall that the weighted entropy is given by:</p>
+<p>$$ L = \frac{N_1 S(X) + N_2 S(Y)}{N_1 + N_2} $$</p>
+<p>$N_1$ is the number of samples in the left node $X$, and $N_2$ is the number of samples in the right node $Y$. This notion of a weighted average can be extended to other metrics such as Gini impurity and variance simply by changing the $S$ (entropy) function to $G$ (Gini impurity) or $\sigma^2$ (variance).</p>
+<p>First, implement the <code>weighted_metric</code> function. The <code>left</code> parameter is a list of labels or values in the left node $X$, and the <code>right</code> parameter is a list of labels or values in the right node $Y$. The <code>metric</code> parameter is a function which can be <code>entropy</code>, <code>gini_impurity</code>, or <code>variance</code>. For <code>entropy</code> and <code>gini_impurity</code>, you may assume that <code>left</code> and <code>right</code> contain discrete labels. For <code>variance</code>, you may assume that <code>left</code> and <code>right</code> contain continuous values.</p>
+<p>Then, assign <code>we_pos3_age_30</code> to the weighted entropy (in the <code>Pos3</code> column) of a split that partitions <code>nba_data</code> into two groups: a group with players who are 30 years old or older and a group with players who are younger than 30 years old.</p>
+<!--
+BEGIN QUESTION
+name: q1c
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">nba_data</span><span class="p">[</span><span class="s1">&#39;Pos3&#39;</span><span class="p">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>3      C
+7      C
+10     C
+19     F
+21     F
+      ..
+695    G
+698    F
+699    G
+700    C
+703    C
+Name: Pos3, Length: 223, dtype: object
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">weighted_metric</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">metric</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">left</span><span class="p">)</span> <span class="o">*</span> <span class="n">metric</span><span class="p">(</span><span class="n">left</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">right</span><span class="p">)</span> <span class="o">*</span> <span class="n">metric</span><span class="p">(</span><span class="n">right</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">left</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">right</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">we_pos3_age_30</span> <span class="o">=</span> <span class="n">weighted_metric</span><span class="p">(</span><span class="n">nba_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">nba_data</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span><span class="o">&gt;=</span><span class="mi">30</span><span class="p">,</span> <span class="s1">&#39;Pos3&#39;</span><span class="p">],</span> <span class="n">nba_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">nba_data</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">30</span><span class="p">,</span> <span class="s1">&#39;Pos3&#39;</span><span class="p">],</span> <span class="n">entropy</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">we_pos3_age_30</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>np.float64(1.521489768014793)
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q1c&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>We will not go over the entire decision tree fitting process in this assignment, but you now have the basic tools to fit a decision tree. As an optional exercise, try to think about how you would extend these tools to fit a decision tree from scratch.</p>
+<p><br/><br/></p>
+<hr style="border: 5px solid #003262;" />
+<hr style="border: 1px solid #fdb515;" />
+<h1 id="question-2-classification">Question 2: Classification</h1>
+<p>Let&rsquo;s switch gears to classification.</p>
+<p>Before fitting any models, let&rsquo;s first split <code>nba_data</code> into a training set and test set.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">nba_train</span><span class="p">,</span> <span class="n">nba_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">nba_data</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">nba_train</span> <span class="o">=</span> <span class="n">nba_train</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;Pos&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">nba_test</span> <span class="o">=</span> <span class="n">nba_test</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;Pos&#39;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><br/><br/></p>
+<hr style="border: 1px solid #fdb515;" />
+<h2 id="one-vs-rest-logistic-regression">One-vs-Rest Logistic Regression</h2>
+<p>We only discussed binary logistic regression in class, but there is a natural extension to binary logistic regression called one-vs-rest logistic regression for multiclass classification. In essence, one-vs-rest logistic regression simply builds one binary logistic regression classifier for each of the $N$ classes (in this scenario $N = 3$). We then predict the class corresponding to the classifier that gives the highest probability among the $N$ classes.</p>
+<h3 id="question-2a">Question 2a</h3>
+<p>In the cell below, set <code>logistic_regression_model</code> to be a one-vs-rest logistic regression model. Then, fit that model using the <code>AST</code> and <code>TRB</code> columns (in that order) from <code>nba_train</code> as our features, and <code>Pos3</code> as our response variable.</p>
+<p>Remember, <code>sklearn.linear_model.LogisticRegression</code> (<a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html" target="_blank" rel="noopener noreffer ">documentation</a>) has already been imported for you. There is an optional parameter <strong><code>multi_class</code></strong> you need to specify in order to make your model a multi-class one-vs-rest classifier. See the documentation for more details.</p>
+<!--
+BEGIN QUESTION
+name: q2a
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">logistic_regression_model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">multi_class</span><span class="o">=</span><span class="s1">&#39;ovr&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">logistic_regression_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">nba_train</span><span class="p">[[</span><span class="s1">&#39;AST&#39;</span><span class="p">,</span> <span class="s1">&#39;TRB&#39;</span><span class="p">]],</span> <span class="n">nba_train</span><span class="p">[</span><span class="s1">&#39;Pos3&#39;</span><span class="p">])</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q2a&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong><pre style='display: inline;'>q2a</pre></strong> passed! 🙌</p>
+<p><br/><br/></p>
+<h3 id="tutorial-visualizing-performance">[Tutorial] Visualizing Performance</h3>
+<p>To see our classifier in action, we can use <code>logistic_regression_model.predict</code> and see what it outputs.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">nba_train</span><span class="p">[</span><span class="s1">&#39;Predicted (OVRLR) Pos3&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">logistic_regression_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">nba_train</span><span class="p">[[</span><span class="s1">&#39;AST&#39;</span><span class="p">,</span> <span class="s1">&#39;TRB&#39;</span><span class="p">]])</span>
+</span></span><span class="line"><span class="cl"><span class="n">nba_train</span><span class="p">[[</span><span class="s1">&#39;AST&#39;</span><span class="p">,</span> <span class="s1">&#39;TRB&#39;</span><span class="p">,</span> <span class="s1">&#39;Pos3&#39;</span><span class="p">,</span> <span class="s1">&#39;Predicted (OVRLR) Pos3&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>AST</th>
+      <th>TRB</th>
+      <th>Pos3</th>
+      <th>Predicted (OVRLR) Pos3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>655</th>
+      <td>1.4</td>
+      <td>8.6</td>
+      <td>C</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>644</th>
+      <td>2.0</td>
+      <td>10.2</td>
+      <td>C</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>703</th>
+      <td>0.8</td>
+      <td>4.5</td>
+      <td>C</td>
+      <td>F</td>
+    </tr>
+    <tr>
+      <th>652</th>
+      <td>1.6</td>
+      <td>7.2</td>
+      <td>C</td>
+      <td>F</td>
+    </tr>
+    <tr>
+      <th>165</th>
+      <td>1.4</td>
+      <td>7.5</td>
+      <td>C</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>122</th>
+      <td>2.4</td>
+      <td>8.4</td>
+      <td>C</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>353</th>
+      <td>7.3</td>
+      <td>10.8</td>
+      <td>C</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>367</th>
+      <td>1.4</td>
+      <td>8.6</td>
+      <td>C</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>408</th>
+      <td>1.2</td>
+      <td>4.9</td>
+      <td>C</td>
+      <td>F</td>
+    </tr>
+    <tr>
+      <th>161</th>
+      <td>3.9</td>
+      <td>12.0</td>
+      <td>C</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>647</th>
+      <td>3.4</td>
+      <td>12.4</td>
+      <td>C</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>308</th>
+      <td>4.2</td>
+      <td>6.7</td>
+      <td>C</td>
+      <td>G</td>
+    </tr>
+    <tr>
+      <th>362</th>
+      <td>3.0</td>
+      <td>11.4</td>
+      <td>C</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>146</th>
+      <td>3.6</td>
+      <td>8.2</td>
+      <td>C</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>233</th>
+      <td>4.4</td>
+      <td>7.9</td>
+      <td>C</td>
+      <td>C</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<p>Our model does decently well here, as you can see visually above. Below, we compute the training accuracy; remember that <code>model.score()</code> computes accuracy.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">lr_training_accuracy</span> <span class="o">=</span> <span class="n">logistic_regression_model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">nba_train</span><span class="p">[[</span><span class="s1">&#39;AST&#39;</span><span class="p">,</span> <span class="s1">&#39;TRB&#39;</span><span class="p">]],</span> <span class="n">nba_train</span><span class="p">[</span><span class="s1">&#39;Pos3&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">lr_training_accuracy</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>0.7964071856287425
+</code></pre>
+<p>We can compute the test accuracy as well by looking at <code>nba_test</code> instead of <code>nba_train</code>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">lr_test_accuracy</span> <span class="o">=</span> <span class="n">logistic_regression_model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">nba_test</span><span class="p">[[</span><span class="s1">&#39;AST&#39;</span><span class="p">,</span> <span class="s1">&#39;TRB&#39;</span><span class="p">]],</span> <span class="n">nba_test</span><span class="p">[</span><span class="s1">&#39;Pos3&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">lr_test_accuracy</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>0.6428571428571429
+</code></pre>
+<p>Now, let&rsquo;s draw the decision boundary for this logistic regression classifier, and see how the classifier performs on both the training and test data.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell to save the helper function</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">plot_decision_boundaries</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">nba_dataset</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">sns_cmap</span> <span class="o">=</span> <span class="n">ListedColormap</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">())[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="p">:])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Z_string</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">xx</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">yy</span><span class="o">.</span><span class="n">ravel</span><span class="p">()])</span>
+</span></span><span class="line"><span class="cl">    <span class="n">categories</span><span class="p">,</span> <span class="n">Z_int</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">Z_string</span><span class="p">,</span> <span class="n">return_inverse</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Z_int</span> <span class="o">=</span> <span class="n">Z_int</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">xx</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">    <span class="n">ax</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">Z_int</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="n">sns_cmap</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">nba_dataset</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;AST&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;TRB&#39;</span><span class="p">,</span> <span class="n">hue</span> <span class="o">=</span> <span class="s1">&#39;Pos3&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">title</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">plot_decision_boundaries</span><span class="p">(</span><span class="n">logistic_regression_model</span><span class="p">,</span> <span class="n">nba_train</span><span class="p">,</span> <span class="s2">&#34;Logistic Regression on nba_train&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>d:\miniconda3\Lib\site-packages\sklearn\base.py:493: UserWarning: X does not have valid feature names, but LogisticRegression was fitted with feature names
+  warnings.warn(
+</code></pre>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab13/lab13_files/lab13_44_1.png"
+        data-srcset="/datalab13/lab13_files/lab13_44_1.png, /datalab13/lab13_files/lab13_44_1.png 1.5x, /datalab13/lab13_files/lab13_44_1.png 2x"
+        data-sizes="auto"
+        alt="/datalab13/lab13_files/lab13_44_1.png"
+        title="png" width="634" height="491" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">plot_decision_boundaries</span><span class="p">(</span><span class="n">logistic_regression_model</span><span class="p">,</span> <span class="n">nba_test</span><span class="p">,</span> <span class="s2">&#34;Logistic Regression on nba_test&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>d:\miniconda3\Lib\site-packages\sklearn\base.py:493: UserWarning: X does not have valid feature names, but LogisticRegression was fitted with feature names
+  warnings.warn(
+</code></pre>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab13/lab13_files/lab13_45_1.png"
+        data-srcset="/datalab13/lab13_files/lab13_45_1.png, /datalab13/lab13_files/lab13_45_1.png 1.5x, /datalab13/lab13_files/lab13_45_1.png 2x"
+        data-sizes="auto"
+        alt="/datalab13/lab13_files/lab13_45_1.png"
+        title="png" width="634" height="491" /></p>
+<p>Our one-vs-rest logistic regression was able to find a linear decision boundary between the three classes. It generally classifies centers as players with a lot of rebounds, forwards as players with a medium number of rebounds and a low number of assists, and guards as players with a low number of rebounds.</p>
+<p>Note: In practice we would use many more features – we only used 2 here just so that we could visualize the decision boundary.</p>
+<br/>
+<br/>
+<hr style="border: 1px solid #fdb515;" />
+<h2 id="decision-trees">Decision Trees</h2>
+<h3 id="question-2b">Question 2b</h3>
+<p>Let&rsquo;s now create a decision tree classifier on the same training data <code>nba_train</code>, and look at the resulting decision boundary.</p>
+<p>In the following cell, first, use <code>tree.DecisionTreeClassifier</code> (<a href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html" target="_blank" rel="noopener noreffer ">documentation</a>) to fit a model using the same features and response as above, and call this model <code>decision_tree_model</code>. Set the <code>random_state</code> and <code>criterion</code> parameters to 42 and <code>entropy</code>, respectively.</p>
+<p><strong>Hint:</strong> Your code will be mostly the same as the previous part.</p>
+<!--
+BEGIN QUESTION
+name: q2b
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">decision_tree_model</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;entropy&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">decision_tree_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">nba_train</span><span class="p">[[</span><span class="s1">&#39;AST&#39;</span><span class="p">,</span> <span class="s1">&#39;TRB&#39;</span><span class="p">]],</span> <span class="n">nba_train</span><span class="p">[</span><span class="s1">&#39;Pos3&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># logistic_regression_model = LogisticRegression(multi_class=&#39;ovr&#39;)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># logistic_regression_model.fit(nba_train[[&#39;AST&#39;, &#39;TRB&#39;]], nba_train[&#39;Pos3&#39;])</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q2b&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong><pre style='display: inline;'>q2b</pre></strong> passed! 🌟</p>
+<h3 id="tutorial-decision-tree-performance">[Tutorial] Decision Tree Performance</h3>
+<p>Now, let&rsquo;s draw the decision boundary for this decision tree classifier, and see how the classifier performs on both the training and test data.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">plot_decision_boundaries</span><span class="p">(</span><span class="n">decision_tree_model</span><span class="p">,</span> <span class="n">nba_train</span><span class="p">,</span> <span class="s2">&#34;Decision Tree on nba_train&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>d:\miniconda3\Lib\site-packages\sklearn\base.py:493: UserWarning: X does not have valid feature names, but DecisionTreeClassifier was fitted with feature names
+  warnings.warn(
+</code></pre>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab13/lab13_files/lab13_51_1.png"
+        data-srcset="/datalab13/lab13_files/lab13_51_1.png, /datalab13/lab13_files/lab13_51_1.png 1.5x, /datalab13/lab13_files/lab13_51_1.png 2x"
+        data-sizes="auto"
+        alt="/datalab13/lab13_files/lab13_51_1.png"
+        title="png" width="634" height="491" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">plot_decision_boundaries</span><span class="p">(</span><span class="n">decision_tree_model</span><span class="p">,</span> <span class="n">nba_test</span><span class="p">,</span> <span class="s2">&#34;Decision Tree on nba_test&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>d:\miniconda3\Lib\site-packages\sklearn\base.py:493: UserWarning: X does not have valid feature names, but DecisionTreeClassifier was fitted with feature names
+  warnings.warn(
+</code></pre>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab13/lab13_files/lab13_52_1.png"
+        data-srcset="/datalab13/lab13_files/lab13_52_1.png, /datalab13/lab13_files/lab13_52_1.png 1.5x, /datalab13/lab13_files/lab13_52_1.png 2x"
+        data-sizes="auto"
+        alt="/datalab13/lab13_files/lab13_52_1.png"
+        title="png" width="634" height="491" /></p>
+<p>We compute the training and test accuracies of the decision tree model below.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">dt_training_accuracy</span> <span class="o">=</span> <span class="n">decision_tree_model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">nba_train</span><span class="p">[[</span><span class="s1">&#39;AST&#39;</span><span class="p">,</span> <span class="s1">&#39;TRB&#39;</span><span class="p">]],</span> <span class="n">nba_train</span><span class="p">[</span><span class="s1">&#39;Pos3&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">dt_test_accuracy</span> <span class="o">=</span> <span class="n">decision_tree_model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">nba_test</span><span class="p">[[</span><span class="s1">&#39;AST&#39;</span><span class="p">,</span> <span class="s1">&#39;TRB&#39;</span><span class="p">]],</span> <span class="n">nba_test</span><span class="p">[</span><span class="s1">&#39;Pos3&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">dt_training_accuracy</span><span class="p">,</span> <span class="n">dt_test_accuracy</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>(0.9940119760479041, 0.5714285714285714)
+</code></pre>
+<br/>
+<br/>
+<hr style="border: 1px solid #fdb515;" />
+<h2 id="random-forests">Random Forests</h2>
+<h3 id="question-2c">Question 2c</h3>
+<p>Let&rsquo;s now create a random forest classifier on the same training data <code>nba_train</code> and look at the resulting decision boundary.</p>
+<p>In the following cell, use <code>ensemble.RandomForestClassifier</code> (<a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html" target="_blank" rel="noopener noreffer ">documentation</a>) to fit a model using the same features and response as above, and call this model <code>random_forest_model</code>. Use 20 trees in your random forest classifier; set the <code>random_state</code> and <code>criterion</code> parameters to 42 and <code>entropy</code>, respectively.</p>
+<p><strong>Hint:</strong> Your code for both parts will be mostly the same as the first few parts of this question.</p>
+<p><strong>Hint:</strong> Look at the <code>n_estimators</code> parameter of <code>ensemble.RandomForestClassifier</code>.</p>
+<!--
+BEGIN QUESTION
+name: q2c
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">random_forest_model</span> <span class="o">=</span> <span class="n">ensemble</span><span class="o">.</span><span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;entropy&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">random_forest_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">nba_train</span><span class="p">[[</span><span class="s1">&#39;AST&#39;</span><span class="p">,</span> <span class="s1">&#39;TRB&#39;</span><span class="p">]],</span> <span class="n">nba_train</span><span class="p">[</span><span class="s1">&#39;Pos3&#39;</span><span class="p">])</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q2c&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong><pre style='display: inline;'>q2c</pre></strong> passed! 🙌</p>
+<h3 id="tutorial-random-forest-performance">[Tutorial] Random Forest Performance</h3>
+<p>Now, let&rsquo;s draw the decision boundary for this random forest classifier, and see how the classifier performs on both the training and test data.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">plot_decision_boundaries</span><span class="p">(</span><span class="n">random_forest_model</span><span class="p">,</span> <span class="n">nba_train</span><span class="p">,</span> <span class="s2">&#34;Random Forest on nba_train&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>d:\miniconda3\Lib\site-packages\sklearn\base.py:493: UserWarning: X does not have valid feature names, but RandomForestClassifier was fitted with feature names
+  warnings.warn(
+</code></pre>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab13/lab13_files/lab13_59_1.png"
+        data-srcset="/datalab13/lab13_files/lab13_59_1.png, /datalab13/lab13_files/lab13_59_1.png 1.5x, /datalab13/lab13_files/lab13_59_1.png 2x"
+        data-sizes="auto"
+        alt="/datalab13/lab13_files/lab13_59_1.png"
+        title="png" width="634" height="491" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">plot_decision_boundaries</span><span class="p">(</span><span class="n">random_forest_model</span><span class="p">,</span> <span class="n">nba_test</span><span class="p">,</span> <span class="s2">&#34;Random Forest on nba_test&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>d:\miniconda3\Lib\site-packages\sklearn\base.py:493: UserWarning: X does not have valid feature names, but RandomForestClassifier was fitted with feature names
+  warnings.warn(
+</code></pre>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab13/lab13_files/lab13_60_1.png"
+        data-srcset="/datalab13/lab13_files/lab13_60_1.png, /datalab13/lab13_files/lab13_60_1.png 1.5x, /datalab13/lab13_files/lab13_60_1.png 2x"
+        data-sizes="auto"
+        alt="/datalab13/lab13_files/lab13_60_1.png"
+        title="png" width="634" height="491" /></p>
+<p>We compute the training and test accuracies of the random forest model below.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">rf_train_accuracy</span> <span class="o">=</span> <span class="n">random_forest_model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">nba_train</span><span class="p">[[</span><span class="s1">&#39;AST&#39;</span><span class="p">,</span> <span class="s1">&#39;TRB&#39;</span><span class="p">]],</span> <span class="n">nba_train</span><span class="p">[</span><span class="s1">&#39;Pos3&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">rf_test_accuracy</span> <span class="o">=</span> <span class="n">random_forest_model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">nba_test</span><span class="p">[[</span><span class="s1">&#39;AST&#39;</span><span class="p">,</span> <span class="s1">&#39;TRB&#39;</span><span class="p">]],</span> <span class="n">nba_test</span><span class="p">[</span><span class="s1">&#39;Pos3&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">rf_train_accuracy</span><span class="p">,</span> <span class="n">rf_test_accuracy</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>(0.9760479041916168, 0.6964285714285714)
+</code></pre>
+<br/>
+<br/>
+<hr style="border: 1px solid #fdb515;" />
+<h2 id="comparecontrast">Compare/Contrast</h2>
+<p>How do the three models you created (multiclass one-vs-rest logistic regression, decision tree, random forest) compare to each other?)</p>
+<p><strong>Decision boundaries</strong>: Run the below cell for your convenience. It overlays the decision boundaries for the train and test sets for each of the models you created.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([(</span><span class="n">logistic_regression_model</span><span class="p">,</span> <span class="s2">&#34;Logistic Regression&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                                    <span class="p">(</span><span class="n">decision_tree_model</span><span class="p">,</span> <span class="s2">&#34;Decision Tree&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                                    <span class="p">(</span><span class="n">random_forest_model</span><span class="p">,</span> <span class="s2">&#34;Random Forest&#34;</span><span class="p">)]):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">nba_dataset</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="n">nba_train</span><span class="p">,</span> <span class="n">nba_test</span><span class="p">]):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">plot_decision_boundaries</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">nba_dataset</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl"><span class="c1"># reset leftmost ylabels</span>
+</span></span><span class="line"><span class="cl"><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&#34;nba_train</span><span class="se">\n</span><span class="s2">TRB&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&#34;nba_test</span><span class="se">\n</span><span class="s2">TRB&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>d:\miniconda3\Lib\site-packages\sklearn\base.py:493: UserWarning: X does not have valid feature names, but LogisticRegression was fitted with feature names
+  warnings.warn(
+d:\miniconda3\Lib\site-packages\sklearn\base.py:493: UserWarning: X does not have valid feature names, but LogisticRegression was fitted with feature names
+  warnings.warn(
+d:\miniconda3\Lib\site-packages\sklearn\base.py:493: UserWarning: X does not have valid feature names, but DecisionTreeClassifier was fitted with feature names
+  warnings.warn(
+d:\miniconda3\Lib\site-packages\sklearn\base.py:493: UserWarning: X does not have valid feature names, but DecisionTreeClassifier was fitted with feature names
+  warnings.warn(
+d:\miniconda3\Lib\site-packages\sklearn\base.py:493: UserWarning: X does not have valid feature names, but RandomForestClassifier was fitted with feature names
+  warnings.warn(
+d:\miniconda3\Lib\site-packages\sklearn\base.py:493: UserWarning: X does not have valid feature names, but RandomForestClassifier was fitted with feature names
+  warnings.warn(
+</code></pre>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab13/lab13_files/lab13_65_1.png"
+        data-srcset="/datalab13/lab13_files/lab13_65_1.png, /datalab13/lab13_files/lab13_65_1.png 1.5x, /datalab13/lab13_files/lab13_65_1.png 2x"
+        data-sizes="auto"
+        alt="/datalab13/lab13_files/lab13_65_1.png"
+        title="png" width="1178" height="577" /></p>
+<p><strong>Performance Metrics</strong>: Run the below cell for your convenience. It summarizes the train and test accuracies for the three models you created.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">train_accuracy</span> <span class="o">=</span> <span class="p">[</span><span class="n">lr_training_accuracy</span><span class="p">,</span> <span class="n">lr_test_accuracy</span><span class="p">,</span> <span class="n">dt_training_accuracy</span><span class="p">,</span> <span class="n">dt_test_accuracy</span><span class="p">,</span> <span class="n">rf_train_accuracy</span><span class="p">,</span> <span class="n">rf_test_accuracy</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;OVR Logistic Regression&#39;</span><span class="p">,</span> <span class="s1">&#39;Decision Tree&#39;</span><span class="p">,</span> <span class="s1">&#39;Random Forest&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([(</span><span class="n">lr_training_accuracy</span><span class="p">,</span> <span class="n">lr_test_accuracy</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">                   <span class="p">(</span><span class="n">dt_training_accuracy</span><span class="p">,</span> <span class="n">dt_test_accuracy</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                   <span class="p">(</span><span class="n">rf_train_accuracy</span><span class="p">,</span> <span class="n">rf_test_accuracy</span><span class="p">)],</span> 
+</span></span><span class="line"><span class="cl">                  <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Training Accuracy&#39;</span><span class="p">,</span> <span class="s1">&#39;Test Accuracy&#39;</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span> <span class="c1"># remove legend from plot itself</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">)</span> <span class="c1"># and add legend to bottom of figure</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>&lt;matplotlib.legend.Legend at 0x21314df30e0&gt;
+</code></pre>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab13/lab13_files/lab13_67_1.png"
+        data-srcset="/datalab13/lab13_files/lab13_67_1.png, /datalab13/lab13_files/lab13_67_1.png 1.5x, /datalab13/lab13_files/lab13_67_1.png 2x"
+        data-sizes="auto"
+        alt="/datalab13/lab13_files/lab13_67_1.png"
+        title="png" width="634" height="649" /></p>
+<hr>
+<h3 id="question-2d">Question 2d</h3>
+<p>Looking at the three models, which model performed the best on the training set, and which model performed the best on the test set? How are the training and test accuracy related for the three models, and how do the decision boundaries generated for each of the three models relate to the model&rsquo;s performance?</p>
+<!--
+BEGIN QUESTION
+name: q2d
+-->
+<p><em>DT</em></p>
+<p><em>OVRLR</em></p>
+<p><br/><br/></p>
+<hr style="border: 5px solid #003262;" />
+<hr style="border: 1px solid #fdb515;" />
+<h1 id="ungraded-question-3-regression-trees">[ungraded] Question 3: Regression Trees</h1>
+<p>In Project 1, we used linear regression to predict housing prices in Cook County, Illinois. However, what would happen if we tried to use a different prediction method?</p>
+<p>Try fitting a <strong>regression tree</strong> (also known as a decision tree regressor) to predict housing prices. Here&rsquo;s one in sklearn:</p>
+<p><a href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html" target="_blank" rel="noopener noreffer ">https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html</a></p>
+<p>What do you notice about the training error and the test error for the decision tree regressor? Is one significantly larger than the other? If so, what methods could we use to make this error lower?</p>
+<p>Now, try fitting a random forest regressor instead of a single decision tree. What do you notice about the training error and the test error for the random forest, and how does this compare to the training and test error of a single decision tree?</p>
+<p><em>see in project 1</em></p>
+<h1 id="congratulations-you-finished-the-lab">Congratulations! You finished the lab!</h1>
+<hr>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -124,19 +1303,19 @@
                             <a class="link-to-markdown" href="/datalab13/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/datalab13/" data-title="DATA100-lab13"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/datalab13/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/datalab13/" data-title="DATA100-lab13"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/datalab13/" data-title="DATA100-lab13"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/datalab13/" data-title="DATA100-lab13"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/datalab13/" data-title="DATA100-lab13: Decision Trees and Random Forests" data-hashtags="Scikit-Learn"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/datalab13/" data-hashtag="Scikit-Learn"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/datalab13/" data-title="DATA100-lab13: Decision Trees and Random Forests"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/datalab13/" data-title="DATA100-lab13: Decision Trees and Random Forests"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/datalab13/" data-title="DATA100-lab13: Decision Trees and Random Forests"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/scikit-learn/">Scikit-Learn</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/datalab14/" class="prev" rel="prev" title="DATA100-lab14"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>DATA100-lab14</a>
+    <div class="post-nav"><a href="/datalab14/" class="prev" rel="prev" title="DATA100-lab14: Clustering"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>DATA100-lab14: Clustering</a>
             <a href="/databasel6/" class="next" rel="next" title="CS186-L6: Indices &amp; B&#43; Tree Refinements">CS186-L6: Indices & B+ Tree Refinements<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>

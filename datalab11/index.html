@@ -4,19 +4,23 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>DATA100-lab11 - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/datalab11/">
+        <title>DATA100-lab11: Principal Component Analysis - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/datalab11/">
   <meta property="og:site_name" content="HHZZ`s space">
-  <meta property="og:title" content="DATA100-lab11">
-  <meta property="og:description" content="This is my cool site">
+  <meta property="og:title" content="DATA100-lab11: Principal Component Analysis">
+  <meta property="og:description" content="1 2 3 # Initialize Otter import otter grader = otter.Notebook(&amp;#34;lab11.ipynb&amp;#34;) Lab 11: Principal Component Analysis In this lab assignment, we will walk through two examples that use Principal Component Analysis (PCA): one involving a dataset of iris plants, and another involving an artificial &amp;ldquo;surfboard&amp;rdquo; 3D dataset.
+1 2 3 4 5 6 7 8 9 10 11 12 # Run this cell to set up your notebook from sklearn.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2024-08-13T15:19:36+08:00">
     <meta property="article:modified_time" content="2024-08-13T15:19:36+08:00">
+    <meta property="article:tag" content="Numpy">
+    <meta property="article:tag" content="Scikit-Learn">
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="DATA100-lab11">
-<meta name="twitter:description" content="">
+<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="DATA100-lab11: Principal Component Analysis">
+<meta name="twitter:description" content="1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab11.ipynb&#34;) Lab 11: Principal Component Analysis In this lab assignment, we will walk through two examples that use Principal Component Analysis (PCA): one involving a dataset of iris plants, and another involving an artificial &ldquo;surfboard&rdquo; 3D dataset.
+1 2 3 4 5 6 7 8 9 10 11 12 # Run this cell to set up your notebook from sklearn.">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -26,12 +30,12 @@
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "DATA100-lab11",
+        "headline": "DATA100-lab11: Principal Component Analysis",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/datalab11\/"
-        },"genre": "posts","wordcount":  0 ,
+        },"genre": "posts","keywords": "Numpy, Scikit-Learn","wordcount":  2800 ,
         "url": "http:\/\/example.org\/datalab11\/","datePublished": "2024-08-13T15:19:36+08:00","dateModified": "2024-08-13T15:19:36+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -103,17 +107,820 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">DATA100-lab11</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">DATA100-lab11: Principal Component Analysis</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-13">2024-08-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;0 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;0 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-13">2024-08-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2800 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;14 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"></div><div class="post-footer" id="post-footer">
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#question-1-standardization-and-svd">Question 1: Standardization and SVD</a>
+      <ul>
+        <li><a href="#question-1a">Question 1a</a></li>
+        <li><a href="#question-1b">Question 1b</a></li>
+        <li><a href="#question-1c">Question 1c</a></li>
+      </ul>
+    </li>
+    <li><a href="#question-2">Question 2</a>
+      <ul>
+        <li><a href="#question-2a">Question 2a</a></li>
+        <li><a href="#question-2b">Question 2b</a></li>
+        <li><a href="#question-2c">Question 2c</a></li>
+      </ul>
+    </li>
+    <li><a href="#question-3">Question 3</a></li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#tutorial-1-visualize-the-data">[Tutorial 1] Visualize the Data</a></li>
+      </ul>
+    </li>
+    <li><a href="#question-4-centering-and-svd">Question 4: Centering and SVD</a>
+      <ul>
+        <li><a href="#question-4a">Question 4a</a></li>
+        <li><a href="#question-4b">Question 4b</a></li>
+        <li><a href="#question-4c-total-variance">Question 4c: Total Variance</a></li>
+        <li><a href="#question-4d-variance-explained-by-first-principal-component">Question 4d: Variance Explained by First Principal Component</a></li>
+      </ul>
+    </li>
+    <li><a href="#question-5-v-as-a-rotation-matrix">Question 5: V as a Rotation Matrix</a>
+      <ul>
+        <li><a href="#tutorial-2-visualizing-the-principal-component-matrix">[Tutorial 2] Visualizing the Principal Component Matrix</a></li>
+        <li><a href="#part-2-summary">Part 2 Summary</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Initialize Otter</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">otter</span>
+</span></span><span class="line"><span class="cl"><span class="n">grader</span> <span class="o">=</span> <span class="n">otter</span><span class="o">.</span><span class="n">Notebook</span><span class="p">(</span><span class="s2">&#34;lab11.ipynb&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="lab-11-principal-component-analysis">Lab 11: Principal Component Analysis</h1>
+<p>In this lab assignment, we will walk through two examples that use Principal Component Analysis (PCA): one involving a dataset of <a href="https://en.wikipedia.org/wiki/Iris_plant" target="_blank" rel="noopener noreffer ">iris plants</a>, and another involving an artificial &ldquo;surfboard&rdquo; 3D dataset.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Run this cell to set up your notebook</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;fivethirtyeight&#39;</span><span class="p">)</span> <span class="c1"># Use plt.style.available to see more styles</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&#34;talk&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><br/>
+<p>In lecture we discussed how Principal Component Analysis (PCA) can be used for dimensionality reduction. Specifically, given a high dimensional dataset, PCA allows us to:</p>
+<ol>
+<li>Understand the rank of the data. If $k$ principal components capture almost all of the variance, then the data is roughly rank $k$.</li>
+<li>Create 2D scatterplots of the data. Such plots are a rank 2 representation of our data, and allow us to visually identify clusters of similar observations.</li>
+</ol>
+<p>In this lab, you&rsquo;ll learn how to perform PCA using the <code>np.linalg</code> package (Part 1), and you&rsquo;ll also build a geometric intuition of PCA to help you understand its strengths (Part 2). We work with low-dimensional datasets for now to focus on the basics; <em><strong>in the homework, you&rsquo;ll explore how PCA works on a high-dimensional dataset.</strong></em></p>
+<p><br/><br/></p>
+<hr style="border: 5px solid #003262;" />
+<hr style="border: 1px solid #fdb515;" />
+<h1 id="part-1-the-iris-dataset">Part 1: The Iris Dataset</h1>
+<p>To begin, run the following cell to load the dataset into this notebook.</p>
+<ul>
+<li><code>iris_features</code> will contain a numpy array of 4 attributes for 150 different plants (shape <code>150 x 4</code>).</li>
+<li><code>iris_target</code> will contain the class of each plant. There are 3 classes of plants in the dataset: Iris-Setosa, Iris-Versicolour, and Iris-Virginica. The class names will be stored in <code>iris_target_names</code>.</li>
+<li><code>iris_feature_names</code> will be a list of 4 names, one for each attribute in <code>iris_features</code>.</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
+</span></span><span class="line"><span class="cl"><span class="n">iris_data</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span> <span class="c1"># Loading the dataset</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Unpacking the data into arrays</span>
+</span></span><span class="line"><span class="cl"><span class="n">iris_features</span> <span class="o">=</span> <span class="n">iris_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">iris_target</span> <span class="o">=</span> <span class="n">iris_data</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">iris_feature_names</span> <span class="o">=</span> <span class="n">iris_data</span><span class="p">[</span><span class="s1">&#39;feature_names&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">iris_target_names</span> <span class="o">=</span> <span class="n">iris_data</span><span class="p">[</span><span class="s1">&#39;target_names&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Convert iris_target to string labels instead of int labels currently (0, 1, 2) for the classes</span>
+</span></span><span class="line"><span class="cl"><span class="n">iris_target</span> <span class="o">=</span> <span class="n">iris_target_names</span><span class="p">[</span><span class="n">iris_target</span><span class="p">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Let&rsquo;s explore the data by creating a scatter matrix of our iris features. To do this, we&rsquo;ll create 2D scatter plots for every possible pair of our four features. This should result in six total scatter plots in our scatter matrix with the classes labeled in distinct colors for each plot.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&#34;Scatter Matrix of Iris Features&#34;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">wspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">plot_index</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="n">j</span> <span class="o">+</span> <span class="n">i</span>
+</span></span><span class="line"><span class="cl">        <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">plot_index</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">iris_features</span><span class="p">[:,</span> <span class="n">i</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">y</span><span class="o">=</span><span class="n">iris_features</span><span class="p">[:,</span> <span class="n">j</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">hue</span><span class="o">=</span><span class="n">iris_target</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                       <span class="n">legend</span><span class="o">=</span><span class="p">(</span><span class="n">plot_index</span> <span class="o">==</span> <span class="mi">1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">iris_feature_names</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">iris_feature_names</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">plot_index</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower left&#39;</span><span class="p">)</span> <span class="c1"># same legend for all subplots</span>
+</span></span><span class="line"><span class="cl"><span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab11/lab11_files/lab11_7_0.png"
+        data-srcset="/datalab11/lab11_files/lab11_7_0.png, /datalab11/lab11_files/lab11_7_0.png 1.5x, /datalab11/lab11_files/lab11_7_0.png 2x"
+        data-sizes="auto"
+        alt="/datalab11/lab11_files/lab11_7_0.png"
+        title="png" width="1381" height="988" /></p>
+<p><br/><br/></p>
+<hr style="border: 1px solid #fdb515;" />
+<h2 id="question-1-standardization-and-svd">Question 1: Standardization and SVD</h2>
+<h3 id="question-1a">Question 1a</h3>
+<p>To apply PCA, we will first need to center the data so that the mean of each feature is 1. We could go further and create <strong>standardized</strong> features, where we scale features such that they are centered with standard deviation 1. (We&rsquo;ll explore simple centered data in Part 2.)</p>
+<p>Compute the columnwise mean of <code>iris_features</code> in the cell below and store it in <code>iris_mean</code>, and compute the columnwise standard deviation of <code>iris_features</code> and store it in <code>iris_std</code>. Each should be a numpy array of 4 means, 1 for each feature. Then, subtract <code>iris_mean</code> from <code>iris_features</code> and divide by <code>iris_std</code>, and finally, save the result in <code>iris_standardized</code>.</p>
+<p><strong>Hints:</strong></p>
+<ul>
+<li>Use <code>np.mean</code> (<a href="https://numpy.org/doc/stable/reference/generated/numpy.mean.html" target="_blank" rel="noopener noreffer ">documentation</a>) or <code>np.average</code> (<a href="https://numpy.org/doc/stable/reference/generated/numpy.average.html" target="_blank" rel="noopener noreffer ">documentation</a>) to compute <code>iris_mean</code>, and pay attention to the <code>axis</code> argument. Same for <code>np.std</code> (<a href="https://numpy.org/doc/stable/reference/generated/numpy.std.html" target="_blank" rel="noopener noreffer ">documentation</a>).</li>
+<li>制定好axis参数很重要!Because PCA will capture the bigger stddev features, we want to standardize them or will lead to artificial error!</li>
+<li>If you are confused about how numpy deals with arithmetic operations between arrays of different shapes, see this note about <a href="https://docs.scipy.org/doc/numpy/user/basics.broadcasting.html" target="_blank" rel="noopener noreffer ">broadcasting</a> for explanations/examples. 广播机制!</li>
+</ul>
+<!--
+BEGIN QUESTION
+name: q1a
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">iris_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">iris_features</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">iris_std</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">iris_features</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">iris_standardized</span> <span class="o">=</span> <span class="p">(</span><span class="n">iris_features</span> <span class="o">-</span> <span class="n">iris_mean</span><span class="p">)</span> <span class="o">/</span> <span class="n">iris_std</span>
+</span></span><span class="line"><span class="cl"><span class="n">iris_mean</span><span class="p">,</span> <span class="n">iris_std</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>(array([5.84333333, 3.05733333, 3.758     , 1.19933333]),
+ array([0.82530129, 0.43441097, 1.75940407, 0.75969263]))
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q1a&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><br/><br/></p>
+<hr>
+<h3 id="question-1b">Question 1b</h3>
+<p>As you may recall from lecture, PCA is a specific application of the singular value decomposition (SVD) for matrices. In the following cell, let&rsquo;s use the <code>np.linalg.svd</code> function (<a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.linalg.svd.html" target="_blank" rel="noopener noreffer ">documentation</a>) to compute the SVD of our <code>iris_standardized</code> matrix.</p>
+<p>Store the left singular vectors $U$, singular values $\Sigma$, and (transposed) right singular vectors $V^T$ in <code>u</code>, <code>s</code>, and <code>vt</code>, respectively. Set the <code>full_matrices</code> argument of <code>np.linalg.svd</code> to <code>False</code>.</p>
+<p><strong>Notice</strong>: PCA is a application of SVD on centered data matrix. &#x1f914;</p>
+<!--
+BEGIN QUESTION
+name: q1b
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">u1</span><span class="p">,</span> <span class="n">s1</span><span class="p">,</span> <span class="n">vt1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">iris_standardized</span><span class="p">,</span> <span class="n">full_matrices</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">u1</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">s1</span><span class="p">,</span> <span class="n">vt1</span><span class="o">.</span><span class="n">shape</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>((150, 4), array([20.92306556, 11.7091661 ,  4.69185798,  1.76273239]), (4, 4))
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q1b&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><br/><br/></p>
+<hr>
+<h3 id="question-1c">Question 1c</h3>
+<p>What can we learn from the singular values in <code>s</code>?</p>
+<p>As discussed in lecture, the total variance of the data is also equal to the sum of the squares of the singular values divided by the number of data points, that is:</p>
+<p>$$\text{Var}(X) = \frac{\sum_{i=1}^d{\sigma_i^2}}{N} = \sum_{i=1}^d \frac{\sigma_i^2}{N}$$</p>
+<p>where for data $X$ with $N$ datapoints and $d$ features, $\sigma_i$ is the singular value corresponding to the $i$-th principal component, and $\text{Var}(X)$ is the total variance of the data. The right-hand side implies that the expression $\sigma_i^2/N$ is the amount of variance captured by the $i$-th principal component.</p>
+<p>Compute the total variance of our data below by summing the square of each singular value in <code>s</code> and dividing the result by the total number of data points. Store the result in the variable <code>iris_total_variance</code>.</p>
+<!--
+BEGIN QUESTION
+name: q1c
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">iris_total_variance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">s1</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">iris_standardized</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;iris_total_variance: </span><span class="si">{:.3f}</span><span class="s2"> should approximately equal the sum of the feature variances: </span><span class="si">{:.3f}</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">iris_total_variance</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">iris_standardized</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>iris_total_variance: 4.000 should approximately equal the sum of the feature variances: 4.000
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q1c&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>As you can see, <code>iris_total_variance</code> is equal to the sum of the standardized feature variances. Since our features are standardized (i.e., have variance 1), <code>iris_total_variance</code> is equal to the number of original features.</p>
+<p><br/><br/></p>
+<hr style="border: 1px solid #fdb515;" />
+<h2 id="question-2">Question 2</h2>
+<h3 id="question-2a">Question 2a</h3>
+<p>Let&rsquo;s now use only the first two principal components to see what a 2D version of our iris data looks like.</p>
+<p>First, construct the 2D version of the iris data by multiplying our <code>iris_standardized</code> array with the first two right singular vectors in $V$. Because the first two right singular vectors are directions for the first two principal components, this will project the iris data down from a 4D subspace to a 2D subspace.</p>
+<p><strong>Hints:</strong></p>
+<ul>
+<li>To matrix-multiply two numpy arrays, use <code>@</code> or <code>np.dot</code>. In case you&rsquo;re interested, the <a href="https://numpy.org/devdocs/reference/generated/numpy.matmul.html" target="_blank" rel="noopener noreffer ">matmul documentation</a> contrasts the two methods.</li>
+<li>Note that in Question 1b, you computed <code>vt</code> (SVD decomposition is $U\Sigma V^T$). The first two right singular vectors in $V$ will be the two rows of <code>vt</code>, <a href="https://numpy.org/devdocs/reference/generated/numpy.ndarray.T.html#numpy.ndarray.T" target="_blank" rel="noopener noreffer ">transposed</a> to be column vectors instead of row vectors.</li>
+<li>Since we want to obtain a 2D version of our iris dataset, the shape of <code>iris_2d</code> should be (150, 2).</li>
+</ul>
+<!--
+BEGIN QUESTION
+name: q2a
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">iris_2d</span> <span class="o">=</span> <span class="n">iris_standardized</span> <span class="o">@</span> <span class="n">vt1</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">T</span>
+</span></span><span class="line"><span class="cl"><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">iris_2d</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>np.float64(-2.5579538487363607e-13)
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q2a&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><br/><br/></p>
+<p>Now, run the cell below to create the scatter plot of our 2D version of the iris data, <code>iris_2d</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&#34;PC2 vs. PC1 for Iris Data&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&#34;Iris PC1&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&#34;Iris PC2&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">iris_2d</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">y</span> <span class="o">=</span> <span class="n">iris_2d</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">hue</span> <span class="o">=</span> <span class="n">iris_target</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab11/lab11_files/lab11_22_0.png"
+        data-srcset="/datalab11/lab11_files/lab11_22_0.png, /datalab11/lab11_files/lab11_22_0.png 1.5x, /datalab11/lab11_files/lab11_22_0.png 2x"
+        data-sizes="auto"
+        alt="/datalab11/lab11_files/lab11_22_0.png"
+        title="png" width="875" height="598" /></p>
+<p><br/><br/></p>
+<hr>
+<h3 id="question-2b">Question 2b</h3>
+<p>What do you observe about the plot above? If you were given a point in the subspace defined by PC1 and PC2, how well would you be able to classify the point as one of the three Iris types?</p>
+<!--
+BEGIN QUESTION
+name: q2b
+-->
+<p><br/><br/></p>
+<hr>
+<h3 id="question-2c">Question 2c</h3>
+<p>What proportion of the total variance is accounted for when we project the iris data down to two dimensions? Compute this quantity in the cell below by dividing the variance captured by the first two singular values (also known as component scores) in <code>s</code> by the <code>iris_total_variance</code> you calculated previously. Store the result in <code>iris_2d_variance</code>.</p>
+<!--
+BEGIN QUESTION
+name: q2c
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">iris_2d_variance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">s1</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">iris_standardized</span><span class="p">)</span> <span class="o">/</span> <span class="n">iris_total_variance</span>
+</span></span><span class="line"><span class="cl"><span class="n">iris_2d_variance</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>np.float64(0.9581320720000164)
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q2c&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Most of the variance in the data is explained by the two-dimensional projection!</p>
+<p><br/><br/></p>
+<hr style="border: 1px solid #fdb515;" />
+<h2 id="question-3">Question 3</h2>
+<p>As a last step, we will create a <a href="https://en.wikipedia.org/wiki/Scree_plot" target="_blank" rel="noopener noreffer ">scree plot</a> to visualize the weight of each principal component. In the cell below, create a scree plot by creating a line plot of the component scores (variance captured by each principal component) vs. the principal component number (1st, 2nd, 3rd, or 4th). Your graph should match the image below:</p>
+<p><em>Hint:</em> Be sure to label your axes appropriately! You may find <code>plt.xticks()</code> (<a href="https://matplotlib.org/3.5.0/api/_as_gen/matplotlib.pyplot.xticks.html" target="_blank" rel="noopener noreffer ">documentation</a>) helpful for formatting.</p>
+<img src="images/scree.png" width="400px" />
+<!--
+BEGIN QUESTION
+name: q3
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># your plot here</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&#34;Principal Component&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&#34;Variance (Component Scores)&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&#34;Scree Plot of Iris Principle Components&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">iris_standardized</span><span class="p">));</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab11/lab11_files/lab11_29_0.png"
+        data-srcset="/datalab11/lab11_files/lab11_29_0.png, /datalab11/lab11_files/lab11_29_0.png 1.5x, /datalab11/lab11_files/lab11_29_0.png 2x"
+        data-sizes="auto"
+        alt="/datalab11/lab11_files/lab11_29_0.png"
+        title="png" width="654" height="501" /></p>
+<p><br/><br/></p>
+<hr style="border: 5px solid #003262;" />
+<hr style="border: 1px solid #fdb515;" />
+<h1 id="part-2-pca-on-3d-data">Part 2: PCA on 3D Data</h1>
+<p><strong>In Part 2, our goal is to see visually how PCA is simply the process of rotating the coordinate axes of our data.</strong></p>
+<p>The code below reads in a 3D dataset. We have named the DataFrame <code>surfboard</code> because the data resembles a surfboard when plotted in 3D space.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">surfboard</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&#34;data/data3d.csv&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">surfboard</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>x</th>
+      <th>y</th>
+      <th>z</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.005605</td>
+      <td>2.298191</td>
+      <td>1.746604</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-1.093255</td>
+      <td>2.457522</td>
+      <td>0.170309</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.060946</td>
+      <td>0.473669</td>
+      <td>-0.003543</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-1.761945</td>
+      <td>2.151108</td>
+      <td>3.132426</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1.950637</td>
+      <td>-0.194469</td>
+      <td>-2.101949</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<h3 id="tutorial-1-visualize-the-data">[Tutorial 1] Visualize the Data</h3>
+<p>The cell below will allow you to view the data as a 3D scatterplot. Rotate the data around and zoom in and out using your trackpad or the controls at the top right of the figure.</p>
+<p>You should see that the data is an ellipsoid that looks roughly like a surfboard or a <a href="https://www.google.com/search?q=hashbrown&#43;patty&amp;source=lnms&amp;tbm=isch" target="_blank" rel="noopener noreffer ">hashbrown patty</a>. That is, it is pretty long in one direction, pretty wide in another direction, and relatively thin along its third dimension. We can think of these as the &ldquo;length&rdquo;, &ldquo;width&rdquo;, and &ldquo;thickness&rdquo; of the surfboard data.</p>
+<p>Observe that the surfboard is not aligned with the x/y/z axes.</p>
+<p>If you get an error that your browser does not support webgl, you may need to restart your kernel and/or browser.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter_3d</span><span class="p">(</span><span class="n">surfboard</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="n">range_x</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="n">range_y</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="n">range_z</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>Visualize the Data (Colorized)</strong></p>
+<p>To give the figure a little more visual pop, the following cell does the same plot, but also assigns a pre-determined color value (that we&rsquo;ve arbitrarily chosen) to each point. <em>These colors do not mean anything important</em>; they&rsquo;re simply there as a visual aid.</p>
+<p>You might find it useful to use the <code>colorize_surfboard_data</code> method later in this lab.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell (the colorized version of previous cell)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">colorize_surfboard_data</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">colors</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&#34;data/surfboard_colors.csv&#34;</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+</span></span><span class="line"><span class="cl">    <span class="n">df_copy</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">df_copy</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">column</span> <span class="o">=</span> <span class="s2">&#34;color&#34;</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">colors</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">df_copy</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl"><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter_3d</span><span class="p">(</span><span class="n">colorize_surfboard_data</span><span class="p">(</span><span class="n">surfboard</span><span class="p">),</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="n">range_x</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="n">range_y</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="n">range_z</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&#34;color&#34;</span><span class="p">,</span> <span class="n">color_continuous_scale</span> <span class="o">=</span> <span class="s1">&#39;RdBu&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><br/><br/></p>
+<hr style="border: 1px solid #fdb515;" />
+<h2 id="question-4-centering-and-svd">Question 4: Centering and SVD</h2>
+<h3 id="question-4a">Question 4a</h3>
+<p>In Part 1, we standardized the Iris data prior to performing SVD, i.e., we made features zero-mean and unit-variance. In this part, we&rsquo;ll try just <strong>centering</strong> our data so that each feature is zero-mean and variance is unchanged.</p>
+<p>Compute the columnwise mean of <code>surfboard</code> in the cell below, and store the result in <code>surfboard_mean</code>. You can choose to make <code>surfboard_mean</code> a numpy array or a series, whichever is more convenient for you. Regardless of what data type you use, <code>surfboard_mean</code> should have 3 means: 1 for each attribute, with the x coordinate first, then y, then z.</p>
+<p>Then, subtract <code>surfboard_mean</code> from <code>surfboard</code>, and save the result in <code>surfboard_centered</code>. The order of the columns in <code>surfboard_centered</code> should be x, then y, then z.</p>
+<!--
+BEGIN QUESTION
+name: q4a
+points: 1
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">surfboard_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">surfboard</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">surfboard_centered</span> <span class="o">=</span> <span class="n">surfboard</span> <span class="o">-</span> <span class="n">surfboard_mean</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q4a&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><br/><br/></p>
+<hr>
+<h3 id="question-4b">Question 4b</h3>
+<p>In the following cell, compute the singular value decomposition (SVD) of <code>surfboard_centered</code> as $U\Sigma V^T$, and store the left singular vectors $U$, singular values $\Sigma$, and (transposed) right singular vectors $V^T$ in <code>u</code>, <code>s</code>, and <code>vt</code>, respectively.</p>
+<p>Your code should be very similar to Part 1, Question 1b up above.</p>
+<!--
+BEGIN QUESTION
+name: q4b
+points: 1
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">u2</span><span class="p">,</span> <span class="n">s2</span><span class="p">,</span> <span class="n">vt2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">surfboard_centered</span><span class="p">,</span> <span class="n">full_matrices</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">u2</span><span class="p">,</span> <span class="n">s2</span><span class="p">,</span> <span class="n">vt2</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>(array([[-0.02551985,  0.02108339,  0.03408865],
+        [-0.02103979,  0.0259219 , -0.05432967],
+        [-0.00283413,  0.00809889, -0.00204459],
+        ...,
+        [ 0.01536972,  0.00483066, -0.05673824],
+        [-0.00917593, -0.0345672 , -0.03491181],
+        [-0.01701236, -0.02743128,  0.01966704]]),
+ array([103.76854043,  40.38357469,  21.04757518]),
+ array([[ 0.38544534, -0.67267377, -0.63161847],
+        [ 0.5457216 ,  0.7181477 , -0.43180066],
+        [ 0.74405633, -0.17825229,  0.64389929]]))
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q4b&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><br/><br/></p>
+<hr>
+<h3 id="question-4c-total-variance">Question 4c: Total Variance</h3>
+<p>In Part 1 Question 1c, we considered standardized features (each with unit variance), whose total variance was simply the count of features. Now, we&rsquo;ll show that the same relationship holds between singular values <code>s</code> and the variance of our (unstandardized) data.</p>
+<p>In the cell below, compute the total variance as the sum of the squares of the singular values $\sigma_i$ divided by the number of datapoints $N$. Here&rsquo;s that formula again from Question 1c:</p>
+<p>$$\text{Var}(X) = \frac{\sum_{i=1}^d{\sigma_i^2}}{N} = \sum_{i=1}^d \frac{\sigma_i^2}{N}$$</p>
+<!--
+BEGIN QUESTION
+name: q4c
+points: 1
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">total_variance_computed_from_singular_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">s2</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">surfboard_centered</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">total_variance_computed_from_singular_values</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>np.float64(12.841743509780112)
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q4c&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><br/>
+<p>Your <code>total_variance_computed_from_singular_values</code> result should be very close to the total variance of the original <code>surfboard</code> data:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">surfboard</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>x    2.330704
+y    5.727527
+z    4.783513
+dtype: float64
+</code></pre>
+<p>The total variance of our dataset is given by the sum of these numbers.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">total_variance_computed_from_surfboard</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">surfboard</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">total_variance_computed_from_surfboard</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>12.841743509780109
+</code></pre>
+<p>Note: The variances are the same for both <code>surfboard_centered</code> and <code>surfboard</code> (why?), so we show only one to avoid redundancy.</p>
+<p><br/><br/></p>
+<hr>
+<h3 id="question-4d-variance-explained-by-first-principal-component">Question 4d: Variance Explained by First Principal Component</h3>
+<p>In the cell below, set <code>variance_explained_by_1st_pc</code> to the proportion of the total variance explained by the 1st principal component. Your answer should be a number between 0 and 1.</p>
+<!--
+BEGIN QUESTION
+name: q4d
+points: 1
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">variance_explained_by_1st_pc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">s2</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">surfboard_centered</span><span class="p">)</span> <span class="o">/</span> <span class="n">total_variance_computed_from_surfboard</span>
+</span></span><span class="line"><span class="cl"><span class="n">variance_explained_by_1st_pc</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>np.float64(0.8385084140449135)
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q4d&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><br/>
+<p>We can also create a scree plot that shows the proportion of variance explained by all of our principal components, ordered from most to least. You already constructed a scree plot for the Iris data, so we&rsquo;ll leave the surfboard scree plot for you to do on your own time.</p>
+<p>Instaed, let&rsquo;s try to visualize why PCA is simply a rotation of the coordinate axes (i.e., features) of our data.</p>
+<p><br/><br/></p>
+<hr style="border: 1px solid #fdb515;" />
+<h2 id="question-5-v-as-a-rotation-matrix">Question 5: V as a Rotation Matrix</h2>
+<p>In lecture, we saw that the first column of $XV$ contained the first principal component values for each observation, the second column of $XV$ contained the second principal component values for each observation, and so forth.</p>
+<p>Let&rsquo;s give this matrix a name: $P = XV$ is sometimes known as the &ldquo;principal component matrix&rdquo;.</p>
+<p>Compute the $P$ matrix for the surfboard dataset and store it in the variable <code>surfboard_pcs</code>.</p>
+<p>Hint: What does $X$ represent here: <code>surfboard</code> or <code>surfboard_centered</code>? Why?</p>
+<!--
+BEGIN QUESTION
+name: q1e
+points: 1
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">surfboard_pcs</span> <span class="o">=</span> <span class="n">surfboard_centered</span> <span class="o">@</span> <span class="n">vt2</span><span class="o">.</span><span class="n">T</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q1e&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h3 id="tutorial-2-visualizing-the-principal-component-matrix">[Tutorial 2] Visualizing the Principal Component Matrix</h3>
+<p>In some sense, we can think of $P$ as an output of the PCA procedure.</p>
+<p>$P$ is a <strong>rotation</strong> of the data such that the data will now appear &ldquo;axis aligned&rdquo;. Specifically, for a 3d dataset, if we plot PC1, PC2, and PC3 along the x, y, and z axes of our plot, then the greatest amount of variation happens along the x-axis, the second greatest amount along the y-axis, and the smallest amount along the z-axis.</p>
+<p>To visualize this, run the cell below, which will show our data now projected onto the principal component space. Compare with your original figure (from Tutorial 1 in this part), and observe that the data is exactly the same—only it is now rotated.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">surfboard_pcs</span> <span class="o">=</span> <span class="n">surfboard_pcs</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s2">&#34;pc1&#34;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s2">&#34;pc2&#34;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s2">&#34;pc3&#34;</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl"><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter_3d</span><span class="p">(</span><span class="n">colorize_surfboard_data</span><span class="p">(</span><span class="n">surfboard_pcs</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">                    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;pc1&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;pc2&#39;</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="s1">&#39;pc3&#39;</span><span class="p">,</span> <span class="n">range_x</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="n">range_y</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="n">range_z</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;color&#39;</span><span class="p">,</span> <span class="n">color_continuous_scale</span> <span class="o">=</span> <span class="s1">&#39;RdBu&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">();</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>We can also create a 2D scatterplot of our surfboard data as well. Note that the resulting is just the 3D plot as viewed from directly &ldquo;overhead&rdquo;.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">colorize_surfboard_data</span><span class="p">(</span><span class="n">surfboard_pcs</span><span class="p">),</span> <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;pc1&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;pc2&#39;</span><span class="p">,</span> <span class="n">hue</span> <span class="o">=</span> <span class="s2">&#34;color&#34;</span><span class="p">,</span> <span class="n">palette</span> <span class="o">=</span> <span class="s2">&#34;RdBu&#34;</span><span class="p">,</span> <span class="n">legend</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&#34;Top-Down View of $P$&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab11/lab11_files/lab11_62_0.png"
+        data-srcset="/datalab11/lab11_files/lab11_62_0.png, /datalab11/lab11_files/lab11_62_0.png 1.5x, /datalab11/lab11_files/lab11_62_0.png 2x"
+        data-sizes="auto"
+        alt="/datalab11/lab11_files/lab11_62_0.png"
+        title="png" width="532" height="600" /></p>
+<h3 id="part-2-summary">Part 2 Summary</h3>
+<p>Above, we saw that the principal component matrix $P$ is simply the original data rotated in space so that it appears axis-aligned.</p>
+<p>Whenever we do a 2D scatter plot of only the first 2 columns of $P$, we are simply looking at the data from &ldquo;above&rdquo;, i.e. so that the 3rd (or higher) PC is invisible to us.</p>
+<h1 id="congratulations-you-finished-the-lab">Congratulations! You finished the lab!</h1>
+<hr>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -124,20 +931,20 @@
                             <a class="link-to-markdown" href="/datalab11/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/datalab11/" data-title="DATA100-lab11"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/datalab11/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/datalab11/" data-title="DATA100-lab11"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/datalab11/" data-title="DATA100-lab11"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/datalab11/" data-title="DATA100-lab11"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/datalab11/" data-title="DATA100-lab11: Principal Component Analysis" data-hashtags="Numpy,Scikit-Learn"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/datalab11/" data-hashtag="Numpy"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/datalab11/" data-title="DATA100-lab11: Principal Component Analysis"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/datalab11/" data-title="DATA100-lab11: Principal Component Analysis"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/datalab11/" data-title="DATA100-lab11: Principal Component Analysis"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/numpy/">Numpy</a>,&nbsp;<a href="/tags/scikit-learn/">Scikit-Learn</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/datalab12/" class="prev" rel="prev" title="DATA100-lab12"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>DATA100-lab12</a>
-            <a href="/datalab14/" class="next" rel="next" title="DATA100-lab14">DATA100-lab14<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/datalab12/" class="prev" rel="prev" title="DATA100-lab12: Logistic Regression"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>DATA100-lab12: Logistic Regression</a>
+            <a href="/datalab14/" class="next" rel="next" title="DATA100-lab14: Clustering">DATA100-lab14: Clustering<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">

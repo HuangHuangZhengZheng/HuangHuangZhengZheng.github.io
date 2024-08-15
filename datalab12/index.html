@@ -4,19 +4,21 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>DATA100-lab12 - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/datalab12/">
+        <title>DATA100-lab12: Logistic Regression - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/datalab12/">
   <meta property="og:site_name" content="HHZZ`s space">
-  <meta property="og:title" content="DATA100-lab12">
-  <meta property="og:description" content="This is my cool site">
+  <meta property="og:title" content="DATA100-lab12: Logistic Regression">
+  <meta property="og:description" content="1 2 3 # Initialize Otter import otter grader = otter.Notebook(&amp;#34;lab12.ipynb&amp;#34;) Lab 12: Logistic Regression 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 # Run this cell to set up your notebook import numpy as np import pandas as pd import sklearn import sklearn.datasets import matplotlib.pyplot as plt import seaborn as sns import plotly.offline as py import plotly.graph_objs as go import plotly.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2024-08-13T15:19:36+08:00">
     <meta property="article:modified_time" content="2024-08-13T15:19:36+08:00">
+    <meta property="article:tag" content="Scikit-Learn">
+    <meta property="article:tag" content="Numpy">
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="DATA100-lab12">
-<meta name="twitter:description" content="">
+<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="DATA100-lab12: Logistic Regression">
+<meta name="twitter:description" content="1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab12.ipynb&#34;) Lab 12: Logistic Regression 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 # Run this cell to set up your notebook import numpy as np import pandas as pd import sklearn import sklearn.datasets import matplotlib.pyplot as plt import seaborn as sns import plotly.offline as py import plotly.graph_objs as go import plotly.">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -26,12 +28,12 @@
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "DATA100-lab12",
+        "headline": "DATA100-lab12: Logistic Regression",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/datalab12\/"
-        },"genre": "posts","wordcount":  0 ,
+        },"genre": "posts","keywords": "Scikit-Learn, Numpy","wordcount":  4635 ,
         "url": "http:\/\/example.org\/datalab12\/","datePublished": "2024-08-13T15:19:36+08:00","dateModified": "2024-08-13T15:19:36+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -103,17 +105,1320 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">DATA100-lab12</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">DATA100-lab12: Logistic Regression</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-13">2024-08-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;0 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;0 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-13">2024-08-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;4635 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;22 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"></div><div class="post-footer" id="post-footer">
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#objectives">Objectives</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#question-1">Question 1</a>
+      <ul>
+        <li><a href="#question-1a">Question 1a</a></li>
+        <li><a href="#question-1b-compute-empirical-risk">Question 1b: Compute Empirical Risk</a></li>
+        <li><a href="#question-1c">Question 1c</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#tutorial-scipyoptimizeminimize">[Tutorial] <code>scipy.optimize.minimize</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#question-2">Question 2</a>
+      <ul>
+        <li><a href="#tutorial-linearly-separable-data">[Tutorial] Linearly separable data</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#tutorial-sklearns-logisticregression">[Tutorial] sklearn&rsquo;s <code>LogisticRegression</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#question-3">Question 3</a>
+      <ul>
+        <li><a href="#question-3a-accuracy">Question 3a: Accuracy</a></li>
+        <li><a href="#question-3b-precision-and-recall">Question 3b: Precision and Recall</a></li>
+        <li><a href="#question-3c">Question 3c</a></li>
+        <li><a href="#tutorial-confusion-matrices">[Tutorial] Confusion Matrices</a></li>
+        <li><a href="#question-3d-normalized-confusion-matrix">Question 3d: Normalized Confusion Matrix</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Initialize Otter</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">otter</span>
+</span></span><span class="line"><span class="cl"><span class="n">grader</span> <span class="o">=</span> <span class="n">otter</span><span class="o">.</span><span class="n">Notebook</span><span class="p">(</span><span class="s2">&#34;lab12.ipynb&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="lab-12-logistic-regression">Lab 12: Logistic Regression</h1>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Run this cell to set up your notebook</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">sklearn</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">sklearn.datasets</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">plotly.offline</span> <span class="k">as</span> <span class="nn">py</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">plotly.graph_objs</span> <span class="k">as</span> <span class="nn">go</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">plotly.figure_factory</span> <span class="k">as</span> <span class="nn">ff</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&#34;talk&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><br/><br/></p>
+<hr style="border: 5px solid #003262;" />
+<hr style="border: 1px solid #fdb515;" />
+<h2 id="objectives">Objectives</h2>
+<p>In Questions 1 and 2 of this lab, we will manually construct the logistic regression model and minimize cross-entropy loss using <code>scipy.minimize</code>. This structure mirrors the linear regression labs from earlier in the semester and lets us dive deep into how logistic regression works.</p>
+<p>Lastly, in Question 3 we introduce the <code>sklearn.linear_model.LogisticRegression</code> module that you would use in practice, and we explore performance metrics for classification.</p>
+<p><br/><br/></p>
+<p>We will explore a breast cancer dataset from the University of Wisconsin (<a href="https://archive.ics.uci.edu/ml/datasets/breast&#43;cancer&#43;wisconsin&#43;%28diagnostic%29" target="_blank" rel="noopener noreffer ">source</a>). This dataset can be loaded using the <code>sklearn.datasets.load_breast_cancer()</code> method.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">data</span> <span class="o">=</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">load_breast_cancer</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># data is actually a dictionnary</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">DESCR</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>dict_keys(['data', 'target', 'frame', 'target_names', 'DESCR', 'feature_names', 'filename', 'data_module'])
+.. _breast_cancer_dataset:
+
+Breast cancer wisconsin (diagnostic) dataset
+--------------------------------------------
+
+**Data Set Characteristics:**
+
+:Number of Instances: 569
+
+:Number of Attributes: 30 numeric, predictive attributes and the class
+
+:Attribute Information:
+    - radius (mean of distances from center to points on the perimeter)
+    - texture (standard deviation of gray-scale values)
+    - perimeter
+    - area
+    - smoothness (local variation in radius lengths)
+    - compactness (perimeter^2 / area - 1.0)
+    - concavity (severity of concave portions of the contour)
+    - concave points (number of concave portions of the contour)
+    - symmetry
+    - fractal dimension (&quot;coastline approximation&quot; - 1)
+
+    The mean, standard error, and &quot;worst&quot; or largest (mean of the three
+    worst/largest values) of these features were computed for each image,
+    resulting in 30 features.  For instance, field 0 is Mean Radius, field
+    10 is Radius SE, field 20 is Worst Radius.
+
+    - class:
+            - WDBC-Malignant
+            - WDBC-Benign
+
+:Summary Statistics:
+
+===================================== ====== ======
+                                        Min    Max
+===================================== ====== ======
+radius (mean):                        6.981  28.11
+texture (mean):                       9.71   39.28
+perimeter (mean):                     43.79  188.5
+area (mean):                          143.5  2501.0
+smoothness (mean):                    0.053  0.163
+compactness (mean):                   0.019  0.345
+concavity (mean):                     0.0    0.427
+concave points (mean):                0.0    0.201
+symmetry (mean):                      0.106  0.304
+fractal dimension (mean):             0.05   0.097
+radius (standard error):              0.112  2.873
+texture (standard error):             0.36   4.885
+perimeter (standard error):           0.757  21.98
+area (standard error):                6.802  542.2
+smoothness (standard error):          0.002  0.031
+compactness (standard error):         0.002  0.135
+concavity (standard error):           0.0    0.396
+concave points (standard error):      0.0    0.053
+symmetry (standard error):            0.008  0.079
+fractal dimension (standard error):   0.001  0.03
+radius (worst):                       7.93   36.04
+texture (worst):                      12.02  49.54
+perimeter (worst):                    50.41  251.2
+area (worst):                         185.2  4254.0
+smoothness (worst):                   0.071  0.223
+compactness (worst):                  0.027  1.058
+concavity (worst):                    0.0    1.252
+concave points (worst):               0.0    0.291
+symmetry (worst):                     0.156  0.664
+fractal dimension (worst):            0.055  0.208
+===================================== ====== ======
+
+:Missing Attribute Values: None
+
+:Class Distribution: 212 - Malignant, 357 - Benign
+
+:Creator:  Dr. William H. Wolberg, W. Nick Street, Olvi L. Mangasarian
+
+:Donor: Nick Street
+
+:Date: November, 1995
+
+This is a copy of UCI ML Breast Cancer Wisconsin (Diagnostic) datasets.
+https://goo.gl/U2Uwz2
+
+Features are computed from a digitized image of a fine needle
+aspirate (FNA) of a breast mass.  They describe
+characteristics of the cell nuclei present in the image.
+
+Separating plane described above was obtained using
+Multisurface Method-Tree (MSM-T) [K. P. Bennett, &quot;Decision Tree
+Construction Via Linear Programming.&quot; Proceedings of the 4th
+Midwest Artificial Intelligence and Cognitive Science Society,
+pp. 97-101, 1992], a classification method which uses linear
+programming to construct a decision tree.  Relevant features
+were selected using an exhaustive search in the space of 1-4
+features and 1-3 separating planes.
+
+The actual linear program used to obtain the separating plane
+in the 3-dimensional space is that described in:
+[K. P. Bennett and O. L. Mangasarian: &quot;Robust Linear
+Programming Discrimination of Two Linearly Inseparable Sets&quot;,
+Optimization Methods and Software 1, 1992, 23-34].
+
+This database is also available through the UW CS ftp server:
+
+ftp ftp.cs.wisc.edu
+cd math-prog/cpo-dataset/machine-learn/WDBC/
+
+.. dropdown:: References
+
+  - W.N. Street, W.H. Wolberg and O.L. Mangasarian. Nuclear feature extraction
+    for breast tumor diagnosis. IS&amp;T/SPIE 1993 International Symposium on
+    Electronic Imaging: Science and Technology, volume 1905, pages 861-870,
+    San Jose, CA, 1993.
+  - O.L. Mangasarian, W.N. Street and W.H. Wolberg. Breast cancer diagnosis and
+    prognosis via linear programming. Operations Research, 43(4), pages 570-577,
+    July-August 1995.
+  - W.H. Wolberg, W.N. Street, and O.L. Mangasarian. Machine learning techniques
+    to diagnose breast cancer from fine-needle aspirates. Cancer Letters 77 (1994)
+    163-171.
+</code></pre>
+<br/>
+字典转DataFrame！
+Since the data format is a dictionary, we do some preprocessing to create a `pandas.DataFrame`.
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">feature_names</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mean radius</th>
+      <th>mean texture</th>
+      <th>mean perimeter</th>
+      <th>mean area</th>
+      <th>mean smoothness</th>
+      <th>mean compactness</th>
+      <th>mean concavity</th>
+      <th>mean concave points</th>
+      <th>mean symmetry</th>
+      <th>mean fractal dimension</th>
+      <th>...</th>
+      <th>worst radius</th>
+      <th>worst texture</th>
+      <th>worst perimeter</th>
+      <th>worst area</th>
+      <th>worst smoothness</th>
+      <th>worst compactness</th>
+      <th>worst concavity</th>
+      <th>worst concave points</th>
+      <th>worst symmetry</th>
+      <th>worst fractal dimension</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>17.99</td>
+      <td>10.38</td>
+      <td>122.80</td>
+      <td>1001.0</td>
+      <td>0.11840</td>
+      <td>0.27760</td>
+      <td>0.3001</td>
+      <td>0.14710</td>
+      <td>0.2419</td>
+      <td>0.07871</td>
+      <td>...</td>
+      <td>25.38</td>
+      <td>17.33</td>
+      <td>184.60</td>
+      <td>2019.0</td>
+      <td>0.1622</td>
+      <td>0.6656</td>
+      <td>0.7119</td>
+      <td>0.2654</td>
+      <td>0.4601</td>
+      <td>0.11890</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>20.57</td>
+      <td>17.77</td>
+      <td>132.90</td>
+      <td>1326.0</td>
+      <td>0.08474</td>
+      <td>0.07864</td>
+      <td>0.0869</td>
+      <td>0.07017</td>
+      <td>0.1812</td>
+      <td>0.05667</td>
+      <td>...</td>
+      <td>24.99</td>
+      <td>23.41</td>
+      <td>158.80</td>
+      <td>1956.0</td>
+      <td>0.1238</td>
+      <td>0.1866</td>
+      <td>0.2416</td>
+      <td>0.1860</td>
+      <td>0.2750</td>
+      <td>0.08902</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>19.69</td>
+      <td>21.25</td>
+      <td>130.00</td>
+      <td>1203.0</td>
+      <td>0.10960</td>
+      <td>0.15990</td>
+      <td>0.1974</td>
+      <td>0.12790</td>
+      <td>0.2069</td>
+      <td>0.05999</td>
+      <td>...</td>
+      <td>23.57</td>
+      <td>25.53</td>
+      <td>152.50</td>
+      <td>1709.0</td>
+      <td>0.1444</td>
+      <td>0.4245</td>
+      <td>0.4504</td>
+      <td>0.2430</td>
+      <td>0.3613</td>
+      <td>0.08758</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>11.42</td>
+      <td>20.38</td>
+      <td>77.58</td>
+      <td>386.1</td>
+      <td>0.14250</td>
+      <td>0.28390</td>
+      <td>0.2414</td>
+      <td>0.10520</td>
+      <td>0.2597</td>
+      <td>0.09744</td>
+      <td>...</td>
+      <td>14.91</td>
+      <td>26.50</td>
+      <td>98.87</td>
+      <td>567.7</td>
+      <td>0.2098</td>
+      <td>0.8663</td>
+      <td>0.6869</td>
+      <td>0.2575</td>
+      <td>0.6638</td>
+      <td>0.17300</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>20.29</td>
+      <td>14.34</td>
+      <td>135.10</td>
+      <td>1297.0</td>
+      <td>0.10030</td>
+      <td>0.13280</td>
+      <td>0.1980</td>
+      <td>0.10430</td>
+      <td>0.1809</td>
+      <td>0.05883</td>
+      <td>...</td>
+      <td>22.54</td>
+      <td>16.67</td>
+      <td>152.20</td>
+      <td>1575.0</td>
+      <td>0.1374</td>
+      <td>0.2050</td>
+      <td>0.4000</td>
+      <td>0.1625</td>
+      <td>0.2364</td>
+      <td>0.07678</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 30 columns</p>
+</div>
+<p>The prediction task for this data is to predict whether a tumor is benign or malignant (a binary decision) given characteristics of that tumor. As a classic machine learning dataset, the prediction task is captured by the field <code>data.target</code>. To put the data back in its original context we will create a new column called <code>&quot;malignant&quot;</code> which will be 1 if the tumor is malignant and 0 if it is benign (reversing the definition of <code>target</code>).</p>
+<p>In this lab, we will fit a simple <strong>classification model</strong> to predict breast cancer from the cell nuclei of a breast mass. For simplicity, we will work with only one feature: the <code>mean radius</code> which corresponds to the size of the tumor. Our output (i.e., response) is the <code>malignant</code> column.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Target data_dict[&#39;target&#39;] = 0 is malignant 1 is benign</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span><span class="p">[</span><span class="s1">&#39;malignant&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">target</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Define our features/design matrix X</span>
+</span></span><span class="line"><span class="cl"><span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&#34;mean radius&#34;</span><span class="p">]]</span>
+</span></span><span class="line"><span class="cl"><span class="n">Y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;malignant&#39;</span><span class="p">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><br/>
+<p>Before we go further, we will split our dataset into training and testing data. This lets us explore the prediction power of our trained classifier on both seen and unseen data.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Create a 75-25 train-test split</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+</span></span><span class="line"><span class="cl"><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">,</span> <span class="n">Y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Training Data Size: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Test Data Size: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>Training Data Size: 426
+Test Data Size: 143
+</code></pre>
+<p><br/><br/></p>
+<hr style="border: 5px solid #003262;" />
+<hr style="border: 1px solid #fdb515;" />
+<h1 id="part-1-defining-the-model">Part 1: Defining the Model</h1>
+<p>In these first two parts, you will manually build a logistic regression classifier.</p>
+<p>Recall that the Logistic Regression model is written as follows:</p>
+<p>$$\Large f_{\theta}(x) = \sigma ( x^T \theta)$$</p>
+<p>where $f_{\theta}(x)= P(Y=1 | x)$ is the probability that our observation belongs to class 1, and $\sigma$ is the sigmoid activation function:</p>
+<p>$$\sigma(z) = \frac{1}{1 + e^{-z}}$$</p>
+<p>If we have a single feature, then $x$ is a scalar and our model has parameters $\theta = (\theta_0, \theta_1)$ as follows:</p>
+<p>$$\Large f_{\theta}(x) = \sigma (\theta_0 + \theta_1 x)$$</p>
+<p>Therefore just like OLS, if we have $n$ datapoints and $p$ features, then we can construct the design matrix
+$$\mathbb{X} \in \mathbb{R}^{n \times (p + 1)}$$
+with an all-ones column. Run the below cell to construct <code>X_intercept_train</code>. The syntax should look familiar:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">add_bias_column</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">X</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">X_intercept_train</span> <span class="o">=</span> <span class="n">add_bias_column</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">X_intercept_train</span><span class="o">.</span><span class="n">shape</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>(426, 2)
+</code></pre>
+<br/>
+<hr style="border: 1px solid #fdb515;" />
+<h2 id="question-1">Question 1</h2>
+<h3 id="question-1a">Question 1a</h3>
+<p>Using the above definition for $\mathbb{X}$, we can also construct a matrix representation of our Logistic Regression model, just like we did for OLS. Noting that $\theta = (\theta_0, \theta_1, \dots, \theta_p$), the vector $\hat{\mathbb{Y}}$ is:</p>
+<p>$$\Large \hat{\mathbb{Y}} = \sigma(\mathbb{X} \theta) $$</p>
+<p>Then the $i$-th element of $\hat{\mathbb{Y}}$ is the probability that the $i$-th observation belongs to class 1, given the feature vector is the $i$-th row of design matrix $\mathbb{X}$ and the parameter vector is $\theta$.</p>
+<p>Below, implement the <code>lr_model</code> function to evaluate this expression. You should use <code>@</code> or <code>np.dot</code>.</p>
+<!--
+BEGIN QUESTION
+name: q1a
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">sigmoid</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    The sigmoid function, defined for you
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">z</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">lr_model</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Return the logistic regression model as defined above.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    You should not need to use a for loop; use @ or np.dot.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Args:
+</span></span></span><span class="line"><span class="cl"><span class="s2">        theta: The model parameters. Dimension (p+1,).
+</span></span></span><span class="line"><span class="cl"><span class="s2">        X: The design matrix. Dimension (n, p+1).
+</span></span></span><span class="line"><span class="cl"><span class="s2">    
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Return:
+</span></span></span><span class="line"><span class="cl"><span class="s2">        Probabilities that Y = 1 for each datapoint.
+</span></span></span><span class="line"><span class="cl"><span class="s2">        Dimension (n,).
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">X</span> <span class="o">@</span> <span class="n">theta</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q1a&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><br/><br/></p>
+<hr>
+<h3 id="question-1b-compute-empirical-risk">Question 1b: Compute Empirical Risk</h3>
+<p>Now let&rsquo;s try to analyze the cross-entropy loss from logistic regression. Suppose for a single observation, we predict probability $p$ that the true response $y$ is in class 1 (otherwise the prediction is 0 with probability $1 - p$). The cross-entropy loss is:</p>
+<p>$$ - \left( y \log(p) + (1 - y) \log(1 - p) \right)$$</p>
+<p>For the logistic regression model, the <strong>empirical risk</strong> is therefore defined as the average cross-entropy loss across all $n$ datapoints:</p>
+<p>$$\Large R(\theta) = -\frac{1}{n} \sum_{i=1}^n \left( y_i \log(\sigma(X_i^T \theta)) + (1 - y_i) \log(1 - \sigma(X_i^T \theta))  \right) $$</p>
+<p>Where $y_i$ is the $i-$th response in our dataset, $\theta$ are the parameters of our model, $X_i$ is the i&rsquo;th row of our design matrix $\mathbb{X}$, and $\sigma(X_i^T \theta)$ is the probability that the response is 1 given input $X_i$.</p>
+<p><strong>Note</strong>: In this class, when performing linear algebra operations we interpret both rows and columns as column vectors. So if we wish to calculate the dot product between row $X_i$ and a vector $v$, we write $X_i^Tv$.</p>
+<p>Below, implement the function <code>lr_loss</code> that computes empirical risk over the dataset. Feel free to use functions defined in the previous part.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">lr_avg_loss</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;&#39;&#39;
+</span></span></span><span class="line"><span class="cl"><span class="s1">    Compute the average cross entropy loss using X, Y, and theta.
+</span></span></span><span class="line"><span class="cl"><span class="s1">    You should not need to use a for loop. 
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">    Args:
+</span></span></span><span class="line"><span class="cl"><span class="s1">        theta: The model parameters. Dimension (p+1,)
+</span></span></span><span class="line"><span class="cl"><span class="s1">        X: The design matrix. Dimension (n, p+1).
+</span></span></span><span class="line"><span class="cl"><span class="s1">        Y: The label. Dimension (n,).
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">    Return:
+</span></span></span><span class="line"><span class="cl"><span class="s1">        The average cross entropy loss.
+</span></span></span><span class="line"><span class="cl"><span class="s1">    &#39;&#39;&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">n</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">n</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Y</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">X</span> <span class="o">@</span> <span class="n">theta</span><span class="p">))</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">Y</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">X</span> <span class="o">@</span> <span class="n">theta</span><span class="p">)))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q1b&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><br/><br/></p>
+<p>Below is a plot showing the average training cross-entropy loss for various values of $\theta_0$ and $\theta_1$ (respectively x and y in the plot).</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="k">with</span> <span class="n">np</span><span class="o">.</span><span class="n">errstate</span><span class="p">(</span><span class="n">invalid</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">divide</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">uvalues</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">70</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">vvalues</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">70</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">)</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">uvalues</span><span class="p">,</span> <span class="n">vvalues</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">thetas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">u</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span><span class="n">v</span><span class="o">.</span><span class="n">flatten</span><span class="p">()))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">lr_avg_loss_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">lr_avg_loss</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">X_intercept_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">thetas</span><span class="o">.</span><span class="n">T</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">    <span class="n">lr_loss_surface</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Surface</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&#34;Logistic Regression Loss&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">x</span><span class="o">=</span><span class="n">u</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">v</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">lr_avg_loss_values</span><span class="p">,(</span><span class="nb">len</span><span class="p">(</span><span class="n">uvalues</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">vvalues</span><span class="p">))),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">contours</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">z</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&#34;gray&#34;</span><span class="p">,</span> <span class="n">project</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">z</span><span class="o">=</span><span class="kc">True</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">        <span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">lr_loss_surface</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">    <span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">scene</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="n">xaxis_title</span><span class="o">=</span><span class="s1">&#39;theta_0&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">yaxis_title</span><span class="o">=</span><span class="s1">&#39;theta_1&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">zaxis_title</span><span class="o">=</span><span class="s1">&#39;Loss&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">width</span><span class="o">=</span><span class="mi">700</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">margin</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">r</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">10</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">py</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">with</span> <span class="n">np</span><span class="o">.</span><span class="n">errstate</span><span class="p">(</span><span class="n">invalid</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">divide</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">uvalues</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">70</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">vvalues</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">70</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">)</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">uvalues</span><span class="p">,</span> <span class="n">vvalues</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">thetas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">u</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span><span class="n">v</span><span class="o">.</span><span class="n">flatten</span><span class="p">()))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">lr_loss_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">lr_avg_loss</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">X_intercept_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">thetas</span><span class="o">.</span><span class="n">T</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">    <span class="n">lr_loss_surface</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Surface</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&#34;Logistic Regression Loss&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">x</span><span class="o">=</span><span class="n">u</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">v</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">lr_loss_values</span><span class="p">,(</span><span class="nb">len</span><span class="p">(</span><span class="n">uvalues</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">vvalues</span><span class="p">))),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">contours</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">z</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&#34;gray&#34;</span><span class="p">,</span> <span class="n">project</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">z</span><span class="o">=</span><span class="kc">True</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">        <span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">lr_loss_surface</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># fig.update_layout(</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#     scene = dict(</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#         xaxis_title=&#39;theta_1&#39;,</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#         yaxis_title=&#39;theta_2&#39;,</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#         zaxis_title=&#39;Loss&#39;),</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#         width=700,</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#         margin=dict(r=20, l=10, b=10, t=10))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">py</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><br/>
+<hr>
+<h3 id="question-1c">Question 1c</h3>
+<p>Describe one interesting observation about the loss plot above.</p>
+<!--
+BEGIN QUESTION
+name: q1c
+-->
+<p><br/><br/></p>
+<hr style="border: 5px solid #003262;" />
+<hr style="border: 1px solid #fdb515;" />
+<h1 id="part-2-fit-and-predict">Part 2: Fit and Predict</h1>
+<h3 id="tutorial-scipyoptimizeminimize">[Tutorial] <code>scipy.optimize.minimize</code></h3>
+<p>The next two cells call the <code>minimize</code> function from <code>scipy</code> on the <code>lr_avg_loss</code> function you defined in the previous part. We pass in the training data to <code>args</code> (<a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html" target="_blank" rel="noopener noreffer ">documentation</a>) to find the <code>theta_hat</code> that minimizes the average cross-entropy loss over the train set.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">minimize</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">min_result</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">lr_avg_loss</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                      <span class="n">x0</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">X_intercept_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+</span></span><span class="line"><span class="cl">                      <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">X_intercept_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># args: Extra arguments passed to the objective function and its derivatives (fun, jac and hess functions).</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">min_result</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>  message: Optimization terminated successfully.
+  success: True
+   status: 0
+      fun: 0.3123767645005891
+        x: [-1.387e+01  9.372e-01]
+      nit: 16
+      jac: [-4.210e-07 -7.335e-06]
+ hess_inv: [[ 7.478e+02 -5.212e+01]
+            [-5.212e+01  3.683e+00]]
+     nfev: 57
+     njev: 19
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">theta_hat</span> <span class="o">=</span> <span class="n">min_result</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">theta_hat</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>array([-13.87178941,   0.93723937])
+</code></pre>
+<br/>
+<p>Because our design matrix $\mathbb{X}$ leads with a column of all ones, <code>theta_hat</code> has two elements: $\hat{\theta}_0$ is the estimate of the intercept/bias term, and $\hat{\theta}_1$ is the estimate of the slope of our single feature.</p>
+<p><br/><br/></p>
+<p>It&rsquo;s time for a recap:</p>
+<ul>
+<li>For logistic regression with parameter $\theta$, $P(Y = 1 | x) = \sigma(x^T \theta)$, where $\sigma$ is the sigmoid function and $x$ is a feature vector. Therefore $\sigma(x^T \theta)$ is the Bernoulli probability that the response is 1 given the feature is $x$ Otherwise the response is 0 with probability $P(Y = 0 | x) = 1 - \sigma(x^T \theta)$.</li>
+<li>The $\hat{\theta}$ that <em>minimizes</em> average log-entropy loss of our training data also <em>maximizes</em> the likelihood of observing the training data according to the logistic regression model (check out lecture for more details).</li>
+</ul>
+<p>The main takeaway is that logistic regression models <strong>probabilities</strong> of classifying datapoints as 1 or 0. Next, we use this takeaway to implement model predictions.</p>
+<br/>
+<hr style="border: 1px solid #fdb515;" />
+<h2 id="question-2">Question 2</h2>
+<p>Using the <code>theta_hat</code> estimate above, we can construct a <strong>decision rule</strong> for classifying a datapoint with observation $x$. Let $P(Y = 1 | x) = \sigma(x^T \hat{\theta})$:</p>
+<p>$$\Large \text{classify}(x) = \begin{cases} 1, &amp; P(Y = 1 | x) \geq 0.5 \ 0, &amp; P(Y = 1 | x) &lt; 0.5 \end{cases}$$</p>
+<p>This decision rule has a decision <strong>threshold</strong> $T = 0.5$. This threshold means that we treat the classes $0$ and $1$ &ldquo;equally.&rdquo; Lower thresholds mean that we are more likely to predict $1$, whereas higher thersholds mean that we are more likely to predict $0$.</p>
+<br/>
+<p>Implement the <code>lr_predict</code> function below, which returns a vector of predictions according to the logistic regression model. The function  takes a design matrix of observations <code>X</code>, parameter estimate <code>theta</code>, and decision threshold <code>threshold</code> with default value 0.5.</p>
+<!--
+BEGIN QUESTION
+name: q2
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">lr_predict</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;&#39;&#39;
+</span></span></span><span class="line"><span class="cl"><span class="s1">    Classification using a logistic regression model
+</span></span></span><span class="line"><span class="cl"><span class="s1">    with a probability threshold.
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">    Args:
+</span></span></span><span class="line"><span class="cl"><span class="s1">        theta: The model parameters. Dimension (p+1,)
+</span></span></span><span class="line"><span class="cl"><span class="s1">        X: The design matrix. Dimension (n, p+1).
+</span></span></span><span class="line"><span class="cl"><span class="s1">        threshold: decision rule threshold for predicting class 1.
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">    Return:
+</span></span></span><span class="line"><span class="cl"><span class="s1">        A vector of predictions.
+</span></span></span><span class="line"><span class="cl"><span class="s1">    &#39;&#39;&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">(</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">X</span> <span class="o">@</span> <span class="n">theta</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">threshold</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="c1"># 转换数据类型！</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># do not modify below this line</span>
+</span></span><span class="line"><span class="cl"><span class="n">Y_train_pred</span> <span class="o">=</span> <span class="n">lr_predict</span><span class="p">(</span><span class="n">theta_hat</span><span class="p">,</span> <span class="n">X_intercept_train</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">Y_train_pred</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>array([0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0,
+       0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0,
+       0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0,
+       0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1,
+       0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0,
+       0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1,
+       0, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1,
+       0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0,
+       1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1,
+       0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1,
+       1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1,
+       1, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1,
+       1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0,
+       0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0,
+       1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0,
+       1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0,
+       0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0,
+       0, 1, 0, 0, 0, 0, 0, 0])
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q2&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><br/><br/></p>
+<h3 id="tutorial-linearly-separable-data">[Tutorial] Linearly separable data</h3>
+<p>How do these predicted classifications compare to the true responses $\mathbb{Y}$?</p>
+<p>Run the below cell to visualize our predicted responses, the true responses, and the probabilities we used to make predictions. We use <code>sns.stripplot</code> which introduces some jitter to avoid overplotting.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">plot_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&#34;X&#34;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">X_train</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                        <span class="s2">&#34;Y&#34;</span><span class="p">:</span> <span class="n">Y_train</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="s2">&#34;Y_pred&#34;</span><span class="p">:</span> <span class="n">Y_train_pred</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="s2">&#34;correct&#34;</span><span class="p">:</span> <span class="p">(</span><span class="n">Y_train</span> <span class="o">==</span> <span class="n">Y_train_pred</span><span class="p">)})</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">stripplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">plot_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&#34;X&#34;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&#34;Y&#34;</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&#34;correct&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;mean radius, $x$&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$y$&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">ticks</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;0:</span><span class="se">\n</span><span class="s1">benign&#39;</span><span class="p">,</span> <span class="s1">&#39;1:</span><span class="se">\n</span><span class="s1">malignant&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&#34;Predictions for decision threshold T = 0.5&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab12/lab12_files/lab12_34_0.png"
+        data-srcset="/datalab12/lab12_files/lab12_34_0.png, /datalab12/lab12_files/lab12_34_0.png 1.5x, /datalab12/lab12_files/lab12_34_0.png 2x"
+        data-sizes="auto"
+        alt="/datalab12/lab12_files/lab12_34_0.png"
+        title="png" width="661" height="483" /></p>
+<br/>
+<p>Because we are using a decision threshold $T = 0.5$, we predict $1$ for all $x$ where $\sigma(x^T\theta) \geq 0.5$, which happens when $x^T\theta = 0$. For the single mean radius feature, we can use algebra to solve for the boundary to be approximately $x \approx 14.8$.</p>
+<p>In other words, will always predict $0$ (benign) if the mean radius feature is less than 14.8, and $1$ (malignant) otherwise. However, in our training data there are datapoints with large mean radii that are benign, and vice versa. Our data is not <strong>linearly separable</strong> by a vertical line.</p>
+<p>The above visualization is useful when we have just one feature. In practice, however, we use other performance metrics to diagnose our model performance. Next, we will explore several such metrics: accuracy, precision, recall, and confusion matrices.</p>
+<p><br/><br/></p>
+<hr style="border: 5px solid #003262;" />
+<hr style="border: 1px solid #fdb515;" />
+<h1 id="part-3-quantifying-performance">Part 3: Quantifying Performance</h1>
+<h3 id="tutorial-sklearns-logisticregression">[Tutorial] sklearn&rsquo;s <code>LogisticRegression</code></h3>
+<p>Instead of using the model structure we built manually in the previous questions, we will instead use sklearn&rsquo;s <code>LogisticRegression</code> model, which operates similarly to the sklearn OLS, Ridge, and LASSO models.</p>
+<p>Let&rsquo;s first fit a logistic regression model to the training data. Some notes:</p>
+<ul>
+<li>Like with linear models, the <code>fit_intercept</code> argument specifies if model includes an intercept term. We therefore pass in the original matrix <code>X_train</code> in the call to <code>lr.fit()</code>.</li>
+<li>sklearn fits a <strong>regularized</strong> logistic regression model as specified by the <code>solver='lbfgs'</code> argument; read the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html" target="_blank" rel="noopener noreffer ">documentation</a> for more details.</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">lr</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">fit_intercept</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">solver</span> <span class="o">=</span> <span class="s1">&#39;lbfgs&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">lr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">lr</span><span class="o">.</span><span class="n">intercept_</span><span class="p">,</span> <span class="n">lr</span><span class="o">.</span><span class="n">coef_</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>(array([-13.75518968]), array([[0.92897696]]))
+</code></pre>
+<br/>
+<p>Note that because we are now fitting a regularized logistic regression model, the estimated coefficients above deviate slightly from our numerical findings in Question 1.</p>
+<br/>
+<p>Like with linear models, we can call <code>lr.predict(x_train)</code> to classify our training data with our fitted model.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="n">lr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>array([0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0,
+       0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0,
+       0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0,
+       0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1,
+       0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0,
+       0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1,
+       0, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1,
+       0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0,
+       1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1,
+       0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1,
+       1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1,
+       1, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1,
+       1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0,
+       0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0,
+       1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0,
+       1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0,
+       0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0,
+       0, 1, 0, 0, 0, 0, 0, 0])
+</code></pre>
+<p>Note that for a binary classification task, the sklearn model uses an unadjustable decision rule of 0.5. If you&rsquo;re interested in manually adjusting this threshold, check out the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression.predict_proba" target="_blank" rel="noopener noreffer ">documentation</a> for <code>lr.predict_proba()</code>.</p>
+<br/>
+<hr style="border: 1px solid #fdb515;" />
+<h2 id="question-3">Question 3</h2>
+<h3 id="question-3a-accuracy">Question 3a: Accuracy</h3>
+<p>Fill in the code below to compute the training and testing accuracy, defined as:</p>
+<p>$$
+\text{Training Accuracy} = \frac{1}{n_{train_set}} \sum_{i \in {train_set}} {\mathbb{1}_{y_i == \hat{y_i}}}
+$$</p>
+<p>$$
+\text{Testing Accuracy} = \frac{1}{n_{test_set}} \sum_{i \in {test_set}} {\mathbb{1}_{y_i == \hat{y_i}}}
+$$</p>
+<p>where for the $i$-th observation in the respective dataset, $\hat{y_i}$ is the predicted response and $y_i$ the true response.  $\mathbb{1}_{y_i == \hat{y_i}}$ is an indicator function which is $1$ if ${y_i} = \hat{y_i}$ and $ 0$ otherwise.</p>
+<!--
+BEGIN QUESTION
+name: q3a
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">train_accuracy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Y_train</span> <span class="o">==</span> <span class="n">lr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">))</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">Y_train</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">test_accuracy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Y_test</span> <span class="o">==</span> <span class="n">lr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">))</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">Y_test</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Train accuracy: </span><span class="si">{</span><span class="n">train_accuracy</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Test accuracy: </span><span class="si">{</span><span class="n">test_accuracy</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>Train accuracy: 0.8709
+Test accuracy: 0.9091
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q3a&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><br/>
+<hr>
+<h3 id="question-3b-precision-and-recall">Question 3b: Precision and Recall</h3>
+<p>It seems we can get a very high test accuracy. What about precision and recall?</p>
+<ul>
+<li><strong>Precision</strong> (also called positive predictive value) is the fraction of true positives among the total number of data points predicted as positive.  真阳性 / (真阳性 + 假阳性)</li>
+<li><strong>Recall</strong> (also known as sensitivity) is the fraction of true positives among the total number of data points with positive labels. 真阳性 / (真阳性 + 假阴性)</li>
+</ul>
+<p>Precision measures the ability of our classifier to not predict negative samples as positive (i.e., avoid false positives), while recall is the ability of the classifier to find all the positive samples (i.e., avoid false negatives).</p>
+<p>Below is a graphical illustration of precision and recall, modified slightly from <a href="https://en.wikipedia.org/wiki/Precision_and_recall" target="_blank" rel="noopener noreffer ">Wikipedia</a>:
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab12/precision_recall.png"
+        data-srcset="/datalab12/precision_recall.png, /datalab12/precision_recall.png 1.5x, /datalab12/precision_recall.png 2x"
+        data-sizes="auto"
+        alt="/datalab12/precision_recall.png"
+        title="precision_recall" width="2425" height="1632" /></p>
+<p>Mathematically, Precision and Recall are defined as:
+$$
+\text{Precision} = \frac{n_{true_positives}}{n_{true_positives} + n_{false_positives}}
+$$</p>
+<p>$$
+\text{Recall} = \frac{n_{true_positives}}{n_{true_positives} + n_{false_negatives}}
+$$</p>
+<p>Use the formulas above to compute the precision and recall for the <strong>test set</strong> using the <code>lr</code> model trained using sklearn.</p>
+<!--
+BEGIN QUESTION
+name: q3b
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">Y_test_pred</span> <span class="o">=</span> <span class="n">lr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 注意bool索引！</span>
+</span></span><span class="line"><span class="cl"><span class="n">precision</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Y_test_pred</span><span class="p">[</span><span class="n">Y_test</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Y_test_pred</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">recall</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Y_test_pred</span><span class="p">[</span><span class="n">Y_test</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Y_test</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;precision = </span><span class="si">{</span><span class="n">precision</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;recall = </span><span class="si">{</span><span class="n">recall</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>precision = 0.9184
+recall = 0.8333
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q3b&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><br/>
+<hr>
+<h3 id="question-3c">Question 3c</h3>
+<p>Our precision is fairly high, while our recall is a bit lower.</p>
+<p>Consider the following plots, which display the distribution of the <strong>response variable</strong> $\mathbb{Y}$ in the training and testing sets (sometimes called the target, or true response). Recall class labels are 0: benign, 1: malignant.</p>
+<!--
+BEGIN QUESTION
+name: q3c
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Y_train</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Y_test</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Train&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Test&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab12/lab12_files/lab12_50_0.png"
+        data-srcset="/datalab12/lab12_files/lab12_50_0.png, /datalab12/lab12_files/lab12_50_0.png 1.5x, /datalab12/lab12_files/lab12_50_0.png 2x"
+        data-sizes="auto"
+        alt="/datalab12/lab12_files/lab12_50_0.png"
+        title="png" width="605" height="446" /></p>
+<p>Based on the above distribution, what might explain the observed difference between our precision and recall metrics?</p>
+<!--
+BEGIN QUESTION
+name: q3c
+-->
+<p><em>This is due to the <strong>class imbalance</strong> between M and B in both train and test sets.</em></p>
+<p><br/><br/></p>
+<hr>
+<h3 id="tutorial-confusion-matrices">[Tutorial] Confusion Matrices</h3>
+<p>To understand the link between precision and recall, it&rsquo;s useful to create a <strong>confusion matrix</strong> of our predictions. Luckily, <code>sklearn.metrics</code> provides us with such a function!</p>
+<p>The <code>confusion_matrix</code> function (<a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html" target="_blank" rel="noopener noreffer ">documentation</a>) categorizes counts of datapoints based if their true and predicted values match.</p>
+<p>For the 143-datapoint test dataset:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Y_test_pred</span> <span class="o">=</span> <span class="n">lr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">cnf_matrix</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">Y_test</span><span class="p">,</span> <span class="n">Y_test_pred</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">cnf_matrix</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>array([[85,  4],
+       [ 9, 45]])
+</code></pre>
+<p>We&rsquo;ve implemented the following function to better visualize these four counts against the true and predicted categories:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">plot_confusion_matrix</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">classes</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                          <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Confusion matrix&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                          <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Blues</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    This function prints and plots the confusion matrix.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">import</span> <span class="nn">itertools</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">tick_marks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">classes</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">tick_marks</span><span class="p">,</span> <span class="n">classes</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">tick_marks</span><span class="p">,</span> <span class="n">classes</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">thresh</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">/</span> <span class="mf">2.</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">cm</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">range</span><span class="p">(</span><span class="n">cm</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">cm</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">],</span> <span class="mi">2</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                 <span class="n">horizontalalignment</span><span class="o">=</span><span class="s2">&#34;center&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                 <span class="n">color</span><span class="o">=</span><span class="s2">&#34;white&#34;</span> <span class="k">if</span> <span class="n">cm</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">thresh</span> <span class="k">else</span> <span class="s2">&#34;black&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;True label&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Predicted label&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl"><span class="n">class_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;False&#39;</span><span class="p">,</span> <span class="s1">&#39;True&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">cnf_matrix</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="n">class_names</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                      <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Confusion matrix, without normalization&#39;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab12/lab12_files/lab12_56_0.png"
+        data-srcset="/datalab12/lab12_files/lab12_56_0.png, /datalab12/lab12_files/lab12_56_0.png 1.5x, /datalab12/lab12_files/lab12_56_0.png 2x"
+        data-sizes="auto"
+        alt="/datalab12/lab12_files/lab12_56_0.png"
+        title="png" width="536" height="474" /></p>
+<hr>
+<h3 id="question-3d-normalized-confusion-matrix">Question 3d: Normalized Confusion Matrix</h3>
+<p>To better interpret these counts, assign <code>cnf_matrix_norm</code> to a <strong>normalized confusion matrix</strong> by the count of each true label category.</p>
+<p>In other words, build a 2-D NumPy array constructed by normalizing <code>cnf_matrix</code> by the count of datapoints in each row. For example, the top-left quadrant of <code>cnf_matrix_norm</code> should represent the proportion of true negatives over the total number of datapoints with negative labels.</p>
+<p><strong>Hint</strong>: In array broadcasting, you may encounter issues dividing 2-D NumPy arrays by 1-D NumPy arrays. Check out the <code>keepdims</code> parameter in <code>np.sum</code> (<a href="https://numpy.org/doc/stable/reference/generated/numpy.sum.html" target="_blank" rel="noopener noreffer ">documentation</a>).</p>
+<!--
+BEGIN QUESTION
+name: q3d
+-->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">cnf_matrix_norm</span> <span class="o">=</span> <span class="n">cnf_matrix</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">cnf_matrix</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># do not modify below this line</span>
+</span></span><span class="line"><span class="cl"><span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">cnf_matrix_norm</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="n">class_names</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                       <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Normalized confusion matrix&#39;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/datalab12/lab12_files/lab12_58_0.png"
+        data-srcset="/datalab12/lab12_files/lab12_58_0.png, /datalab12/lab12_files/lab12_58_0.png 1.5x, /datalab12/lab12_files/lab12_58_0.png 2x"
+        data-sizes="auto"
+        alt="/datalab12/lab12_files/lab12_58_0.png"
+        title="png" width="543" height="474" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q3d&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><br/>
+<p>Compare the normalized confusion matrix to the values you computed for precision and recall earlier:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># just run this cell for your convenience</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;precision = </span><span class="si">{</span><span class="n">precision</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;recall = </span><span class="si">{</span><span class="n">recall</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>precision = 0.9184
+recall = 0.8333
+</code></pre>
+<br/>
+Based on the definitions of precision and recall, why does only recall appear in the normalized confusion matrix? Why doesn't precision appear? (No answer required for this part; just something to think about.)
+<h1 id="congratulations-you-finished-the-lab">Congratulations! You finished the lab!</h1>
+<hr>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -124,20 +1429,20 @@
                             <a class="link-to-markdown" href="/datalab12/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/datalab12/" data-title="DATA100-lab12"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/datalab12/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/datalab12/" data-title="DATA100-lab12"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/datalab12/" data-title="DATA100-lab12"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/datalab12/" data-title="DATA100-lab12"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/datalab12/" data-title="DATA100-lab12: Logistic Regression" data-hashtags="Scikit-Learn,Numpy"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/datalab12/" data-hashtag="Scikit-Learn"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/datalab12/" data-title="DATA100-lab12: Logistic Regression"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/datalab12/" data-title="DATA100-lab12: Logistic Regression"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/datalab12/" data-title="DATA100-lab12: Logistic Regression"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/scikit-learn/">Scikit-Learn</a>,&nbsp;<a href="/tags/numpy/">Numpy</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
     <div class="post-nav"><a href="/datalab10/" class="prev" rel="prev" title="DATA100-lab10: SQL"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>DATA100-lab10: SQL</a>
-            <a href="/datalab11/" class="next" rel="next" title="DATA100-lab11">DATA100-lab11<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+            <a href="/datalab11/" class="next" rel="next" title="DATA100-lab11: Principal Component Analysis">DATA100-lab11: Principal Component Analysis<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
