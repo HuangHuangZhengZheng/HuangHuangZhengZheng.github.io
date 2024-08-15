@@ -7,7 +7,10 @@
         <title>CS186-L7: Buffer Management - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/databasel7/">
   <meta property="og:site_name" content="HHZZ`s space">
   <meta property="og:title" content="CS186-L7: Buffer Management">
-  <meta property="og:description" content="This is my cool site">
+  <meta property="og:description" content="intro 可能需要处理的问题 dirty pages pages replacement state of buffer management Page replacement terminology a page in &amp;ldquo;use&amp;rdquo; : Page pin count if full. which should be replaced: page replacement policy request请求发出来，转接到buffer manager&amp;hellip;&amp;hellip; Page replacement policies LRU (Least Recently Used) 最近最少使用使用的是 时间 pin count == 0! Priority heap data structure can help! like $O(logN)$ CLOCK 一种近似LRU的算法，旨在不需要维护每个页面的访问时间戳，从而减少了额外的开销。
+Clock policy将缓冲区中的页面视为一个循环列表，使用一个“时钟指针”来跟踪当前考虑替换的页面。每个页面都有一个“引用位”（ref bit），用于指示该页面是否被最近访问过。
+工作流程
+初始化：当缓冲区管理器启动时，时钟指针指向第一个未固定（unpinned）的页面，并将该页面的引用位设置为1，当页面被读入时。 页面替换： 当需要替换页面时，缓冲区管理器从时钟指针开始，遍历缓冲区中的页面。 对于每个页面，如果该页面的引用位为1，则将其引用位重置为0，并将时钟指针移动到下一个页面。 如果找到一个引用位为0的页面，则可以将其替换。此时，如果该页面是“脏页”（dirty page），则需要将其写回磁盘，然后读取新的页面并将其引用位设置为1。 LRU-Clock bad behavior Sequential Flooding! MRU (Most Recently Used) General case: SeqScan &#43; MRU $B$ buffers $N&amp;gt;B$ pages in file Improvements for sequential scan: prefetch hybrid?">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
@@ -16,7 +19,10 @@
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="CS186-L7: Buffer Management">
-<meta name="twitter:description" content="">
+<meta name="twitter:description" content="intro 可能需要处理的问题 dirty pages pages replacement state of buffer management Page replacement terminology a page in &ldquo;use&rdquo; : Page pin count if full. which should be replaced: page replacement policy request请求发出来，转接到buffer manager&hellip;&hellip; Page replacement policies LRU (Least Recently Used) 最近最少使用使用的是 时间 pin count == 0! Priority heap data structure can help! like $O(logN)$ CLOCK 一种近似LRU的算法，旨在不需要维护每个页面的访问时间戳，从而减少了额外的开销。
+Clock policy将缓冲区中的页面视为一个循环列表，使用一个“时钟指针”来跟踪当前考虑替换的页面。每个页面都有一个“引用位”（ref bit），用于指示该页面是否被最近访问过。
+工作流程
+初始化：当缓冲区管理器启动时，时钟指针指向第一个未固定（unpinned）的页面，并将该页面的引用位设置为1，当页面被读入时。 页面替换： 当需要替换页面时，缓冲区管理器从时钟指针开始，遍历缓冲区中的页面。 对于每个页面，如果该页面的引用位为1，则将其引用位重置为0，并将时钟指针移动到下一个页面。 如果找到一个引用位为0的页面，则可以将其替换。此时，如果该页面是“脏页”（dirty page），则需要将其写回磁盘，然后读取新的页面并将其引用位设置为1。 LRU-Clock bad behavior Sequential Flooding! MRU (Most Recently Used) General case: SeqScan &#43; MRU $B$ buffers $N&gt;B$ pages in file Improvements for sequential scan: prefetch hybrid?">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -31,7 +37,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/databasel7\/"
-        },"genre": "posts","wordcount":  0 ,
+        },"genre": "posts","wordcount":  109 ,
         "url": "http:\/\/example.org\/databasel7\/","datePublished": "2024-08-14T09:38:01+08:00","dateModified": "2024-08-14T09:38:01+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -105,15 +111,191 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">CS186-L7: Buffer Management</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-14">2024-08-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;0 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;0 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-14">2024-08-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;109 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"></div><div class="post-footer" id="post-footer">
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#intro">intro</a>
+      <ul>
+        <li><a href="#可能需要处理的问题">可能需要处理的问题</a></li>
+        <li><a href="#state-of-buffer-management">state of buffer management</a></li>
+      </ul>
+    </li>
+    <li><a href="#page-replacement-terminology">Page replacement terminology</a></li>
+    <li><a href="#page-replacement-policies">Page replacement policies</a>
+      <ul>
+        <li><a href="#lru-least-recently-used">LRU (Least Recently Used)</a></li>
+        <li><a href="#clock">CLOCK</a></li>
+        <li><a href="#lru-clock-bad-behavior">LRU-Clock bad behavior</a></li>
+        <li><a href="#mru-most-recently-used">MRU (Most Recently Used)</a>
+          <ul>
+            <li><a href="#improvements-for-sequential-scan-prefetch">Improvements for sequential scan: prefetch</a></li>
+            <li><a href="#hybrid">hybrid?</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#system-perspective">System perspective</a></li>
+    <li><a href="#summary">summary</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="intro">intro</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel7/image.png"
+        data-srcset="/databasel7/image.png, /databasel7/image.png 1.5x, /databasel7/image.png 2x"
+        data-sizes="auto"
+        alt="/databasel7/image.png"
+        title="alt text" width="805" height="520" /></p>
+<h3 id="可能需要处理的问题">可能需要处理的问题</h3>
+<ol>
+<li>dirty pages</li>
+<li>pages replacement
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel7/image-1.png"
+        data-srcset="/databasel7/image-1.png, /databasel7/image-1.png 1.5x, /databasel7/image-1.png 2x"
+        data-sizes="auto"
+        alt="/databasel7/image-1.png"
+        title="alt text" width="1066" height="391" /></li>
+</ol>
+<h3 id="state-of-buffer-management">state of buffer management</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel7/image-2.png"
+        data-srcset="/databasel7/image-2.png, /databasel7/image-2.png 1.5x, /databasel7/image-2.png 2x"
+        data-sizes="auto"
+        alt="/databasel7/image-2.png"
+        title="alt text" width="933" height="534" /></p>
+<h2 id="page-replacement-terminology">Page replacement terminology</h2>
+<ul>
+<li>a page in &ldquo;use&rdquo; : <strong>Page pin count</strong></li>
+<li>if full. which should be replaced: <strong>page replacement policy</strong></li>
+</ul>
+<p>request请求发出来，转接到buffer manager&hellip;&hellip;
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel7/image-3.png"
+        data-srcset="/databasel7/image-3.png, /databasel7/image-3.png 1.5x, /databasel7/image-3.png 2x"
+        data-sizes="auto"
+        alt="/databasel7/image-3.png"
+        title="alt text" width="632" height="442" /></p>
+<h2 id="page-replacement-policies">Page replacement policies</h2>
+<h3 id="lru-least-recently-used">LRU (Least Recently Used)</h3>
+<ul>
+<li>最近最少使用使用的是 <em>时间</em></li>
+<li>pin count == 0!</li>
+<li>Priority heap data structure can help! like $O(logN)$</li>
+</ul>
+<h3 id="clock">CLOCK</h3>
+<p>一种近似LRU的算法，旨在不需要维护每个页面的访问时间戳，从而减少了额外的开销。</p>
+<ul>
+<li>
+<p>Clock policy将缓冲区中的页面视为一个循环列表，使用一个“时钟指针”来跟踪当前考虑替换的页面。每个页面都有一个“引用位”（ref bit），用于指示该页面是否被最近访问过。</p>
+</li>
+<li>
+<p>工作流程</p>
+<ul>
+<li>初始化：当缓冲区管理器启动时，时钟指针指向第一个未固定（unpinned）的页面，并将该页面的引用位设置为1，当页面被读入时。</li>
+<li>页面替换：
+<ul>
+<li>当需要替换页面时，缓冲区管理器从时钟指针开始，遍历缓冲区中的页面。</li>
+<li>对于每个页面，如果该页面的引用位为1，则将其引用位重置为0，并将时钟指针移动到下一个页面。</li>
+<li>如果找到一个引用位为0的页面，则可以将其替换。此时，如果该页面是“脏页”（dirty page），则需要将其写回磁盘，然后读取新的页面并将其引用位设置为1。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="lru-clock-bad-behavior">LRU-Clock bad behavior</h3>
+<p>Sequential Flooding!
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel7/image-4.png"
+        data-srcset="/databasel7/image-4.png, /databasel7/image-4.png 1.5x, /databasel7/image-4.png 2x"
+        data-sizes="auto"
+        alt="/databasel7/image-4.png"
+        title="alt text" width="836" height="509" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel7/image-5.png"
+        data-srcset="/databasel7/image-5.png, /databasel7/image-5.png 1.5x, /databasel7/image-5.png 2x"
+        data-sizes="auto"
+        alt="/databasel7/image-5.png"
+        title="alt text" width="1009" height="379" /></p>
+<h3 id="mru-most-recently-used">MRU (Most Recently Used)</h3>
+<p>General case: SeqScan + MRU
+$B$ buffers
+$N&gt;B$ pages in file
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel7/image-6.png"
+        data-srcset="/databasel7/image-6.png, /databasel7/image-6.png 1.5x, /databasel7/image-6.png 2x"
+        data-sizes="auto"
+        alt="/databasel7/image-6.png"
+        title="alt text" width="410" height="328" /></p>
+<h4 id="improvements-for-sequential-scan-prefetch">Improvements for sequential scan: prefetch</h4>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel7/image-7.png"
+        data-srcset="/databasel7/image-7.png, /databasel7/image-7.png 1.5x, /databasel7/image-7.png 2x"
+        data-sizes="auto"
+        alt="/databasel7/image-7.png"
+        title="alt text" width="917" height="296" /></p>
+<h4 id="hybrid">hybrid?</h4>
+<ul>
+<li>LRU wins for <em>random access</em></li>
+<li>MRU wins for <em>repeated sequential scan</em></li>
+</ul>
+<p>Two General Approaches: &#x1f914;
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel7/image-8.png"
+        data-srcset="/databasel7/image-8.png, /databasel7/image-8.png 1.5x, /databasel7/image-8.png 2x"
+        data-sizes="auto"
+        alt="/databasel7/image-8.png"
+        title="alt text" width="1061" height="495" /></p>
+<h2 id="system-perspective">System perspective</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel7/image-9.png"
+        data-srcset="/databasel7/image-9.png, /databasel7/image-9.png 1.5x, /databasel7/image-9.png 2x"
+        data-sizes="auto"
+        alt="/databasel7/image-9.png"
+        title="alt text" width="916" height="482" /></p>
+<h2 id="summary">summary</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel7/image-10.png"
+        data-srcset="/databasel7/image-10.png, /databasel7/image-10.png 1.5x, /databasel7/image-10.png 2x"
+        data-sizes="auto"
+        alt="/databasel7/image-10.png"
+        title="alt text" width="824" height="408" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel7/image-11.png"
+        data-srcset="/databasel7/image-11.png, /databasel7/image-11.png 1.5x, /databasel7/image-11.png 2x"
+        data-sizes="auto"
+        alt="/databasel7/image-11.png"
+        title="alt text" width="687" height="521" /></p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">

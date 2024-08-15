@@ -3,93 +3,127 @@
         <title>DATA100 - Category - HHZZ`s space</title>
         <link>http://example.org/categories/data100/</link>
         <description>DATA100 - Category - HHZZ`s space</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 13 Aug 2024 15:19:37 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/data100/" rel="self" type="application/rss+xml" /><item>
-    <title>DATA100-lab13</title>
-    <link>http://example.org/datalab13/</link>
-    <pubDate>Tue, 13 Aug 2024 15:19:37 &#43;0800</pubDate>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 19 Jul 2024 11:32:15 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/data100/" rel="self" type="application/rss+xml" /><item>
+    <title>DATA100-L26: Parallel Data Analytics; Conclusion</title>
+    <link>http://example.org/datal26/</link>
+    <pubDate>Fri, 19 Jul 2024 11:32:15 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/datalab13/</guid>
-    <description><![CDATA[]]></description>
+    <guid>http://example.org/datal26/</guid>
+    <description><![CDATA[mapreduce MapReduce是一种编程模型,用于大规模数据集的并行运算[1][2][3]。它将复杂的并行计算过程抽象为两个函数:Map和Reduce[4]。
+Map函数将输入数据集拆分成独立的块,并对每个块应用映射操作,生成一组中间键值对[1][2][3]。Reduce函数会对所有Map的输出进行合并操作,生成最终结果[1][2][3]。
+MapReduce的主要特点包括[4][5]:
+易于编程:程序员只需描述做什么,具体怎么做由系统的执行框架处理 良好的扩展性:可通过添加节点扩展集群能力 高容错性:通过计算迁移或数据迁移等策略提高集群的可用性与容错性 MapReduce采用&quot;分而治之&quot;策略,将大规模数据集切分成多个独立的分片,这些分片可以被多个Map任务并行处理[4]。它设计的一个理念是&quot;计算向数据靠拢&quot;,移动数据需要大量的网络传输开销[4]。
+总之,MapReduce是一种简单、可扩展的并行计算模型,通过抽象Map和Reduce函数,使得程序员可以轻松编写大规模并行应用程序,而无需关注底层的分布式细节[1][2][3][4][5]。
+Citations: [1] https://baike.baidu.com/item/MapReduce/133425 [2] https://zh.wikipedia.org/zh-hans/MapReduce [3] https://www.ibm.com/cn-zh/topics/mapreduce [4] https://cshihong.github.io/2018/05/11/MapReduce%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86/ [5] https://cloud.tencent.com/developer/article/1778549
+apache spark lazy strategy: 延迟计算策略,Spark默认采用这种策略,即只有当数据真正被使用时才会计算。 编译优化语句执行顺序！ Conclusion 工具链 What is next? 有用的data science链接 http://kaggle.com https://github.com/awesomedata/awesome-public-datasets http://toolbox.google.com/datasetsearch https://towardsdatascience.com https://www.reddit.com/r/dataisbeautiful/ https://fivethirtyeight.com]]></description>
 </item>
 <item>
-    <title>DATA100-lab14</title>
-    <link>http://example.org/datalab14/</link>
-    <pubDate>Tue, 13 Aug 2024 15:19:37 &#43;0800</pubDate>
+    <title>DATA100-L24: Clustering</title>
+    <link>http://example.org/datal24/</link>
+    <pubDate>Fri, 19 Jul 2024 11:32:14 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/datalab14/</guid>
-    <description><![CDATA[]]></description>
+    <guid>http://example.org/datal24/</guid>
+    <description><![CDATA[introduction to clustering no label at all &#x1f622;
+K-means clustering 算法动画演示
+K-Means vs KNN minimizing inertia convex?? 损失函数不一定凸，梯度下降难顶 how to see which one is better &#x2753; 但是找到全局最优解非常困难 agglomerative clustering 演示见上面链接以及lec code！
+和CS61B的minimum spanning tree类似，每次合并两个最近的点，直到终止条件
+outlier 有时忽略处理或者自成一类
+picking K Smax？ can s be negative? summary ]]></description>
 </item>
 <item>
-    <title>DATA100-lab11</title>
-    <link>http://example.org/datalab11/</link>
-    <pubDate>Tue, 13 Aug 2024 15:19:36 &#43;0800</pubDate>
+    <title>DATA100-L25: Data Regulations</title>
+    <link>http://example.org/datal25/</link>
+    <pubDate>Fri, 19 Jul 2024 11:32:14 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/datalab11/</guid>
-    <description><![CDATA[]]></description>
+    <guid>http://example.org/datal25/</guid>
+    <description><![CDATA[impetus for regulation why &ldquo;you&rdquo; should care Because you are gonna to be a data scientist and product owner!
+regulations: Privacy laws GDPR (General Data Protection Regulation) CCPA (California Consumer Privacy Act) Cyber Security Law in China
+deletion can be more difficult than you think &#x1f60f; 传输也要监管 fully take advantage of the &ldquo;regulations&rdquo;
+take care of gray areas &#x1f914; work with dear NGO and GO other regulations/ regulatory bodies ]]></description>
 </item>
 <item>
-    <title>DATA100-lab12</title>
-    <link>http://example.org/datalab12/</link>
-    <pubDate>Tue, 13 Aug 2024 15:19:36 &#43;0800</pubDate>
+    <title>DATA100-L23: Decision Trees</title>
+    <link>http://example.org/datal23/</link>
+    <pubDate>Fri, 19 Jul 2024 11:32:13 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/datalab12/</guid>
-    <description><![CDATA[]]></description>
+    <guid>http://example.org/datal23/</guid>
+    <description><![CDATA[Multiclass Classification 多分类问题 但是没有softmax &#x1f622; Decision Trees (conceptually) Decision Tree Demo Creating Decision Trees in sklearn 可视化代码见lecture code
+Evaluating Tree Accuracy Overfit Decision Tree Example tree is too complex to generalize well to new data too tall and narrow
+有用的特征越多，树的结构可能比较简单&#x1f914;
+The Decision Tree Generation Algorithm Intuitively Evaluating Split Quality 分割怎么样“更明显”？
+Entropy 沿着树向下，信息熵越小？可能变大！ Generating Trees Using Entropy Weighted entropy can decrease!
+Traditional decision tree generation algorithm:
+All of the data starts in the root node.]]></description>
 </item>
 <item>
-    <title>DATA100-lab10: SQL</title>
-    <link>http://example.org/datalab10/</link>
-    <pubDate>Tue, 13 Aug 2024 15:19:35 &#43;0800</pubDate>
+    <title>DATA100-L21: Classification and Logistic Regression I</title>
+    <link>http://example.org/datal21/</link>
+    <pubDate>Fri, 19 Jul 2024 11:32:12 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/datalab10/</guid>
-    <description><![CDATA[1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab10.ipynb&#34;) Lab 10: SQL In this lab, we are going to practice viewing, sorting, grouping, and merging tables with SQL. We will explore two datasets:
-A &ldquo;minified&rdquo; version of the Internet Movie Database (IMDb). This SQLite database (~10MB) is a tiny sample of the much larger database (more than a few GBs). As a result, disclaimer that we may get wildly different results than if we use the whole database!]]></description>
+    <guid>http://example.org/datal21/</guid>
+    <description><![CDATA[Regression vs. Classification 全攻略&#x1f60b; intuition: the coin flip 重新定义概率，只需要满足一些性质即可。参考 概率论与数理统计
+deriving the logistic regression model knn一瞥 这说明可以从某些变化转换为线性性质
+考虑 probability $p$ 考虑 odds $\frac{p}{1-p}$ 考虑 log odds 广义线性由此可见
+Graph of Averages the sigmoid function $$ \sigma(t)=\frac{1}{1+e^{-t}} $$
+the logistic regression model comparison to linear regression parameter estimation pitfalls of squared loss non-convex bounded, MSE ∈[0，1] conceptually questionable, not matching the &ldquo;Probability and 0/1 labels&rdquo; cross-entropy loss $$ -\frac{1}{N}\sum_{i=1}^N[y_i\log(p_i)+(1-y_i)\log(1-p_i)] $$ Loss function should penalize well!]]></description>
 </item>
 <item>
-    <title>DATA100-lab9: Probability and Modeling</title>
-    <link>http://example.org/datalab9/</link>
-    <pubDate>Tue, 13 Aug 2024 15:19:35 &#43;0800</pubDate>
+    <title>DATA100-L22: Logistic Regression II</title>
+    <link>http://example.org/datal22/</link>
+    <pubDate>Fri, 19 Jul 2024 11:32:12 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/datalab9/</guid>
-    <description><![CDATA[1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab09.ipynb&#34;) Lab 9: Probability and Modeling In this lab, you will explore estimators and modeling in two parts:
-You will explore if the &ldquo;sample max&rdquo; is a biased estimator for the true max of a population.
-Given a sample (and no access to the population), you will bootstrap the sample correlation estimator to infer properties of the population correlation of two features.]]></description>
+    <guid>http://example.org/datal22/</guid>
+    <description><![CDATA[logistic regression model continued sklearn demo go to see lec code!
+MLE: high-level, detailed (recorded) linear separability and regularization 线性可分性：如果存在一个 超平面（hyperplane） 可以将数据集分割成两部分，那么这就是线性可分的。
+超平面的维度和数据集的维度相同 $$ C $$ 注意对“push”的理解！
+另一种理解正则化的角度 这里是避免loss出现无限大的情况（梯度爆炸？），避免出现使前面情况发生的参数（infinite theta）出现，所以在loss里面预先加入正则化项。
+performance metrics accuracy 1 2 # using sklearn model.score(X_test, y_test) imbalanced data, precision, recall Acc is not a good metric for imbalanced data, use precision and recall instead!!! $$ acc= \frac{TP+TN}{n}\ precision(精确率)=\frac{TP}{TP+FP}\ recall(召回率)=\frac{TP}{TP+FN} $$ adjusting the classification threshold(阈值界限) a case study 变界限可能是因为imbalanced data导致的]]></description>
 </item>
 <item>
-    <title>DATA100-lab7: Gradient Descent and Feature Engineering</title>
-    <link>http://example.org/datalab7/</link>
-    <pubDate>Tue, 13 Aug 2024 15:19:34 &#43;0800</pubDate>
+    <title>DATA100-L19: SQL II and PCA I</title>
+    <link>http://example.org/datal19/</link>
+    <pubDate>Fri, 19 Jul 2024 11:32:11 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/datalab7/</guid>
-    <description><![CDATA[1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab07.ipynb&#34;) Lab 7: Gradient Descent and Feature Engineering In this lab, we will work through the process of:
-Defining loss functions Feature engineering Minimizing loss functions using numeric methods and analytical methods Understanding what happens if we use the analytical solution for OLS on a matrix with redundant features Computing a gradient for a nonlinear model Using gradient descent to optimize the nonline model This lab will continue using the toy tips calculation dataset used in Labs 5 and 6.]]></description>
+    <guid>http://example.org/datal19/</guid>
+    <description><![CDATA[SQL II sql and pandas how to connect sql to python
+1 2 3 4 5 6 7 8 9 import pandas as pd import sqlalchmey engine = sqlalchemy.create_engine(&#39;sqlite:///mydatabase.db&#39;) connection = engine.connect() pd.read_sql(&#34;&#34;&#34; SELECT * FROM mytable GROUP BY column1, column2 &#34;&#34;&#34;, connection) LIKE and CAST LIKE: search for a pattern in a column
+1 2 SELECT * FROM mytable WHERE column1 LIKE &#39;%value%&#39; CAST: convert data type SQL Joins Cross Join 1 2 3 SELECT * FROM table1 CROSS JOIN table2 Inner Join 1 2 3 4 SELECT * FROM table1 INNER JOIN table2 ON table1.]]></description>
 </item>
 <item>
-    <title>DATA100-lab8: Model Selection, Regularization, and Cross-Validation</title>
-    <link>http://example.org/datalab8/</link>
-    <pubDate>Tue, 13 Aug 2024 15:19:34 &#43;0800</pubDate>
+    <title>DATA100-L20: PCA II</title>
+    <link>http://example.org/datal20/</link>
+    <pubDate>Fri, 19 Jul 2024 11:32:11 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/datalab8/</guid>
-    <description><![CDATA[1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab08.ipynb&#34;) Lab 8: Model Selection, Regularization, and Cross-Validation In this lab, you will practice using scikit-learn to generate models of various complexity. You&rsquo;ll then use the holdout method and K-fold cross-validation to select the models that generalize best.
-1 2 3 4 5 6 7 8 9 10 11 # Run this cell to set up your notebook import seaborn as sns import csv import numpy as np import pandas as pd import matplotlib.]]></description>
+    <guid>http://example.org/datal20/</guid>
+    <description><![CDATA[recap and Goals approximate factorization $W\ L\rightarrow (W+L)/ 2$ rank 下降使得信息缺失了
+所以 $M_{100 \times 4} = N_{100 \times P} \times Q_{P \times 4}$ P的值尽量不要小于原来的&quot;秩&quot;
+singular value decomposition (SVD) low rank approximation no bad! seem good!
+SVD theory 验证orthonormal set
+V@V.T = I 当相乘的时候本质上是旋转，不会拉伸
+Principal Components 零中心化再来看PCA Principal Components and Variance PCA example Why is useful? &#x1f914; ]]></description>
 </item>
 <item>
-    <title>DATA100-lab5: Modeling, Loss Functions, and Summary Statistics</title>
-    <link>http://example.org/datalab5/</link>
-    <pubDate>Tue, 13 Aug 2024 15:19:33 &#43;0800</pubDate>
+    <title>DATA100-L17: Estimators, Bias, and Variance</title>
+    <link>http://example.org/datal17/</link>
+    <pubDate>Fri, 19 Jul 2024 11:32:10 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/datalab5/</guid>
-    <description><![CDATA[1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab05.ipynb&#34;) Lab 5: Modeling, Loss Functions, and Summary Statistics Predicting Restaurant Tips In this lab, you will try to predict restaurant tips from a set of data in several ways:
-A. Without given any additional information, use a constant model with L2 loss to predict the tip $\hat{y}$ as a summary statistic, $\theta$.
-B. Given one piece of information—the total bill $x$—use a linear model with L2 loss to predict the tip $\hat{y}$ as a linear function of $x$.]]></description>
+    <guid>http://example.org/datal17/</guid>
+    <description><![CDATA[sample statistics (from last time) 参考 概率论与数理统计
+prediction vs. inference modeling: assumptions of randomness the bias-variance tradeoff $$ model\ risk = observation\ variance + (model\ bias)^2+model\ variance $$ $$ \mathbb{E}[(Y-\hat{Y}(x))^2] = \sigma^2+(\mathbb{E}[\hat{Y}(x)]-g(x))^2+Var(\hat{Y}(x)) $$ interpreting slopes slope == 0? 假设检验证明是否无关 [Extra]review of the Bootstrap [Extra]derivation of Bias-Variance decomposition https://docs.google.com/presentation/d/1gzgxGO_nbCDajYs7qIpjzjQfJqKadliBOat7Es10Ll8/edit#slide=id.g11df3da7bd7_0_467]]></description>
 </item>
 <item>
-    <title>DATA100-lab6: Linear Regression</title>
-    <link>http://example.org/datalab6/</link>
-    <pubDate>Tue, 13 Aug 2024 15:19:33 &#43;0800</pubDate>
+    <title>DATA100-L18: SQL I</title>
+    <link>http://example.org/datal18/</link>
+    <pubDate>Fri, 19 Jul 2024 11:32:10 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/datalab6/</guid>
-    <description><![CDATA[1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab06.ipynb&#34;) Lab 6: Linear Regression Objectives In this lab, you will review the details of linear regresison as described in Lectures 10 and 11. In particular:
-Matrix formulation and solution to Ordinary Least Squares sns.lmplot as a quick visual for simple linear regression scikit-learn, a real world data science tool that is more robust and flexible than analytical/scipy.optimize solutions You will also practice interpreting residual plots (vs.]]></description>
+    <guid>http://example.org/datal18/</guid>
+    <description><![CDATA[why databases structured query language (SQL) &#x1f60b;
+DBMS: database management system sql example type
+INT for integer REAL for decimal TEXT for string BLOB for ARBITRARY data DATETIME for date and time different implementations of sql support different types
+sql table use singular, CamelCase for SQL tables! basic sql queries 通配
+1 SELECT * FROM table_name; 选定子集
+1 SELECT column1, column2 FROM table_name; AS rename columns
+1 2 3 SELECT cute AS cuteness, smart AS intelligence FROM table_name; WHERE filter rows]]></description>
 </item>
 </channel>
 </rss>

@@ -100,37 +100,40 @@
         alt="/avatar.jpg"
         title="/avatar.jpg" width="1920" height="1280" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/ZhengTMHuang" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/61b-5/">61B-5: DLLists, Arrays</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-14">2024-07-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">Doubly Linked Lists 注意只有sentinel时要讨论一些特殊情况，特别是环状链表。
-Generic Lists 泛型列表 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 public class SLList&lt;BleepBlorp&gt; { private IntNode sentinel; private int size; public class IntNode { public BleepBlorp item; public IntNode next; ... } ... } SLList&lt;Integer&gt; s1 = new SLList&lt;&gt;(5); s1.insertFront(10); SLList&lt;String&gt; s2 = new SLList&lt;&gt;(&#34;hi&#34;); s2.insertFront(&#34;apple&#34;); Arrays, AList 介绍了System.arraycopy()用来resize 2D Arrays Arrays vs. Classes array的runtime动态索引（和cpp不一样） class runtime </div><div class="post-footer">
-        <a href="/61b-5/">Read More</a></div>
+        <a href="/61b-28/">61B-28:  Graph Traversals</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-13">2024-07-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">Depth First Paths “Depth First Search” is a more general term for any graph search algorithm that traverses a graph as deep as possible before backtracking.
+The term is used for several slightly different algorithms. For example: DFS may refer to the version from the previous lecture that doesn’t use any marks (and thus can get caught in a loop). DFS may refer to the version where vertices are marked. DFS may refer to a version where vertices are marked and source edges recorded (as in Depth First Paths).</div><div class="post-footer">
+        <a href="/61b-28/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/61b-6/">61B-6: ALists, Resizing, vs. SLists</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-14">2024-07-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">A Last Look at Linked Lists Naive Array Lists 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 public class AList { private int[] items; private int size; public AList() { items = new int[100]; size = 0; } public void addLast(int x) { items[size] = x; size += 1; } public int getLast() { return items[size - 1]; } public int get(int i) { return items[i]; } public int size() { return size; } } Resizing Arrays 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 public void addLast(int x) { if (size == items.</div><div class="post-footer">
-        <a href="/61b-6/">Read More</a></div>
+        <a href="/61b-26/">61B-26: Midterm 2 Review</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-13">2024-07-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">For BSTs, the most inefficient way to add is in to put it in order.
+在二叉搜索树（BST）中，最低效的方式是按升序或降序插入节点，因为这种方式会导致树变成一条链表，从而使其性能退化到O(n)的时间复杂度。
+这里是一个用Java实现的例子，展示了按升序插入节点的二叉搜索树（BST）会变成链表的情况：
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 // 定义树的节点 class TreeNode { int value; TreeNode left; TreeNode right; TreeNode(int value) { this.</div><div class="post-footer">
+        <a href="/61b-26/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/61b-1/">61B-1: Intro, Hello World Java</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-14">2024-07-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">java oop Java is an object oriented language with strict requirements:
-Every Java file must contain a class declaration*. All code lives inside a class*, even helper functions, global constants, etc. To run a Java program, you typically define a main method using 1 public static void main(String[] args) *: This is not completely true, e.g. we can also declare “interfaces” in .Java files that may contain code. We’ll cover these later.</div><div class="post-footer">
-        <a href="/61b-1/">Read More</a></div>
+        <a href="/61b-27/">61B-27: Graphs</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-13">2024-07-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">intro types of graph terminology 图论问题 s-t Path. Is there a path between vertices s and t? Shortest s-t Path. What is the shortest path between vertices s and t? Cycle. Does the graph contain any cycles? Euler Tour. Is there a cycle that uses every edge exactly once? Hamilton Tour. Is there a cycle that uses every vertex exactly once? Connectivity. Is the graph connected, i.e. is there a path between all vertex pairs?</div><div class="post-footer">
+        <a href="/61b-27/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/61b-2/">61B-2: Defining and Using Classes</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-14">2024-07-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">编译初看 Defining and Instantiating Classes Static vs. Instance Members Static vs. Non-static public static void main(String[] args) Using Libraries </div><div class="post-footer">
-        <a href="/61b-2/">Read More</a></div>
+        <a href="/61b-24/">61B-24: Priority Queues and Heaps</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-13">2024-07-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">interface
+1 2 3 4 5 6 7 8 9 10 11 12 /** (Min) Priority Queue: Allowing tracking and removal of the * smallest item in a priority queue. */ public interface MinPQ&lt;Item&gt; { /** Adds the item to the priority queue. */ public void add(Item x); /** Returns the smallest item in the priority queue. */ public Item getSmallest(); /** Removes the smallest item from the priority queue. */ public Item removeSmallest(); /** Returns the size of the priority queue.</div><div class="post-footer">
+        <a href="/61b-24/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/61b-3/">61B-3: References, Recursion, and Lists</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-14">2024-07-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">Primitive Types 8 primitive types in Java: byte, short, int, long, float, double, boolean, char Everything else, including arrays, is a reference type.
-The Golden Rule of Equals (GRoE) Given variables y and x:
-y = x copies all the bits from x into y. Reference Types Everything else, including arrays, is a reference type. 和cpp的区别之一不显式使用指针
-Parameter Passing pass by value &#x1f60b; pass by reference（某种意义上java纯纯pass by value &#x1f60f;） Instantiation of Arrays IntList and Linked Data Structures 单链表，不赘述</div><div class="post-footer">
-        <a href="/61b-3/">Read More</a></div>
+        <a href="/61b-25/">61B-25: Advanced Trees, incl. Geometric</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-13">2024-07-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">Traversals Level Order
+Traverse top-to-bottom, left-to-right (like reading in English): We say that the nodes are ‘visited’ in the given order. Depth First Traversals
+Preorder, Inorder, Postorder Basic (rough) idea: Traverse “deep nodes” (e.g. A) before shallow ones (e.g. F). preorder 1 2 3 4 5 6 preOrder(BSTNode x) { if (x == null) return; print(x.key) preOrder(x.left) preOrder(x.right) } D B A C F E G
+inorder 1 2 3 4 5 6 inOrder(BSTNode x) { if (x == null) return; inOrder(x.</div><div class="post-footer">
+        <a href="/61b-25/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/datal4/">DATA100-L4: Pandas Ⅱ</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-14">2024-07-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">lambda function 1 lambda x: x**2 非显式定义函数，可以直接使用lambda表达式来定义一个函数。 This is a lambda function that takes in one argument x and returns the square of x.
-再看sort_values() 注意传递key
-1 df.sort_values(by=&#39;column_name&#39;, keys=lambda x: x.str.lower(), ascending=True) add move modify and so on sort by length of string approach1: create a new column and add to original df 1 2 3 newdf = df[&#34;Name&#34;].str.len() # create a new column with length of each string df[&#39;length&#39;] = newdf df.</div><div class="post-footer">
-        <a href="/datal4/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/pandas/">Pandas</a></div></div>
+        <a href="/61b-21/">61B-21: Trees, BSTs</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-13">2024-07-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">ordered linked list&mdash;&gt; binary search tree or skip list (out of course)
+BST Definitions A tree consists of:
+A set of nodes. A set of edges that connect those nodes. Constraint: There is exactly one path between any two nodes. In a rooted tree, we call one node the root.
+Every node N except the root has exactly one parent, defined as the first node on the path from N to the root.</div><div class="post-footer">
+        <a href="/61b-21/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -158,10 +161,8 @@ Parameter Passing pass by value &#x1f60b; pass by reference（某种意义上jav
                         <a href="/page/15/">15</a>
                     </span>
                 </li><li class="page-item ">
-                    <span class="page-link" aria-hidden="true">&hellip;</span>
-                </li><li class="page-item ">
                     <span class="page-link">
-                        <a href="/page/19/">19</a>
+                        <a href="/page/16/">16</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">

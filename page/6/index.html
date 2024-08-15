@@ -100,46 +100,51 @@
         alt="/avatar.jpg"
         title="/avatar.jpg" width="1920" height="1280" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/ZhengTMHuang" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/datalab3/">DATA100-lab3: Data Cleaning and EDA</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-08-13">2024-08-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab03.ipynb&#34;) Lab 3: Data Cleaning and EDA In this lab you will be working on visualizing a dataset from the City of Berkeley containing data on calls to the Berkeley Police Department. Information about the dataset can be found at this link.
-Content Warning This lab includes an analysis of crime in Berkeley. If you feel uncomfortable with this topic, please contact your GSI or the instructors.</div><div class="post-footer">
-        <a href="/datalab3/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/pandas/">Pandas</a>,&nbsp;<a href="/tags/seaborn/">Seaborn</a>,&nbsp;<a href="/tags/matplotlib/">Matplotlib</a></div></div>
+        <a href="/datal22/">DATA100-L22: Logistic Regression II</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">logistic regression model continued sklearn demo go to see lec code!
+MLE: high-level, detailed (recorded) linear separability and regularization 线性可分性：如果存在一个 超平面（hyperplane） 可以将数据集分割成两部分，那么这就是线性可分的。
+超平面的维度和数据集的维度相同 $$ C $$ 注意对“push”的理解！
+另一种理解正则化的角度 这里是避免loss出现无限大的情况（梯度爆炸？），避免出现使前面情况发生的参数（infinite theta）出现，所以在loss里面预先加入正则化项。
+performance metrics accuracy 1 2 # using sklearn model.score(X_test, y_test) imbalanced data, precision, recall Acc is not a good metric for imbalanced data, use precision and recall instead!!! $$ acc= \frac{TP+TN}{n}\ precision(精确率)=\frac{TP}{TP+FP}\ recall(召回率)=\frac{TP}{TP+FN} $$ adjusting the classification threshold(阈值界限) a case study 变界限可能是因为imbalanced data导致的</div><div class="post-footer">
+        <a href="/datal22/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/datalab4/">DATA100-lab4: Visualization, Transformations, and KDEs</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-08-13">2024-08-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab04.ipynb&#34;) Lab 4: Visualization, Transformations, and KDEs Objective In this lab you will get some practice plotting, applying data transformations, and working with kernel density estimators (KDEs). We will be working with data from the World Bank containing various statistics for countries and territories around the world.
-1 2 3 4 5 6 7 8 9 10 import pandas as pd import numpy as np import seaborn as sns import matplotlib.</div><div class="post-footer">
-        <a href="/datalab4/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/seaborn/">Seaborn</a>,&nbsp;<a href="/tags/plotly/">Plotly</a></div></div>
+        <a href="/datal19/">DATA100-L19: SQL II and PCA I</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">SQL II sql and pandas how to connect sql to python
+1 2 3 4 5 6 7 8 9 import pandas as pd import sqlalchmey engine = sqlalchemy.create_engine(&#39;sqlite:///mydatabase.db&#39;) connection = engine.connect() pd.read_sql(&#34;&#34;&#34; SELECT * FROM mytable GROUP BY column1, column2 &#34;&#34;&#34;, connection) LIKE and CAST LIKE: search for a pattern in a column
+1 2 SELECT * FROM mytable WHERE column1 LIKE &#39;%value%&#39; CAST: convert data type SQL Joins Cross Join 1 2 3 SELECT * FROM table1 CROSS JOIN table2 Inner Join 1 2 3 4 SELECT * FROM table1 INNER JOIN table2 ON table1.</div><div class="post-footer">
+        <a href="/datal19/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/databasel5/">CS186-L5: B+ Trees</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-08-11">2024-08-11</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div><div class="content">Index 竟然是一种数据结构？ search and insertion in ISAM indexed sequential access method 注意建立了许多索引，沿用BST的思想，但是insert的时候会出现overflow pages （IBM in 1960s）
-B+ Tree 和B Tree的区别在于：B+只有叶子存放数据，而B Tree的中间节点也存放数据。
-几乎和上面一样，但是多了
-dynamic tree index always balanced support efficient insertions and deletions grows at root not leaves 注意:
-占有率：几乎半满，除了root 底部DLL $max\ fan\ out = 2d + 1$ 工业实际情况 &#x1f914; B+ Tree Operations search, 同上 insert 没有overflow，直接插入 满了，分裂成两个节点，中间节点存放 中间key（过程中可能是右边最小的那个key），左右节点存放左右key 递归向上分裂，直到根节点 叶子 $\xrightarrow{copy}$ 父节点 ，父节点 $\xrightarrow{push}$ 新父节点 delete &#x1f609; bulk loading 批量加载 精髓在于先排序，后构建 time-stamp: 01h09min02s</div><div class="post-footer">
-        <a href="/databasel5/">Read More</a></div>
+        <a href="/datal20/">DATA100-L20: PCA II</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">recap and Goals approximate factorization $W\ L\rightarrow (W+L)/ 2$ rank 下降使得信息缺失了
+所以 $M_{100 \times 4} = N_{100 \times P} \times Q_{P \times 4}$ P的值尽量不要小于原来的&quot;秩&quot;
+singular value decomposition (SVD) low rank approximation no bad! seem good!
+SVD theory 验证orthonormal set
+V@V.T = I 当相乘的时候本质上是旋转，不会拉伸
+Principal Components 零中心化再来看PCA Principal Components and Variance PCA example Why is useful? &#x1f914; </div><div class="post-footer">
+        <a href="/datal20/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/databasel4/">CS186-L4: Disks, Buffers, Files II</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-08-11">2024-08-11</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div><div class="content">cost model and analysis 基本量化指标定义 基本假设
-single record insert and delete equality selection - exactly one match for heap files: insert always appends for sorted files: packed: files compacted after deletions sorted according to search key 以下是计算时间，类似渐进记法，但是有细节 &#x1f60e; side note:
-$\times D$ 是简化了每次“操作”的时间，“操作”指的是“读”与“写” 考虑随机变量 操作次数 $N$ 及其 $\mathbb{E}(N)$ Equality Search对于sorted files: $$ \begin{equation} \begin{aligned} \mathbb{E}(N) &amp;= \sum_{i=1}^{log_2B} i \times \frac{2^{i-1}}{B} \notag\ &amp;= log_2B - \frac{B-1}{B}\ &amp;\approx log_2B \end{aligned} \end{equation} $$</div><div class="post-footer">
-        <a href="/databasel4/">Read More</a></div>
+        <a href="/datal17/">DATA100-L17: Estimators, Bias, and Variance</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">sample statistics (from last time) 参考 概率论与数理统计
+prediction vs. inference modeling: assumptions of randomness the bias-variance tradeoff $$ model\ risk = observation\ variance + (model\ bias)^2+model\ variance $$ $$ \mathbb{E}[(Y-\hat{Y}(x))^2] = \sigma^2+(\mathbb{E}[\hat{Y}(x)]-g(x))^2+Var(\hat{Y}(x)) $$ interpreting slopes slope == 0? 假设检验证明是否无关 [Extra]review of the Bootstrap [Extra]derivation of Bias-Variance decomposition https://docs.google.com/presentation/d/1gzgxGO_nbCDajYs7qIpjzjQfJqKadliBOat7Es10Ll8/edit#slide=id.g11df3da7bd7_0_467</div><div class="post-footer">
+        <a href="/datal17/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/databasel3/">CS186-L3: Disk, Buffers, Files I</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-08-11">2024-08-11</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div><div class="content">big picture sql client -&gt; DBMS -&gt; database &#x1f913;
-DBMS parsing &amp; optimization 执行SQL语句时，DBMS需要解析SQL语句，并将其转换为执行计划。优化器会根据统计信息、查询模式、索引等因素，选择最优的执行计划。 relational operators 处理数据流 or 关系运算符？ files and index management buffer management disk space management 事实上纵向还有两个模块：concurrency control和recovery。 省流：从RAM &amp; DISK获取数据非常慢， 相对于CPU
-Disk 注意sector, disk head， 其中后者似乎只能单次读写 access time flash SSD 注意：
-read很快，随着数据变大，可以预测
-write很慢，slower for random，写入放大 disk space management block level storage block: unit of transfer for disk read/write (64~128KB in 2018)
-page: a common synonym for block, in some contexts, it means in RAM</div><div class="post-footer">
-        <a href="/databasel3/">Read More</a></div>
+        <a href="/datal18/">DATA100-L18: SQL I</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">why databases structured query language (SQL) &#x1f60b;
+DBMS: database management system sql example type
+INT for integer REAL for decimal TEXT for string BLOB for ARBITRARY data DATETIME for date and time different implementations of sql support different types
+sql table use singular, CamelCase for SQL tables! basic sql queries 通配
+1 SELECT * FROM table_name; 选定子集
+1 SELECT column1, column2 FROM table_name; AS rename columns
+1 2 3 SELECT cute AS cuteness, smart AS intelligence FROM table_name; WHERE filter rows</div><div class="post-footer">
+        <a href="/datal18/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/databasel2/">CS186-L2: SQLⅡ</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-22">2024-07-22</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div><div class="content">怎么读懂SQL语句？ FROM WHERE, to eliminate rows SELECT GROUP BY HAVING, to eliminate groups DISTINCT ORDER BY, LIMIT, OFFSET等等格式化输出 Join Queries cross product 生成所有的组合，然后过滤掉不符合条件的组合，但是低效
-考虑以下sql，更加简洁
-1 2 3 SELECT S.sid, sname, bid FROM Sailors AS S, Reserves AS R WHERE S.sid = R.sid self join and more aliases 1 2 3 4 SELECT x.sname, x.age, y.sname AS sname2, y.age AS age2 FROM Sailors AS x, Sailors AS y WHERE x.age &gt; y.</div><div class="post-footer">
-        <a href="/databasel2/">Read More</a></div>
+        <a href="/datal15/">DATA100-L15: Cross Validation, Regularization</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">Cross Validation the holdout method 1 2 from sklearn.utils import shuffle training_set, dev_set = np.split(shuffle(data), [int(.8*len(data))]) 比较validation error和training error，选择最优的模型。
+K-fold cross validation K=1 is equivalent to holdout method.
+Test sets provide an unbiased estimate of the model&rsquo;s performance on new, unseen data. Regularization L2 regularization (Ridge) the small the ball, the simpler the model 拉格朗日思想，$\alpha$ 越大，约束越强，模型越简单。 岭回归
+scaling data for regularization 标准化数据，be on the same scale
+L1 regularization (Lasso) summary </div><div class="post-footer">
+        <a href="/datal15/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -170,7 +175,7 @@ page: a common synonym for block, in some contexts, it means in RAM</div><div cl
                     <span class="page-link" aria-hidden="true">&hellip;</span>
                 </li><li class="page-item ">
                     <span class="page-link">
-                        <a href="/page/19/">19</a>
+                        <a href="/page/16/">16</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">
