@@ -3,7 +3,25 @@
         <title>TOOLS - Category - HHZZ`s space</title>
         <link>http://example.org/categories/tools/</link>
         <description>TOOLS - Category - HHZZ`s space</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 24 Jul 2024 20:48:55 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/tools/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 15 Aug 2024 19:09:38 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/tools/" rel="self" type="application/rss+xml" /><item>
+    <title>Conda配置备忘录</title>
+    <link>http://example.org/tools/conda/</link>
+    <pubDate>Thu, 15 Aug 2024 19:09:38 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/tools/conda/</guid>
+    <description><![CDATA[导出与创建环境 使用YAML文件创建Conda环境的步骤如下：
+创建YAML文件：首先，您需要创建一个YAML配置文件，通常命名为environment.yml。在该文件中，您可以定义环境的名称、所需的通道以及依赖的包。例如：
+1 2 3 4 5 6 7 name: my_conda_env channels: - conda-forge dependencies: - numpy=1.19.5 - pandas=1.2.3 - scikit-learn=0.23.2 在这个示例中，定义了一个名为my_conda_env的环境，并指定了要安装的包及其版本。
+使用Conda创建环境：在命令行中，导航到包含environment.yml文件的目录，然后运行以下命令：
+1 conda env create -f environment.yml 这条命令会根据YAML文件中的定义创建新的Conda环境。
+激活新环境：创建完成后，可以使用以下命令激活新环境：
+1 conda activate my_conda_env 现在，您可以在新环境中安装、运行和测试软件包。
+导出现有环境：如果您想将当前环境导出为YAML文件，可以使用以下命令：
+1 conda env export &gt; environment.yml 这将创建一个包含当前环境所有包及其版本信息的YAML文件，方便在其他计算机上重建相同的环境
+单纯创建、切换、删除环境 1 conda create -n YOUR_ENV_NAME python=3.8 1 conda activate YOUR_ENV_NAME 1 conda remove -n YOUR_ENV_NAME --all 查看环境
+1 conda info -e ]]></description>
+</item>
+<item>
     <title>COSTAR提示词框架笔记</title>
     <link>http://example.org/tools/costar/</link>
     <pubDate>Wed, 24 Jul 2024 20:48:55 &#43;0800</pubDate>
