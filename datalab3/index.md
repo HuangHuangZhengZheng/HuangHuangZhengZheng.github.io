@@ -532,7 +532,7 @@ grader.check("q1")
 
 
 
-<p><strong><pre style='display: inline;'>q1</pre></strong> passed! �?/p>
+<p><strong><pre style='display: inline;'>q1</pre></strong> passed! 🌟</p>
 
 
 
@@ -897,7 +897,7 @@ df2 = pd.DataFrame({'C': [7, 8, 9], 'D': [10, 11, 12]})
 
 # 基于索引合并
 
-# 使用'Key'列合�?
+# 使用'Key'列合!
 merged_df = pd.merge(df1, df2, left_index=True, right_index=True)  # 根据你的需要选择合并类型
 print(merged_df)
 ```
@@ -1559,7 +1559,7 @@ If your test cases are no longer passing after restarting, it's likely because y
 
 You may submit this assignment as many times as you'd like before the deadline.
 
-**You must restart and run all cells before submitting. Otherwise, you may pass test cases locally, but not on our servers. We will not entertain regrade requests of the form, “my code passed all of my local test cases, but failed the autograder�?**
+**You must restart and run all cells before submitting. Otherwise, you may pass test cases locally, but not on our servers. We will not entertain regrade requests of the form, “my code passed all of my local test cases, but failed the autograder?**
 
 ## Congratulations!
 

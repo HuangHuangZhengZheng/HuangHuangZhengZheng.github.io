@@ -151,7 +151,7 @@ In these cases, we often apply **feature functions**, functions that take in som
 
 Then, if we call $\phi$ ("phi") our "phi"-ture function, our model takes the form $\hat{y} = f_{\theta}(x) = \sum_{j=0}^d \phi(x)_j\theta_j$.
 
-### Example feature functions 编码一直是一个先验工程问题？ vs AutoEncoders�?
+### Example feature functions 编码一直是一个先验工程问题？ vs AutoEncoders
 
 1. One-hot encoding
     - converts a single categorical feature into many binary features, each of which represents one of the possible values in the original column
@@ -572,7 +572,7 @@ BEGIN QUESTION
 name: q3a
 -->
 
-_本质上是因为矩阵 **不可�?*，独热编码某些线性组合之后可以轻易看出矩�?X^TX$不是满秩的_
+_本质上是因为矩阵 **不可逆**，独热编码某些线性组合之后可以轻易看出矩阵 $X^TX$ 不是满秩的_
 
 
 ---
@@ -603,7 +603,7 @@ def one_hot_encode_revised(data):
     columns = ['sex', 'smoker', 'day', 'time']
     for column in columns:
         values = data[column].unique()
-        for value in values[:-1]: # 这是用[]切片的技巧，从values中取除了最后一个元素的所有元�?
+        for value in values[:-1]: # 这是用[]切片的技巧，从values中取除了最后一个元素的所有元素
             data[column + '=' + value] = (data[column] == value).astype(int)
         data = data.drop(column, axis=1) # 删除原始的列
     return data
@@ -774,7 +774,7 @@ Specifically, the functions `sin_MSE`, `sin_MSE_dt1` and `sin_MSE_dt2` should co
 
 Notes: 
 * Keep in mind that we are still working with our original set of data, `df`.
-* To keep your code a bit more concise, be aware that `np.mean` does the same thing as `np.sum` divided by the length of the numpy array. *注意mean的层�?
+* To keep your code a bit more concise, be aware that `np.mean` does the same thing as `np.sum` divided by the length of the numpy array. *注意mean的层级别
 * Another way to keep your code more concise is to use the function `sin_model` we defined which computes the output of the model.
 
 <!--
@@ -875,7 +875,7 @@ def grad_desc(loss_f, gradient_loss_f, theta, data, num_iter=20, alpha=0.1):
     theta_history = []
     loss_history = []
     for i in range(num_iter):
-        theta_history.append(theta) # 先append比较�?
+        theta_history.append(theta) # 先append比较好
         loss_history.append(loss_f(theta, data['x'], data['y']))
         d_b = gradient_loss_f(theta, data['x'], data['y'])
         theta = theta - alpha * d_b

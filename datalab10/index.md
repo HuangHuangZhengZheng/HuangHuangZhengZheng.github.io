@@ -568,26 +568,26 @@ From running the above cell, we see the database has 4 tables: `Name`, `Role`, `
 <details>
     <summary>[<b>Click to Expand</b>] See descriptions of each table's schema.</summary>
     
-**`Name`** ‚Ä?Contains the following information for names of people.
+**`Name`** -Contains the following information for names of people.
     
 - nconst (text) - alphanumeric unique identifier of the name/person
-- primaryName (text)‚Ä?name by which the person is most often credited
-- birthYear (integer) ‚Ä?in YYYY format
-- deathYear (integer) ‚Ä?in YYYY format
+- primaryName (text)-name by which the person is most often credited
+- birthYear (integer) -in YYYY format
+- deathYear (integer) -in YYYY format
     
     
-**`Role`** ‚Ä?Contains the principal cast/crew for titles.
+**`Role`** -Contains the principal cast/crew for titles.
     
 - tconst (text) - alphanumeric unique identifier of the title
-- ordering (integer) ‚Ä?a number to uniquely identify rows for a given tconst
+- ordering (integer) -a number to uniquely identify rows for a given tconst
 - nconst (text) - alphanumeric unique identifier of the name/person
 - category (text) - the category of job that person was in
 - characters (text) - the name of the character played if applicable, else '\\N'
     
-**`Rating`** ‚Ä?Contains the IMDb rating and votes information for titles.
+**`Rating`** -Contains the IMDb rating and votes information for titles.
     
 - tconst (text) - alphanumeric unique identifier of the title
-- averageRating (real) ‚Ä?weighted average of all the individual user ratings
+- averageRating (real) -weighted average of all the individual user ratings
 - numVotes (integer) - number of votes (i.e., ratings) the title has received
     
 **`Title`** - Contains the following information for titles.
@@ -596,8 +596,8 @@ From running the above cell, we see the database has 4 tables: `Name`, `Role`, `
 - titleType (text) -  the type/format of the title
 - primaryTitle (text) -  the more popular title / the title used by the filmmakers on promotional materials at the point of release
 - isAdult (text) - 0: non-adult title; 1: adult title
-- year (YYYY) ‚Ä?represents the release year of a title.
-- runtimeMinutes (integer)  ‚Ä?primary runtime of the title, in minutes
+- year (YYYY) -represents the release year of a title.
+- runtimeMinutes (integer)  -primary runtime of the title, in minutes
     
 </details>
 
@@ -972,7 +972,7 @@ grader.check("q2")
 
 
 
-<p><strong><pre style='display: inline;'>q2</pre></strong> passed! ‚ú?/p>
+<p><strong><pre style='display: inline;'>q2</pre></strong> passed! üçÄ</p>
 
 
 
@@ -1622,7 +1622,7 @@ grader.check("q4")
 
 
 
-<p><strong><pre style='display: inline;'>q4</pre></strong> passed! ‚ú?/p>
+<p><strong><pre style='display: inline;'>q4</pre></strong> passed! </p>
 
 
 

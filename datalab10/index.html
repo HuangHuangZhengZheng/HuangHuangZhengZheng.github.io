@@ -36,7 +36,7 @@ A &ldquo;minified&rdquo; version of the Internet Movie Database (IMDb). This SQL
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/datalab10\/"
-        },"genre": "posts","keywords": "Pandas, sqlite3, sqlalchemy","wordcount":  5686 ,
+        },"genre": "posts","keywords": "Pandas, sqlite3, sqlalchemy","wordcount":  5685 ,
         "url": "http:\/\/example.org\/datalab10\/","datePublished": "2024-08-13T15:19:35+08:00","dateModified": "2024-08-13T15:19:35+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -110,7 +110,7 @@ A &ldquo;minified&rdquo; version of the Internet Movie Database (IMDb). This SQL
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">DATA100-lab10: SQL</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-13">2024-08-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;5686 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-13">2024-08-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;5685 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;27 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
@@ -756,25 +756,25 @@ Done.
 <p>From running the above cell, we see the database has 4 tables: <code>Name</code>, <code>Role</code>, <code>Rating</code>, and <code>Title</code>.</p>
 <details>
     <summary>[<b>Click to Expand</b>] See descriptions of each table's schema.</summary>
-<p><strong><code>Name</code></strong> ‚Ä?Contains the following information for names of people.</p>
+<p><strong><code>Name</code></strong> -Contains the following information for names of people.</p>
 <ul>
 <li>nconst (text) - alphanumeric unique identifier of the name/person</li>
-<li>primaryName (text)‚Ä?name by which the person is most often credited</li>
-<li>birthYear (integer) ‚Ä?in YYYY format</li>
-<li>deathYear (integer) ‚Ä?in YYYY format</li>
+<li>primaryName (text)-name by which the person is most often credited</li>
+<li>birthYear (integer) -in YYYY format</li>
+<li>deathYear (integer) -in YYYY format</li>
 </ul>
-<p><strong><code>Role</code></strong> ‚Ä?Contains the principal cast/crew for titles.</p>
+<p><strong><code>Role</code></strong> -Contains the principal cast/crew for titles.</p>
 <ul>
 <li>tconst (text) - alphanumeric unique identifier of the title</li>
-<li>ordering (integer) ‚Ä?a number to uniquely identify rows for a given tconst</li>
+<li>ordering (integer) -a number to uniquely identify rows for a given tconst</li>
 <li>nconst (text) - alphanumeric unique identifier of the name/person</li>
 <li>category (text) - the category of job that person was in</li>
 <li>characters (text) - the name of the character played if applicable, else &lsquo;\N&rsquo;</li>
 </ul>
-<p><strong><code>Rating</code></strong> ‚Ä?Contains the IMDb rating and votes information for titles.</p>
+<p><strong><code>Rating</code></strong> -Contains the IMDb rating and votes information for titles.</p>
 <ul>
 <li>tconst (text) - alphanumeric unique identifier of the title</li>
-<li>averageRating (real) ‚Ä?weighted average of all the individual user ratings</li>
+<li>averageRating (real) -weighted average of all the individual user ratings</li>
 <li>numVotes (integer) - number of votes (i.e., ratings) the title has received</li>
 </ul>
 <p><strong><code>Title</code></strong> - Contains the following information for titles.</p>
@@ -783,8 +783,8 @@ Done.
 <li>titleType (text) -  the type/format of the title</li>
 <li>primaryTitle (text) -  the more popular title / the title used by the filmmakers on promotional materials at the point of release</li>
 <li>isAdult (text) - 0: non-adult title; 1: adult title</li>
-<li>year (YYYY) ‚Ä?represents the release year of a title.</li>
-<li>runtimeMinutes (integer)  ‚Ä?primary runtime of the title, in minutes</li>
+<li>year (YYYY) -represents the release year of a title.</li>
+<li>runtimeMinutes (integer)  -primary runtime of the title, in minutes</li>
 </ul>
 </details>
 <p><br/><br/>
@@ -1187,7 +1187,7 @@ Done.
 <pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q2&#34;</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><strong><pre style='display: inline;'>q2</pre></strong> passed! ‚ú?/p>
+</div><p><strong><pre style='display: inline;'>q2</pre></strong> passed! üçÄ</p>
 <br/>
 If we computed the results correctly we should see a nice horizontal bar chart of the counts per category below:
 <div class="highlight"><div class="chroma">
@@ -1883,7 +1883,7 @@ Name: count, dtype: int64
 <pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&#34;q4&#34;</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><strong><pre style='display: inline;'>q4</pre></strong> passed! ‚ú?/p>
+</div><p><strong><pre style='display: inline;'>q4</pre></strong> passed! </p>
 <p><br/><br/></p>
 <hr style="border: 1px solid #fdb515;" />
 <h2 id="question-5-joining-tables">Question 5: <code>JOIN</code>ing Tables</h2>

@@ -273,7 +273,7 @@ grader.check("q3b")
 
 
 
-<p><strong><pre style='display: inline;'>q3b</pre></strong> passed! �?/p>
+<p><strong><pre style='display: inline;'>q3b</pre></strong> passed! 🚀</p>
 
 
 
@@ -498,7 +498,7 @@ def ci_correlation(sample, conf, m=5000):
         resample = sample.sample(n=n, replace=True)
         estimates.append(sample_correlation(resample))
     lower = np.percentile(estimates, (100-conf)/2)
-    upper = np.percentile(estimates, 100-(100-conf)/2) # 一个用于计算数组沿指定轴的百分位数的函�?
+    upper = np.percentile(estimates, 100-(100-conf)/2) # 一个用于计算数组沿指定轴的百分位数的函数
     return (lower, upper)
 
 boot_ci = ci_correlation(data, conf=95)

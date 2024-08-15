@@ -9,7 +9,7 @@
   <meta property="og:title" content="DATA100-lab5: Modeling, Loss Functions, and Summary Statistics">
   <meta property="og:description" content="1 2 3 # Initialize Otter import otter grader = otter.Notebook(&amp;#34;lab05.ipynb&amp;#34;) Lab 5: Modeling, Loss Functions, and Summary Statistics Predicting Restaurant Tips In this lab, you will try to predict restaurant tips from a set of data in several ways:
 A. Without given any additional information, use a constant model with L2 loss to predict the tip $\hat{y}$ as a summary statistic, $\theta$.
-B. Given one piece of information—the total bill $x$��?">
+B. Given one piece of information—the total bill $x$ use a linear model with L2 loss to predict the tip $\hat{y}$ as a linear function of $x$.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
@@ -22,7 +22,7 @@ B. Given one piece of information—the total bill $x$��?">
 <meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="DATA100-lab5: Modeling, Loss Functions, and Summary Statistics">
 <meta name="twitter:description" content="1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab05.ipynb&#34;) Lab 5: Modeling, Loss Functions, and Summary Statistics Predicting Restaurant Tips In this lab, you will try to predict restaurant tips from a set of data in several ways:
 A. Without given any additional information, use a constant model with L2 loss to predict the tip $\hat{y}$ as a summary statistic, $\theta$.
-B. Given one piece of information—the total bill $x$��?">
+B. Given one piece of information—the total bill $x$ use a linear model with L2 loss to predict the tip $\hat{y}$ as a linear function of $x$.">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -37,7 +37,7 @@ B. Given one piece of information—the total bill $x$��?">
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/datalab5\/"
-        },"genre": "posts","keywords": "SciPy, Plotly","wordcount":  4530 ,
+        },"genre": "posts","keywords": "SciPy, Plotly","wordcount":  4531 ,
         "url": "http:\/\/example.org\/datalab5\/","datePublished": "2024-08-13T15:19:33+08:00","dateModified": "2024-08-13T15:19:33+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -111,7 +111,7 @@ B. Given one piece of information—the total bill $x$��?">
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">DATA100-lab5: Modeling, Loss Functions, and Summary Statistics</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-13">2024-08-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;4530 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-13">2024-08-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;4531 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;22 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
@@ -154,7 +154,7 @@ B. Given one piece of information—the total bill $x$��?">
         <li><a href="#question-6b">Question 6b</a></li>
       </ul>
     </li>
-    <li><a href="#互动可视">互动可视�?</a>
+    <li><a href="#互动可视化">互动可视化</a>
       <ul>
         <li><a href="#comparing-constant-model-vs-linear-model">Comparing Constant Model vs Linear Model</a></li>
       </ul>
@@ -201,7 +201,7 @@ B. Given one piece of information—the total bill $x$��?">
 <h2 id="predicting-restaurant-tips">Predicting Restaurant Tips</h2>
 <p>In this lab, you will try to predict restaurant tips from a set of data in several ways:</p>
 <p>A. Without given any additional information, use a <strong>constant model with L2 loss</strong> to predict the tip $\hat{y}$ as a summary statistic, $\theta$.</p>
-<p>B. Given one piece of information—the total bill $x$�?<em>use a linear model with L2 loss</em>* to predict the tip $\hat{y}$ as a linear function of $x$.</p>
+<p>B. Given one piece of information—the total bill $x$ <strong>use a linear model with L2 loss</strong> to predict the tip $\hat{y}$ as a linear function of $x$.</p>
 <p>C. See if a <strong>constant model with L1 loss</strong> changes our predictions.</p>
 <p>First, let&rsquo;s load in the data.</p>
 <div class="highlight"><div class="chroma">
@@ -1179,7 +1179,7 @@ b_hat_scipy:  0.1050244640398299
 b_hat_manual:  0.10502451738435334
 </code></pre>
 <hr>
-<h2 id="互动可视">互动可视�?</h2>
+<h2 id="互动可视化">互动可视化</h2>
 <p><strong>Visual Solution</strong> (not graded): Feel free to interact with the below plot and verify that the $\hat{a}$ and $\hat{b}$ you computed using either method above minimize the MSE. In the cell below  we plot the mean squared error for different parameter values. Note that now that we have two parameters, we have a 3D MSE surface plot.</p>
 <p>Rotate the data around and zoom in and out using your trackpad or the controls at the top right of the figure. If you get an error that your browser does not support webgl, you may need to restart your kernel and/or browser.</p>
 <div class="highlight"><div class="chroma">

@@ -35,7 +35,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/datalab4\/"
-        },"genre": "posts","keywords": "Seaborn, Plotly","wordcount":  4419 ,
+        },"genre": "posts","keywords": "Seaborn, Plotly","wordcount":  4413 ,
         "url": "http:\/\/example.org\/datalab4\/","datePublished": "2024-08-13T15:19:32+08:00","dateModified": "2024-08-13T15:19:32+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -109,7 +109,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">DATA100-lab4: Visualization, Transformations, and KDEs</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-13">2024-08-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;4419 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-13">2024-08-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;4413 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;21 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
@@ -660,7 +660,7 @@ name: q1b1
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;inc&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">rug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Gross national income per capita, Atlas method: $: 2016&#39;</span><span class="p">)</span> <span class="c1"># 太长了，显示不全��?</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Gross national income per capita, Atlas method: $: 2016&#39;</span><span class="p">)</span> <span class="c1"># 太长了，显示不全</span>
 </span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;World Bank Gross National Income Per Capita&#39;</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
@@ -1035,7 +1035,7 @@ name: q2a
 <pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span>
 </span></span><span class="line"><span class="cl"><span class="n">kde_curve</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span> <span class="o">*</span> <span class="n">gaussian_kernel</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">data3pts</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xs</span><span class="p">])</span>
-</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">kde_curve</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">));</span> <span class="c1"># 叠加曲线��?</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">kde_curve</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">));</span> <span class="c1"># 叠加曲线!</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p><img
@@ -1230,7 +1230,7 @@ name: q2b
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">interact</span>
 </span></span><span class="line"><span class="cl"><span class="err">!</span><span class="n">jupyter</span> <span class="n">nbextension</span> <span class="n">enable</span> <span class="o">--</span><span class="n">py</span> <span class="n">widgetsnbextension</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># 这个是要notebook降级处理的插��?</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 这个是要notebook降级处理的命令</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><pre><code>Enabling notebook extension jupyter-js-widgets/extension...
@@ -1257,9 +1257,7 @@ name: q2b
 </span></span><span class="line"><span class="cl"><span class="n">interact</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mf">0.1</span><span class="p">));</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><pre><code>interactive(children=(FloatSlider(value=5.0, description='alpha', max=10.0, min=1.0), Output()), _dom_classes=�?
-</code></pre>
-<p>Using the interactive plot below compare the the two kernel techniques:  (Generating the KDE plot is slow, so you may expect some latency after you move the slider)</p>
+</div><p>Using the interactive plot below compare the the two kernel techniques:  (Generating the KDE plot is slow, so you may expect some latency after you move the slider)</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -1286,7 +1284,7 @@ name: q2b
 </span></span><span class="line"><span class="cl"><span class="n">interact</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">alpha_g</span><span class="o">=</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">.5</span><span class="p">,</span><span class="mf">0.01</span><span class="p">),</span> <span class="n">alpha_b</span><span class="o">=</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mf">0.1</span><span class="p">));</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><pre><code>interactive(children=(FloatSlider(value=0.25, description='alpha_g', max=0.5, min=0.01, step=0.01), FloatSlide�?
+</div><pre><code>interactive(children=(FloatSlider(value=0.25, description='alpha_g', max=0.5, min=0.01, step=0.01), FloatSlide
 </code></pre>
 <p>Briefly compare and contrast the Gaussian and Boxcar kernels in the cell below. How do the two kernels relate with each other for the same alpha value?</p>
 <p>圆滑问题</p>

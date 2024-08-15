@@ -39,7 +39,7 @@ Defining loss functions Feature engineering Minimizing loss functions using nume
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/datalab7\/"
-        },"genre": "posts","keywords": "Numpy, Pandas, Scikit-Learn, SciPy, Plotly, Seaborn","wordcount":  3957 ,
+        },"genre": "posts","keywords": "Numpy, Pandas, Scikit-Learn, SciPy, Plotly, Seaborn","wordcount":  3959 ,
         "url": "http:\/\/example.org\/datalab7\/","datePublished": "2024-08-13T15:19:34+08:00","dateModified": "2024-08-13T15:19:34+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -113,7 +113,7 @@ Defining loss functions Feature engineering Minimizing loss functions using nume
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">DATA100-lab7: Gradient Descent and Feature Engineering</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-13">2024-08-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3957 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-13">2024-08-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3959 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;19 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
@@ -124,7 +124,7 @@ Defining loss functions Feature engineering Minimizing loss functions using nume
   <ul>
     <li><a href="#intro-to-feature-engineering">Intro to Feature Engineering</a>
       <ul>
-        <li><a href="#example-feature-functions-编码一直是一个先验工程问题-vs-autoencoders">Example feature functions 编码一直是一个先验工程问题？ vs AutoEncoders�?</a></li>
+        <li><a href="#example-feature-functions-编码一直是一个先验工程问题-vs-autoencoders">Example feature functions 编码一直是一个先验工程问题？ vs AutoEncoders</a></li>
       </ul>
     </li>
     <li><a href="#question-1-defining-the-model-and-feature-engineering">Question 1: Defining the Model and Feature Engineering</a>
@@ -307,7 +307,7 @@ Defining loss functions Feature engineering Minimizing loss functions using nume
 <p>We call this a linear model because it is a linear combination of the features (the $x_j$). However, our features don&rsquo;t need to be numbers: we could have categorical values such as names. Additionally, the true relationship doesn&rsquo;t have to be linear, as we could have a relationship that is quadratic, such as the relationship between the height of a projectile and time.</p>
 <p>In these cases, we often apply <strong>feature functions</strong>, functions that take in some value and output another value. This might look like converting a string into a number, combining multiple numeric values, or creating a boolean value from some filter.</p>
 <p>Then, if we call $\phi$ (&ldquo;phi&rdquo;) our &ldquo;phi&rdquo;-ture function, our model takes the form $\hat{y} = f_{\theta}(x) = \sum_{j=0}^d \phi(x)_j\theta_j$.</p>
-<h3 id="example-feature-functions-编码一直是一个先验工程问题-vs-autoencoders">Example feature functions 编码一直是一个先验工程问题？ vs AutoEncoders�?</h3>
+<h3 id="example-feature-functions-编码一直是一个先验工程问题-vs-autoencoders">Example feature functions 编码一直是一个先验工程问题？ vs AutoEncoders</h3>
 <ol>
 <li>One-hot encoding
 <ul>
@@ -801,7 +801,7 @@ points: 2
 BEGIN QUESTION
 name: q3a
 -->
-<p><em>本质上是因为矩阵 **不可�?*，独热编码某些线性组合之后可以轻易看出矩�?X^TX$不是满秩的</em></p>
+<p><em>本质上是因为矩阵 <strong>不可逆</strong>，独热编码某些线性组合之后可以轻易看出矩阵 $X^TX$ 不是满秩的</em></p>
 <hr>
 <h3 id="question-3b-fixing-our-one-hot-encoding">Question 3b: Fixing our One-Hot Encoding</h3>
 <p>Now, let&rsquo;s fix our one-hot encoding approach from question 1 so we don&rsquo;t get the error we saw in question 3a. Complete the code below to one-hot-encode our dataset such that <code>one_hot_X_revised</code> has no redundant features.</p>
@@ -861,7 +861,7 @@ name: q3b
 </span></span><span class="line"><span class="cl">    <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="s1">&#39;smoker&#39;</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">,</span> <span class="s1">&#39;time&#39;</span><span class="p">]</span>
 </span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">columns</span><span class="p">:</span>
 </span></span><span class="line"><span class="cl">        <span class="n">values</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span> <span class="c1"># 这是用[]切片的技巧，从values中取除了最后一个元素的所有元��?</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span> <span class="c1"># 这是用[]切片的技巧，从values中取除了最后一个元素的所有元素</span>
 </span></span><span class="line"><span class="cl">            <span class="n">data</span><span class="p">[</span><span class="n">column</span> <span class="o">+</span> <span class="s1">&#39;=&#39;</span> <span class="o">+</span> <span class="n">value</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">==</span> <span class="n">value</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">column</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># 删除原始的列</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">data</span>
@@ -1029,7 +1029,7 @@ f_{\boldsymbol{\theta(x)}} = \theta_1x + sin(\theta_2x)
 <p>Notes:</p>
 <ul>
 <li>Keep in mind that we are still working with our original set of data, <code>df</code>.</li>
-<li>To keep your code a bit more concise, be aware that <code>np.mean</code> does the same thing as <code>np.sum</code> divided by the length of the numpy array. *注意mean的层�?</li>
+<li>To keep your code a bit more concise, be aware that <code>np.mean</code> does the same thing as <code>np.sum</code> divided by the length of the numpy array. *注意mean的层级别</li>
 <li>Another way to keep your code more concise is to use the function <code>sin_model</code> we defined which computes the output of the model.</li>
 </ul>
 <!--
@@ -1213,7 +1213,7 @@ points: 3
 </span></span><span class="line"><span class="cl">    <span class="n">theta_history</span> <span class="o">=</span> <span class="p">[]</span>
 </span></span><span class="line"><span class="cl">    <span class="n">loss_history</span> <span class="o">=</span> <span class="p">[]</span>
 </span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_iter</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">        <span class="n">theta_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="c1"># 先append比较��?</span>
+</span></span><span class="line"><span class="cl">        <span class="n">theta_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="c1"># 先append比较好</span>
 </span></span><span class="line"><span class="cl">        <span class="n">loss_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">loss_f</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]))</span>
 </span></span><span class="line"><span class="cl">        <span class="n">d_b</span> <span class="o">=</span> <span class="n">gradient_loss_f</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">])</span>
 </span></span><span class="line"><span class="cl">        <span class="n">theta</span> <span class="o">=</span> <span class="n">theta</span> <span class="o">-</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">d_b</span>

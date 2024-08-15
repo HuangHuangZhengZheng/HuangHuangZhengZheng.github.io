@@ -494,7 +494,7 @@ Rather than manually calling `histplot`, `rugplot`, and `kdeplot` to plot histog
 
 ```python
 sns.displot(x='inc', data=df, kde=True, rug=True)
-plt.xlabel('Gross national income per capita, Atlas method: $: 2016') # 太长了，显示不全�?
+plt.xlabel('Gross national income per capita, Atlas method: $: 2016') # 太长了，显示不全
 plt.title('World Bank Gross National Income Per Capita')
 ```
 
@@ -831,7 +831,7 @@ In the cell below, we see a plot that shows the sum of all three of the kernels 
 xs = np.linspace(-2, 12, 200)
 alpha=0.5
 kde_curve = np.array([1/3 * gaussian_kernel(alpha, x, data3pts) for x in xs])
-plt.plot(xs, np.sum(kde_curve, axis = 1)); # 叠加曲线�?
+plt.plot(xs, np.sum(kde_curve, axis = 1)); # 叠加曲线!
 ```
 
 
@@ -967,7 +967,7 @@ Run the cell below to enable interactive plots. It should give you a green 'OK' 
 ```python
 from ipywidgets import interact
 !jupyter nbextension enable --py widgetsnbextension
-# 这个是要notebook降级处理的插�?
+# 这个是要notebook降级处理的命令
 ```
 
     Enabling notebook extension jupyter-js-widgets/extension...
@@ -988,7 +988,6 @@ interact(f, alpha=(1,10,0.1));
 ```
 
 
-    interactive(children=(FloatSlider(value=5.0, description='alpha', max=10.0, min=1.0), Output()), _dom_classes=�?
 
 
 Using the interactive plot below compare the the two kernel techniques:  (Generating the KDE plot is slow, so you may expect some latency after you move the slider)
@@ -1008,7 +1007,7 @@ interact(f, alpha_g=(0.01,.5,0.01), alpha_b=(0.01,3,0.1));
 ```
 
 
-    interactive(children=(FloatSlider(value=0.25, description='alpha_g', max=0.5, min=0.01, step=0.01), FloatSlide�?
+    interactive(children=(FloatSlider(value=0.25, description='alpha_g', max=0.5, min=0.01, step=0.01), FloatSlide
 
 
 Briefly compare and contrast the Gaussian and Boxcar kernels in the cell below. How do the two kernels relate with each other for the same alpha value?
