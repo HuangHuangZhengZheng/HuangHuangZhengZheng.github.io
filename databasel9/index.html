@@ -4,10 +4,13 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>CS186-L9:  - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/databasel9/">
+        <title>CS186-L9: Relational Algebra - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/databasel9/">
   <meta property="og:site_name" content="HHZZ`s space">
-  <meta property="og:title" content="CS186-L9: ">
-  <meta property="og:description" content="This is my cool site">
+  <meta property="og:title" content="CS186-L9: Relational Algebra">
+  <meta property="og:description" content="Relational Algebra Intro Relational algebra &amp;#x1f635;
+algebra on sets &amp;mdash;&amp;gt; mean no duplicates! operational description of transformations Relational Calculus &amp;#x1f635;
+basic of SQL 以上两者被证明等价并且使得SQL能够被编译&amp;ndash;long story&amp;hellip;&amp;hellip;
+Relational Algebra Operators Unary Operators Selection (σ) : select rows that satisfy a condition Projection (π) : select specific columns 如果结果是multiset, 去重! 虽然real system不会自动去重 Rename (ρ) : rename a column Union (∪) : tuples in either r1 or r2 two input relations, must be compatible (same number of columns or &amp;ldquo;fields&amp;rdquo;, and have same data types corresponding to the same field) UNION in SQL Difference (−) : tuples in r1, but not in r2 same with union, both input relations must be compatible EXCEPT in SQL Cross Product (×) : cartesian product of two relations how many rows in the result?">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
@@ -15,8 +18,11 @@
     <meta property="article:modified_time" content="2024-08-14T09:38:02+08:00">
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="CS186-L9: ">
-<meta name="twitter:description" content="">
+<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="CS186-L9: Relational Algebra">
+<meta name="twitter:description" content="Relational Algebra Intro Relational algebra &#x1f635;
+algebra on sets &mdash;&gt; mean no duplicates! operational description of transformations Relational Calculus &#x1f635;
+basic of SQL 以上两者被证明等价并且使得SQL能够被编译&ndash;long story&hellip;&hellip;
+Relational Algebra Operators Unary Operators Selection (σ) : select rows that satisfy a condition Projection (π) : select specific columns 如果结果是multiset, 去重! 虽然real system不会自动去重 Rename (ρ) : rename a column Union (∪) : tuples in either r1 or r2 two input relations, must be compatible (same number of columns or &ldquo;fields&rdquo;, and have same data types corresponding to the same field) UNION in SQL Difference (−) : tuples in r1, but not in r2 same with union, both input relations must be compatible EXCEPT in SQL Cross Product (×) : cartesian product of two relations how many rows in the result?">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -26,12 +32,12 @@
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "CS186-L9: ",
+        "headline": "CS186-L9: Relational Algebra",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/databasel9\/"
-        },"genre": "posts","wordcount":  0 ,
+        },"genre": "posts","wordcount":  190 ,
         "url": "http:\/\/example.org\/databasel9\/","datePublished": "2024-08-14T09:38:02+08:00","dateModified": "2024-08-14T09:38:02+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -103,17 +109,150 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">CS186-L9: </h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">CS186-L9: Relational Algebra</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-14">2024-08-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;0 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;0 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-14">2024-08-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;190 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"></div><div class="post-footer" id="post-footer">
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#relational-algebra-intro">Relational Algebra Intro</a></li>
+    <li><a href="#relational-algebra-operators">Relational Algebra Operators</a>
+      <ul>
+        <li><a href="#unary-operators">Unary Operators</a></li>
+        <li><a href="#compound-operators">Compound Operators</a></li>
+        <li><a href="#grouping-and-aggregation-operators">Grouping and Aggregation Operators</a></li>
+      </ul>
+    </li>
+    <li><a href="#summary">Summary</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="relational-algebra-intro">Relational Algebra Intro</h2>
+<p>Relational algebra &#x1f635;</p>
+<ul>
+<li>algebra on sets &mdash;&gt; mean no duplicates!</li>
+<li>operational description of transformations</li>
+</ul>
+<p>Relational Calculus &#x1f635;</p>
+<ul>
+<li>basic of SQL</li>
+</ul>
+<p>以上两者被证明等价并且使得SQL能够被编译&ndash;long story&hellip;&hellip;</p>
+<h2 id="relational-algebra-operators">Relational Algebra Operators</h2>
+<h3 id="unary-operators">Unary Operators</h3>
+<ul>
+<li>Selection (σ) : select rows that satisfy a condition
+<ul>
+<li><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel9/image-1.png"
+        data-srcset="/databasel9/image-1.png, /databasel9/image-1.png 1.5x, /databasel9/image-1.png 2x"
+        data-sizes="auto"
+        alt="/databasel9/image-1.png"
+        title="alt text" width="810" height="466" /></li>
+</ul>
+</li>
+<li>Projection (π) : select specific columns
+<ul>
+<li><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel9/image.png"
+        data-srcset="/databasel9/image.png, /databasel9/image.png 1.5x, /databasel9/image.png 2x"
+        data-sizes="auto"
+        alt="/databasel9/image.png"
+        title="alt text" width="742" height="497" /></li>
+<li>如果结果是multiset, 去重! 虽然real system不会自动去重</li>
+</ul>
+</li>
+<li>Rename (ρ) : rename a column
+<ul>
+<li><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel9/image-2.png"
+        data-srcset="/databasel9/image-2.png, /databasel9/image-2.png 1.5x, /databasel9/image-2.png 2x"
+        data-sizes="auto"
+        alt="/databasel9/image-2.png"
+        title="alt text" width="805" height="507" /></li>
+</ul>
+</li>
+<li>Union (∪) : tuples in either r1 or r2
+<ul>
+<li>two input relations, must be compatible (same number of columns or &ldquo;fields&rdquo;, and have same data types corresponding to the same field)</li>
+<li>UNION in SQL</li>
+</ul>
+</li>
+<li>Difference (−) : tuples in r1, but not in r2
+<ul>
+<li>same with union, both input relations must be compatible</li>
+<li>EXCEPT in SQL</li>
+</ul>
+</li>
+<li>Cross Product (×) : cartesian product of two relations
+<ul>
+<li>how many rows in the result? $|R_1|*|R_2|$</li>
+<li>none duplicate tuples</li>
+</ul>
+</li>
+</ul>
+<h3 id="compound-operators">Compound Operators</h3>
+<ul>
+<li>Join (⋈ / $⋈_\theta$) : join two relations on common attributes
+<ul>
+<li><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel9/image-3.png"
+        data-srcset="/databasel9/image-3.png, /databasel9/image-3.png 1.5x, /databasel9/image-3.png 2x"
+        data-sizes="auto"
+        alt="/databasel9/image-3.png"
+        title="alt text" width="1004" height="299" /></li>
+<li>avoid cross product as we can!</li>
+<li>natural join<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel9/image-4.png"
+        data-srcset="/databasel9/image-4.png, /databasel9/image-4.png 1.5x, /databasel9/image-4.png 2x"
+        data-sizes="auto"
+        alt="/databasel9/image-4.png"
+        title="alt text" width="1042" height="374" /></li>
+</ul>
+</li>
+<li>Intersection (∩) : tuples that appear in both r1 and r2
+<ul>
+<li>$S_1 \cap S_2 = S_1 - (S_1 - S_2)$</li>
+</ul>
+</li>
+</ul>
+<h3 id="grouping-and-aggregation-operators">Grouping and Aggregation Operators</h3>
+<ul>
+<li>Group By / Aggregation Operators($\gamma$)
+<ul>
+<li>$\gamma_{age, AVG(rating)}$ (Sailors)</li>
+<li>with selection (HAVING)
+<ul>
+<li>$\gamma_{age, AVG(rating), COUNT(*)&gt;2}$(Sailors)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="summary">Summary</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel9/image-5.png"
+        data-srcset="/databasel9/image-5.png, /databasel9/image-5.png 1.5x, /databasel9/image-5.png 2x"
+        data-sizes="auto"
+        alt="/databasel9/image-5.png"
+        title="alt text" width="994" height="321" /></p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -124,7 +263,7 @@
                             <a class="link-to-markdown" href="/databasel9/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/databasel9/" data-title="CS186-L9: "><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/databasel9/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/databasel9/" data-title="CS186-L9: "><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/databasel9/" data-title="CS186-L9: "><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/databasel9/" data-title="CS186-L9: "><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/databasel9/" data-title="CS186-L9: Relational Algebra"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/databasel9/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/databasel9/" data-title="CS186-L9: Relational Algebra"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/databasel9/" data-title="CS186-L9: Relational Algebra"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/databasel9/" data-title="CS186-L9: Relational Algebra"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>

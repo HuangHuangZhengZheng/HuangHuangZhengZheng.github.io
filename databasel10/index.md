@@ -1,4 +1,4 @@
-# CS186-L10: 
+# CS186-L10: Sorting and Hashing
 
 
 
