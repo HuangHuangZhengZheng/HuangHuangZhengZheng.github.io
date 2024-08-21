@@ -7,7 +7,7 @@
         <title>CS186-L9: Sorting and Hashing - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/databasel9/">
   <meta property="og:site_name" content="HHZZ`s space">
   <meta property="og:title" content="CS186-L9: Sorting and Hashing">
-  <meta property="og:description" content="This is my cool site">
+  <meta property="og:description" content="Why Sort? Rendezvous eliminating duplicates (DISTINCT) Grouping for summarization (GROUP BY) Upcoming sort-merge join algorithms Ordering sometimes output must be in a specific order First step in bulk loading Tree indexes Problem: sort 100GB of data with 1GB of RAM why not virtual memory? &amp;ndash; random IO access, too slow Out-of-Core Algorithms Single Streaming data passing through the memory Better: Double Buffering 1. 主要线程处理 I/O 缓冲区中的数据 主线程负责在一个I/O缓冲区对（即输入缓冲区和输出缓冲区）上运行f(x)函数。 主线程完成计算后准备处理新的缓冲区数据时，会进行缓冲区的交换（Swap）。 2. 第二个 I/O 线程并行处理未使用的 I/O 缓冲区 第二个I/O线程并行操作，用于清空已满的输出缓冲区并填充新的输入缓冲区。 这种并行性能够提高系统性能，因为I/O操作通常较为耗时，而通过并行处理可以减少主线程的等待时间，从而更高效地利用CPU资源。 3.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
@@ -16,7 +16,7 @@
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="CS186-L9: Sorting and Hashing">
-<meta name="twitter:description" content="">
+<meta name="twitter:description" content="Why Sort? Rendezvous eliminating duplicates (DISTINCT) Grouping for summarization (GROUP BY) Upcoming sort-merge join algorithms Ordering sometimes output must be in a specific order First step in bulk loading Tree indexes Problem: sort 100GB of data with 1GB of RAM why not virtual memory? &ndash; random IO access, too slow Out-of-Core Algorithms Single Streaming data passing through the memory Better: Double Buffering 1. 主要线程处理 I/O 缓冲区中的数据 主线程负责在一个I/O缓冲区对（即输入缓冲区和输出缓冲区）上运行f(x)函数。 主线程完成计算后准备处理新的缓冲区数据时，会进行缓冲区的交换（Swap）。 2. 第二个 I/O 线程并行处理未使用的 I/O 缓冲区 第二个I/O线程并行操作，用于清空已满的输出缓冲区并填充新的输入缓冲区。 这种并行性能够提高系统性能，因为I/O操作通常较为耗时，而通过并行处理可以减少主线程的等待时间，从而更高效地利用CPU资源。 3.">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -31,7 +31,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/databasel9\/"
-        },"genre": "posts","wordcount":  0 ,
+        },"genre": "posts","wordcount":  220 ,
         "url": "http:\/\/example.org\/databasel9\/","datePublished": "2024-08-14T09:38:01+08:00","dateModified": "2024-08-14T09:38:01+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -105,15 +105,174 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">CS186-L9: Sorting and Hashing</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-14">2024-08-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;0 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;0 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-14">2024-08-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;220 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"></div><div class="post-footer" id="post-footer">
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#why-sort">Why Sort?</a></li>
+    <li><a href="#out-of-core-algorithms">Out-of-Core Algorithms</a>
+      <ul>
+        <li><a href="#single-streaming-data-passing-through-the-memory">Single Streaming data passing through the memory</a></li>
+        <li><a href="#better-double-buffering">Better: Double Buffering</a>
+          <ul>
+            <li><a href="#1-主要线程处理-io-缓冲区中的数据">1. <strong>主要线程处理 I/O 缓冲区中的数据</strong></a></li>
+            <li><a href="#2-第二个-io-线程并行处理未使用的-io-缓冲区">2. <strong>第二个 I/O 线程并行处理未使用的 I/O 缓冲区</strong></a></li>
+            <li><a href="#3-为什么并行处理是可行的">3. <strong>为什么并行处理是可行的？</strong></a></li>
+            <li><a href="#4-图解说明">4. <strong>图解说明</strong></a></li>
+            <li><a href="#总结">总结</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#sorting-and-hashing">Sorting and Hashing</a>
+      <ul>
+        <li><a href="#formal-specs">Formal Specs</a></li>
+        <li><a href="#sorting">Sorting</a>
+          <ul>
+            <li><a href="#strawman-algorithm">Strawman Algorithm</a></li>
+            <li><a href="#general-external-merge-sort">General External Merge Sort</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="why-sort">Why Sort?</h2>
+<ul>
+<li>Rendezvous
+<ul>
+<li>eliminating duplicates (DISTINCT)</li>
+<li>Grouping for summarization (GROUP BY)</li>
+<li>Upcoming sort-merge join algorithms</li>
+</ul>
+</li>
+<li>Ordering
+<ul>
+<li>sometimes output must be in a specific order</li>
+<li>First step in bulk loading Tree indexes</li>
+</ul>
+</li>
+<li>Problem: sort 100GB of data with 1GB of RAM
+<ul>
+<li>why not virtual memory? &ndash; random IO access, too slow</li>
+</ul>
+</li>
+</ul>
+<h2 id="out-of-core-algorithms">Out-of-Core Algorithms</h2>
+<h3 id="single-streaming-data-passing-through-the-memory">Single Streaming data passing through the memory</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel9/image.png"
+        data-srcset="/databasel9/image.png, /databasel9/image.png 1.5x, /databasel9/image.png 2x"
+        data-sizes="auto"
+        alt="/databasel9/image.png"
+        title="alt text" width="1457" height="874" /></p>
+<h3 id="better-double-buffering">Better: Double Buffering</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel9/image-1.png"
+        data-srcset="/databasel9/image-1.png, /databasel9/image-1.png 1.5x, /databasel9/image-1.png 2x"
+        data-sizes="auto"
+        alt="/databasel9/image-1.png"
+        title="alt text" width="994" height="682" /></p>
+<h4 id="1-主要线程处理-io-缓冲区中的数据">1. <strong>主要线程处理 I/O 缓冲区中的数据</strong></h4>
+<ul>
+<li><strong>主线程</strong>负责在一个I/O缓冲区对（即输入缓冲区和输出缓冲区）上运行f(x)函数。</li>
+<li>主线程完成计算后准备处理新的缓冲区数据时，会进行缓冲区的交换（Swap）。</li>
+</ul>
+<h4 id="2-第二个-io-线程并行处理未使用的-io-缓冲区">2. <strong>第二个 I/O 线程并行处理未使用的 I/O 缓冲区</strong></h4>
+<ul>
+<li><strong>第二个I/O线程</strong>并行操作，用于清空已满的输出缓冲区并填充新的输入缓冲区。</li>
+<li>这种并行性能够提高系统性能，因为I/O操作通常较为耗时，而通过并行处理可以减少主线程的等待时间，从而更高效地利用CPU资源。</li>
+</ul>
+<h4 id="3-为什么并行处理是可行的">3. <strong>为什么并行处理是可行的？</strong></h4>
+<ul>
+<li><strong>原因</strong>：通常情况下，I/O操作比较慢，因此需要占用单独的线程来处理，以避免阻塞主线程。</li>
+<li><strong>主题</strong>：I/O处理通常需要独立的线程来管理，以提高整体处理效率。</li>
+</ul>
+<h4 id="4-图解说明">4. <strong>图解说明</strong></h4>
+<ul>
+<li>图中显示了双缓冲机制下的处理流程：输入缓冲区和输出缓冲区成对出现，其中一对缓冲区在主线程中处理，而另一对缓冲区在I/O线程中处理。当主线程处理完当前缓冲区对时，两个线程会进行缓冲区交换。</li>
+</ul>
+<h4 id="总结">总结</h4>
+<p>相比单缓冲的单次流式处理，双缓冲通过并行处理I/O操作，可以显著提高处理效率，尤其是在I/O操作较慢的情况下。主线程可以专注于计算，而不必等待I/O操作完成，进一步提升了系统的并行性和性能。</p>
+<ul>
+<li>double buffering applies to all streams!
+<ul>
+<li>assume that you have RAM buffers to spare!</li>
+</ul>
+</li>
+</ul>
+<h2 id="sorting-and-hashing">Sorting and Hashing</h2>
+<h3 id="formal-specs">Formal Specs</h3>
+<ul>
+<li>a file $F$:
+<ul>
+<li>a multiset of records $R$</li>
+<li>consuming $N$ blocks of storage</li>
+</ul>
+</li>
+<li>two &ldquo;scratch&rdquo; disks
+<ul>
+<li>each with &raquo; $N$ blocks of free storage</li>
+</ul>
+</li>
+<li>a fixed amount of space in RAM
+<ul>
+<li>memory capacity equivalent to $B$ blocks of disk</li>
+</ul>
+</li>
+</ul>
+<p>As for sorting:</p>
+<ul>
+<li>produce an output file $F_S$
+<ul>
+<li>with content $R$ stored in order by a given sorting criterion</li>
+</ul>
+</li>
+</ul>
+<p>As for hashing:</p>
+<ul>
+<li>produce an output file $F_H$
+<ul>
+<li>with content $R$, <em>arranged on disk so that no 2 records that have the same hash value are separated by a record with a different hash value</em></li>
+<li>i.e., <em>consecutively</em> stored on disk</li>
+</ul>
+</li>
+</ul>
+<h3 id="sorting">Sorting</h3>
+<h4 id="strawman-algorithm">Strawman Algorithm</h4>
+<p>注意左侧是没有sort的，右侧是sort之后的。
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel9/image-2.png"
+        data-srcset="/databasel9/image-2.png, /databasel9/image-2.png 1.5x, /databasel9/image-2.png 2x"
+        data-sizes="auto"
+        alt="/databasel9/image-2.png"
+        title="alt text" width="879" height="550" /></p>
+<h4 id="general-external-merge-sort">General External Merge Sort</h4>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel9/image-3.png"
+        data-srcset="/databasel9/image-3.png, /databasel9/image-3.png 1.5x, /databasel9/image-3.png 2x"
+        data-sizes="auto"
+        alt="/databasel9/image-3.png"
+        title="alt text" width="970" height="523" />
+side note:</p>
+<ul>
+<li>length = $B$，最后一个是变长的block</li>
+<li>$B$ pages/blocks &mdash;&gt; $B-1$ merge（简单归纳）</li>
+</ul>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
