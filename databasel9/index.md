@@ -2,7 +2,7 @@
 
 
 ## Why Sort?
-- Rendezvous
+- Rendezvous 为了“集合”  
   - eliminating duplicates (DISTINCT)
   - Grouping for summarization (GROUP BY)
   - Upcoming sort-merge join algorithms
@@ -10,12 +10,13 @@
   - sometimes output must be in a specific order
   - First step in bulk loading Tree indexes
 - Problem: sort 100GB of data with 1GB of RAM
-  - why not virtual memory? -- random IO access, too slow
+  - *why not virtual memory?* -- random IO access, too slow :cry:
 
 ## Out-of-Core Algorithms
+core == RAM back in the day
 ### Single Streaming data passing through the memory
 ![alt text](image.png)
-
+MapReduce's "Map" :sunglasses:
 ### Better: Double Buffering
 ![alt text](image-1.png)
 
@@ -71,7 +72,56 @@ As for hashing:
 ![alt text](image-2.png)
 
 #### General External Merge Sort
+基于RAM远远不够存放所有要排序的数据来讨论
+
 ![alt text](image-3.png)
 side note: 
+- *PASS*意味着从所有的数据流disk流向另一个disk，可以认为是IO；*RUN*指的是 a sequence of sorted pages. [see](https://cs186berkeley.net/notes/note8/)
 - length = $B$，最后一个是变长的block
-- $B$ pages/blocks ---> $B-1$ merge（简单归纳）
+- $B$ pages/blocks ---> $B-1$ merge (有一个buffer是为了写入)
+![alt text](image-4.png)
+
+事实上很像一个Tree，分而治之然后不断合并中间结果
+
+### Hashing
+#### ideal Divide and Conquer
+通过 $2N$ pass将数据根据 $h_p$ 产生的哈希值分割成 $N$ 个block
+
+对于每个分好大类别的block，重新hash从而实现相同内容的record连续存储， $2N$ pass
+![alt text](078395234051df796d2bdeaae2e47103_.png)
+
+所以cost约为 $4N$ pass
+
+#### recursive partitioning for External Hashing
+当divide时出现某个block的record数目太多时
+- check不同种类的hash数量，基于新的 $h_{r_1}$ 生成hash
+- 如果数量为一，停止分割，写入磁盘
+- 如果数量大于一，继续分割，直到数量小于等于 $B$
+
+## hash and sort duality
+hash: divide-conquer
+sort: conquer-merge
+- cost around $4N$ pass
+- 对于一次完成容量为 $X$ 的任务，buffer 要求约为 $\sqrt{X}$
+
+## parallel sorting and hashing
+parallel hashing: 多了一个 $h_n$ 然后快了
+![alt text](image-5.png)
+
+parallel sorting: 多了一个 range
+![alt text](image-6.png)
+如何保证各个计算机工作量大致相同？===> 快速估计数据集的分布
+
+## Summary
+
+Hashing pros:
+- for *duplicate elimination*, scales with # of values
+  - delete dups in the first pass
+  - VS. sort scales with # of items
+- easy to *shuffle in parallel*
+
+Sorting pros:
+- if need to be sorted
+- Not sensitive to duplicates or "bad" hash functions (eg. many dups in data)
+
+![alt text](image-7.png)

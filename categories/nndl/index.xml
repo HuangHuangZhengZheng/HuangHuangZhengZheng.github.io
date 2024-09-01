@@ -27,13 +27,5 @@ PointNet和++的算法具体操作 PointNet算法的具体操作 必须考虑的
 set abstraction
 sampling FPS取点 grouping 聚类ball query， ball query采用metric distance和CNN曼哈顿距离不同，使得前者能泛化能力更好 然后采用pointnet对每个group进行特征提取 提出针对 点 密度分布不均匀的 density adaptive PointNet MSG，对不同大小的区域进行特征抽取并且拼在一起 random input dropout MRG, “堆叠”多个PointNet高维抽取，改进：一个向量是抽取低一层的特征，另一个向量直接抽取底层特征，然后由点密度分布来决定按权重拼接 interpolate &amp; skip link concatenation （特征传播feature propagation）]]></description>
 </item>
-<item>
-    <title>NNDL0</title>
-    <link>http://example.org/nndl/</link>
-    <pubDate>Fri, 12 Jul 2024 22:51:22 &#43;0800</pubDate>
-    <author>HHZZ</author>
-    <guid>http://example.org/nndl/</guid>
-    <description><![CDATA[neuronal networks and deep learning&hellip; coming soon]]></description>
-</item>
 </channel>
 </rss>

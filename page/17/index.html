@@ -117,10 +117,6 @@ Part 1: Jupyter Tips Viewing Documentation To output the documentation for a fun
 明确概率 no need to be same chance &#x1f60b; scheme of random sampling: &ldquo;Random sample with replacement&rdquo; 是统计学中的一个术语，指的是在进行抽样时，每次抽取的样本在放回原总体之后，再进行下一次抽取。这意味着同一个个体或元素有可能被多次抽取。</div><div class="post-footer">
         <a href="/datal2/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/nndl/">NNDL0</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-12">2024-07-12</time></span>&nbsp;<span class="post-category">included in <a href="/categories/nndl/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>NNDL</a></span></div><div class="content">neuronal networks and deep learning&hellip; coming soon</div><div class="post-footer">
-        <a href="/nndl/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/datal1/">DATA100-L1: course overview</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-12">2024-07-12</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">cycle of data science </div><div class="post-footer">
         <a href="/datal1/">Read More</a></div>
@@ -137,6 +133,18 @@ $$ \Omega(NlogN) $$
 $$ O(NlogN) $$
 下面开始证明： 考虑下界，对n个物体进行排序，有N！种可能，用两两比大小，考虑决策树的高度$$ H = \log_2 N! $$ 因此下界为 $$ \Omega (log(N!)) $$ 或者 $$ \Omega (NlogN) $$ 上界通过TUCS的性质可以通过具体示例反证得到，比如用merge sort</div><div class="post-footer">
         <a href="/61b-35/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/61b-34/">61B-34: More Quick Sort, Stability, Shuffling</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-11">2024-07-11</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">More quick sort, Stability, Shuffling quick sort VS merge sort QuicksortL3S = left + 3-scan + shuffle
+Quicksort_LTHS:
+Tony Hoare partition scheme:
+L ptr 仅仅指向小的 G ptr 仅仅指向大的 ptr walk towards to each other, stopping on a hated item 两个都停下来的话， 交换一下， 然后移动其中一个 when ptrs cross, done. 和G交换pivot Not random smarter pivot selection: median Quicksort_PickTH
+考虑了如何计算数组地址的复杂度， 以及如何选择pivot的复杂度。
+worst case: $$ \Theta(NlogN) $$
+但实际上并没有那么好，因为计算中位数的复杂度是$$\Theta(N)$$。耗费了更多时间。
+quick select&ndash;using partitioning worst case:
+a sorted array $$ \Theta(N^2) $$</div><div class="post-footer">
+        <a href="/61b-34/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -158,10 +166,6 @@ $$ O(NlogN) $$
                 </li><li class="page-item ">
                     <span class="page-link">
                         <a href="/page/18/">18</a>
-                    </span>
-                </li><li class="page-item ">
-                    <span class="page-link">
-                        <a href="/page/19/">19</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">

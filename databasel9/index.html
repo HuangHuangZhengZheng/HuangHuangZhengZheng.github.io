@@ -7,7 +7,8 @@
         <title>CS186-L9: Sorting and Hashing - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/databasel9/">
   <meta property="og:site_name" content="HHZZ`s space">
   <meta property="og:title" content="CS186-L9: Sorting and Hashing">
-  <meta property="og:description" content="Why Sort? Rendezvous eliminating duplicates (DISTINCT) Grouping for summarization (GROUP BY) Upcoming sort-merge join algorithms Ordering sometimes output must be in a specific order First step in bulk loading Tree indexes Problem: sort 100GB of data with 1GB of RAM why not virtual memory? &amp;ndash; random IO access, too slow Out-of-Core Algorithms Single Streaming data passing through the memory Better: Double Buffering 1. 主要线程处理 I/O 缓冲区中的数据 主线程负责在一个I/O缓冲区对（即输入缓冲区和输出缓冲区）上运行f(x)函数。 主线程完成计算后准备处理新的缓冲区数据时，会进行缓冲区的交换（Swap）。 2. 第二个 I/O 线程并行处理未使用的 I/O 缓冲区 第二个I/O线程并行操作，用于清空已满的输出缓冲区并填充新的输入缓冲区。 这种并行性能够提高系统性能，因为I/O操作通常较为耗时，而通过并行处理可以减少主线程的等待时间，从而更高效地利用CPU资源。 3.">
+  <meta property="og:description" content="Why Sort? Rendezvous 为了“集合” eliminating duplicates (DISTINCT) Grouping for summarization (GROUP BY) Upcoming sort-merge join algorithms Ordering sometimes output must be in a specific order First step in bulk loading Tree indexes Problem: sort 100GB of data with 1GB of RAM why not virtual memory? &amp;ndash; random IO access, too slow &amp;#x1f622; Out-of-Core Algorithms core == RAM back in the day
+Single Streaming data passing through the memory MapReduce&amp;rsquo;s &amp;ldquo;Map&amp;rdquo; &amp;#x1f60e;">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
@@ -16,7 +17,8 @@
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="CS186-L9: Sorting and Hashing">
-<meta name="twitter:description" content="Why Sort? Rendezvous eliminating duplicates (DISTINCT) Grouping for summarization (GROUP BY) Upcoming sort-merge join algorithms Ordering sometimes output must be in a specific order First step in bulk loading Tree indexes Problem: sort 100GB of data with 1GB of RAM why not virtual memory? &ndash; random IO access, too slow Out-of-Core Algorithms Single Streaming data passing through the memory Better: Double Buffering 1. 主要线程处理 I/O 缓冲区中的数据 主线程负责在一个I/O缓冲区对（即输入缓冲区和输出缓冲区）上运行f(x)函数。 主线程完成计算后准备处理新的缓冲区数据时，会进行缓冲区的交换（Swap）。 2. 第二个 I/O 线程并行处理未使用的 I/O 缓冲区 第二个I/O线程并行操作，用于清空已满的输出缓冲区并填充新的输入缓冲区。 这种并行性能够提高系统性能，因为I/O操作通常较为耗时，而通过并行处理可以减少主线程的等待时间，从而更高效地利用CPU资源。 3.">
+<meta name="twitter:description" content="Why Sort? Rendezvous 为了“集合” eliminating duplicates (DISTINCT) Grouping for summarization (GROUP BY) Upcoming sort-merge join algorithms Ordering sometimes output must be in a specific order First step in bulk loading Tree indexes Problem: sort 100GB of data with 1GB of RAM why not virtual memory? &ndash; random IO access, too slow &#x1f622; Out-of-Core Algorithms core == RAM back in the day
+Single Streaming data passing through the memory MapReduce&rsquo;s &ldquo;Map&rdquo; &#x1f60e;">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -31,7 +33,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/databasel9\/"
-        },"genre": "posts","wordcount":  220 ,
+        },"genre": "posts","wordcount":  353 ,
         "url": "http:\/\/example.org\/databasel9\/","datePublished": "2024-08-14T09:38:01+08:00","dateModified": "2024-08-14T09:38:01+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -105,7 +107,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">CS186-L9: Sorting and Hashing</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-14">2024-08-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;220 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-14">2024-08-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;353 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
@@ -138,13 +140,22 @@
             <li><a href="#general-external-merge-sort">General External Merge Sort</a></li>
           </ul>
         </li>
+        <li><a href="#hashing">Hashing</a>
+          <ul>
+            <li><a href="#ideal-divide-and-conquer">ideal Divide and Conquer</a></li>
+            <li><a href="#recursive-partitioning-for-external-hashing">recursive partitioning for External Hashing</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
+    <li><a href="#hash-and-sort-duality">hash and sort duality</a></li>
+    <li><a href="#parallel-sorting-and-hashing">parallel sorting and hashing</a></li>
+    <li><a href="#summary">Summary</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="why-sort">Why Sort?</h2>
 <ul>
-<li>Rendezvous
+<li>Rendezvous 为了“集合”
 <ul>
 <li>eliminating duplicates (DISTINCT)</li>
 <li>Grouping for summarization (GROUP BY)</li>
@@ -159,11 +170,12 @@
 </li>
 <li>Problem: sort 100GB of data with 1GB of RAM
 <ul>
-<li>why not virtual memory? &ndash; random IO access, too slow</li>
+<li><em>why not virtual memory?</em> &ndash; random IO access, too slow &#x1f622;</li>
 </ul>
 </li>
 </ul>
 <h2 id="out-of-core-algorithms">Out-of-Core Algorithms</h2>
+<p>core == RAM back in the day</p>
 <h3 id="single-streaming-data-passing-through-the-memory">Single Streaming data passing through the memory</h3>
 <p><img
         class="lazyload"
@@ -172,7 +184,8 @@
         data-srcset="/databasel9/image.png, /databasel9/image.png 1.5x, /databasel9/image.png 2x"
         data-sizes="auto"
         alt="/databasel9/image.png"
-        title="alt text" width="1457" height="874" /></p>
+        title="alt text" width="1457" height="874" />
+MapReduce&rsquo;s &ldquo;Map&rdquo; &#x1f60e;</p>
 <h3 id="better-double-buffering">Better: Double Buffering</h3>
 <p><img
         class="lazyload"
@@ -259,6 +272,7 @@
         alt="/databasel9/image-2.png"
         title="alt text" width="879" height="550" /></p>
 <h4 id="general-external-merge-sort">General External Merge Sort</h4>
+<p>基于RAM远远不够存放所有要排序的数据来讨论</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -269,9 +283,90 @@
         title="alt text" width="970" height="523" />
 side note:</p>
 <ul>
+<li><em>PASS</em>意味着从所有的数据流disk流向另一个disk，可以认为是IO；<em>RUN</em>指的是 a sequence of sorted pages. <a href="https://cs186berkeley.net/notes/note8/" target="_blank" rel="noopener noreffer ">see</a></li>
 <li>length = $B$，最后一个是变长的block</li>
-<li>$B$ pages/blocks &mdash;&gt; $B-1$ merge（简单归纳）</li>
+<li>$B$ pages/blocks &mdash;&gt; $B-1$ merge (有一个buffer是为了写入)
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel9/image-4.png"
+        data-srcset="/databasel9/image-4.png, /databasel9/image-4.png 1.5x, /databasel9/image-4.png 2x"
+        data-sizes="auto"
+        alt="/databasel9/image-4.png"
+        title="alt text" width="1389" height="676" /></li>
 </ul>
+<p>事实上很像一个Tree，分而治之然后不断合并中间结果</p>
+<h3 id="hashing">Hashing</h3>
+<h4 id="ideal-divide-and-conquer">ideal Divide and Conquer</h4>
+<p>通过 $2N$ pass将数据根据 $h_p$ 产生的哈希值分割成 $N$ 个block</p>
+<p>对于每个分好大类别的block，重新hash从而实现相同内容的record连续存储， $2N$ pass
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel9/078395234051df796d2bdeaae2e47103_.png"
+        data-srcset="/databasel9/078395234051df796d2bdeaae2e47103_.png, /databasel9/078395234051df796d2bdeaae2e47103_.png 1.5x, /databasel9/078395234051df796d2bdeaae2e47103_.png 2x"
+        data-sizes="auto"
+        alt="/databasel9/078395234051df796d2bdeaae2e47103_.png"
+        title="alt text" width="1604" height="698" /></p>
+<p>所以cost约为 $4N$ pass</p>
+<h4 id="recursive-partitioning-for-external-hashing">recursive partitioning for External Hashing</h4>
+<p>当divide时出现某个block的record数目太多时</p>
+<ul>
+<li>check不同种类的hash数量，基于新的 $h_{r_1}$ 生成hash</li>
+<li>如果数量为一，停止分割，写入磁盘</li>
+<li>如果数量大于一，继续分割，直到数量小于等于 $B$</li>
+</ul>
+<h2 id="hash-and-sort-duality">hash and sort duality</h2>
+<p>hash: divide-conquer
+sort: conquer-merge</p>
+<ul>
+<li>cost around $4N$ pass</li>
+<li>对于一次完成容量为 $X$ 的任务，buffer 要求约为 $\sqrt{X}$</li>
+</ul>
+<h2 id="parallel-sorting-and-hashing">parallel sorting and hashing</h2>
+<p>parallel hashing: 多了一个 $h_n$ 然后快了
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel9/image-5.png"
+        data-srcset="/databasel9/image-5.png, /databasel9/image-5.png 1.5x, /databasel9/image-5.png 2x"
+        data-sizes="auto"
+        alt="/databasel9/image-5.png"
+        title="alt text" width="530" height="368" /></p>
+<p>parallel sorting: 多了一个 range
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel9/image-6.png"
+        data-srcset="/databasel9/image-6.png, /databasel9/image-6.png 1.5x, /databasel9/image-6.png 2x"
+        data-sizes="auto"
+        alt="/databasel9/image-6.png"
+        title="alt text" width="612" height="354" />
+如何保证各个计算机工作量大致相同？===&gt; 快速估计数据集的分布</p>
+<h2 id="summary">Summary</h2>
+<p>Hashing pros:</p>
+<ul>
+<li>for <em>duplicate elimination</em>, scales with # of values
+<ul>
+<li>delete dups in the first pass</li>
+<li>VS. sort scales with # of items</li>
+</ul>
+</li>
+<li>easy to <em>shuffle in parallel</em></li>
+</ul>
+<p>Sorting pros:</p>
+<ul>
+<li>if need to be sorted</li>
+<li>Not sensitive to duplicates or &ldquo;bad&rdquo; hash functions (eg. many dups in data)</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel9/image-7.png"
+        data-srcset="/databasel9/image-7.png, /databasel9/image-7.png 1.5x, /databasel9/image-7.png 2x"
+        data-sizes="auto"
+        alt="/databasel9/image-7.png"
+        title="alt text" width="879" height="337" /></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
