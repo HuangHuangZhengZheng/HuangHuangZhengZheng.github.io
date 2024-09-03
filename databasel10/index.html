@@ -4,10 +4,12 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>CS186-L10:  - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/databasel10/">
+        <title>CS186-L10: Iterators &amp; Joins - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/databasel10/">
   <meta property="og:site_name" content="HHZZ`s space">
-  <meta property="og:title" content="CS186-L10: ">
-  <meta property="og:description" content="This is my cool site">
+  <meta property="og:title" content="CS186-L10: Iterators &amp; Joins">
+  <meta property="og:description" content="Intro relational operator: tuples(in other way, relations) in, tuples out
+1 2 3 4 5 6 7 abstract class Iterator { // set up the children and the dataflow graph void setup(List&amp;lt;Iterator&amp;gt; inputs); void init(args); // state tuple next(); // returns the next tuple void close(); } presudo code select on the fly &amp;#x1f914;
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 init() { child.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
@@ -15,8 +17,10 @@
     <meta property="article:modified_time" content="2024-08-14T09:38:02+08:00">
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="CS186-L10: ">
-<meta name="twitter:description" content="">
+<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="CS186-L10: Iterators &amp; Joins">
+<meta name="twitter:description" content="Intro relational operator: tuples(in other way, relations) in, tuples out
+1 2 3 4 5 6 7 abstract class Iterator { // set up the children and the dataflow graph void setup(List&lt;Iterator&gt; inputs); void init(args); // state tuple next(); // returns the next tuple void close(); } presudo code select on the fly &#x1f914;
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 init() { child.">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -26,12 +30,12 @@
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "CS186-L10: ",
+        "headline": "CS186-L10: Iterators \u0026 Joins",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/databasel10\/"
-        },"genre": "posts","wordcount":  0 ,
+        },"genre": "posts","wordcount":  495 ,
         "url": "http:\/\/example.org\/databasel10\/","datePublished": "2024-08-14T09:38:02+08:00","dateModified": "2024-08-14T09:38:02+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -103,17 +107,395 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">CS186-L10: </h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">CS186-L10: Iterators & Joins</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-14">2024-08-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;0 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;0 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-14">2024-08-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;495 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"></div><div class="post-footer" id="post-footer">
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#intro">Intro</a>
+      <ul>
+        <li><a href="#presudo-code">presudo code</a>
+          <ul>
+            <li><a href="#select">select</a></li>
+            <li><a href="#heap-scan">heap scan</a></li>
+            <li><a href="#sort-two-pass">sort (two pass)</a></li>
+            <li><a href="#group-by">Group By</a></li>
+          </ul>
+        </li>
+        <li><a href="#a-single-thread">A single thread</a></li>
+      </ul>
+    </li>
+    <li><a href="#join-operators">Join operators</a>
+      <ul>
+        <li><a href="#simple-nested-loops-join">Simple Nested Loops Join</a></li>
+        <li><a href="#pages-nested-loops-join">Pages Nested Loops Join</a></li>
+        <li><a href="#chunk-nested-loops-join">Chunk Nested Loops Join</a></li>
+        <li><a href="#index-nested-loops-join">Index Nested Loops Join</a>
+          <ul>
+            <li><a href="#cost-of-index-lookup">cost of index lookup</a></li>
+          </ul>
+        </li>
+        <li><a href="#sort-merge-join">Sort-Merge Join</a>
+          <ul>
+            <li><a href="#a-refinement-of-the-sort-merge-join">a refinement of the sort-merge join</a></li>
+          </ul>
+        </li>
+        <li><a href="#naive-hash-join">Naive Hash Join</a></li>
+        <li><a href="#grace-hash-join">Grace Hash Join</a></li>
+      </ul>
+    </li>
+    <li><a href="#summary">Summary</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="intro">Intro</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel10/image-1.png"
+        data-srcset="/databasel10/image-1.png, /databasel10/image-1.png 1.5x, /databasel10/image-1.png 2x"
+        data-sizes="auto"
+        alt="/databasel10/image-1.png"
+        title="alt text" width="1312" height="751" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel10/image-2.png"
+        data-srcset="/databasel10/image-2.png, /databasel10/image-2.png 1.5x, /databasel10/image-2.png 2x"
+        data-sizes="auto"
+        alt="/databasel10/image-2.png"
+        title="alt text" width="1333" height="877" />
+relational operator: tuples(in other way, relations) in, tuples out</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">abstract</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Iterator</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// set up the children and the dataflow graph    </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Iterator</span><span class="o">&gt;</span><span class="w"> </span><span class="n">inputs</span><span class="p">);</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">init</span><span class="p">(</span><span class="n">args</span><span class="p">);</span><span class="w"> </span><span class="c1">// state</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">tuple</span><span class="w"> </span><span class="nf">next</span><span class="p">();</span><span class="w"> </span><span class="c1">// returns the next tuple</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">close</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel10/image.png"
+        data-srcset="/databasel10/image.png, /databasel10/image.png 1.5x, /databasel10/image.png 2x"
+        data-sizes="auto"
+        alt="/databasel10/image.png"
+        title="alt text" width="1303" height="306" /></p>
+<h3 id="presudo-code">presudo code</h3>
+<h4 id="select">select</h4>
+<p>on the fly &#x1f914;</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="n">init</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">child</span><span class="p">.</span><span class="na">init</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">pred</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">predicate</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">next</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">current</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">EOF</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">pred</span><span class="p">(</span><span class="n">current</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">child</span><span class="p">.</span><span class="na">next</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">close</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">child</span><span class="p">.</span><span class="na">close</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="heap-scan">heap scan</h4>
+<p>want to find out the empty record id</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="n">init</span><span class="p">(</span><span class="n">relation</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">heap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">open</span><span class="w"> </span><span class="n">heap</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">relation</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">cur_page</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">heap</span><span class="p">.</span><span class="na">first_page</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">cur_slot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cur_page</span><span class="p">.</span><span class="na">first_slot</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">next</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cur_page</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">EOF</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="n">cur_page</span><span class="p">,</span><span class="w"> </span><span class="n">cur_slot</span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="c1">// return the id</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// advance to the next slot</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">cur_slot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cur_page</span><span class="p">.</span><span class="na">next_slot</span><span class="p">(</span><span class="n">cur_slot</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cur_slot</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">// advance to the next page, first slot</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">cur_page</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">heap</span><span class="p">.</span><span class="na">next_page</span><span class="p">(</span><span class="n">cur_page</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cur_page</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="n">cur_slot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cur_page</span><span class="p">.</span><span class="na">first_slot</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">current</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">close</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">heap</span><span class="p">.</span><span class="na">close</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="sort-two-pass">sort (two pass)</h4>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel10/image-3.png"
+        data-srcset="/databasel10/image-3.png, /databasel10/image-3.png 1.5x, /databasel10/image-3.png 2x"
+        data-sizes="auto"
+        alt="/databasel10/image-3.png"
+        title="alt text" width="1312" height="576" /></p>
+<h4 id="group-by">Group By</h4>
+<p>assume that already sorted, and notice that only contain ONE tuple at a time ===&gt; memory efficient
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel10/image-4.png"
+        data-srcset="/databasel10/image-4.png, /databasel10/image-4.png 1.5x, /databasel10/image-4.png 2x"
+        data-sizes="auto"
+        alt="/databasel10/image-4.png"
+        title="alt text" width="515" height="240" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel10/image-5.png"
+        data-srcset="/databasel10/image-5.png, /databasel10/image-5.png 1.5x, /databasel10/image-5.png 2x"
+        data-sizes="auto"
+        alt="/databasel10/image-5.png"
+        title="alt text" width="729" height="647" /></p>
+<h3 id="a-single-thread">A single thread</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel10/image-6.png"
+        data-srcset="/databasel10/image-6.png, /databasel10/image-6.png 1.5x, /databasel10/image-6.png 2x"
+        data-sizes="auto"
+        alt="/databasel10/image-6.png"
+        title="alt text" width="249" height="530" />
+side note:</p>
+<ul>
+<li>how does the block operator work with the streaming operator</li>
+<li>Sort use disk internally</li>
+<li>we do not store the operator output in disk ===&gt; stream through the call stack</li>
+</ul>
+<h2 id="join-operators">Join operators</h2>
+<h3 id="simple-nested-loops-join">Simple Nested Loops Join</h3>
+<p><a href="https://cs186berkeley.net/sp21/resources/static/notes/n08-Joins.pdf" target="_blank" rel="noopener noreffer ">see the course note, not that hard to understand</a>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel10/image-7.png"
+        data-srcset="/databasel10/image-7.png, /databasel10/image-7.png 1.5x, /databasel10/image-7.png 2x"
+        data-sizes="auto"
+        alt="/databasel10/image-7.png"
+        title="alt text" width="581" height="492" />
+$[R] + [R]|S|$
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel10/image-8.png"
+        data-srcset="/databasel10/image-8.png, /databasel10/image-8.png 1.5x, /databasel10/image-8.png 2x"
+        data-sizes="auto"
+        alt="/databasel10/image-8.png"
+        title="alt text" width="555" height="495" />
+$[S] + [S]|R|$ 顺序很重要！</p>
+<h3 id="pages-nested-loops-join">Pages Nested Loops Join</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel10/image-9.png"
+        data-srcset="/databasel10/image-9.png, /databasel10/image-9.png 1.5x, /databasel10/image-9.png 2x"
+        data-sizes="auto"
+        alt="/databasel10/image-9.png"
+        title="alt text" width="574" height="464" />
+$[R]+[R][S]$</p>
+<h3 id="chunk-nested-loops-join">Chunk Nested Loops Join</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel10/image-10.png"
+        data-srcset="/databasel10/image-10.png, /databasel10/image-10.png 1.5x, /databasel10/image-10.png 2x"
+        data-sizes="auto"
+        alt="/databasel10/image-10.png"
+        title="alt text" width="566" height="478" />
+$[R] + \lceil(\frac{[R]}{B-2})\rceil[S]$</p>
+<h3 id="index-nested-loops-join">Index Nested Loops Join</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel10/image-11.png"
+        data-srcset="/databasel10/image-11.png, /databasel10/image-11.png 1.5x, /databasel10/image-11.png 2x"
+        data-sizes="auto"
+        alt="/databasel10/image-11.png"
+        title="alt text" width="1187" height="714" />
+$[R] + |R|*(cost\ of\ index\ lookup)$
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel10/image-12.png"
+        data-srcset="/databasel10/image-12.png, /databasel10/image-12.png 1.5x, /databasel10/image-12.png 2x"
+        data-sizes="auto"
+        alt="/databasel10/image-12.png"
+        title="alt text" width="1423" height="366" /></p>
+<h4 id="cost-of-index-lookup">cost of index lookup</h4>
+<ul>
+<li>unclustered: (# of matching s tuples for each r <strong>tuple</strong>) $\times$ (access cost of per s tuple)</li>
+<li>clustered: (# of matching s tuples for each r <strong>pages</strong>) $\times$ (access cost of per s page)</li>
+</ul>
+<h3 id="sort-merge-join">Sort-Merge Join</h3>
+<p>依次滚两个纸带，对齐，归并。
+$Sort(R) + Sort(S) + ([R]+[S])$</p>
+<p>worst $|R|[S]$ , too many dups</p>
+<h4 id="a-refinement-of-the-sort-merge-join">a refinement of the sort-merge join</h4>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel10/image-13.png"
+        data-srcset="/databasel10/image-13.png, /databasel10/image-13.png 1.5x, /databasel10/image-13.png 2x"
+        data-sizes="auto"
+        alt="/databasel10/image-13.png"
+        title="alt text" width="1620" height="921" />
+note that if join and sort, will cost around 9500 &gt; 7500</p>
+<p>so sort and join can allow us to get the ORDER BY free &#x1f914; here comes the refinement
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel10/image-14.png"
+        data-srcset="/databasel10/image-14.png, /databasel10/image-14.png 1.5x, /databasel10/image-14.png 2x"
+        data-sizes="auto"
+        alt="/databasel10/image-14.png"
+        title="alt text" width="1579" height="861" />
+重点在于对sorting最后一次merge的优化，因为可以 track R和S的最小值，于是开始join的步骤即可</p>
+<h3 id="naive-hash-join">Naive Hash Join</h3>
+<ul>
+<li>Requires equality predicate: equi-join and natural join</li>
+<li>assume that $R$ is small enough to fit in memory</li>
+<li>algorithm:
+<ul>
+<li>hash $R$ into hash table</li>
+<li>scan $S$ (can be huge file) and probe $R$</li>
+</ul>
+</li>
+<li>requires $R$ &lt; (B-2)*hash_fill_factor</li>
+</ul>
+<h3 id="grace-hash-join">Grace Hash Join</h3>
+<ul>
+<li>Requires equality predicate: equi-join and natural join</li>
+<li>algorithm:
+<ul>
+<li><strong>partition</strong> tuples from $R$ and $S$</li>
+<li><strong>Build &amp; Probe</strong> a separate hash table for each partition
+<ul>
+<li>assume that each partition is small enough to fit in memory
+<ul>
+<li>recurse if necessary</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel10/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-03%20144232.png"
+        data-srcset="/databasel10/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-03%20144232.png, /databasel10/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-03%20144232.png 1.5x, /databasel10/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-03%20144232.png 2x"
+        data-sizes="auto"
+        alt="/databasel10/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-03%20144232.png"
+        title="alt text" width="1068" height="557" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel10/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-03%20144244.png"
+        data-srcset="/databasel10/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-03%20144244.png, /databasel10/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-03%20144244.png 1.5x, /databasel10/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-03%20144244.png 2x"
+        data-sizes="auto"
+        alt="/databasel10/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-03%20144244.png"
+        title="alt text" width="1065" height="525" />
+cost:
+$3([R]+[S])$</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel10/image-15.png"
+        data-srcset="/databasel10/image-15.png, /databasel10/image-15.png 1.5x, /databasel10/image-15.png 2x"
+        data-sizes="auto"
+        alt="/databasel10/image-15.png"
+        title="alt text" width="1190" height="367" />
+so it is a good choice for large $S$ and small $R$
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel10/image-16.png"
+        data-srcset="/databasel10/image-16.png, /databasel10/image-16.png 1.5x, /databasel10/image-16.png 2x"
+        data-sizes="auto"
+        alt="/databasel10/image-16.png"
+        title="alt text" width="754" height="388" />
+Hybrid Hash Join is not included &#x1f914;</p>
+<h2 id="summary">Summary</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel10/image-17.png"
+        data-srcset="/databasel10/image-17.png, /databasel10/image-17.png 1.5x, /databasel10/image-17.png 2x"
+        data-sizes="auto"
+        alt="/databasel10/image-17.png"
+        title="alt text" width="1037" height="650" /></p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -124,7 +506,7 @@
                             <a class="link-to-markdown" href="/databasel10/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/databasel10/" data-title="CS186-L10: "><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/databasel10/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/databasel10/" data-title="CS186-L10: "><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/databasel10/" data-title="CS186-L10: "><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/databasel10/" data-title="CS186-L10: "><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/databasel10/" data-title="CS186-L10: Iterators &amp; Joins"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/databasel10/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/databasel10/" data-title="CS186-L10: Iterators &amp; Joins"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/databasel10/" data-title="CS186-L10: Iterators &amp; Joins"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/databasel10/" data-title="CS186-L10: Iterators &amp; Joins"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
