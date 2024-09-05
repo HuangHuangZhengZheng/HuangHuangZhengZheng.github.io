@@ -7,7 +7,13 @@
         <title>CS186-L14: Transactions &amp; Concurrency II - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/databasel14/">
   <meta property="og:site_name" content="HHZZ`s space">
   <meta property="og:title" content="CS186-L14: Transactions &amp; Concurrency II">
-  <meta property="og:description" content="This is my cool site">
+  <meta property="og:description" content="Two Phase Locking (2PL) Strict 2PL same as 2PL, but with stricter definition of release locks at once
+pink area is the Strict 2PL
+Lock Management there is a lock manager, which maintains a hash table keyed on names of objects being locked
+Deadlocks &amp;#x1f914;
+why happen? side note:
+prioritize upgrades can avoid #2 unlike the OS which can have a fixed order of required sources&amp;hellip;&amp;hellip;
+avoiding deadlocks timeout first, TIMEOUT is a not so bad idea &amp;#x1f914;">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
@@ -16,7 +22,13 @@
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="CS186-L14: Transactions &amp; Concurrency II">
-<meta name="twitter:description" content="">
+<meta name="twitter:description" content="Two Phase Locking (2PL) Strict 2PL same as 2PL, but with stricter definition of release locks at once
+pink area is the Strict 2PL
+Lock Management there is a lock manager, which maintains a hash table keyed on names of objects being locked
+Deadlocks &#x1f914;
+why happen? side note:
+prioritize upgrades can avoid #2 unlike the OS which can have a fixed order of required sources&hellip;&hellip;
+avoiding deadlocks timeout first, TIMEOUT is a not so bad idea &#x1f914;">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -31,7 +43,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/databasel14\/"
-        },"genre": "posts","wordcount":  0 ,
+        },"genre": "posts","wordcount":  293 ,
         "url": "http:\/\/example.org\/databasel14\/","datePublished": "2024-08-14T09:38:03+08:00","dateModified": "2024-08-14T09:38:03+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -105,15 +117,202 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">CS186-L14: Transactions & Concurrency II</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-14">2024-08-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;0 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;0 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-14">2024-08-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;293 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"></div><div class="post-footer" id="post-footer">
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#two-phase-locking-2pl">Two Phase Locking (2PL)</a></li>
+    <li><a href="#strict-2pl">Strict 2PL</a></li>
+    <li><a href="#lock-management">Lock Management</a></li>
+    <li><a href="#deadlocks">Deadlocks</a>
+      <ul>
+        <li><a href="#why-happen">why happen?</a></li>
+        <li><a href="#avoiding-deadlocks">avoiding deadlocks</a>
+          <ul>
+            <li><a href="#timeout">timeout</a></li>
+            <li><a href="#two-patterns">two patterns</a></li>
+            <li><a href="#deadlock-detection">deadlock detection</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#lock-granularity">Lock Granularity</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#1-is-锁的兼容性">1. <strong>IS 锁的兼容性：</strong></a></li>
+            <li><a href="#2-ix-锁的兼容性">2. <strong>IX 锁的兼容性：</strong></a></li>
+            <li><a href="#3-s-锁的兼容性">3. <strong>S 锁的兼容性：</strong></a></li>
+            <li><a href="#4-six-锁的兼容性">4. <strong>SIX 锁的兼容性：</strong></a></li>
+            <li><a href="#5-x-锁的兼容性">5. <strong>X 锁的兼容性：</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#summary">Summary</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="two-phase-locking-2pl">Two Phase Locking (2PL)</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel14/image.png"
+        data-srcset="/databasel14/image.png, /databasel14/image.png 1.5x, /databasel14/image.png 2x"
+        data-sizes="auto"
+        alt="/databasel14/image.png"
+        title="alt text" width="845" height="344" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel14/image-1.png"
+        data-srcset="/databasel14/image-1.png, /databasel14/image-1.png 1.5x, /databasel14/image-1.png 2x"
+        data-sizes="auto"
+        alt="/databasel14/image-1.png"
+        title="alt text" width="1111" height="421" /></p>
+<h2 id="strict-2pl">Strict 2PL</h2>
+<p>same as 2PL, but with stricter definition of <em><strong>release locks at once</strong></em></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel14/image-2.png"
+        data-srcset="/databasel14/image-2.png, /databasel14/image-2.png 1.5x, /databasel14/image-2.png 2x"
+        data-sizes="auto"
+        alt="/databasel14/image-2.png"
+        title="alt text" width="822" height="525" />
+pink area is the Strict 2PL</p>
+<h2 id="lock-management">Lock Management</h2>
+<p>there is a lock manager, which maintains a hash table keyed on names of objects being locked</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel14/image-3.png"
+        data-srcset="/databasel14/image-3.png, /databasel14/image-3.png 1.5x, /databasel14/image-3.png 2x"
+        data-sizes="auto"
+        alt="/databasel14/image-3.png"
+        title="alt text" width="603" height="106" /></p>
+<h2 id="deadlocks">Deadlocks</h2>
+<p>&#x1f914;</p>
+<h3 id="why-happen">why happen?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel14/image-4.png"
+        data-srcset="/databasel14/image-4.png, /databasel14/image-4.png 1.5x, /databasel14/image-4.png 2x"
+        data-sizes="auto"
+        alt="/databasel14/image-4.png"
+        title="alt text" width="730" height="486" />
+side note:</p>
+<ul>
+<li>prioritize upgrades can avoid #2</li>
+</ul>
+<p>unlike the OS which can have a fixed order of required sources&hellip;&hellip;</p>
+<h3 id="avoiding-deadlocks">avoiding deadlocks</h3>
+<h4 id="timeout">timeout</h4>
+<p>first, TIMEOUT is a not so bad idea &#x1f914;</p>
+<h4 id="two-patterns">two patterns</h4>
+<p>then&hellip;
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel14/image-5.png"
+        data-srcset="/databasel14/image-5.png, /databasel14/image-5.png 1.5x, /databasel14/image-5.png 2x"
+        data-sizes="auto"
+        alt="/databasel14/image-5.png"
+        title="alt text" width="807" height="482" />
+why can work out?</p>
+<ul>
+<li>young at best wait, at worst die</li>
+<li>order by age, so no circle</li>
+<li>if re-start or &ldquo;hurt/wound&rdquo;, time stamp won&rsquo;t change</li>
+</ul>
+<h4 id="deadlock-detection">deadlock detection</h4>
+<p>try to construct a graph of all the locks and wait-for relationships &#x1f914;</p>
+<p>as long as there is a <strong>cycle</strong>, deadlock happens!</p>
+<p>exp: most cycle is 2-3 nodes</p>
+<h2 id="lock-granularity">Lock Granularity</h2>
+<p>at which level should i lock? tuples? pages? tables? or database?</p>
+<p>multi-granularity locking is helpful!
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel14/image-6.png"
+        data-srcset="/databasel14/image-6.png, /databasel14/image-6.png 1.5x, /databasel14/image-6.png 2x"
+        data-sizes="auto"
+        alt="/databasel14/image-6.png"
+        title="alt text" width="1125" height="388" />
+数据库锁的兼容性矩阵（Lock Compatibility Matrix）
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel14/image-7.png"
+        data-srcset="/databasel14/image-7.png, /databasel14/image-7.png 1.5x, /databasel14/image-7.png 2x"
+        data-sizes="auto"
+        alt="/databasel14/image-7.png"
+        title="alt text" width="1116" height="605" /></p>
+<p>数据库锁的兼容性矩阵用于定义不同类型的锁在数据库系统中能否同时共存，避免在多用户并发环境下产生数据不一致的问题。这个矩阵展示了当一个事务持有某种类型的锁时，另一个事务能否在同一资源上获得另一种类型的锁。</p>
+<p>锁类型的基本含义：</p>
+<ul>
+<li><strong>IS (Intent Share)：</strong> 意图在更细粒度（如记录级别）上获取共享锁（S锁）。</li>
+<li><strong>IX (Intent Exclusive)：</strong> 意图在更细粒度上获取排他锁（X锁）。</li>
+<li><strong>S (Share)：</strong> 共享锁，允许多个事务同时读取数据，但不允许修改。</li>
+<li><strong>X (Exclusive)：</strong> 排他锁，独占锁，禁止其他事务读取或修改数据。</li>
+<li><strong>SIX (Shared Intent Exclusive)：</strong> 同时持有S锁和IX锁。事务希望对较粗粒度的对象进行共享访问，同时在更细粒度的对象上进行排他修改。</li>
+</ul>
+<h4 id="1-is-锁的兼容性">1. <strong>IS 锁的兼容性：</strong></h4>
+<ul>
+<li><strong>IS vs IS:</strong> <code>true</code>，多个事务可以在同一资源上放置IS锁，表示它们都有意在更细粒度上获得S锁。</li>
+<li><strong>IS vs IX:</strong> <code>true</code>，IS和IX锁可以同时存在，意味着一个事务意图获取共享锁，而另一个事务意图获取排他锁，两者在粗粒度上并不冲突。</li>
+<li><strong>IS vs S:</strong> <code>true</code>，IS锁与S锁兼容，一个事务可以有意获取更细粒度的共享锁，而另一个事务在当前粒度上持有共享锁。</li>
+<li><strong>IS vs SIX:</strong> <code>true</code>，SIX锁本质上是S锁和IX锁的组合，IS与这两种锁都兼容，因此IS与SIX兼容。</li>
+<li><strong>IS vs X:</strong> <code>false</code>，IS锁与X锁不兼容，X锁是排他锁，不允许其他任何锁共存。</li>
+</ul>
+<h4 id="2-ix-锁的兼容性">2. <strong>IX 锁的兼容性：</strong></h4>
+<ul>
+<li><strong>IX vs IS:</strong> <code>true</code>，见上文解释。</li>
+<li><strong>IX vs IX:</strong> <code>true</code>，多个事务可以同时表示它们有意在更细粒度上获取排他锁。</li>
+<li><strong>IX vs S:</strong> <code>false</code>，IX锁与S锁不兼容，排他锁意图与共享锁发生冲突。</li>
+<li><strong>IX vs SIX:</strong> <code>false</code>，SIX锁包含共享锁部分，与IX锁不兼容。</li>
+<li><strong>IX vs X:</strong> <code>false</code>，排他锁之间无法共存。</li>
+</ul>
+<h4 id="3-s-锁的兼容性">3. <strong>S 锁的兼容性：</strong></h4>
+<ul>
+<li><strong>S vs IS:</strong> <code>true</code>，见上文解释。</li>
+<li><strong>S vs IX:</strong> <code>false</code>，见上文解释。</li>
+<li><strong>S vs S:</strong> <code>true</code>，多个事务可以共享读取资源，因此S锁彼此兼容。</li>
+<li><strong>S vs SIX:</strong> <code>false</code>，因为SIX锁中包含IX锁部分，而S与IX不兼容。</li>
+<li><strong>S vs X:</strong> <code>false</code>，共享锁与排他锁不兼容。</li>
+</ul>
+<h4 id="4-six-锁的兼容性">4. <strong>SIX 锁的兼容性：</strong></h4>
+<ul>
+<li><strong>SIX vs IS:</strong> <code>true</code>，见上文解释。</li>
+<li><strong>SIX vs IX:</strong> <code>false</code>，见上文解释。</li>
+<li><strong>SIX vs S:</strong> <code>false</code>，见上文解释。</li>
+<li><strong>SIX vs SIX:</strong> <code>false</code>，两个SIX锁不兼容，因为SIX锁包含排他意图。</li>
+<li><strong>SIX vs X:</strong> <code>false</code>，排他锁与SIX锁不兼容。</li>
+</ul>
+<h4 id="5-x-锁的兼容性">5. <strong>X 锁的兼容性：</strong></h4>
+<ul>
+<li><strong>X vs IS:</strong> <code>false</code>，见上文解释。</li>
+<li><strong>X vs IX:</strong> <code>false</code>，见上文解释。</li>
+<li><strong>X vs S:</strong> <code>false</code>，见上文解释。</li>
+<li><strong>X vs SIX:</strong> <code>false</code>，见上文解释。</li>
+<li><strong>X vs X:</strong> <code>false</code>，两个排他锁不能共存。</li>
+</ul>
+<h2 id="summary">Summary</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel14/image-8.png"
+        data-srcset="/databasel14/image-8.png, /databasel14/image-8.png 1.5x, /databasel14/image-8.png 2x"
+        data-sizes="auto"
+        alt="/databasel14/image-8.png"
+        title="alt text" width="1026" height="450" /></p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
