@@ -100,30 +100,6 @@
         alt="/avatar.jpg"
         title="/avatar.jpg" width="1920" height="1280" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/HuangHuangZhengZheng" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/datal16/">DATA100-L16: Probability I: Random Variables</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">随机变量及其分布 参考 概率论与数理统计 课程即可
-期望与方差 $$ \mathbb{E}[X] 和 Var(X) $$ 参考 概率论与数理统计 课程即可
-随机变量的和 equality vs Identically distributed vs IID 有意思的分析 &#x1f60f;
-期望和方差的性质 协方差与相关系数 伯努利（0-1）和Binomial分布 Sample Statistics sample mean central limit theorem </div><div class="post-footer">
-        <a href="/datal16/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/datal13/">DATA100-L13: Gradient Descent, Feature Engineering</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content"> $\downarrow{shuffle}$ SGD: Stochastic Gradient Descent(but size == 1)
-convexity (凹凸性) feature engineering 在于怎么使用transforming
-feature function see website code
-non-numeric features one-hot encoding concat high order polynomials detect overfitting collect more data more see next lecture </div><div class="post-footer">
-        <a href="/datal13/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/datal14/">DATA100-L14: Case Study (HCE): Fairness in Housing Appraisal</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content"> Accuracy is a necessary, but not sufficient, condition for fair system. Fairness and transparency are context-dependent. Learn to work with contexts, and consider how your data analysis will reshape them. Keep in mind the power, and limits, of data analysis. </div><div class="post-footer">
-        <a href="/datal14/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/datal12/">DATA100-L12: Gradient Descent, sklearn</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">开始调包！&#x1f60f;
-1 2 3 4 from sklearn.linear_model import LinearRegression model = LinearRegression() model.fit(df[[&#34;total_bill&#34;]], df[&#34;tip&#34;]) df[&#34;predicted_tip&#34;] = model.predict(df[[&#34;total_bill&#34;]]) 所有的机器学习似乎都在最小化loss function，而梯度下降就是一种优化算法，它通过迭代的方式不断更新模型参数，使得loss function的值不断减小。
-详情见NNDL栏目</div><div class="post-footer">
-        <a href="/datal12/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/datal11/">DATA100-L11: Ordinary Least Squares</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">linear in theta linear combination of parameters $\theta$ define multiple linear regression OLS problem formulation ordinary least squares (OLS)
 用线性代数重写之 $$ \mathbb{\hat{Y}} = \mathbb{X}\theta $$
@@ -139,6 +115,41 @@ OLS properties residuals the bias/intercept term existence of a unique solution 
 loss的敏感性问题 revisiting SLR evaluation 画图before modeling！！！
 transformations to fit linear model 经验之谈 introducing notation for multiple linear regression </div><div class="post-footer">
         <a href="/datal10/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/datal9/">DATA100-L9: Introduction to Modeling, Simple Linear Regression</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-18">2024-07-18</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">regression line, correlation 高中最小二乘法(least squares regression)，线性回归 model $“all\ models\ are\ wrong,\ but\ some\ are\ useful”$
+trade between interpretability and accuracy
+物理or统计模型
+the modeling process: definitions SLR: Simple Linear Regression 明确input和parameter的区别
+有些统计模型可以没有参数！
+loss functions metric for good or bad
+minimizing average loss (Empirical Risk 期望风险？) 最优化！
+interpreting SLR: slope, Anscombe&rsquo;s quartet 解释参数意义 预测未知数据 evaluating the model: RMSE, Residual Plot </div><div class="post-footer">
+        <a href="/datal9/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/datal8/">DATA100-L8: Visualizations Ⅱ</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-16">2024-07-16</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">Kernel Density Functions KDE Mechanics smoothing in 1D（histograms） rug &mdash;&gt; histogram
+smoothing in 2D（heatmaps/Hex Plot） KDEs 代码实现： sns.distplot(data, kde=True)
+Kernel Functions and Bandwidth $\alpha$ 越大，曲线越平滑
+当然也有其他的kernel函数，比如：
+triangular kernel epanechnikov kernel boxcar kernel Visualization Theory 注意可视化的目的！
+仅仅靠统计方法不够直观并且不够准确！
+Information Channels color, shape, size, position (coordinate), and orientation
+Harnessing X/Y do not use different scales for x and y in the same visualization!
+比例适中
+Harnessing Color 选颜色，jet, viridis主题等等
+最好选择perceptually uniform的颜色！而jet不是！Inferno， Turbo可以 Harnessing Markings 人更倾向于比较整齐的直方图（一维长度）</div><div class="post-footer">
+        <a href="/datal8/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/datalab2/">DATA100-lab2</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-15">2024-07-15</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab02.ipynb&#34;) Pandas is one of the most widely used Python libraries in data science. In this lab, you will review commonly used data wrangling operations/tools in Pandas. We aim to give you familiarity with:
+Creating DataFrames Slicing DataFrames (i.e. selecting rows and columns) Filtering data (using boolean arrays and groupby.filter) Aggregating (using groupby.agg) In this lab you are going to use several pandas methods.</div><div class="post-footer">
+        <a href="/datalab2/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/pandas/">Pandas</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/datal7/">DATA100-L7: Visualization Ⅰ</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-15">2024-07-15</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">distribution 定义 bar plots for distribution data8 example compound way seaborn example 1 2 3 4 import seaborn as sns sns.countplot(x=&#39;variable&#39;, data=df) # rug plot sns.rugplot(x=&#39;variable&#39;, data=df, color=&#39;black&#39;) plotly example 处理异常值（outliers）和峰值（mode） density curve 密度曲线看峰 箱型图 1 2 import seaborn as sns sns.boxplot(x=&#39;variable&#39;, data=df) violin plot 和箱型图对比来看，violin plot宽度有意义 1 2 import seaborn as sns sns.violinplot(x=&#39;variable&#39;, data=df) 处理overplotting random jitter </div><div class="post-footer">
+        <a href="/datal7/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>

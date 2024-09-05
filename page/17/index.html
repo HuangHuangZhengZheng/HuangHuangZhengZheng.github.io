@@ -100,27 +100,6 @@
         alt="/avatar.jpg"
         title="/avatar.jpg" width="1920" height="1280" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/HuangHuangZhengZheng" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/61b-17/">61B-17: Asymptotics I</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-13">2024-07-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">Runtime Characterizations In most cases, we care only about asymptotic behavior, i.e. what happens for very large N.
-Intuitive Simplification Consider only the worst case. Restrict Attention to One Operation. 找得好并且巧的话可很快看出，退而求其次的话可以考虑画图分析 Eliminate low order terms. Eliminate multiplicative constants. Big-Theta Notation $\Theta(f(n))$ The only difference is that we use the Θ symbol anywhere we would have said “order of growth”. </div><div class="post-footer">
-        <a href="/61b-17/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/datalab1/">DATA100-lab1</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-13">2024-07-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab01.ipynb&#34;) Lab 01 Welcome to the first lab of Data 100! This lab is meant to help you familiarize yourself with JupyterHub, review Python and numpy, and introduce you to matplotlib, a Python visualization library.
-Part 1: Jupyter Tips Viewing Documentation To output the documentation for a function, use the help function.
-1 2 # help(print) ?print You can also use Jupyter to view function documentation inside your notebook.</div><div class="post-footer">
-        <a href="/datalab1/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/jupyter/">Jupyter</a>,&nbsp;<a href="/tags/numpy/">Numpy</a>,&nbsp;<a href="/tags/matplotlib/">Matplotlib</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/datal2/">DATA100-L2: Data Sampling and Probability</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-13">2024-07-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">two common errors chance error: randomness can vary bias error: systematic error in one direction bias common non-random samples convenience samples: samples that are easy to obtain but may not be representative of the population quota samples: samples that are drawn from a limited number of individuals or groups random samples random can produce biases but we can estimate the bias and chance error properties of random samples:
-明确概率 no need to be same chance &#x1f60b; scheme of random sampling: &ldquo;Random sample with replacement&rdquo; 是统计学中的一个术语，指的是在进行抽样时，每次抽取的样本在放回原总体之后，再进行下一次抽取。这意味着同一个个体或元素有可能被多次抽取。</div><div class="post-footer">
-        <a href="/datal2/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/datal1/">DATA100-L1: course overview</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-12">2024-07-12</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">cycle of data science </div><div class="post-footer">
-        <a href="/datal1/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/61b-35/">61B-35: Sorting and Algorithmic Bounds</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-11">2024-07-11</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">math problems $$ N! ∈ \Omega (N^{N}) ? $$ √
 $$ log(N!) ∈ \Omega (NlogN) ? $$ √
@@ -145,6 +124,35 @@ worst case: $$ \Theta(NlogN) $$
 quick select&ndash;using partitioning worst case:
 a sorted array $$ \Theta(N^2) $$</div><div class="post-footer">
         <a href="/61b-34/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/61b-38/">61B-38: Compression</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-11">2024-07-11</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">信息无损性 模糊性
+prefix-free codes Huffman codes shannon-fano codes using tries to convert compressed data into a original data longest prefix matching
+self-extracting bits </div><div class="post-footer">
+        <a href="/61b-38/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/61b-37/">61B-37:overview, Tries</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-11">2024-07-11</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">Overview Tries——前缀树/字典树 usages:
+prefix matching approximate matching 1 2 keysWithPrefix(String prefix) // returns all keys in the trie that start with the given prefix longestPrefixOf(String query) // returns the longest key in the trie that is a prefix of the query implementation 1 2 3 4 5 6 7 8 private class Node{ boolean exists; Map&lt;Character, Node&gt; links; public Node(){ links = new TreeMap&lt;&gt;(); exists = false; } } T9 keyboard Ternary search Tries 1 2 3 4 5 6 7 public class TSTSet&lt;Value&gt;{ private Node&lt;Value&gt; root; private static class Node&lt;Value&gt;{ private char c; private Node&lt;Value&gt; lo, mid, hi; } } 但是这种实现方式表现不佳 </div><div class="post-footer">
+        <a href="/61b-37/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/61b-36/">61B-36: Radix Sorts</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-10">2024-07-10</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">radix sort 不用comparisons的排序算法，时间复杂度O(dn)，d为最大数的位数，n为待排序数的个数。
+空间换时间
+bucket sort
+counting sort:
+找出待排序数的最大值max，确定计数数组的长度为max+1。 遍历待排序数，将每个数的个位数值作为索引，将该索引对应的计数数组元素加1。 遍历计数数组，将每个元素的值作为索引，将该索引对应的元素值输出到结果数组中。 runtime: O(n+k)
+LSD radix sort: least significant digit radix sort
+找出待排序数的最大值max，确定计数数组的长度为10。 遍历待排序数，将每个数的个位数值作为索引，将该索引对应的计数数组元素加1。 LSD sort vs merge sort:
+similar strings:LSD sort is better
+dissimilar strings:merge sort is better
+MSD radix sort: most significant digit radix sort
+找出待排序数的最大值max，确定计数数组的长度为10。 遍历待排序数，将每个数的个位数值作为索引，将该索引对应的计数数组元素加1。 遍历计数数组，将每个元素的值作为索引，将该索引对应的元素值输出到结果数组中。 runtime: O(n+k)</div><div class="post-footer">
+        <a href="/61b-36/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/csapp_attacklab/">CSAPP_attacklab</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-04-22">2024-04-22</time></span>&nbsp;<span class="post-category">included in <a href="/categories/csapp/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CSAPP</a></span></div><div class="content">实验一：栈溢出攻击实验 栈的基本结构 实验二：ROP攻击实验 </div><div class="post-footer">
+        <a href="/csapp_attacklab/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>

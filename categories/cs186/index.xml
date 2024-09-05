@@ -3,39 +3,7 @@
         <title>CS186 - Category - HHZZ`s space</title>
         <link>http://example.org/categories/cs186/</link>
         <description>CS186 - Category - HHZZ`s space</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 14 Aug 2024 09:38:07 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/cs186/" rel="self" type="application/rss+xml" /><item>
-    <title>CS186-L25: </title>
-    <link>http://example.org/databasel25/</link>
-    <pubDate>Wed, 14 Aug 2024 09:38:07 &#43;0800</pubDate>
-    <author>HHZZ</author>
-    <guid>http://example.org/databasel25/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>CS186-L22: </title>
-    <link>http://example.org/databasel22/</link>
-    <pubDate>Wed, 14 Aug 2024 09:38:06 &#43;0800</pubDate>
-    <author>HHZZ</author>
-    <guid>http://example.org/databasel22/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>CS186-L23: </title>
-    <link>http://example.org/databasel23/</link>
-    <pubDate>Wed, 14 Aug 2024 09:38:06 &#43;0800</pubDate>
-    <author>HHZZ</author>
-    <guid>http://example.org/databasel23/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>CS186-L24: </title>
-    <link>http://example.org/databasel24/</link>
-    <pubDate>Wed, 14 Aug 2024 09:38:06 &#43;0800</pubDate>
-    <author>HHZZ</author>
-    <guid>http://example.org/databasel24/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 14 Aug 2024 09:38:05 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/cs186/" rel="self" type="application/rss+xml" /><item>
     <title>CS186-L19: </title>
     <link>http://example.org/databasel19/</link>
     <pubDate>Wed, 14 Aug 2024 09:38:05 &#43;0800</pubDate>
@@ -82,6 +50,49 @@
     <author>HHZZ</author>
     <guid>http://example.org/databasel18/</guid>
     <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>CS186-L13: Transactions &amp; Concurrency I</title>
+    <link>http://example.org/databasel13/</link>
+    <pubDate>Wed, 14 Aug 2024 09:38:03 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/databasel13/</guid>
+    <description><![CDATA[&#x1f389;
+Intro transaction&rsquo;s principle ACID Isolation (Concurrency) however, do not consider serial execution &#x1f605;
+Atomicity and Durability Consistency Concurrency Control 基本符号表达 序列等价性：
+$Def1:$ Serial Schedule each transaction executes in a serial order, one after the other, without any intervening $Def2:$ schedules Equivalent involve same transaction each transaction&rsquo;s actions are the same order both transactions have the same effect on the database&rsquo;s final state $Def3:$ Serializable if a schedule is serializable, then it is equivalent to some serial schedule Conflict Serializability conflict operations?]]></description>
+</item>
+<item>
+    <title>CS186-L14: Transactions &amp; Concurrency II</title>
+    <link>http://example.org/databasel14/</link>
+    <pubDate>Wed, 14 Aug 2024 09:38:03 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/databasel14/</guid>
+    <description><![CDATA[Two Phase Locking (2PL) Strict 2PL same as 2PL, but with stricter definition of release locks at once
+pink area is the Strict 2PL
+Lock Management there is a lock manager, which maintains a hash table keyed on names of objects being locked
+Deadlocks &#x1f914;
+why happen? side note:
+prioritize upgrades can avoid #2 unlike the OS which can have a fixed order of required sources&hellip;&hellip;
+avoiding deadlocks timeout first, TIMEOUT is a not so bad idea &#x1f914;]]></description>
+</item>
+<item>
+    <title>CS186-L15: DB Design: Entity-Relationship Models</title>
+    <link>http://example.org/databasel15/</link>
+    <pubDate>Wed, 14 Aug 2024 09:38:03 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/databasel15/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>CS186-L10: Iterators &amp; Joins</title>
+    <link>http://example.org/databasel10/</link>
+    <pubDate>Wed, 14 Aug 2024 09:38:02 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/databasel10/</guid>
+    <description><![CDATA[Intro relational operator: tuples(in other way, relations) in, tuples out
+1 2 3 4 5 6 7 abstract class Iterator { // set up the children and the dataflow graph void setup(List&lt;Iterator&gt; inputs); void init(args); // state tuple next(); // returns the next tuple void close(); } presudo code select on the fly &#x1f914;
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 init() { child.]]></description>
 </item>
 </channel>
 </rss>
