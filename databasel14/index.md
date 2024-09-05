@@ -1,3 +1,3 @@
-# CS186-L14: 
+# CS186-L14: Transactions & Concurrency II
 
 
