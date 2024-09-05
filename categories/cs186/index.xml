@@ -82,7 +82,8 @@ avoiding deadlocks timeout first, TIMEOUT is a not so bad idea &#x1f914;]]></des
     <pubDate>Wed, 14 Aug 2024 09:38:03 &#43;0800</pubDate>
     <author>HHZZ</author>
     <guid>http://example.org/databasel15/</guid>
-    <description><![CDATA[]]></description>
+    <description><![CDATA[Overview how to design a database instead of DBMS! &#x1f914; this class mainly focuses on the conceptual design
+Data Models and Relational Levels of Abstraction def in Data model abstractions example Data Independence Entity-Relationship Model (ERM) Def Entity: a real-world object that can be described and identified by a set of attributes Entity Set: a collection of similar entities all entities in an entity set have the same attributes each entity set has a key each attribute has a domain Relationship: a connection between two entity sets Key and Participation Constraints Key Constraints Participation Constraints Weak Entity Alternative Notation and Terminology decoder graph &#x1f605; math notation &#x1f605; Binary vs Ternary Relationships ]]></description>
 </item>
 <item>
     <title>CS186-L10: Iterators &amp; Joins</title>

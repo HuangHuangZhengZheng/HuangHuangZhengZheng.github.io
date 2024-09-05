@@ -7,7 +7,8 @@
         <title>CS186-L15: DB Design: Entity-Relationship Models - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/databasel15/">
   <meta property="og:site_name" content="HHZZ`s space">
   <meta property="og:title" content="CS186-L15: DB Design: Entity-Relationship Models">
-  <meta property="og:description" content="This is my cool site">
+  <meta property="og:description" content="Overview how to design a database instead of DBMS! &amp;#x1f914; this class mainly focuses on the conceptual design
+Data Models and Relational Levels of Abstraction def in Data model abstractions example Data Independence Entity-Relationship Model (ERM) Def Entity: a real-world object that can be described and identified by a set of attributes Entity Set: a collection of similar entities all entities in an entity set have the same attributes each entity set has a key each attribute has a domain Relationship: a connection between two entity sets Key and Participation Constraints Key Constraints Participation Constraints Weak Entity Alternative Notation and Terminology decoder graph &amp;#x1f605; math notation &amp;#x1f605; Binary vs Ternary Relationships ">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
@@ -16,7 +17,8 @@
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="CS186-L15: DB Design: Entity-Relationship Models">
-<meta name="twitter:description" content="">
+<meta name="twitter:description" content="Overview how to design a database instead of DBMS! &#x1f914; this class mainly focuses on the conceptual design
+Data Models and Relational Levels of Abstraction def in Data model abstractions example Data Independence Entity-Relationship Model (ERM) Def Entity: a real-world object that can be described and identified by a set of attributes Entity Set: a collection of similar entities all entities in an entity set have the same attributes each entity set has a key each attribute has a domain Relationship: a connection between two entity sets Key and Participation Constraints Key Constraints Participation Constraints Weak Entity Alternative Notation and Terminology decoder graph &#x1f605; math notation &#x1f605; Binary vs Ternary Relationships ">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -31,7 +33,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/databasel15\/"
-        },"genre": "posts","wordcount":  0 ,
+        },"genre": "posts","wordcount":  111 ,
         "url": "http:\/\/example.org\/databasel15\/","datePublished": "2024-08-14T09:38:03+08:00","dateModified": "2024-08-14T09:38:03+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -105,15 +107,173 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">CS186-L15: DB Design: Entity-Relationship Models</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-14">2024-08-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;0 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;0 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-14">2024-08-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;111 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"></div><div class="post-footer" id="post-footer">
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#data-models-and-relational-levels-of-abstraction">Data Models and Relational Levels of Abstraction</a>
+      <ul>
+        <li><a href="#def-in-data-model">def in Data model</a></li>
+        <li><a href="#abstractions">abstractions</a></li>
+      </ul>
+    </li>
+    <li><a href="#data-independence">Data Independence</a></li>
+    <li><a href="#entity-relationship-model-erm">Entity-Relationship Model (ERM)</a>
+      <ul>
+        <li><a href="#def">Def</a></li>
+      </ul>
+    </li>
+    <li><a href="#key-and-participation-constraints">Key and Participation Constraints</a>
+      <ul>
+        <li><a href="#key-constraints">Key Constraints</a></li>
+        <li><a href="#participation-constraints">Participation Constraints</a></li>
+      </ul>
+    </li>
+    <li><a href="#weak-entity">Weak Entity</a></li>
+    <li><a href="#alternative-notation-and-terminology">Alternative Notation and Terminology</a></li>
+    <li><a href="#binary-vs-ternary-relationships">Binary vs Ternary Relationships</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="overview">Overview</h2>
+<p>how to design a database instead of DBMS! &#x1f914;
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel15/image.png"
+        data-srcset="/databasel15/image.png, /databasel15/image.png 1.5x, /databasel15/image.png 2x"
+        data-sizes="auto"
+        alt="/databasel15/image.png"
+        title="alt text" width="888" height="529" /></p>
+<p>this class mainly focuses on the conceptual design</p>
+<h2 id="data-models-and-relational-levels-of-abstraction">Data Models and Relational Levels of Abstraction</h2>
+<h3 id="def-in-data-model">def in Data model</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel15/image-1.png"
+        data-srcset="/databasel15/image-1.png, /databasel15/image-1.png 1.5x, /databasel15/image-1.png 2x"
+        data-sizes="auto"
+        alt="/databasel15/image-1.png"
+        title="alt text" width="1024" height="431" /></p>
+<h3 id="abstractions">abstractions</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel15/image-2.png"
+        data-srcset="/databasel15/image-2.png, /databasel15/image-2.png 1.5x, /databasel15/image-2.png 2x"
+        data-sizes="auto"
+        alt="/databasel15/image-2.png"
+        title="alt text" width="826" height="547" />
+example
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel15/image-3.png"
+        data-srcset="/databasel15/image-3.png, /databasel15/image-3.png 1.5x, /databasel15/image-3.png 2x"
+        data-sizes="auto"
+        alt="/databasel15/image-3.png"
+        title="alt text" width="844" height="561" /></p>
+<h2 id="data-independence">Data Independence</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel15/image-4.png"
+        data-srcset="/databasel15/image-4.png, /databasel15/image-4.png 1.5x, /databasel15/image-4.png 2x"
+        data-sizes="auto"
+        alt="/databasel15/image-4.png"
+        title="alt text" width="864" height="303" /></p>
+<h2 id="entity-relationship-model-erm">Entity-Relationship Model (ERM)</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel15/image-5.png"
+        data-srcset="/databasel15/image-5.png, /databasel15/image-5.png 1.5x, /databasel15/image-5.png 2x"
+        data-sizes="auto"
+        alt="/databasel15/image-5.png"
+        title="alt text" width="808" height="564" /></p>
+<h3 id="def">Def</h3>
+<ul>
+<li><strong>Entity</strong>: a real-world object that can be described and identified by a set of attributes</li>
+<li><strong>Entity Set</strong>: a collection of similar entities
+<ul>
+<li>all entities in an entity set have the same attributes</li>
+<li>each entity set has a key</li>
+<li>each attribute has a domain</li>
+</ul>
+</li>
+<li><strong>Relationship</strong>: a connection between two entity sets
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel15/image-6.png"
+        data-srcset="/databasel15/image-6.png, /databasel15/image-6.png 1.5x, /databasel15/image-6.png 2x"
+        data-sizes="auto"
+        alt="/databasel15/image-6.png"
+        title="alt text" width="1291" height="872" /></li>
+</ul>
+<h2 id="key-and-participation-constraints">Key and Participation Constraints</h2>
+<h3 id="key-constraints">Key Constraints</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel15/image-7.png"
+        data-srcset="/databasel15/image-7.png, /databasel15/image-7.png 1.5x, /databasel15/image-7.png 2x"
+        data-sizes="auto"
+        alt="/databasel15/image-7.png"
+        title="alt text" width="1209" height="903" /></p>
+<h3 id="participation-constraints">Participation Constraints</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel15/image-8.png"
+        data-srcset="/databasel15/image-8.png, /databasel15/image-8.png 1.5x, /databasel15/image-8.png 2x"
+        data-sizes="auto"
+        alt="/databasel15/image-8.png"
+        title="alt text" width="1194" height="752" /></p>
+<h2 id="weak-entity">Weak Entity</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel15/image-9.png"
+        data-srcset="/databasel15/image-9.png, /databasel15/image-9.png 1.5x, /databasel15/image-9.png 2x"
+        data-sizes="auto"
+        alt="/databasel15/image-9.png"
+        title="alt text" width="1484" height="753" /></p>
+<h2 id="alternative-notation-and-terminology">Alternative Notation and Terminology</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel15/image-10.png"
+        data-srcset="/databasel15/image-10.png, /databasel15/image-10.png 1.5x, /databasel15/image-10.png 2x"
+        data-sizes="auto"
+        alt="/databasel15/image-10.png"
+        title="alt text" width="1140" height="642" />
+decoder graph &#x1f605;
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel15/image-11.png"
+        data-srcset="/databasel15/image-11.png, /databasel15/image-11.png 1.5x, /databasel15/image-11.png 2x"
+        data-sizes="auto"
+        alt="/databasel15/image-11.png"
+        title="alt text" width="743" height="411" />
+math notation &#x1f605;
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel15/image-12.png"
+        data-srcset="/databasel15/image-12.png, /databasel15/image-12.png 1.5x, /databasel15/image-12.png 2x"
+        data-sizes="auto"
+        alt="/databasel15/image-12.png"
+        title="alt text" width="763" height="423" /></p>
+<h2 id="binary-vs-ternary-relationships">Binary vs Ternary Relationships</h2>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
