@@ -37,7 +37,7 @@ problem: sys crash before dirty page of a committed transaction is written to di
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/databasel17\/"
-        },"genre": "posts","wordcount":  200 ,
+        },"genre": "posts","wordcount":  658 ,
         "url": "http:\/\/example.org\/databasel17\/","datePublished": "2024-08-14T09:38:04+08:00","dateModified": "2024-08-14T09:38:04+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -111,8 +111,8 @@ problem: sys crash before dirty page of a committed transaction is written to di
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">CS186-L17: Recovery</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-14">2024-08-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;200 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-14">2024-08-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;658 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -133,7 +133,20 @@ problem: sys crash before dirty page of a committed transaction is written to di
     <li><a href="#redo-logging">Redo logging</a></li>
     <li><a href="#aries-logging">ARIES logging</a></li>
     <li><a href="#aries-and-checkpointing">ARIES and Checkpointing</a></li>
-    <li><a href="#aries-logging-during-normal-execution">ARIES logging during normal execution</a></li>
+    <li><a href="#aries-logging-during-normal-execution-commit-and-abort">ARIES logging during normal execution, commit and abort</a>
+      <ul>
+        <li><a href="#normal-execution">Normal Execution</a></li>
+        <li><a href="#commit-and-abort">Commit and Abort</a></li>
+      </ul>
+    </li>
+    <li><a href="#aries-recovery-overview-and-analysis-redo-and-undo-phases">ARIES Recovery, Overview and Analysis, Redo and Undo Phases</a>
+      <ul>
+        <li><a href="#analysis-phase">Analysis Phase:</a></li>
+        <li><a href="#redo-phase">Redo Phase:</a></li>
+        <li><a href="#undo-phase">Undo Phase:</a></li>
+      </ul>
+    </li>
+    <li><a href="#faq">FAQ</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="need-for-atomicity-and-durability-sql-support-for-transactions">Need for Atomicity and Durability, SQL support for Transactions</h2>
@@ -287,9 +300,237 @@ from beginning to end, redo all log records that are committed</p>
         data-srcset="/databasel17/image-10.png, /databasel17/image-10.png 1.5x, /databasel17/image-10.png 2x"
         data-sizes="auto"
         alt="/databasel17/image-10.png"
-        title="alt text" width="1505" height="891" /></p>
+        title="alt text" width="1505" height="891" />
+注意有许多不同的log record种类，构成上有不一样的地方</p>
+<p>prevLSN ===&gt; linkedlist</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel17/image-11.png"
+        data-srcset="/databasel17/image-11.png, /databasel17/image-11.png 1.5x, /databasel17/image-11.png 2x"
+        data-sizes="auto"
+        alt="/databasel17/image-11.png"
+        title="alt text" width="1068" height="593" />
+dirty page ===&gt; as long as it is in memory, it is dirty &#x1f600;
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel17/image-12.png"
+        data-srcset="/databasel17/image-12.png, /databasel17/image-12.png 1.5x, /databasel17/image-12.png 2x"
+        data-sizes="auto"
+        alt="/databasel17/image-12.png"
+        title="alt text" width="796" height="508" />
+物理空间的抽象分布</p>
 <h2 id="aries-and-checkpointing">ARIES and Checkpointing</h2>
-<h2 id="aries-logging-during-normal-execution">ARIES logging during normal execution</h2>
+<p>Checkpoint:</p>
+<ul>
+<li>idea: <em>save the DB state periodically to disk</em>, so that we don&rsquo;t need to always process entire log records during recovery</li>
+<li>During a checkpoint:
+<ul>
+<li>stop accepting new transactions</li>
+<li>wait for all active transactions to commit or abort</li>
+<li>flush log to disk</li>
+<li>flush dirty pages to disk</li>
+<li>write a checkpoint record to the log, <em>flush log again</em></li>
+<li>At this point, changes by committed transactions are written to disk, and aborted transactions are rolled back.</li>
+</ul>
+</li>
+</ul>
+<p>Fuzzy Checkpoint:</p>
+<ul>
+<li>save state of all txns and pages status
+<ul>
+<li>some txns can be running during checkpoint and dirty pages not flushed yet</li>
+</ul>
+</li>
+</ul>
+<p>data structure and idea: write-ahead log &#x1f914;
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel17/image-14.png"
+        data-srcset="/databasel17/image-14.png, /databasel17/image-14.png 1.5x, /databasel17/image-14.png 2x"
+        data-sizes="auto"
+        alt="/databasel17/image-14.png"
+        title="alt text" width="1091" height="487" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel17/image-13.png"
+        data-srcset="/databasel17/image-13.png, /databasel17/image-13.png 1.5x, /databasel17/image-13.png 2x"
+        data-sizes="auto"
+        alt="/databasel17/image-13.png"
+        title="alt text" width="1056" height="558" /></p>
+<h2 id="aries-logging-during-normal-execution-commit-and-abort">ARIES logging during normal execution, commit and abort</h2>
+<h3 id="normal-execution">Normal Execution</h3>
+<p>基本上就是把上述的链表实现一遍，注意(WAL)概念和定义即可</p>
+<h3 id="commit-and-abort">Commit and Abort</h3>
+<p>同样注意管理四个区域：Transaction Table, Log, Buffer Pool, and Dirty Page Table
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel17/image-15.png"
+        data-srcset="/databasel17/image-15.png, /databasel17/image-15.png 1.5x, /databasel17/image-15.png 2x"
+        data-sizes="auto"
+        alt="/databasel17/image-15.png"
+        title="alt text" width="1175" height="608" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel17/image-16.png"
+        data-srcset="/databasel17/image-16.png, /databasel17/image-16.png 1.5x, /databasel17/image-16.png 2x"
+        data-sizes="auto"
+        alt="/databasel17/image-16.png"
+        title="alt text" width="1177" height="651" />
+比较经典的example
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel17/image-17.png"
+        data-srcset="/databasel17/image-17.png, /databasel17/image-17.png 1.5x, /databasel17/image-17.png 2x"
+        data-sizes="auto"
+        alt="/databasel17/image-17.png"
+        title="alt text" width="1181" height="666" /></p>
+<h2 id="aries-recovery-overview-and-analysis-redo-and-undo-phases">ARIES Recovery, Overview and Analysis, Redo and Undo Phases</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel17/image-18.png"
+        data-srcset="/databasel17/image-18.png, /databasel17/image-18.png 1.5x, /databasel17/image-18.png 2x"
+        data-sizes="auto"
+        alt="/databasel17/image-18.png"
+        title="alt text" width="362" height="468" /></p>
+<h3 id="analysis-phase">Analysis Phase:</h3>
+<ul>
+<li>
+<ol>
+<li><em><strong>scan forward from the last checkpoint,</strong></em></li>
+</ol>
+<ul>
+<li><strong>END</strong> record? rm Xact form Xact table, do not care anymore</li>
+<li><strong>UPDATE</strong> record? if its page P not in DPT, add it to DPT, set its recLSN = LSN</li>
+<li><strong>!END</strong> record?
+<ul>
+<li>if not in X table, add it to X table</li>
+<li>set lastLSN = LSN</li>
+<li>change X&rsquo;s state to COMMITTED if see a commit record, ABORTED if see an abort record</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ol start="2">
+<li>at the end of Analysis Phase,</li>
+</ol>
+<ul>
+<li>for any X in X table in COMMITTED state,
+<ul>
+<li>write a corresponding END record to the log record</li>
+<li>and rm  X from X table</li>
+</ul>
+</li>
+<li>now X table can tell which X were active at time of crash
+<ul>
+<li>change status of running X to ABORTED and write an ABORT record to the log</li>
+</ul>
+</li>
+<li>DPT says which dirty pages might not have been flushed to disk yet</li>
+</ul>
+</li>
+</ul>
+<h3 id="redo-phase">Redo Phase:</h3>
+<ul>
+<li>
+<ol>
+<li><em><strong>scan forward from the smallest recLSN in DPT,</strong></em></li>
+</ol>
+<ul>
+<li>For each update log record or CLR with a given LSN, REDO the action unless:
+<ul>
+<li>affected page is not in DPT</li>
+<li>affected page is in DPT, but has recLSN &gt; LSN</li>
+<li>pageLSN in DB &gt;= LSN</li>
+</ul>
+</li>
+<li>to REDO an action:
+<ul>
+<li>reapply logged action</li>
+<li>set pageLSN in DB to LSN. NO additional logging, no forcing</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="undo-phase">Undo Phase:</h3>
+<ul>
+<li>
+<ol>
+<li><em><strong>scan backward from the CRASH point,</strong></em></li>
+</ol>
+<ul>
+<li>simple solution
+<ul>
+<li><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel17/image-19.png"
+        data-srcset="/databasel17/image-19.png, /databasel17/image-19.png 1.5x, /databasel17/image-19.png 2x"
+        data-sizes="auto"
+        alt="/databasel17/image-19.png"
+        title="alt text" width="851" height="254" /></li>
+</ul>
+</li>
+<li>do at once</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">toUndo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">lastLSNs</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">all</span><span class="w"> </span><span class="n">X</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">X</span><span class="w"> </span><span class="n">table</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">while</span><span class="w"> </span><span class="o">!</span><span class="n">toUndo</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">():</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">thisLR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">toUndo</span><span class="p">.</span><span class="na">find_and_remove_largest_LSN</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">thisLR</span><span class="p">.</span><span class="na">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">CLR</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">thisLR</span><span class="p">.</span><span class="na">undoNextLSN</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">NULL</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">toUndo</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">thisLR</span><span class="p">.</span><span class="na">undoNextLSN</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">else</span><span class="p">:</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">write</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">END</span><span class="w"> </span><span class="n">record</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">thisLR</span><span class="p">.</span><span class="na">xid</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">log</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">else</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">thisLR</span><span class="p">.</span><span class="na">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">UPDATE</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">write</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">CLR</span><span class="w"> </span><span class="n">record</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">undo</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">log</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">undo</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">update</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">database</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">LR</span><span class="p">.</span><span class="na">type</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">NULL</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">toUndo</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">thisLR</span><span class="p">.</span><span class="na">undoPrevLSN</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">elif</span><span class="w"> </span><span class="n">thisLR</span><span class="p">.</span><span class="na">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">NULL</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">write</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">END</span><span class="w"> </span><span class="n">record</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">thisLR</span><span class="p">.</span><span class="na">xid</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">log</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="faq">FAQ</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel17/image-20.png"
+        data-srcset="/databasel17/image-20.png, /databasel17/image-20.png 1.5x, /databasel17/image-20.png 2x"
+        data-sizes="auto"
+        alt="/databasel17/image-20.png"
+        title="alt text" width="963" height="458" /></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
@@ -313,7 +554,7 @@ from beginning to end, redo all log records that are committed</p>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/databasel18/" class="prev" rel="prev" title="CS186-L18: "><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>CS186-L18: </a>
+    <div class="post-nav"><a href="/databasel18/" class="prev" rel="prev" title="CS186-L18: Parallel Query Processing"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>CS186-L18: Parallel Query Processing</a>
             <a href="/databasel16/" class="next" rel="next" title="CS186-L16: DB Design: FDs and Normalization">CS186-L16: DB Design: FDs and Normalization<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>

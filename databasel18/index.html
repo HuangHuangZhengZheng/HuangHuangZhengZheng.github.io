@@ -4,10 +4,14 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>CS186-L18:  - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/databasel18/">
+        <title>CS186-L18: Parallel Query Processing - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/databasel18/">
   <meta property="og:site_name" content="HHZZ`s space">
-  <meta property="og:title" content="CS186-L18: ">
-  <meta property="og:description" content="This is my cool site">
+  <meta property="og:title" content="CS186-L18: Parallel Query Processing">
+  <meta property="og:description" content="Intro to Parallelism Architectures and Software Structures we will focus on the shared-nothing here &amp;#x1f60b;
+Kinds of Query Parallelism side note:
+intra: single inter: multiple at the same level Parallel Data Acceess Data Partitioning across Machines Round robin means that each machine haves the same shuffled data
+parallel scans scan and merge
+$\sigma_p$ : an operator that skip entire sites that have no matching tuples in range or hash partitioning">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
@@ -15,8 +19,12 @@
     <meta property="article:modified_time" content="2024-08-14T09:38:04+08:00">
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="CS186-L18: ">
-<meta name="twitter:description" content="">
+<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="CS186-L18: Parallel Query Processing">
+<meta name="twitter:description" content="Intro to Parallelism Architectures and Software Structures we will focus on the shared-nothing here &#x1f60b;
+Kinds of Query Parallelism side note:
+intra: single inter: multiple at the same level Parallel Data Acceess Data Partitioning across Machines Round robin means that each machine haves the same shuffled data
+parallel scans scan and merge
+$\sigma_p$ : an operator that skip entire sites that have no matching tuples in range or hash partitioning">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -26,12 +34,12 @@
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "CS186-L18: ",
+        "headline": "CS186-L18: Parallel Query Processing",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/databasel18\/"
-        },"genre": "posts","wordcount":  0 ,
+        },"genre": "posts","wordcount":  187 ,
         "url": "http:\/\/example.org\/databasel18\/","datePublished": "2024-08-14T09:38:04+08:00","dateModified": "2024-08-14T09:38:04+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -103,17 +111,181 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">CS186-L18: </h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">CS186-L18: Parallel Query Processing</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-14">2024-08-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;0 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;0 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-14">2024-08-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;187 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"></div><div class="post-footer" id="post-footer">
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#intro-to-parallelism">Intro to Parallelism</a></li>
+    <li><a href="#architectures-and-software-structures">Architectures and Software Structures</a></li>
+    <li><a href="#kinds-of-query-parallelism">Kinds of Query Parallelism</a></li>
+    <li><a href="#parallel-data-acceess">Parallel Data Acceess</a>
+      <ul>
+        <li><a href="#data-partitioning-across-machines">Data Partitioning across Machines</a></li>
+        <li><a href="#parallel-scans">parallel scans</a></li>
+        <li><a href="#lookup-by-key">lookup by key</a></li>
+        <li><a href="#insert">insert</a></li>
+        <li><a href="#parallel-hash-join">parallel hash join</a>
+          <ul>
+            <li><a href="#naive-hash-join">naive hash join</a></li>
+            <li><a href="#grace-hash-join">grace hash join</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#sort-merge-join">sort-merge join</a></li>
+    <li><a href="#parallel-aggregationgrouping">parallel aggregation/grouping</a></li>
+    <li><a href="#symmetric-hash-joins">Symmetric Hash Joins</a></li>
+    <li><a href="#one-sided-and-broadcast-joins">one-sided and Broadcast Joins</a>
+      <ul>
+        <li><a href="#one-sided-joins">one-sided joins</a></li>
+        <li><a href="#broadcast-joins">broadcast joins</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="intro-to-parallelism">Intro to Parallelism</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel18/image.png"
+        data-srcset="/databasel18/image.png, /databasel18/image.png 1.5x, /databasel18/image.png 2x"
+        data-sizes="auto"
+        alt="/databasel18/image.png"
+        title="alt text" width="1089" height="411" /></p>
+<h2 id="architectures-and-software-structures">Architectures and Software Structures</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel18/image-1.png"
+        data-srcset="/databasel18/image-1.png, /databasel18/image-1.png 1.5x, /databasel18/image-1.png 2x"
+        data-sizes="auto"
+        alt="/databasel18/image-1.png"
+        title="alt text" width="1016" height="595" />
+we will focus on the shared-nothing here &#x1f60b;</p>
+<h2 id="kinds-of-query-parallelism">Kinds of Query Parallelism</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel18/image-3.png"
+        data-srcset="/databasel18/image-3.png, /databasel18/image-3.png 1.5x, /databasel18/image-3.png 2x"
+        data-sizes="auto"
+        alt="/databasel18/image-3.png"
+        title="alt text" width="786" height="596" />
+side note:</p>
+<ul>
+<li>intra: single</li>
+<li>inter: multiple at the same level</li>
+</ul>
+<h2 id="parallel-data-acceess">Parallel Data Acceess</h2>
+<h3 id="data-partitioning-across-machines">Data Partitioning across Machines</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel18/image-4.png"
+        data-srcset="/databasel18/image-4.png, /databasel18/image-4.png 1.5x, /databasel18/image-4.png 2x"
+        data-sizes="auto"
+        alt="/databasel18/image-4.png"
+        title="alt text" width="859" height="377" />
+Round robin means that each machine haves the same shuffled data</p>
+<h3 id="parallel-scans">parallel scans</h3>
+<p>scan and merge</p>
+<p>$\sigma_p$ : an operator that skip entire sites that have no matching tuples in <em>range or hash partitioning</em></p>
+<h3 id="lookup-by-key">lookup by key</h3>
+<p>if data partitioned on function of key, then Route lookup only to the relevant nodes</p>
+<p>otherwise, broadcast lookup to all nodes</p>
+<h3 id="insert">insert</h3>
+<p>if on function of key, insert only to the relevant nodes</p>
+<p>else insert to any nodes</p>
+<p>insert an unique key seems to be same</p>
+<h3 id="parallel-hash-join">parallel hash join</h3>
+<h4 id="naive-hash-join">naive hash join</h4>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel18/image-5.png"
+        data-srcset="/databasel18/image-5.png, /databasel18/image-5.png 1.5x, /databasel18/image-5.png 2x"
+        data-sizes="auto"
+        alt="/databasel18/image-5.png"
+        title="alt text" width="1079" height="350" /></p>
+<h4 id="grace-hash-join">grace hash join</h4>
+<p>Pass one is like hashing above, but do it 2x&ndash; once for each relation being joined</p>
+<p>Pass two is local grace hash join per node</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel18/image-6.png"
+        data-srcset="/databasel18/image-6.png, /databasel18/image-6.png 1.5x, /databasel18/image-6.png 2x"
+        data-sizes="auto"
+        alt="/databasel18/image-6.png"
+        title="alt text" width="878" height="313" /></p>
+<h2 id="sort-merge-join">sort-merge join</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel18/image-7.png"
+        data-srcset="/databasel18/image-7.png, /databasel18/image-7.png 1.5x, /databasel18/image-7.png 2x"
+        data-sizes="auto"
+        alt="/databasel18/image-7.png"
+        title="alt text" width="1026" height="570" />
+回到均分问题了</p>
+<p>然后和上面一样读取分配两次for join</p>
+<h2 id="parallel-aggregationgrouping">parallel aggregation/grouping</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel18/image-8.png"
+        data-srcset="/databasel18/image-8.png, /databasel18/image-8.png 1.5x, /databasel18/image-8.png 2x"
+        data-sizes="auto"
+        alt="/databasel18/image-8.png"
+        title="alt text" width="454" height="387" />
+naive group by:
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel18/image-9.png"
+        data-srcset="/databasel18/image-9.png, /databasel18/image-9.png 1.5x, /databasel18/image-9.png 2x"
+        data-sizes="auto"
+        alt="/databasel18/image-9.png"
+        title="alt text" width="1033" height="477" /></p>
+<h2 id="symmetric-hash-joins">Symmetric Hash Joins</h2>
+<p>sort and hash can break the pipeline&hellip;&hellip;
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel18/image-10.png"
+        data-srcset="/databasel18/image-10.png, /databasel18/image-10.png 1.5x, /databasel18/image-10.png 2x"
+        data-sizes="auto"
+        alt="/databasel18/image-10.png"
+        title="alt text" width="983" height="514" /></p>
+<h2 id="one-sided-and-broadcast-joins">one-sided and Broadcast Joins</h2>
+<h3 id="one-sided-joins">one-sided joins</h3>
+<p>one is sorted/hashed
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel18/image-11.png"
+        data-srcset="/databasel18/image-11.png, /databasel18/image-11.png 1.5x, /databasel18/image-11.png 2x"
+        data-sizes="auto"
+        alt="/databasel18/image-11.png"
+        title="alt text" width="426" height="380" /></p>
+<h3 id="broadcast-joins">broadcast joins</h3>
+<p>one is small
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel18/image-12.png"
+        data-srcset="/databasel18/image-12.png, /databasel18/image-12.png 1.5x, /databasel18/image-12.png 2x"
+        data-sizes="auto"
+        alt="/databasel18/image-12.png"
+        title="alt text" width="1042" height="505" /></p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -124,7 +296,7 @@
                             <a class="link-to-markdown" href="/databasel18/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/databasel18/" data-title="CS186-L18: "><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/databasel18/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/databasel18/" data-title="CS186-L18: "><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/databasel18/" data-title="CS186-L18: "><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/databasel18/" data-title="CS186-L18: "><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/databasel18/" data-title="CS186-L18: Parallel Query Processing"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/databasel18/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/databasel18/" data-title="CS186-L18: Parallel Query Processing"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/databasel18/" data-title="CS186-L18: Parallel Query Processing"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/databasel18/" data-title="CS186-L18: Parallel Query Processing"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>

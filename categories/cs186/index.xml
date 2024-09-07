@@ -47,12 +47,16 @@ not scalable in buffer if crash in 2a, inconsistencies will occur STEAL / NO FOR
 problem: sys crash before dirty page of a committed transaction is written to disk solution: flush as little as possible, in a convenient space, prior to commit.]]></description>
 </item>
 <item>
-    <title>CS186-L18: </title>
+    <title>CS186-L18: Parallel Query Processing</title>
     <link>http://example.org/databasel18/</link>
     <pubDate>Wed, 14 Aug 2024 09:38:04 &#43;0800</pubDate>
     <author>HHZZ</author>
     <guid>http://example.org/databasel18/</guid>
-    <description><![CDATA[]]></description>
+    <description><![CDATA[Intro to Parallelism Architectures and Software Structures we will focus on the shared-nothing here &#x1f60b;
+Kinds of Query Parallelism side note:
+intra: single inter: multiple at the same level Parallel Data Acceess Data Partitioning across Machines Round robin means that each machine haves the same shuffled data
+parallel scans scan and merge
+$\sigma_p$ : an operator that skip entire sites that have no matching tuples in range or hash partitioning]]></description>
 </item>
 <item>
     <title>CS186-L13: Transactions &amp; Concurrency I</title>
