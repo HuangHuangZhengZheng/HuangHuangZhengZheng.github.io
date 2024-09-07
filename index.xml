@@ -32,7 +32,9 @@ if no replication, key k is stored on $h(k)$ node if multi-way replication, key 
     <pubDate>Wed, 14 Aug 2024 09:38:05 &#43;0800</pubDate>
     <author>HHZZ</author>
     <guid>http://example.org/databasel21/</guid>
-    <description><![CDATA[]]></description>
+    <description><![CDATA[Motivation only scaling up relational databases is challenging :s
+MapReduce Data and Programming Model Target Map phase map function will not keep the state of the intermediate results, so it can be parallelized easily
+Reduce phase for example, wanna count the number of occurrences of each word in the input data, we can use the reduce function to sum up the values of the same key Implementation of MapReduce fault tolerance by writing intermediate results to disk&hellip;]]></description>
 </item>
 <item>
     <title>CS186-L16: DB Design: FDs and Normalization</title>

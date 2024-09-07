@@ -7,7 +7,9 @@
         <title>CS186-L21: MapReduce and Spark - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/databasel21/">
   <meta property="og:site_name" content="HHZZ`s space">
   <meta property="og:title" content="CS186-L21: MapReduce and Spark">
-  <meta property="og:description" content="This is my cool site">
+  <meta property="og:description" content="Motivation only scaling up relational databases is challenging :s
+MapReduce Data and Programming Model Target Map phase map function will not keep the state of the intermediate results, so it can be parallelized easily
+Reduce phase for example, wanna count the number of occurrences of each word in the input data, we can use the reduce function to sum up the values of the same key Implementation of MapReduce fault tolerance by writing intermediate results to disk&amp;hellip;">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
@@ -16,7 +18,9 @@
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="CS186-L21: MapReduce and Spark">
-<meta name="twitter:description" content="">
+<meta name="twitter:description" content="Motivation only scaling up relational databases is challenging :s
+MapReduce Data and Programming Model Target Map phase map function will not keep the state of the intermediate results, so it can be parallelized easily
+Reduce phase for example, wanna count the number of occurrences of each word in the input data, we can use the reduce function to sum up the values of the same key Implementation of MapReduce fault tolerance by writing intermediate results to disk&hellip;">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -31,7 +35,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/databasel21\/"
-        },"genre": "posts","wordcount":  0 ,
+        },"genre": "posts","wordcount":  194 ,
         "url": "http:\/\/example.org\/databasel21\/","datePublished": "2024-08-14T09:38:05+08:00","dateModified": "2024-08-14T09:38:05+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -105,15 +109,222 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">CS186-L21: MapReduce and Spark</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-14">2024-08-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;0 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;0 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-14">2024-08-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;194 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"></div><div class="post-footer" id="post-footer">
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#motivation">Motivation</a></li>
+    <li><a href="#mapreduce-data-and-programming-model">MapReduce Data and Programming Model</a>
+      <ul>
+        <li><a href="#map-phase">Map phase</a></li>
+        <li><a href="#reduce-phase">Reduce phase</a></li>
+      </ul>
+    </li>
+    <li><a href="#implementation-of-mapreduce">Implementation of MapReduce</a>
+      <ul>
+        <li><a href="#fault-tolerance">fault tolerance</a></li>
+        <li><a href="#implementation">implementation</a></li>
+      </ul>
+    </li>
+    <li><a href="#implementing-relational-operators">Implementing Relational Operators</a></li>
+    <li><a href="#introduction-to-spark">Introduction to Spark</a></li>
+    <li><a href="#programming-in-spark">Programming in Spark</a>
+      <ul>
+        <li><a href="#persistence">Persistence</a></li>
+      </ul>
+    </li>
+    <li><a href="#spark-20">Spark 2.0</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="motivation">Motivation</h2>
+<p>only scaling up relational databases is challenging :s</p>
+<h2 id="mapreduce-data-and-programming-model">MapReduce Data and Programming Model</h2>
+<p>Target
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel21/image.png"
+        data-srcset="/databasel21/image.png, /databasel21/image.png 1.5x, /databasel21/image.png 2x"
+        data-sizes="auto"
+        alt="/databasel21/image.png"
+        title="alt text" width="1067" height="438" /></p>
+<h3 id="map-phase">Map phase</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel21/image-1.png"
+        data-srcset="/databasel21/image-1.png, /databasel21/image-1.png 1.5x, /databasel21/image-1.png 2x"
+        data-sizes="auto"
+        alt="/databasel21/image-1.png"
+        title="alt text" width="1045" height="411" />
+map function will not keep the state of the intermediate results, so it can be parallelized easily</p>
+<h3 id="reduce-phase">Reduce phase</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel21/image-2.png"
+        data-srcset="/databasel21/image-2.png, /databasel21/image-2.png 1.5x, /databasel21/image-2.png 2x"
+        data-sizes="auto"
+        alt="/databasel21/image-2.png"
+        title="alt text" width="1124" height="377" />
+for example, wanna count the number of occurrences of each word in the input data, we can use the reduce function to sum up the values of the same key
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel21/image-3.png"
+        data-srcset="/databasel21/image-3.png, /databasel21/image-3.png 1.5x, /databasel21/image-3.png 2x"
+        data-sizes="auto"
+        alt="/databasel21/image-3.png"
+        title="alt text" width="839" height="602" /></p>
+<h2 id="implementation-of-mapreduce">Implementation of MapReduce</h2>
+<h3 id="fault-tolerance">fault tolerance</h3>
+<p>by writing intermediate results to disk&hellip;</p>
+<ul>
+<li>mappers can write their output to local disk</li>
+<li>reducers can read the output of mappers from local disk and combine them, if the reduce task is restarted, the reduce task is restarted on another server</li>
+</ul>
+<h3 id="implementation">implementation</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel21/image-4.png"
+        data-srcset="/databasel21/image-4.png, /databasel21/image-4.png 1.5x, /databasel21/image-4.png 2x"
+        data-sizes="auto"
+        alt="/databasel21/image-4.png"
+        title="alt text" width="1068" height="471" />
+how to handle the stragglers?
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel21/image-5.png"
+        data-srcset="/databasel21/image-5.png, /databasel21/image-5.png 1.5x, /databasel21/image-5.png 2x"
+        data-sizes="auto"
+        alt="/databasel21/image-5.png"
+        title="alt text" width="944" height="560" /></p>
+<h2 id="implementing-relational-operators">Implementing Relational Operators</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel21/image-6.png"
+        data-srcset="/databasel21/image-6.png, /databasel21/image-6.png 1.5x, /databasel21/image-6.png 2x"
+        data-sizes="auto"
+        alt="/databasel21/image-6.png"
+        title="alt text" width="926" height="601" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel21/image-7.png"
+        data-srcset="/databasel21/image-7.png, /databasel21/image-7.png 1.5x, /databasel21/image-7.png 2x"
+        data-sizes="auto"
+        alt="/databasel21/image-7.png"
+        title="alt text" width="932" height="604" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel21/image-8.png"
+        data-srcset="/databasel21/image-8.png, /databasel21/image-8.png 1.5x, /databasel21/image-8.png 2x"
+        data-sizes="auto"
+        alt="/databasel21/image-8.png"
+        title="alt text" width="941" height="581" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel21/image-9.png"
+        data-srcset="/databasel21/image-9.png, /databasel21/image-9.png 1.5x, /databasel21/image-9.png 2x"
+        data-sizes="auto"
+        alt="/databasel21/image-9.png"
+        title="alt text" width="1087" height="577" /></p>
+<h2 id="introduction-to-spark">Introduction to Spark</h2>
+<p>why MR sucks?</p>
+<ul>
+<li>hard to write more complex queries</li>
+<li>slow for writing all intermediate results to disk</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel21/image-10.png"
+        data-srcset="/databasel21/image-10.png, /databasel21/image-10.png 1.5x, /databasel21/image-10.png 2x"
+        data-sizes="auto"
+        alt="/databasel21/image-10.png"
+        title="alt text" width="1104" height="535" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel21/image-11.png"
+        data-srcset="/databasel21/image-11.png, /databasel21/image-11.png 1.5x, /databasel21/image-11.png 2x"
+        data-sizes="auto"
+        alt="/databasel21/image-11.png"
+        title="alt text" width="942" height="589" /></p>
+<h2 id="programming-in-spark">Programming in Spark</h2>
+<p>collections in spark
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel21/image-12.png"
+        data-srcset="/databasel21/image-12.png, /databasel21/image-12.png 1.5x, /databasel21/image-12.png 2x"
+        data-sizes="auto"
+        alt="/databasel21/image-12.png"
+        title="alt text" width="1002" height="347" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">JavaSparkContext</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SparkSession</span><span class="p">.</span><span class="na">builder</span><span class="p">().</span><span class="na">appName</span><span class="p">(</span><span class="s">&#34;MyApp&#34;</span><span class="p">).</span><span class="na">getOrCreate</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">JavaRDD</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="na">read</span><span class="p">().</span><span class="na">textFile</span><span class="p">(</span><span class="s">&#34;input.txt&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">JavaRDD</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">errors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lines</span><span class="p">.</span><span class="na">filter</span><span class="p">(</span><span class="n">line</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="s">&#34;error&#34;</span><span class="p">));</span><span class="w"> </span><span class="c1">// lazy</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">errors</span><span class="p">.</span><span class="na">collect</span><span class="p">()</span><span class="w"> </span><span class="c1">// eager</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>similar steps in spark and MR
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel21/image-13.png"
+        data-srcset="/databasel21/image-13.png, /databasel21/image-13.png 1.5x, /databasel21/image-13.png 2x"
+        data-sizes="auto"
+        alt="/databasel21/image-13.png"
+        title="alt text" width="1112" height="410" /></p>
+<h3 id="persistence">Persistence</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel21/image-14.png"
+        data-srcset="/databasel21/image-14.png, /databasel21/image-14.png 1.5x, /databasel21/image-14.png 2x"
+        data-sizes="auto"
+        alt="/databasel21/image-14.png"
+        title="alt text" width="1107" height="610" />
+API in Java
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel21/image-15.png"
+        data-srcset="/databasel21/image-15.png, /databasel21/image-15.png 1.5x, /databasel21/image-15.png 2x"
+        data-sizes="auto"
+        alt="/databasel21/image-15.png"
+        title="alt text" width="864" height="585" /></p>
+<h2 id="spark-20">Spark 2.0</h2>
+<p>has DataFrame API &#x1f632;</p>
+<p>and have Datasets API &#x1f632;</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel21/image-16.png"
+        data-srcset="/databasel21/image-16.png, /databasel21/image-16.png 1.5x, /databasel21/image-16.png 2x"
+        data-sizes="auto"
+        alt="/databasel21/image-16.png"
+        title="alt text" width="1035" height="440" /></p>
+<p>like DATA100 python!</p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
