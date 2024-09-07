@@ -16,15 +16,18 @@ Intro Distributed Locking each nodes has lock table locally, can manage the page
 Distributed Deadlocks Detection 合并全局waits Distributed Commit 全局投票 2PC The Recovery Processes crash situations 2PC, Locking and Availability 2PC + Strict 2PL locking what if a node is down?]]></description>
 </item>
 <item>
-    <title>CS186-L20: </title>
+    <title>CS186-L20: NoSQL</title>
     <link>http://example.org/databasel20/</link>
     <pubDate>Wed, 14 Aug 2024 09:38:05 &#43;0800</pubDate>
     <author>HHZZ</author>
     <guid>http://example.org/databasel20/</guid>
-    <description><![CDATA[]]></description>
+    <description><![CDATA[Scaling Relational Databases isn&rsquo;t always the best option including partitioning and replication
+BUT, consistency is hard to enforce!
+Taxonomy of NoSQL Data Models Key-Value Stores 1 2 Map&lt;Key, Value&gt; get/put Distribution / Partitioning, just using hash function
+if no replication, key k is stored on $h(k)$ node if multi-way replication, key k is stored on $h_i(k), i=1,2,&hellip;,n$ nodes Extensible Record Stores the idea is that do not use a simple key to lookup &#x1f914;]]></description>
 </item>
 <item>
-    <title>CS186-L21: </title>
+    <title>CS186-L21: MapReduce and Spark</title>
     <link>http://example.org/databasel21/</link>
     <pubDate>Wed, 14 Aug 2024 09:38:05 &#43;0800</pubDate>
     <author>HHZZ</author>

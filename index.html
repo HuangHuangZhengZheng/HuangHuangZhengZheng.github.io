@@ -106,11 +106,14 @@ Intro Distributed Locking each nodes has lock table locally, can manage the page
 Distributed Deadlocks Detection 合并全局waits Distributed Commit 全局投票 2PC The Recovery Processes crash situations 2PC, Locking and Availability 2PC + Strict 2PL locking what if a node is down?</div><div class="post-footer">
         <a href="/databasel19/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/databasel20/">CS186-L20: </a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-08-14">2024-08-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div><div class="content"></div><div class="post-footer">
+        <a href="/databasel20/">CS186-L20: NoSQL</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-08-14">2024-08-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div><div class="content">Scaling Relational Databases isn&rsquo;t always the best option including partitioning and replication
+BUT, consistency is hard to enforce!
+Taxonomy of NoSQL Data Models Key-Value Stores 1 2 Map&lt;Key, Value&gt; get/put Distribution / Partitioning, just using hash function
+if no replication, key k is stored on $h(k)$ node if multi-way replication, key k is stored on $h_i(k), i=1,2,&hellip;,n$ nodes Extensible Record Stores the idea is that do not use a simple key to lookup &#x1f914;</div><div class="post-footer">
         <a href="/databasel20/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/databasel21/">CS186-L21: </a>
+        <a href="/databasel21/">CS186-L21: MapReduce and Spark</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-08-14">2024-08-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div><div class="content"></div><div class="post-footer">
         <a href="/databasel21/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
