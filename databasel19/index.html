@@ -4,10 +4,12 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>CS186-L19:  - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/databasel19/">
+        <title>CS186-L19:  Distributed Transactions - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/databasel19/">
   <meta property="og:site_name" content="HHZZ`s space">
-  <meta property="og:title" content="CS186-L19: ">
-  <meta property="og:description" content="This is my cool site">
+  <meta property="og:title" content="CS186-L19:  Distributed Transactions">
+  <meta property="og:description" content="distributed == parallel shared nothing architecture
+Intro Distributed Locking each nodes has lock table locally, can manage the pages/tuples easily, but when it comes to Table, there should be a global lock table （or distributed lock tables）and a coordinator to manage the access to the table.
+Distributed Deadlocks Detection 合并全局waits Distributed Commit 全局投票 2PC The Recovery Processes crash situations 2PC, Locking and Availability 2PC &#43; Strict 2PL locking what if a node is down?">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
@@ -15,8 +17,10 @@
     <meta property="article:modified_time" content="2024-08-14T09:38:05+08:00">
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="CS186-L19: ">
-<meta name="twitter:description" content="">
+<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="CS186-L19:  Distributed Transactions">
+<meta name="twitter:description" content="distributed == parallel shared nothing architecture
+Intro Distributed Locking each nodes has lock table locally, can manage the pages/tuples easily, but when it comes to Table, there should be a global lock table （or distributed lock tables）and a coordinator to manage the access to the table.
+Distributed Deadlocks Detection 合并全局waits Distributed Commit 全局投票 2PC The Recovery Processes crash situations 2PC, Locking and Availability 2PC &#43; Strict 2PL locking what if a node is down?">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -26,12 +30,12 @@
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "CS186-L19: ",
+        "headline": "CS186-L19:  Distributed Transactions",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/databasel19\/"
-        },"genre": "posts","wordcount":  0 ,
+        },"genre": "posts","wordcount":  84 ,
         "url": "http:\/\/example.org\/databasel19\/","datePublished": "2024-08-14T09:38:05+08:00","dateModified": "2024-08-14T09:38:05+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -103,17 +107,134 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">CS186-L19: </h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">CS186-L19:  Distributed Transactions</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-14">2024-08-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;0 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;0 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-14">2024-08-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;84 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"></div><div class="post-footer" id="post-footer">
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#intro">Intro</a></li>
+    <li><a href="#distributed-locking">Distributed Locking</a></li>
+    <li><a href="#distributed-deadlocks-detection">Distributed Deadlocks Detection</a></li>
+    <li><a href="#distributed-commit">Distributed Commit</a>
+      <ul>
+        <li><a href="#2pc">2PC</a></li>
+      </ul>
+    </li>
+    <li><a href="#the-recovery-processes">The Recovery Processes</a></li>
+    <li><a href="#2pc-locking-and-availability">2PC, Locking and Availability</a></li>
+    <li><a href="#summary">Summary</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>distributed == parallel shared nothing architecture</p>
+<h2 id="intro">Intro</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel19/image.png"
+        data-srcset="/databasel19/image.png, /databasel19/image.png 1.5x, /databasel19/image.png 2x"
+        data-sizes="auto"
+        alt="/databasel19/image.png"
+        title="alt text" width="803" height="353" /></p>
+<h2 id="distributed-locking">Distributed Locking</h2>
+<p>each nodes has lock table locally, can manage the pages/tuples easily, but when it comes to Table, there should be a global lock table （or distributed lock tables）and a <em>coordinator</em> to manage the access to the table.</p>
+<h2 id="distributed-deadlocks-detection">Distributed Deadlocks Detection</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel19/image-1.png"
+        data-srcset="/databasel19/image-1.png, /databasel19/image-1.png 1.5x, /databasel19/image-1.png 2x"
+        data-sizes="auto"
+        alt="/databasel19/image-1.png"
+        title="alt text" width="1007" height="564" />
+合并全局waits
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel19/image-2.png"
+        data-srcset="/databasel19/image-2.png, /databasel19/image-2.png 1.5x, /databasel19/image-2.png 2x"
+        data-sizes="auto"
+        alt="/databasel19/image-2.png"
+        title="alt text" width="248" height="163" /></p>
+<h2 id="distributed-commit">Distributed Commit</h2>
+<p>全局投票
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel19/image-3.png"
+        data-srcset="/databasel19/image-3.png, /databasel19/image-3.png 1.5x, /databasel19/image-3.png 2x"
+        data-sizes="auto"
+        alt="/databasel19/image-3.png"
+        title="alt text" width="1074" height="583" /></p>
+<h3 id="2pc">2PC</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel19/image-4.png"
+        data-srcset="/databasel19/image-4.png, /databasel19/image-4.png 1.5x, /databasel19/image-4.png 2x"
+        data-sizes="auto"
+        alt="/databasel19/image-4.png"
+        title="alt text" width="801" height="492" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel19/image-5.png"
+        data-srcset="/databasel19/image-5.png, /databasel19/image-5.png 1.5x, /databasel19/image-5.png 2x"
+        data-sizes="auto"
+        alt="/databasel19/image-5.png"
+        title="alt text" width="1121" height="645" /></p>
+<h2 id="the-recovery-processes">The Recovery Processes</h2>
+<p>crash situations
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel19/image-7.png"
+        data-srcset="/databasel19/image-7.png, /databasel19/image-7.png 1.5x, /databasel19/image-7.png 2x"
+        data-sizes="auto"
+        alt="/databasel19/image-7.png"
+        title="alt text" width="897" height="372" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel19/image-6.png"
+        data-srcset="/databasel19/image-6.png, /databasel19/image-6.png 1.5x, /databasel19/image-6.png 2x"
+        data-sizes="auto"
+        alt="/databasel19/image-6.png"
+        title="alt text" width="1101" height="609" /></p>
+<h2 id="2pc-locking-and-availability">2PC, Locking and Availability</h2>
+<p>2PC + Strict 2PL locking
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel19/image-8.png"
+        data-srcset="/databasel19/image-8.png, /databasel19/image-8.png 1.5x, /databasel19/image-8.png 2x"
+        data-sizes="auto"
+        alt="/databasel19/image-8.png"
+        title="alt text" width="895" height="416" /></p>
+<p>what if a node is down? some locks can still be held by other nodes&hellip;&hellip;
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel19/image-9.png"
+        data-srcset="/databasel19/image-9.png, /databasel19/image-9.png 1.5x, /databasel19/image-9.png 2x"
+        data-sizes="auto"
+        alt="/databasel19/image-9.png"
+        title="alt text" width="1046" height="342" /></p>
+<h2 id="summary">Summary</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel19/image-10.png"
+        data-srcset="/databasel19/image-10.png, /databasel19/image-10.png 1.5x, /databasel19/image-10.png 2x"
+        data-sizes="auto"
+        alt="/databasel19/image-10.png"
+        title="alt text" width="861" height="471" /></p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -124,7 +245,7 @@
                             <a class="link-to-markdown" href="/databasel19/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/databasel19/" data-title="CS186-L19: "><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/databasel19/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/databasel19/" data-title="CS186-L19: "><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/databasel19/" data-title="CS186-L19: "><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/databasel19/" data-title="CS186-L19: "><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/databasel19/" data-title="CS186-L19:  Distributed Transactions"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/databasel19/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/databasel19/" data-title="CS186-L19:  Distributed Transactions"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/databasel19/" data-title="CS186-L19:  Distributed Transactions"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/databasel19/" data-title="CS186-L19:  Distributed Transactions"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>

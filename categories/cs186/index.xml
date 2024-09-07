@@ -4,12 +4,14 @@
         <link>http://example.org/categories/cs186/</link>
         <description>CS186 - Category - HHZZ`s space</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 14 Aug 2024 09:38:05 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/cs186/" rel="self" type="application/rss+xml" /><item>
-    <title>CS186-L19: </title>
+    <title>CS186-L19:  Distributed Transactions</title>
     <link>http://example.org/databasel19/</link>
     <pubDate>Wed, 14 Aug 2024 09:38:05 &#43;0800</pubDate>
     <author>HHZZ</author>
     <guid>http://example.org/databasel19/</guid>
-    <description><![CDATA[]]></description>
+    <description><![CDATA[distributed == parallel shared nothing architecture
+Intro Distributed Locking each nodes has lock table locally, can manage the pages/tuples easily, but when it comes to Table, there should be a global lock table （or distributed lock tables）and a coordinator to manage the access to the table.
+Distributed Deadlocks Detection 合并全局waits Distributed Commit 全局投票 2PC The Recovery Processes crash situations 2PC, Locking and Availability 2PC + Strict 2PL locking what if a node is down?]]></description>
 </item>
 <item>
     <title>CS186-L20: </title>
