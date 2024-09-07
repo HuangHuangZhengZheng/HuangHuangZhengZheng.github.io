@@ -30,20 +30,23 @@
     <description><![CDATA[]]></description>
 </item>
 <item>
-    <title>CS186-L16: </title>
+    <title>CS186-L16: DB Design: FDs and Normalization</title>
     <link>http://example.org/databasel16/</link>
     <pubDate>Wed, 14 Aug 2024 09:38:04 &#43;0800</pubDate>
     <author>HHZZ</author>
     <guid>http://example.org/databasel16/</guid>
-    <description><![CDATA[]]></description>
+    <description><![CDATA[Functional Dependencies big picture Def X -&gt; Y means X determines Y, X and Y can be a single column or multiple columns F+ means that to be the set of all FDs that are implied by F terminology Anomalies 可以用FD分解relation从而避免冗余 Armstrongs Axioms Attribute Closure wanna check if X-&gt;Y is in F+ BCNF and other Normal Forms Basic Normal Form NF is a def of data model! Boyce-Codd Normal Form Lossless Join Decompositions Def: decomposition won&rsquo;t create new attributes, and will cover the original attributes (不是完全无重叠分割)]]></description>
 </item>
 <item>
-    <title>CS186-L17: </title>
+    <title>CS186-L17: Recovery</title>
     <link>http://example.org/databasel17/</link>
     <pubDate>Wed, 14 Aug 2024 09:38:04 &#43;0800</pubDate>
     <author>HHZZ</author>
     <guid>http://example.org/databasel17/</guid>
-    <description><![CDATA[]]></description>
+    <description><![CDATA[Need for Atomicity and Durability, SQL support for Transactions Strawman Solution No Steal/Force policy
+seem like no a good choice for recovery
+not scalable in buffer if crash in 2a, inconsistencies will occur STEAL / NO FORCE, UNDO and REDO STEAL/NO FORCE no force:
+problem: sys crash before dirty page of a committed transaction is written to disk solution: flush as little as possible, in a convenient space, prior to commit.]]></description>
 </item>
 <item>
     <title>CS186-L18: </title>
@@ -85,7 +88,7 @@ avoiding deadlocks timeout first, TIMEOUT is a not so bad idea &#x1f914;]]></des
     <author>HHZZ</author>
     <guid>http://example.org/databasel15/</guid>
     <description><![CDATA[Overview how to design a database instead of DBMS! &#x1f914; this class mainly focuses on the conceptual design
-Data Models and Relational Levels of Abstraction def in Data model abstractions example Data Independence Entity-Relationship Model (ERM) Def Entity: a real-world object that can be described and identified by a set of attributes Entity Set: a collection of similar entities all entities in an entity set have the same attributes each entity set has a key each attribute has a domain Relationship: a connection between two entity sets Key and Participation Constraints Key Constraints Participation Constraints Weak Entity Alternative Notation and Terminology decoder graph &#x1f605; math notation &#x1f605; Binary vs Ternary Relationships ]]></description>
+Data Models and Relational Levels of Abstraction def in Data model abstractions example Data Independence Entity-Relationship Model (ERM) Def Entity: a real-world object that can be described and identified by a set of attributes Entity Set: a collection of similar entities all entities in an entity set have the same attributes each entity set has a key each attribute has a domain Relationship: a connection between two entity sets Key and Participation Constraints Key Constraints Participation Constraints Weak Entity Alternative Notation and Terminology decoder graph &#x1f605; math notation &#x1f605; Binary vs Ternary Relationships 上面的更加紧密并且可以记录qty]]></description>
 </item>
 <item>
     <title>CS186-L10: Iterators &amp; Joins</title>

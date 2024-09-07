@@ -4,10 +4,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>CS186-L16:  - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/databasel16/">
+        <title>CS186-L16: DB Design: FDs and Normalization - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/databasel16/">
   <meta property="og:site_name" content="HHZZ`s space">
-  <meta property="og:title" content="CS186-L16: ">
-  <meta property="og:description" content="This is my cool site">
+  <meta property="og:title" content="CS186-L16: DB Design: FDs and Normalization">
+  <meta property="og:description" content="Functional Dependencies big picture Def X -&amp;gt; Y means X determines Y, X and Y can be a single column or multiple columns F&#43; means that to be the set of all FDs that are implied by F terminology Anomalies 可以用FD分解relation从而避免冗余 Armstrongs Axioms Attribute Closure wanna check if X-&amp;gt;Y is in F&#43; BCNF and other Normal Forms Basic Normal Form NF is a def of data model! Boyce-Codd Normal Form Lossless Join Decompositions Def: decomposition won&amp;rsquo;t create new attributes, and will cover the original attributes (不是完全无重叠分割)">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="posts">
@@ -15,8 +15,8 @@
     <meta property="article:modified_time" content="2024-08-14T09:38:04+08:00">
     <meta property="og:image" content="http://example.org/logo.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="CS186-L16: ">
-<meta name="twitter:description" content="">
+<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="CS186-L16: DB Design: FDs and Normalization">
+<meta name="twitter:description" content="Functional Dependencies big picture Def X -&gt; Y means X determines Y, X and Y can be a single column or multiple columns F&#43; means that to be the set of all FDs that are implied by F terminology Anomalies 可以用FD分解relation从而避免冗余 Armstrongs Axioms Attribute Closure wanna check if X-&gt;Y is in F&#43; BCNF and other Normal Forms Basic Normal Form NF is a def of data model! Boyce-Codd Normal Form Lossless Join Decompositions Def: decomposition won&rsquo;t create new attributes, and will cover the original attributes (不是完全无重叠分割)">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -26,12 +26,12 @@
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "CS186-L16: ",
+        "headline": "CS186-L16: DB Design: FDs and Normalization",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/databasel16\/"
-        },"genre": "posts","wordcount":  0 ,
+        },"genre": "posts","wordcount":  152 ,
         "url": "http:\/\/example.org\/databasel16\/","datePublished": "2024-08-14T09:38:04+08:00","dateModified": "2024-08-14T09:38:04+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -103,17 +103,209 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">CS186-L16: </h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">CS186-L16: DB Design: FDs and Normalization</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-14">2024-08-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;0 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;0 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-14">2024-08-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;152 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"></div><div class="post-footer" id="post-footer">
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#functional-dependencies">Functional Dependencies</a>
+      <ul>
+        <li><a href="#def">Def</a></li>
+        <li><a href="#terminology">terminology</a></li>
+      </ul>
+    </li>
+    <li><a href="#anomalies">Anomalies</a></li>
+    <li><a href="#armstrongs-axioms">Armstrongs Axioms</a></li>
+    <li><a href="#attribute-closure">Attribute Closure</a></li>
+    <li><a href="#bcnf-and-other-normal-forms">BCNF and other Normal Forms</a>
+      <ul>
+        <li><a href="#basic-normal-form">Basic Normal Form</a></li>
+        <li><a href="#boyce-codd-normal-form">Boyce-Codd Normal Form</a></li>
+      </ul>
+    </li>
+    <li><a href="#lossless-join-decompositions">Lossless Join Decompositions</a>
+      <ul>
+        <li><a href="#problems-with-decompositions">Problems with Decompositions</a></li>
+        <li><a href="#lossless-join-decompositions-1">Lossless Join Decompositions</a></li>
+      </ul>
+    </li>
+    <li><a href="#dependency-preservation-and-bcnf-decomposition">Dependency Preservation and BCNF Decomposition</a>
+      <ul>
+        <li><a href="#bcnf-decomposition">BCNF Decomposition</a>
+          <ul>
+            <li>
+              <ul>
+                <li>
+                  <ul>
+                    <li><a href="#没有听懂">没有听懂</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="functional-dependencies">Functional Dependencies</h2>
+<p>big picture
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel16/image.png"
+        data-srcset="/databasel16/image.png, /databasel16/image.png 1.5x, /databasel16/image.png 2x"
+        data-sizes="auto"
+        alt="/databasel16/image.png"
+        title="alt text" width="816" height="488" /></p>
+<h3 id="def">Def</h3>
+<ul>
+<li><strong>X -&gt; Y</strong> means X determines Y, X and Y can be a single column or multiple columns</li>
+<li><strong>F+</strong> means that to be the set of all FDs that are implied by F</li>
+</ul>
+<h3 id="terminology">terminology</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel16/image-1.png"
+        data-srcset="/databasel16/image-1.png, /databasel16/image-1.png 1.5x, /databasel16/image-1.png 2x"
+        data-sizes="auto"
+        alt="/databasel16/image-1.png"
+        title="alt text" width="971" height="414" /></p>
+<h2 id="anomalies">Anomalies</h2>
+<p>可以用FD分解relation从而避免冗余
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel16/image-2.png"
+        data-srcset="/databasel16/image-2.png, /databasel16/image-2.png 1.5x, /databasel16/image-2.png 2x"
+        data-sizes="auto"
+        alt="/databasel16/image-2.png"
+        title="alt text" width="1629" height="853" /></p>
+<h2 id="armstrongs-axioms">Armstrongs Axioms</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel16/image-4.png"
+        data-srcset="/databasel16/image-4.png, /databasel16/image-4.png 1.5x, /databasel16/image-4.png 2x"
+        data-sizes="auto"
+        alt="/databasel16/image-4.png"
+        title="alt text" width="653" height="399" /></p>
+<h2 id="attribute-closure">Attribute Closure</h2>
+<p>wanna check if X-&gt;Y is in F+
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel16/image-5.png"
+        data-srcset="/databasel16/image-5.png, /databasel16/image-5.png 1.5x, /databasel16/image-5.png 2x"
+        data-sizes="auto"
+        alt="/databasel16/image-5.png"
+        title="alt text" width="1138" height="483" /></p>
+<h2 id="bcnf-and-other-normal-forms">BCNF and other Normal Forms</h2>
+<h3 id="basic-normal-form">Basic Normal Form</h3>
+<p>NF is a def of data model!
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel16/image-6.png"
+        data-srcset="/databasel16/image-6.png, /databasel16/image-6.png 1.5x, /databasel16/image-6.png 2x"
+        data-sizes="auto"
+        alt="/databasel16/image-6.png"
+        title="alt text" width="832" height="280" /></p>
+<h3 id="boyce-codd-normal-form">Boyce-Codd Normal Form</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel16/image-7.png"
+        data-srcset="/databasel16/image-7.png, /databasel16/image-7.png 1.5x, /databasel16/image-7.png 2x"
+        data-sizes="auto"
+        alt="/databasel16/image-7.png"
+        title="alt text" width="979" height="310" /></p>
+<h2 id="lossless-join-decompositions">Lossless Join Decompositions</h2>
+<p>Def: decomposition won&rsquo;t create new attributes, and will cover the original attributes (不是完全无重叠分割)</p>
+<h3 id="problems-with-decompositions">Problems with Decompositions</h3>
+<ul>
+<li>can <em><strong>loss</strong></em> info and unable to reconstruct the original data
+<ul>
+<li>do not loss data actually, in fact, we gain some dirty data</li>
+<li><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel16/image-8.png"
+        data-srcset="/databasel16/image-8.png, /databasel16/image-8.png 1.5x, /databasel16/image-8.png 2x"
+        data-sizes="auto"
+        alt="/databasel16/image-8.png"
+        title="alt text" width="1146" height="750" /></li>
+</ul>
+</li>
+<li>Dependency check may require <em>joins</em></li>
+<li>some queries may be more expensive, since <em>join</em> is required</li>
+</ul>
+<h3 id="lossless-join-decompositions-1">Lossless Join Decompositions</h3>
+<p>定义
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel16/image-9.png"
+        data-srcset="/databasel16/image-9.png, /databasel16/image-9.png 1.5x, /databasel16/image-9.png 2x"
+        data-sizes="auto"
+        alt="/databasel16/image-9.png"
+        title="alt text" width="1198" height="552" />
+定理
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel16/image-10.png"
+        data-srcset="/databasel16/image-10.png, /databasel16/image-10.png 1.5x, /databasel16/image-10.png 2x"
+        data-sizes="auto"
+        alt="/databasel16/image-10.png"
+        title="alt text" width="1232" height="459" /></p>
+<h2 id="dependency-preservation-and-bcnf-decomposition">Dependency Preservation and BCNF Decomposition</h2>
+<p>Def: Projection of set of FDs F:
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel16/image-11.png"
+        data-srcset="/databasel16/image-11.png, /databasel16/image-11.png 1.5x, /databasel16/image-11.png 2x"
+        data-sizes="auto"
+        alt="/databasel16/image-11.png"
+        title="alt text" width="756" height="71" />
+Def: Dependency Preserving Decomposition
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel16/image-12.png"
+        data-srcset="/databasel16/image-12.png, /databasel16/image-12.png 1.5x, /databasel16/image-12.png 2x"
+        data-sizes="auto"
+        alt="/databasel16/image-12.png"
+        title="alt text" width="1229" height="318" /></p>
+<h3 id="bcnf-decomposition">BCNF Decomposition</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel16/image-13.png"
+        data-srcset="/databasel16/image-13.png, /databasel16/image-13.png 1.5x, /databasel16/image-13.png 2x"
+        data-sizes="auto"
+        alt="/databasel16/image-13.png"
+        title="alt text" width="1354" height="912" /></p>
+<h6 id="没有听懂">没有听懂</h6>
+<p>但是dependency没有保留
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/databasel16/image-14.png"
+        data-srcset="/databasel16/image-14.png, /databasel16/image-14.png 1.5x, /databasel16/image-14.png 2x"
+        data-sizes="auto"
+        alt="/databasel16/image-14.png"
+        title="alt text" width="1185" height="605" />
+所以BCNF可以lossless，但是不一定保留所有的dependency</p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -124,7 +316,7 @@
                             <a class="link-to-markdown" href="/databasel16/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/databasel16/" data-title="CS186-L16: "><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/databasel16/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/databasel16/" data-title="CS186-L16: "><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/databasel16/" data-title="CS186-L16: "><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/databasel16/" data-title="CS186-L16: "><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/databasel16/" data-title="CS186-L16: DB Design: FDs and Normalization"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/databasel16/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/databasel16/" data-title="CS186-L16: DB Design: FDs and Normalization"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/databasel16/" data-title="CS186-L16: DB Design: FDs and Normalization"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/databasel16/" data-title="CS186-L16: DB Design: FDs and Normalization"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -136,7 +328,7 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/databasel17/" class="prev" rel="prev" title="CS186-L17: "><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>CS186-L17: </a>
+    <div class="post-nav"><a href="/databasel17/" class="prev" rel="prev" title="CS186-L17: Recovery"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>CS186-L17: Recovery</a>
             <a href="/databasel21/" class="next" rel="next" title="CS186-L21: ">CS186-L21: <i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
