@@ -1,5 +1,6 @@
 # Conda配置备忘录
 
+# Conda配置备忘录
 ## 导出与创建环境
 使用YAML文件创建Conda环境的步骤如下：
 
@@ -59,3 +60,19 @@ conda remove -n YOUR_ENV_NAME --all
 ```bash
 conda info -e
 ```
+
+
+## pip install 第三方库
+以topologylayer==0.0.0为例，直接pip将会报错，因为该库没有发布到conda中
+
+```bash
+git clone https://github.com/bruel-gabrielsson/TopologyLayer.git
+cd TopologyLayer
+# 注意找到setup.py文件
+pip install -e . # pip install .
+```
+
+
+
+
+

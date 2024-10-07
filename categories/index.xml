@@ -51,13 +51,5 @@
     <guid>http://example.org/categories/programming-language-crash-course/</guid>
     <description><![CDATA[]]></description>
 </item>
-<item>
-    <title>CSAPP</title>
-    <link>http://example.org/categories/csapp/</link>
-    <pubDate>Mon, 22 Apr 2024 08:40:36 &#43;0800</pubDate>
-    <author>HHZZ</author>
-    <guid>http://example.org/categories/csapp/</guid>
-    <description><![CDATA[]]></description>
-</item>
 </channel>
 </rss>
