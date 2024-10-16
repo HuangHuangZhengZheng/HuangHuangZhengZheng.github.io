@@ -6,8 +6,15 @@
     <description>Recent content in Beyondcodes on HHZZ`s space</description>
     <generator>Hugo 0.125.1</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 14 Jul 2024 20:50:15 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 16 Oct 2024 21:58:06 +0800</lastBuildDate>
     <atom:link href="http://example.org/beyondcode/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Thinking2</title>
+      <link>http://example.org/beyondcode/thinking2/</link>
+      <pubDate>Wed, 16 Oct 2024 21:58:06 +0800</pubDate>
+      <guid>http://example.org/beyondcode/thinking2/</guid>
+      <description>Thinking2 新的可能：&#xA;机器学习编译 MLC 机器学习系统 MLSys 机器学习运维 MLOps 那会是怎么样的呢？&amp;#x1f914; :(&#xA;&amp;ndash;写于2024-10-16 61a/c &amp;amp; eecs498 &amp;amp; 10414纪</description>
+    </item>
     <item>
       <title>Thinking1</title>
       <link>http://example.org/beyondcode/thinking1/</link>
