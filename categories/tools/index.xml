@@ -1,14 +1,14 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>TOOLS - Category - HHZZ`s space</title>
-        <link>http://example.org/categories/tools/</link>
+        <link>http://localhost:1313/categories/tools/</link>
         <description>TOOLS - Category - HHZZ`s space</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 15 Aug 2024 19:09:38 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/tools/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 15 Aug 2024 19:09:38 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/categories/tools/" rel="self" type="application/rss+xml" /><item>
     <title>Conda配置备忘录</title>
-    <link>http://example.org/tools/conda/</link>
+    <link>http://localhost:1313/tools/conda/</link>
     <pubDate>Thu, 15 Aug 2024 19:09:38 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/tools/conda/</guid>
+    <guid>http://localhost:1313/tools/conda/</guid>
     <description><![CDATA[Conda配置备忘录 导出与创建环境 使用YAML文件创建Conda环境的步骤如下：
 创建YAML文件：首先，您需要创建一个YAML配置文件，通常命名为environment.yml。在该文件中，您可以定义环境的名称、所需的通道以及依赖的包。例如：
 1 2 3 4 5 6 7 name: my_conda_env channels: - conda-forge dependencies: - numpy=1.19.5 - pandas=1.2.3 - scikit-learn=0.23.2 在这个示例中，定义了一个名为my_conda_env的环境，并指定了要安装的包及其版本。
@@ -23,10 +23,10 @@
 </item>
 <item>
     <title>COSTAR提示词框架笔记</title>
-    <link>http://example.org/tools/costar/</link>
+    <link>http://localhost:1313/tools/costar/</link>
     <pubDate>Wed, 24 Jul 2024 20:48:55 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/tools/costar/</guid>
+    <guid>http://localhost:1313/tools/costar/</guid>
     <description><![CDATA[原作者帖子？
 COSTAR提示词框架是一个用于提升大语言模型（如GPT-3/4）生成结果质量的工具。这个框架的目标是通过提供详细和具体的提示，指导大语言模型生成更准确和有用的内容。以下是对CoSTAR提示词框架的详细介绍：
 COSTAR提示词框架是一种用于优化和提升大语言模型（如GPT-4）生成效果的方法。通过应用这个框架，可以更好地指导模型生成更加相关、准确和有用的内容。COSTAR 是一个首字母缩略词，每个字母代表了提示框架中的一个重要方面：
@@ -46,10 +46,10 @@ Context（上下文）：
 </item>
 <item>
     <title>Git</title>
-    <link>http://example.org/tools/git/git/</link>
+    <link>http://localhost:1313/tools/git/git/</link>
     <pubDate>Sat, 29 Jun 2024 15:06:38 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/tools/git/git/</guid>
+    <guid>http://localhost:1313/tools/git/git/</guid>
     <description><![CDATA[文件状态 未跟踪-未修改-已修改-暂存
 git add &lt;name&gt; - *-&gt;暂存
 git commit -m &quot;message&quot; - 暂存-&gt;未修改
@@ -60,10 +60,10 @@ git rm &lt;name&gt; - 未修改-&gt;未跟踪
 </item>
 <item>
     <title>正则表达式笔记</title>
-    <link>http://example.org/tools/reg/</link>
+    <link>http://localhost:1313/tools/reg/</link>
     <pubDate>Sat, 29 Jun 2024 13:37:39 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/tools/reg/</guid>
+    <guid>http://localhost:1313/tools/reg/</guid>
     <description><![CDATA[Regular Expressions 注意版本和文档！ 常用工具 https://regex101.com/ https://regexr.com/ python re模块
 字符 . 匹配任意一个字符 [] 匹配括号中的任意一个字符,如 [a-zA-Z1-3] 匹配大写字母或小写字母或数字1-3, [^] 匹配除了括号中的字符
 预定字符类 \d 匹配数字 \D 匹配非数字 \w 匹配字母、数字或下划线 \W 匹配非字母、数字或下划线 \s 匹配空白字符或者tab \S 匹配非空白字符

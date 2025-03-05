@@ -1,36 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>Pointnet - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/papers/pointnet/">
-  <meta property="og:site_name" content="HHZZ`s space">
-  <meta property="og:title" content="Pointnet">
-  <meta property="og:description" content="点云的数据格式 一个点云是一个无序的向量集，每个点用三维坐标构成向量，其他信息可以扩展
+        <title>Pointnet - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Pointnet" />
+<meta property="og:description" content="点云的数据格式 一个点云是一个无序的向量集，每个点用三维坐标构成向量，其他信息可以扩展
 有.xyz等格式
 本质上是一个矩阵 $Num \times Dim$
 PointNet和&#43;&#43;的算法具体操作 PointNet算法的具体操作 必须考虑的几个特点 旋转不变性，在仿射变换下点的排列不变 置换不变性(无序的)：应该是对称函数，不考虑顺序 局部结构需要考虑(分割时)，平衡global和local 输入：点云数据 MLP升维，抽取特征 Max对称函数操作，降维，得到全局特征 $N \times 1$ 后续分类or分割 输入：点云数据 T-Net仿射变换（旋转）来保证旋转不变性 MLP升维，抽取特征 maxpooling操作，降维，得到global特征 $N \times 1$ 后续分类走mlp（fcnn）&#43;softmax 走分割的话拼接到feature $N\times 64$ 得到 $N\times 1088$，然后mlp给每个点属于哪几个类别打分 不足之处 maxpooling这一步直接把所有点池化为以一个全局特征，局部点与点的联系没有察觉 PointNet&#43;&#43;算法的具体操作 借鉴了卷积神经网络的思想，对空间化整为零，分而治之 进行多次set abstraction = sampling &#43; grouping &#43; PointNet 走分类，同上PointNet处理 走分割，interpolate插值，然后skip link concatenation拼接到低层次点特征后面，unit pointnet处理,重复几次，回到原始点云，得到分割结果（每个点的评分） 以下逐步分析
 set abstraction
-sampling FPS取点 grouping 聚类ball query， ball query采用metric distance和CNN曼哈顿距离不同，使得前者能泛化能力更好 然后采用pointnet对每个group进行特征提取 提出针对 点 密度分布不均匀的 density adaptive PointNet MSG，对不同大小的区域进行特征抽取并且拼在一起 random input dropout MRG, “堆叠”多个PointNet高维抽取，改进：一个向量是抽取低一层的特征，另一个向量直接抽取底层特征，然后由点密度分布来决定按权重拼接 interpolate &amp;amp; skip link concatenation （特征传播feature propagation）">
-  <meta property="og:locale" content="en">
-  <meta property="og:type" content="article">
-  <meta property="article:section" content="papers">
-    <meta property="article:published_time" content="2024-07-18T14:44:32+08:00">
-    <meta property="article:modified_time" content="2024-07-18T14:44:32+08:00">
-    <meta property="og:image" content="http://example.org/logo.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="Pointnet">
+sampling FPS取点 grouping 聚类ball query， ball query采用metric distance和CNN曼哈顿距离不同，使得前者能泛化能力更好 然后采用pointnet对每个group进行特征提取 提出针对 点 密度分布不均匀的 density adaptive PointNet MSG，对不同大小的区域进行特征抽取并且拼在一起 random input dropout MRG, “堆叠”多个PointNet高维抽取，改进：一个向量是抽取低一层的特征，另一个向量直接抽取底层特征，然后由点密度分布来决定按权重拼接 interpolate &amp; skip link concatenation （特征传播feature propagation）" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/papers/pointnet/" /><meta property="og:image" content="http://localhost:1313/logo.png" /><meta property="article:section" content="papers" />
+<meta property="article:published_time" content="2024-07-18T14:44:32+08:00" />
+<meta property="article:modified_time" content="2024-07-18T14:44:32+08:00" /><meta property="og:site_name" content="My cool site" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://localhost:1313/logo.png" /><meta name="twitter:title" content="Pointnet"/>
 <meta name="twitter:description" content="点云的数据格式 一个点云是一个无序的向量集，每个点用三维坐标构成向量，其他信息可以扩展
 有.xyz等格式
 本质上是一个矩阵 $Num \times Dim$
 PointNet和&#43;&#43;的算法具体操作 PointNet算法的具体操作 必须考虑的几个特点 旋转不变性，在仿射变换下点的排列不变 置换不变性(无序的)：应该是对称函数，不考虑顺序 局部结构需要考虑(分割时)，平衡global和local 输入：点云数据 MLP升维，抽取特征 Max对称函数操作，降维，得到全局特征 $N \times 1$ 后续分类or分割 输入：点云数据 T-Net仿射变换（旋转）来保证旋转不变性 MLP升维，抽取特征 maxpooling操作，降维，得到global特征 $N \times 1$ 后续分类走mlp（fcnn）&#43;softmax 走分割的话拼接到feature $N\times 64$ 得到 $N\times 1088$，然后mlp给每个点属于哪几个类别打分 不足之处 maxpooling这一步直接把所有点池化为以一个全局特征，局部点与点的联系没有察觉 PointNet&#43;&#43;算法的具体操作 借鉴了卷积神经网络的思想，对空间化整为零，分而治之 进行多次set abstraction = sampling &#43; grouping &#43; PointNet 走分类，同上PointNet处理 走分割，interpolate插值，然后skip link concatenation拼接到低层次点特征后面，unit pointnet处理,重复几次，回到原始点云，得到分割结果（每个点的评分） 以下逐步分析
 set abstraction
-sampling FPS取点 grouping 聚类ball query， ball query采用metric distance和CNN曼哈顿距离不同，使得前者能泛化能力更好 然后采用pointnet对每个group进行特征提取 提出针对 点 密度分布不均匀的 density adaptive PointNet MSG，对不同大小的区域进行特征抽取并且拼在一起 random input dropout MRG, “堆叠”多个PointNet高维抽取，改进：一个向量是抽取低一层的特征，另一个向量直接抽取底层特征，然后由点密度分布来决定按权重拼接 interpolate &amp; skip link concatenation （特征传播feature propagation）">
+sampling FPS取点 grouping 聚类ball query， ball query采用metric distance和CNN曼哈顿距离不同，使得前者能泛化能力更好 然后采用pointnet对每个group进行特征提取 提出针对 点 密度分布不均匀的 density adaptive PointNet MSG，对不同大小的区域进行特征抽取并且拼在一起 random input dropout MRG, “堆叠”多个PointNet高维抽取，改进：一个向量是抽取低一层的特征，另一个向量直接抽取底层特征，然后由点密度分布来决定按权重拼接 interpolate &amp; skip link concatenation （特征传播feature propagation）"/>
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/papers/pointnet/" /><link rel="next" href="http://example.org/papers/ddpm/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/papers/pointnet/" /><link rel="next" href="http://localhost:1313/papers/ddpm/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -40,9 +37,9 @@ sampling FPS取点 grouping 聚类ball query， ball query采用metric distance�
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/example.org\/papers\/pointnet\/"
+            "@id": "http:\/\/localhost:1313\/papers\/pointnet\/"
         },"genre": "papers","wordcount":  96 ,
-        "url": "http:\/\/example.org\/papers\/pointnet\/","datePublished": "2024-07-18T14:44:32+08:00","dateModified": "2024-07-18T14:44:32+08:00","publisher": {
+        "url": "http:\/\/localhost:1313\/papers\/pointnet\/","datePublished": "2024-07-18T14:44:32+08:00","dateModified": "2024-07-18T14:44:32+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -234,8 +231,8 @@ sampling FPS取点 grouping 聚类ball query， ball query采用metric distance�
 <p>$By\ HZ$</p>
 </div></div></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.125.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">HHZZ</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.123.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">HHZZ</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

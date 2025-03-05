@@ -1,38 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>正则表达式笔记 - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/tools/reg/">
-  <meta property="og:site_name" content="HHZZ`s space">
-  <meta property="og:title" content="正则表达式笔记">
-  <meta property="og:description" content="Regular Expressions 注意版本和文档！ 常用工具 https://regex101.com/ https://regexr.com/ python re模块
+        <title>正则表达式笔记 - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="正则表达式笔记" />
+<meta property="og:description" content="Regular Expressions 注意版本和文档！ 常用工具 https://regex101.com/ https://regexr.com/ python re模块
 字符 . 匹配任意一个字符 [] 匹配括号中的任意一个字符,如 [a-zA-Z1-3] 匹配大写字母或小写字母或数字1-3, [^] 匹配除了括号中的字符
 预定字符类 \d 匹配数字 \D 匹配非数字 \w 匹配字母、数字或下划线 \W 匹配非字母、数字或下划线 \s 匹配空白字符或者tab \S 匹配非空白字符
 边界匹配 ^ 匹配字符串的开头 $ 匹配字符串的结尾 \b 匹配单词的边界, 如 \bthe\b 匹配the \B 匹配非单词边界
 数量词 * 匹配前面的字符0次或多次 &#43; 匹配前面的字符1次或多次 ? 匹配前面的字符0次或1次 {n} 匹配前面的字符n次 {n,} 匹配前面的字符至少n次 {n,m} 匹配前面的字符至少n次, 至多m次
 非贪婪匹配 量词默认是贪婪匹配, 即尽可能多的匹配字符, 如 a.*b 会匹配到最长的以a开头的b 后面的量词加上? 则为非贪婪匹配, 即尽可能少的匹配字符, 如 a.*?b 会匹配到最短的以a开头的b
-分组与捕获 () 用来创建分组, 捕获括号中的字符, 并在匹配时返回匹配到的内容 [] 用来创建字符类, 如 [Pp] 匹配P或p | 用来创建或关系, 如 a(bc|de) 匹配a后面是bc或de \n 引用分组, 如 \1 引用第一个分组 $n 引用第n个分组 ?">
-  <meta property="og:locale" content="en">
-  <meta property="og:type" content="article">
-  <meta property="article:section" content="tools">
-    <meta property="article:published_time" content="2024-06-29T13:37:39+08:00">
-    <meta property="article:modified_time" content="2024-06-29T13:37:39+08:00">
-    <meta property="og:image" content="http://example.org/logo.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="正则表达式笔记">
+分组与捕获 () 用来创建分组, 捕获括号中的字符, 并在匹配时返回匹配到的内容 [] 用来创建字符类, 如 [Pp] 匹配P或p | 用来创建或关系, 如 a(bc|de) 匹配a后面是bc或de \n 引用分组, 如 \1 引用第一个分组 $n 引用第n个分组 ?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/tools/reg/" /><meta property="og:image" content="http://localhost:1313/logo.png" /><meta property="article:section" content="tools" />
+<meta property="article:published_time" content="2024-06-29T13:37:39+08:00" />
+<meta property="article:modified_time" content="2024-06-29T13:37:39+08:00" /><meta property="og:site_name" content="My cool site" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://localhost:1313/logo.png" /><meta name="twitter:title" content="正则表达式笔记"/>
 <meta name="twitter:description" content="Regular Expressions 注意版本和文档！ 常用工具 https://regex101.com/ https://regexr.com/ python re模块
 字符 . 匹配任意一个字符 [] 匹配括号中的任意一个字符,如 [a-zA-Z1-3] 匹配大写字母或小写字母或数字1-3, [^] 匹配除了括号中的字符
 预定字符类 \d 匹配数字 \D 匹配非数字 \w 匹配字母、数字或下划线 \W 匹配非字母、数字或下划线 \s 匹配空白字符或者tab \S 匹配非空白字符
 边界匹配 ^ 匹配字符串的开头 $ 匹配字符串的结尾 \b 匹配单词的边界, 如 \bthe\b 匹配the \B 匹配非单词边界
 数量词 * 匹配前面的字符0次或多次 &#43; 匹配前面的字符1次或多次 ? 匹配前面的字符0次或1次 {n} 匹配前面的字符n次 {n,} 匹配前面的字符至少n次 {n,m} 匹配前面的字符至少n次, 至多m次
 非贪婪匹配 量词默认是贪婪匹配, 即尽可能多的匹配字符, 如 a.*b 会匹配到最长的以a开头的b 后面的量词加上? 则为非贪婪匹配, 即尽可能少的匹配字符, 如 a.*?b 会匹配到最短的以a开头的b
-分组与捕获 () 用来创建分组, 捕获括号中的字符, 并在匹配时返回匹配到的内容 [] 用来创建字符类, 如 [Pp] 匹配P或p | 用来创建或关系, 如 a(bc|de) 匹配a后面是bc或de \n 引用分组, 如 \1 引用第一个分组 $n 引用第n个分组 ?">
+分组与捕获 () 用来创建分组, 捕获括号中的字符, 并在匹配时返回匹配到的内容 [] 用来创建字符类, 如 [Pp] 匹配P或p | 用来创建或关系, 如 a(bc|de) 匹配a后面是bc或de \n 引用分组, 如 \1 引用第一个分组 $n 引用第n个分组 ?"/>
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/tools/reg/" /><link rel="next" href="http://example.org/tools/git/git/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/tools/reg/" /><link rel="next" href="http://localhost:1313/tools/git/git/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -42,9 +39,9 @@
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/example.org\/tools\/reg\/"
+            "@id": "http:\/\/localhost:1313\/tools\/reg\/"
         },"genre": "tools","wordcount":  109 ,
-        "url": "http:\/\/example.org\/tools\/reg\/","datePublished": "2024-06-29T13:37:39+08:00","dateModified": "2024-06-29T13:37:39+08:00","publisher": {
+        "url": "http:\/\/localhost:1313\/tools\/reg\/","datePublished": "2024-06-29T13:37:39+08:00","dateModified": "2024-06-29T13:37:39+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -163,8 +160,8 @@ python re模块</p>
 </ul>
 </div></div></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.125.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">HHZZ</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.123.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">HHZZ</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

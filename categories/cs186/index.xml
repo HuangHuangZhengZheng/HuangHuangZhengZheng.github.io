@@ -1,24 +1,24 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>CS186 - Category - HHZZ`s space</title>
-        <link>http://example.org/categories/cs186/</link>
+        <link>http://localhost:1313/categories/cs186/</link>
         <description>CS186 - Category - HHZZ`s space</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 14 Aug 2024 09:38:05 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/cs186/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 14 Aug 2024 09:38:05 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/categories/cs186/" rel="self" type="application/rss+xml" /><item>
     <title>CS186-L19:  Distributed Transactions</title>
-    <link>http://example.org/databasel19/</link>
+    <link>http://localhost:1313/databasel19/</link>
     <pubDate>Wed, 14 Aug 2024 09:38:05 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/databasel19/</guid>
+    <guid>http://localhost:1313/databasel19/</guid>
     <description><![CDATA[distributed == parallel shared nothing architecture
 Intro Distributed Locking each nodes has lock table locally, can manage the pages/tuples easily, but when it comes to Table, there should be a global lock table （or distributed lock tables）and a coordinator to manage the access to the table.
 Distributed Deadlocks Detection 合并全局waits Distributed Commit 全局投票 2PC The Recovery Processes crash situations 2PC, Locking and Availability 2PC + Strict 2PL locking what if a node is down?]]></description>
 </item>
 <item>
     <title>CS186-L20: NoSQL</title>
-    <link>http://example.org/databasel20/</link>
+    <link>http://localhost:1313/databasel20/</link>
     <pubDate>Wed, 14 Aug 2024 09:38:05 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/databasel20/</guid>
+    <guid>http://localhost:1313/databasel20/</guid>
     <description><![CDATA[Scaling Relational Databases isn&rsquo;t always the best option including partitioning and replication
 BUT, consistency is hard to enforce!
 Taxonomy of NoSQL Data Models Key-Value Stores 1 2 Map&lt;Key, Value&gt; get/put Distribution / Partitioning, just using hash function
@@ -26,28 +26,28 @@ if no replication, key k is stored on $h(k)$ node if multi-way replication, key 
 </item>
 <item>
     <title>CS186-L21: MapReduce and Spark</title>
-    <link>http://example.org/databasel21/</link>
+    <link>http://localhost:1313/databasel21/</link>
     <pubDate>Wed, 14 Aug 2024 09:38:05 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/databasel21/</guid>
+    <guid>http://localhost:1313/databasel21/</guid>
     <description><![CDATA[Motivation only scaling up relational databases is challenging :s
 MapReduce Data and Programming Model Target Map phase map function will not keep the state of the intermediate results, so it can be parallelized easily
 Reduce phase for example, wanna count the number of occurrences of each word in the input data, we can use the reduce function to sum up the values of the same key Implementation of MapReduce fault tolerance by writing intermediate results to disk&hellip;]]></description>
 </item>
 <item>
     <title>CS186-L16: DB Design: FDs and Normalization</title>
-    <link>http://example.org/databasel16/</link>
+    <link>http://localhost:1313/databasel16/</link>
     <pubDate>Wed, 14 Aug 2024 09:38:04 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/databasel16/</guid>
+    <guid>http://localhost:1313/databasel16/</guid>
     <description><![CDATA[Functional Dependencies big picture Def X -&gt; Y means X determines Y, X and Y can be a single column or multiple columns F+ means that to be the set of all FDs that are implied by F terminology Anomalies 可以用FD分解relation从而避免冗余 Armstrongs Axioms Attribute Closure wanna check if X-&gt;Y is in F+ BCNF and other Normal Forms Basic Normal Form NF is a def of data model! Boyce-Codd Normal Form Lossless Join Decompositions Def: decomposition won&rsquo;t create new attributes, and will cover the original attributes (不是完全无重叠分割)]]></description>
 </item>
 <item>
     <title>CS186-L17: Recovery</title>
-    <link>http://example.org/databasel17/</link>
+    <link>http://localhost:1313/databasel17/</link>
     <pubDate>Wed, 14 Aug 2024 09:38:04 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/databasel17/</guid>
+    <guid>http://localhost:1313/databasel17/</guid>
     <description><![CDATA[Need for Atomicity and Durability, SQL support for Transactions Strawman Solution No Steal/Force policy
 seem like no a good choice for recovery
 not scalable in buffer if crash in 2a, inconsistencies will occur STEAL / NO FORCE, UNDO and REDO STEAL/NO FORCE no force:
@@ -55,10 +55,10 @@ problem: sys crash before dirty page of a committed transaction is written to di
 </item>
 <item>
     <title>CS186-L18: Parallel Query Processing</title>
-    <link>http://example.org/databasel18/</link>
+    <link>http://localhost:1313/databasel18/</link>
     <pubDate>Wed, 14 Aug 2024 09:38:04 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/databasel18/</guid>
+    <guid>http://localhost:1313/databasel18/</guid>
     <description><![CDATA[Intro to Parallelism Architectures and Software Structures we will focus on the shared-nothing here &#x1f60b;
 Kinds of Query Parallelism side note:
 intra: single inter: multiple at the same level Parallel Data Acceess Data Partitioning across Machines Round robin means that each machine haves the same shuffled data
@@ -67,10 +67,10 @@ $\sigma_p$ : an operator that skip entire sites that have no matching tuples in 
 </item>
 <item>
     <title>CS186-L13: Transactions &amp; Concurrency I</title>
-    <link>http://example.org/databasel13/</link>
+    <link>http://localhost:1313/databasel13/</link>
     <pubDate>Wed, 14 Aug 2024 09:38:03 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/databasel13/</guid>
+    <guid>http://localhost:1313/databasel13/</guid>
     <description><![CDATA[&#x1f389;
 Intro transaction&rsquo;s principle ACID Isolation (Concurrency) however, do not consider serial execution &#x1f605;
 Atomicity and Durability Consistency Concurrency Control 基本符号表达 序列等价性：
@@ -78,10 +78,10 @@ $Def1:$ Serial Schedule each transaction executes in a serial order, one after t
 </item>
 <item>
     <title>CS186-L14: Transactions &amp; Concurrency II</title>
-    <link>http://example.org/databasel14/</link>
+    <link>http://localhost:1313/databasel14/</link>
     <pubDate>Wed, 14 Aug 2024 09:38:03 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/databasel14/</guid>
+    <guid>http://localhost:1313/databasel14/</guid>
     <description><![CDATA[Two Phase Locking (2PL) Strict 2PL same as 2PL, but with stricter definition of release locks at once
 pink area is the Strict 2PL
 Lock Management there is a lock manager, which maintains a hash table keyed on names of objects being locked
@@ -92,19 +92,19 @@ avoiding deadlocks timeout first, TIMEOUT is a not so bad idea &#x1f914;]]></des
 </item>
 <item>
     <title>CS186-L15: DB Design: Entity-Relationship Models</title>
-    <link>http://example.org/databasel15/</link>
+    <link>http://localhost:1313/databasel15/</link>
     <pubDate>Wed, 14 Aug 2024 09:38:03 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/databasel15/</guid>
+    <guid>http://localhost:1313/databasel15/</guid>
     <description><![CDATA[Overview how to design a database instead of DBMS! &#x1f914; this class mainly focuses on the conceptual design
 Data Models and Relational Levels of Abstraction def in Data model abstractions example Data Independence Entity-Relationship Model (ERM) Def Entity: a real-world object that can be described and identified by a set of attributes Entity Set: a collection of similar entities all entities in an entity set have the same attributes each entity set has a key each attribute has a domain Relationship: a connection between two entity sets Key and Participation Constraints Key Constraints Participation Constraints Weak Entity Alternative Notation and Terminology decoder graph &#x1f605; math notation &#x1f605; Binary vs Ternary Relationships 上面的更加紧密并且可以记录qty]]></description>
 </item>
 <item>
     <title>CS186-L10: Iterators &amp; Joins</title>
-    <link>http://example.org/databasel10/</link>
+    <link>http://localhost:1313/databasel10/</link>
     <pubDate>Wed, 14 Aug 2024 09:38:02 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/databasel10/</guid>
+    <guid>http://localhost:1313/databasel10/</guid>
     <description><![CDATA[Intro relational operator: tuples(in other way, relations) in, tuples out
 1 2 3 4 5 6 7 abstract class Iterator { // set up the children and the dataflow graph void setup(List&lt;Iterator&gt; inputs); void init(args); // state tuple next(); // returns the next tuple void close(); } presudo code select on the fly &#x1f914;
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 init() { child.]]></description>
