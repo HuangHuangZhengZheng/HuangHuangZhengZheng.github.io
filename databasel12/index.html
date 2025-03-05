@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
@@ -11,12 +11,12 @@ example background plan space overview 对physical properties的描述，关注�
 等值join的理解见下图的bunny &#x1f430; histograms for selectivity estimation 但是这节课用的是等宽的直方图&#x1f60f;，然后所有的条件相互独立，selectivity根据直方图显示的频率计算得出
 selectivity for join query $$ \Large R\Join_{p} \sigma_{q}(S) \equiv \sigma_{p}(R \times \sigma_{q}(S)) \equiv \sigma_{p \land q}(R \times S) $$ 所以 $ s = s_p s_q $注意叉积产生的size变化" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/databasel12/" /><meta property="og:image" content="http://localhost:1313/logo.png" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="http://example.org/databasel12/" /><meta property="og:image" content="http://example.org/logo.png" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2024-08-14T09:38:02+08:00" />
 <meta property="article:modified_time" content="2024-08-14T09:38:02+08:00" /><meta property="og:site_name" content="My cool site" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="http://localhost:1313/logo.png" /><meta name="twitter:title" content="CS186-L12: Query Opt: Costs &amp; Search"/>
+<meta name="twitter:image" content="http://example.org/logo.png" /><meta name="twitter:title" content="CS186-L12: Query Opt: Costs &amp; Search"/>
 <meta name="twitter:description" content="Intro An important property of query optimization is that we have no way of knowing how many I/Os a plan will cost until we execute that plan. see note 9
 example background plan space overview 对physical properties的描述，关注的点在于不同过程对hash or sort的要求 Cost Estimation 讨论的假设 注意predicate之间独立，以及只是关注IO
 量化的信息点，catalog selectivity formula side note:
@@ -25,7 +25,7 @@ selectivity for join query $$ \Large R\Join_{p} \sigma_{q}(S) \equiv \sigma_{p}(
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/databasel12/" /><link rel="prev" href="http://localhost:1313/databasel8/" /><link rel="next" href="http://localhost:1313/databasel11/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/databasel12/" /><link rel="prev" href="http://example.org/databasel8/" /><link rel="next" href="http://example.org/databasel11/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -35,9 +35,9 @@ selectivity for join query $$ \Large R\Join_{p} \sigma_{q}(S) \equiv \sigma_{p}(
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/localhost:1313\/databasel12\/"
+            "@id": "http:\/\/example.org\/databasel12\/"
         },"genre": "posts","wordcount":  97 ,
-        "url": "http:\/\/localhost:1313\/databasel12\/","datePublished": "2024-08-14T09:38:02+08:00","dateModified": "2024-08-14T09:38:02+08:00","publisher": {
+        "url": "http:\/\/example.org\/databasel12\/","datePublished": "2024-08-14T09:38:02+08:00","dateModified": "2024-08-14T09:38:02+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -325,7 +325,7 @@ $$
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://localhost:1313/databasel12/" data-title="CS186-L12: Query Opt: Costs &amp; Search"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/databasel12/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://localhost:1313/databasel12/" data-title="CS186-L12: Query Opt: Costs &amp; Search"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://localhost:1313/databasel12/" data-title="CS186-L12: Query Opt: Costs &amp; Search"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://localhost:1313/databasel12/" data-title="CS186-L12: Query Opt: Costs &amp; Search"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/databasel12/" data-title="CS186-L12: Query Opt: Costs &amp; Search"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/databasel12/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/databasel12/" data-title="CS186-L12: Query Opt: Costs &amp; Search"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/databasel12/" data-title="CS186-L12: Query Opt: Costs &amp; Search"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/databasel12/" data-title="CS186-L12: Query Opt: Costs &amp; Search"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>

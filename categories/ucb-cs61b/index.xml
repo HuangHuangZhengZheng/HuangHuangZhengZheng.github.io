@@ -1,33 +1,33 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>UCB-CS61B - Category - HHZZ`s space</title>
-        <link>http://localhost:1313/categories/ucb-cs61b/</link>
+        <link>http://example.org/categories/ucb-cs61b/</link>
         <description>UCB-CS61B - Category - HHZZ`s space</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 14 Jul 2024 21:29:34 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/categories/ucb-cs61b/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 14 Jul 2024 21:29:34 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/ucb-cs61b/" rel="self" type="application/rss+xml" /><item>
     <title>61B-14: Exceptions, Iterators, Iterables</title>
-    <link>http://localhost:1313/61b-14/</link>
+    <link>http://example.org/61b-14/</link>
     <pubDate>Sun, 14 Jul 2024 21:29:34 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/61b-14/</guid>
+    <guid>http://example.org/61b-14/</guid>
     <description><![CDATA[Exceptions throw statement: throws an exception
 1 2 3 4 5 6 public V get(K key) { int location = findKey(key); if (location &lt; 0) { throw new IllegalArgumentException(&#34;Key &#34; + key + &#34; does not exist in map.&#34;); } return values[findKey(key)]; } 显式抛出异常
 1 2 3 4 public static void main(String[] args) { System.out.println(&#34;ayyy lmao&#34;); throw new RuntimeException(&#34;For no reason.&#34;); } What has been Thrown, can be Caught 1 2 3 4 5 6 7 8 9 10 11 Dog d = new Dog(&#34;Lucy&#34;, &#34;Retriever&#34;, 80); d.]]></description>
 </item>
 <item>
     <title>61B-15: Packages, Access Control, Objects</title>
-    <link>http://localhost:1313/61b-15/</link>
+    <link>http://example.org/61b-15/</link>
     <pubDate>Sun, 14 Jul 2024 21:29:34 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/61b-15/</guid>
+    <guid>http://example.org/61b-15/</guid>
     <description><![CDATA[Packages and JAR Files 创建包 At the top of every file in the package, put the package name. Make sure that the file is stored in a folder with the appropriate folder name. For a package with name ug.joshh.animal, use folder ug/joshh/animal. 要用的时候import即可
 default package JAR Files Access Control Object Methods: Equals and toString( ) toString( ) == vs equals( ) == compares references equals( ) compares values, but pay attention to the type!]]></description>
 </item>
 <item>
     <title>61B-16: Encapsulation, Lists, Delegation vs. Extension</title>
-    <link>http://localhost:1313/61b-16/</link>
+    <link>http://example.org/61b-16/</link>
     <pubDate>Sun, 14 Jul 2024 21:29:34 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/61b-16/</guid>
+    <guid>http://example.org/61b-16/</guid>
     <description><![CDATA[61B: Writing Efficient Programs Programming cost. How long does it take to develop your programs? How easy is it to read, modify, and maintain your code? More important than you might think! Majority of cost is in maintenance, not development! 自顶向下，逐层抽象，分而治之，化整为零
 ADT Implementations Designing ADTs 虽然extension简单，但是委托delegation更加灵活
 Views 视图 在Java中，&ldquo;view&quot;通常指的是一种数据结构的视图，它提供了一种访问和操作底层数据的方式，而不需要复制整个数据集。视图的主要优点是它们提供了一种高效的方式来操作数据子集，而不需要复制数据，从而节省内存和提高性能。然而，视图也有一些限制，例如固定大小的视图不能添加或删除元素。
@@ -35,20 +35,20 @@ Occasionally, implementation details may allow for views that are too difficult 
 </item>
 <item>
     <title>61B-12:  Coding in the Real World, Review</title>
-    <link>http://localhost:1313/61b-12/</link>
+    <link>http://example.org/61b-12/</link>
     <pubDate>Sun, 14 Jul 2024 21:29:33 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/61b-12/</guid>
+    <guid>http://example.org/61b-12/</guid>
     <description><![CDATA[Programming in the Real World 对技术要敬畏 midterm review Comparing strings for equality using == vs .equals &mdash;&gt; see in autoboxing lecture 在Java中，this 是一个指向当前对象实例的引用。它通常用于引用当前类的实例成员，或者在方法中区分成员变量和局部变量。然而，你不能将 this 重新赋值为另一个对象的引用，因为 this 是一个固定的概念，它代表当前对象本身。
 你提供的代码示例中，尝试将 this 赋值为一个新的 Dog 对象，这是不允许的。Java 编译器会报错，因为它违反了 this 的使用规则。
 1 2 3 4 5 6 7 8 public class Dog { public void f() { this = new Dog(); // 这行代码会导致编译错误，因为不能重新赋值this } } Dog d = new Dog(); d.f(); // 调用f()方法，但由于上面的错误，这行代码实际上无法执行 如果你想要创建一个新的 Dog 对象并将其引用赋给 this，你需要使用另一个变量，比如 anotherDog。下面是修改后的代码示例：]]></description>
 </item>
 <item>
     <title>61B-13: Generics, Autoboxing</title>
-    <link>http://localhost:1313/61b-13/</link>
+    <link>http://example.org/61b-13/</link>
     <pubDate>Sun, 14 Jul 2024 21:29:33 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/61b-13/</guid>
+    <guid>http://example.org/61b-13/</guid>
     <description><![CDATA[13-16几乎是java语法讲解&#x1f604;
 Primitives Cannot Be Used as Actual Type Arguments Autoboxing Wrapper Types Are (Mostly) Just Like Any Class
 8种基本类型之间转换也存在widening
@@ -57,47 +57,47 @@ Immutability 类似于const在cpp
 </item>
 <item>
     <title>61B-10: Subtype Polymorphism vs. HoFs</title>
-    <link>http://localhost:1313/61b-10/</link>
+    <link>http://example.org/61b-10/</link>
     <pubDate>Sun, 14 Jul 2024 21:29:32 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/61b-10/</guid>
+    <guid>http://example.org/61b-10/</guid>
     <description><![CDATA[Subtype Polymorphism 指的是可以使用父类类型的对象来引用子类类型的实例。 DIY Comparison 比较Object类对象时产生问题，如何比较？？？
 考虑写一个比较器，比较两个Object对象
 加深编译理解 Comparable Interface 1 2 3 public interface Comparable&lt;T&gt; { public int compareTo(T obj); } Comparator Interface 1 2 3 public interface Comparator&lt;T&gt; { public int compare(T obj1, T obj2); } 两者的关系↓ 总结]]></description>
 </item>
 <item>
     <title>61B-11: Libraries, Abstract Classes, Packages</title>
-    <link>http://localhost:1313/61b-11/</link>
+    <link>http://example.org/61b-11/</link>
     <pubDate>Sun, 14 Jul 2024 21:29:32 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/61b-11/</guid>
+    <guid>http://example.org/61b-11/</guid>
     <description><![CDATA[Java Libraries Collections Collections is a package in Java that provides various utility classes for working with collections. Tasks引入 3 tasks, given the text of a book:
 Create a list of all words in the book. Count the number of unique words. Keep track of the number of times that specific words are mentioned. #1 way set 1 2 3 4 5 6 7 8 9 10 11 12 public static int countUniqueWords(List&lt;String&gt; words) { Set&lt;String&gt; ss = new HashSet&lt;&gt;(); for (String s : words) { ss.]]></description>
 </item>
 <item>
     <title>61B-9: Extends, Casting, Higher Order Functions</title>
-    <link>http://localhost:1313/61b-9/</link>
+    <link>http://example.org/61b-9/</link>
     <pubDate>Sun, 14 Jul 2024 21:29:32 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/61b-9/</guid>
+    <guid>http://example.org/61b-9/</guid>
     <description><![CDATA[Implementation Inheritance: Extends extends
 Because of extends, RotatingSLList inherits all members of SLList: All instance and static variables. （注意public, private, protected的区别） All methods. All nested classes. Constructors are not inherited. super
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 public class VengefulSLList&lt;Item&gt; extends SLList&lt;Item&gt; { private SLList&lt;Item&gt; deletedItems; public VengefulSLList() { deletedItems = new SLList&lt;Item&gt;(); } @Override public Item removeLast() { Item oldBack = super.]]></description>
 </item>
 <item>
     <title>61B-7: Testing</title>
-    <link>http://localhost:1313/61b-7/</link>
+    <link>http://example.org/61b-7/</link>
     <pubDate>Sun, 14 Jul 2024 21:29:31 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/61b-7/</guid>
+    <guid>http://example.org/61b-7/</guid>
     <description><![CDATA[Ad Hoc Testing vs. JUnit 1 2 3 4 5 6 7 8 9 10 11 12 13 14 public class TestSort { /** Tests the sort method of the Sort class. */ public static testSort() { String[] input = {&#34;cows&#34;, &#34;dwell&#34;, &#34;above&#34;, &#34;clouds&#34;}; String[] expected = {&#34;above&#34;, &#34;cows&#34;, &#34;clouds&#34;, &#34;dwell&#34;}; Sort.sort(input); org.junit.Assert.assertArrayEquals(expected, input); } public static void main(String[] args) { testSort(); } } Selection Sort 简单介绍一下了，关注点在junit Simpler JUnit Tests ADD, TDD, Integration Testing More On JUnit (Extra) ]]></description>
 </item>
 <item>
     <title>61B-8: Inheritance, Implements</title>
-    <link>http://localhost:1313/61b-8/</link>
+    <link>http://example.org/61b-8/</link>
     <pubDate>Sun, 14 Jul 2024 21:29:31 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/61b-8/</guid>
+    <guid>http://example.org/61b-8/</guid>
     <description><![CDATA[but hard to maintain!
 Hypernyms, Hyponyms, and Interface Inheritance interface 1 2 3 4 5 6 7 8 9 10 public interface List61B&lt;Item&gt; { public void addFirst(Item x); public void addLast(Item y); public Item getFirst(); public Item getLast(); public Item removeLast(); public Item get(int i); public void insert(Item x, int position); public int size(); } Overriding vs. Overloading override注意加上@Override!!!
 Interface Inheritance 基类存放指针问题 Answer: If X is a superclass of Y, then memory boxes for X may contain Y.]]></description>

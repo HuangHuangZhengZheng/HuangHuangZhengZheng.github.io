@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Papers on HHZZ`s space</title>
-    <link>http://localhost:1313/papers/</link>
+    <link>http://example.org/papers/</link>
     <description>Recent content in Papers on HHZZ`s space</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Wed, 14 Aug 2024 11:37:05 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/papers/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://example.org/papers/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>DDPM</title>
-      <link>http://localhost:1313/papers/ddpm/</link>
+      <link>http://example.org/papers/ddpm/</link>
       <pubDate>Wed, 14 Aug 2024 11:37:05 +0800</pubDate>
-      <guid>http://localhost:1313/papers/ddpm/</guid>
+      <guid>http://example.org/papers/ddpm/</guid>
       <description>DDPM Ⅰ diffusion model如何运作? sample一张杂讯图 放进去denoise模块 反复迭代，得到更清晰的图片 step xxx → step 1, reverse process denoise模块 反复应用同一个模块 吃图片 吃噪声严重程度（数字） Denoise内部 如何训练noise predictor? Forward/Diffusion process 输入：杂讯图 and 噪声强度 Text to Image? 有很多语言和图片成对出现的训练资料&#xA;此时增加一个文本输入即可 DDPM Ⅱ text to image的framework 三者分开训练&#xA;text encoder &amp;amp; generation model 结论：文字encoder大一点比较好, diffusion model没有太大影响 side note:&#xA;FID, 即feature-wise inception distance, 衡量两个Gaussian分布之间的差异 CLIP, Contrastive Language-Image Pre-training, 衡量两个文本和图片之间的差异 decoder 不需要文字资料训练 中间产物为 小图 $\rightarrow$ 原图 中间产物为 Latent Representation $\rightarrow$ 原图, auto-encoder 事实上的噪音添加 diffusion model的数学原理Ⅰ VAE vs.</description>
     </item>
     <item>
       <title>Pointnet</title>
-      <link>http://localhost:1313/papers/pointnet/</link>
+      <link>http://example.org/papers/pointnet/</link>
       <pubDate>Thu, 18 Jul 2024 14:44:32 +0800</pubDate>
-      <guid>http://localhost:1313/papers/pointnet/</guid>
+      <guid>http://example.org/papers/pointnet/</guid>
       <description>点云的数据格式 一个点云是一个无序的向量集，每个点用三维坐标构成向量，其他信息可以扩展&#xA;有.xyz等格式&#xA;本质上是一个矩阵 $Num \times Dim$&#xA;PointNet和++的算法具体操作 PointNet算法的具体操作 必须考虑的几个特点 旋转不变性，在仿射变换下点的排列不变 置换不变性(无序的)：应该是对称函数，不考虑顺序 局部结构需要考虑(分割时)，平衡global和local 输入：点云数据 MLP升维，抽取特征 Max对称函数操作，降维，得到全局特征 $N \times 1$ 后续分类or分割 输入：点云数据 T-Net仿射变换（旋转）来保证旋转不变性 MLP升维，抽取特征 maxpooling操作，降维，得到global特征 $N \times 1$ 后续分类走mlp（fcnn）+softmax 走分割的话拼接到feature $N\times 64$ 得到 $N\times 1088$，然后mlp给每个点属于哪几个类别打分 不足之处 maxpooling这一步直接把所有点池化为以一个全局特征，局部点与点的联系没有察觉 PointNet++算法的具体操作 借鉴了卷积神经网络的思想，对空间化整为零，分而治之 进行多次set abstraction = sampling + grouping + PointNet 走分类，同上PointNet处理 走分割，interpolate插值，然后skip link concatenation拼接到低层次点特征后面，unit pointnet处理,重复几次，回到原始点云，得到分割结果（每个点的评分） 以下逐步分析&#xA;set abstraction&#xA;sampling FPS取点 grouping 聚类ball query， ball query采用metric distance和CNN曼哈顿距离不同，使得前者能泛化能力更好 然后采用pointnet对每个group进行特征提取 提出针对 点 密度分布不均匀的 density adaptive PointNet MSG，对不同大小的区域进行特征抽取并且拼在一起 random input dropout MRG, “堆叠”多个PointNet高维抽取，改进：一个向量是抽取低一层的特征，另一个向量直接抽取底层特征，然后由点密度分布来决定按权重拼接 interpolate &amp;amp; skip link concatenation （特征传播feature propagation）</description>
     </item>
   </channel>

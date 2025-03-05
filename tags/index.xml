@@ -1,86 +1,86 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Tags - Tag - HHZZ`s space</title>
-        <link>http://localhost:1313/tags/</link>
+        <link>http://example.org/tags/</link>
         <description>Tags - Tag - HHZZ`s space</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 13 Aug 2024 15:19:37 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/tags/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 13 Aug 2024 15:19:37 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/" rel="self" type="application/rss+xml" /><item>
     <title>Scikit-Learn</title>
-    <link>http://localhost:1313/tags/scikit-learn/</link>
+    <link>http://example.org/tags/scikit-learn/</link>
     <pubDate>Tue, 13 Aug 2024 15:19:37 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/tags/scikit-learn/</guid>
+    <guid>http://example.org/tags/scikit-learn/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>Numpy</title>
-    <link>http://localhost:1313/tags/numpy/</link>
+    <link>http://example.org/tags/numpy/</link>
     <pubDate>Tue, 13 Aug 2024 15:19:36 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/tags/numpy/</guid>
+    <guid>http://example.org/tags/numpy/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>Pandas</title>
-    <link>http://localhost:1313/tags/pandas/</link>
+    <link>http://example.org/tags/pandas/</link>
     <pubDate>Tue, 13 Aug 2024 15:19:35 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/tags/pandas/</guid>
+    <guid>http://example.org/tags/pandas/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>Sqlalchemy</title>
-    <link>http://localhost:1313/tags/sqlalchemy/</link>
+    <link>http://example.org/tags/sqlalchemy/</link>
     <pubDate>Tue, 13 Aug 2024 15:19:35 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/tags/sqlalchemy/</guid>
+    <guid>http://example.org/tags/sqlalchemy/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>Sqlite3</title>
-    <link>http://localhost:1313/tags/sqlite3/</link>
+    <link>http://example.org/tags/sqlite3/</link>
     <pubDate>Tue, 13 Aug 2024 15:19:35 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/tags/sqlite3/</guid>
+    <guid>http://example.org/tags/sqlite3/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>Plotly</title>
-    <link>http://localhost:1313/tags/plotly/</link>
+    <link>http://example.org/tags/plotly/</link>
     <pubDate>Tue, 13 Aug 2024 15:19:34 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/tags/plotly/</guid>
+    <guid>http://example.org/tags/plotly/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>SciPy</title>
-    <link>http://localhost:1313/tags/scipy/</link>
+    <link>http://example.org/tags/scipy/</link>
     <pubDate>Tue, 13 Aug 2024 15:19:34 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/tags/scipy/</guid>
+    <guid>http://example.org/tags/scipy/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>Seaborn</title>
-    <link>http://localhost:1313/tags/seaborn/</link>
+    <link>http://example.org/tags/seaborn/</link>
     <pubDate>Tue, 13 Aug 2024 15:19:34 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/tags/seaborn/</guid>
+    <guid>http://example.org/tags/seaborn/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>Matplotlib</title>
-    <link>http://localhost:1313/tags/matplotlib/</link>
+    <link>http://example.org/tags/matplotlib/</link>
     <pubDate>Tue, 13 Aug 2024 15:19:32 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/tags/matplotlib/</guid>
+    <guid>http://example.org/tags/matplotlib/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>Math</title>
-    <link>http://localhost:1313/tags/math/</link>
+    <link>http://example.org/tags/math/</link>
     <pubDate>Sun, 14 Jul 2024 10:33:54 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/tags/math/</guid>
+    <guid>http://example.org/tags/math/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>

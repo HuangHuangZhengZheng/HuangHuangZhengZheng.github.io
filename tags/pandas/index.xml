@@ -1,70 +1,70 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Pandas - Tag - HHZZ`s space</title>
-        <link>http://localhost:1313/tags/pandas/</link>
+        <link>http://example.org/tags/pandas/</link>
         <description>Pandas - Tag - HHZZ`s space</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 13 Aug 2024 15:19:35 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/tags/pandas/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 13 Aug 2024 15:19:35 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/pandas/" rel="self" type="application/rss+xml" /><item>
     <title>DATA100-lab10: SQL</title>
-    <link>http://localhost:1313/datalab10/</link>
+    <link>http://example.org/datalab10/</link>
     <pubDate>Tue, 13 Aug 2024 15:19:35 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/datalab10/</guid>
+    <guid>http://example.org/datalab10/</guid>
     <description><![CDATA[1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab10.ipynb&#34;) Lab 10: SQL In this lab, we are going to practice viewing, sorting, grouping, and merging tables with SQL. We will explore two datasets:
 A &ldquo;minified&rdquo; version of the Internet Movie Database (IMDb). This SQLite database (~10MB) is a tiny sample of the much larger database (more than a few GBs). As a result, disclaimer that we may get wildly different results than if we use the whole database!]]></description>
 </item>
 <item>
     <title>DATA100-lab9: Probability and Modeling</title>
-    <link>http://localhost:1313/datalab9/</link>
+    <link>http://example.org/datalab9/</link>
     <pubDate>Tue, 13 Aug 2024 15:19:35 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/datalab9/</guid>
+    <guid>http://example.org/datalab9/</guid>
     <description><![CDATA[1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab09.ipynb&#34;) Lab 9: Probability and Modeling In this lab, you will explore estimators and modeling in two parts:
 You will explore if the &ldquo;sample max&rdquo; is a biased estimator for the true max of a population.
 Given a sample (and no access to the population), you will bootstrap the sample correlation estimator to infer properties of the population correlation of two features.]]></description>
 </item>
 <item>
     <title>DATA100-lab7: Gradient Descent and Feature Engineering</title>
-    <link>http://localhost:1313/datalab7/</link>
+    <link>http://example.org/datalab7/</link>
     <pubDate>Tue, 13 Aug 2024 15:19:34 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/datalab7/</guid>
+    <guid>http://example.org/datalab7/</guid>
     <description><![CDATA[1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab07.ipynb&#34;) Lab 7: Gradient Descent and Feature Engineering In this lab, we will work through the process of:
 Defining loss functions Feature engineering Minimizing loss functions using numeric methods and analytical methods Understanding what happens if we use the analytical solution for OLS on a matrix with redundant features Computing a gradient for a nonlinear model Using gradient descent to optimize the nonline model This lab will continue using the toy tips calculation dataset used in Labs 5 and 6.]]></description>
 </item>
 <item>
     <title>DATA100-lab3: Data Cleaning and EDA</title>
-    <link>http://localhost:1313/datalab3/</link>
+    <link>http://example.org/datalab3/</link>
     <pubDate>Tue, 13 Aug 2024 15:19:32 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/datalab3/</guid>
+    <guid>http://example.org/datalab3/</guid>
     <description><![CDATA[1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab03.ipynb&#34;) Lab 3: Data Cleaning and EDA In this lab you will be working on visualizing a dataset from the City of Berkeley containing data on calls to the Berkeley Police Department. Information about the dataset can be found at this link.
 Content Warning This lab includes an analysis of crime in Berkeley. If you feel uncomfortable with this topic, please contact your GSI or the instructors.]]></description>
 </item>
 <item>
     <title>DATA100-lab2</title>
-    <link>http://localhost:1313/datalab2/</link>
+    <link>http://example.org/datalab2/</link>
     <pubDate>Mon, 15 Jul 2024 18:20:24 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/datalab2/</guid>
+    <guid>http://example.org/datalab2/</guid>
     <description><![CDATA[1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab02.ipynb&#34;) Pandas is one of the most widely used Python libraries in data science. In this lab, you will review commonly used data wrangling operations/tools in Pandas. We aim to give you familiarity with:
 Creating DataFrames Slicing DataFrames (i.e. selecting rows and columns) Filtering data (using boolean arrays and groupby.filter) Aggregating (using groupby.agg) In this lab you are going to use several pandas methods.]]></description>
 </item>
 <item>
     <title>DATA100-L4: Pandas Ⅱ</title>
-    <link>http://localhost:1313/datal4/</link>
+    <link>http://example.org/datal4/</link>
     <pubDate>Sun, 14 Jul 2024 10:55:10 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/datal4/</guid>
+    <guid>http://example.org/datal4/</guid>
     <description><![CDATA[lambda function 1 lambda x: x**2 非显式定义函数，可以直接使用lambda表达式来定义一个函数。 This is a lambda function that takes in one argument x and returns the square of x.
 再看sort_values() 注意传递key
 1 df.sort_values(by=&#39;column_name&#39;, keys=lambda x: x.str.lower(), ascending=True) add move modify and so on sort by length of string approach1: create a new column and add to original df 1 2 3 newdf = df[&#34;Name&#34;].str.len() # create a new column with length of each string df[&#39;length&#39;] = newdf df.]]></description>
 </item>
 <item>
     <title>DATA100-L3: Pandas Ⅰ</title>
-    <link>http://localhost:1313/datal3/</link>
+    <link>http://example.org/datal3/</link>
     <pubDate>Sat, 13 Jul 2024 19:50:30 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/datal3/</guid>
+    <guid>http://example.org/datal3/</guid>
     <description><![CDATA[DataFrames: a data structure for tabular data API always remember to turn to GPT/google/doc
 indexing and loc/iloc generate subsets:
 loc: an operator select items by labels

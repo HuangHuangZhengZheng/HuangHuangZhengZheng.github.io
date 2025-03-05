@@ -1,95 +1,95 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>DATA100 - Category - HHZZ`s space</title>
-        <link>http://localhost:1313/categories/data100/</link>
+        <link>http://example.org/categories/data100/</link>
         <description>DATA100 - Category - HHZZ`s space</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 13 Aug 2024 15:19:37 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/categories/data100/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 13 Aug 2024 15:19:37 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/data100/" rel="self" type="application/rss+xml" /><item>
     <title>DATA100-lab13: Decision Trees and Random Forests</title>
-    <link>http://localhost:1313/datalab13/</link>
+    <link>http://example.org/datalab13/</link>
     <pubDate>Tue, 13 Aug 2024 15:19:37 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/datalab13/</guid>
+    <guid>http://example.org/datalab13/</guid>
     <description><![CDATA[1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab13.ipynb&#34;) Lab 13: Decision Trees and Random Forests 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 # Run this cell to set up your notebook import numpy as np import pandas as pd import matplotlib.pyplot as plt from matplotlib.colors import ListedColormap import seaborn as sns from sklearn.linear_model import LogisticRegression from sklearn.model_selection import train_test_split from sklearn import tree # you may get a warning from importing ensemble.]]></description>
 </item>
 <item>
     <title>DATA100-lab14: Clustering</title>
-    <link>http://localhost:1313/datalab14/</link>
+    <link>http://example.org/datalab14/</link>
     <pubDate>Tue, 13 Aug 2024 15:19:37 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/datalab14/</guid>
+    <guid>http://example.org/datalab14/</guid>
     <description><![CDATA[1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab14.ipynb&#34;) Ungraded Lab 14: Clustering In this lab you will explore K-Means, Agglomerative Clustering, and Spectral Clustering. Spectral Clustering is out of scope for Spring 2022.ref.
 Note: This is an ungraded assignment. There is no Gradescope submission for this assignment. As this is a bonus and ungraded assignment, there will also be more limited staff office hours devoted to this ungraded homework.]]></description>
 </item>
 <item>
     <title>DATA100-lab11: Principal Component Analysis</title>
-    <link>http://localhost:1313/datalab11/</link>
+    <link>http://example.org/datalab11/</link>
     <pubDate>Tue, 13 Aug 2024 15:19:36 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/datalab11/</guid>
+    <guid>http://example.org/datalab11/</guid>
     <description><![CDATA[1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab11.ipynb&#34;) Lab 11: Principal Component Analysis In this lab assignment, we will walk through two examples that use Principal Component Analysis (PCA): one involving a dataset of iris plants, and another involving an artificial &ldquo;surfboard&rdquo; 3D dataset.
 1 2 3 4 5 6 7 8 9 10 11 12 # Run this cell to set up your notebook from sklearn.]]></description>
 </item>
 <item>
     <title>DATA100-lab12: Logistic Regression</title>
-    <link>http://localhost:1313/datalab12/</link>
+    <link>http://example.org/datalab12/</link>
     <pubDate>Tue, 13 Aug 2024 15:19:36 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/datalab12/</guid>
+    <guid>http://example.org/datalab12/</guid>
     <description><![CDATA[1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab12.ipynb&#34;) Lab 12: Logistic Regression 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 # Run this cell to set up your notebook import numpy as np import pandas as pd import sklearn import sklearn.datasets import matplotlib.pyplot as plt import seaborn as sns import plotly.offline as py import plotly.graph_objs as go import plotly.]]></description>
 </item>
 <item>
     <title>DATA100-lab10: SQL</title>
-    <link>http://localhost:1313/datalab10/</link>
+    <link>http://example.org/datalab10/</link>
     <pubDate>Tue, 13 Aug 2024 15:19:35 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/datalab10/</guid>
+    <guid>http://example.org/datalab10/</guid>
     <description><![CDATA[1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab10.ipynb&#34;) Lab 10: SQL In this lab, we are going to practice viewing, sorting, grouping, and merging tables with SQL. We will explore two datasets:
 A &ldquo;minified&rdquo; version of the Internet Movie Database (IMDb). This SQLite database (~10MB) is a tiny sample of the much larger database (more than a few GBs). As a result, disclaimer that we may get wildly different results than if we use the whole database!]]></description>
 </item>
 <item>
     <title>DATA100-lab9: Probability and Modeling</title>
-    <link>http://localhost:1313/datalab9/</link>
+    <link>http://example.org/datalab9/</link>
     <pubDate>Tue, 13 Aug 2024 15:19:35 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/datalab9/</guid>
+    <guid>http://example.org/datalab9/</guid>
     <description><![CDATA[1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab09.ipynb&#34;) Lab 9: Probability and Modeling In this lab, you will explore estimators and modeling in two parts:
 You will explore if the &ldquo;sample max&rdquo; is a biased estimator for the true max of a population.
 Given a sample (and no access to the population), you will bootstrap the sample correlation estimator to infer properties of the population correlation of two features.]]></description>
 </item>
 <item>
     <title>DATA100-lab7: Gradient Descent and Feature Engineering</title>
-    <link>http://localhost:1313/datalab7/</link>
+    <link>http://example.org/datalab7/</link>
     <pubDate>Tue, 13 Aug 2024 15:19:34 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/datalab7/</guid>
+    <guid>http://example.org/datalab7/</guid>
     <description><![CDATA[1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab07.ipynb&#34;) Lab 7: Gradient Descent and Feature Engineering In this lab, we will work through the process of:
 Defining loss functions Feature engineering Minimizing loss functions using numeric methods and analytical methods Understanding what happens if we use the analytical solution for OLS on a matrix with redundant features Computing a gradient for a nonlinear model Using gradient descent to optimize the nonline model This lab will continue using the toy tips calculation dataset used in Labs 5 and 6.]]></description>
 </item>
 <item>
     <title>DATA100-lab8: Model Selection, Regularization, and Cross-Validation</title>
-    <link>http://localhost:1313/datalab8/</link>
+    <link>http://example.org/datalab8/</link>
     <pubDate>Tue, 13 Aug 2024 15:19:34 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/datalab8/</guid>
+    <guid>http://example.org/datalab8/</guid>
     <description><![CDATA[1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab08.ipynb&#34;) Lab 8: Model Selection, Regularization, and Cross-Validation In this lab, you will practice using scikit-learn to generate models of various complexity. You&rsquo;ll then use the holdout method and K-fold cross-validation to select the models that generalize best.
 1 2 3 4 5 6 7 8 9 10 11 # Run this cell to set up your notebook import seaborn as sns import csv import numpy as np import pandas as pd import matplotlib.]]></description>
 </item>
 <item>
     <title>DATA100-lab5: Modeling, Loss Functions, and Summary Statistics</title>
-    <link>http://localhost:1313/datalab5/</link>
+    <link>http://example.org/datalab5/</link>
     <pubDate>Tue, 13 Aug 2024 15:19:33 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/datalab5/</guid>
+    <guid>http://example.org/datalab5/</guid>
     <description><![CDATA[1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab05.ipynb&#34;) Lab 5: Modeling, Loss Functions, and Summary Statistics Predicting Restaurant Tips In this lab, you will try to predict restaurant tips from a set of data in several ways:
 A. Without given any additional information, use a constant model with L2 loss to predict the tip $\hat{y}$ as a summary statistic, $\theta$.
 B. Given one piece of information—the total bill $x$ use a linear model with L2 loss to predict the tip $\hat{y}$ as a linear function of $x$.]]></description>
 </item>
 <item>
     <title>DATA100-lab6: Linear Regression</title>
-    <link>http://localhost:1313/datalab6/</link>
+    <link>http://example.org/datalab6/</link>
     <pubDate>Tue, 13 Aug 2024 15:19:33 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/datalab6/</guid>
+    <guid>http://example.org/datalab6/</guid>
     <description><![CDATA[1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab06.ipynb&#34;) Lab 6: Linear Regression Objectives In this lab, you will review the details of linear regresison as described in Lectures 10 and 11. In particular:
 Matrix formulation and solution to Ordinary Least Squares sns.lmplot as a quick visual for simple linear regression scikit-learn, a real world data science tool that is more robust and flexible than analytical/scipy.optimize solutions You will also practice interpreting residual plots (vs.]]></description>
 </item>

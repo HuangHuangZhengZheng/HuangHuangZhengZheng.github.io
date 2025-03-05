@@ -1,14 +1,14 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>NNDL - Category - HHZZ`s space</title>
-        <link>http://localhost:1313/categories/nndl/</link>
+        <link>http://example.org/categories/nndl/</link>
         <description>NNDL - Category - HHZZ`s space</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 14 Aug 2024 11:37:05 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/categories/nndl/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 14 Aug 2024 11:37:05 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/nndl/" rel="self" type="application/rss+xml" /><item>
     <title>DDPM</title>
-    <link>http://localhost:1313/papers/ddpm/</link>
+    <link>http://example.org/papers/ddpm/</link>
     <pubDate>Wed, 14 Aug 2024 11:37:05 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/papers/ddpm/</guid>
+    <guid>http://example.org/papers/ddpm/</guid>
     <description><![CDATA[DDPM Ⅰ diffusion model如何运作? sample一张杂讯图 放进去denoise模块 反复迭代，得到更清晰的图片 step xxx → step 1, reverse process denoise模块 反复应用同一个模块 吃图片 吃噪声严重程度（数字） Denoise内部 如何训练noise predictor? Forward/Diffusion process 输入：杂讯图 and 噪声强度 Text to Image? 有很多语言和图片成对出现的训练资料
 此时增加一个文本输入即可 DDPM Ⅱ text to image的framework 三者分开训练
 text encoder &amp; generation model 结论：文字encoder大一点比较好, diffusion model没有太大影响 side note:
@@ -16,10 +16,10 @@ FID, 即feature-wise inception distance, 衡量两个Gaussian分布之间的差�
 </item>
 <item>
     <title>Pointnet</title>
-    <link>http://localhost:1313/papers/pointnet/</link>
+    <link>http://example.org/papers/pointnet/</link>
     <pubDate>Thu, 18 Jul 2024 14:44:32 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/papers/pointnet/</guid>
+    <guid>http://example.org/papers/pointnet/</guid>
     <description><![CDATA[点云的数据格式 一个点云是一个无序的向量集，每个点用三维坐标构成向量，其他信息可以扩展
 有.xyz等格式
 本质上是一个矩阵 $Num \times Dim$

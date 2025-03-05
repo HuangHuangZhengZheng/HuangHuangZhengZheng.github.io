@@ -1,54 +1,54 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Categories - Category - HHZZ`s space</title>
-        <link>http://localhost:1313/categories/</link>
+        <link>http://example.org/categories/</link>
         <description>Categories - Category - HHZZ`s space</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 15 Aug 2024 19:09:38 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/categories/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 15 Aug 2024 19:09:38 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/" rel="self" type="application/rss+xml" /><item>
     <title>TOOLS</title>
-    <link>http://localhost:1313/categories/tools/</link>
+    <link>http://example.org/categories/tools/</link>
     <pubDate>Thu, 15 Aug 2024 19:09:38 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/categories/tools/</guid>
+    <guid>http://example.org/categories/tools/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>NNDL</title>
-    <link>http://localhost:1313/categories/nndl/</link>
+    <link>http://example.org/categories/nndl/</link>
     <pubDate>Wed, 14 Aug 2024 11:37:05 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/categories/nndl/</guid>
+    <guid>http://example.org/categories/nndl/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>CS186</title>
-    <link>http://localhost:1313/categories/cs186/</link>
+    <link>http://example.org/categories/cs186/</link>
     <pubDate>Wed, 14 Aug 2024 09:38:05 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/categories/cs186/</guid>
+    <guid>http://example.org/categories/cs186/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>DATA100</title>
-    <link>http://localhost:1313/categories/data100/</link>
+    <link>http://example.org/categories/data100/</link>
     <pubDate>Tue, 13 Aug 2024 15:19:37 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/categories/data100/</guid>
+    <guid>http://example.org/categories/data100/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>UCB-CS61B</title>
-    <link>http://localhost:1313/categories/ucb-cs61b/</link>
+    <link>http://example.org/categories/ucb-cs61b/</link>
     <pubDate>Sun, 14 Jul 2024 21:29:34 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/categories/ucb-cs61b/</guid>
+    <guid>http://example.org/categories/ucb-cs61b/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>Programming Language Crash Course</title>
-    <link>http://localhost:1313/categories/programming-language-crash-course/</link>
+    <link>http://example.org/categories/programming-language-crash-course/</link>
     <pubDate>Sun, 05 May 2024 22:24:42 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://localhost:1313/categories/programming-language-crash-course/</guid>
+    <guid>http://example.org/categories/programming-language-crash-course/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>
