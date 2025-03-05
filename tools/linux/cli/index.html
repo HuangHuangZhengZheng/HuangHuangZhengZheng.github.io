@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Useful Linux CLI Commands - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Useful Linux CLI Commands" />
+<meta property="og:description" content="uncond train, and eval train 1 2 3 4 5 6 7 8 # vae OMP_NUM_THREADS=3 python main.py -b configs/autoencoder/kitti/autoencoder_c2_p4.yaml -t --gpus 0,1, -r logs/kitti/2025-02-27T11-19-07_autoencoder_c2_p4 OMP_NUM_THREADS=3 python main.py -b configs/autoencoder/kitti/autoencoder_c2_p4.yaml -t --gpus 3, # lidm both for cond and uncond OMP_NUM_THREADS=3 python main.py -b configs/lidar_diffusion/kitti/uncond_vig_dec0.yaml -t --gpus 0, OMP_NUM_THREADS=3 python main.py -b configs/lidar_diffusion/kitti/cond_t2l_vig_dec0.yaml -t --gpus 1,3 -r logs/kitti/2025-02-25T12-14-50_cond_t2l_vig_dec0 eval 1 2 3 4 5 6 7 8 9 # sample and eval CUDA_VISIBLE_DEVICES=2 python scripts/sample." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/tools/linux/cli/" /><meta property="og:image" content="http://example.org/logo.png" /><meta property="article:section" content="tools" />
+<meta property="article:published_time" content="2025-03-05T12:35:09+08:00" />
+<meta property="article:modified_time" content="2025-03-05T12:35:09+08:00" /><meta property="og:site_name" content="My cool site" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://example.org/logo.png" /><meta name="twitter:title" content="Useful Linux CLI Commands"/>
+<meta name="twitter:description" content="uncond train, and eval train 1 2 3 4 5 6 7 8 # vae OMP_NUM_THREADS=3 python main.py -b configs/autoencoder/kitti/autoencoder_c2_p4.yaml -t --gpus 0,1, -r logs/kitti/2025-02-27T11-19-07_autoencoder_c2_p4 OMP_NUM_THREADS=3 python main.py -b configs/autoencoder/kitti/autoencoder_c2_p4.yaml -t --gpus 3, # lidm both for cond and uncond OMP_NUM_THREADS=3 python main.py -b configs/lidar_diffusion/kitti/uncond_vig_dec0.yaml -t --gpus 0, OMP_NUM_THREADS=3 python main.py -b configs/lidar_diffusion/kitti/cond_t2l_vig_dec0.yaml -t --gpus 1,3 -r logs/kitti/2025-02-25T12-14-50_cond_t2l_vig_dec0 eval 1 2 3 4 5 6 7 8 9 # sample and eval CUDA_VISIBLE_DEVICES=2 python scripts/sample."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/tools/linux/cli/" /><link rel="prev" href="http://example.org/tools/conda/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Useful Linux CLI Commands",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/tools\/linux\/cli\/"
+        },"genre": "tools","wordcount":  631 ,
+        "url": "http:\/\/example.org\/tools\/linux\/cli\/","datePublished": "2025-03-05T12:35:09+08:00","dateModified": "2025-03-05T12:35:09+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "HHZZ"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HHZZ`s space">Code and BeyondCode😋</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tools/"> Tools </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/beyondcode/"> BeyondCode😋 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HHZZ`s space">Code and BeyondCode😋</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tools/" title="">Tools</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/beyondcode/" title="">BeyondCode😋</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="page single special"><h1 class="single-title animate__animated animate__pulse animate__faster">Useful Linux CLI Commands</h1><div class="content" id="content"><h2 id="uncond-train-and-eval">uncond train, and eval</h2>
+<h3 id="train">train</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># vae</span>
+</span></span><span class="line"><span class="cl"><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="m">3</span> python main.py -b configs/autoencoder/kitti/autoencoder_c2_p4.yaml -t --gpus 0,1, -r logs/kitti/2025-02-27T11-19-07_autoencoder_c2_p4
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="m">3</span> python main.py -b configs/autoencoder/kitti/autoencoder_c2_p4.yaml -t --gpus 3,
+</span></span><span class="line"><span class="cl"><span class="c1"># lidm both for cond and uncond</span>
+</span></span><span class="line"><span class="cl"><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="m">3</span> python main.py -b configs/lidar_diffusion/kitti/uncond_vig_dec0.yaml -t --gpus 0,
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="m">3</span> python main.py -b configs/lidar_diffusion/kitti/cond_t2l_vig_dec0.yaml -t --gpus 1,3 -r logs/kitti/2025-02-25T12-14-50_cond_t2l_vig_dec0
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="eval">eval</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># sample and eval</span>
+</span></span><span class="line"><span class="cl"><span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">2</span> python scripts/sample.py -d kitti -r models/lidm/kitti/vig_dec0/epoch<span class="o">=</span>000027.ckpt -n <span class="m">2000</span> -s <span class="m">250</span> --eval <span class="c1"># for current best model, and specify the seed</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">1</span> python scripts/sample.py -d kitti -r models/lidm/kitti/vig_dec0/epoch<span class="o">=</span>000027.ckpt -n <span class="m">2000</span> -c <span class="m">25</span> --eval <span class="c1"># for inference steps</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">1</span> python scripts/sample.py -d kitti -r models/lidm/kitti/vig_dec0/last.ckpt -n <span class="m">2000</span> --eval
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># eval only</span>
+</span></span><span class="line"><span class="cl"><span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">1</span> python scripts/sample.py -d kitti -f models/lidm/kitti/gcn_tr1d/samples/00452624/2025-02-03-15-44-42/numpy/samples.pcd --eval
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="conditional-sample">conditional sample</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># text2lidar</span>
+</span></span><span class="line"><span class="cl"><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="m">3</span> <span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">1</span> python scripts/text2lidar.py -r models/lidm/kitti/t2l/epoch<span class="o">=</span>000020.ckpt -d kitti -p <span class="s2">&#34;there is a crosswalk in front of the ego vehicle&#34;</span> <span class="c1"># 有个十字路口的场景</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="docker-setup">docker setup</h2>
+<h2 id="unix-helpful-commands">unix helpful commands</h2>
+<h3 id="find-and-delete-folders-containing-sth">find and delete folders containing sth</h3>
+<p>在Unix系统中，你可以使用find命令结合rm命令来删除所有包含break的文件夹。这里有一个命令示例，它会查找当前路径下所有包含break的文件夹，并删除它们：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">find . -type d -name <span class="s1">&#39;*2025-03-02-10-04-43*&#39;</span> -exec rm -rf <span class="o">{}</span> +
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">find . -type f -name <span class="s1">&#39;*00002*&#39;</span> -exec rm <span class="o">{}</span> +
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>下面是命令的详细解释：
+find .：从当前目录开始查找。
+-type d：查找的类型是目录。
+-name &lsquo;*break*&rsquo;：查找名称中包含break的目录。
+-exec：对找到的每个项目执行后面的命令。
+rm -rf {} +：删除找到的每个目录及其内容。{}是一个占位符，代表find命令找到的每个项目，+表示将所有找到的项目传递给rm命令，而不是一次传递一个。</p>
+<h3 id="zip">zip</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">zip -r topo_1000.zip *.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="peek-the-gpu-usage">peek the gpu usage</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">watch -n <span class="m">1</span> nvidia-smi
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="peek-the-cpu-usage">peek the cpu usage</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">top
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="m">3</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="kill-a-process">kill a process</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">kill</span> -9 &lt;pid&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在你提供的截图中，通过 ps aux | grep python 命令列出了包含 &ldquo;python&rdquo; 关键词的进程。
+如果你想要终止所有正在运行的 Python 进程，你可以使用 pkill 命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pkill -f python
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="peek-the-disk-usage">peek the disk usage</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">df -h
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="ssh-to-a-remote-server">ssh to a remote server</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh -P &lt;port&gt; &lt;username&gt;@&lt;remote_server_ip&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="nohup">nohup</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nohup python GLiDR_kitti.py --data /data/data_odometry_static_dynamic/scan/ --exp_name find_shapes_kitti_mlpdiff --beam <span class="m">16</span> --dim <span class="m">8</span> --batch_size <span class="m">32</span> --mode kitti &gt; training_mlp_diff_100.log 2&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">&amp;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="cd">cd</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> - <span class="c1"># 回到上一级目录</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> <span class="s2">&#34;/path/to/directory with spaces&#34;</span> <span class="c1"># 进入带有空格的目录</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="tmux后台使用逻辑">tmux后台使用逻辑</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># install tmux</span>
+</span></span><span class="line"><span class="cl">sudo apt-get update
+</span></span><span class="line"><span class="cl">sudo apt-get install tmux
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="session">Session</h3>
+<ul>
+<li>新建会话</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">tmux new -s lidm
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>离开会话
+<code>Ctrl+b d</code></p>
+</li>
+<li>
+<p>重连会话</p>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">tmux attach -t my_session
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>列出会话</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">tmux ls
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>杀死会话
+<code>Ctrl+b :kill-session</code></p>
+</li>
+<li>
+<p>上下滚动
+<code>Ctrl+b [</code>  <code>q</code></p>
+</li>
+</ul>
+<h3 id="window">Window</h3>
+<ul>
+<li>
+<p>创建新窗口
+<code>Ctrl+b c</code></p>
+</li>
+<li>
+<p>切换窗口
+<code>Ctrl+b p</code> （上一个窗口） <code>Ctrl+b n</code> （下一个窗口）<code>Ctrl+b &lt;number&gt;</code> （指定窗口）<code>Ctrl+b w</code> （窗口列表）</p>
+</li>
+<li>
+<p>为窗口命名<br>
+<code>Ctrl+b ,</code></p>
+</li>
+</ul>
+<h3 id="panes">Panes</h3>
+<ul>
+<li>
+<p>切分窗格
+<code>Ctrl+b %</code> 垂直分割 <code>Ctrl+b &quot;</code> 水平分割</p>
+</li>
+<li>
+<p>转换窗口
+<code>Ctrl+b &lt;arrow key&gt;</code></p>
+</li>
+<li>
+<p>关闭当前 pane
+<code>Ctrl+b x</code></p>
+</li>
+</ul>
+<h3 id="build-essentials">build essentials</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt-get update
+</span></span><span class="line"><span class="cl">sudo apt-get install build-essential
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="ssh-docker-image-transfer">ssh docker image transfer</h2>
+<h3 id="docker-run">docker run</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nvidia-docker run -it --name <span class="s1">&#39;hz_lidargen&#39;</span> --shm-size 16g -v /data0/dataset/:/data -v /home/liujiuming/hz:/home/hz fzhiheng/deep_envs:py38-torch110-cu113-pointnet2 /bin/bash
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">docker start hz_lidargen <span class="c1"># lidardiff / lidargen / ultralidar</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -it hz_lidargen /bin/bash
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="docker-save-and-load">docker save and load</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker save -o my-image.tar my-image:tag
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">scp <span class="s1">&#39;epoch=000037.ckpt&#39;</span> liujiuming@10.129.22.67:~/GLIDR/GLiDR-main/LiDAR-Diffusion-main/models/lidm/kitti/uncond_vig_dec1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># folder</span>
+</span></span><span class="line"><span class="cl">scp -r my-folder user@remote-server:/path/to/destination
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">docker load -i /path/to/destination/my-image.tar
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="ifconfig">ifconfig</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ifconfig
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">6012 10.129.22.57
+</span></span><span class="line"><span class="cl">6017 10.129.22.67 
+</span></span><span class="line"><span class="cl">6016 10.129.22.66
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="python-lib">Python Lib</h2>
+<h3 id="knn_cuda">knn_cuda</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pip install --upgrade https://github.com/unlimblue/KNN_CUDA/releases/download/0.2/KNN_CUDA-0.2-py3-none-any.whl -i http://pypi.doubanio.com/simple/ --trusted-host pypi.doubanio.com
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="pointnet2_ops_lib">pointnet2_ops_lib</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pip install git+https://github.com/erikwijmans/Pointnet2_PyTorch.git#subdirectory<span class="o">=</span>pointnet2_ops_lib
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="topologylayer">topologylayer</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pip install git+https://github.com/Topologic/topologylayer.git
+</span></span><span class="line"><span class="cl"><span class="c1"># topologylayer np.int --&gt; np.int64</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="ninja">ninja</h3>
+<p><a href="https://kimi.moonshot.cn/chat/ctjnjk8pe77ot9u80lvg" target="_blank" rel="noopener noreffer ">https://kimi.moonshot.cn/chat/ctjnjk8pe77ot9u80lvg</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt-get install ninja-build
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="pip-configs--换源--conda-换源">pip configs / 换源 / conda 换源</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pip install open3d -i https://pypi.tuna.tsinghua.edu.cn/simple <span class="c1"># 临时</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pip config <span class="nb">set</span> global.index-url https://pypi.tuna.tsinghua.edu.cn/simple <span class="c1"># 永久</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">conda config --show channels
+</span></span><span class="line"><span class="cl">conda config --set show_channel_urls yes
+</span></span><span class="line"><span class="cl"><span class="c1"># 加进去</span>
+</span></span><span class="line"><span class="cl">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+</span></span><span class="line"><span class="cl">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+</span></span><span class="line"><span class="cl"><span class="c1"># conda-forge</span>
+</span></span><span class="line"><span class="cl">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/
+</span></span><span class="line"><span class="cl"><span class="c1"># 注意windows prefers http instead of https</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="lidargen--ultralidar-commands">lidargen / ultralidar commands</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span>/home/hz/mmdetection3d:<span class="nv">$PYTHONPATH</span> <span class="c1"># in docker</span>
+</span></span><span class="line"><span class="cl"><span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">3</span> ./tools/dist_test.sh configs/ultralidar_kitti360_static_blank_code.py ./epoch_200.pth <span class="m">1</span> --eval <span class="s2">&#34;mIoU&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">3</span> ./tools/dist_test.sh configs/ultralidar_kitti360_gene.py ./epoch_200.pth <span class="m">1</span> --eval <span class="s2">&#34;mIoU&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h5 id="for-viz-draft">for viz draft</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">KITTI360_DATASET</span><span class="o">=</span>/data/KITTI-360/
+</span></span><span class="line"><span class="cl"><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="m">3</span> <span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">3</span> python lidargen.py --sample --exp kitti_pretrained --config kitti.yml
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="m">3</span> <span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">3</span> python try.py --loop_count <span class="m">200</span> --mid <span class="m">4</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="m">3</span> <span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">3</span> python try.py --loop_count <span class="m">5000</span> --mid <span class="m">4</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div></div></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.123.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">HHZZ</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
