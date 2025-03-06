@@ -1,0 +1,112 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>UCB-CS61A - Category - HHZZ`s space</title>
+        <link>http://example.org/categories/ucb-cs61a/</link>
+        <description>UCB-CS61A - Category - HHZZ`s space</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 23 Oct 2024 21:55:42 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/ucb-cs61a/" rel="self" type="application/rss+xml" /><item>
+    <title>Lec37-Final</title>
+    <link>http://example.org/lec37-final/</link>
+    <pubDate>Wed, 23 Oct 2024 21:55:42 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/lec37-final/</guid>
+    <description><![CDATA[Final Project: The Game of Life ? about the title: well, umm, this title just pop up in the cursor and I don&rsquo;t mean to write that&hellip;
+it just feels like a good idea to write something about the game of life ==&gt; 61B or 61C must have a project on this topic &#x1f914;
+Trees Processing def里面def的风格感觉是CS106里面提到的递归helper function的风格 &#x1f62e;
+Recursive Accumulation using static variables to accumulate the results of recursive calls &#x1f62e;]]></description>
+</item>
+<item>
+    <title>Lec36-Databases</title>
+    <link>http://example.org/lec36-databases/</link>
+    <pubDate>Wed, 23 Oct 2024 20:57:00 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/lec36-databases/</guid>
+    <description><![CDATA[Databases method of tables create and drop tables &#x1f913;
+1 2 create table numbers (n, note); create table numbers (n UNIQUE, note DEFAULT &#39;unknown&#39;); 1 drop table if exists t; insert data into tables 1 2 insert into t values (1, &#39;one&#39;); insert into t(col1) values (2); update 1 update t set col1 = 3 where col2 = &#39;two&#39;; delete 1 delete from t where col1 = 1; Python and SQL 1 2 3 4 5 6 7 8 9 10 11 import sqlite3 # connect to the database conn = sqlite3.]]></description>
+</item>
+<item>
+    <title>Lec35-Agg</title>
+    <link>http://example.org/lec35-agg/</link>
+    <pubDate>Wed, 23 Oct 2024 20:39:36 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/lec35-agg/</guid>
+    <description><![CDATA[Aggregation see here]]></description>
+</item>
+<item>
+    <title>Lec34-Tables</title>
+    <link>http://example.org/lec34-tables/</link>
+    <pubDate>Wed, 23 Oct 2024 20:10:43 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/lec34-tables/</guid>
+    <description><![CDATA[Tables Joining Tables 见CS186
+重点从eval / SICP 角度看语句是如何被eval的
+Strings methods ]]></description>
+</item>
+<item>
+    <title>Lec33-SQL</title>
+    <link>http://example.org/lec33-sql/</link>
+    <pubDate>Wed, 23 Oct 2024 14:06:09 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/lec33-sql/</guid>
+    <description><![CDATA[SQL DATA100 / CS186先导课名副其实 &#x1f60f;
+create 不说了见186第一节课第二节课
+overview select 1 2 3 select ... union select ... union select ... union ]]></description>
+</item>
+<item>
+    <title>Lec32-Macros</title>
+    <link>http://example.org/lec32-macros/</link>
+    <pubDate>Wed, 23 Oct 2024 11:50:59 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/lec32-macros/</guid>
+    <description><![CDATA[Macros quote or unquote 在于怎么eval &#x1f914;
+, 后面的 (some_expression) 不会被quote
+Macros in Scheme define new special form in scheme&hellip;
+define-macro 定义一个新的宏，接收一个 &lt;expression&gt; 作为参数，返回一个新的&lt;expression&gt; 并且eval之, 先不对参数eval
+注意和define的区别，define在意的是传进来的 value
+another example, to show info of your expression using macro
+1 2 3 (define-macro (check expr) (list &#39;if expr &#39;&#39;pass (list &#39;quote (list &#39;failed: expr)))) For Macro in Scheme 1 2 3 4 5 (define (map fn vals) (if (null? vals) () (cons (fn (car vals)) (map fn (cdr vals))))) 1 2 &gt; (map (lambda (x) (* x x)) &#39;(2 3 4 5)) ; without using macro case (4 9 16 25) 1 2 3 (define-macro (for sym vals expr) (list &#39;map lambda (sym) (expr) (vals)) ;?]]></description>
+</item>
+<item>
+    <title>Lec29-Interpreters</title>
+    <link>http://example.org/lec29-interpreters/</link>
+    <pubDate>Tue, 22 Oct 2024 21:48:09 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/lec29-interpreters/</guid>
+    <description><![CDATA[Interpreters Special Forms Quotation Logical Forms Lambda Expressions 1 (lambda (x) (+ x 1)) Frame and Environment Dynamic Scope who calls you can provide the value you need
+rather than static scope&hellip;
+Interpreting Scheme Code 核心在此 Define Expressions ]]></description>
+</item>
+<item>
+    <title>Lec30-Tail Calls</title>
+    <link>http://example.org/lec30-tail-calls/</link>
+    <pubDate>Tue, 22 Oct 2024 21:48:09 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/lec30-tail-calls/</guid>
+    <description><![CDATA[Tail Calls Functional Programming Tail Call 相同时间复杂度，对空间复杂度的限制，常量空间运行
+get the len of a list Map and Reduce Reduce eg
+1 (reduce * &#39;(3 4 5) 2) ; 120 Map Map with only a constant numbers of Frames
+General Computing Machine &#x1f62e;]]></description>
+</item>
+<item>
+    <title>Lec31-Programs as Data</title>
+    <link>http://example.org/lec31-programs-as-data/</link>
+    <pubDate>Tue, 22 Oct 2024 21:48:09 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/lec31-programs-as-data/</guid>
+    <description><![CDATA[Programs as Data eval 在字符串上面eval
+Generating Code Quasiquotes
+while statements in Scheme&hellip;how to generate generic code ]]></description>
+</item>
+<item>
+    <title>Lec28-Calculator</title>
+    <link>http://example.org/lec28-calculator/</link>
+    <pubDate>Mon, 21 Oct 2024 10:39:53 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/lec28-calculator/</guid>
+    <description><![CDATA[Calculator Exception 1 raise Exception(&#34;Invalid input&#34;) 1 2 3 4 try: # code that may raise an exception except Exception as e: print(e) 见java try-catch &#x1f60f;
+1 2 float(&#39;inf&#39;) # positive infinity float(&#39;-inf&#39;) # negative infinity Programming Languages Programs are trees&hellip; and the way interpreters work is through a tree recursion. Parsing 把文本转化为抽象语法树（Abstract Syntax Tree，AST）
+base case: only symbols and numbers
+recursive case: expressions and statements
+Scheme-Syntax Calculator using Python Pair to describe pairs of expressions and statements]]></description>
+</item>
+</channel>
+</rss>

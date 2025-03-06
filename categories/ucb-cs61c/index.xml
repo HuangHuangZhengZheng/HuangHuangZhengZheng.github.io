@@ -1,0 +1,141 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>UCB-CS61C - Category - HHZZ`s space</title>
+        <link>http://example.org/categories/ucb-cs61c/</link>
+        <description>UCB-CS61C - Category - HHZZ`s space</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 23 Jan 2025 09:02:37 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/ucb-cs61c/" rel="self" type="application/rss+xml" /><item>
+    <title>Lec16-CL</title>
+    <link>http://example.org/lec16-cl/</link>
+    <pubDate>Thu, 23 Jan 2025 09:02:37 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/lec16-cl/</guid>
+    <description><![CDATA[Lecture 16: Combinational Logic ]]></description>
+</item>
+<item>
+    <title>Lec15-State and State Machines</title>
+    <link>http://example.org/lec15-state-and-state-machines/</link>
+    <pubDate>Wed, 22 Jan 2025 20:41:04 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/lec15-state-and-state-machines/</guid>
+    <description><![CDATA[Lecture 15: State and State Machines https://www.learncs.site/resource/cs61c/lectures/lec15.pdf
+Flip-flops? details of registers! n位寄存器，n个并行的1位触发器
+timing of flip-flops clk to q 越小越好
+Accumulators revisited 如果超频&hellip;
+pipelines and pipelining max clock frequency 简单总结 感觉数电知识更多一点？ 减少延时
+Finite State Machines 一个例子 等价翻译 ]]></description>
+</item>
+<item>
+    <title>Lec14-Intro to Synchronous Digital Systems</title>
+    <link>http://example.org/lec14-intro-to-synchronous-digital-systems/</link>
+    <pubDate>Wed, 22 Jan 2025 20:07:46 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/lec14-intro-to-synchronous-digital-systems/</guid>
+    <description><![CDATA[Lecture 14: Intro to Synchronous Digital Systems MOS Transistors normal n-channel gate G is low, open. NAND Gates 与非门 电路存储与构成 组合逻辑电路 有状态元件 like 寄存器 ]]></description>
+</item>
+<item>
+    <title>Lec13-Compiling, Assembling, Linking and Loading</title>
+    <link>http://example.org/lec13-compiling-assembling-linking-and-loading/</link>
+    <pubDate>Tue, 15 Oct 2024 10:12:14 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/lec13-compiling-assembling-linking-and-loading/</guid>
+    <description><![CDATA[Compiling, Assembling, Linking and Loading CALL
+Interpretation and Translation Interpretation 有一个解释器（是一个程序）
+Translation 翻译为低级的语言针对hardware更快操作
+Compiler CS164 &#x1f914;
+这么看来pseudo code确实存在？
+Assembler Directives Replacements 把pseudo code翻译成真实的RISC-V指令
+Producing real machine code 让.o文件确定终值 ==&gt; object file
+简单case：直接用.o文件 Forward reference problem：确定标签位置，然后再用.o文件 PC 相对寻址 Symbol Table and Relocation Table symbol Table label Table 汇编器层面不知道static 之类的东西，所以需要暂时做个记号等待link处理
+Object File Format Linker what happen? 4 types of addressing
+which instructions must be linked?
+J-format: j / jal L-, S-format: there is a gp !]]></description>
+</item>
+<item>
+    <title>Lec12-RISC-V Instruction Formats II</title>
+    <link>http://example.org/lec12-risc-v-instruction-formats-ii/</link>
+    <pubDate>Wed, 09 Oct 2024 20:50:18 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/lec12-risc-v-instruction-formats-ii/</guid>
+    <description><![CDATA[RISC-V Instruction Formats II B-Format Layout branch/分支 ==&gt; if-else, while, for
+encode Label:
+PC寻址, 用imm field来表示偏移量
+实际上 RV compressed instruction format! 16bit 压缩指令格式，偏移量不再是4的倍数，而是2的倍数（所以imm 二进制结尾一定是0）
+理论layout 解释一下如何从指令解析出立即数的数值
+B-type &ldquo;|&rdquo; 意思是专门分出一块区域来存一位数字
+Long Immediate， U-Format Layout I, B, S imm的12位扩展到long，找个地方放下剩下的20位
+注意这里不直接使用branch指令跳转，而是采用jump直接来做
+地方来了：同时来了两个新的指令lui &amp; auipc Corner case 有符号扩展带过来的，1开头的符号扩展
+用+1来避免这个问题
+补充 auipc 指令 J-Format Layout 只有jal，因为jalr是I-type的
+使用示例
+jalr 使用示例
+留一个reference]]></description>
+</item>
+<item>
+    <title>Lec5-C Memory Management</title>
+    <link>http://example.org/lec5-c-memory-management/</link>
+    <pubDate>Wed, 09 Oct 2024 17:49:34 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/lec5-c-memory-management/</guid>
+    <description><![CDATA[C Memory Management malloc 1 2 3 4 5 6 // with the help of a typecast and sizeof ptr = (int *) malloc(n * sizeof(int)); /* check if malloc was successful */ if (ptr == NULL) { /* handle error */ } 1 2 3 ptr = (int *) realloc(ptr, (n+1) * sizeof(int)); free(ptr); // realloc(ptr, 0) 不要踩坑！
+An array name is not a variable. &ndash; K&amp;R
+when call &amp;arr , just get the address of the first element of the array]]></description>
+</item>
+<item>
+    <title>Lec6-Floating Point</title>
+    <link>http://example.org/lec6-floating-point/</link>
+    <pubDate>Wed, 09 Oct 2024 17:49:34 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/lec6-floating-point/</guid>
+    <description><![CDATA[Floating Point Introduction note that binary can directly calculate
+we can use normal format to represent floating point numbers
+eg: $1.xxxxx * 2_{two}^{yyyyy}$
+&ldquo;1.&ldquo;默认，不需bit级别上考虑
+underflow &amp; IEEE 754 希望全是0的bit表示的是最小的数字，而不是+0或-0，引入bias
+$bias = 2^{n-1} - 1$ 详见number representation的bias部分
+真正的表示方法：
+IEEE 754 &#x1f389;
+Special Values infinity, NaN, zero
+NaN (Not a Number) : 无效数值，如0/0, sqrt(-1) infinity : 无穷大，如1/0, 10^1000 zero : 零，如0/1, 1.0-1.0 gap数量级在800万左右，因为implicit one的出现
+denormalized number : 规格化数值，指数部分为0（implicit 2^-126），小数部分不为0==&gt; 从步长2^-149开始，exp加1，步长翻倍，同时从denorm到norm的时候步长不会发生变化！ 总结
+从0 11111110 111&hellip;11(23个) 加一，得到 0 11111111 000&hellip;00(23个)这就是无穷]]></description>
+</item>
+<item>
+    <title>Lec7-RISC-V Introduction</title>
+    <link>http://example.org/lec7-risc-v-introduction/</link>
+    <pubDate>Wed, 09 Oct 2024 17:49:34 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/lec7-risc-v-introduction/</guid>
+    <description><![CDATA[RISC-V Introduction Instruction Set Architecture (ISA) Assembly Variables each statement is called an instruction
+Registers where are registers ?
+32 general purpose registers (GPRs) are available in RISC-V architecture.(x0 - x31)
+word: 32 bits (can be 64 bits in RV64)
+x0: always 0 # is the comment character
+no type casting in RISC-V assembly language the registers have no type
+add/sub instructions syntax of instructions 1 2 add rd, rs1, rs2 sub rd, rs1, rs2 # d(rd) = e(rs1) - f(rs2), 注意顺序 Immediate values（立即数） 1 addi rd, rs1, 10 没有subi ，加上相反数即可]]></description>
+</item>
+<item>
+    <title>Lec11-RISC-V Instruction Formats I</title>
+    <link>http://example.org/lec11-risc-v-instruction-formats-i/</link>
+    <pubDate>Wed, 09 Oct 2024 15:39:27 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/lec11-risc-v-instruction-formats-i/</guid>
+    <description><![CDATA[RISC-V Instruction Formats I 事实上已经来到下一个层级(二进制)了，但是看标题似乎还是RISC-V &#x1f914;
+Background and Consequences 1. addressing modes everything has a memory address, so branches and jumps can use them PC (program counter, again &#x1f604;) is a register that holds the address of the next instruction to be executed 2. 二进制兼容否？如何表示指令？ 一个指令用1个word(32bits)来装绰绰有余
+divide instruction into &ldquo;fields&rdquo; &#x1f60b;
+R-Format Layout 算数逻辑指令
+funct3: 功能码，决定指令的操作类型 funct7: 扩展功能码，用于一些复杂的指令 opcode: 操作码，决定指令的类别 具体查表
+new one: slt and sltu &ndash; set less than, when rs1 &lt; rs2, then set the destination register to 1, otherwise 0.]]></description>
+</item>
+<item>
+    <title>Lec10-RISC-V Procedures</title>
+    <link>http://example.org/lec10-risc-v-procedures/</link>
+    <pubDate>Tue, 08 Oct 2024 22:58:52 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/lec10-risc-v-procedures/</guid>
+    <description><![CDATA[RISC-V Procedures 调用函数的时候有一些无关的主进程变量的value需要存储，but where?
+栈帧 / Stack Frame 存放了什么？ 注意stack 从上往下增长，push sp&ndash;, pop sp++
+序言prologue &amp; 结尾epilogue 1 2 3 4 5 int Leaf (int g, int h, int i, int j) { int f; f = (g + h) - (i + j); return f; } 1 2 3 4 5 6 7 8 9 10 11 12 13 Leaf: # 序言prologue addi sp, sp, -8 # 保存之前的栈指针 sw s1, 4(sp) # 保存参数 sw s2, 0(sp) # 计算 .]]></description>
+</item>
+</channel>
+</rss>

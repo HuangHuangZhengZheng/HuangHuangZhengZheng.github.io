@@ -3,111 +3,112 @@
         <title>All Posts - HHZZ`s space</title>
         <link>http://example.org/posts/</link>
         <description>All Posts | HHZZ`s space</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 14 Aug 2024 09:38:05 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
-    <title>CS186-L19:  Distributed Transactions</title>
-    <link>http://example.org/databasel19/</link>
-    <pubDate>Wed, 14 Aug 2024 09:38:05 &#43;0800</pubDate>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 29 Jan 2025 12:19:30 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>L17-huge GNN</title>
+    <link>http://example.org/l17-huge-gnn/</link>
+    <pubDate>Wed, 29 Jan 2025 12:19:30 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/databasel19/</guid>
-    <description><![CDATA[distributed == parallel shared nothing architecture
-Intro Distributed Locking each nodes has lock table locally, can manage the pages/tuples easily, but when it comes to Table, there should be a global lock table （or distributed lock tables）and a coordinator to manage the access to the table.
-Distributed Deadlocks Detection 合并全局waits Distributed Commit 全局投票 2PC The Recovery Processes crash situations 2PC, Locking and Availability 2PC + Strict 2PL locking what if a node is down?]]></description>
+    <guid>http://example.org/l17-huge-gnn/</guid>
+    <description><![CDATA[Scaling up GNNs 直接load全部nodes又不太可能【naive approach】4090 / A100带不动
+neighbor sampling 对hub node的思考 see the paper
+cluster-GCN advanced Simplified GCN 舍弃了GCN的non-linearity，直接用linear layer
+同质性？但是我想知道和glidar的区别？ ]]></description>
 </item>
 <item>
-    <title>CS186-L20: NoSQL</title>
-    <link>http://example.org/databasel20/</link>
-    <pubDate>Wed, 14 Aug 2024 09:38:05 &#43;0800</pubDate>
+    <title>L16-improvedGNN</title>
+    <link>http://example.org/l16-improvedgnn/</link>
+    <pubDate>Wed, 29 Jan 2025 12:10:50 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/databasel20/</guid>
-    <description><![CDATA[Scaling Relational Databases isn&rsquo;t always the best option including partitioning and replication
-BUT, consistency is hard to enforce!
-Taxonomy of NoSQL Data Models Key-Value Stores 1 2 Map&lt;Key, Value&gt; get/put Distribution / Partitioning, just using hash function
-if no replication, key k is stored on $h(k)$ node if multi-way replication, key k is stored on $h_i(k), i=1,2,&hellip;,n$ nodes Extensible Record Stores the idea is that do not use a simple key to lookup &#x1f914;]]></description>
+    <guid>http://example.org/l16-improvedgnn/</guid>
+    <description><![CDATA[Improved GNN positionally-aware gnn anchor数量 大小 （指数守恒） refer to the paper of Position-aware Graph Neural Networks (P-GNN)]]></description>
 </item>
 <item>
-    <title>CS186-L21: MapReduce and Spark</title>
-    <link>http://example.org/databasel21/</link>
-    <pubDate>Wed, 14 Aug 2024 09:38:05 &#43;0800</pubDate>
+    <title>L7-GNN t1</title>
+    <link>http://example.org/l7-gnn-t1/</link>
+    <pubDate>Tue, 28 Jan 2025 13:39:34 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/databasel21/</guid>
-    <description><![CDATA[Motivation only scaling up relational databases is challenging :s
-MapReduce Data and Programming Model Target Map phase map function will not keep the state of the intermediate results, so it can be parallelized easily
-Reduce phase for example, wanna count the number of occurrences of each word in the input data, we can use the reduce function to sum up the values of the same key Implementation of MapReduce fault tolerance by writing intermediate results to disk&hellip;]]></description>
+    <guid>http://example.org/l7-gnn-t1/</guid>
+    <description><![CDATA[L7-GNN theory 1 所有gnn的原型在这里
+一个layer layers之间的交互 input graph -&gt; computational graph的构建 GO!!!!
+a simple layer of GNN msg computations 原神处理dddd
+aggregation 核心：order invariance 焯这就是pointnet的核心之一啊！！！
+issue： 容易忽略自己节点 some examples of GNNs GCN GraphSAGE 这里的细节在于如何聚合邻居的信息
+同时每层来个norm
+GAT 首先解释一下什么是attention mechanism 单个attention的计算 多头attention的计算（更容易收敛） GNN layers in practice glidar呼之欲出了 &#x1f631; 有意思的东西&#x1f60b; stacking GNN layers ]]></description>
 </item>
 <item>
-    <title>CS186-L16: DB Design: FDs and Normalization</title>
-    <link>http://example.org/databasel16/</link>
-    <pubDate>Wed, 14 Aug 2024 09:38:04 &#43;0800</pubDate>
+    <title>L6-GNN intro</title>
+    <link>http://example.org/l6-gnn-intro/</link>
+    <pubDate>Mon, 27 Jan 2025 16:39:56 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/databasel16/</guid>
-    <description><![CDATA[Functional Dependencies big picture Def X -&gt; Y means X determines Y, X and Y can be a single column or multiple columns F+ means that to be the set of all FDs that are implied by F terminology Anomalies 可以用FD分解relation从而避免冗余 Armstrongs Axioms Attribute Closure wanna check if X-&gt;Y is in F+ BCNF and other Normal Forms Basic Normal Form NF is a def of data model! Boyce-Codd Normal Form Lossless Join Decompositions Def: decomposition won&rsquo;t create new attributes, and will cover the original attributes (不是完全无重叠分割)]]></description>
+    <guid>http://example.org/l6-gnn-intro/</guid>
+    <description><![CDATA[GNN Intro shallow deep graph encoder tmd 终于来了 !!! 借鉴cnn，但是
+没有fixed notion or sliding window permutation invariance！ GCNN 直觉上的思考 其实就是3 + 1步走
+找到aggregate function 找到loss function train on a set of nodes apply to new nodes 7 8.1 9
+16.2 17]]></description>
 </item>
 <item>
-    <title>CS186-L17: Recovery</title>
-    <link>http://example.org/databasel17/</link>
-    <pubDate>Wed, 14 Aug 2024 09:38:04 &#43;0800</pubDate>
+    <title>L3-Node Embeddings</title>
+    <link>http://example.org/l3-node-embeddings/</link>
+    <pubDate>Mon, 27 Jan 2025 15:11:03 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/databasel17/</guid>
-    <description><![CDATA[Need for Atomicity and Durability, SQL support for Transactions Strawman Solution No Steal/Force policy
-seem like no a good choice for recovery
-not scalable in buffer if crash in 2a, inconsistencies will occur STEAL / NO FORCE, UNDO and REDO STEAL/NO FORCE no force:
-problem: sys crash before dirty page of a committed transaction is written to disk solution: flush as little as possible, in a convenient space, prior to commit.]]></description>
+    <guid>http://example.org/l3-node-embeddings/</guid>
+    <description><![CDATA[Node Embeddings https://web.stanford.edu/class/cs224w/slides/02-nodeemb.pdf
+encoder and decoder encoder: simple example ？？注意这里矩阵是one column per node， 这里似乎解释通了为什么glidar里面node在encode的过程中数量不变，换句话说就是 not scalable
+呼之欲出啊啊啊啊啊 &#x1f631;
+以下内容非常具有启发性
+Random walks 怎么理解高效率？
+对特征学习的考量 提出损失函数 用了一个近似来化简 （不约而同走到了noise-denoise） k在5~20之间！又是glidar的论文！
+summary node2vec embedding the entire graph SKIP]]></description>
 </item>
 <item>
-    <title>CS186-L18: Parallel Query Processing</title>
-    <link>http://example.org/databasel18/</link>
-    <pubDate>Wed, 14 Aug 2024 09:38:04 &#43;0800</pubDate>
+    <title>L2-traditional methods</title>
+    <link>http://example.org/l2-traditional-methods/</link>
+    <pubDate>Mon, 27 Jan 2025 12:22:01 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/databasel18/</guid>
-    <description><![CDATA[Intro to Parallelism Architectures and Software Structures we will focus on the shared-nothing here &#x1f60b;
-Kinds of Query Parallelism side note:
-intra: single inter: multiple at the same level Parallel Data Acceess Data Partitioning across Machines Round robin means that each machine haves the same shuffled data
-parallel scans scan and merge
-$\sigma_p$ : an operator that skip entire sites that have no matching tuples in range or hash partitioning]]></description>
+    <guid>http://example.org/l2-traditional-methods/</guid>
+    <description><![CDATA[Traditional Methods in Graph Learning node-level features degree Centrality measures: degree centrality, betweenness centrality, eigenvector centrality, closeness centrality, clustering coefficent 进一步引申GDV edge-level features 我觉得这个很像我们的vae encoder想法 距离表征容易理解&hellip;&hellip;
+邻接矩阵的幂（类似于归纳法 略）
+graph-level features 核方法（但是skip） bag of sth&hellip; recall when you need ]]></description>
 </item>
 <item>
-    <title>CS186-L13: Transactions &amp; Concurrency I</title>
-    <link>http://example.org/databasel13/</link>
-    <pubDate>Wed, 14 Aug 2024 09:38:03 &#43;0800</pubDate>
+    <title>L1-Intro</title>
+    <link>http://example.org/l1-intro/</link>
+    <pubDate>Sun, 26 Jan 2025 14:55:57 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/databasel13/</guid>
-    <description><![CDATA[&#x1f389;
-Intro transaction&rsquo;s principle ACID Isolation (Concurrency) however, do not consider serial execution &#x1f605;
-Atomicity and Durability Consistency Concurrency Control 基本符号表达 序列等价性：
-$Def1:$ Serial Schedule each transaction executes in a serial order, one after the other, without any intervening $Def2:$ schedules Equivalent involve same transaction each transaction&rsquo;s actions are the same order both transactions have the same effect on the database&rsquo;s final state $Def3:$ Serializable if a schedule is serializable, then it is equivalent to some serial schedule Conflict Serializability conflict operations?]]></description>
+    <guid>http://example.org/l1-intro/</guid>
+    <description><![CDATA[CS224W: Intro to Graph Deep Learning GNN for img 也就是说gnn会比传统的cnn更好 &#x1f914;
+gnn as encoder and diffusion process! how to build a graph? 基本图论知识见CS61B
+nodes??? edges??? 新的图的表示 双向图与投影图（仔细看线条） 自环的增加的degree为1 接邻矩阵表示连接性 ]]></description>
 </item>
 <item>
-    <title>CS186-L14: Transactions &amp; Concurrency II</title>
-    <link>http://example.org/databasel14/</link>
-    <pubDate>Wed, 14 Aug 2024 09:38:03 &#43;0800</pubDate>
+    <title>Lec16-CL</title>
+    <link>http://example.org/lec16-cl/</link>
+    <pubDate>Thu, 23 Jan 2025 09:02:37 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/databasel14/</guid>
-    <description><![CDATA[Two Phase Locking (2PL) Strict 2PL same as 2PL, but with stricter definition of release locks at once
-pink area is the Strict 2PL
-Lock Management there is a lock manager, which maintains a hash table keyed on names of objects being locked
-Deadlocks &#x1f914;
-why happen? side note:
-prioritize upgrades can avoid #2 unlike the OS which can have a fixed order of required sources&hellip;&hellip;
-avoiding deadlocks timeout first, TIMEOUT is a not so bad idea &#x1f914;]]></description>
+    <guid>http://example.org/lec16-cl/</guid>
+    <description><![CDATA[Lecture 16: Combinational Logic ]]></description>
 </item>
 <item>
-    <title>CS186-L15: DB Design: Entity-Relationship Models</title>
-    <link>http://example.org/databasel15/</link>
-    <pubDate>Wed, 14 Aug 2024 09:38:03 &#43;0800</pubDate>
+    <title>Lec15-State and State Machines</title>
+    <link>http://example.org/lec15-state-and-state-machines/</link>
+    <pubDate>Wed, 22 Jan 2025 20:41:04 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/databasel15/</guid>
-    <description><![CDATA[Overview how to design a database instead of DBMS! &#x1f914; this class mainly focuses on the conceptual design
-Data Models and Relational Levels of Abstraction def in Data model abstractions example Data Independence Entity-Relationship Model (ERM) Def Entity: a real-world object that can be described and identified by a set of attributes Entity Set: a collection of similar entities all entities in an entity set have the same attributes each entity set has a key each attribute has a domain Relationship: a connection between two entity sets Key and Participation Constraints Key Constraints Participation Constraints Weak Entity Alternative Notation and Terminology decoder graph &#x1f605; math notation &#x1f605; Binary vs Ternary Relationships 上面的更加紧密并且可以记录qty]]></description>
+    <guid>http://example.org/lec15-state-and-state-machines/</guid>
+    <description><![CDATA[Lecture 15: State and State Machines https://www.learncs.site/resource/cs61c/lectures/lec15.pdf
+Flip-flops? details of registers! n位寄存器，n个并行的1位触发器
+timing of flip-flops clk to q 越小越好
+Accumulators revisited 如果超频&hellip;
+pipelines and pipelining max clock frequency 简单总结 感觉数电知识更多一点？ 减少延时
+Finite State Machines 一个例子 等价翻译 ]]></description>
 </item>
 <item>
-    <title>CS186-L10: Iterators &amp; Joins</title>
-    <link>http://example.org/databasel10/</link>
-    <pubDate>Wed, 14 Aug 2024 09:38:02 &#43;0800</pubDate>
+    <title>Lec14-Intro to Synchronous Digital Systems</title>
+    <link>http://example.org/lec14-intro-to-synchronous-digital-systems/</link>
+    <pubDate>Wed, 22 Jan 2025 20:07:46 &#43;0800</pubDate>
     <author>HHZZ</author>
-    <guid>http://example.org/databasel10/</guid>
-    <description><![CDATA[Intro relational operator: tuples(in other way, relations) in, tuples out
-1 2 3 4 5 6 7 abstract class Iterator { // set up the children and the dataflow graph void setup(List&lt;Iterator&gt; inputs); void init(args); // state tuple next(); // returns the next tuple void close(); } presudo code select on the fly &#x1f914;
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 init() { child.]]></description>
+    <guid>http://example.org/lec14-intro-to-synchronous-digital-systems/</guid>
+    <description><![CDATA[Lecture 14: Intro to Synchronous Digital Systems MOS Transistors normal n-channel gate G is low, open. NAND Gates 与非门 电路存储与构成 组合逻辑电路 有状态元件 like 寄存器 ]]></description>
 </item>
 </channel>
 </rss>

@@ -12,6 +12,46 @@
     <description><![CDATA[]]></description>
 </item>
 <item>
+    <title>Stanford-CS224W</title>
+    <link>http://example.org/categories/stanford-cs224w/</link>
+    <pubDate>Wed, 29 Jan 2025 12:19:30 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/categories/stanford-cs224w/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>UCB-CS61C</title>
+    <link>http://example.org/categories/ucb-cs61c/</link>
+    <pubDate>Thu, 23 Jan 2025 09:02:37 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/categories/ucb-cs61c/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>UMich-EECS-498</title>
+    <link>http://example.org/categories/umich-eecs-498/</link>
+    <pubDate>Wed, 06 Nov 2024 08:27:18 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/categories/umich-eecs-498/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>UCB-CS61A</title>
+    <link>http://example.org/categories/ucb-cs61a/</link>
+    <pubDate>Wed, 23 Oct 2024 21:55:42 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/categories/ucb-cs61a/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>CMU-10-414-714</title>
+    <link>http://example.org/categories/cmu-10-414-714/</link>
+    <pubDate>Tue, 01 Oct 2024 21:49:55 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/categories/cmu-10-414-714/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
     <title>NNDL</title>
     <link>http://example.org/categories/nndl/</link>
     <pubDate>Wed, 14 Aug 2024 11:37:05 &#43;0800</pubDate>
@@ -41,14 +81,6 @@
     <pubDate>Sun, 14 Jul 2024 21:29:34 &#43;0800</pubDate>
     <author>HHZZ</author>
     <guid>http://example.org/categories/ucb-cs61b/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Programming Language Crash Course</title>
-    <link>http://example.org/categories/programming-language-crash-course/</link>
-    <pubDate>Sun, 05 May 2024 22:24:42 &#43;0800</pubDate>
-    <author>HHZZ</author>
-    <guid>http://example.org/categories/programming-language-crash-course/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>

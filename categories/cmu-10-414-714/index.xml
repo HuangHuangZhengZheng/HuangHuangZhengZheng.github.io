@@ -1,0 +1,129 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>CMU-10-414-714 - Category - HHZZ`s space</title>
+        <link>http://example.org/categories/cmu-10-414-714/</link>
+        <description>CMU-10-414-714 - Category - HHZZ`s space</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 01 Oct 2024 21:49:55 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/cmu-10-414-714/" rel="self" type="application/rss+xml" /><item>
+    <title>Lec13-Hardware Acceleration Implementation</title>
+    <link>http://example.org/lec13-hardware-acceleration-implementation/</link>
+    <pubDate>Tue, 01 Oct 2024 21:49:55 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/lec13-hardware-acceleration-implementation/</guid>
+    <description><![CDATA[Hardware Acceleration Implementation ]]></description>
+</item>
+<item>
+    <title>Lec12-Hardware Acceleration &#43; GPUs</title>
+    <link>http://example.org/lec12-hardware-acceleration--gpus/</link>
+    <pubDate>Tue, 01 Oct 2024 18:26:36 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/lec12-hardware-acceleration--gpus/</guid>
+    <description><![CDATA[GPU Acceleration GPU Programming gpu 具有良好的并行性 a single CUDA example 注意到计算所需变量互不相关，所以可以并行计算
+数据IO操作是瓶颈 keep data in GPU memory as long as possible &ndash;&gt; call .numpy() less frequently
+GPU memory hierarchy 利用shared memory launch thread grid and blocks cooperative fetch common to shared memory to increase reuse case study: matrix multiplication on GPU 1 Compute C = dot(A.T, B) thread level 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 __global__ void mm(float A[N][N], float B[N][N], float C[N][N]) { int ybase = blockIdx.]]></description>
+</item>
+<item>
+    <title>Lec11-Hardware Acceleration for Linear Algebra</title>
+    <link>http://example.org/lec11-hardware-acceleration-for-linear-algebra/</link>
+    <pubDate>Tue, 01 Oct 2024 15:03:26 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/lec11-hardware-acceleration-for-linear-algebra/</guid>
+    <description><![CDATA[Hardware Acceleration!! General acceleration techniques Vectorization NumPy的向量化是通过底层的C语言以及编译过的函数实现的，其核心机制依赖于几个关键技术：
+内存连续存储：NumPy数组在内存中是连续存储的，这意味着数据存储在连续的内存块中，这使得CPU缓存能更有效地工作。相比之下，Python列表中的元素可能在内存中是分散存储的。
+C语言实现：NumPy的底层操作是用C语言编写的，这意味着NumPy的数组操作是在编译后的代码中执行的，而不是在Python解释器中。C语言的执行速度比Python快得多。
+统一函数接口：NumPy定义了一种特殊的函数接口，称为ufunc（Universal Function），这种函数可以对数组的每个元素执行向量化操作。
+并行计算：在某些情况下，NumPy还可以使用并行计算来进一步提高性能，如使用BLAS（Basic Linear Algebra Subprograms）库进行矩阵计算。
+数据类型一致性：NumPy数组中的所有元素都是相同的数据类型，这使得可以对数组进行批量操作。
+减少函数调用开销：在向量化操作中，函数调用是批量进行的，而不是在每个元素上单独调用，这减少了函数调用的开销。
+优化的数学运算：NumPy中很多操作都经过了优化，比如使用SIMD（单指令多数据）指令集，这些指令可以在一个CPU周期内对多个数据执行相同的操作。
+通过这些技术，NumPy实现了高效的向量化操作。当你使用向量化表达式时，NumPy会将这些操作转换为底层的C语言调用，从而实现快速的数组计算。
+Data layout and strides row major: default in C column major: Fortran&hellip; strides format: common in linalg libraries strides format使得数组存储并不紧密，难以vectorize，所以在torch等库里面有一个函数叫contiguous()来将数组变成连续存储的，有利于计算
+Parallelization OpenMP: multi-threading, loops分配给不同的cpu来做 case study: matrix multiplication 1 2 3 4 5 6 7 8 9 10 // c = dot(a, b) float A[N][N], B[N][N], C[N][N]; for (int i = 0; i &lt; N; i++) { for (int j = 0; j &lt; N; j++) { C[i][j] = 0; for (int k = 0; k &lt; N; k++) { C[i][j] += A[i][k] * B[k][j]; } } } 时间复杂度：$O(N^3)$]]></description>
+</item>
+<item>
+    <title>Lec10-Convolutional Networks</title>
+    <link>http://example.org/lec10-convolutional-networks/</link>
+    <pubDate>Tue, 01 Oct 2024 13:22:25 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/lec10-convolutional-networks/</guid>
+    <description><![CDATA[Convolutional Neural Networks 老朋友了 &ldquo;capture the features&rdquo;
+Convolutional Operator 事实上的计算，是信号处理里面的互相关运算 传统卷积处理 多通道卷积新视角&#x1f913; Elements of practical convolution Padding 为了维持尺寸不变 Strides Convolution / Pooling 降低resolution，&ldquo;downsampling&rdquo; &#x1f913; Grouped Convolution! 分组卷积，可以提高计算效率 Dilations Convolution 负责处理感受野的问题 Differentiating Convolutional Layers!! Naive way: just matrix and vector multiplication products &#x1f914;, but can lead to too much waste memory&hellip;
+Be an op in needle, not a module!
+wrt. Input 首先有 $v^TW \iff W^Tv$ 自动微分链式法则的时候
+事实上卷积可以有个等价的矩阵表示 然后写出来，发现等价于$conv(v, flip(W))$ &#x1f92f; wrt. Weights &ldquo;im2col&quot;操作十分有趣!]]></description>
+</item>
+<item>
+    <title>Lec9-Normalization, Dropout, &#43; Implementation</title>
+    <link>http://example.org/lec9-normalization-dropout--implementation/</link>
+    <pubDate>Sat, 28 Sep 2024 21:49:59 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/lec9-normalization-dropout--implementation/</guid>
+    <description><![CDATA[Normalization and Regularization Normalization and Initialization 注意看weight variance的曲线，几乎不变
+norm的思想来源 layer normalization batch normalization 这么看来batch_norm确实很奇怪, odd! &#x1f622; Regularization L2 Regularization 针对的是过拟合?但是只要是减少function class的操作都是regularization的一种
+然后发现weight decay和regularization有联系！
+dropout ]]></description>
+</item>
+<item>
+    <title>Lec8-NN Library Implementation</title>
+    <link>http://example.org/lec8-nn-library-implementation/</link>
+    <pubDate>Sat, 28 Sep 2024 16:30:00 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/lec8-nn-library-implementation/</guid>
+    <description><![CDATA[Neural Networks lib implementation refreshment 1 import needle as ndl 1 2 def data(self): return self.detach() data 不要grad
+numerical stability 软回归数值不变性，上下同除
+1 2 3 4 def softmax(x): x = x - np.max(x) z = np.exp(x) return z / np.sum(z) nn.Module 参数 1 2 3 4 5 6 7 class Parameter(ndl.Tensor): def __init__(self, data: np.ndarray, requires_grad=True, dtype=&#34;float32&#34;): super().__init__(data, requires_grad=requires_grad, dtype=dtype) w = Parameter([2, 1], dtype=&#34;float32&#34;) isinstance(w, Parameter) # True 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 # recursive function to get all parameters def _get_params(value: ndl.]]></description>
+</item>
+<item>
+    <title>Lec7-Neural Network Library Abstractions</title>
+    <link>http://example.org/lec7-neural-network-library-abstractions/</link>
+    <pubDate>Sat, 28 Sep 2024 15:42:30 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/lec7-neural-network-library-abstractions/</guid>
+    <description><![CDATA[Neural Networks Abstraction Programming Abstraction 核心思想是host language是一个语言，但是执行计算图的时候可以用其他语言来优化
+和sql &amp; RDBMS有点相似 &#x1f914;
+declarative 这应该比较自然的想法，from google &ldquo;scalable computational systems&rdquo; 描述图 ==&gt; 指定运行机器 ==&gt; 运行 ==&gt; 结果
+imperative define and run
+对融合算子友好 指定特定值有上面declarative的同样效果 High level modular lib components 经典三明治 loss function is a special case of a &ldquo;module&rdquo; 正则化: 要么是损失函数的一部分，要么是优化器的一部分 初始化: 包含在nn.Module中 总结 ]]></description>
+</item>
+<item>
+    <title>Lec6-Optimization</title>
+    <link>http://example.org/lec6-optimization/</link>
+    <pubDate>Sat, 28 Sep 2024 11:47:34 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/lec6-optimization/</guid>
+    <description><![CDATA[fcnn, optimization, and initialization fcnn optimization initialization kaiming initialization 感觉这节课比较有用的是这张ppt，我更喜欢从实验的角度来看kaiming initialization（避免梯度爆炸/消失）]]></description>
+</item>
+<item>
+    <title>Lec5-Automatic Differentiation Implementation</title>
+    <link>http://example.org/lec5-automatic-differentiation-implementation/</link>
+    <pubDate>Tue, 17 Sep 2024 09:18:32 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/lec5-automatic-differentiation-implementation/</guid>
+    <description><![CDATA[Auto Differentiation Implementation Basic Knowledge OOP in Python class call method 在Python中，__call__方法是一个特殊的方法，它允许一个类的实例表现得像一个函数。当你定义了一个类，并在该类中实现了__call__方法，你就可以通过直接调用实例来执行这个方法，就像调用一个函数一样。
+这里是一个简单的例子来说明__call__方法的用法：
+1 2 3 4 5 6 7 8 9 10 11 12 class Greeter: def __init__(self, name): self.name = name def __call__(self): return f&#34;Hello, {self.name}!&#34; # 创建Greeter类的实例 greeter = Greeter(&#34;Kimi&#34;) # 调用实例，就像它是一个函数 print(greeter()) # 输出: Hello, Kimi! 在这个例子中，Greeter类有一个__init__方法来初始化实例，还有一个__call__方法来定义当实例被调用时应该执行的操作。当我们创建了一个Greeter的实例并调用它时，实际上是调用了__call__方法，它返回了一个问候语。
+__call__方法通常用于创建可调用的对象，这在某些设计模式中非常有用，比如工厂模式、单例模式等。此外，它也常用于装饰器中，允许装饰器返回的对象能够被调用。
+new method 在Python中，__new__方法是一个特殊的静态方法，用于创建一个类的新实例。它是在__init__方法之前被调用的，并且是创建对象实例的第一个步骤。__new__方法主要负责创建一个对象，而__init__方法则用于初始化这个对象。
+__new__方法通常用于以下情况：
+继承不可变类型：比如元组、字符串等，它们是不可变的，不能使用__init__进行初始化，因为它们在创建时就已经完成了初始化。在这种情况下，可以通过重写__new__方法来创建新的实例。
+控制实例的创建：在某些情况下，你可能想要控制对象的创建过程，比如单例模式，或者在创建对象时进行一些特殊的处理。
+继承自内置类型：当你想要继承自Python的内置类型时，你需要重写__new__方法来创建实例，因为内置类型通常不提供__init__方法。
+__new__方法的基本语法如下：
+1 2 3 4 5 6 class MyClass(metaclass=type): def __new__(cls, *args, **kwargs): # 创建实例的代码 instance = super(MyClass, cls).]]></description>
+</item>
+<item>
+    <title>Lec4-Automatic Differentiation</title>
+    <link>http://example.org/lec4-automatic-differentiation/</link>
+    <pubDate>Mon, 16 Sep 2024 18:40:54 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/lec4-automatic-differentiation/</guid>
+    <description><![CDATA[Automatic Differentiation 数值微分 希望误差阶数为 $O(h^2)$
+事实上并非采取这种方式计算，只是用来test side note:
+$\delta^T$ : pick a small vector $\delta$ from unit ball $\nabla_{x} f(x)$ : gradient of $f(x)$ at $x$, 通常是其他方法计算的 右手边则是数值计算，然后看两者是否近似相等 符号微分 许多重复的的计算与IO，但是可以作为自动微分的引入
+自动微分 计算图 有向无环图（DAG），点包含数值，边表示运算 前向模式 Forward Mode AD 算法 遍历图，从输入开始，计算每个节点的输出，然后将结果传播到后续节点
+$$ \Large \begin{aligned} Define: &amp; \quad v&rsquo;_{1i} = \frac{\partial v_i}{\partial x_1} \ \end{aligned} $$
+then compute $v_i&rsquo;$ iteratively, in the forward topological order
+限制 如果n小k大，那么跑很少的pass就可以得到想要的梯度，但是事实上情况相反
+反向模式 Reverse Mode AD 算法 遍历图，从输出开始，计算每个节点的输入，然后将结果传播到前续节点]]></description>
+</item>
+</channel>
+</rss>

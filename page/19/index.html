@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-	<meta name="generator" content="Hugo 0.125.1">
+	<meta name="generator" content="Hugo 0.123.1">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://example.org/">
-  <meta property="og:site_name" content="HHZZ`s space">
-  <meta property="og:title" content="HHZZ`s space">
-  <meta property="og:description" content="This is my cool site">
-  <meta property="og:locale" content="en">
-  <meta property="og:type" content="website">
-    <meta property="og:image" content="http://example.org/logo.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.org/logo.png"><meta name="twitter:title" content="HHZZ`s space">
-<meta name="twitter:description" content="This is my cool site">
+        <title>HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="HHZZ`s space" />
+<meta property="og:description" content="This is my cool site" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://example.org/" /><meta property="og:image" content="http://example.org/logo.png" /><meta property="og:site_name" content="My cool site" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://example.org/logo.png" /><meta name="twitter:title" content="HHZZ`s space"/>
+<meta name="twitter:description" content="This is my cool site"/>
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -100,9 +98,43 @@
         alt="/avatar.jpg"
         title="/avatar.jpg" width="1920" height="1280" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/HuangHuangZhengZheng" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/csapp_datalab/">CSAPP_datalab</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-04-21">2024-04-21</time></span>&nbsp;<span class="post-category">included in <a href="/categories/csapp/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CSAPP</a></span></div><div class="content">int bit-level operations 德摩根律（位运算和集合论） 与：&amp; 非：~ 两者组合已经可以表示四个基本运算：与、非、或、异或。 移动位运算 注意是否为无符号数，有符号数的移位运算规则与无符号数不同。 有符号数的移位运算规则： 左移：符号位不变，右边补0。 右移：符号位不变，左边补符号位。 无符号数的移位运算规则： 左移：左边补0。 右移：右边补0。 与运算（&amp;）取特定的位数，用于位层面条件判断 减法的实现 A + ~A = -1 &ndash;&gt; A + (~A+1) = 0 减法的描述范围问题 做差取符号位 掩码操作 1 2 3 4 5 int conditional(int x, int y, int z) { int exp1 = ~(!!x) + 1; int exp2 = ~(!x) + 1; return (exp1&amp;y) + (exp2&amp;z); } 位层面分类讨论 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 /* howManyBits - return the minimum number of bits required to represent x in * two&#39;s complement(补码系统) * Examples: howManyBits(12) = 5 * howManyBits(298) = 10 * howManyBits(-5) = 4 负数的话 取反 同理 * howManyBits(0) = 1 * howManyBits(-1) = 1 特殊点?</div><div class="post-footer">
-        <a href="/csapp_datalab/">Read More</a></div>
+        <a href="/lec12-risc-v-instruction-formats-ii/">Lec12-RISC-V Instruction Formats II</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-09">2024-10-09</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61c/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61C</a></span></div><div class="content">RISC-V Instruction Formats II B-Format Layout branch/分支 ==&gt; if-else, while, for
+encode Label:
+PC寻址, 用imm field来表示偏移量
+实际上 RV compressed instruction format! 16bit 压缩指令格式，偏移量不再是4的倍数，而是2的倍数（所以imm 二进制结尾一定是0）
+理论layout 解释一下如何从指令解析出立即数的数值
+B-type &ldquo;|&rdquo; 意思是专门分出一块区域来存一位数字
+Long Immediate， U-Format Layout I, B, S imm的12位扩展到long，找个地方放下剩下的20位
+注意这里不直接使用branch指令跳转，而是采用jump直接来做
+地方来了：同时来了两个新的指令lui &amp; auipc Corner case 有符号扩展带过来的，1开头的符号扩展
+用+1来避免这个问题
+补充 auipc 指令 J-Format Layout 只有jal，因为jalr是I-type的
+使用示例
+jalr 使用示例
+留一个reference</div><div class="post-footer">
+        <a href="/lec12-risc-v-instruction-formats-ii/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/lec5-c-memory-management/">Lec5-C Memory Management</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-09">2024-10-09</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61c/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61C</a></span></div><div class="content">C Memory Management malloc 1 2 3 4 5 6 // with the help of a typecast and sizeof ptr = (int *) malloc(n * sizeof(int)); /* check if malloc was successful */ if (ptr == NULL) { /* handle error */ } 1 2 3 ptr = (int *) realloc(ptr, (n+1) * sizeof(int)); free(ptr); // realloc(ptr, 0) 不要踩坑！
+An array name is not a variable. &ndash; K&amp;R
+when call &amp;arr , just get the address of the first element of the array</div><div class="post-footer">
+        <a href="/lec5-c-memory-management/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/lec6-floating-point/">Lec6-Floating Point</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-09">2024-10-09</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61c/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61C</a></span></div><div class="content">Floating Point Introduction note that binary can directly calculate
+we can use normal format to represent floating point numbers
+eg: $1.xxxxx * 2_{two}^{yyyyy}$
+&ldquo;1.&ldquo;默认，不需bit级别上考虑
+underflow &amp; IEEE 754 希望全是0的bit表示的是最小的数字，而不是+0或-0，引入bias
+$bias = 2^{n-1} - 1$ 详见number representation的bias部分
+真正的表示方法：
+IEEE 754 &#x1f389;
+Special Values infinity, NaN, zero
+NaN (Not a Number) : 无效数值，如0/0, sqrt(-1) infinity : 无穷大，如1/0, 10^1000 zero : 零，如0/1, 1.0-1.0 gap数量级在800万左右，因为implicit one的出现
+denormalized number : 规格化数值，指数部分为0（implicit 2^-126），小数部分不为0==&gt; 从步长2^-149开始，exp加1，步长翻倍，同时从denorm到norm的时候步长不会发生变化！ 总结
+从0 11111110 111&hellip;11(23个) 加一，得到 0 11111111 000&hellip;00(23个)这就是无穷</div><div class="post-footer">
+        <a href="/lec6-floating-point/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -121,10 +153,24 @@
                     <span class="page-link">
                         <a href="/page/19/">19</a>
                     </span>
+                </li><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/page/20/">20</a>
+                    </span>
+                </li><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/page/21/">21</a>
+                    </span>
+                </li><li class="page-item ">
+                    <span class="page-link" aria-hidden="true">&hellip;</span>
+                </li><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/page/61/">61</a>
+                    </span>
                 </li></ul></div></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.125.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">HHZZ</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.123.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">HHZZ</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

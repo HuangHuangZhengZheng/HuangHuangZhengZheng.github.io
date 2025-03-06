@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Lec21-Representation - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Lec21-Representation" />
+<meta property="og:description" content="Representation Strings 一个是Python表达式（解释器可以直接运行的形式），一个是字符串（人类可读的形式）
+repr 1 2 3 4 5 6 &gt;&gt;&gt; s = &#39;hello&#39; &gt;&gt;&gt; print(repr(s)) &#39;hello&#39; &gt;&gt;&gt; repr(min) &#39;&lt;built-in function min&gt;&#39; str 1 2 3 4 5 6 7 8 &gt;&gt;&gt; from fractions import Fraction &gt;&gt;&gt; half = Fraction(1, 2) &gt;&gt;&gt; print(half) # calls __str__ 1/2 &gt;&gt;&gt; repr(half) # calls __repr__ &#39;Fraction(1, 2)&#39; &gt;&gt;&gt; eval(repr(half)) # creates a new Fraction object Fraction(1, 2) F-Strings { }里面的按照表达式来计算
+1 2 3 4 &gt;&gt;&gt; x = 10 &gt;&gt;&gt; y = 20 &gt;&gt;&gt; f&#34;x &#43; y = {x &#43; y}&#34; &#39;x &#43; y = 30&#39; 多态函数 Functions that apply to many different forms of data&hellip;" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/lec21-representation/" /><meta property="og:image" content="http://example.org/logo.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-10-20T10:04:01+08:00" />
+<meta property="article:modified_time" content="2024-10-20T10:04:01+08:00" /><meta property="og:site_name" content="My cool site" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://example.org/logo.png" /><meta name="twitter:title" content="Lec21-Representation"/>
+<meta name="twitter:description" content="Representation Strings 一个是Python表达式（解释器可以直接运行的形式），一个是字符串（人类可读的形式）
+repr 1 2 3 4 5 6 &gt;&gt;&gt; s = &#39;hello&#39; &gt;&gt;&gt; print(repr(s)) &#39;hello&#39; &gt;&gt;&gt; repr(min) &#39;&lt;built-in function min&gt;&#39; str 1 2 3 4 5 6 7 8 &gt;&gt;&gt; from fractions import Fraction &gt;&gt;&gt; half = Fraction(1, 2) &gt;&gt;&gt; print(half) # calls __str__ 1/2 &gt;&gt;&gt; repr(half) # calls __repr__ &#39;Fraction(1, 2)&#39; &gt;&gt;&gt; eval(repr(half)) # creates a new Fraction object Fraction(1, 2) F-Strings { }里面的按照表达式来计算
+1 2 3 4 &gt;&gt;&gt; x = 10 &gt;&gt;&gt; y = 20 &gt;&gt;&gt; f&#34;x &#43; y = {x &#43; y}&#34; &#39;x &#43; y = 30&#39; 多态函数 Functions that apply to many different forms of data&hellip;"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/lec21-representation/" /><link rel="prev" href="http://example.org/lec17-generators/" /><link rel="next" href="http://example.org/lec22-composition/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Lec21-Representation",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/lec21-representation\/"
+        },"genre": "posts","wordcount":  161 ,
+        "url": "http:\/\/example.org\/lec21-representation\/","datePublished": "2024-10-20T10:04:01+08:00","dateModified": "2024-10-20T10:04:01+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "HHZZ"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HHZZ`s space">Code and BeyondCode😋</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tools/"> Tools </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/beyondcode/"> BeyondCode😋 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HHZZ`s space">Code and BeyondCode😋</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tools/" title="">Tools</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/beyondcode/" title="">BeyondCode😋</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Lec21-Representation</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61a/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61A</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-10-20">2024-10-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;161 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#strings">Strings</a>
+      <ul>
+        <li><a href="#repr">repr</a></li>
+        <li><a href="#str">str</a></li>
+      </ul>
+    </li>
+    <li><a href="#f-strings">F-Strings</a></li>
+    <li><a href="#多态函数">多态函数</a></li>
+    <li><a href="#interfaces">Interfaces</a>
+      <ul>
+        <li><a href="#special-methods">special methods</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="representation">Representation</h1>
+<h2 id="strings">Strings</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/lec21-representation/image.png"
+        data-srcset="/lec21-representation/image.png, /lec21-representation/image.png 1.5x, /lec21-representation/image.png 2x"
+        data-sizes="auto"
+        alt="/lec21-representation/image.png"
+        title="alt text" width="1063" height="411" />
+一个是Python表达式（解释器可以直接运行的形式），一个是字符串（人类可读的形式）</p>
+<h3 id="repr">repr</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/lec21-representation/image-1.png"
+        data-srcset="/lec21-representation/image-1.png, /lec21-representation/image-1.png 1.5x, /lec21-representation/image-1.png 2x"
+        data-sizes="auto"
+        alt="/lec21-representation/image-1.png"
+        title="alt text" width="1276" height="481" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;hello&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;hello&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="nb">repr</span><span class="p">(</span><span class="nb">min</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;&lt;built-in function min&gt;&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="str">str</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">fractions</span> <span class="kn">import</span> <span class="n">Fraction</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">half</span> <span class="o">=</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">half</span><span class="p">)</span> <span class="c1"># calls __str__</span>
+</span></span><span class="line"><span class="cl"><span class="mi">1</span><span class="o">/</span><span class="mi">2</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="nb">repr</span><span class="p">(</span><span class="n">half</span><span class="p">)</span> <span class="c1"># calls __repr__</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;Fraction(1, 2)&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="nb">eval</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">half</span><span class="p">))</span> <span class="c1"># creates a new Fraction object</span>
+</span></span><span class="line"><span class="cl"><span class="n">Fraction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/lec21-representation/image-2.png"
+        data-srcset="/lec21-representation/image-2.png, /lec21-representation/image-2.png 1.5x, /lec21-representation/image-2.png 2x"
+        data-sizes="auto"
+        alt="/lec21-representation/image-2.png"
+        title="alt text" width="425" height="527" /></p>
+<h2 id="f-strings">F-Strings</h2>
+<p><code>{ }</code>里面的按照表达式来计算</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">20</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="sa">f</span><span class="s2">&#34;x + y = </span><span class="si">{</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="si">}</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;x + y = 30&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="多态函数">多态函数</h2>
+<p>Functions that apply to many different forms of data&hellip;</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">half</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;Fraction(1, 2)&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">half</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;1/2&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>实现 <code>__repr__</code> 和 <code>__str__</code> 方法</p>
+<ul>
+<li><code>__repr__</code>: Only class attributes are found! Ignore instance attributes.</li>
+<li><code>__str__</code>: Ignore instance attributes. If no <code>__str__</code> method is defined, it will use <code>__repr__</code> method.</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">repr</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="interfaces">Interfaces</h2>
+<p>类似61B的课程，实现接口（长得像是<code>__xx__</code>）</p>
+<p>喜欢Java &#x1f60b;</p>
+<h3 id="special-methods">special methods</h3>
+<p>群 贤 毕 至</p>
+<p>终于和cmu 10-414对上了</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/lec21-representation/image-3.png"
+        data-srcset="/lec21-representation/image-3.png, /lec21-representation/image-3.png 1.5x, /lec21-representation/image-3.png 2x"
+        data-sizes="auto"
+        alt="/lec21-representation/image-3.png"
+        title="alt text" width="926" height="458" /></p>
+<p>左右值</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/lec21-representation/image-4.png"
+        data-srcset="/lec21-representation/image-4.png, /lec21-representation/image-4.png 1.5x, /lec21-representation/image-4.png 2x"
+        data-sizes="auto"
+        alt="/lec21-representation/image-4.png"
+        title="alt text" width="983" height="465" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/lec21-representation/image-5.png"
+        data-srcset="/lec21-representation/image-5.png, /lec21-representation/image-5.png 1.5x, /lec21-representation/image-5.png 2x"
+        data-sizes="auto"
+        alt="/lec21-representation/image-5.png"
+        title="alt text" width="522" height="469" /></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2024-10-20</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/lec21-representation/" data-title="Lec21-Representation"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/lec21-representation/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/lec21-representation/" data-title="Lec21-Representation"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/lec21-representation/" data-title="Lec21-Representation"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/lec21-representation/" data-title="Lec21-Representation"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/lec17-generators/" class="prev" rel="prev" title="Lec17-Generators"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Lec17-Generators</a>
+            <a href="/lec22-composition/" class="next" rel="next" title="Lec22-Composition">Lec22-Composition<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.123.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">HHZZ</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

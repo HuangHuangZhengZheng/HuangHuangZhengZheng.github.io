@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Lec26-Scheme - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Lec26-Scheme" />
+<meta property="og:description" content="Scheme Scheme Fundamentals 1 2 3 (number? 123) ; #t (number? &#34;123&#34;) ; #f (string? &#34;hello&#34;) ; #t Special Forms 1 2 3 4 5 6 7 8 9 10 11 (define x 10) ; define a variable x with value 10 (if #t 10 20) ; if #t is true, return 10, otherwise return 20 (cond ((= x 10) &#34;x is 10&#34;) ((= x 20) &#34;x is 20&#34;) (else &#34;x is not 10 or 20&#34;)) ; conditional statement (and #t #f) ; #f (or #t #f) ; #t (let ((x 10) (y 20)) (&#43; x y)) ; let statement to create local variables (let* ((x 10) (y (&#43; x 10))) (&#43; x y)) ; let* statement to create local variables and use the value of previous variables (lambda (x) (&#43; x 10)) ; lambda expression to create a function that adds 10 to a given number (map (lambda (x) (&#43; x 10)) (list 1 2 3)) ; map function to apply a function to each element of a list (define (sum-of-squares x y) (&#43; (* x x) (* y y))) ; define a function that takes two numbers and returns their sum of squares (sum-of-squares 3 4) ; 25 lambda expression 1 2 (define (add-ten x) (&#43; x 10)) ; define a function that adds 10 to a given number (add-ten 5) ; 15 Cond and Begin let 临时绑定" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/lec26-scheme/" /><meta property="og:image" content="http://example.org/logo.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-10-21T10:01:55+08:00" />
+<meta property="article:modified_time" content="2024-10-21T10:01:55+08:00" /><meta property="og:site_name" content="My cool site" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://example.org/logo.png" /><meta name="twitter:title" content="Lec26-Scheme"/>
+<meta name="twitter:description" content="Scheme Scheme Fundamentals 1 2 3 (number? 123) ; #t (number? &#34;123&#34;) ; #f (string? &#34;hello&#34;) ; #t Special Forms 1 2 3 4 5 6 7 8 9 10 11 (define x 10) ; define a variable x with value 10 (if #t 10 20) ; if #t is true, return 10, otherwise return 20 (cond ((= x 10) &#34;x is 10&#34;) ((= x 20) &#34;x is 20&#34;) (else &#34;x is not 10 or 20&#34;)) ; conditional statement (and #t #f) ; #f (or #t #f) ; #t (let ((x 10) (y 20)) (&#43; x y)) ; let statement to create local variables (let* ((x 10) (y (&#43; x 10))) (&#43; x y)) ; let* statement to create local variables and use the value of previous variables (lambda (x) (&#43; x 10)) ; lambda expression to create a function that adds 10 to a given number (map (lambda (x) (&#43; x 10)) (list 1 2 3)) ; map function to apply a function to each element of a list (define (sum-of-squares x y) (&#43; (* x x) (* y y))) ; define a function that takes two numbers and returns their sum of squares (sum-of-squares 3 4) ; 25 lambda expression 1 2 (define (add-ten x) (&#43; x 10)) ; define a function that adds 10 to a given number (add-ten 5) ; 15 Cond and Begin let 临时绑定"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/lec26-scheme/" /><link rel="prev" href="http://example.org/lec22-composition/" /><link rel="next" href="http://example.org/lec25-data-examples/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Lec26-Scheme",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/lec26-scheme\/"
+        },"genre": "posts","wordcount":  231 ,
+        "url": "http:\/\/example.org\/lec26-scheme\/","datePublished": "2024-10-21T10:01:55+08:00","dateModified": "2024-10-21T10:01:55+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "HHZZ"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HHZZ`s space">Code and BeyondCode😋</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tools/"> Tools </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/beyondcode/"> BeyondCode😋 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HHZZ`s space">Code and BeyondCode😋</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tools/" title="">Tools</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/beyondcode/" title="">BeyondCode😋</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Lec26-Scheme</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61a/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61A</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-10-21">2024-10-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;231 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#scheme-fundamentals">Scheme Fundamentals</a></li>
+    <li><a href="#special-forms">Special Forms</a>
+      <ul>
+        <li><a href="#lambda-expression">lambda expression</a></li>
+        <li><a href="#cond-and-begin">Cond and Begin</a></li>
+        <li><a href="#let">let</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="scheme">Scheme</h1>
+<h2 id="scheme-fundamentals">Scheme Fundamentals</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/lec26-scheme/image.png"
+        data-srcset="/lec26-scheme/image.png, /lec26-scheme/image.png 1.5x, /lec26-scheme/image.png 2x"
+        data-sizes="auto"
+        alt="/lec26-scheme/image.png"
+        title="alt text" width="855" height="427" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-scheme" data-lang="scheme"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">number? </span><span class="mi">123</span><span class="p">)</span> <span class="c1">; #t</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">number? </span><span class="s">&#34;123&#34;</span><span class="p">)</span> <span class="c1">; #f</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">string? </span><span class="s">&#34;hello&#34;</span><span class="p">)</span> <span class="c1">; #t</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="special-forms">Special Forms</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-scheme" data-lang="scheme"><span class="line"><span class="cl"><span class="p">(</span><span class="k">define </span><span class="nv">x</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; define a variable x with value 10</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="k">if </span><span class="no">#t</span> <span class="mi">10</span> <span class="mi">20</span><span class="p">)</span> <span class="c1">; if #t is true, return 10, otherwise return 20</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="k">cond </span><span class="p">((</span><span class="nb">= </span><span class="nv">x</span> <span class="mi">10</span><span class="p">)</span> <span class="s">&#34;x is 10&#34;</span><span class="p">)</span> <span class="p">((</span><span class="nb">= </span><span class="nv">x</span> <span class="mi">20</span><span class="p">)</span> <span class="s">&#34;x is 20&#34;</span><span class="p">)</span> <span class="p">(</span><span class="k">else </span><span class="s">&#34;x is not 10 or 20&#34;</span><span class="p">))</span> <span class="c1">; conditional statement</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="k">and </span><span class="no">#t</span> <span class="no">#f</span><span class="p">)</span> <span class="c1">; #f</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="k">or </span><span class="no">#t</span> <span class="no">#f</span><span class="p">)</span> <span class="c1">; #t</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">x</span> <span class="mi">10</span><span class="p">)</span> <span class="p">(</span><span class="nf">y</span> <span class="mi">20</span><span class="p">))</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">x</span> <span class="nv">y</span><span class="p">))</span> <span class="c1">; let statement to create local variables</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="k">let* </span><span class="p">((</span><span class="nf">x</span> <span class="mi">10</span><span class="p">)</span> <span class="p">(</span><span class="nf">y</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">x</span> <span class="mi">10</span><span class="p">)))</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">x</span> <span class="nv">y</span><span class="p">))</span> <span class="c1">; let* statement to create local variables and use the value of previous variables</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">x</span> <span class="mi">10</span><span class="p">))</span> <span class="c1">; lambda expression to create a function that adds 10 to a given number</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">map </span><span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">x</span> <span class="mi">10</span><span class="p">))</span> <span class="p">(</span><span class="nb">list </span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; map function to apply a function to each element of a list</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">sum-of-squares</span> <span class="nv">x</span> <span class="nv">y</span><span class="p">)</span> <span class="p">(</span><span class="nb">+ </span><span class="p">(</span><span class="nb">* </span><span class="nv">x</span> <span class="nv">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">* </span><span class="nv">y</span> <span class="nv">y</span><span class="p">)))</span> <span class="c1">; define a function that takes two numbers and returns their sum of squares</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nf">sum-of-squares</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">; 25</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/lec26-scheme/image-1.png"
+        data-srcset="/lec26-scheme/image-1.png, /lec26-scheme/image-1.png 1.5x, /lec26-scheme/image-1.png 2x"
+        data-sizes="auto"
+        alt="/lec26-scheme/image-1.png"
+        title="alt text" width="559" height="228" /></p>
+<h3 id="lambda-expression">lambda expression</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-scheme" data-lang="scheme"><span class="line"><span class="cl"><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">add-ten</span> <span class="nv">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">x</span> <span class="mi">10</span><span class="p">))</span> <span class="c1">; define a function that adds 10 to a given number</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nf">add-ten</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">; 15</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="cond-and-begin">Cond and Begin</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/lec26-scheme/image-2.png"
+        data-srcset="/lec26-scheme/image-2.png, /lec26-scheme/image-2.png 1.5x, /lec26-scheme/image-2.png 2x"
+        data-sizes="auto"
+        alt="/lec26-scheme/image-2.png"
+        title="alt text" width="1014" height="425" /></p>
+<h3 id="let">let</h3>
+<p>临时绑定</p>
+<p>define则是永久绑定</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/lec26-scheme/image-3.png"
+        data-srcset="/lec26-scheme/image-3.png, /lec26-scheme/image-3.png 1.5x, /lec26-scheme/image-3.png 2x"
+        data-sizes="auto"
+        alt="/lec26-scheme/image-3.png"
+        title="alt text" width="962" height="169" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/lec26-scheme/image-4.png"
+        data-srcset="/lec26-scheme/image-4.png, /lec26-scheme/image-4.png 1.5x, /lec26-scheme/image-4.png 2x"
+        data-sizes="auto"
+        alt="/lec26-scheme/image-4.png"
+        title="alt text" width="1068" height="531" /></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2024-10-21</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/lec26-scheme/" data-title="Lec26-Scheme"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/lec26-scheme/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/lec26-scheme/" data-title="Lec26-Scheme"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/lec26-scheme/" data-title="Lec26-Scheme"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/lec26-scheme/" data-title="Lec26-Scheme"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/lec22-composition/" class="prev" rel="prev" title="Lec22-Composition"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Lec22-Composition</a>
+            <a href="/lec25-data-examples/" class="next" rel="next" title="Lec25-Data Examples">Lec25-Data Examples<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.123.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">HHZZ</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

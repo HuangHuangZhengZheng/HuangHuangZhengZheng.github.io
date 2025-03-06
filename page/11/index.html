@@ -98,40 +98,22 @@
         alt="/avatar.jpg"
         title="/avatar.jpg" width="1920" height="1280" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/HuangHuangZhengZheng" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/61b-12/">61B-12:  Coding in the Real World, Review</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-14">2024-07-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">Programming in the Real World 对技术要敬畏 midterm review Comparing strings for equality using == vs .equals &mdash;&gt; see in autoboxing lecture 在Java中，this 是一个指向当前对象实例的引用。它通常用于引用当前类的实例成员，或者在方法中区分成员变量和局部变量。然而，你不能将 this 重新赋值为另一个对象的引用，因为 this 是一个固定的概念，它代表当前对象本身。
-你提供的代码示例中，尝试将 this 赋值为一个新的 Dog 对象，这是不允许的。Java 编译器会报错，因为它违反了 this 的使用规则。
-1 2 3 4 5 6 7 8 public class Dog { public void f() { this = new Dog(); // 这行代码会导致编译错误，因为不能重新赋值this } } Dog d = new Dog(); d.f(); // 调用f()方法，但由于上面的错误，这行代码实际上无法执行 如果你想要创建一个新的 Dog 对象并将其引用赋给 this，你需要使用另一个变量，比如 anotherDog。下面是修改后的代码示例：</div><div class="post-footer">
-        <a href="/61b-12/">Read More</a></div>
+        <a href="/lec24-decomposition/">Lec24-Decomposition</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-21">2024-10-21</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61a/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61A</a></span></div><div class="content">Decomposition Modular Design dddd
+有趣的语法 1 2 3 4 5 6 7 ... # 用于省略代码 import json for i in open(&#39;data.json&#39;): data = json.loads(i) # 处理数据... </div><div class="post-footer">
+        <a href="/lec24-decomposition/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/61b-13/">61B-13: Generics, Autoboxing</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-14">2024-07-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">13-16几乎是java语法讲解&#x1f604;
-Primitives Cannot Be Used as Actual Type Arguments Autoboxing Wrapper Types Are (Mostly) Just Like Any Class
-8种基本类型之间转换也存在widening
-Immutability 类似于const在cpp
-1 2 3 4 5 6 7 8 9 public class Date { public final int month; public final int day; public final int year; private boolean contrived = true; public Date(int m, int d, int y) { month = m; day = d; year = y; } } Warning: Declaring a reference as Final does not make object immutable.</div><div class="post-footer">
-        <a href="/61b-13/">Read More</a></div>
+        <a href="/lec25-data-examples/">Lec25-Data Examples</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-21">2024-10-21</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61a/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61A</a></span></div><div class="content">Data Examples Lists in Environment Diagrams 注意：切片 or addition 是引用，而不是复制，有时候可能不经意改变
+1 2 3 4 5 &gt;&gt;&gt; t = [1,2,3] &gt;&gt;&gt; t[1:3] = [t] &gt;&gt;&gt; t.extend(t) &gt;&gt;&gt; print(t) [1, [...], 1, [...]] 在Python中，当你尝试打印一个包含自身的列表时，列表无法递归地打印出所有的元素，因为它会无限循环地引用自己。为了避免这种无限循环，Python会用[&hellip;]来表示列表中被省略的部分。
+Obj Systems in Python return a string -&gt; 'str', print a string -&gt; str
+.some_attr: can create a new attribute for the instance at once, or get the value of an existing attribute
+Iterators and Iterables in Python training test</div><div class="post-footer">
+        <a href="/lec25-data-examples/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/61b-10/">61B-10: Subtype Polymorphism vs. HoFs</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-14">2024-07-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">Subtype Polymorphism 指的是可以使用父类类型的对象来引用子类类型的实例。 DIY Comparison 比较Object类对象时产生问题，如何比较？？？
-考虑写一个比较器，比较两个Object对象
-加深编译理解 Comparable Interface 1 2 3 public interface Comparable&lt;T&gt; { public int compareTo(T obj); } Comparator Interface 1 2 3 public interface Comparator&lt;T&gt; { public int compare(T obj1, T obj2); } 两者的关系↓ 总结</div><div class="post-footer">
-        <a href="/61b-10/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/61b-11/">61B-11: Libraries, Abstract Classes, Packages</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-14">2024-07-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">Java Libraries Collections Collections is a package in Java that provides various utility classes for working with collections. Tasks引入 3 tasks, given the text of a book:
-Create a list of all words in the book. Count the number of unique words. Keep track of the number of times that specific words are mentioned. #1 way set 1 2 3 4 5 6 7 8 9 10 11 12 public static int countUniqueWords(List&lt;String&gt; words) { Set&lt;String&gt; ss = new HashSet&lt;&gt;(); for (String s : words) { ss.</div><div class="post-footer">
-        <a href="/61b-11/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/61b-9/">61B-9: Extends, Casting, Higher Order Functions</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-14">2024-07-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">Implementation Inheritance: Extends extends
-Because of extends, RotatingSLList inherits all members of SLList: All instance and static variables. （注意public, private, protected的区别） All methods. All nested classes. Constructors are not inherited. super
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 public class VengefulSLList&lt;Item&gt; extends SLList&lt;Item&gt; { private SLList&lt;Item&gt; deletedItems; public VengefulSLList() { deletedItems = new SLList&lt;Item&gt;(); } @Override public Item removeLast() { Item oldBack = super.</div><div class="post-footer">
-        <a href="/61b-9/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/61b-7/">61B-7: Testing</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-14">2024-07-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">Ad Hoc Testing vs. JUnit 1 2 3 4 5 6 7 8 9 10 11 12 13 14 public class TestSort { /** Tests the sort method of the Sort class. */ public static testSort() { String[] input = {&#34;cows&#34;, &#34;dwell&#34;, &#34;above&#34;, &#34;clouds&#34;}; String[] expected = {&#34;above&#34;, &#34;cows&#34;, &#34;clouds&#34;, &#34;dwell&#34;}; Sort.sort(input); org.junit.Assert.assertArrayEquals(expected, input); } public static void main(String[] args) { testSort(); } } Selection Sort 简单介绍一下了，关注点在junit Simpler JUnit Tests ADD, TDD, Integration Testing More On JUnit (Extra) </div><div class="post-footer">
-        <a href="/61b-7/">Read More</a></div>
+        <a href="/lec26-scheme/">Lec26-Scheme</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-21">2024-10-21</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61a/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61A</a></span></div><div class="content">Scheme Scheme Fundamentals 1 2 3 (number? 123) ; #t (number? &#34;123&#34;) ; #f (string? &#34;hello&#34;) ; #t Special Forms 1 2 3 4 5 6 7 8 9 10 11 (define x 10) ; define a variable x with value 10 (if #t 10 20) ; if #t is true, return 10, otherwise return 20 (cond ((= x 10) &#34;x is 10&#34;) ((= x 20) &#34;x is 20&#34;) (else &#34;x is not 10 or 20&#34;)) ; conditional statement (and #t #f) ; #f (or #t #f) ; #t (let ((x 10) (y 20)) (+ x y)) ; let statement to create local variables (let* ((x 10) (y (+ x 10))) (+ x y)) ; let* statement to create local variables and use the value of previous variables (lambda (x) (+ x 10)) ; lambda expression to create a function that adds 10 to a given number (map (lambda (x) (+ x 10)) (list 1 2 3)) ; map function to apply a function to each element of a list (define (sum-of-squares x y) (+ (* x x) (* y y))) ; define a function that takes two numbers and returns their sum of squares (sum-of-squares 3 4) ; 25 lambda expression 1 2 (define (add-ten x) (+ x 10)) ; define a function that adds 10 to a given number (add-ten 5) ; 15 Cond and Begin let 临时绑定</div><div class="post-footer">
+        <a href="/lec26-scheme/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -162,7 +144,7 @@ Because of extends, RotatingSLList inherits all members of SLList: All instance 
                     <span class="page-link" aria-hidden="true">&hellip;</span>
                 </li><li class="page-item ">
                     <span class="page-link">
-                        <a href="/page/17/">17</a>
+                        <a href="/page/61/">61</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">

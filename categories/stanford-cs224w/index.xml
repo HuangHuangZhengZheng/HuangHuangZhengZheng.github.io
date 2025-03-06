@@ -1,0 +1,85 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Stanford-CS224W - Category - HHZZ`s space</title>
+        <link>http://example.org/categories/stanford-cs224w/</link>
+        <description>Stanford-CS224W - Category - HHZZ`s space</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 29 Jan 2025 12:19:30 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/stanford-cs224w/" rel="self" type="application/rss+xml" /><item>
+    <title>L17-huge GNN</title>
+    <link>http://example.org/l17-huge-gnn/</link>
+    <pubDate>Wed, 29 Jan 2025 12:19:30 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/l17-huge-gnn/</guid>
+    <description><![CDATA[Scaling up GNNs 直接load全部nodes又不太可能【naive approach】4090 / A100带不动
+neighbor sampling 对hub node的思考 see the paper
+cluster-GCN advanced Simplified GCN 舍弃了GCN的non-linearity，直接用linear layer
+同质性？但是我想知道和glidar的区别？ ]]></description>
+</item>
+<item>
+    <title>L16-improvedGNN</title>
+    <link>http://example.org/l16-improvedgnn/</link>
+    <pubDate>Wed, 29 Jan 2025 12:10:50 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/l16-improvedgnn/</guid>
+    <description><![CDATA[Improved GNN positionally-aware gnn anchor数量 大小 （指数守恒） refer to the paper of Position-aware Graph Neural Networks (P-GNN)]]></description>
+</item>
+<item>
+    <title>L7-GNN t1</title>
+    <link>http://example.org/l7-gnn-t1/</link>
+    <pubDate>Tue, 28 Jan 2025 13:39:34 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/l7-gnn-t1/</guid>
+    <description><![CDATA[L7-GNN theory 1 所有gnn的原型在这里
+一个layer layers之间的交互 input graph -&gt; computational graph的构建 GO!!!!
+a simple layer of GNN msg computations 原神处理dddd
+aggregation 核心：order invariance 焯这就是pointnet的核心之一啊！！！
+issue： 容易忽略自己节点 some examples of GNNs GCN GraphSAGE 这里的细节在于如何聚合邻居的信息
+同时每层来个norm
+GAT 首先解释一下什么是attention mechanism 单个attention的计算 多头attention的计算（更容易收敛） GNN layers in practice glidar呼之欲出了 &#x1f631; 有意思的东西&#x1f60b; stacking GNN layers ]]></description>
+</item>
+<item>
+    <title>L6-GNN intro</title>
+    <link>http://example.org/l6-gnn-intro/</link>
+    <pubDate>Mon, 27 Jan 2025 16:39:56 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/l6-gnn-intro/</guid>
+    <description><![CDATA[GNN Intro shallow deep graph encoder tmd 终于来了 !!! 借鉴cnn，但是
+没有fixed notion or sliding window permutation invariance！ GCNN 直觉上的思考 其实就是3 + 1步走
+找到aggregate function 找到loss function train on a set of nodes apply to new nodes 7 8.1 9
+16.2 17]]></description>
+</item>
+<item>
+    <title>L3-Node Embeddings</title>
+    <link>http://example.org/l3-node-embeddings/</link>
+    <pubDate>Mon, 27 Jan 2025 15:11:03 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/l3-node-embeddings/</guid>
+    <description><![CDATA[Node Embeddings https://web.stanford.edu/class/cs224w/slides/02-nodeemb.pdf
+encoder and decoder encoder: simple example ？？注意这里矩阵是one column per node， 这里似乎解释通了为什么glidar里面node在encode的过程中数量不变，换句话说就是 not scalable
+呼之欲出啊啊啊啊啊 &#x1f631;
+以下内容非常具有启发性
+Random walks 怎么理解高效率？
+对特征学习的考量 提出损失函数 用了一个近似来化简 （不约而同走到了noise-denoise） k在5~20之间！又是glidar的论文！
+summary node2vec embedding the entire graph SKIP]]></description>
+</item>
+<item>
+    <title>L2-traditional methods</title>
+    <link>http://example.org/l2-traditional-methods/</link>
+    <pubDate>Mon, 27 Jan 2025 12:22:01 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/l2-traditional-methods/</guid>
+    <description><![CDATA[Traditional Methods in Graph Learning node-level features degree Centrality measures: degree centrality, betweenness centrality, eigenvector centrality, closeness centrality, clustering coefficent 进一步引申GDV edge-level features 我觉得这个很像我们的vae encoder想法 距离表征容易理解&hellip;&hellip;
+邻接矩阵的幂（类似于归纳法 略）
+graph-level features 核方法（但是skip） bag of sth&hellip; recall when you need ]]></description>
+</item>
+<item>
+    <title>L1-Intro</title>
+    <link>http://example.org/l1-intro/</link>
+    <pubDate>Sun, 26 Jan 2025 14:55:57 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/l1-intro/</guid>
+    <description><![CDATA[CS224W: Intro to Graph Deep Learning GNN for img 也就是说gnn会比传统的cnn更好 &#x1f914;
+gnn as encoder and diffusion process! how to build a graph? 基本图论知识见CS61B
+nodes??? edges??? 新的图的表示 双向图与投影图（仔细看线条） 自环的增加的degree为1 接邻矩阵表示连接性 ]]></description>
+</item>
+</channel>
+</rss>

@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Lec5-Automatic Differentiation Implementation - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Lec5-Automatic Differentiation Implementation" />
+<meta property="og:description" content="Auto Differentiation Implementation Basic Knowledge OOP in Python class call method 在Python中，__call__方法是一个特殊的方法，它允许一个类的实例表现得像一个函数。当你定义了一个类，并在该类中实现了__call__方法，你就可以通过直接调用实例来执行这个方法，就像调用一个函数一样。
+这里是一个简单的例子来说明__call__方法的用法：
+1 2 3 4 5 6 7 8 9 10 11 12 class Greeter: def __init__(self, name): self.name = name def __call__(self): return f&#34;Hello, {self.name}!&#34; # 创建Greeter类的实例 greeter = Greeter(&#34;Kimi&#34;) # 调用实例，就像它是一个函数 print(greeter()) # 输出: Hello, Kimi! 在这个例子中，Greeter类有一个__init__方法来初始化实例，还有一个__call__方法来定义当实例被调用时应该执行的操作。当我们创建了一个Greeter的实例并调用它时，实际上是调用了__call__方法，它返回了一个问候语。
+__call__方法通常用于创建可调用的对象，这在某些设计模式中非常有用，比如工厂模式、单例模式等。此外，它也常用于装饰器中，允许装饰器返回的对象能够被调用。
+new method 在Python中，__new__方法是一个特殊的静态方法，用于创建一个类的新实例。它是在__init__方法之前被调用的，并且是创建对象实例的第一个步骤。__new__方法主要负责创建一个对象，而__init__方法则用于初始化这个对象。
+__new__方法通常用于以下情况：
+继承不可变类型：比如元组、字符串等，它们是不可变的，不能使用__init__进行初始化，因为它们在创建时就已经完成了初始化。在这种情况下，可以通过重写__new__方法来创建新的实例。
+控制实例的创建：在某些情况下，你可能想要控制对象的创建过程，比如单例模式，或者在创建对象时进行一些特殊的处理。
+继承自内置类型：当你想要继承自Python的内置类型时，你需要重写__new__方法来创建实例，因为内置类型通常不提供__init__方法。
+__new__方法的基本语法如下：
+1 2 3 4 5 6 class MyClass(metaclass=type): def __new__(cls, *args, **kwargs): # 创建实例的代码 instance = super(MyClass, cls)." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/lec5-automatic-differentiation-implementation/" /><meta property="og:image" content="http://example.org/logo.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-09-17T09:18:32+08:00" />
+<meta property="article:modified_time" content="2024-09-17T09:18:32+08:00" /><meta property="og:site_name" content="My cool site" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://example.org/logo.png" /><meta name="twitter:title" content="Lec5-Automatic Differentiation Implementation"/>
+<meta name="twitter:description" content="Auto Differentiation Implementation Basic Knowledge OOP in Python class call method 在Python中，__call__方法是一个特殊的方法，它允许一个类的实例表现得像一个函数。当你定义了一个类，并在该类中实现了__call__方法，你就可以通过直接调用实例来执行这个方法，就像调用一个函数一样。
+这里是一个简单的例子来说明__call__方法的用法：
+1 2 3 4 5 6 7 8 9 10 11 12 class Greeter: def __init__(self, name): self.name = name def __call__(self): return f&#34;Hello, {self.name}!&#34; # 创建Greeter类的实例 greeter = Greeter(&#34;Kimi&#34;) # 调用实例，就像它是一个函数 print(greeter()) # 输出: Hello, Kimi! 在这个例子中，Greeter类有一个__init__方法来初始化实例，还有一个__call__方法来定义当实例被调用时应该执行的操作。当我们创建了一个Greeter的实例并调用它时，实际上是调用了__call__方法，它返回了一个问候语。
+__call__方法通常用于创建可调用的对象，这在某些设计模式中非常有用，比如工厂模式、单例模式等。此外，它也常用于装饰器中，允许装饰器返回的对象能够被调用。
+new method 在Python中，__new__方法是一个特殊的静态方法，用于创建一个类的新实例。它是在__init__方法之前被调用的，并且是创建对象实例的第一个步骤。__new__方法主要负责创建一个对象，而__init__方法则用于初始化这个对象。
+__new__方法通常用于以下情况：
+继承不可变类型：比如元组、字符串等，它们是不可变的，不能使用__init__进行初始化，因为它们在创建时就已经完成了初始化。在这种情况下，可以通过重写__new__方法来创建新的实例。
+控制实例的创建：在某些情况下，你可能想要控制对象的创建过程，比如单例模式，或者在创建对象时进行一些特殊的处理。
+继承自内置类型：当你想要继承自Python的内置类型时，你需要重写__new__方法来创建实例，因为内置类型通常不提供__init__方法。
+__new__方法的基本语法如下：
+1 2 3 4 5 6 class MyClass(metaclass=type): def __new__(cls, *args, **kwargs): # 创建实例的代码 instance = super(MyClass, cls)."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/lec5-automatic-differentiation-implementation/" /><link rel="prev" href="http://example.org/lec4-automatic-differentiation/" /><link rel="next" href="http://example.org/l2-image-classification/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Lec5-Automatic Differentiation Implementation",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/lec5-automatic-differentiation-implementation\/"
+        },"genre": "posts","wordcount":  655 ,
+        "url": "http:\/\/example.org\/lec5-automatic-differentiation-implementation\/","datePublished": "2024-09-17T09:18:32+08:00","dateModified": "2024-09-17T09:18:32+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "HHZZ"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HHZZ`s space">Code and BeyondCode😋</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tools/"> Tools </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/beyondcode/"> BeyondCode😋 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HHZZ`s space">Code and BeyondCode😋</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tools/" title="">Tools</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/beyondcode/" title="">BeyondCode😋</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Lec5-Automatic Differentiation Implementation</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/cmu-10-414-714/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CMU-10-414-714</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-09-17">2024-09-17</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;655 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#basic-knowledge">Basic Knowledge</a>
+      <ul>
+        <li><a href="#oop-in-python-class">OOP in Python class</a>
+          <ul>
+            <li><a href="#call-method">call method</a></li>
+            <li><a href="#new-method">new method</a></li>
+          </ul>
+        </li>
+        <li><a href="#data-structure-in-needle">Data Structure in NEEDLE</a>
+          <ul>
+            <li><a href="#lazy-or-eager-evaluation">Lazy or Eager Evaluation</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#details-in-math">Details in math</a>
+      <ul>
+        <li><a href="#summation">summation</a></li>
+        <li><a href="#梯度的推导总结">梯度的推导总结：</a></li>
+        <li><a href="#reshape">reshape</a></li>
+        <li><a href="#broadcast">broadcast</a></li>
+      </ul>
+    </li>
+    <li><a href="#list-tuple-and-dict">list, tuple, and dict</a>
+      <ul>
+        <li><a href="#list列表">List（列表）</a></li>
+        <li><a href="#tuple元组">Tuple（元组）</a></li>
+        <li><a href="#dict字典">Dict（字典）</a></li>
+        <li><a href="#联系">联系</a></li>
+        <li><a href="#区别">区别</a></li>
+        <li><a href="#示例">示例</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="auto-differentiation-implementation">Auto Differentiation Implementation</h1>
+<h2 id="basic-knowledge">Basic Knowledge</h2>
+<h3 id="oop-in-python-class">OOP in Python class</h3>
+<h4 id="call-method">call method</h4>
+<p>在Python中，<code>__call__</code>方法是一个特殊的方法，它允许一个类的实例表现得像一个函数。当你定义了一个类，并在该类中实现了<code>__call__</code>方法，你就可以通过直接调用实例来执行这个方法，就像调用一个函数一样。</p>
+<p>这里是一个简单的例子来说明<code>__call__</code>方法的用法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Greeter</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="sa">f</span><span class="s2">&#34;Hello, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">!&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 创建Greeter类的实例</span>
+</span></span><span class="line"><span class="cl"><span class="n">greeter</span> <span class="o">=</span> <span class="n">Greeter</span><span class="p">(</span><span class="s2">&#34;Kimi&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 调用实例，就像它是一个函数</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">greeter</span><span class="p">())</span>  <span class="c1"># 输出: Hello, Kimi!</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在这个例子中，<code>Greeter</code>类有一个<code>__init__</code>方法来初始化实例，还有一个<code>__call__</code>方法来定义当实例被调用时应该执行的操作。当我们创建了一个<code>Greeter</code>的实例并调用它时，实际上是调用了<code>__call__</code>方法，它返回了一个问候语。</p>
+<p><code>__call__</code>方法通常用于创建可调用的对象，这在某些设计模式中非常有用，比如工厂模式、单例模式等。此外，它也常用于装饰器中，允许装饰器返回的对象能够被调用。</p>
+<h4 id="new-method">new method</h4>
+<p>在Python中，<code>__new__</code>方法是一个特殊的静态方法，用于创建一个类的新实例。它是在<code>__init__</code>方法之前被调用的，并且是创建对象实例的第一个步骤。<code>__new__</code>方法主要负责创建一个对象，而<code>__init__</code>方法则用于初始化这个对象。</p>
+<p><code>__new__</code>方法通常用于以下情况：</p>
+<ol>
+<li>
+<p><strong>继承不可变类型</strong>：比如元组、字符串等，它们是不可变的，不能使用<code>__init__</code>进行初始化，因为它们在创建时就已经完成了初始化。在这种情况下，可以通过重写<code>__new__</code>方法来创建新的实例。</p>
+</li>
+<li>
+<p><strong>控制实例的创建</strong>：在某些情况下，你可能想要控制对象的创建过程，比如单例模式，或者在创建对象时进行一些特殊的处理。</p>
+</li>
+<li>
+<p><strong>继承自内置类型</strong>：当你想要继承自Python的内置类型时，你需要重写<code>__new__</code>方法来创建实例，因为内置类型通常不提供<code>__init__</code>方法。</p>
+</li>
+</ol>
+<p><code>__new__</code>方法的基本语法如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MyClass</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="nb">type</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 创建实例的代码</span>
+</span></span><span class="line"><span class="cl">        <span class="n">instance</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">MyClass</span><span class="p">,</span> <span class="bp">cls</span><span class="p">)</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 可以在这里进行一些初始化操作</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">instance</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在这个例子中，<code>__new__</code>方法首先调用<code>super()</code>来创建类的实例，然后可以进行一些额外的操作，最后返回这个实例。注意，<code>__new__</code>方法必须返回一个实例对象。</p>
+<p>这里是一个简单的例子，展示了如何使用<code>__new__</code>方法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Singleton</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_instance</span> <span class="o">=</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="ow">not</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_instance</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">cls</span><span class="o">.</span><span class="n">_instance</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">Singleton</span><span class="p">,</span> <span class="bp">cls</span><span class="p">)</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_instance</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 测试单例模式</span>
+</span></span><span class="line"><span class="cl"><span class="n">s1</span> <span class="o">=</span> <span class="n">Singleton</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">s2</span> <span class="o">=</span> <span class="n">Singleton</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">s1</span> <span class="ow">is</span> <span class="n">s2</span><span class="p">)</span>  <span class="c1"># 输出 True，说明s1和s2是同一个实例</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在这个例子中，<code>Singleton</code>类通过重写<code>__new__</code>方法实现了单例模式，确保了全局只有一个实例。</p>
+<h3 id="data-structure-in-needle">Data Structure in NEEDLE</h3>
+<h4 id="lazy-or-eager-evaluation">Lazy or Eager Evaluation</h4>
+<p>自动微分的lazy（惰性）模式和eager（急切）模式是深度学习框架中处理计算图的两种不同方式。它们各有优劣，适用于不同的场景。</p>
+<p><strong>Lazy模式</strong>：</p>
+<ul>
+<li><strong>优点</strong>：
+<ul>
+<li>灵活性高，可以动态地构建计算图，支持条件分支和循环等控制流结构。</li>
+<li>调试友好，因为操作是按需执行的，所以可以使用传统的Python调试工具。</li>
+<li>适合于研究和开发阶段，因为可以即时看到每个操作的效果。</li>
+</ul>
+</li>
+<li><strong>缺点</strong>：
+<ul>
+<li>性能可能不如eager模式，因为它不支持一些优化，如操作融合。</li>
+<li>内存消耗可能更高，因为不会进行一些优化来减少内存使用。</li>
+</ul>
+</li>
+</ul>
+<p><strong>Eager模式</strong>：</p>
+<ul>
+<li><strong>优点</strong>：
+<ul>
+<li>性能通常更好，因为它允许在执行前对计算图进行优化，如操作融合和常量折叠。</li>
+<li>可以减少运行时的内存消耗，因为优化后的计算图可能更高效。</li>
+<li>适合于生产环境，因为它提供了更快的执行速度。</li>
+</ul>
+</li>
+<li><strong>缺点</strong>：
+<ul>
+<li>灵活性较低，不支持动态图结构，因为计算图是在运行前构建的。</li>
+<li>调试可能不如lazy模式方便，因为需要考虑计算图的结构。</li>
+</ul>
+</li>
+</ul>
+<p>在实际应用中，选择哪种模式取决于具体的需求。例如，PyTorch默认使用eager模式，因为它的动态性和易用性适合于研究和开发。而TensorFlow在早期版本中使用静态图，但后来引入了eager execution来提供更灵活的编程体验。在生产环境中，通常会使用图模式来优化性能。</p>
+<p>根据搜索结果，PyTorch的eager模式允许即时执行操作，使得调试更加直观，并且可以使用Pythonic的控制流结构，而不是预先定义的静态图 。而TensorFlow的eager模式则提供了与PyTorch类似的动态图计算模式，使得操作可以立即执行，而不是先构建计算图 。这些特性使得eager模式在某些情况下更加方便，尤其是在需要快速迭代和调试的研究环境中。然而，对于需要高性能的生产环境，图模式通常更受青睐，因为它可以通过各种优化手段来提高执行效率 。</p>
+<h2 id="details-in-math">Details in math</h2>
+<h3 id="summation">summation</h3>
+<p>要从数学的角度推导出 <code>Summation</code> 的梯度，首先我们需要理解 <code>summation</code> 操作的基本原理以及它对输入张量的影响。假设我们有一个张量 <code>a</code>，并且我们通过 <code>sum</code> 操作对其进行求和，那么：</p>
+<ol>
+<li>
+<p><strong>Summation 操作</strong>：<br>
+定义一个张量 <code>a</code>，其形状为 <code>(a_1, a_2, ..., a_n)</code>。当我们对 <code>a</code> 的某些轴（<code>axes</code>）执行求和操作时，输出张量的形状将变小，丢失掉那些被求和的维度。例如：</p>
+<ul>
+<li>如果对所有维度求和，输出将是一个标量。</li>
+<li>如果只对某些维度求和，输出的张量形状会保持不变，但会丢失那些被求和的维度。</li>
+</ul>
+</li>
+<li>
+<p><strong>梯度的推导</strong>：<br>
+我们的目标是推导 <code>f(a) = sum(a)</code> 对输入 <code>a</code> 的梯度。换句话说，给定 <code>sum(a)</code> 对输入 <code>a</code> 的输出 <code>out</code> 和输出的梯度 <code>out_grad</code>，我们要计算 <code>f</code> 对 <code>a</code> 的梯度。这个梯度表示的实际上是 <strong>反向传播中如何将梯度从 <code>out_grad</code> 传播回输入 <code>a</code></strong>。</p>
+</li>
+<li>
+<p><strong>不考虑轴的情况</strong>：<br>
+对于没有指定轴的简单总和操作 <code>sum(a)</code>，即对所有元素求和的情况：</p>
+<p>[
+f(a) = \sum_{i} a_i
+]</p>
+<p>求和操作的梯度对于每个元素是均匀的。如果我们对 <code>out = f(a)</code> 的标量有一个梯度 <code>out_grad</code>，则对每个输入元素 <code>a_i</code> 的梯度是相同的，也就是 <code>out_grad</code>。因此，对 <code>a</code> 的梯度是一个与 <code>a</code> 形状相同的张量，每个位置的值都是 <code>out_grad</code>。</p>
+</li>
+<li>
+<p><strong>考虑特定轴的情况</strong>：<br>
+如果我们只对 <code>a</code> 的某些轴 <code>axes</code> 进行求和，输出张量的形状会变小，丢失掉被求和的维度。要把 <code>out_grad</code> 传播回到原始输入张量 <code>a</code>，我们需要通过 <strong>广播（broadcasting）</strong> 来扩展 <code>out_grad</code> 的形状，使其与 <code>a</code> 的形状相同。这是通过以下步骤实现的：</p>
+<ul>
+<li>首先，确定哪些轴被求和（即 <code>axes</code>）。</li>
+<li>接着，我们将 <code>out_grad</code> 形状扩展为与原始输入 <code>a</code> 的形状匹配。通过 <code>reshape</code> 和 <code>broadcast</code> 操作，可以将 <code>out_grad</code> 的形状调整为与 <code>a</code> 的形状兼容。</li>
+<li>这意味着我们将 <code>out_grad</code> 的值复制到所有求和的轴上。</li>
+</ul>
+<p>具体的梯度操作为：</p>
+<p>[
+\text{grad}_a = \text{broadcast_to}(\text{reshape}(out_grad, \text{expanded_shape}), \text{original_shape})
+]</p>
+<p>其中，<code>expanded_shape</code> 是将 <code>out_grad</code> 的形状在求和的轴上扩展为 <code>1</code>，然后通过广播将其匹配原始输入张量的形状。</p>
+</li>
+</ol>
+<h3 id="梯度的推导总结">梯度的推导总结：</h3>
+<ul>
+<li>当我们对所有维度求和时，梯度会均匀地分布到每个输入元素上，每个位置的梯度都是 <code>out_grad</code>。</li>
+<li>当对某些维度求和时，我们需要将 <code>out_grad</code> 扩展到与输入相同的形状，这通过 <code>reshape</code> 和 <code>broadcast</code> 实现，使得求和操作的反向传播能够正确传播梯度。</li>
+</ul>
+<h3 id="reshape">reshape</h3>
+<p><code>Reshape</code> 操作的梯度推导其实相对直观。重塑（<code>reshape</code>）操作不会改变数据本身，只是改变数据在内存中的排列方式。因此，在反向传播时，<code>reshape</code> 操作的梯度可以直接按照反向的形状变化来进行重新排列。</p>
+<ol>
+<li>
+<p><strong>Reshape 操作的基本概念</strong>：
+<code>Reshape</code> 操作的目的是将张量 <code>a</code> 的形状从原始的形状 <code>input_shape</code> 转换为目标形状 <code>target_shape</code>，但保持元素的顺序不变。数据的内存布局保持不变，只是更改了它的形状。</p>
+</li>
+<li>
+<p><strong>Reshape 的梯度计算</strong>：
+因为 <code>reshape</code> 操作只是改变了张量的形状而不改变其数据内容，在反向传播过程中，梯度的计算非常简单。对于一个通过 <code>reshape</code> 产生的输出张量的梯度 <code>out_grad</code>，其梯度传播到输入张量时，仅需将 <code>out_grad</code> 重塑回输入张量的形状。</p>
+</li>
+</ol>
+<p>具体来说，假设：</p>
+<ul>
+<li>输入张量的形状为 <code>input_shape</code>，即 <code>a.shape = input_shape</code>；</li>
+<li>通过 <code>reshape</code> 操作，张量变成了 <code>target_shape</code>；</li>
+<li>我们在反向传播中得到了 <code>out_grad</code>，它的形状为 <code>target_shape</code>。</li>
+</ul>
+<p>我们要计算输入张量 <code>a</code> 的梯度。由于 <code>reshape</code> 并没有改变数据内容，只需将 <code>out_grad</code> 的形状重塑为 <code>input_shape</code>。</p>
+<ol start="4">
+<li><strong>实现梯度的逻辑</strong>：
+因此，<code>Reshape</code> 操作的梯度实现非常简单，只需要将 <code>out_grad</code> 重新变换回原始输入张量的形状即可。这可以通过以下代码实现：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">gradient</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">out_grad</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 获取输入张量的形状</span>
+</span></span><span class="line"><span class="cl">    <span class="n">input_shape</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># 将输出梯度 reshaped 回原始输入的形状</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">reshape</span><span class="p">(</span><span class="n">out_grad</span><span class="p">,</span> <span class="n">input_shape</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="5">
+<li><strong>直观理解</strong>：</li>
+</ol>
+<ul>
+<li>在前向过程中，<code>reshape</code> 只是重新排列数据的形状，而不改变数据的值。</li>
+<li>在反向传播时，我们只需要将 <code>out_grad</code> 的形状重新排列为输入张量的形状，以便梯度能够正确传播到输入。</li>
+</ul>
+<p>因为 <code>reshape</code> 操作本身不会影响数据值，梯度传播过程也是简单的形状变换，因此 <code>Reshape</code> 操作的梯度推导非常直接。</p>
+<h3 id="broadcast">broadcast</h3>
+<p>你提供的代码是 <code>BroadcastTo</code> 操作的梯度实现，它正确地处理了广播操作的反向传播问题。让我们逐步分析它的逻辑：</p>
+<ol>
+<li>
+<p><strong>输入与前向传播</strong>：
+<code>BroadcastTo</code> 操作的目的是将输入张量 <code>a</code> 扩展为一个新的形状 <code>self.shape</code>。前向传播中，通过调用 <code>array_api.broadcast_to(a, self.shape)</code> 将输入 <code>a</code> 广播到 <code>self.shape</code>。</p>
+</li>
+<li>
+<p><strong>反向传播的目标</strong>：
+在反向传播时，我们需要将梯度 <code>out_grad</code> 传播回输入张量 <code>a</code>，即形状为 <code>node.inputs[0].shape</code> 的张量。在广播过程中，某些维度可能是通过扩展为更大值实现的，这些扩展的维度需要在反向传播中进行处理（通过求和恢复到原始维度的大小）。</p>
+</li>
+<li>
+<p><strong>主要步骤</strong>：</p>
+</li>
+</ol>
+<p>Step 1: 确定输入形状和目标形状的差异</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">shape</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># 获取输入张量的形状</span>
+</span></span><span class="line"><span class="cl"><span class="n">shape</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">shape</span><span class="p">))</span> <span class="o">+</span> <span class="n">shape</span>  <span class="c1"># 对输入形状进行扩展，保持与目标形状的长度一致</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><code>node.inputs[0].shape</code> 是原始输入张量的形状。</li>
+<li><code>self.shape</code> 是广播后的形状。</li>
+<li>如果 <code>self.shape</code> 的长度大于 <code>node.inputs[0].shape</code> 的长度，那么需要在前面补上 <code>1</code> 来匹配维度的数量。这是因为广播允许在高维度的前面插入 <code>1</code> 以适应目标形状。</li>
+</ul>
+<p>Step 2: 找到需要求和的轴
+你提供的代码是 <code>BroadcastTo</code> 操作的梯度实现，它正确地处理了广播操作的反向传播问题。让我们逐步分析它的逻辑：</p>
+<ol>
+<li>
+<p><strong>输入与前向传播</strong>：
+<code>BroadcastTo</code> 操作的目的是将输入张量 <code>a</code> 扩展为一个新的形状 <code>self.shape</code>。前向传播中，通过调用 <code>array_api.broadcast_to(a, self.shape)</code> 将输入 <code>a</code> 广播到 <code>self.shape</code>。</p>
+</li>
+<li>
+<p><strong>反向传播的目标</strong>：
+在反向传播时，我们需要将梯度 <code>out_grad</code> 传播回输入张量 <code>a</code>，即形状为 <code>node.inputs[0].shape</code> 的张量。在广播过程中，某些维度可能是通过扩展为更大值实现的，这些扩展的维度需要在反向传播中进行处理（通过求和恢复到原始维度的大小）。</p>
+</li>
+<li>
+<p><strong>主要步骤</strong>：</p>
+</li>
+</ol>
+<p>Step 1: 确定输入形状和目标形状的差异</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">shape</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># 获取输入张量的形状</span>
+</span></span><span class="line"><span class="cl"><span class="n">shape</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">shape</span><span class="p">))</span> <span class="o">+</span> <span class="n">shape</span>  <span class="c1"># 对输入形状进行扩展，保持与目标形状的长度一致</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><code>node.inputs[0].shape</code> 是原始输入张量的形状。</li>
+<li><code>self.shape</code> 是广播后的形状。</li>
+<li>如果 <code>self.shape</code> 的长度大于 <code>node.inputs[0].shape</code> 的长度，那么需要在前面补上 <code>1</code> 来匹配维度的数量。这是因为广播允许在高维度的前面插入 <code>1</code> 以适应目标形状。</li>
+</ul>
+<p>Step 2: 找到需要求和的轴</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">axes</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span> <span class="ow">or</span> <span class="n">s</span> <span class="o">!=</span> <span class="n">shape</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">axes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><code>self.shape</code> 是广播后的形状，<code>shape</code> 是经过扩展的原始输入形状。</li>
+<li>遍历目标形状 <code>self.shape</code>，如果目标形状和扩展后的输入形状在某个维度不相同（即广播发生），则将该维度的索引添加到 <code>axes</code> 列表中。</li>
+<li>这些轴是需要在反向传播时进行求和的轴，因为这些轴在前向传播时通过广播扩展了。</li>
+</ul>
+<p>Step 3: 求和并调整形状</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">return</span> <span class="n">reshape</span><span class="p">(</span><span class="n">summation</span><span class="p">(</span><span class="n">out_grad</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">axes</span><span class="p">)),</span> <span class="n">node</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><strong>求和</strong>：在指定的轴 <code>axes</code> 上对 <code>out_grad</code> 进行求和，以消除广播的效果，恢复到广播前的形状。</li>
+<li><strong>调整形状</strong>：求和后，使用 <code>reshape</code> 将求和后的张量调整为输入张量的原始形状 <code>node.inputs[0].shape</code>，确保梯度的形状与输入张量匹配。</li>
+</ul>
+<ol start="4">
+<li><strong>代码分析总结</strong>：</li>
+</ol>
+<ul>
+<li><strong>广播维度匹配</strong>：通过在输入形状前面补 <code>1</code> 来处理输入张量和目标张量维度数量不匹配的情况。</li>
+<li><strong>识别需要求和的轴</strong>：通过比较目标形状和扩展后的输入形状，找出哪些维度是广播导致扩展的，并在这些维度上进行求和。</li>
+<li><strong>重塑梯度</strong>：最终将经过求和的梯度重塑回输入张量的形状，以便正确地反向传播梯度。</li>
+</ul>
+<ol start="5">
+<li><strong>直观理解</strong>：</li>
+</ol>
+<ul>
+<li>在前向传播中，广播是将较小形状的张量扩展为更大形状。</li>
+<li>在反向传播中，我们要逆转这种扩展，即将扩展的维度的梯度“合并”，这就是通过在这些维度上求和实现的。</li>
+</ul>
+<p>这段代码很好地实现了 <code>BroadcastTo</code> 操作的梯度计算，既考虑了输入和输出形状的差异，也正确处理了广播扩展的维度的反向求和。</p>
+<h2 id="list-tuple-and-dict">list, tuple, and dict</h2>
+<p>在Python中，<code>list</code>（列表）、<code>tuple</code>（元组）和<code>dict</code>（字典）是三种常用的数据结构，它们各自有独特的特性和用途。下面是它们的区别与联系：</p>
+<h3 id="list列表">List（列表）</h3>
+<ul>
+<li><strong>类型</strong>：可变序列。</li>
+<li><strong>元素</strong>：可以包含任何类型的元素，包括另一个列表。</li>
+<li><strong>索引</strong>：通过索引访问元素，索引从0开始。</li>
+<li><strong>操作</strong>：可以进行增加、删除、修改等操作。</li>
+<li><strong>用途</strong>：当你需要一个可以改变大小的序列时使用。</li>
+</ul>
+<h3 id="tuple元组">Tuple（元组）</h3>
+<ul>
+<li><strong>类型</strong>：不可变序列。</li>
+<li><strong>元素</strong>：可以包含任何类型的元素，包括另一个元组。</li>
+<li><strong>索引</strong>：通过索引访问元素，索引从0开始。</li>
+<li><strong>操作</strong>：一旦创建，不能修改（不能增加、删除或修改元素）。</li>
+<li><strong>用途</strong>：当你需要一个不需要改变的序列时使用，通常用于保护数据不被改变。</li>
+</ul>
+<h3 id="dict字典">Dict（字典）</h3>
+<ul>
+<li><strong>类型</strong>：可变容器。</li>
+<li><strong>元素</strong>：存储键值对（key-value pairs），键必须是不可变类型，值可以是任何类型。</li>
+<li><strong>索引</strong>：通过键访问元素，而不是索引。</li>
+<li><strong>操作</strong>：可以添加、删除或修改键值对。</li>
+<li><strong>用途</strong>：当你需要存储关联数据时使用，例如，存储对象的属性。</li>
+</ul>
+<h3 id="联系">联系</h3>
+<ul>
+<li><strong>序列</strong>：<code>list</code> 和 <code>tuple</code> 都是序列类型，可以进行迭代，并且支持许多相似的操作，如索引、切片等。</li>
+<li><strong>可迭代</strong>：<code>list</code>、<code>tuple</code> 和 <code>dict</code> 都是可迭代的，这意味着它们可以用于循环和其他期望可迭代对象的场合。</li>
+<li><strong>内置方法</strong>：它们都有许多内置方法来支持常见的操作，如添加、删除、查找等。</li>
+</ul>
+<h3 id="区别">区别</h3>
+<ul>
+<li><strong>可变性</strong>：<code>list</code> 是可变的，而 <code>tuple</code> 是不可变的。<code>dict</code> 也是可变的。</li>
+<li><strong>元素类型</strong>：<code>dict</code> 存储的是键值对，而 <code>list</code> 和 <code>tuple</code> 存储的是元素序列。</li>
+<li><strong>性能</strong>：对于需要频繁修改元素的场景，<code>list</code> 更合适；对于不需要修改的场景，<code>tuple</code> 更合适，因为它的不可变性可以提高性能。</li>
+<li><strong>存储效率</strong>：由于 <code>tuple</code> 的不可变性，它通常比 <code>list</code> 在存储上更高效。</li>
+<li><strong>访问方式</strong>：<code>dict</code> 通过键访问元素，而 <code>list</code> 和 <code>tuple</code> 通过索引访问。</li>
+</ul>
+<h3 id="示例">示例</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># List</span>
+</span></span><span class="line"><span class="cl"><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">my_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>  <span class="c1"># 可变</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Tuple</span>
+</span></span><span class="line"><span class="cl"><span class="n">my_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># my_tuple[0] = 4  # 不可变，会报错</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Dict</span>
+</span></span><span class="line"><span class="cl"><span class="n">my_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Kimi&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="n">my_dict</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">31</span>  <span class="c1"># 可变</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2024-09-17</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/lec5-automatic-differentiation-implementation/" data-title="Lec5-Automatic Differentiation Implementation"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/lec5-automatic-differentiation-implementation/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/lec5-automatic-differentiation-implementation/" data-title="Lec5-Automatic Differentiation Implementation"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/lec5-automatic-differentiation-implementation/" data-title="Lec5-Automatic Differentiation Implementation"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/lec5-automatic-differentiation-implementation/" data-title="Lec5-Automatic Differentiation Implementation"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/lec4-automatic-differentiation/" class="prev" rel="prev" title="Lec4-Automatic Differentiation"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Lec4-Automatic Differentiation</a>
+            <a href="/l2-image-classification/" class="next" rel="next" title="L2-image classification">L2-image classification<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.123.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">HHZZ</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

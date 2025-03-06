@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>L7-GNN t1 - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="L7-GNN t1" />
+<meta property="og:description" content="L7-GNN theory 1 所有gnn的原型在这里
+一个layer layers之间的交互 input graph -&gt; computational graph的构建 GO!!!!
+a simple layer of GNN msg computations 原神处理dddd
+aggregation 核心：order invariance 焯这就是pointnet的核心之一啊！！！
+issue： 容易忽略自己节点 some examples of GNNs GCN GraphSAGE 这里的细节在于如何聚合邻居的信息
+同时每层来个norm
+GAT 首先解释一下什么是attention mechanism 单个attention的计算 多头attention的计算（更容易收敛） GNN layers in practice glidar呼之欲出了 &#x1f631; 有意思的东西&#x1f60b; stacking GNN layers " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/l7-gnn-t1/" /><meta property="og:image" content="http://example.org/logo.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2025-01-28T13:39:34+08:00" />
+<meta property="article:modified_time" content="2025-01-28T13:39:34+08:00" /><meta property="og:site_name" content="My cool site" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://example.org/logo.png" /><meta name="twitter:title" content="L7-GNN t1"/>
+<meta name="twitter:description" content="L7-GNN theory 1 所有gnn的原型在这里
+一个layer layers之间的交互 input graph -&gt; computational graph的构建 GO!!!!
+a simple layer of GNN msg computations 原神处理dddd
+aggregation 核心：order invariance 焯这就是pointnet的核心之一啊！！！
+issue： 容易忽略自己节点 some examples of GNNs GCN GraphSAGE 这里的细节在于如何聚合邻居的信息
+同时每层来个norm
+GAT 首先解释一下什么是attention mechanism 单个attention的计算 多头attention的计算（更容易收敛） GNN layers in practice glidar呼之欲出了 &#x1f631; 有意思的东西&#x1f60b; stacking GNN layers "/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/l7-gnn-t1/" /><link rel="prev" href="http://example.org/l6-gnn-intro/" /><link rel="next" href="http://example.org/l16-improvedgnn/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "L7-GNN t1",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/l7-gnn-t1\/"
+        },"genre": "posts","wordcount":  49 ,
+        "url": "http:\/\/example.org\/l7-gnn-t1\/","datePublished": "2025-01-28T13:39:34+08:00","dateModified": "2025-01-28T13:39:34+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "HHZZ"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HHZZ`s space">Code and BeyondCode😋</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tools/"> Tools </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/beyondcode/"> BeyondCode😋 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HHZZ`s space">Code and BeyondCode😋</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tools/" title="">Tools</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/beyondcode/" title="">BeyondCode😋</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">L7-GNN t1</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/stanford-cs224w/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Stanford-CS224W</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-01-28">2025-01-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;49 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#a-simple-layer-of-gnn">a simple layer of GNN</a>
+      <ul>
+        <li><a href="#some-examples-of-gnns">some examples of GNNs</a>
+          <ul>
+            <li><a href="#gcn">GCN</a></li>
+            <li><a href="#graphsage">GraphSAGE</a></li>
+            <li><a href="#gat">GAT</a></li>
+          </ul>
+        </li>
+        <li><a href="#gnn-layers-in-practice">GNN layers in practice</a></li>
+      </ul>
+    </li>
+    <li><a href="#stacking-gnn-layers">stacking GNN layers</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="l7-gnn-theory-1">L7-GNN theory 1</h1>
+<p>所有gnn的原型在这里</p>
+<ol>
+<li>
+<p>一个layer
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/l7-gnn-t1/image.png"
+        data-srcset="/l7-gnn-t1/image.png, /l7-gnn-t1/image.png 1.5x, /l7-gnn-t1/image.png 2x"
+        data-sizes="auto"
+        alt="/l7-gnn-t1/image.png"
+        title="alt text" width="1021" height="777" /></p>
+</li>
+<li>
+<p>layers之间的交互
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/l7-gnn-t1/image-1.png"
+        data-srcset="/l7-gnn-t1/image-1.png, /l7-gnn-t1/image-1.png 1.5x, /l7-gnn-t1/image-1.png 2x"
+        data-sizes="auto"
+        alt="/l7-gnn-t1/image-1.png"
+        title="alt text" width="1490" height="947" /></p>
+</li>
+<li>
+<p>input graph -&gt; computational graph的构建
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/l7-gnn-t1/image-2.png"
+        data-srcset="/l7-gnn-t1/image-2.png, /l7-gnn-t1/image-2.png 1.5x, /l7-gnn-t1/image-2.png 2x"
+        data-sizes="auto"
+        alt="/l7-gnn-t1/image-2.png"
+        title="alt text" width="1555" height="985" /></p>
+</li>
+</ol>
+<p>GO!!!!</p>
+<h2 id="a-simple-layer-of-gnn">a simple layer of GNN</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/l7-gnn-t1/image-3.png"
+        data-srcset="/l7-gnn-t1/image-3.png, /l7-gnn-t1/image-3.png 1.5x, /l7-gnn-t1/image-3.png 2x"
+        data-sizes="auto"
+        alt="/l7-gnn-t1/image-3.png"
+        title="alt text" width="1509" height="975" /></p>
+<ol>
+<li>
+<p>msg computations
+原神处理dddd</p>
+</li>
+<li>
+<p>aggregation
+核心：order invariance 焯这就是pointnet的核心之一啊！！！</p>
+</li>
+</ol>
+<p>issue： 容易忽略自己节点
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/l7-gnn-t1/image-4.png"
+        data-srcset="/l7-gnn-t1/image-4.png, /l7-gnn-t1/image-4.png 1.5x, /l7-gnn-t1/image-4.png 2x"
+        data-sizes="auto"
+        alt="/l7-gnn-t1/image-4.png"
+        title="alt text" width="1462" height="919" /></p>
+<h3 id="some-examples-of-gnns">some examples of GNNs</h3>
+<h4 id="gcn">GCN</h4>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/l7-gnn-t1/image-5.png"
+        data-srcset="/l7-gnn-t1/image-5.png, /l7-gnn-t1/image-5.png 1.5x, /l7-gnn-t1/image-5.png 2x"
+        data-sizes="auto"
+        alt="/l7-gnn-t1/image-5.png"
+        title="alt text" width="1519" height="928" /></p>
+<h4 id="graphsage">GraphSAGE</h4>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/l7-gnn-t1/image-6.png"
+        data-srcset="/l7-gnn-t1/image-6.png, /l7-gnn-t1/image-6.png 1.5x, /l7-gnn-t1/image-6.png 2x"
+        data-sizes="auto"
+        alt="/l7-gnn-t1/image-6.png"
+        title="alt text" width="1458" height="939" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/l7-gnn-t1/image-7.png"
+        data-srcset="/l7-gnn-t1/image-7.png, /l7-gnn-t1/image-7.png 1.5x, /l7-gnn-t1/image-7.png 2x"
+        data-sizes="auto"
+        alt="/l7-gnn-t1/image-7.png"
+        title="alt text" width="1545" height="1166" />
+这里的细节在于如何聚合邻居的信息</p>
+<p>同时每层来个norm</p>
+<h4 id="gat">GAT</h4>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/l7-gnn-t1/image-8.png"
+        data-srcset="/l7-gnn-t1/image-8.png, /l7-gnn-t1/image-8.png 1.5x, /l7-gnn-t1/image-8.png 2x"
+        data-sizes="auto"
+        alt="/l7-gnn-t1/image-8.png"
+        title="alt text" width="1515" height="1132" />
+首先解释一下什么是attention mechanism
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/l7-gnn-t1/image-9.png"
+        data-srcset="/l7-gnn-t1/image-9.png, /l7-gnn-t1/image-9.png 1.5x, /l7-gnn-t1/image-9.png 2x"
+        data-sizes="auto"
+        alt="/l7-gnn-t1/image-9.png"
+        title="alt text" width="1480" height="951" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/l7-gnn-t1/image-10.png"
+        data-srcset="/l7-gnn-t1/image-10.png, /l7-gnn-t1/image-10.png 1.5x, /l7-gnn-t1/image-10.png 2x"
+        data-sizes="auto"
+        alt="/l7-gnn-t1/image-10.png"
+        title="alt text" width="1542" height="1009" />
+单个attention的计算
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/l7-gnn-t1/image-11.png"
+        data-srcset="/l7-gnn-t1/image-11.png, /l7-gnn-t1/image-11.png 1.5x, /l7-gnn-t1/image-11.png 2x"
+        data-sizes="auto"
+        alt="/l7-gnn-t1/image-11.png"
+        title="alt text" width="1558" height="921" />
+多头attention的计算（更容易收敛）
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/l7-gnn-t1/image-12.png"
+        data-srcset="/l7-gnn-t1/image-12.png, /l7-gnn-t1/image-12.png 1.5x, /l7-gnn-t1/image-12.png 2x"
+        data-sizes="auto"
+        alt="/l7-gnn-t1/image-12.png"
+        title="alt text" width="1459" height="913" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/l7-gnn-t1/image-13.png"
+        data-srcset="/l7-gnn-t1/image-13.png, /l7-gnn-t1/image-13.png 1.5x, /l7-gnn-t1/image-13.png 2x"
+        data-sizes="auto"
+        alt="/l7-gnn-t1/image-13.png"
+        title="alt text" width="1510" height="1128" /></p>
+<h3 id="gnn-layers-in-practice">GNN layers in practice</h3>
+<p>glidar呼之欲出了 &#x1f631;
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/l7-gnn-t1/image-14.png"
+        data-srcset="/l7-gnn-t1/image-14.png, /l7-gnn-t1/image-14.png 1.5x, /l7-gnn-t1/image-14.png 2x"
+        data-sizes="auto"
+        alt="/l7-gnn-t1/image-14.png"
+        title="alt text" width="1485" height="807" /></p>
+<p>有意思的东西&#x1f60b;
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/l7-gnn-t1/image-15.png"
+        data-srcset="/l7-gnn-t1/image-15.png, /l7-gnn-t1/image-15.png 1.5x, /l7-gnn-t1/image-15.png 2x"
+        data-sizes="auto"
+        alt="/l7-gnn-t1/image-15.png"
+        title="alt text" width="1121" height="795" /></p>
+<h2 id="stacking-gnn-layers">stacking GNN layers</h2>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2025-01-28</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/l7-gnn-t1/" data-title="L7-GNN t1"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/l7-gnn-t1/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/l7-gnn-t1/" data-title="L7-GNN t1"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/l7-gnn-t1/" data-title="L7-GNN t1"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/l7-gnn-t1/" data-title="L7-GNN t1"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/l6-gnn-intro/" class="prev" rel="prev" title="L6-GNN intro"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>L6-GNN intro</a>
+            <a href="/l16-improvedgnn/" class="next" rel="next" title="L16-improvedGNN">L16-improvedGNN<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.123.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">HHZZ</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

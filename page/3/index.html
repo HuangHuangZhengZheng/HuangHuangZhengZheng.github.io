@@ -98,40 +98,24 @@
         alt="/avatar.jpg"
         title="/avatar.jpg" width="1920" height="1280" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/HuangHuangZhengZheng" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/databasel8/">CS186-L8: Relational Algebra</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-08-14">2024-08-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div><div class="content">Relational Algebra Intro Relational algebra &#x1f635;
-algebra on sets &mdash;&gt; mean no duplicates! operational description of transformations Relational Calculus &#x1f635;
-basic of SQL 以上两者被证明等价并且使得SQL能够被编译&ndash;long story&hellip;&hellip;
-Relational Algebra Operators Unary Operators Selection (σ) : select rows that satisfy a condition Projection (π) : select specific columns 如果结果是multiset, 去重! 虽然real system不会自动去重 Rename (ρ) : rename a column Union (∪) : tuples in either r1 or r2 two input relations, must be compatible (same number of columns or &ldquo;fields&rdquo;, and have same data types corresponding to the same field) UNION in SQL Difference (−) : tuples in r1, but not in r2 same with union, both input relations must be compatible EXCEPT in SQL Cross Product (×) : cartesian product of two relations how many rows in the result?</div><div class="post-footer">
-        <a href="/databasel8/">Read More</a></div>
+        <a href="/l1-intro/">L1-Intro</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2025-01-26">2025-01-26</time></span>&nbsp;<span class="post-category">included in <a href="/categories/stanford-cs224w/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Stanford-CS224W</a></span></div><div class="content">CS224W: Intro to Graph Deep Learning GNN for img 也就是说gnn会比传统的cnn更好 &#x1f914;
+gnn as encoder and diffusion process! how to build a graph? 基本图论知识见CS61B
+nodes??? edges??? 新的图的表示 双向图与投影图（仔细看线条） 自环的增加的degree为1 接邻矩阵表示连接性 </div><div class="post-footer">
+        <a href="/l1-intro/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/databasel7/">CS186-L7: Buffer Management</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-08-14">2024-08-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div><div class="content">intro 可能需要处理的问题 dirty pages pages replacement state of buffer management Page replacement terminology a page in &ldquo;use&rdquo; : Page pin count if full. which should be replaced: page replacement policy request请求发出来，转接到buffer manager&hellip;&hellip; Page replacement policies LRU (Least Recently Used) 最近最少使用使用的是 时间 pin count == 0! Priority heap data structure can help! like $O(logN)$ CLOCK 一种近似LRU的算法，旨在不需要维护每个页面的访问时间戳，从而减少了额外的开销。
-Clock policy将缓冲区中的页面视为一个循环列表，使用一个“时钟指针”来跟踪当前考虑替换的页面。每个页面都有一个“引用位”（ref bit），用于指示该页面是否被最近访问过。
-工作流程
-初始化：当缓冲区管理器启动时，时钟指针指向第一个未固定（unpinned）的页面，并将该页面的引用位设置为1，当页面被读入时。 页面替换： 当需要替换页面时，缓冲区管理器从时钟指针开始，遍历缓冲区中的页面。 对于每个页面，如果该页面的引用位为1，则将其引用位重置为0，并将时钟指针移动到下一个页面。 如果找到一个引用位为0的页面，则可以将其替换。此时，如果该页面是“脏页”（dirty page），则需要将其写回磁盘，然后读取新的页面并将其引用位设置为1。 LRU-Clock bad behavior Sequential Flooding! MRU (Most Recently Used) General case: SeqScan + MRU $B$ buffers $N&gt;B$ pages in file Improvements for sequential scan: prefetch hybrid?</div><div class="post-footer">
-        <a href="/databasel7/">Read More</a></div>
+        <a href="/lec16-cl/">Lec16-CL</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2025-01-23">2025-01-23</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61c/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61C</a></span></div><div class="content">Lecture 16: Combinational Logic </div><div class="post-footer">
+        <a href="/lec16-cl/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/databasel9/">CS186-L9: Sorting and Hashing</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-08-14">2024-08-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div><div class="content">Why Sort? Rendezvous 为了“集合” eliminating duplicates (DISTINCT) Grouping for summarization (GROUP BY) Upcoming sort-merge join algorithms Ordering sometimes output must be in a specific order First step in bulk loading Tree indexes Problem: sort 100GB of data with 1GB of RAM why not virtual memory? &ndash; random IO access, too slow &#x1f622; Out-of-Core Algorithms core == RAM back in the day
-Single Streaming data passing through the memory MapReduce&rsquo;s &ldquo;Map&rdquo; &#x1f60e;</div><div class="post-footer">
-        <a href="/databasel9/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/databasel6/">CS186-L6: Indices & B+ Tree Refinements</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-08-14">2024-08-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div><div class="content">General Notes issues to consider in any index structure (not just in B+ tree)
-query support: what class of queries can be supported? choice of search key affects how we write the query data entry storage affect performance of the index variable-length keys tricks affect performance of the index cost model for Index vs Heap vs Sorted File query support Indexes basic selection &lt;key&gt;&lt;op&gt;&lt;constant&gt; 诸如=，BETWEEN，&gt;，&lt;，&gt;=，&lt;= more selection 维度灾难&#x1f632; 但是这节课我们只是关注1-d range search, equality， B+ tree</div><div class="post-footer">
-        <a href="/databasel6/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/datalab13/">DATA100-lab13: Decision Trees and Random Forests</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-08-13">2024-08-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab13.ipynb&#34;) Lab 13: Decision Trees and Random Forests 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 # Run this cell to set up your notebook import numpy as np import pandas as pd import matplotlib.pyplot as plt from matplotlib.colors import ListedColormap import seaborn as sns from sklearn.linear_model import LogisticRegression from sklearn.model_selection import train_test_split from sklearn import tree # you may get a warning from importing ensemble.</div><div class="post-footer">
-        <a href="/datalab13/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/scikit-learn/">Scikit-Learn</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/datalab14/">DATA100-lab14: Clustering</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-08-13">2024-08-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;lab14.ipynb&#34;) Ungraded Lab 14: Clustering In this lab you will explore K-Means, Agglomerative Clustering, and Spectral Clustering. Spectral Clustering is out of scope for Spring 2022.ref.
-Note: This is an ungraded assignment. There is no Gradescope submission for this assignment. As this is a bonus and ungraded assignment, there will also be more limited staff office hours devoted to this ungraded homework.</div><div class="post-footer">
-        <a href="/datalab14/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/scikit-learn/">Scikit-Learn</a></div></div>
+        <a href="/lec15-state-and-state-machines/">Lec15-State and State Machines</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2025-01-22">2025-01-22</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61c/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61C</a></span></div><div class="content">Lecture 15: State and State Machines https://www.learncs.site/resource/cs61c/lectures/lec15.pdf
+Flip-flops? details of registers! n位寄存器，n个并行的1位触发器
+timing of flip-flops clk to q 越小越好
+Accumulators revisited 如果超频&hellip;
+pipelines and pipelining max clock frequency 简单总结 感觉数电知识更多一点？ 减少延时
+Finite State Machines 一个例子 等价翻译 </div><div class="post-footer">
+        <a href="/lec15-state-and-state-machines/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -156,7 +140,7 @@ Note: This is an ungraded assignment. There is no Gradescope submission for this
                     <span class="page-link" aria-hidden="true">&hellip;</span>
                 </li><li class="page-item ">
                     <span class="page-link">
-                        <a href="/page/17/">17</a>
+                        <a href="/page/61/">61</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">

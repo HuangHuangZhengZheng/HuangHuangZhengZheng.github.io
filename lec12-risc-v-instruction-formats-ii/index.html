@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Lec12-RISC-V Instruction Formats II - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Lec12-RISC-V Instruction Formats II" />
+<meta property="og:description" content="RISC-V Instruction Formats II B-Format Layout branch/分支 ==&gt; if-else, while, for
+encode Label:
+PC寻址, 用imm field来表示偏移量
+实际上 RV compressed instruction format! 16bit 压缩指令格式，偏移量不再是4的倍数，而是2的倍数（所以imm 二进制结尾一定是0）
+理论layout 解释一下如何从指令解析出立即数的数值
+B-type &ldquo;|&rdquo; 意思是专门分出一块区域来存一位数字
+Long Immediate， U-Format Layout I, B, S imm的12位扩展到long，找个地方放下剩下的20位
+注意这里不直接使用branch指令跳转，而是采用jump直接来做
+地方来了：同时来了两个新的指令lui &amp; auipc Corner case 有符号扩展带过来的，1开头的符号扩展
+用&#43;1来避免这个问题
+补充 auipc 指令 J-Format Layout 只有jal，因为jalr是I-type的
+使用示例
+jalr 使用示例
+留一个reference" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/lec12-risc-v-instruction-formats-ii/" /><meta property="og:image" content="http://example.org/logo.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-10-09T20:50:18+08:00" />
+<meta property="article:modified_time" content="2024-10-09T20:50:18+08:00" /><meta property="og:site_name" content="My cool site" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://example.org/logo.png" /><meta name="twitter:title" content="Lec12-RISC-V Instruction Formats II"/>
+<meta name="twitter:description" content="RISC-V Instruction Formats II B-Format Layout branch/分支 ==&gt; if-else, while, for
+encode Label:
+PC寻址, 用imm field来表示偏移量
+实际上 RV compressed instruction format! 16bit 压缩指令格式，偏移量不再是4的倍数，而是2的倍数（所以imm 二进制结尾一定是0）
+理论layout 解释一下如何从指令解析出立即数的数值
+B-type &ldquo;|&rdquo; 意思是专门分出一块区域来存一位数字
+Long Immediate， U-Format Layout I, B, S imm的12位扩展到long，找个地方放下剩下的20位
+注意这里不直接使用branch指令跳转，而是采用jump直接来做
+地方来了：同时来了两个新的指令lui &amp; auipc Corner case 有符号扩展带过来的，1开头的符号扩展
+用&#43;1来避免这个问题
+补充 auipc 指令 J-Format Layout 只有jal，因为jalr是I-type的
+使用示例
+jalr 使用示例
+留一个reference"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/lec12-risc-v-instruction-formats-ii/" /><link rel="prev" href="http://example.org/lec5-c-memory-management/" /><link rel="next" href="http://example.org/lec4-higher-order-functions/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Lec12-RISC-V Instruction Formats II",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/lec12-risc-v-instruction-formats-ii\/"
+        },"genre": "posts","wordcount":  55 ,
+        "url": "http:\/\/example.org\/lec12-risc-v-instruction-formats-ii\/","datePublished": "2024-10-09T20:50:18+08:00","dateModified": "2024-10-09T20:50:18+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "HHZZ"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HHZZ`s space">Code and BeyondCode😋</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tools/"> Tools </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/beyondcode/"> BeyondCode😋 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HHZZ`s space">Code and BeyondCode😋</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tools/" title="">Tools</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/beyondcode/" title="">BeyondCode😋</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Lec12-RISC-V Instruction Formats II</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61c/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61C</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-10-09">2024-10-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;55 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#b-format-layout">B-Format Layout</a></li>
+    <li><a href="#long-immediate-u-format-layout">Long Immediate， U-Format Layout</a>
+      <ul>
+        <li><a href="#corner-case">Corner case</a></li>
+      </ul>
+    </li>
+    <li><a href="#j-format-layout">J-Format Layout</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="risc-v-instruction-formats-ii">RISC-V Instruction Formats II</h1>
+<h2 id="b-format-layout">B-Format Layout</h2>
+<p>branch/分支 ==&gt; if-else, while, for</p>
+<p>encode Label:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/lec12-risc-v-instruction-formats-ii/image.png"
+        data-srcset="/lec12-risc-v-instruction-formats-ii/image.png, /lec12-risc-v-instruction-formats-ii/image.png 1.5x, /lec12-risc-v-instruction-formats-ii/image.png 2x"
+        data-sizes="auto"
+        alt="/lec12-risc-v-instruction-formats-ii/image.png"
+        title="alt text" width="752" height="222" /></p>
+<p>PC寻址, 用imm field来表示偏移量</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/lec12-risc-v-instruction-formats-ii/image-1.png"
+        data-srcset="/lec12-risc-v-instruction-formats-ii/image-1.png, /lec12-risc-v-instruction-formats-ii/image-1.png 1.5x, /lec12-risc-v-instruction-formats-ii/image-1.png 2x"
+        data-sizes="auto"
+        alt="/lec12-risc-v-instruction-formats-ii/image-1.png"
+        title="alt text" width="1123" height="612" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/lec12-risc-v-instruction-formats-ii/image-2.png"
+        data-srcset="/lec12-risc-v-instruction-formats-ii/image-2.png, /lec12-risc-v-instruction-formats-ii/image-2.png 1.5x, /lec12-risc-v-instruction-formats-ii/image-2.png 2x"
+        data-sizes="auto"
+        alt="/lec12-risc-v-instruction-formats-ii/image-2.png"
+        title="alt text" width="898" height="301" /></p>
+<p>实际上 RV compressed instruction format! 16bit 压缩指令格式，偏移量不再是4的倍数，而是2的倍数（所以imm 二进制结尾一定是0）</p>
+<p>理论layout
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/lec12-risc-v-instruction-formats-ii/image-3.png"
+        data-srcset="/lec12-risc-v-instruction-formats-ii/image-3.png, /lec12-risc-v-instruction-formats-ii/image-3.png 1.5x, /lec12-risc-v-instruction-formats-ii/image-3.png 2x"
+        data-sizes="auto"
+        alt="/lec12-risc-v-instruction-formats-ii/image-3.png"
+        title="alt text" width="1410" height="829" /></p>
+<p>解释一下如何从指令解析出立即数的数值</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/lec12-risc-v-instruction-formats-ii/image-4.png"
+        data-srcset="/lec12-risc-v-instruction-formats-ii/image-4.png, /lec12-risc-v-instruction-formats-ii/image-4.png 1.5x, /lec12-risc-v-instruction-formats-ii/image-4.png 2x"
+        data-sizes="auto"
+        alt="/lec12-risc-v-instruction-formats-ii/image-4.png"
+        title="alt text" width="1042" height="505" /></p>
+<p>B-type &ldquo;|&rdquo; 意思是专门分出一块区域来存一位数字</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/lec12-risc-v-instruction-formats-ii/image-5.png"
+        data-srcset="/lec12-risc-v-instruction-formats-ii/image-5.png, /lec12-risc-v-instruction-formats-ii/image-5.png 1.5x, /lec12-risc-v-instruction-formats-ii/image-5.png 2x"
+        data-sizes="auto"
+        alt="/lec12-risc-v-instruction-formats-ii/image-5.png"
+        title="alt text" width="833" height="237" /></p>
+<h2 id="long-immediate-u-format-layout">Long Immediate， U-Format Layout</h2>
+<p>I, B, S imm的12位扩展到long，找个地方放下剩下的20位</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/lec12-risc-v-instruction-formats-ii/image-6.png"
+        data-srcset="/lec12-risc-v-instruction-formats-ii/image-6.png, /lec12-risc-v-instruction-formats-ii/image-6.png 1.5x, /lec12-risc-v-instruction-formats-ii/image-6.png 2x"
+        data-sizes="auto"
+        alt="/lec12-risc-v-instruction-formats-ii/image-6.png"
+        title="alt text" width="726" height="453" /></p>
+<p>注意这里不直接使用branch指令跳转，而是采用jump直接来做</p>
+<p>地方来了：同时来了两个新的指令<code>lui</code> &amp; <code>auipc</code>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/lec12-risc-v-instruction-formats-ii/image-7.png"
+        data-srcset="/lec12-risc-v-instruction-formats-ii/image-7.png, /lec12-risc-v-instruction-formats-ii/image-7.png 1.5x, /lec12-risc-v-instruction-formats-ii/image-7.png 2x"
+        data-sizes="auto"
+        alt="/lec12-risc-v-instruction-formats-ii/image-7.png"
+        title="alt text" width="796" height="459" /></p>
+<h3 id="corner-case">Corner case</h3>
+<p>有符号扩展带过来的，1开头的符号扩展</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/lec12-risc-v-instruction-formats-ii/image-8.png"
+        data-srcset="/lec12-risc-v-instruction-formats-ii/image-8.png, /lec12-risc-v-instruction-formats-ii/image-8.png 1.5x, /lec12-risc-v-instruction-formats-ii/image-8.png 2x"
+        data-sizes="auto"
+        alt="/lec12-risc-v-instruction-formats-ii/image-8.png"
+        title="alt text" width="1331" height="503" /></p>
+<p>用+1来避免这个问题</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/lec12-risc-v-instruction-formats-ii/image-9.png"
+        data-srcset="/lec12-risc-v-instruction-formats-ii/image-9.png, /lec12-risc-v-instruction-formats-ii/image-9.png 1.5x, /lec12-risc-v-instruction-formats-ii/image-9.png 2x"
+        data-sizes="auto"
+        alt="/lec12-risc-v-instruction-formats-ii/image-9.png"
+        title="alt text" width="1302" height="714" /></p>
+<p>补充 <code>auipc</code> 指令
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/lec12-risc-v-instruction-formats-ii/image-10.png"
+        data-srcset="/lec12-risc-v-instruction-formats-ii/image-10.png, /lec12-risc-v-instruction-formats-ii/image-10.png 1.5x, /lec12-risc-v-instruction-formats-ii/image-10.png 2x"
+        data-sizes="auto"
+        alt="/lec12-risc-v-instruction-formats-ii/image-10.png"
+        title="alt text" width="1321" height="469" /></p>
+<h2 id="j-format-layout">J-Format Layout</h2>
+<p>只有jal，因为jalr是I-type的</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/lec12-risc-v-instruction-formats-ii/image-11.png"
+        data-srcset="/lec12-risc-v-instruction-formats-ii/image-11.png, /lec12-risc-v-instruction-formats-ii/image-11.png 1.5x, /lec12-risc-v-instruction-formats-ii/image-11.png 2x"
+        data-sizes="auto"
+        alt="/lec12-risc-v-instruction-formats-ii/image-11.png"
+        title="alt text" width="1872" height="858" /></p>
+<p>使用示例</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/lec12-risc-v-instruction-formats-ii/image-12.png"
+        data-srcset="/lec12-risc-v-instruction-formats-ii/image-12.png, /lec12-risc-v-instruction-formats-ii/image-12.png 1.5x, /lec12-risc-v-instruction-formats-ii/image-12.png 2x"
+        data-sizes="auto"
+        alt="/lec12-risc-v-instruction-formats-ii/image-12.png"
+        title="alt text" width="1320" height="510" /></p>
+<p>jalr
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/lec12-risc-v-instruction-formats-ii/image-13.png"
+        data-srcset="/lec12-risc-v-instruction-formats-ii/image-13.png, /lec12-risc-v-instruction-formats-ii/image-13.png 1.5x, /lec12-risc-v-instruction-formats-ii/image-13.png 2x"
+        data-sizes="auto"
+        alt="/lec12-risc-v-instruction-formats-ii/image-13.png"
+        title="alt text" width="1826" height="755" /></p>
+<p>使用示例</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/lec12-risc-v-instruction-formats-ii/image-14.png"
+        data-srcset="/lec12-risc-v-instruction-formats-ii/image-14.png, /lec12-risc-v-instruction-formats-ii/image-14.png 1.5x, /lec12-risc-v-instruction-formats-ii/image-14.png 2x"
+        data-sizes="auto"
+        alt="/lec12-risc-v-instruction-formats-ii/image-14.png"
+        title="alt text" width="1271" height="687" /></p>
+<p>留一个<a href="https://www.cse.cuhk.edu.hk/~byu/CENG3420/2023Spring/doc/RV32-reference-1.pdf" target="_blank" rel="noopener noreffer ">reference</a></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2024-10-09</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/lec12-risc-v-instruction-formats-ii/" data-title="Lec12-RISC-V Instruction Formats II"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/lec12-risc-v-instruction-formats-ii/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/lec12-risc-v-instruction-formats-ii/" data-title="Lec12-RISC-V Instruction Formats II"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/lec12-risc-v-instruction-formats-ii/" data-title="Lec12-RISC-V Instruction Formats II"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/lec12-risc-v-instruction-formats-ii/" data-title="Lec12-RISC-V Instruction Formats II"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/lec5-c-memory-management/" class="prev" rel="prev" title="Lec5-C Memory Management"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Lec5-C Memory Management</a>
+            <a href="/lec4-higher-order-functions/" class="next" rel="next" title="Lec4-Higher-Order Functions">Lec4-Higher-Order Functions<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.123.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">HHZZ</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

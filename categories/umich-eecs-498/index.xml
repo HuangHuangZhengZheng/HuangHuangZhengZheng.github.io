@@ -1,0 +1,130 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>UMich-EECS-498 - Category - HHZZ`s space</title>
+        <link>http://example.org/categories/umich-eecs-498/</link>
+        <description>UMich-EECS-498 - Category - HHZZ`s space</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 06 Nov 2024 08:27:18 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/umich-eecs-498/" rel="self" type="application/rss+xml" /><item>
+    <title>L14-Visualizing and Understanding</title>
+    <link>http://example.org/l14-visualizing-and-understanding/</link>
+    <pubDate>Wed, 06 Nov 2024 08:27:18 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/l14-visualizing-and-understanding/</guid>
+    <description><![CDATA[Visualizing and Understanding Visualizing 对第一层、第二层以及最后进入FC层的特征图进行可视化
+PCA√
+t-SNE√ 非线性降维
+最大激活
+Understanding 细节]]></description>
+</item>
+<item>
+    <title>L10-Training I</title>
+    <link>http://example.org/l10-training-i/</link>
+    <pubDate>Mon, 04 Nov 2024 09:46:08 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/l10-training-i/</guid>
+    <description><![CDATA[Training I Activation Functions Sigmoid function: $\sigma(x) = \frac{1}{1 + e^{-x}}$ 不是0中心 两端饱和 always all positive or negative :( exp() 计算复杂，但是对于GPU不是问题 tanh function: $\tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}$ sigmoid变体 ReLU function: $f(x) = max(0, x)$ 不会饱和 计算快 非0中心 dead relu ==&gt; leaky relu Leaky ReLU function: $f(x) = max(0.01x, x)$ 解决了dead relu问题 ==&gt; PRelu function：把0.01改成可学习的参数 ELU function: $f(x) = \begin{cases} x &amp; x \geq 0 \ \alpha(e^x - 1) &amp; x &lt; 0 \end{cases}$ Data Preprocessing 参见DATA-100相关课程]]></description>
+</item>
+<item>
+    <title>L9-Hard and Software</title>
+    <link>http://example.org/l9-hard-and-software/</link>
+    <pubDate>Sat, 02 Nov 2024 09:59:30 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/l9-hard-and-software/</guid>
+    <description><![CDATA[Hard and Soft ware Hardware eecs 598.009 GPU programming!
+其实我很想了解一下cuda编程
+tensorflow支持TPU，pytorch呢？
+计算图存储在GPU内存里面
+Software the point of deep learning frameworks
+allow rapid prototyping automatically compute gradients run it all efficiently on GPUs or else PyTorch sigmoid0减少计算图节点的设计，因为反向传播重写了
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 class Sigmoid(torch.autograd.Function): @staticmethod def forward(ctx, input): y = 1 / (1 + torch.exp(-input)) ctx.save_for_backward(input) return y @staticmethod def backward(ctx, grad_output): input, = ctx.]]></description>
+</item>
+<item>
+    <title>L8-CNN Arch</title>
+    <link>http://example.org/l8-cnn-arch/</link>
+    <pubDate>Sat, 02 Nov 2024 09:58:45 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/l8-cnn-arch/</guid>
+    <description><![CDATA[CNN Architectures 今日首绷 计算题 4 bytes per elem
+右边三列体现了一个规律 2013的ImageNet winner仍然是AlexNet变体(ZFNet, ECCV)，只是trial and error的结果
+2014的ImageNet winner是VGGNet ICLR，提出了规则化 3x3卷积核? 两个3x3卷积核 比 一个5x5卷积核 Params和FLOPs更少，但是感受野一样，并且可以插入更多的relu channel翻倍，每次卷积计算cost same amount of floating points computation 2014的ImageNet有GoogLeNet CVPR:
+初期快速下采样 Inception模块: 1x1, 3x3, 5x5卷积核(使得kernel size不再是一个超参数) 1x1适配器的引入 resnet雏形 Global Average Pooling: 替换掉一层fcnn 其次还有auxiliary classifier取中间层输出，作为loss加入到loss function中 2015年首先是BN被发现了，auxiliary classifier被弃用 接着ResNet CVPR:
+引入残差结构，提升准确率 引入bottleneck结构，层数增加，但是flops减少 ECCV有一篇进一步讨论了残差块的结构 CVPR2017有一篇文章提出了ResNeXt 1 torch.nn.Conv2d(groups=) # groups参数控制了分组卷积的数量 2017年的ImageNet结束
+DenseNet: fancier 趋势 MobileNet: 轻量化趋势 ICLR 2017自动化设计神经网络结构 Neural Architecture Search ]]></description>
+</item>
+<item>
+    <title>L7-CNN</title>
+    <link>http://example.org/l7-cnn/</link>
+    <pubDate>Tue, 29 Oct 2024 20:20:37 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/l7-cnn/</guid>
+    <description><![CDATA[Convolutional Neural Networks Components of a CNN Convolutional layers Pooling layers Normalization layers Convolutional Layers 注意到一个通道的卷积核也是全通道数 3 x5x5
+偏置是一个向量
+(b, c, h, w)表示batch size, channel, height, width!
+注意四个维度的意义
+卷积本质上也是一种linear layer，所以要relu等
+高维全局，低维局部 1x1 Convolutions 一种适配器，调整通道数
+other types of convolutions PyTorch Implementation Pooling Layers another way to downsample data, no learnable parameters
+局部最大值微小移动不变性
+Normalization Layers 主要讨论的是batch normalization
+层与层之间数据分布更加稳定 此时
+1 model.eval() 此时bn可以作为线形层被fuse进入fcnn or conv
+layer norm也有，主要是rnn和transformer用到了 Example: LeNet-5 ]]></description>
+</item>
+<item>
+    <title>L6-BP</title>
+    <link>http://example.org/l6-bp/</link>
+    <pubDate>Thu, 24 Oct 2024 23:01:36 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/l6-bp/</guid>
+    <description><![CDATA[Backpropagation 参见cmu 10-414 &#x1f600;
+RNN 初见 Computation Graph &#x1f60f; A2要hardcode直接的反向传播了 555
+真正的代码 &#x1f60b;
+1 2 3 4 5 6 7 8 9 class Multiply(torch.autograd.Function): @staticmethod def forward(ctx, x, y): ctx.save_for_backward(x, y) return x * y @staticmethod def backward(ctx, grad_output): x, y = ctx.saved_tensors return grad_output * y, grad_output * x # 解析计算 PyTorch operators in deep engine &#x1f914;
+BP rules BP with vector-valued functions 假装标量求导，然后匹配矩阵形状即可（典中典）
+element-wise functions in BP 不用使用矩阵求导，直接一一对应去想梯度的传递即可]]></description>
+</item>
+<item>
+    <title>L5-NN</title>
+    <link>http://example.org/l5-nn/</link>
+    <pubDate>Thu, 24 Oct 2024 15:13:23 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/l5-nn/</guid>
+    <description><![CDATA[Neural Networks 线性不可分怎么处理？ 怎么encode不同的信息？
+王朝落幕 Neural Networks Architecture data -&gt; input layer -&gt; hidden layer -&gt; output layer
+data driven, non-linear &#x1f60b;
+&#x1f604; ?
+ReLU, 通用近似定理 详细证明看一看官方给出的课本
+凸优化 牢NN当然是进行非凸优化 &#x1f600;]]></description>
+</item>
+<item>
+    <title>L4-Optimization</title>
+    <link>http://example.org/l4-optimization/</link>
+    <pubDate>Thu, 24 Oct 2024 14:29:40 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/l4-optimization/</guid>
+    <description><![CDATA[Optimization grad check 解析计算后数值计算梯度验证之
+1 2 3 4 5 import torch torch.autograd.gradcheck(func, inputs, eps=1e-6, atol=1e-4, raise_exception=True) torch.autograd.gradgradcheck(func, inputs, grad_outputs=None, eps=1e-6, atol=1e-4, raise_exception=True) # numpy allclose np.allclose(a, b, rtol=1e-5, atol=1e-8) 梯度下降法 略
+蒙特卡洛 把期望转化为数值求解，上图的等式两边求导也可，从而得到梯度
+混合优化方法 Adam = RMSprop + Momentum &#x1f62e;
+为什么只是一阶函数优化？]]></description>
+</item>
+<item>
+    <title>L3-linear classifiers</title>
+    <link>http://example.org/l3-linear-classifiers/</link>
+    <pubDate>Mon, 23 Sep 2024 10:18:02 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/l3-linear-classifiers/</guid>
+    <description><![CDATA[Linear Classifiers Viewpoints of Linear Classifiers hard cases of linear classifiers hinge loss hinge loss is a loss function, linear and zeros-in-margin 感觉是一个有意思的线性损失函数，但是目前作用不大 SVM loss 对损失函数初始化估值可以初步验证是否由bug Regularization 从线性模型的角度看，添加常数因子效果不变，但是权重矩阵的范数会变化 由上可知不唯一，所以需要对权重矩阵进行约束，常用的约束方式是正则化 一种新的引入正则化项的思路 &#x1f914; ===&gt; express our preference or 先验的知识点 余下两种观点：防止过拟合 重新理解L1 / L2正则化 L1正则化 : 倾向于权重集中 L2正则化 : 倾向于权重均匀 ]]></description>
+</item>
+<item>
+    <title>L2-image classification</title>
+    <link>http://example.org/l2-image-classification/</link>
+    <pubDate>Mon, 23 Sep 2024 08:43:32 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/l2-image-classification/</guid>
+    <description><![CDATA[Lecture 2: Image Classification Introduction Image classification is the task of assigning a label&hellip;
+can be a building-block for many applications
+More robust, data-driven approaches Understanding the dataset 简单介绍一下类似于MNIST, CIFAR-100等数据集的基本结构 提出Omniglot数据集的概念 few-shot learning Choosing a model Nearest Neighbor
+find the distance metric between the test image and all the training images memorize the training images and their corresponding labels predict the label of the test image based on the nearest training image With N examples&hellip;]]></description>
+</item>
+</channel>
+</rss>

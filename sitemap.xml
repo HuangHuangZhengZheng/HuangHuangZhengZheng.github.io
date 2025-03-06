@@ -2,15 +2,102 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
+            <loc>http://example.org/beyondcode/</loc><lastmod>2025-03-06T21:32:18&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/</loc><lastmod>2025-03-06T21:32:18&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/beyondcode/thinking5/</loc><lastmod>2025-03-06T21:32:18&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://example.org/categories/</loc><lastmod>2025-03-05T12:35:09&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://example.org/</loc><lastmod>2025-03-05T12:35:09&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://example.org/tools/</loc><lastmod>2025-03-05T12:35:09&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://example.org/categories/tools/</loc><lastmod>2025-03-05T12:35:09&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://example.org/tools/linux/cli/</loc><lastmod>2025-03-05T12:35:09&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://example.org/beyondcode/</loc><lastmod>2025-02-13T12:23:19&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>http://example.org/beyondcode/thinking4/</loc><lastmod>2025-02-13T12:23:19&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>http://example.org/beyondcode/thinking3/</loc><lastmod>2025-02-06T12:21:37&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
+            <loc>http://example.org/beyondcode/thinking4/</loc><lastmod>2025-02-13T12:23:19&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
+            <loc>http://example.org/beyondcode/thinking3/</loc><lastmod>2025-02-06T12:21:37&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>http://example.org/l17-huge-gnn/</loc><lastmod>2025-01-29T12:19:30&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/posts/</loc><lastmod>2025-01-29T12:19:30&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/categories/stanford-cs224w/</loc><lastmod>2025-01-29T12:19:30&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/l16-improvedgnn/</loc><lastmod>2025-01-29T12:10:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/l7-gnn-t1/</loc><lastmod>2025-01-28T13:39:34&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/l6-gnn-intro/</loc><lastmod>2025-01-27T16:39:56&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/l3-node-embeddings/</loc><lastmod>2025-01-27T15:11:03&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/l2-traditional-methods/</loc><lastmod>2025-01-27T12:22:01&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/l1-intro/</loc><lastmod>2025-01-26T14:55:57&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec16-cl/</loc><lastmod>2025-01-23T09:02:37&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/categories/ucb-cs61c/</loc><lastmod>2025-01-23T09:02:37&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec15-state-and-state-machines/</loc><lastmod>2025-01-22T20:41:04&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec14-intro-to-synchronous-digital-systems/</loc><lastmod>2025-01-22T20:07:46&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/l14-visualizing-and-understanding/</loc><lastmod>2024-11-06T08:27:18&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/categories/umich-eecs-498/</loc><lastmod>2024-11-06T08:27:18&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/l10-training-i/</loc><lastmod>2024-11-04T09:46:08&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/l9-hard-and-software/</loc><lastmod>2024-11-02T09:59:30&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/l8-cnn-arch/</loc><lastmod>2024-11-02T09:58:45&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/l7-cnn/</loc><lastmod>2024-10-29T20:20:37&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/l6-bp/</loc><lastmod>2024-10-24T23:01:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/l5-nn/</loc><lastmod>2024-10-24T15:13:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/l4-optimization/</loc><lastmod>2024-10-24T14:29:40&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec37-final/</loc><lastmod>2024-10-23T21:55:42&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/categories/ucb-cs61a/</loc><lastmod>2024-10-23T21:55:42&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec36-databases/</loc><lastmod>2024-10-23T20:57:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec35-agg/</loc><lastmod>2024-10-23T20:39:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec34-tables/</loc><lastmod>2024-10-23T20:10:43&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec33-sql/</loc><lastmod>2024-10-23T14:06:09&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec32-macros/</loc><lastmod>2024-10-23T11:50:59&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec29-interpreters/</loc><lastmod>2024-10-22T21:48:09&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec30-tail-calls/</loc><lastmod>2024-10-22T21:48:09&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec31-programs-as-data/</loc><lastmod>2024-10-22T21:48:09&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec28-calculator/</loc><lastmod>2024-10-21T10:39:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec27-scheme-lists/</loc><lastmod>2024-10-21T10:05:34&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec23-eifficiency/</loc><lastmod>2024-10-21T10:01:55&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec24-decomposition/</loc><lastmod>2024-10-21T10:01:55&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec25-data-examples/</loc><lastmod>2024-10-21T10:01:55&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec26-scheme/</loc><lastmod>2024-10-21T10:01:55&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec22-composition/</loc><lastmod>2024-10-20T13:33:25&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec21-representation/</loc><lastmod>2024-10-20T10:04:01&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec17-generators/</loc><lastmod>2024-10-20T09:57:16&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec18-oop/</loc><lastmod>2024-10-20T09:57:16&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec19-attributes/</loc><lastmod>2024-10-20T09:57:16&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec20-inheritance/</loc><lastmod>2024-10-20T09:57:16&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec16-iterator/</loc><lastmod>2024-10-20T09:57:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec15-mutability/</loc><lastmod>2024-10-17T10:25:02&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec14-trees/</loc><lastmod>2024-10-17T09:44:05&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/beyondcode/thinking2/</loc><lastmod>2024-10-16T21:58:06&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec13-data-representation/</loc><lastmod>2024-10-15T10:42:22&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec13-compiling-assembling-linking-and-loading/</loc><lastmod>2024-10-15T10:12:14&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec12-container/</loc><lastmod>2024-10-15T09:31:25&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec11-sequences/</loc><lastmod>2024-10-15T09:29:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec10-tree-recursion/</loc><lastmod>2024-10-14T18:39:59&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec9-recursion/</loc><lastmod>2024-10-14T10:33:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec8-function-example/</loc><lastmod>2024-10-14T09:50:05&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec7-functional-abstraction/</loc><lastmod>2024-10-13T10:01:35&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec6-sound/</loc><lastmod>2024-10-12T10:34:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec5-environments/</loc><lastmod>2024-10-12T10:04:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec3-control/</loc><lastmod>2024-10-12T10:01:24&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec4-higher-order-functions/</loc><lastmod>2024-10-12T10:01:24&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec12-risc-v-instruction-formats-ii/</loc><lastmod>2024-10-09T20:50:18&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec5-c-memory-management/</loc><lastmod>2024-10-09T17:49:34&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec6-floating-point/</loc><lastmod>2024-10-09T17:49:34&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec7-risc-v-introduction/</loc><lastmod>2024-10-09T17:49:34&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec11-risc-v-instruction-formats-i/</loc><lastmod>2024-10-09T15:39:27&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec10-risc-v-procedures/</loc><lastmod>2024-10-08T22:58:52&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec9-risc-v-decisions-ii/</loc><lastmod>2024-10-08T12:38:11&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec8-risc-v-lw-sw-decision-i/</loc><lastmod>2024-10-08T12:37:38&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec4-c-intropointers-arrays-strings/</loc><lastmod>2024-10-05T14:02:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec1-great-ideas-in-computer-architecture-intro/</loc><lastmod>2024-10-05T14:01:35&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec2-number-representation/</loc><lastmod>2024-10-05T14:01:35&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec3-c-introbasic/</loc><lastmod>2024-10-05T14:01:35&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/categories/cmu-10-414-714/</loc><lastmod>2024-10-01T21:49:55&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec13-hardware-acceleration-implementation/</loc><lastmod>2024-10-01T21:49:55&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec12-hardware-acceleration--gpus/</loc><lastmod>2024-10-01T18:26:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec11-hardware-acceleration-for-linear-algebra/</loc><lastmod>2024-10-01T15:03:26&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec10-convolutional-networks/</loc><lastmod>2024-10-01T13:22:25&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec9-normalization-dropout--implementation/</loc><lastmod>2024-09-28T21:49:59&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec8-nn-library-implementation/</loc><lastmod>2024-09-28T16:30:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec7-neural-network-library-abstractions/</loc><lastmod>2024-09-28T15:42:30&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec6-optimization/</loc><lastmod>2024-09-28T11:47:34&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/l3-linear-classifiers/</loc><lastmod>2024-09-23T10:18:02&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/l2-image-classification/</loc><lastmod>2024-09-23T08:43:32&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec5-automatic-differentiation-implementation/</loc><lastmod>2024-09-17T09:18:32&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec4-automatic-differentiation/</loc><lastmod>2024-09-16T18:40:54&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec3-manual-neural-networks-backprop/</loc><lastmod>2024-09-15T11:23:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/lec2-ml-refresher-softmax-regression/</loc><lastmod>2024-09-15T11:00:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/tools/conda/</loc><lastmod>2024-08-15T19:09:38&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/papers/ddpm/</loc><lastmod>2024-08-14T11:37:05&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/categories/nndl/</loc><lastmod>2024-08-14T11:37:05&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
@@ -19,7 +106,6 @@
             <loc>http://example.org/databasel19/</loc><lastmod>2024-08-14T09:38:05&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/databasel20/</loc><lastmod>2024-08-14T09:38:05&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/databasel21/</loc><lastmod>2024-08-14T09:38:05&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>http://example.org/posts/</loc><lastmod>2024-08-14T09:38:05&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/databasel16/</loc><lastmod>2024-08-14T09:38:04&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/databasel17/</loc><lastmod>2024-08-14T09:38:04&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/databasel18/</loc><lastmod>2024-08-14T09:38:04&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>

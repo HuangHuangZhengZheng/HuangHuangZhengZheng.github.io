@@ -98,47 +98,27 @@
         alt="/avatar.jpg"
         title="/avatar.jpg" width="1920" height="1280" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/HuangHuangZhengZheng" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/datal18/">DATA100-L18: SQL I</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">why databases structured query language (SQL) &#x1f60b;
-DBMS: database management system sql example type
-INT for integer REAL for decimal TEXT for string BLOB for ARBITRARY data DATETIME for date and time different implementations of sql support different types
-sql table use singular, CamelCase for SQL tables! basic sql queries 通配
-1 SELECT * FROM table_name; 选定子集
-1 SELECT column1, column2 FROM table_name; AS rename columns
-1 2 3 SELECT cute AS cuteness, smart AS intelligence FROM table_name; WHERE filter rows</div><div class="post-footer">
-        <a href="/datal18/">Read More</a></div>
+        <a href="/lec34-tables/">Lec34-Tables</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-23">2024-10-23</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61a/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61A</a></span></div><div class="content">Tables Joining Tables 见CS186
+重点从eval / SICP 角度看语句是如何被eval的
+Strings methods </div><div class="post-footer">
+        <a href="/lec34-tables/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/datal15/">DATA100-L15: Cross Validation, Regularization</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">Cross Validation the holdout method 1 2 from sklearn.utils import shuffle training_set, dev_set = np.split(shuffle(data), [int(.8*len(data))]) 比较validation error和training error，选择最优的模型。
-K-fold cross validation K=1 is equivalent to holdout method.
-Test sets provide an unbiased estimate of the model&rsquo;s performance on new, unseen data. Regularization L2 regularization (Ridge) the small the ball, the simpler the model 拉格朗日思想，$\alpha$ 越大，约束越强，模型越简单。 岭回归
-scaling data for regularization 标准化数据，be on the same scale
-L1 regularization (Lasso) summary </div><div class="post-footer">
-        <a href="/datal15/">Read More</a></div>
+        <a href="/lec33-sql/">Lec33-SQL</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-23">2024-10-23</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61a/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61A</a></span></div><div class="content">SQL DATA100 / CS186先导课名副其实 &#x1f60f;
+create 不说了见186第一节课第二节课
+overview select 1 2 3 select ... union select ... union select ... union </div><div class="post-footer">
+        <a href="/lec33-sql/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/datal16/">DATA100-L16: Probability I: Random Variables</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">随机变量及其分布 参考 概率论与数理统计 课程即可
-期望与方差 $$ \mathbb{E}[X] 和 Var(X) $$ 参考 概率论与数理统计 课程即可
-随机变量的和 equality vs Identically distributed vs IID 有意思的分析 &#x1f60f;
-期望和方差的性质 协方差与相关系数 伯努利（0-1）和Binomial分布 Sample Statistics sample mean central limit theorem </div><div class="post-footer">
-        <a href="/datal16/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/datal13/">DATA100-L13: Gradient Descent, Feature Engineering</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content"> $\downarrow{shuffle}$ SGD: Stochastic Gradient Descent(but size == 1)
-convexity (凹凸性) feature engineering 在于怎么使用transforming
-feature function see website code
-non-numeric features one-hot encoding concat high order polynomials detect overfitting collect more data more see next lecture </div><div class="post-footer">
-        <a href="/datal13/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/datal14/">DATA100-L14: Case Study (HCE): Fairness in Housing Appraisal</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content"> Accuracy is a necessary, but not sufficient, condition for fair system. Fairness and transparency are context-dependent. Learn to work with contexts, and consider how your data analysis will reshape them. Keep in mind the power, and limits, of data analysis. </div><div class="post-footer">
-        <a href="/datal14/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/datal12/">DATA100-L12: Gradient Descent, sklearn</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">开始调包！&#x1f60f;
-1 2 3 4 from sklearn.linear_model import LinearRegression model = LinearRegression() model.fit(df[[&#34;total_bill&#34;]], df[&#34;tip&#34;]) df[&#34;predicted_tip&#34;] = model.predict(df[[&#34;total_bill&#34;]]) 所有的机器学习似乎都在最小化loss function，而梯度下降就是一种优化算法，它通过迭代的方式不断更新模型参数，使得loss function的值不断减小。
-详情见NNDL栏目</div><div class="post-footer">
-        <a href="/datal12/">Read More</a></div>
+        <a href="/lec32-macros/">Lec32-Macros</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-23">2024-10-23</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61a/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61A</a></span></div><div class="content">Macros quote or unquote 在于怎么eval &#x1f914;
+, 后面的 (some_expression) 不会被quote
+Macros in Scheme define new special form in scheme&hellip;
+define-macro 定义一个新的宏，接收一个 &lt;expression&gt; 作为参数，返回一个新的&lt;expression&gt; 并且eval之, 先不对参数eval
+注意和define的区别，define在意的是传进来的 value
+another example, to show info of your expression using macro
+1 2 3 (define-macro (check expr) (list &#39;if expr &#39;&#39;pass (list &#39;quote (list &#39;failed: expr)))) For Macro in Scheme 1 2 3 4 5 (define (map fn vals) (if (null? vals) () (cons (fn (car vals)) (map fn (cdr vals))))) 1 2 &gt; (map (lambda (x) (* x x)) &#39;(2 3 4 5)) ; without using macro case (4 9 16 25) 1 2 3 (define-macro (for sym vals expr) (list &#39;map lambda (sym) (expr) (vals)) ;?</div><div class="post-footer">
+        <a href="/lec32-macros/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -169,7 +149,7 @@ non-numeric features one-hot encoding concat high order polynomials detect overf
                     <span class="page-link" aria-hidden="true">&hellip;</span>
                 </li><li class="page-item ">
                     <span class="page-link">
-                        <a href="/page/17/">17</a>
+                        <a href="/page/61/">61</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">
