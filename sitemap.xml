@@ -2,17 +2,21 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>http://example.org/beyondcode/</loc><lastmod>2025-03-06T21:32:18&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://example.org/</loc><lastmod>2025-03-06T21:32:18&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://example.org/beyondcode/thinking5/</loc><lastmod>2025-03-06T21:32:18&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://example.org/categories/</loc><lastmod>2025-03-05T12:35:09&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://example.org/tools/</loc><lastmod>2025-03-05T12:35:09&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://example.org/categories/tools/</loc><lastmod>2025-03-05T12:35:09&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://example.org/tools/linux/cli/</loc><lastmod>2025-03-05T12:35:09&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://example.org/beyondcode/thinking4/</loc><lastmod>2025-02-13T12:23:19&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://example.org/beyondcode/thinking3/</loc><lastmod>2025-02-06T12:21:37&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>http://example.org/categories/</loc><lastmod>2025-04-19T08:27:18&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/</loc><lastmod>2025-04-19T08:27:18&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/l13-attention/</loc><lastmod>2025-04-19T08:27:18&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/l17-3d-vision/</loc><lastmod>2025-04-19T08:27:18&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/posts/</loc><lastmod>2025-04-19T08:27:18&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/categories/umich-eecs-498/</loc><lastmod>2025-04-19T08:27:18&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/l21-reinforcement-learning/</loc><lastmod>2025-04-18T08:27:18&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/beyondcode/</loc><lastmod>2025-03-06T21:32:18&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/beyondcode/thinking5/</loc><lastmod>2025-03-06T21:32:18&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/tools/</loc><lastmod>2025-03-05T12:35:09&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/categories/tools/</loc><lastmod>2025-03-05T12:35:09&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/tools/linux/cli/</loc><lastmod>2025-03-05T12:35:09&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/beyondcode/thinking4/</loc><lastmod>2025-02-13T12:23:19&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/beyondcode/thinking3/</loc><lastmod>2025-02-06T12:21:37&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/l17-huge-gnn/</loc><lastmod>2025-01-29T12:19:30&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>http://example.org/posts/</loc><lastmod>2025-01-29T12:19:30&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/categories/stanford-cs224w/</loc><lastmod>2025-01-29T12:19:30&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/l16-improvedgnn/</loc><lastmod>2025-01-29T12:10:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/l7-gnn-t1/</loc><lastmod>2025-01-28T13:39:34&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
@@ -25,7 +29,6 @@
             <loc>http://example.org/lec15-state-and-state-machines/</loc><lastmod>2025-01-22T20:41:04&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/lec14-intro-to-synchronous-digital-systems/</loc><lastmod>2025-01-22T20:07:46&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/l14-visualizing-and-understanding/</loc><lastmod>2024-11-06T08:27:18&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>http://example.org/categories/umich-eecs-498/</loc><lastmod>2024-11-06T08:27:18&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/l10-training-i/</loc><lastmod>2024-11-04T09:46:08&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/l9-hard-and-software/</loc><lastmod>2024-11-02T09:59:30&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/l8-cnn-arch/</loc><lastmod>2024-11-02T09:58:45&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>

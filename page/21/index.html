@@ -98,31 +98,30 @@
         alt="/avatar.jpg"
         title="/avatar.jpg" width="1920" height="1280" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/HuangHuangZhengZheng" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/lec9-risc-v-decisions-ii/">Lec9-RISC-V Decisions II</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-08">2024-10-08</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61c/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61C</a></span></div><div class="content">RISC-V Decisions II Logical Instruction and, andi, not 2种对应变体
-and: and x5, x6, x7 # x5 = x6 &amp; x7 andi: andi x5, x6, 0x7 # x5 = x6 &amp; 0x7 # for masking &#x1f60b; or: or x5, x6, x7 # x5 = x6 | x7 xor: xor x5, x6, x7 # x5 = x6 ^ x7 Not not, xor with 111111&hellip;1111即可
-shift instructions logical shift arithmetic shift A bit about machine programming PC: program counter (special register), 程序计数器 指向下一条指令的地址（next 4 byte / 1 word away）</div><div class="post-footer">
-        <a href="/lec9-risc-v-decisions-ii/">Read More</a></div>
+        <a href="/lec7-risc-v-introduction/">Lec7-RISC-V Introduction</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-09">2024-10-09</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61c/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61C</a></span></div><div class="content">RISC-V Introduction Instruction Set Architecture (ISA) Assembly Variables each statement is called an instruction
+Registers where are registers ?
+32 general purpose registers (GPRs) are available in RISC-V architecture.(x0 - x31)
+word: 32 bits (can be 64 bits in RV64)
+x0: always 0 # is the comment character
+no type casting in RISC-V assembly language the registers have no type
+add/sub instructions syntax of instructions 1 2 add rd, rs1, rs2 sub rd, rs1, rs2 # d(rd) = e(rs1) - f(rs2), 注意顺序 Immediate values（立即数） 1 addi rd, rs1, 10 没有subi ，加上相反数即可</div><div class="post-footer">
+        <a href="/lec7-risc-v-introduction/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/lec8-risc-v-lw-sw-decision-i/">Lec8-RISC-V lw, sw, Decision I</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-08">2024-10-08</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61c/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61C</a></span></div><div class="content">RISC-V lw, sw, Decision I Intro 编译器会最小化寄存器使用
-layout in Memory side note:
-a register is a 32-bit register(hold 32-bit data) word: 4 bytes, 32 bits risc-v 小端法（主流） Data Transfer Instructions lw (load word) look note &#x1f914;
-sw (store word) 结合lec7的模式图来记忆
-lb/sb (load byte/store byte) same as lw/sw
-lb 符号扩展
-lbu: load byte unsigned
-why still addi? 更快 但是imm的范围更小 (32bit以内) Decision I RV32 so far &#x1f60b;
-1 2 3 4 5 6 7 8 add rd, rs1, rs2 sub rd, rs1, rs2 addi rd, rs1, imm lw rd, imm(rs1) sw rs2, imm(rs1) lb rd, imm(rs1) sb rs2, imm(rs1) lbu rd, imm(rs1) beq/bne (branch if equal/not equal) Decision in RISC-V Assembly beq: branch if equal bne: branch if not equal blt: branch if less than blt reg1, reg2, label # if (reg1 &lt; reg2) goto label bge: branch if greater than or equal bltu: branch if unsigned less than bltu reg1, reg2, label # if (reg1 &lt; reg2) goto label bgeu: branch if unsigned greater than or equal j: jump/always branch j label # 无条件jump的范围比有条件jump构造出来的无条件jump更大（32位限制） 没有：bgt or ble, only have BLT（培根生菜番茄） sandwiches</div><div class="post-footer">
-        <a href="/lec8-risc-v-lw-sw-decision-i/">Read More</a></div>
+        <a href="/lec11-risc-v-instruction-formats-i/">Lec11-RISC-V Instruction Formats I</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-09">2024-10-09</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61c/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61C</a></span></div><div class="content">RISC-V Instruction Formats I 事实上已经来到下一个层级(二进制)了，但是看标题似乎还是RISC-V &#x1f914;
+Background and Consequences 1. addressing modes everything has a memory address, so branches and jumps can use them PC (program counter, again &#x1f604;) is a register that holds the address of the next instruction to be executed 2. 二进制兼容否？如何表示指令？ 一个指令用1个word(32bits)来装绰绰有余
+divide instruction into &ldquo;fields&rdquo; &#x1f60b;
+R-Format Layout 算数逻辑指令
+funct3: 功能码，决定指令的操作类型 funct7: 扩展功能码，用于一些复杂的指令 opcode: 操作码，决定指令的类别 具体查表
+new one: slt and sltu &ndash; set less than, when rs1 &lt; rs2, then set the destination register to 1, otherwise 0.</div><div class="post-footer">
+        <a href="/lec11-risc-v-instruction-formats-i/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/lec4-c-intropointers-arrays-strings/">Lec4-C intro：Pointers, Arrays, Strings</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-05">2024-10-05</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61c/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61C</a></span></div><div class="content">C intro: Pointers, Arrays, Strings Pointers 1 int (*fn) (void *, void *) = &amp;foo; // pointer to function arrow operator -&gt; is used to access members of a struct pointed to by a pointer.
-NULL pointer is used to indicate an invalid pointer.
-1 2 3 if (p == NULL) { // handle error } 谈到了地址对齐 -&gt; word alignment
-1 2 3 sizeof(arg) sizeof(structtype) Arrays 经典问题之数组名是指针
-1 2 3 4 5 char *foo() { char arr[10]; return arr; // A BIG mistake!</div><div class="post-footer">
-        <a href="/lec4-c-intropointers-arrays-strings/">Read More</a></div>
+        <a href="/lec10-risc-v-procedures/">Lec10-RISC-V Procedures</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-08">2024-10-08</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61c/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61C</a></span></div><div class="content">RISC-V Procedures 调用函数的时候有一些无关的主进程变量的value需要存储，but where?
+栈帧 / Stack Frame 存放了什么？ 注意stack 从上往下增长，push sp&ndash;, pop sp++
+序言prologue &amp; 结尾epilogue 1 2 3 4 5 int Leaf (int g, int h, int i, int j) { int f; f = (g + h) - (i + j); return f; } 1 2 3 4 5 6 7 8 9 10 11 12 13 Leaf: # 序言prologue addi sp, sp, -8 # 保存之前的栈指针 sw s1, 4(sp) # 保存参数 sw s2, 0(sp) # 计算 .</div><div class="post-footer">
+        <a href="/lec10-risc-v-procedures/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -153,7 +152,7 @@ NULL pointer is used to indicate an invalid pointer.
                     <span class="page-link" aria-hidden="true">&hellip;</span>
                 </li><li class="page-item ">
                     <span class="page-link">
-                        <a href="/page/61/">61</a>
+                        <a href="/page/62/">62</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">

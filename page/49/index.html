@@ -98,21 +98,24 @@
         alt="/avatar.jpg"
         title="/avatar.jpg" width="1920" height="1280" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/HuangHuangZhengZheng" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/61b-9/">61B-9: Extends, Casting, Higher Order Functions</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-14">2024-07-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">Implementation Inheritance: Extends extends
-Because of extends, RotatingSLList inherits all members of SLList: All instance and static variables. （注意public, private, protected的区别） All methods. All nested classes. Constructors are not inherited. super
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 public class VengefulSLList&lt;Item&gt; extends SLList&lt;Item&gt; { private SLList&lt;Item&gt; deletedItems; public VengefulSLList() { deletedItems = new SLList&lt;Item&gt;(); } @Override public Item removeLast() { Item oldBack = super.</div><div class="post-footer">
-        <a href="/61b-9/">Read More</a></div>
+        <a href="/61b-13/">61B-13: Generics, Autoboxing</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-14">2024-07-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">13-16几乎是java语法讲解&#x1f604;
+Primitives Cannot Be Used as Actual Type Arguments Autoboxing Wrapper Types Are (Mostly) Just Like Any Class
+8种基本类型之间转换也存在widening
+Immutability 类似于const在cpp
+1 2 3 4 5 6 7 8 9 public class Date { public final int month; public final int day; public final int year; private boolean contrived = true; public Date(int m, int d, int y) { month = m; day = d; year = y; } } Warning: Declaring a reference as Final does not make object immutable.</div><div class="post-footer">
+        <a href="/61b-13/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/61b-7/">61B-7: Testing</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-14">2024-07-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">Ad Hoc Testing vs. JUnit 1 2 3 4 5 6 7 8 9 10 11 12 13 14 public class TestSort { /** Tests the sort method of the Sort class. */ public static testSort() { String[] input = {&#34;cows&#34;, &#34;dwell&#34;, &#34;above&#34;, &#34;clouds&#34;}; String[] expected = {&#34;above&#34;, &#34;cows&#34;, &#34;clouds&#34;, &#34;dwell&#34;}; Sort.sort(input); org.junit.Assert.assertArrayEquals(expected, input); } public static void main(String[] args) { testSort(); } } Selection Sort 简单介绍一下了，关注点在junit Simpler JUnit Tests ADD, TDD, Integration Testing More On JUnit (Extra) </div><div class="post-footer">
-        <a href="/61b-7/">Read More</a></div>
+        <a href="/61b-10/">61B-10: Subtype Polymorphism vs. HoFs</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-14">2024-07-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">Subtype Polymorphism 指的是可以使用父类类型的对象来引用子类类型的实例。 DIY Comparison 比较Object类对象时产生问题，如何比较？？？
+考虑写一个比较器，比较两个Object对象
+加深编译理解 Comparable Interface 1 2 3 public interface Comparable&lt;T&gt; { public int compareTo(T obj); } Comparator Interface 1 2 3 public interface Comparator&lt;T&gt; { public int compare(T obj1, T obj2); } 两者的关系↓ 总结</div><div class="post-footer">
+        <a href="/61b-10/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/61b-8/">61B-8: Inheritance, Implements</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-14">2024-07-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">but hard to maintain!
-Hypernyms, Hyponyms, and Interface Inheritance interface 1 2 3 4 5 6 7 8 9 10 public interface List61B&lt;Item&gt; { public void addFirst(Item x); public void addLast(Item y); public Item getFirst(); public Item getLast(); public Item removeLast(); public Item get(int i); public void insert(Item x, int position); public int size(); } Overriding vs. Overloading override注意加上@Override!!!
-Interface Inheritance 基类存放指针问题 Answer: If X is a superclass of Y, then memory boxes for X may contain Y.</div><div class="post-footer">
-        <a href="/61b-8/">Read More</a></div>
+        <a href="/61b-11/">61B-11: Libraries, Abstract Classes, Packages</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-14">2024-07-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">Java Libraries Collections Collections is a package in Java that provides various utility classes for working with collections. Tasks引入 3 tasks, given the text of a book:
+Create a list of all words in the book. Count the number of unique words. Keep track of the number of times that specific words are mentioned. #1 way set 1 2 3 4 5 6 7 8 9 10 11 12 public static int countUniqueWords(List&lt;String&gt; words) { Set&lt;String&gt; ss = new HashSet&lt;&gt;(); for (String s : words) { ss.</div><div class="post-footer">
+        <a href="/61b-11/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -143,7 +146,7 @@ Interface Inheritance 基类存放指针问题 Answer: If X is a superclass of Y
                     <span class="page-link" aria-hidden="true">&hellip;</span>
                 </li><li class="page-item ">
                     <span class="page-link">
-                        <a href="/page/61/">61</a>
+                        <a href="/page/62/">62</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">

@@ -3,7 +3,40 @@
         <title>All Posts - HHZZ`s space</title>
         <link>http://example.org/posts/</link>
         <description>All Posts | HHZZ`s space</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 29 Jan 2025 12:19:30 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 19 Apr 2025 08:27:18 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>L13-Attention</title>
+    <link>http://example.org/l13-attention/</link>
+    <pubDate>Sat, 19 Apr 2025 08:27:18 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/l13-attention/</guid>
+    <description><![CDATA[Attention Mechanisms in Neural Networks introduction What if Seq to Seq models processed long long sequences?
+Attention Mechanisms the core idea is that using weighted sum, and the coefficient can be learned from the model itself
+In math, we do not actually care that wether input is a sequence or not.
+given hidden states $h_i$ and the context vector $c$, we can calculate the attention weights as follows:
+$$ e_{t, i, j} = f_{att}(s_{t-1}, h_{i,j}) \ a_{t, :, :} = softmax(e_{t, :, :}) \ c_{t} = \sum_{i,j} a_{t, i, j} h_{i,j} $$]]></description>
+</item>
+<item>
+    <title>L17-3D Vision</title>
+    <link>http://example.org/l17-3d-vision/</link>
+    <pubDate>Sat, 19 Apr 2025 08:27:18 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/l17-3d-vision/</guid>
+    <description><![CDATA[3D Vision back to the start &#x1f606;
+shape prediction and ingest 3D information 5 data representation
+depth map
+RGB + Depth image = RGB-D image 2.5D raw 3D sensor can easily capture depth information another type of depth map is surface normal map, which is a 2D image that represents the surface normal (using a normal vector) at each pixel location all the mentioned maps can be learned with Fully Convolutional Networks (FCN) &#x1f914; Voxel grid]]></description>
+</item>
+<item>
+    <title>L21-Reinforcement Learning</title>
+    <link>http://example.org/l21-reinforcement-learning/</link>
+    <pubDate>Fri, 18 Apr 2025 08:27:18 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/l21-reinforcement-learning/</guid>
+    <description><![CDATA[Reinforcement Learning So far, we have discussed supervised learning, and a little bit unsupervised learning (in UCB-data100 &#x1f609;)
+What is Reinforcement Learning at time $t$, env $\rightarrow^{state}$ agent $\rightarrow^{action}$ env $\rightarrow^{reward}$ agent, then env changed, agent learned, then repeated.
+state can be partial -&gt; noisy reward can be delayed, implicit and sparse -&gt; noisy AND Nondifferentiable &#x1f632; Nonstationary environment, change over time &#x1f60e; Generative Adversarial Networks (GANs) somehow is a part of Reinforcement Learning.]]></description>
+</item>
+<item>
     <title>L17-huge GNN</title>
     <link>http://example.org/l17-huge-gnn/</link>
     <pubDate>Wed, 29 Jan 2025 12:19:30 &#43;0800</pubDate>
@@ -80,35 +113,6 @@ graph-level features 核方法（但是skip） bag of sth&hellip; recall when yo
     <description><![CDATA[CS224W: Intro to Graph Deep Learning GNN for img 也就是说gnn会比传统的cnn更好 &#x1f914;
 gnn as encoder and diffusion process! how to build a graph? 基本图论知识见CS61B
 nodes??? edges??? 新的图的表示 双向图与投影图（仔细看线条） 自环的增加的degree为1 接邻矩阵表示连接性 ]]></description>
-</item>
-<item>
-    <title>Lec16-CL</title>
-    <link>http://example.org/lec16-cl/</link>
-    <pubDate>Thu, 23 Jan 2025 09:02:37 &#43;0800</pubDate>
-    <author>HHZZ</author>
-    <guid>http://example.org/lec16-cl/</guid>
-    <description><![CDATA[Lecture 16: Combinational Logic ]]></description>
-</item>
-<item>
-    <title>Lec15-State and State Machines</title>
-    <link>http://example.org/lec15-state-and-state-machines/</link>
-    <pubDate>Wed, 22 Jan 2025 20:41:04 &#43;0800</pubDate>
-    <author>HHZZ</author>
-    <guid>http://example.org/lec15-state-and-state-machines/</guid>
-    <description><![CDATA[Lecture 15: State and State Machines https://www.learncs.site/resource/cs61c/lectures/lec15.pdf
-Flip-flops? details of registers! n位寄存器，n个并行的1位触发器
-timing of flip-flops clk to q 越小越好
-Accumulators revisited 如果超频&hellip;
-pipelines and pipelining max clock frequency 简单总结 感觉数电知识更多一点？ 减少延时
-Finite State Machines 一个例子 等价翻译 ]]></description>
-</item>
-<item>
-    <title>Lec14-Intro to Synchronous Digital Systems</title>
-    <link>http://example.org/lec14-intro-to-synchronous-digital-systems/</link>
-    <pubDate>Wed, 22 Jan 2025 20:07:46 &#43;0800</pubDate>
-    <author>HHZZ</author>
-    <guid>http://example.org/lec14-intro-to-synchronous-digital-systems/</guid>
-    <description><![CDATA[Lecture 14: Intro to Synchronous Digital Systems MOS Transistors normal n-channel gate G is low, open. NAND Gates 与非门 电路存储与构成 组合逻辑电路 有状态元件 like 寄存器 ]]></description>
 </item>
 </channel>
 </rss>

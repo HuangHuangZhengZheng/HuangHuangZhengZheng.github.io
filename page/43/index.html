@@ -98,24 +98,27 @@
         alt="/avatar.jpg"
         title="/avatar.jpg" width="1920" height="1280" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/HuangHuangZhengZheng" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/datal14/">DATA100-L14: Case Study (HCE): Fairness in Housing Appraisal</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content"> Accuracy is a necessary, but not sufficient, condition for fair system. Fairness and transparency are context-dependent. Learn to work with contexts, and consider how your data analysis will reshape them. Keep in mind the power, and limits, of data analysis. </div><div class="post-footer">
-        <a href="/datal14/">Read More</a></div>
+        <a href="/datal15/">DATA100-L15: Cross Validation, Regularization</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">Cross Validation the holdout method 1 2 from sklearn.utils import shuffle training_set, dev_set = np.split(shuffle(data), [int(.8*len(data))]) 比较validation error和training error，选择最优的模型。
+K-fold cross validation K=1 is equivalent to holdout method.
+Test sets provide an unbiased estimate of the model&rsquo;s performance on new, unseen data. Regularization L2 regularization (Ridge) the small the ball, the simpler the model 拉格朗日思想，$\alpha$ 越大，约束越强，模型越简单。 岭回归
+scaling data for regularization 标准化数据，be on the same scale
+L1 regularization (Lasso) summary </div><div class="post-footer">
+        <a href="/datal15/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/datal12/">DATA100-L12: Gradient Descent, sklearn</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">开始调包！&#x1f60f;
-1 2 3 4 from sklearn.linear_model import LinearRegression model = LinearRegression() model.fit(df[[&#34;total_bill&#34;]], df[&#34;tip&#34;]) df[&#34;predicted_tip&#34;] = model.predict(df[[&#34;total_bill&#34;]]) 所有的机器学习似乎都在最小化loss function，而梯度下降就是一种优化算法，它通过迭代的方式不断更新模型参数，使得loss function的值不断减小。
-详情见NNDL栏目</div><div class="post-footer">
-        <a href="/datal12/">Read More</a></div>
+        <a href="/datal16/">DATA100-L16: Probability I: Random Variables</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">随机变量及其分布 参考 概率论与数理统计 课程即可
+期望与方差 $$ \mathbb{E}[X] 和 Var(X) $$ 参考 概率论与数理统计 课程即可
+随机变量的和 equality vs Identically distributed vs IID 有意思的分析 &#x1f60f;
+期望和方差的性质 协方差与相关系数 伯努利（0-1）和Binomial分布 Sample Statistics sample mean central limit theorem </div><div class="post-footer">
+        <a href="/datal16/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/datal11/">DATA100-L11: Ordinary Least Squares</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">linear in theta linear combination of parameters $\theta$ define multiple linear regression OLS problem formulation ordinary least squares (OLS)
-用线性代数重写之 $$ \mathbb{\hat{Y}} = \mathbb{X}\theta $$
-multiple linear regression model MSE $$ R(\theta) = \frac{1}{n}||\mathbb{Y}-\hat{\mathbb{Y}}||_2^2 $$
-geometric derivation lin alg review: orthogonality, span $$ span(\mathbb{A})是一个由列向量组成的space $$ 正交 least squares estimate proof performance: residuals, multiple R-squared lec11.ipynb
-$$ R^2∈[0,1] $$ 越大拟合效果越好
-OLS properties residuals the bias/intercept term existence of a unique solution </div><div class="post-footer">
-        <a href="/datal11/">Read More</a></div>
+        <a href="/datal13/">DATA100-L13: Gradient Descent, Feature Engineering</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content"> $\downarrow{shuffle}$ SGD: Stochastic Gradient Descent(but size == 1)
+convexity (凹凸性) feature engineering 在于怎么使用transforming
+feature function see website code
+non-numeric features one-hot encoding concat high order polynomials detect overfitting collect more data more see next lecture </div><div class="post-footer">
+        <a href="/datal13/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -146,7 +149,7 @@ OLS properties residuals the bias/intercept term existence of a unique solution 
                     <span class="page-link" aria-hidden="true">&hellip;</span>
                 </li><li class="page-item ">
                     <span class="page-link">
-                        <a href="/page/61/">61</a>
+                        <a href="/page/62/">62</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">

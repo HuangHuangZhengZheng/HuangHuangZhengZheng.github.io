@@ -3,7 +3,15 @@
         <title>Categories - Category - HHZZ`s space</title>
         <link>http://example.org/categories/</link>
         <description>Categories - Category - HHZZ`s space</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 05 Mar 2025 12:35:09 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 19 Apr 2025 08:27:18 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/" rel="self" type="application/rss+xml" /><item>
+    <title>UMich-EECS-498</title>
+    <link>http://example.org/categories/umich-eecs-498/</link>
+    <pubDate>Sat, 19 Apr 2025 08:27:18 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/categories/umich-eecs-498/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
     <title>TOOLS</title>
     <link>http://example.org/categories/tools/</link>
     <pubDate>Wed, 05 Mar 2025 12:35:09 &#43;0800</pubDate>
@@ -25,14 +33,6 @@
     <pubDate>Thu, 23 Jan 2025 09:02:37 &#43;0800</pubDate>
     <author>HHZZ</author>
     <guid>http://example.org/categories/ucb-cs61c/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>UMich-EECS-498</title>
-    <link>http://example.org/categories/umich-eecs-498/</link>
-    <pubDate>Wed, 06 Nov 2024 08:27:18 &#43;0800</pubDate>
-    <author>HHZZ</author>
-    <guid>http://example.org/categories/umich-eecs-498/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>

@@ -98,24 +98,27 @@
         alt="/avatar.jpg"
         title="/avatar.jpg" width="1920" height="1280" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/HuangHuangZhengZheng" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/lec29-interpreters/">Lec29-Interpreters</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-22">2024-10-22</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61a/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61A</a></span></div><div class="content">Interpreters Special Forms Quotation Logical Forms Lambda Expressions 1 (lambda (x) (+ x 1)) Frame and Environment Dynamic Scope who calls you can provide the value you need
-rather than static scope&hellip;
-Interpreting Scheme Code 核心在此 Define Expressions </div><div class="post-footer">
-        <a href="/lec29-interpreters/">Read More</a></div>
+        <a href="/lec34-tables/">Lec34-Tables</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-23">2024-10-23</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61a/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61A</a></span></div><div class="content">Tables Joining Tables 见CS186
+重点从eval / SICP 角度看语句是如何被eval的
+Strings methods </div><div class="post-footer">
+        <a href="/lec34-tables/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/lec30-tail-calls/">Lec30-Tail Calls</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-22">2024-10-22</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61a/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61A</a></span></div><div class="content">Tail Calls Functional Programming Tail Call 相同时间复杂度，对空间复杂度的限制，常量空间运行
-get the len of a list Map and Reduce Reduce eg
-1 (reduce * &#39;(3 4 5) 2) ; 120 Map Map with only a constant numbers of Frames
-General Computing Machine &#x1f62e;</div><div class="post-footer">
-        <a href="/lec30-tail-calls/">Read More</a></div>
+        <a href="/lec33-sql/">Lec33-SQL</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-23">2024-10-23</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61a/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61A</a></span></div><div class="content">SQL DATA100 / CS186先导课名副其实 &#x1f60f;
+create 不说了见186第一节课第二节课
+overview select 1 2 3 select ... union select ... union select ... union </div><div class="post-footer">
+        <a href="/lec33-sql/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/lec31-programs-as-data/">Lec31-Programs as Data</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-22">2024-10-22</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61a/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61A</a></span></div><div class="content">Programs as Data eval 在字符串上面eval
-Generating Code Quasiquotes
-while statements in Scheme&hellip;how to generate generic code </div><div class="post-footer">
-        <a href="/lec31-programs-as-data/">Read More</a></div>
+        <a href="/lec32-macros/">Lec32-Macros</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-23">2024-10-23</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61a/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61A</a></span></div><div class="content">Macros quote or unquote 在于怎么eval &#x1f914;
+, 后面的 (some_expression) 不会被quote
+Macros in Scheme define new special form in scheme&hellip;
+define-macro 定义一个新的宏，接收一个 &lt;expression&gt; 作为参数，返回一个新的&lt;expression&gt; 并且eval之, 先不对参数eval
+注意和define的区别，define在意的是传进来的 value
+another example, to show info of your expression using macro
+1 2 3 (define-macro (check expr) (list &#39;if expr &#39;&#39;pass (list &#39;quote (list &#39;failed: expr)))) For Macro in Scheme 1 2 3 4 5 (define (map fn vals) (if (null? vals) () (cons (fn (car vals)) (map fn (cdr vals))))) 1 2 &gt; (map (lambda (x) (* x x)) &#39;(2 3 4 5)) ; without using macro case (4 9 16 25) 1 2 3 (define-macro (for sym vals expr) (list &#39;map lambda (sym) (expr) (vals)) ;?</div><div class="post-footer">
+        <a href="/lec32-macros/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -146,7 +149,7 @@ while statements in Scheme&hellip;how to generate generic code </div><div class=
                     <span class="page-link" aria-hidden="true">&hellip;</span>
                 </li><li class="page-item ">
                     <span class="page-link">
-                        <a href="/page/61/">61</a>
+                        <a href="/page/62/">62</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">

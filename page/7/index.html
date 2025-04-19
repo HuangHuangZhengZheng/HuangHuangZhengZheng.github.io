@@ -98,21 +98,31 @@
         alt="/avatar.jpg"
         title="/avatar.jpg" width="1920" height="1280" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/HuangHuangZhengZheng" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/lec37-final/">Lec37-Final</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-23">2024-10-23</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61a/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61A</a></span></div><div class="content">Final Project: The Game of Life ? about the title: well, umm, this title just pop up in the cursor and I don&rsquo;t mean to write that&hellip;
-it just feels like a good idea to write something about the game of life ==&gt; 61B or 61C must have a project on this topic &#x1f914;
-Trees Processing def里面def的风格感觉是CS106里面提到的递归helper function的风格 &#x1f62e;
-Recursive Accumulation using static variables to accumulate the results of recursive calls &#x1f62e;</div><div class="post-footer">
-        <a href="/lec37-final/">Read More</a></div>
+        <a href="/l6-bp/">L6-BP</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-24">2024-10-24</time></span>&nbsp;<span class="post-category">included in <a href="/categories/umich-eecs-498/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UMich-EECS-498</a></span></div><div class="content">Backpropagation 参见cmu 10-414 &#x1f600;
+RNN 初见 Computation Graph &#x1f60f; A2要hardcode直接的反向传播了 555
+真正的代码 &#x1f60b;
+1 2 3 4 5 6 7 8 9 class Multiply(torch.autograd.Function): @staticmethod def forward(ctx, x, y): ctx.save_for_backward(x, y) return x * y @staticmethod def backward(ctx, grad_output): x, y = ctx.saved_tensors return grad_output * y, grad_output * x # 解析计算 PyTorch operators in deep engine &#x1f914;
+BP rules BP with vector-valued functions 假装标量求导，然后匹配矩阵形状即可（典中典）
+element-wise functions in BP 不用使用矩阵求导，直接一一对应去想梯度的传递即可</div><div class="post-footer">
+        <a href="/l6-bp/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/lec36-databases/">Lec36-Databases</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-23">2024-10-23</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61a/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61A</a></span></div><div class="content">Databases method of tables create and drop tables &#x1f913;
-1 2 create table numbers (n, note); create table numbers (n UNIQUE, note DEFAULT &#39;unknown&#39;); 1 drop table if exists t; insert data into tables 1 2 insert into t values (1, &#39;one&#39;); insert into t(col1) values (2); update 1 update t set col1 = 3 where col2 = &#39;two&#39;; delete 1 delete from t where col1 = 1; Python and SQL 1 2 3 4 5 6 7 8 9 10 11 import sqlite3 # connect to the database conn = sqlite3.</div><div class="post-footer">
-        <a href="/lec36-databases/">Read More</a></div>
+        <a href="/l5-nn/">L5-NN</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-24">2024-10-24</time></span>&nbsp;<span class="post-category">included in <a href="/categories/umich-eecs-498/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UMich-EECS-498</a></span></div><div class="content">Neural Networks 线性不可分怎么处理？ 怎么encode不同的信息？
+王朝落幕 Neural Networks Architecture data -&gt; input layer -&gt; hidden layer -&gt; output layer
+data driven, non-linear &#x1f60b;
+&#x1f604; ?
+ReLU, 通用近似定理 详细证明看一看官方给出的课本
+凸优化 牢NN当然是进行非凸优化 &#x1f600;</div><div class="post-footer">
+        <a href="/l5-nn/">Read More</a></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/lec35-agg/">Lec35-Agg</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-23">2024-10-23</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61a/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61A</a></span></div><div class="content">Aggregation see here</div><div class="post-footer">
-        <a href="/lec35-agg/">Read More</a></div>
+        <a href="/l4-optimization/">L4-Optimization</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-24">2024-10-24</time></span>&nbsp;<span class="post-category">included in <a href="/categories/umich-eecs-498/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UMich-EECS-498</a></span></div><div class="content">Optimization grad check 解析计算后数值计算梯度验证之
+1 2 3 4 5 import torch torch.autograd.gradcheck(func, inputs, eps=1e-6, atol=1e-4, raise_exception=True) torch.autograd.gradgradcheck(func, inputs, grad_outputs=None, eps=1e-6, atol=1e-4, raise_exception=True) # numpy allclose np.allclose(a, b, rtol=1e-5, atol=1e-8) 梯度下降法 略
+蒙特卡洛 把期望转化为数值求解，上图的等式两边求导也可，从而得到梯度
+混合优化方法 Adam = RMSprop + Momentum &#x1f62e;
+为什么只是一阶函数优化？</div><div class="post-footer">
+        <a href="/l4-optimization/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -143,7 +153,7 @@ Recursive Accumulation using static variables to accumulate the results of recur
                     <span class="page-link" aria-hidden="true">&hellip;</span>
                 </li><li class="page-item ">
                     <span class="page-link">
-                        <a href="/page/61/">61</a>
+                        <a href="/page/62/">62</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">

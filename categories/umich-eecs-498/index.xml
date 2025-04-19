@@ -3,7 +3,40 @@
         <title>UMich-EECS-498 - Category - HHZZ`s space</title>
         <link>http://example.org/categories/umich-eecs-498/</link>
         <description>UMich-EECS-498 - Category - HHZZ`s space</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 06 Nov 2024 08:27:18 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/umich-eecs-498/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 19 Apr 2025 08:27:18 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/umich-eecs-498/" rel="self" type="application/rss+xml" /><item>
+    <title>L13-Attention</title>
+    <link>http://example.org/l13-attention/</link>
+    <pubDate>Sat, 19 Apr 2025 08:27:18 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/l13-attention/</guid>
+    <description><![CDATA[Attention Mechanisms in Neural Networks introduction What if Seq to Seq models processed long long sequences?
+Attention Mechanisms the core idea is that using weighted sum, and the coefficient can be learned from the model itself
+In math, we do not actually care that wether input is a sequence or not.
+given hidden states $h_i$ and the context vector $c$, we can calculate the attention weights as follows:
+$$ e_{t, i, j} = f_{att}(s_{t-1}, h_{i,j}) \ a_{t, :, :} = softmax(e_{t, :, :}) \ c_{t} = \sum_{i,j} a_{t, i, j} h_{i,j} $$]]></description>
+</item>
+<item>
+    <title>L17-3D Vision</title>
+    <link>http://example.org/l17-3d-vision/</link>
+    <pubDate>Sat, 19 Apr 2025 08:27:18 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/l17-3d-vision/</guid>
+    <description><![CDATA[3D Vision back to the start &#x1f606;
+shape prediction and ingest 3D information 5 data representation
+depth map
+RGB + Depth image = RGB-D image 2.5D raw 3D sensor can easily capture depth information another type of depth map is surface normal map, which is a 2D image that represents the surface normal (using a normal vector) at each pixel location all the mentioned maps can be learned with Fully Convolutional Networks (FCN) &#x1f914; Voxel grid]]></description>
+</item>
+<item>
+    <title>L21-Reinforcement Learning</title>
+    <link>http://example.org/l21-reinforcement-learning/</link>
+    <pubDate>Fri, 18 Apr 2025 08:27:18 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/l21-reinforcement-learning/</guid>
+    <description><![CDATA[Reinforcement Learning So far, we have discussed supervised learning, and a little bit unsupervised learning (in UCB-data100 &#x1f609;)
+What is Reinforcement Learning at time $t$, env $\rightarrow^{state}$ agent $\rightarrow^{action}$ env $\rightarrow^{reward}$ agent, then env changed, agent learned, then repeated.
+state can be partial -&gt; noisy reward can be delayed, implicit and sparse -&gt; noisy AND Nondifferentiable &#x1f632; Nonstationary environment, change over time &#x1f60e; Generative Adversarial Networks (GANs) somehow is a part of Reinforcement Learning.]]></description>
+</item>
+<item>
     <title>L14-Visualizing and Understanding</title>
     <link>http://example.org/l14-visualizing-and-understanding/</link>
     <pubDate>Wed, 06 Nov 2024 08:27:18 &#43;0800</pubDate>
@@ -94,37 +127,6 @@ data driven, non-linear &#x1f60b;
 &#x1f604; ?
 ReLU, 通用近似定理 详细证明看一看官方给出的课本
 凸优化 牢NN当然是进行非凸优化 &#x1f600;]]></description>
-</item>
-<item>
-    <title>L4-Optimization</title>
-    <link>http://example.org/l4-optimization/</link>
-    <pubDate>Thu, 24 Oct 2024 14:29:40 &#43;0800</pubDate>
-    <author>HHZZ</author>
-    <guid>http://example.org/l4-optimization/</guid>
-    <description><![CDATA[Optimization grad check 解析计算后数值计算梯度验证之
-1 2 3 4 5 import torch torch.autograd.gradcheck(func, inputs, eps=1e-6, atol=1e-4, raise_exception=True) torch.autograd.gradgradcheck(func, inputs, grad_outputs=None, eps=1e-6, atol=1e-4, raise_exception=True) # numpy allclose np.allclose(a, b, rtol=1e-5, atol=1e-8) 梯度下降法 略
-蒙特卡洛 把期望转化为数值求解，上图的等式两边求导也可，从而得到梯度
-混合优化方法 Adam = RMSprop + Momentum &#x1f62e;
-为什么只是一阶函数优化？]]></description>
-</item>
-<item>
-    <title>L3-linear classifiers</title>
-    <link>http://example.org/l3-linear-classifiers/</link>
-    <pubDate>Mon, 23 Sep 2024 10:18:02 &#43;0800</pubDate>
-    <author>HHZZ</author>
-    <guid>http://example.org/l3-linear-classifiers/</guid>
-    <description><![CDATA[Linear Classifiers Viewpoints of Linear Classifiers hard cases of linear classifiers hinge loss hinge loss is a loss function, linear and zeros-in-margin 感觉是一个有意思的线性损失函数，但是目前作用不大 SVM loss 对损失函数初始化估值可以初步验证是否由bug Regularization 从线性模型的角度看，添加常数因子效果不变，但是权重矩阵的范数会变化 由上可知不唯一，所以需要对权重矩阵进行约束，常用的约束方式是正则化 一种新的引入正则化项的思路 &#x1f914; ===&gt; express our preference or 先验的知识点 余下两种观点：防止过拟合 重新理解L1 / L2正则化 L1正则化 : 倾向于权重集中 L2正则化 : 倾向于权重均匀 ]]></description>
-</item>
-<item>
-    <title>L2-image classification</title>
-    <link>http://example.org/l2-image-classification/</link>
-    <pubDate>Mon, 23 Sep 2024 08:43:32 &#43;0800</pubDate>
-    <author>HHZZ</author>
-    <guid>http://example.org/l2-image-classification/</guid>
-    <description><![CDATA[Lecture 2: Image Classification Introduction Image classification is the task of assigning a label&hellip;
-can be a building-block for many applications
-More robust, data-driven approaches Understanding the dataset 简单介绍一下类似于MNIST, CIFAR-100等数据集的基本结构 提出Omniglot数据集的概念 few-shot learning Choosing a model Nearest Neighbor
-find the distance metric between the test image and all the training images memorize the training images and their corresponding labels predict the label of the test image based on the nearest training image With N examples&hellip;]]></description>
 </item>
 </channel>
 </rss>

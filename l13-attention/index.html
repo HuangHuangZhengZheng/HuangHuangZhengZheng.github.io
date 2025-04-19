@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>L13-Attention - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="L13-Attention" />
+<meta property="og:description" content="Attention Mechanisms in Neural Networks introduction What if Seq to Seq models processed long long sequences?
+Attention Mechanisms the core idea is that using weighted sum, and the coefficient can be learned from the model itself
+In math, we do not actually care that wether input is a sequence or not.
+given hidden states $h_i$ and the context vector $c$, we can calculate the attention weights as follows:
+$$ e_{t, i, j} = f_{att}(s_{t-1}, h_{i,j}) \ a_{t, :, :} = softmax(e_{t, :, :}) \ c_{t} = \sum_{i,j} a_{t, i, j} h_{i,j} $$" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/l13-attention/" /><meta property="og:image" content="http://example.org/logo.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2025-04-19T08:27:18+08:00" />
+<meta property="article:modified_time" content="2025-04-19T08:27:18+08:00" /><meta property="og:site_name" content="My cool site" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://example.org/logo.png" /><meta name="twitter:title" content="L13-Attention"/>
+<meta name="twitter:description" content="Attention Mechanisms in Neural Networks introduction What if Seq to Seq models processed long long sequences?
+Attention Mechanisms the core idea is that using weighted sum, and the coefficient can be learned from the model itself
+In math, we do not actually care that wether input is a sequence or not.
+given hidden states $h_i$ and the context vector $c$, we can calculate the attention weights as follows:
+$$ e_{t, i, j} = f_{att}(s_{t-1}, h_{i,j}) \ a_{t, :, :} = softmax(e_{t, :, :}) \ c_{t} = \sum_{i,j} a_{t, i, j} h_{i,j} $$"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/l13-attention/" /><link rel="prev" href="http://example.org/l17-3d-vision/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "L13-Attention",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/l13-attention\/"
+        },"genre": "posts","wordcount":  552 ,
+        "url": "http:\/\/example.org\/l13-attention\/","datePublished": "2025-04-19T08:27:18+08:00","dateModified": "2025-04-19T08:27:18+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "HHZZ"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HHZZ`s space">Code and BeyondCode😋</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tools/"> Tools </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/beyondcode/"> BeyondCode😋 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HHZZ`s space">Code and BeyondCode😋</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tools/" title="">Tools</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/beyondcode/" title="">BeyondCode😋</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">L13-Attention</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/umich-eecs-498/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UMich-EECS-498</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-04-19">2025-04-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;552 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">introduction</a></li>
+    <li><a href="#attention-mechanisms">Attention Mechanisms</a></li>
+    <li><a href="#attention-layers">Attention Layers</a></li>
+    <li><a href="#self-attention-layers">Self-Attention Layers</a>
+      <ul>
+        <li><a href="#masked-self-attention-layers">Masked Self-Attention Layers</a></li>
+        <li><a href="#multi-head-self-attention-layers">Multi-Head Self-Attention Layers</a></li>
+      </ul>
+    </li>
+    <li><a href="#summary-of-ways-of-processing-sequences">Summary of Ways of Processing Sequences</a></li>
+    <li><a href="#attention-is-all-you-need-laughing">Attention is all you need </a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="attention-mechanisms-in-neural-networks">Attention Mechanisms in Neural Networks</h1>
+<h2 id="introduction">introduction</h2>
+<p>What if Seq to Seq models processed long long sequences?</p>
+<h2 id="attention-mechanisms">Attention Mechanisms</h2>
+<blockquote>
+<p>the core idea is that using weighted sum, and the coefficient can be learned from the model itself</p>
+</blockquote>
+<p>In math, we do not actually care that wether input is a sequence or not.</p>
+<p>given hidden states $h_i$ and the context vector $c$, we can calculate the attention weights as follows:</p>
+<p>$$
+e_{t, i, j} = f_{att}(s_{t-1}, h_{i,j}) \
+a_{t, :, :} = softmax(e_{t, :, :}) \
+c_{t} = \sum_{i,j} a_{t, i, j} h_{i,j}
+$$</p>
+<ul>
+<li>&ldquo;<strong>Show, attend and tell</strong>&rdquo; ICML 2015, which setoff &ldquo;X, Attend, and Y&rdquo; &#x1f606;</li>
+</ul>
+<h2 id="attention-layers">Attention Layers</h2>
+<p>then we wanna abstract this attention mechanism into a general attention layer, as so many work proves that attention mechanism is a crucial component in neural networks</p>
+<blockquote>
+<p>Inputs:</p>
+<ol>
+<li>Query vector $q$, Shape: ($D_Q$,)</li>
+<li>Input vector $x$, Shape: ($N_X$, $D_Q$)</li>
+<li>Similarity function $f_{att}$, at first is <em>(scaled) dot production</em></li>
+</ol>
+</blockquote>
+<blockquote>
+<p>Computation:</p>
+<ol>
+<li>Similarity: $e$, Shape: ($N_X$, ), usually $e_i = q*X_i/\sqrt{D_Q}$</li>
+<li>Attention weights: $a$, Shape: ($N_X$, )</li>
+<li>Output vector: $y = \sum_{i=1}a_i x_i$, Shape: ($D_Q$, )</li>
+</ol>
+</blockquote>
+<p>now then we turn into matrix form:</p>
+<blockquote>
+<p>Inputs:</p>
+<ol>
+<li>Query matrix $Q$, Shape: ($N_Q$, $D_Q$)</li>
+<li>Input matrix $X$, Shape: ($N_X$, $D_Q$)</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>Computation:</p>
+<ol>
+<li>Similarity: $E = Q*X^T/\sqrt{D_Q}$, Shape: ($N_Q$, $N_X$)</li>
+<li>Attention weights: $A = softmax(E,dim=1)$, Shape: ($N_Q$, $N_X$)</li>
+<li>Output vector: $Y = A*X$, Shape: ($N_Q$, $D_Q$)</li>
+</ol>
+</blockquote>
+<p>$X$ was used twice (for similarity and output), and we wanna separate them into two matrices to make it more clear and flexible&hellip; KQV! &#x1f609;</p>
+<blockquote>
+<p>Inputs:</p>
+<ol>
+<li>Query matrix $Q$, Shape: ($N_Q$, $D_Q$)</li>
+<li>Input matrix $X$, Shape: ($N_X$, $D_X$)</li>
+<li>Key matrix $W_K$, Shape: ($D_X$, $D_Q$)</li>
+<li>Value matrix $W_V$, Shape: ($D_X$, $D_V$)</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>Computation:</p>
+<ol>
+<li>Key vectors: $K = XW_K$, Shape: ($N_X$, $D_Q$)</li>
+<li>Value vectors: $V = XW_V$, Shape: ($N_X$, $D_V$)</li>
+<li>Similarity: $E = Q*K^T$, Shape: ($N_Q$, $N_X$)</li>
+<li>Attention weights: $A = softmax(E,dim=1)$, Shape: ($N_Q$, $N_X$)</li>
+<li>Output vector: $Y = AV$, Shape: ($N_Q$, $D_V$), maybe product and sum</li>
+</ol>
+</blockquote>
+<h2 id="self-attention-layers">Self-Attention Layers</h2>
+<p>one query for per input vector</p>
+<blockquote>
+<p>Inputs:</p>
+<ol>
+<li>Input matrix $X$, Shape: ($N_X$, $D_X$)</li>
+<li>Key matrix $W_K$, Shape: ($D_X$, $D_Q$)</li>
+<li>Value matrix $W_V$, Shape: ($D_X$, $D_V$)</li>
+<li>Query matrix $W_Q$, Shape: ($D_X$, $D_Q$)</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>Computation:</p>
+<ol>
+<li>Query vectors: $Q = XW_Q$, Shape: ($N_X$, $D_Q$)</li>
+<li>Key vectors: $K = XW_K$, Shape: ($N_X$, $D_Q$)</li>
+<li>Value vectors: $V = XW_V$, Shape: ($N_X$, $D_V$)</li>
+<li>Similarity: $E = QK^T$, Shape: ($N_Q$, $N_X$), need to be scaled by $\sqrt{D_Q}$</li>
+<li>Attention weights: $A = softmax(E,dim=1)$, Shape: ($N_Q$, $N_X$)</li>
+<li>Output vector: $Y = AV$, Shape: ($N_Q$, $D_V$), maybe product and sum</li>
+</ol>
+</blockquote>
+<p>what happens if we change the order of input vectors?</p>
+<ul>
+<li>all the value will be the same, but permuted</li>
+<li>so we perform the attention on a SET of vectors</li>
+</ul>
+<p>to solve this problem, we can use <strong>positional encoding</strong> to add information about the position of each vector in the sequence, maybe using <code>torch.cat</code></p>
+<h3 id="masked-self-attention-layers">Masked Self-Attention Layers</h3>
+<p>force the model only use the past information, and ignore the future information, <strong>predicting the next word</strong>, at hidden level or similarity level</p>
+<h3 id="multi-head-self-attention-layers">Multi-Head Self-Attention Layers</h3>
+<p>spilt the input vectors into equal parts $h$, Query dimension $D_Q$</p>
+<h2 id="summary-of-ways-of-processing-sequences">Summary of Ways of Processing Sequences</h2>
+<ul>
+<li>RNNs:
+<ul>
+<li>good at long seq</li>
+<li>bad at parallel</li>
+</ul>
+</li>
+<li>1D CNNs:
+<ul>
+<li>bad at long seq</li>
+<li>good at parallel</li>
+</ul>
+</li>
+<li>Self-Attention:
+<ul>
+<li>good at long seq</li>
+<li>good at parallel</li>
+<li>bad at memory</li>
+</ul>
+</li>
+</ul>
+<h2 id="attention-is-all-you-need-laughing">Attention is all you need &#x1f606;</h2>
+<p>Transformer!</p>
+<p>then the General Pretrained Transformer (GPT) model&rsquo;s story begins&hellip;</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/l13-attention/image.png"
+        data-srcset="/l13-attention/image.png, /l13-attention/image.png 1.5x, /l13-attention/image.png 2x"
+        data-sizes="auto"
+        alt="/l13-attention/image.png"
+        title="alt text" width="263" height="399" /></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2025-04-19</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/l13-attention/" data-title="L13-Attention"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/l13-attention/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/l13-attention/" data-title="L13-Attention"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/l13-attention/" data-title="L13-Attention"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/l13-attention/" data-title="L13-Attention"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/l17-3d-vision/" class="prev" rel="prev" title="L17-3D Vision"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>L17-3D Vision</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.123.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">HHZZ</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

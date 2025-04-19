@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>L21-Reinforcement Learning - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="L21-Reinforcement Learning" />
+<meta property="og:description" content="Reinforcement Learning So far, we have discussed supervised learning, and a little bit unsupervised learning (in UCB-data100 &#x1f609;)
+What is Reinforcement Learning at time $t$, env $\rightarrow^{state}$ agent $\rightarrow^{action}$ env $\rightarrow^{reward}$ agent, then env changed, agent learned, then repeated.
+state can be partial -&gt; noisy reward can be delayed, implicit and sparse -&gt; noisy AND Nondifferentiable &#x1f632; Nonstationary environment, change over time &#x1f60e; Generative Adversarial Networks (GANs) somehow is a part of Reinforcement Learning." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/l21-reinforcement-learning/" /><meta property="og:image" content="http://example.org/logo.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2025-04-18T08:27:18+08:00" />
+<meta property="article:modified_time" content="2025-04-18T08:27:18+08:00" /><meta property="og:site_name" content="My cool site" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://example.org/logo.png" /><meta name="twitter:title" content="L21-Reinforcement Learning"/>
+<meta name="twitter:description" content="Reinforcement Learning So far, we have discussed supervised learning, and a little bit unsupervised learning (in UCB-data100 &#x1f609;)
+What is Reinforcement Learning at time $t$, env $\rightarrow^{state}$ agent $\rightarrow^{action}$ env $\rightarrow^{reward}$ agent, then env changed, agent learned, then repeated.
+state can be partial -&gt; noisy reward can be delayed, implicit and sparse -&gt; noisy AND Nondifferentiable &#x1f632; Nonstationary environment, change over time &#x1f60e; Generative Adversarial Networks (GANs) somehow is a part of Reinforcement Learning."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/l21-reinforcement-learning/" /><link rel="prev" href="http://example.org/l17-huge-gnn/" /><link rel="next" href="http://example.org/l17-3d-vision/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "L21-Reinforcement Learning",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/l21-reinforcement-learning\/"
+        },"genre": "posts","wordcount":  709 ,
+        "url": "http:\/\/example.org\/l21-reinforcement-learning\/","datePublished": "2025-04-18T08:27:18+08:00","dateModified": "2025-04-18T08:27:18+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "HHZZ"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HHZZ`s space">Code and BeyondCode😋</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tools/"> Tools </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/beyondcode/"> BeyondCode😋 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HHZZ`s space">Code and BeyondCode😋</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tools/" title="">Tools</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/beyondcode/" title="">BeyondCode😋</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">L21-Reinforcement Learning</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/umich-eecs-498/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UMich-EECS-498</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-04-18">2025-04-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;709 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-is-reinforcement-learning">What is Reinforcement Learning</a></li>
+    <li><a href="#mdp-markov-decision-process">MDP (Markov Decision Process)</a>
+      <ul>
+        <li><a href="#bellman-equation">bellman equation</a></li>
+      </ul>
+    </li>
+    <li><a href="#q-learning">Q-learning</a></li>
+    <li><a href="#policy-gradient">Policy Gradient</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="reinforcement-learning">Reinforcement Learning</h1>
+<p>So far, we have discussed <em>supervised learning</em>, and a little bit <em>unsupervised learning</em> (in UCB-data100 &#x1f609;)</p>
+<h2 id="what-is-reinforcement-learning">What is Reinforcement Learning</h2>
+<blockquote>
+<p>at time $t$, env $\rightarrow^{state}$ agent $\rightarrow^{action}$ env $\rightarrow^{reward}$ agent, then env changed, agent learned, then repeated.</p>
+</blockquote>
+<ul>
+<li>state can be partial -&gt; noisy</li>
+<li>reward can be delayed, implicit and sparse -&gt; noisy</li>
+<li>AND Nondifferentiable &#x1f632;</li>
+<li>Nonstationary environment, change over time &#x1f60e;</li>
+</ul>
+<p>Generative Adversarial Networks (GANs) somehow is a part of Reinforcement Learning.</p>
+<h2 id="mdp-markov-decision-process">MDP (Markov Decision Process)</h2>
+<blockquote>
+<p>formalization of reinforcement learning problem: <em>tuple</em> $(S, A, P, R, \gamma)$
+Agent wanna find a <em>policy</em> $\pi$ that maximizes the expected reward over time</p>
+</blockquote>
+<ul>
+<li>$S$ : set of states</li>
+<li>$A$ : set of actions</li>
+<li>$P(s&rsquo;|s,a)$ : state transition probability</li>
+<li>$R(s,a,s&rsquo;)$ : reward function</li>
+<li>$\gamma$ : discount factor(tradeoff between immediate and future reward)</li>
+</ul>
+<p>How good is a policy $\pi$?</p>
+<ul>
+<li>Value function $V_{\pi}(s)$ : expected reward starting from state $s$ under policy $\pi$</li>
+</ul>
+<p>$$
+V^{\pi}(s) = \mathbb{E}[\sum_{t \geq 0}\gamma^tr_t | s_0=s, \pi]
+$$</p>
+<ul>
+<li>Q function $Q_{\pi}(s,a)$ : expected reward starting from state $s$ and taking action $a$ under policy $\pi$</li>
+</ul>
+<p>$$
+Q^{\pi}(s,a) = \mathbb{E}[\sum_{t \geq 0}\gamma^tr_t | s_0=s, a_0=a, \pi]
+$$</p>
+<p>$$
+Q^*(s,a) = \max_{\pi} \mathbb{E}[\sum_{t \geq 0}\gamma^tr_t | s_0=s, a_0=a, \pi]
+$$</p>
+<p>易推出</p>
+<p>$$
+\pi^*(s) = argmax_{a&rsquo;}Q(s,a&rsquo;)
+$$</p>
+<h3 id="bellman-equation">bellman equation</h3>
+<p>Q-star satisfies the Bellman equation:</p>
+<p>$$
+Q^<em>(s,a) = \mathbb{E}[R(s,a) + \gamma \max_{a&rsquo;}Q^</em>(s&rsquo;,a&rsquo;)]
+$$</p>
+<ul>
+<li>$R(s,a)$ : immediate reward</li>
+<li>$\gamma \max_{a&rsquo;}Q^*(s&rsquo;,a&rsquo;)$ : expected future reward</li>
+</ul>
+<blockquote>
+<p>if a function $V$ satisfies the Bellman equation, then it must be a Q-star
+if using Bellman equation to update from random to infinite, we will converge to $Q^*$
+We can use <em>DL</em> to learn to approximate Q-star: <em>DQL(Deep Q-learning)</em></p>
+</blockquote>
+<h2 id="q-learning">Q-learning</h2>
+<p>Q-learning is a simple and effective algorithm for learning Q-functions.</p>
+<ul>
+<li>Train a NN $Q_\theta(s,a)$ to estimate future rewards for every (state, action) pair.</li>
+<li>move forward to Bellman equation (which is the loss function for training)</li>
+<li>Some problems are easier to learn a mapping from states to actions, others are harder.</li>
+</ul>
+<h2 id="policy-gradient">Policy Gradient</h2>
+<blockquote>
+<p>train a NN $\pi_\theta(a|s)$ that takes in a state and outputs a probability distribution over actions&hellip;&hellip;</p>
+</blockquote>
+<blockquote>
+<p>Obj fn, expected reward under policy $\pi_\theta$: $J(\theta) = \mathbb{E}<em>{r \sim p</em>\theta}[\sum_{t\geq 0}\gamma^tr_t ]$
+then we can find the optimal policy by maximizing $\theta^* = argmax_{\theta} J(\theta)$, using <em>gradient ascent</em>.</p>
+</blockquote>
+<p>can not find $\partial J / \partial \theta$ directly</p>
+<blockquote>
+<p>General formulation: $J(\theta) = \mathbb{E}<em>{x \sim p</em>\theta}[f(x)]$, where $f(x)$ is a rewarding fn, and $x$ is trajectory of states, rewards, actions under policy $p_\theta$.</p>
+</blockquote>
+<p>$$
+\begin{align}
+\frac{\partial J}{\partial \theta} = \frac{\partial}{\partial \theta} \mathbb{E}<em>{x \sim p</em>\theta} [f(x)] &amp;= \frac{\partial}{\partial \theta} \int_{X} p_\theta(x) f(x) dx = \int_{X} f(x) \frac{\partial}{\partial \theta} p_\theta(x) dx \
+\because \frac{\partial}{\partial \theta} logp_\theta(x) &amp;= \frac{1}{p_\theta(x)} \frac{\partial}{\partial \theta} p_\theta(x) \
+\therefore \frac{\partial J}{\partial \theta} &amp;= \int_{X} f(x) p_\theta(x) \frac{\partial}{\partial \theta} logp_\theta(x) dx\
+&amp;= \mathbb{E}<em>{x \sim p</em>\theta}[f(x) \frac{\partial}{\partial \theta} logp_\theta(x)]\
+\end{align}
+$$</p>
+<p>then we can sampling to estimate the expectation (sth like Monte Carlo &#x1f914;)</p>
+<p>let $x = (s_0, a_0, s_1, a_1, &hellip;, s_t, a_t, r_t)$, random: $x \sim p_\theta(x)$</p>
+<p>then write out the probability of $x$ under policy $\pi_\theta$ (with Markov property):</p>
+<p>$$
+p_\theta(x) = \Pi_{t\geq 0} P(s_{t+1}|s_t)\pi_\theta(a_t|s_t) \Rightarrow logp_\theta(x) = \sum_{t\geq 0} logP(s_{t+1}|s_t) + log\pi_\theta(a_t|s_t)
+$$</p>
+<p>where $P(s_{t+1}|s_t)$ is the ENV&rsquo;s transition probability, can not compute!
+$\pi_\theta(a_t|s_t)$ is the NN&rsquo;s output (which is action probability), can compute!</p>
+<p>note that $P$ is not a function of $\theta$, so we can write the gradient as:</p>
+<p>$$
+\frac{\partial}{\partial \theta} logp_\theta(x) = \sum_{t\geq 0} \frac{\partial}{\partial \theta} log\pi_\theta(a_t|s_t)
+$$</p>
+<p>put it back into (4)</p>
+<p>$$
+\begin{align}
+\frac{\partial J}{\partial \theta}
+&amp;= \mathbb{E}<em>{x \sim p</em>\theta}[f(x) \frac{\partial}{\partial \theta} logp_\theta(x)]\
+&amp;= \mathbb{E}<em>{x \sim p</em>\theta}[f(x) \sum_{t\geq 0} \frac{\partial}{\partial \theta} log\pi_\theta(a_t|s_t)]\
+\end{align}
+$$</p>
+<ul>
+<li>$x\sim p_\theta$: can be sampled from the policy, because it is a sequence of states, actions, rewards</li>
+<li>$f(x)$: rewarding function, can be observed and computed</li>
+<li>$\frac{\partial}{\partial \theta}log\pi_\theta(a_t|s_t)$: NN&rsquo;s output gradient w.r.t. model weights $\theta$</li>
+</ul>
+<p>so we come up to a algorithm:</p>
+<blockquote>
+<ol>
+<li>Initialize $\theta$</li>
+<li>Collect trajectories $x_t$ and get rewards $f(x)$ by running policy $\pi_\theta$ in the environment</li>
+<li>Compute the gradient of $J(\theta)$ w.r.t. $\theta$</li>
+<li>Update $\theta$ using <em>gradient ascent</em></li>
+<li>Repeat 2-4 until convergence</li>
+</ol>
+</blockquote>
+<p>Intuition:</p>
+<ul>
+<li>When rewards $f(x)$ high, increase the probability of actions we took, vice versa. <em>趋利避害</em></li>
+<li>need SO MANY data to trial and error</li>
+</ul>
+<p>what is the future from 2019?</p>
+<ul>
+<li>Actor-Critic</li>
+<li>Model-based RL</li>
+<li>Imitation Learning</li>
+<li>Inverse RL</li>
+<li>Adversarial RL, which is a part of GANs</li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2025-04-18</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/l21-reinforcement-learning/" data-title="L21-Reinforcement Learning"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/l21-reinforcement-learning/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/l21-reinforcement-learning/" data-title="L21-Reinforcement Learning"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/l21-reinforcement-learning/" data-title="L21-Reinforcement Learning"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/l21-reinforcement-learning/" data-title="L21-Reinforcement Learning"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/l17-huge-gnn/" class="prev" rel="prev" title="L17-huge GNN"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>L17-huge GNN</a>
+            <a href="/l17-3d-vision/" class="next" rel="next" title="L17-3D Vision">L17-3D Vision<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.123.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">HHZZ</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
