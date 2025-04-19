@@ -58,9 +58,12 @@ $$
 ### bellman equation
 Q-star satisfies the Bellman equation:
 
+
 $$
-Q^*(s,a) = \mathbb{E}[R(s,a) + \gamma \max_{a'}Q^*(s',a')]
+Q^\*(s,a)=\mathbb{E}[R(s,a)+\gamma\max_{a'}Q^*(s',a')]
 $$
+
+
 - $R(s,a)$ : immediate reward
 - $\gamma \max_{a'}Q^*(s',a')$ : expected future reward
 
@@ -79,21 +82,21 @@ Q-learning is a simple and effective algorithm for learning Q-functions.
 ## Policy Gradient
 > train a NN $\pi_\theta(a|s)$ that takes in a state and outputs a probability distribution over actions......
 
-> Obj fn, expected reward under policy $\pi_\theta$: $J(\theta) = \mathbb{E}_{r \sim p_\theta}[\sum_{t\geq 0}\gamma^tr_t ]$
+> Obj fn, expected reward under policy $\pi_\theta$: $J(\theta)=\mathbb{E}\_{r \sim p_\theta}[\sum_{t\geq 0}\gamma^tr_t ]$
 > then we can find the optimal policy by maximizing $\theta^* = argmax_{\theta} J(\theta)$, using *gradient ascent*.
 
 can not find $\partial J / \partial \theta$ directly 
 
-> General formulation: $J(\theta) = \mathbb{E}_{x \sim p_\theta}[f(x)]$, where $f(x)$ is a rewarding fn, and $x$ is trajectory of states, rewards, actions under policy $p_\theta$.
+> General formulation: $J(\theta) = \mathbb{E}\_{x \sim p_\theta}[f(x)]$, where $f(x)$ is a rewarding fn, and $x$ is trajectory of states, rewards, actions under policy $p_\theta$.
 
 
 
 $$
 \begin{align}
-\frac{\partial J}{\partial \theta} = \frac{\partial}{\partial \theta} \mathbb{E}_{x \sim p_\theta} [f(x)] &= \frac{\partial}{\partial \theta} \int_{X} p_\theta(x) f(x) dx = \int_{X} f(x) \frac{\partial}{\partial \theta} p_\theta(x) dx \\
-\because \frac{\partial}{\partial \theta} logp_\theta(x) &= \frac{1}{p_\theta(x)} \frac{\partial}{\partial \theta} p_\theta(x) \\
-\therefore \frac{\partial J}{\partial \theta} &= \int_{X} f(x) p_\theta(x) \frac{\partial}{\partial \theta} logp_\theta(x) dx\\
-&= \mathbb{E}_{x \sim p_\theta}[f(x) \frac{\partial}{\partial \theta} logp_\theta(x)]\\ 
+\frac{\partial J}{\partial \theta} = \frac{\partial}{\partial \theta} \mathbb{E}\_{x \sim p_\theta} [f(x)] &= \frac{\partial}{\partial \theta} \int_{X} p_\theta(x) f(x) dx = \int_{X} f(x) \frac{\partial}{\partial \theta} p_\theta(x) dx \\\\
+\because \frac{\partial}{\partial \theta} logp_\theta(x) &= \frac{1}{p_\theta(x)} \frac{\partial}{\partial \theta} p_\theta(x) \\\\
+\therefore \frac{\partial J}{\partial \theta} &= \int_{X} f(x) p_\theta(x) \frac{\partial}{\partial \theta} logp_\theta(x) dx\\\\
+&= \mathbb{E}\_{x \sim p_\theta}[f(x) \frac{\partial}{\partial \theta} logp_\theta(x)]\\\\
 \end{align}
 $$
 
@@ -121,8 +124,8 @@ put it back into (4)
 $$
 \begin{align}
 \frac{\partial J}{\partial \theta} 
-&= \mathbb{E}_{x \sim p_\theta}[f(x) \frac{\partial}{\partial \theta} logp_\theta(x)]\\ 
-&= \mathbb{E}_{x \sim p_\theta}[f(x) \sum_{t\geq 0} \frac{\partial}{\partial \theta} log\pi_\theta(a_t|s_t)]\\ 
+&= \mathbb{E}\_{x \sim p_\theta}[f(x) \frac{\partial}{\partial \theta} logp_\theta(x)]\\\\
+&= \mathbb{E}\_{x \sim p_\theta}[f(x) \sum_{t\geq 0} \frac{\partial}{\partial \theta} log\pi_\theta(a_t|s_t)]\\\\ 
 \end{align}
 $$
 - $x\sim p_\theta$: can be sampled from the policy, because it is a sequence of states, actions, rewards
@@ -149,7 +152,5 @@ what is the future from 2019?
 - Model-based RL
 - Imitation Learning
 - Inverse RL
-- Adversarial RL, which is a part of GANs
-
-
+- Adversarial RL, GANs
 

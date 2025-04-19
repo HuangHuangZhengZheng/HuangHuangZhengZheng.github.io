@@ -32,7 +32,7 @@ back to the start :laughing:
   - requires new architectures, losses
   - need post-processing for other tasks
     - Chamfer distance: 
-$d_{CD}(S_1,S_2) = \sum_{x \in S_1} \min_{y \in S_2} \lVert x - y \rVert _2^2  + \sum_{y \in S_2} \min_{x \in S_1} \lVert x - y \rVert _2^2$
+     $d_{CD}(S_1,S_2)=\sum_{x \in S_1}\min_{y \in S_2}\lVert x-y\rVert\_2^2  + \sum_{y \in S_2} \min_{x \in S_1} \lVert x - y \rVert _2^2$
   - LiDAR :laughing:
 
 
