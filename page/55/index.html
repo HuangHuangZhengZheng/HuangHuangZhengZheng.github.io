@@ -98,22 +98,21 @@
         alt="/avatar.jpg"
         title="/avatar.jpg" width="1920" height="1280" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/HuangHuangZhengZheng" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/61b-33/">61B-33: Quick Sort</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-13">2024-07-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">Backstory, Partitioning Quick Sort Partition Sort, a.k.a. Quicksort Quicksort Runtime Theoretical analysis:
+Best case: Θ(N log N) Worst case: Θ(N2) Compare this to Mergesort.
+Best case: Θ(N log N) Worst case: Θ(N log N) Recall that Θ(N log N) vs. Θ(N2) is a really big deal. So how can Quicksort be the fastest sort empirically? Because on average it is Θ(N log N). Rigorous proof requires probability theory + calculus, but intuition + empirical analysis will hopefully convince you.</div><div class="post-footer">
+        <a href="/61b-33/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/61b-31/">61B-31: Dynamic Programming</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-13">2024-07-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">Shortest Paths in a DAG (Directed Acyclic Graphs) Dynamic Programming the DAG SPT algorithm The DAG SPT algorithm can be thought of as solving increasingly large subproblems:
+Distance from source to source is very easy, and is just zero. We then tackle distances to vertices that are a bit farther to the right. We repeat this until we get all the way to the end of the graph. Problems grow larger and larger.</div><div class="post-footer">
+        <a href="/61b-31/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/61b-29/">61-29: Shortest Paths</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-13">2024-07-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">pros and cons Graph Problem so far Punchline:
 DFS and BFS both traverse entire graphs, just in a different order (like preorder, inorder, postorder, and level order for trees). Solving graph problems is often a question of identifying the right traversal. Many traversals may work. Example: DFS for topological sort. BFS for shortest paths. Example: DFS or BFS about equally good for checking existence of path. Dijkstra’s Algorithm problem restatement: Find the shortest paths from source vertex s to some target vertex t.</div><div class="post-footer">
         <a href="/61b-29/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/61b-30/">61B-30: Minimum Spanning Trees</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-13">2024-07-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">warm up MST, Cut Property, Generic MST Algorithm MST vs SPT A shortest paths tree depends on the start vertex:
-Because it tells you how to get from a source to EVERYTHING. There is no source for a MST.
-Nonetheless, the MST sometimes happens to be an SPT for a specific vertex.
-两者关系不大？ Cut Property 简单证明 cross bridge 一定在 MST 中。 Generic MST Algorithm Start with no edges in the MST.</div><div class="post-footer">
-        <a href="/61b-30/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/61b-28/">61B-28:  Graph Traversals</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-13">2024-07-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">Depth First Paths “Depth First Search” is a more general term for any graph search algorithm that traverses a graph as deep as possible before backtracking.
-The term is used for several slightly different algorithms. For example: DFS may refer to the version from the previous lecture that doesn’t use any marks (and thus can get caught in a loop). DFS may refer to the version where vertices are marked. DFS may refer to a version where vertices are marked and source edges recorded (as in Depth First Paths).</div><div class="post-footer">
-        <a href="/61b-28/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>

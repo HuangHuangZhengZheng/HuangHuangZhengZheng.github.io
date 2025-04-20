@@ -3,7 +3,29 @@
         <title>UMich-EECS-498 - Category - HHZZ`s space</title>
         <link>http://example.org/categories/umich-eecs-498/</link>
         <description>UMich-EECS-498 - Category - HHZZ`s space</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 19 Apr 2025 08:27:18 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/umich-eecs-498/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 20 Apr 2025 08:27:18 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/umich-eecs-498/" rel="self" type="application/rss+xml" /><item>
+    <title>L18-Video</title>
+    <link>http://example.org/l18-video/</link>
+    <pubDate>Sun, 20 Apr 2025 08:27:18 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/l18-video/</guid>
+    <description><![CDATA[Video in NN Introduction Video: 4D tensor, T x H x W x C, a sequence of frames(images).
+Video Classification Input: T x H x W x C Output: K classes, actions instead of nouns. Problems: raw video are BIG, ~1.5GB per minute for SD(640x480x3)
+Solutions: on short clips, eg. T=16, H=W=112, low fps
+Short Term model Single-Frame CNN so you can use a 2D CNN on each frame independently :)]]></description>
+</item>
+<item>
+    <title>L19-Generative Model I</title>
+    <link>http://example.org/l19-generative-model-i/</link>
+    <pubDate>Sun, 20 Apr 2025 08:27:18 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/l19-generative-model-i/</guid>
+    <description><![CDATA[Generative Model I supervised learning vs unsupervised learning supervised learning: labeled data, labeled target variable
+classification, semantic segmentation, object detection, etc. unsupervised learning: unlabeled data, no target variable
+clustering, density estimation, feature extraction/learning, dimensionality reduction, etc. we are trying to learn model the distribution of the data
+Discriminative, Generative, and Conditional Generative all three types of learning can be used in a equation, x is the input variable, y is the target variable,]]></description>
+</item>
+<item>
     <title>L13-Attention</title>
     <link>http://example.org/l13-attention/</link>
     <pubDate>Sat, 19 Apr 2025 08:27:18 &#43;0800</pubDate>
@@ -101,32 +123,6 @@ Normalization Layers 主要讨论的是batch normalization
 层与层之间数据分布更加稳定 此时
 1 model.eval() 此时bn可以作为线形层被fuse进入fcnn or conv
 layer norm也有，主要是rnn和transformer用到了 Example: LeNet-5 ]]></description>
-</item>
-<item>
-    <title>L6-BP</title>
-    <link>http://example.org/l6-bp/</link>
-    <pubDate>Thu, 24 Oct 2024 23:01:36 &#43;0800</pubDate>
-    <author>HHZZ</author>
-    <guid>http://example.org/l6-bp/</guid>
-    <description><![CDATA[Backpropagation 参见cmu 10-414 &#x1f600;
-RNN 初见 Computation Graph &#x1f60f; A2要hardcode直接的反向传播了 555
-真正的代码 &#x1f60b;
-1 2 3 4 5 6 7 8 9 class Multiply(torch.autograd.Function): @staticmethod def forward(ctx, x, y): ctx.save_for_backward(x, y) return x * y @staticmethod def backward(ctx, grad_output): x, y = ctx.saved_tensors return grad_output * y, grad_output * x # 解析计算 PyTorch operators in deep engine &#x1f914;
-BP rules BP with vector-valued functions 假装标量求导，然后匹配矩阵形状即可（典中典）
-element-wise functions in BP 不用使用矩阵求导，直接一一对应去想梯度的传递即可]]></description>
-</item>
-<item>
-    <title>L5-NN</title>
-    <link>http://example.org/l5-nn/</link>
-    <pubDate>Thu, 24 Oct 2024 15:13:23 &#43;0800</pubDate>
-    <author>HHZZ</author>
-    <guid>http://example.org/l5-nn/</guid>
-    <description><![CDATA[Neural Networks 线性不可分怎么处理？ 怎么encode不同的信息？
-王朝落幕 Neural Networks Architecture data -&gt; input layer -&gt; hidden layer -&gt; output layer
-data driven, non-linear &#x1f60b;
-&#x1f604; ?
-ReLU, 通用近似定理 详细证明看一看官方给出的课本
-凸优化 牢NN当然是进行非凸优化 &#x1f600;]]></description>
 </item>
 </channel>
 </rss>

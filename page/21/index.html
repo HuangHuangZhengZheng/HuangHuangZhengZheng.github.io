@@ -98,6 +98,27 @@
         alt="/avatar.jpg"
         title="/avatar.jpg" width="1920" height="1280" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/HuangHuangZhengZheng" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/lec5-c-memory-management/">Lec5-C Memory Management</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-09">2024-10-09</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61c/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61C</a></span></div><div class="content">C Memory Management malloc 1 2 3 4 5 6 // with the help of a typecast and sizeof ptr = (int *) malloc(n * sizeof(int)); /* check if malloc was successful */ if (ptr == NULL) { /* handle error */ } 1 2 3 ptr = (int *) realloc(ptr, (n+1) * sizeof(int)); free(ptr); // realloc(ptr, 0) 不要踩坑！
+An array name is not a variable. &ndash; K&amp;R
+when call &amp;arr , just get the address of the first element of the array</div><div class="post-footer">
+        <a href="/lec5-c-memory-management/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/lec6-floating-point/">Lec6-Floating Point</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-09">2024-10-09</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61c/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61C</a></span></div><div class="content">Floating Point Introduction note that binary can directly calculate
+we can use normal format to represent floating point numbers
+eg: $1.xxxxx * 2_{two}^{yyyyy}$
+&ldquo;1.&ldquo;默认，不需bit级别上考虑
+underflow &amp; IEEE 754 希望全是0的bit表示的是最小的数字，而不是+0或-0，引入bias
+$bias = 2^{n-1} - 1$ 详见number representation的bias部分
+真正的表示方法：
+IEEE 754 &#x1f389;
+Special Values infinity, NaN, zero
+NaN (Not a Number) : 无效数值，如0/0, sqrt(-1) infinity : 无穷大，如1/0, 10^1000 zero : 零，如0/1, 1.0-1.0 gap数量级在800万左右，因为implicit one的出现
+denormalized number : 规格化数值，指数部分为0（implicit 2^-126），小数部分不为0==&gt; 从步长2^-149开始，exp加1，步长翻倍，同时从denorm到norm的时候步长不会发生变化！ 总结
+从0 11111110 111&hellip;11(23个) 加一，得到 0 11111111 000&hellip;00(23个)这就是无穷</div><div class="post-footer">
+        <a href="/lec6-floating-point/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/lec7-risc-v-introduction/">Lec7-RISC-V Introduction</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-09">2024-10-09</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61c/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61C</a></span></div><div class="content">RISC-V Introduction Instruction Set Architecture (ISA) Assembly Variables each statement is called an instruction
 Registers where are registers ?
@@ -107,21 +128,6 @@ x0: always 0 # is the comment character
 no type casting in RISC-V assembly language the registers have no type
 add/sub instructions syntax of instructions 1 2 add rd, rs1, rs2 sub rd, rs1, rs2 # d(rd) = e(rs1) - f(rs2), 注意顺序 Immediate values（立即数） 1 addi rd, rs1, 10 没有subi ，加上相反数即可</div><div class="post-footer">
         <a href="/lec7-risc-v-introduction/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/lec11-risc-v-instruction-formats-i/">Lec11-RISC-V Instruction Formats I</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-09">2024-10-09</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61c/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61C</a></span></div><div class="content">RISC-V Instruction Formats I 事实上已经来到下一个层级(二进制)了，但是看标题似乎还是RISC-V &#x1f914;
-Background and Consequences 1. addressing modes everything has a memory address, so branches and jumps can use them PC (program counter, again &#x1f604;) is a register that holds the address of the next instruction to be executed 2. 二进制兼容否？如何表示指令？ 一个指令用1个word(32bits)来装绰绰有余
-divide instruction into &ldquo;fields&rdquo; &#x1f60b;
-R-Format Layout 算数逻辑指令
-funct3: 功能码，决定指令的操作类型 funct7: 扩展功能码，用于一些复杂的指令 opcode: 操作码，决定指令的类别 具体查表
-new one: slt and sltu &ndash; set less than, when rs1 &lt; rs2, then set the destination register to 1, otherwise 0.</div><div class="post-footer">
-        <a href="/lec11-risc-v-instruction-formats-i/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/lec10-risc-v-procedures/">Lec10-RISC-V Procedures</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-08">2024-10-08</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61c/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61C</a></span></div><div class="content">RISC-V Procedures 调用函数的时候有一些无关的主进程变量的value需要存储，but where?
-栈帧 / Stack Frame 存放了什么？ 注意stack 从上往下增长，push sp&ndash;, pop sp++
-序言prologue &amp; 结尾epilogue 1 2 3 4 5 int Leaf (int g, int h, int i, int j) { int f; f = (g + h) - (i + j); return f; } 1 2 3 4 5 6 7 8 9 10 11 12 13 Leaf: # 序言prologue addi sp, sp, -8 # 保存之前的栈指针 sw s1, 4(sp) # 保存参数 sw s2, 0(sp) # 计算 .</div><div class="post-footer">
-        <a href="/lec10-risc-v-procedures/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>

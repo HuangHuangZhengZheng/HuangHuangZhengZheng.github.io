@@ -3,9 +3,31 @@
         <title>HHZZ`s space</title>
         <link>http://example.org/</link>
         <description>This is my cool site</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 19 Apr 2025 08:27:18 &#43;0800</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 20 Apr 2025 08:27:18 &#43;0800</lastBuildDate>
             <atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>L18-Video</title>
+    <link>http://example.org/l18-video/</link>
+    <pubDate>Sun, 20 Apr 2025 08:27:18 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/l18-video/</guid>
+    <description><![CDATA[Video in NN Introduction Video: 4D tensor, T x H x W x C, a sequence of frames(images).
+Video Classification Input: T x H x W x C Output: K classes, actions instead of nouns. Problems: raw video are BIG, ~1.5GB per minute for SD(640x480x3)
+Solutions: on short clips, eg. T=16, H=W=112, low fps
+Short Term model Single-Frame CNN so you can use a 2D CNN on each frame independently :)]]></description>
+</item>
+<item>
+    <title>L19-Generative Model I</title>
+    <link>http://example.org/l19-generative-model-i/</link>
+    <pubDate>Sun, 20 Apr 2025 08:27:18 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/l19-generative-model-i/</guid>
+    <description><![CDATA[Generative Model I supervised learning vs unsupervised learning supervised learning: labeled data, labeled target variable
+classification, semantic segmentation, object detection, etc. unsupervised learning: unlabeled data, no target variable
+clustering, density estimation, feature extraction/learning, dimensionality reduction, etc. we are trying to learn model the distribution of the data
+Discriminative, Generative, and Conditional Generative all three types of learning can be used in a equation, x is the input variable, y is the target variable,]]></description>
+</item>
+<item>
     <title>L13-Attention</title>
     <link>http://example.org/l13-attention/</link>
     <pubDate>Sat, 19 Apr 2025 08:27:18 &#43;0800</pubDate>
@@ -95,26 +117,6 @@ encoder and decoder encoder: simple example ？？注意这里矩阵是one colum
 Random walks 怎么理解高效率？
 对特征学习的考量 提出损失函数 用了一个近似来化简 （不约而同走到了noise-denoise） k在5~20之间！又是glidar的论文！
 summary node2vec embedding the entire graph SKIP]]></description>
-</item>
-<item>
-    <title>L2-traditional methods</title>
-    <link>http://example.org/l2-traditional-methods/</link>
-    <pubDate>Mon, 27 Jan 2025 12:22:01 &#43;0800</pubDate>
-    <author>HHZZ</author>
-    <guid>http://example.org/l2-traditional-methods/</guid>
-    <description><![CDATA[Traditional Methods in Graph Learning node-level features degree Centrality measures: degree centrality, betweenness centrality, eigenvector centrality, closeness centrality, clustering coefficent 进一步引申GDV edge-level features 我觉得这个很像我们的vae encoder想法 距离表征容易理解&hellip;&hellip;
-邻接矩阵的幂（类似于归纳法 略）
-graph-level features 核方法（但是skip） bag of sth&hellip; recall when you need ]]></description>
-</item>
-<item>
-    <title>L1-Intro</title>
-    <link>http://example.org/l1-intro/</link>
-    <pubDate>Sun, 26 Jan 2025 14:55:57 &#43;0800</pubDate>
-    <author>HHZZ</author>
-    <guid>http://example.org/l1-intro/</guid>
-    <description><![CDATA[CS224W: Intro to Graph Deep Learning GNN for img 也就是说gnn会比传统的cnn更好 &#x1f914;
-gnn as encoder and diffusion process! how to build a graph? 基本图论知识见CS61B
-nodes??? edges??? 新的图的表示 双向图与投影图（仔细看线条） 自环的增加的degree为1 接邻矩阵表示连接性 ]]></description>
 </item>
 </channel>
 </rss>

@@ -98,6 +98,21 @@
         alt="/avatar.jpg"
         title="/avatar.jpg" width="1920" height="1280" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/HuangHuangZhengZheng" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/databasel1/">CS186-L1: Introduction + SQL I</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-22">2024-07-22</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div><div class="content">大纲进程： sheet
+SQL I pros and cons relational Terminology and concepts database: set of name relations relation(table): schema: descriptions &ldquo;metadata&rdquo; fixed, unique attribute names, atomic types instance: set of data 符合description often changed, can duplicate multiset of tuples or &ldquo;rows&rdquo; attribute (column,field) tuple (row,record),怀疑一些python概念也来自于此 DDL (Data Definition Language) 1 2 3 4 5 6 7 8 9 10 CREATE TABLE myTable ( ID INTEGER, myName CHAR(50), Age INTEGER, Salary FLOAT, PRIMARY KEY (ID, myName), FOREIGN KEY (ID) REFERENCES myOtherTable(ID), FOREIGN KEY (myName) REFERENCES myOtherTable(myName) ); 1 2 3 SELECT [DISTINCT] &lt;column expression list&gt; FROM &lt;single_table&gt; [WHERE &lt;predicate&gt;] ORDER BY Lexicographic order by default 字典序 LIMIT Aggregation functions AVG: average COUNT: count the number of rows MAX: maximum value MIN: minimum value SUM: sum of values 1 2 SELECT AVG(Salary) FROM myTable; GROUP BY HAVING</div><div class="post-footer">
+        <a href="/databasel1/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/datal26/">DATA100-L26: Parallel Data Analytics; Conclusion</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">mapreduce MapReduce是一种编程模型,用于大规模数据集的并行运算[1][2][3]。它将复杂的并行计算过程抽象为两个函数:Map和Reduce[4]。
+Map函数将输入数据集拆分成独立的块,并对每个块应用映射操作,生成一组中间键值对[1][2][3]。Reduce函数会对所有Map的输出进行合并操作,生成最终结果[1][2][3]。
+MapReduce的主要特点包括[4][5]:
+易于编程:程序员只需描述做什么,具体怎么做由系统的执行框架处理 良好的扩展性:可通过添加节点扩展集群能力 高容错性:通过计算迁移或数据迁移等策略提高集群的可用性与容错性 MapReduce采用&quot;分而治之&quot;策略,将大规模数据集切分成多个独立的分片,这些分片可以被多个Map任务并行处理[4]。它设计的一个理念是&quot;计算向数据靠拢&quot;,移动数据需要大量的网络传输开销[4]。
+总之,MapReduce是一种简单、可扩展的并行计算模型,通过抽象Map和Reduce函数,使得程序员可以轻松编写大规模并行应用程序,而无需关注底层的分布式细节[1][2][3][4][5]。
+Citations: [1] https://baike.baidu.com/item/MapReduce/133425 [2] https://zh.wikipedia.org/zh-hans/MapReduce [3] https://www.ibm.com/cn-zh/topics/mapreduce [4] https://cshihong.github.io/2018/05/11/MapReduce%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86/ [5] https://cloud.tencent.com/developer/article/1778549
+apache spark lazy strategy: 延迟计算策略,Spark默认采用这种策略,即只有当数据真正被使用时才会计算。 编译优化语句执行顺序！ Conclusion 工具链 What is next? 有用的data science链接 http://kaggle.com https://github.com/awesomedata/awesome-public-datasets http://toolbox.google.com/datasetsearch https://towardsdatascience.com https://www.reddit.com/r/dataisbeautiful/ https://fivethirtyeight.com</div><div class="post-footer">
+        <a href="/datal26/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/datal24/">DATA100-L24: Clustering</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">introduction to clustering no label at all &#x1f622;
 K-means clustering 算法动画演示
@@ -106,23 +121,6 @@ K-Means vs KNN minimizing inertia convex?? 损失函数不一定凸，梯度下�
 outlier 有时忽略处理或者自成一类
 picking K Smax？ can s be negative? summary </div><div class="post-footer">
         <a href="/datal24/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/datal25/">DATA100-L25: Data Regulations</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">impetus for regulation why &ldquo;you&rdquo; should care Because you are gonna to be a data scientist and product owner!
-regulations: Privacy laws GDPR (General Data Protection Regulation) CCPA (California Consumer Privacy Act) Cyber Security Law in China
-deletion can be more difficult than you think &#x1f60f; 传输也要监管 fully take advantage of the &ldquo;regulations&rdquo;
-take care of gray areas &#x1f914; work with dear NGO and GO other regulations/ regulatory bodies </div><div class="post-footer">
-        <a href="/datal25/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/datal23/">DATA100-L23: Decision Trees</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-19">2024-07-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">Multiclass Classification 多分类问题 但是没有softmax &#x1f622; Decision Trees (conceptually) Decision Tree Demo Creating Decision Trees in sklearn 可视化代码见lecture code
-Evaluating Tree Accuracy Overfit Decision Tree Example tree is too complex to generalize well to new data too tall and narrow
-有用的特征越多，树的结构可能比较简单&#x1f914;
-The Decision Tree Generation Algorithm Intuitively Evaluating Split Quality 分割怎么样“更明显”？
-Entropy 沿着树向下，信息熵越小？可能变大！ Generating Trees Using Entropy Weighted entropy can decrease!
-Traditional decision tree generation algorithm:
-All of the data starts in the root node.</div><div class="post-footer">
-        <a href="/datal23/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>

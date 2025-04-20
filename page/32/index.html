@@ -98,6 +98,17 @@
         alt="/avatar.jpg"
         title="/avatar.jpg" width="1920" height="1280" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/HuangHuangZhengZheng" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/databasel15/">CS186-L15: DB Design: Entity-Relationship Models</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-08-14">2024-08-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div><div class="content">Overview how to design a database instead of DBMS! &#x1f914; this class mainly focuses on the conceptual design
+Data Models and Relational Levels of Abstraction def in Data model abstractions example Data Independence Entity-Relationship Model (ERM) Def Entity: a real-world object that can be described and identified by a set of attributes Entity Set: a collection of similar entities all entities in an entity set have the same attributes each entity set has a key each attribute has a domain Relationship: a connection between two entity sets Key and Participation Constraints Key Constraints Participation Constraints Weak Entity Alternative Notation and Terminology decoder graph &#x1f605; math notation &#x1f605; Binary vs Ternary Relationships 上面的更加紧密并且可以记录qty</div><div class="post-footer">
+        <a href="/databasel15/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/databasel10/">CS186-L10: Iterators & Joins</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-08-14">2024-08-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div><div class="content">Intro relational operator: tuples(in other way, relations) in, tuples out
+1 2 3 4 5 6 7 abstract class Iterator { // set up the children and the dataflow graph void setup(List&lt;Iterator&gt; inputs); void init(args); // state tuple next(); // returns the next tuple void close(); } presudo code select on the fly &#x1f914;
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 init() { child.</div><div class="post-footer">
+        <a href="/databasel10/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/databasel11/">CS186-L11:  Query Opt: Plan Space</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-08-14">2024-08-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div><div class="content">Intro ??? I am here right now &#x1f604; 省流：拿进来sql，转换成relational algebra，然后树形图展示，考虑不同的实现方式，然后给出优化方案。
 考虑不同的实现方式
@@ -110,21 +121,6 @@ plan space: how many plans? cost estimation search strategy algebra equivalences
 这种级联性质可以被理解为将多个投影操作合并成一个操作。
 joins 结合律？交换律？ 结合律一般不成立，交换律是成立的（由前面的Cartesian product可知）。有一个理解点：叉积 $\times$ 的范围变大了 Some Heuristics selections selection is cheap, while join is expensive &#x1f60b;</div><div class="post-footer">
         <a href="/databasel11/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/databasel12/">CS186-L12: Query Opt: Costs & Search</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-08-14">2024-08-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div><div class="content">Intro An important property of query optimization is that we have no way of knowing how many I/Os a plan will cost until we execute that plan. see note 9
-example background plan space overview 对physical properties的描述，关注的点在于不同过程对hash or sort的要求 Cost Estimation 讨论的假设 注意predicate之间独立，以及只是关注IO
-量化的信息点，catalog selectivity formula side note:
-等值join的理解见下图的bunny &#x1f430; histograms for selectivity estimation 但是这节课用的是等宽的直方图&#x1f60f;，然后所有的条件相互独立，selectivity根据直方图显示的频率计算得出
-selectivity for join query $$ \Large R\Join_{p} \sigma_{q}(S) \equiv \sigma_{p}(R \times \sigma_{q}(S)) \equiv \sigma_{p \land q}(R \times S) $$ 所以 $ s = s_p s_q $注意叉积产生的size变化</div><div class="post-footer">
-        <a href="/databasel12/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/databasel8/">CS186-L8: Relational Algebra</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-08-14">2024-08-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div><div class="content">Relational Algebra Intro Relational algebra &#x1f635;
-algebra on sets &mdash;&gt; mean no duplicates! operational description of transformations Relational Calculus &#x1f635;
-basic of SQL 以上两者被证明等价并且使得SQL能够被编译&ndash;long story&hellip;&hellip;
-Relational Algebra Operators Unary Operators Selection (σ) : select rows that satisfy a condition Projection (π) : select specific columns 如果结果是multiset, 去重! 虽然real system不会自动去重 Rename (ρ) : rename a column Union (∪) : tuples in either r1 or r2 two input relations, must be compatible (same number of columns or &ldquo;fields&rdquo;, and have same data types corresponding to the same field) UNION in SQL Difference (−) : tuples in r1, but not in r2 same with union, both input relations must be compatible EXCEPT in SQL Cross Product (×) : cartesian product of two relations how many rows in the result?</div><div class="post-footer">
-        <a href="/databasel8/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
