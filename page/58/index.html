@@ -98,6 +98,13 @@
         alt="/avatar.jpg"
         title="/avatar.jpg" width="1920" height="1280" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/HuangHuangZhengZheng" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/61b-25/">61B-25: Advanced Trees, incl. Geometric</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-13">2024-07-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">Traversals Level Order
+Traverse top-to-bottom, left-to-right (like reading in English): We say that the nodes are ‘visited’ in the given order. Depth First Traversals
+Preorder, Inorder, Postorder Basic (rough) idea: Traverse “deep nodes” (e.g. A) before shallow ones (e.g. F). preorder 1 2 3 4 5 6 preOrder(BSTNode x) { if (x == null) return; print(x.key) preOrder(x.left) preOrder(x.right) } D B A C F E G
+inorder 1 2 3 4 5 6 inOrder(BSTNode x) { if (x == null) return; inOrder(x.</div><div class="post-footer">
+        <a href="/61b-25/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/61b-21/">61B-21: Trees, BSTs</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-13">2024-07-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">ordered linked list&mdash;&gt; binary search tree or skip list (out of course)
 BST Definitions A tree consists of:
@@ -110,11 +117,6 @@ Every node N except the root has exactly one parent, defined as the first node o
 Tree Rotation Non-obvious fact: Rotation allows balancing of any BST. One way to achieve balance:
 Rotate after each insertion and deletion to maintain balance. … the mystery is to know which rotations. We’ll come back to this. B-trees / 2-3 trees / 2-3-4 trees search tree weird solution to achieve balance add leaf overstuff leaf, but can not be too juicy!</div><div class="post-footer">
         <a href="/61b-22/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/61b-23/">61B-23: Hashing</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-13">2024-07-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">起因，无序array Using data as an Index One extreme approach: All data is really just bits.
-Use data itself as an array index. Store true and false in the array. Extremely wasteful of memory. To support checking presence of all positive integers, we need 2 billion booleans. Need some way to generalize beyond integers. 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 public class DataIndexedIntegerSet { boolean[] present; public DataIndexedIntegerSet() { present = new boolean[16]; } public insert(int i) { present[i] = true; } public contains(int i) { return present[i]; } } Binary Representations DataIndexedSet insert a cat 但是有弱点↓ collision handling &amp; computing a hashCode！</div><div class="post-footer">
-        <a href="/61b-23/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -145,7 +147,7 @@ Use data itself as an array index. Store true and false in the array. Extremely 
                     <span class="page-link" aria-hidden="true">&hellip;</span>
                 </li><li class="page-item ">
                     <span class="page-link">
-                        <a href="/page/62/">62</a>
+                        <a href="/page/63/">63</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">

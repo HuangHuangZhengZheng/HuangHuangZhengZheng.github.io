@@ -98,6 +98,23 @@
         alt="/avatar.jpg"
         title="/avatar.jpg" width="1920" height="1280" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/HuangHuangZhengZheng" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/lec12-risc-v-instruction-formats-ii/">Lec12-RISC-V Instruction Formats II</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-09">2024-10-09</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61c/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61C</a></span></div><div class="content">RISC-V Instruction Formats II B-Format Layout branch/分支 ==&gt; if-else, while, for
+encode Label:
+PC寻址, 用imm field来表示偏移量
+实际上 RV compressed instruction format! 16bit 压缩指令格式，偏移量不再是4的倍数，而是2的倍数（所以imm 二进制结尾一定是0）
+理论layout 解释一下如何从指令解析出立即数的数值
+B-type &ldquo;|&rdquo; 意思是专门分出一块区域来存一位数字
+Long Immediate， U-Format Layout I, B, S imm的12位扩展到long，找个地方放下剩下的20位
+注意这里不直接使用branch指令跳转，而是采用jump直接来做
+地方来了：同时来了两个新的指令lui &amp; auipc Corner case 有符号扩展带过来的，1开头的符号扩展
+用+1来避免这个问题
+补充 auipc 指令 J-Format Layout 只有jal，因为jalr是I-type的
+使用示例
+jalr 使用示例
+留一个reference</div><div class="post-footer">
+        <a href="/lec12-risc-v-instruction-formats-ii/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/lec5-c-memory-management/">Lec5-C Memory Management</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-09">2024-10-09</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61c/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61C</a></span></div><div class="content">C Memory Management malloc 1 2 3 4 5 6 // with the help of a typecast and sizeof ptr = (int *) malloc(n * sizeof(int)); /* check if malloc was successful */ if (ptr == NULL) { /* handle error */ } 1 2 3 ptr = (int *) realloc(ptr, (n+1) * sizeof(int)); free(ptr); // realloc(ptr, 0) 不要踩坑！
 An array name is not a variable. &ndash; K&amp;R
@@ -118,16 +135,6 @@ NaN (Not a Number) : 无效数值，如0/0, sqrt(-1) infinity : 无穷大，如1
 denormalized number : 规格化数值，指数部分为0（implicit 2^-126），小数部分不为0==&gt; 从步长2^-149开始，exp加1，步长翻倍，同时从denorm到norm的时候步长不会发生变化！ 总结
 从0 11111110 111&hellip;11(23个) 加一，得到 0 11111111 000&hellip;00(23个)这就是无穷</div><div class="post-footer">
         <a href="/lec6-floating-point/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/lec7-risc-v-introduction/">Lec7-RISC-V Introduction</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-09">2024-10-09</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61c/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61C</a></span></div><div class="content">RISC-V Introduction Instruction Set Architecture (ISA) Assembly Variables each statement is called an instruction
-Registers where are registers ?
-32 general purpose registers (GPRs) are available in RISC-V architecture.(x0 - x31)
-word: 32 bits (can be 64 bits in RV64)
-x0: always 0 # is the comment character
-no type casting in RISC-V assembly language the registers have no type
-add/sub instructions syntax of instructions 1 2 add rd, rs1, rs2 sub rd, rs1, rs2 # d(rd) = e(rs1) - f(rs2), 注意顺序 Immediate values（立即数） 1 addi rd, rs1, 10 没有subi ，加上相反数即可</div><div class="post-footer">
-        <a href="/lec7-risc-v-introduction/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -158,7 +165,7 @@ add/sub instructions syntax of instructions 1 2 add rd, rs1, rs2 sub rd, rs1, rs
                     <span class="page-link" aria-hidden="true">&hellip;</span>
                 </li><li class="page-item ">
                     <span class="page-link">
-                        <a href="/page/62/">62</a>
+                        <a href="/page/63/">63</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">

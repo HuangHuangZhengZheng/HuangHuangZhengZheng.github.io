@@ -98,6 +98,14 @@
         alt="/avatar.jpg"
         title="/avatar.jpg" width="1920" height="1280" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/HuangHuangZhengZheng" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/l13-attention/">L13-Attention</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2025-04-19">2025-04-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/umich-eecs-498/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UMich-EECS-498</a></span></div><div class="content">Attention Mechanisms in Neural Networks introduction What if Seq to Seq models processed long long sequences?
+Attention Mechanisms the core idea is that using weighted sum, and the coefficient can be learned from the model itself
+In math, we do not actually care that wether input is a sequence or not.
+given hidden states $h_i$ and the context vector $c$, we can calculate the attention weights as follows:
+$$ e_{t, i, j} = f_{att}(s_{t-1}, h_{i,j}) \ a_{t, :, :} = softmax(e_{t, :, :}) \ c_{t} = \sum_{i,j} a_{t, i, j} h_{i,j} $$</div><div class="post-footer">
+        <a href="/l13-attention/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/l17-3d-vision/">L17-3D Vision</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2025-04-19">2025-04-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/umich-eecs-498/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UMich-EECS-498</a></span></div><div class="content">3D Vision back to the start &#x1f606;
 shape prediction and ingest 3D information 5 data representation
@@ -110,13 +118,6 @@ RGB + Depth image = RGB-D image 2.5D raw 3D sensor can easily capture depth info
 What is Reinforcement Learning at time $t$, env $\rightarrow^{state}$ agent $\rightarrow^{action}$ env $\rightarrow^{reward}$ agent, then env changed, agent learned, then repeated.
 state can be partial -&gt; noisy reward can be delayed, implicit and sparse -&gt; noisy AND Nondifferentiable &#x1f632; Nonstationary environment, change over time &#x1f60e; Generative Adversarial Networks (GANs) somehow is a part of Reinforcement Learning.</div><div class="post-footer">
         <a href="/l21-reinforcement-learning/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/l17-huge-gnn/">L17-huge GNN</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2025-01-29">2025-01-29</time></span>&nbsp;<span class="post-category">included in <a href="/categories/stanford-cs224w/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Stanford-CS224W</a></span></div><div class="content">Scaling up GNNs 直接load全部nodes又不太可能【naive approach】4090 / A100带不动
-neighbor sampling 对hub node的思考 see the paper
-cluster-GCN advanced Simplified GCN 舍弃了GCN的non-linearity，直接用linear layer
-同质性？但是我想知道和glidar的区别？ </div><div class="post-footer">
-        <a href="/l17-huge-gnn/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -137,7 +138,7 @@ cluster-GCN advanced Simplified GCN 舍弃了GCN的non-linearity，直接用line
                     <span class="page-link" aria-hidden="true">&hellip;</span>
                 </li><li class="page-item ">
                     <span class="page-link">
-                        <a href="/page/62/">62</a>
+                        <a href="/page/63/">63</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">

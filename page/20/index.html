@@ -98,6 +98,13 @@
         alt="/avatar.jpg"
         title="/avatar.jpg" width="1920" height="1280" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/HuangHuangZhengZheng" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/lec5-environments/">Lec5-Environments</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-12">2024-10-12</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61a/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61A</a></span></div><div class="content">Environments Nested Environments in Python 注意环境追溯的顺序，从内到外
+Lambda Functions 函数式编程的核心思想是抽象和函数式编程，lambda函数是一种匿名函数，可以把函数作为参数传递给其他函数，或者作为返回值返回
+1 2 3 f = lambda x: x + 1 print(f(1)) # Output: 2 print((lambda x: x + 8)(1)) 和def函数的区别 Function Currying Currying: transforming a multi-argument function into a single-argument, higher-order function.
+1 2 3 4 5 6 7 8 9 10 def curry2(f): def g(x): def h(y): return f(x, y) return h return g # Another example curry2b = lambda f: (lambda x: (lambda y: f(x, y))) </div><div class="post-footer">
+        <a href="/lec5-environments/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/lec3-control/">Lec3-Control</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-12">2024-10-12</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61a/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61A</a></span></div><div class="content">Control div in Python 1 2 3 4 5 6 7 from opertor import truediv, floordiv a = 10 b = 3 c = a / b d = a // b print(c) # 3.3333333333333335 print(d) # 3 doctest in Python </div><div class="post-footer">
         <a href="/lec3-control/">Read More</a></div>
@@ -107,23 +114,6 @@
 Assertions in Python 1 assert condition, message Returning a Function from a Function 带参数的修饰器 &#x1f62e;
 1 2 3 4 5 6 7 8 def make_adder(n): def adder(x): return x + n return adder # Example usage add_three = make_adder(3) print(add_three(4)) # Output: 7, WHY? functions in Python are first-class values!</div><div class="post-footer">
         <a href="/lec4-higher-order-functions/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/lec12-risc-v-instruction-formats-ii/">Lec12-RISC-V Instruction Formats II</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-09">2024-10-09</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61c/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61C</a></span></div><div class="content">RISC-V Instruction Formats II B-Format Layout branch/分支 ==&gt; if-else, while, for
-encode Label:
-PC寻址, 用imm field来表示偏移量
-实际上 RV compressed instruction format! 16bit 压缩指令格式，偏移量不再是4的倍数，而是2的倍数（所以imm 二进制结尾一定是0）
-理论layout 解释一下如何从指令解析出立即数的数值
-B-type &ldquo;|&rdquo; 意思是专门分出一块区域来存一位数字
-Long Immediate， U-Format Layout I, B, S imm的12位扩展到long，找个地方放下剩下的20位
-注意这里不直接使用branch指令跳转，而是采用jump直接来做
-地方来了：同时来了两个新的指令lui &amp; auipc Corner case 有符号扩展带过来的，1开头的符号扩展
-用+1来避免这个问题
-补充 auipc 指令 J-Format Layout 只有jal，因为jalr是I-type的
-使用示例
-jalr 使用示例
-留一个reference</div><div class="post-footer">
-        <a href="/lec12-risc-v-instruction-formats-ii/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -154,7 +144,7 @@ jalr 使用示例
                     <span class="page-link" aria-hidden="true">&hellip;</span>
                 </li><li class="page-item ">
                     <span class="page-link">
-                        <a href="/page/62/">62</a>
+                        <a href="/page/63/">63</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">

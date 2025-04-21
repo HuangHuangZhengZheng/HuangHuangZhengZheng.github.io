@@ -3,7 +3,18 @@
         <title>UMich-EECS-498 - Category - HHZZ`s space</title>
         <link>http://example.org/categories/umich-eecs-498/</link>
         <description>UMich-EECS-498 - Category - HHZZ`s space</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 20 Apr 2025 08:27:18 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/umich-eecs-498/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 21 Apr 2025 08:27:18 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/umich-eecs-498/" rel="self" type="application/rss+xml" /><item>
+    <title>L20-Generative Model II</title>
+    <link>http://example.org/l20-generative-model-ii/</link>
+    <pubDate>Mon, 21 Apr 2025 08:27:18 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/l20-generative-model-ii/</guid>
+    <description><![CDATA[Generative Model II for some reason, it seems like that we are backed &#x1f606;
+Generative Adversarial Networks (GANs) setup: assume that we have data $x_i$ from a distribution $p_{data}(x)$, all we wanna do is to sample from $p_{data}(x)$
+idea: introduce a latent variable $z$ with simple prior $p(z)$, those $z$ can be interpolated,
+sample $z$ from $p(z)$, and pass into a Generator $x = G(z)$, then we said that $x$ is a sample from the Generator distribution $p_{G}$,]]></description>
+</item>
+<item>
     <title>L18-Video</title>
     <link>http://example.org/l18-video/</link>
     <pubDate>Sun, 20 Apr 2025 08:27:18 &#43;0800</pubDate>
@@ -104,25 +115,6 @@ allow rapid prototyping automatically compute gradients run it all efficiently o
 初期快速下采样 Inception模块: 1x1, 3x3, 5x5卷积核(使得kernel size不再是一个超参数) 1x1适配器的引入 resnet雏形 Global Average Pooling: 替换掉一层fcnn 其次还有auxiliary classifier取中间层输出，作为loss加入到loss function中 2015年首先是BN被发现了，auxiliary classifier被弃用 接着ResNet CVPR:
 引入残差结构，提升准确率 引入bottleneck结构，层数增加，但是flops减少 ECCV有一篇进一步讨论了残差块的结构 CVPR2017有一篇文章提出了ResNeXt 1 torch.nn.Conv2d(groups=) # groups参数控制了分组卷积的数量 2017年的ImageNet结束
 DenseNet: fancier 趋势 MobileNet: 轻量化趋势 ICLR 2017自动化设计神经网络结构 Neural Architecture Search ]]></description>
-</item>
-<item>
-    <title>L7-CNN</title>
-    <link>http://example.org/l7-cnn/</link>
-    <pubDate>Tue, 29 Oct 2024 20:20:37 &#43;0800</pubDate>
-    <author>HHZZ</author>
-    <guid>http://example.org/l7-cnn/</guid>
-    <description><![CDATA[Convolutional Neural Networks Components of a CNN Convolutional layers Pooling layers Normalization layers Convolutional Layers 注意到一个通道的卷积核也是全通道数 3 x5x5
-偏置是一个向量
-(b, c, h, w)表示batch size, channel, height, width!
-注意四个维度的意义
-卷积本质上也是一种linear layer，所以要relu等
-高维全局，低维局部 1x1 Convolutions 一种适配器，调整通道数
-other types of convolutions PyTorch Implementation Pooling Layers another way to downsample data, no learnable parameters
-局部最大值微小移动不变性
-Normalization Layers 主要讨论的是batch normalization
-层与层之间数据分布更加稳定 此时
-1 model.eval() 此时bn可以作为线形层被fuse进入fcnn or conv
-layer norm也有，主要是rnn和transformer用到了 Example: LeNet-5 ]]></description>
 </item>
 </channel>
 </rss>

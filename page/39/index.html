@@ -98,6 +98,14 @@
         alt="/avatar.jpg"
         title="/avatar.jpg" width="1920" height="1280" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/HuangHuangZhengZheng" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/databasel5/">CS186-L5: B+ Trees</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-08-11">2024-08-11</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div><div class="content">Index 竟然是一种数据结构？ search and insertion in ISAM indexed sequential access method 注意建立了许多索引，沿用BST的思想，但是insert的时候会出现overflow pages （IBM in 1960s）
+B+ Tree 和B Tree的区别在于：B+只有叶子存放数据，而B Tree的中间节点也存放数据。
+几乎和上面一样，但是多了
+dynamic tree index always balanced support efficient insertions and deletions grows at root not leaves 注意:
+占有率：几乎半满，除了root 底部DLL $max\ fan\ out = 2d + 1$ 工业实际情况 &#x1f914; B+ Tree Operations search, 同上 insert 没有overflow，直接插入 满了，分裂成两个节点，中间节点存放 中间key（过程中可能是右边最小的那个key），左右节点存放左右key 递归向上分裂，直到根节点 叶子 $\xrightarrow{copy}$ 父节点 ，父节点 $\xrightarrow{push}$ 新父节点 delete &#x1f609; bulk loading 批量加载 精髓在于先排序，后构建 time-stamp: 01h09min02s</div><div class="post-footer">
+        <a href="/databasel5/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/databasel4/">CS186-L4: Disks, Buffers, Files II</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-08-11">2024-08-11</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div><div class="content">cost model and analysis 基本量化指标定义 基本假设
 single record insert and delete equality selection - exactly one match for heap files: insert always appends for sorted files: packed: files compacted after deletions sorted according to search key 以下是计算时间，类似渐进记法，但是有细节 &#x1f60e; side note:
@@ -112,12 +120,6 @@ read很快，随着数据变大，可以预测
 write很慢，slower for random，写入放大 disk space management block level storage block: unit of transfer for disk read/write (64~128KB in 2018)
 page: a common synonym for block, in some contexts, it means in RAM</div><div class="post-footer">
         <a href="/databasel3/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/databasel2/">CS186-L2: SQLⅡ</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-22">2024-07-22</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div><div class="content">怎么读懂SQL语句？ FROM WHERE, to eliminate rows SELECT GROUP BY HAVING, to eliminate groups DISTINCT ORDER BY, LIMIT, OFFSET等等格式化输出 Join Queries cross product 生成所有的组合，然后过滤掉不符合条件的组合，但是低效
-考虑以下sql，更加简洁
-1 2 3 SELECT S.sid, sname, bid FROM Sailors AS S, Reserves AS R WHERE S.sid = R.sid self join and more aliases 1 2 3 4 SELECT x.sname, x.age, y.sname AS sname2, y.age AS age2 FROM Sailors AS x, Sailors AS y WHERE x.age &gt; y.</div><div class="post-footer">
-        <a href="/databasel2/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -148,7 +150,7 @@ page: a common synonym for block, in some contexts, it means in RAM</div><div cl
                     <span class="page-link" aria-hidden="true">&hellip;</span>
                 </li><li class="page-item ">
                     <span class="page-link">
-                        <a href="/page/62/">62</a>
+                        <a href="/page/63/">63</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">

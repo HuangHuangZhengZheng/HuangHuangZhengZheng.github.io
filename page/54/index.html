@@ -98,6 +98,13 @@
         alt="/avatar.jpg"
         title="/avatar.jpg" width="1920" height="1280" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/HuangHuangZhengZheng" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/datal4/">DATA100-L4: Pandas Ⅱ</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-14">2024-07-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">lambda function 1 lambda x: x**2 非显式定义函数，可以直接使用lambda表达式来定义一个函数。 This is a lambda function that takes in one argument x and returns the square of x.
+再看sort_values() 注意传递key
+1 df.sort_values(by=&#39;column_name&#39;, keys=lambda x: x.str.lower(), ascending=True) add move modify and so on sort by length of string approach1: create a new column and add to original df 1 2 3 newdf = df[&#34;Name&#34;].str.len() # create a new column with length of each string df[&#39;length&#39;] = newdf df.</div><div class="post-footer">
+        <a href="/datal4/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/pandas/">Pandas</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/datahw01/">DATA100-hw01</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-14">2024-07-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/data100/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DATA100</a></span></div><div class="content">1 2 3 # Initialize Otter import otter grader = otter.Notebook(&#34;hw01.ipynb&#34;) HW 1: Math Review and Plotting 重点在coding，理论供参考 Due Date: Thursday Jan 27, 11:59 PM Collaboration Policy Data science is a collaborative activity. While you may talk with others about the homework, we ask that you write your solutions individually. If you do discuss the assignments with others please include their names at the top of your notebook.
 Collaborators: list collaborators here</div><div class="post-footer">
@@ -112,11 +119,6 @@ loc: an operator select items by labels
 1 df.iloc[row_indexer, column_indexer] row_indexer: numeric index or a list of numeric indices，此时回到python经典索引 左闭右开 column_indexer: same as row_indexer returns a DataFrame or Series 通常情况下，我们使用 loc 进行索引 .</div><div class="post-footer">
         <a href="/datal3/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/pandas/">Pandas</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/61b-32/">61B-32: Basic Sorting Algorithms</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-07-13">2024-07-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61b/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61B</a></span></div><div class="content">definitions A sort is a permutation (re-arrangement) of a sequence of elements that brings them into order according to some total order. A total order ≼ is:
-Total: x ≼ y or y ≼ x for all x, y Reflexive: x ≼ x Antisymmetric: x ≼ y and y ≼ x iff x = y (x and y are equivalent). Transitive: x ≼ y and y ≼ z implies x ≼ z.</div><div class="post-footer">
-        <a href="/61b-32/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -147,7 +149,7 @@ Total: x ≼ y or y ≼ x for all x, y Reflexive: x ≼ x Antisymmetric: x ≼ y
                     <span class="page-link" aria-hidden="true">&hellip;</span>
                 </li><li class="page-item ">
                     <span class="page-link">
-                        <a href="/page/62/">62</a>
+                        <a href="/page/63/">63</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">

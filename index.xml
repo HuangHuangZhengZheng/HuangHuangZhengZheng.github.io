@@ -3,9 +3,20 @@
         <title>HHZZ`s space</title>
         <link>http://example.org/</link>
         <description>This is my cool site</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 20 Apr 2025 08:27:18 &#43;0800</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 21 Apr 2025 08:27:18 &#43;0800</lastBuildDate>
             <atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>L20-Generative Model II</title>
+    <link>http://example.org/l20-generative-model-ii/</link>
+    <pubDate>Mon, 21 Apr 2025 08:27:18 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/l20-generative-model-ii/</guid>
+    <description><![CDATA[Generative Model II for some reason, it seems like that we are backed &#x1f606;
+Generative Adversarial Networks (GANs) setup: assume that we have data $x_i$ from a distribution $p_{data}(x)$, all we wanna do is to sample from $p_{data}(x)$
+idea: introduce a latent variable $z$ with simple prior $p(z)$, those $z$ can be interpolated,
+sample $z$ from $p(z)$, and pass into a Generator $x = G(z)$, then we said that $x$ is a sample from the Generator distribution $p_{G}$,]]></description>
+</item>
+<item>
     <title>L18-Video</title>
     <link>http://example.org/l18-video/</link>
     <pubDate>Sun, 20 Apr 2025 08:27:18 &#43;0800</pubDate>
@@ -103,20 +114,6 @@ GAT 首先解释一下什么是attention mechanism 单个attention的计算 多�
 没有fixed notion or sliding window permutation invariance！ GCNN 直觉上的思考 其实就是3 + 1步走
 找到aggregate function 找到loss function train on a set of nodes apply to new nodes 7 8.1 9
 16.2 17]]></description>
-</item>
-<item>
-    <title>L3-Node Embeddings</title>
-    <link>http://example.org/l3-node-embeddings/</link>
-    <pubDate>Mon, 27 Jan 2025 15:11:03 &#43;0800</pubDate>
-    <author>HHZZ</author>
-    <guid>http://example.org/l3-node-embeddings/</guid>
-    <description><![CDATA[Node Embeddings https://web.stanford.edu/class/cs224w/slides/02-nodeemb.pdf
-encoder and decoder encoder: simple example ？？注意这里矩阵是one column per node， 这里似乎解释通了为什么glidar里面node在encode的过程中数量不变，换句话说就是 not scalable
-呼之欲出啊啊啊啊啊 &#x1f631;
-以下内容非常具有启发性
-Random walks 怎么理解高效率？
-对特征学习的考量 提出损失函数 用了一个近似来化简 （不约而同走到了noise-denoise） k在5~20之间！又是glidar的论文！
-summary node2vec embedding the entire graph SKIP]]></description>
 </item>
 </channel>
 </rss>

@@ -98,6 +98,19 @@
         alt="/avatar.jpg"
         title="/avatar.jpg" width="1920" height="1280" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/HuangHuangZhengZheng" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/databasel11/">CS186-L11:  Query Opt: Plan Space</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-08-14">2024-08-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div><div class="content">Intro ??? I am here right now &#x1f604; 省流：拿进来sql，转换成relational algebra，然后树形图展示，考虑不同的实现方式，然后给出优化方案。
+考虑不同的实现方式
+plan space: how many plans? cost estimation search strategy algebra equivalences selections, projections and Cartesian products 在数据库查询的关系代数中，projections（投影） 是一种操作，它用于从一个关系中选择特定的属性列。我们来看一下投影的性质以及如何理解它。投影（Projections）的性质表明了它们可以被 级联（cascade） 使用。这意味着多个投影操作可以逐步应用于关系 R 上，每一步选择一个或多个属性列：
+[ \pi_{a_1}(R) \equiv \pi_{a_1}(&hellip;(\pi_{a_1, &hellip;, a_{n-1}}(R))&hellip;) ]
+级联（Cascade）
+级联的含义是指多个投影操作可以按顺序应用。在级联的情况下，我们可以将多个投影操作结合起来，依次减少关系的属性。
+例如，假设我们有一个关系 R，它有属性集合 {a_1, a_2, a_3, a_4}。如果我们应用 (\pi_{a_1, a_2}(R))，我们得到的结果是仅有 a_1 和 a_2 属性的关系。
+接着，我们可以在这个结果上再次应用 (\pi_{a_1}(R))，最终得到只有 a_1 属性的关系。
+这种级联性质可以被理解为将多个投影操作合并成一个操作。
+joins 结合律？交换律？ 结合律一般不成立，交换律是成立的（由前面的Cartesian product可知）。有一个理解点：叉积 $\times$ 的范围变大了 Some Heuristics selections selection is cheap, while join is expensive &#x1f60b;</div><div class="post-footer">
+        <a href="/databasel11/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/databasel12/">CS186-L12: Query Opt: Costs & Search</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-08-14">2024-08-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div><div class="content">Intro An important property of query optimization is that we have no way of knowing how many I/Os a plan will cost until we execute that plan. see note 9
 example background plan space overview 对physical properties的描述，关注的点在于不同过程对hash or sort的要求 Cost Estimation 讨论的假设 注意predicate之间独立，以及只是关注IO
@@ -112,13 +125,6 @@ algebra on sets &mdash;&gt; mean no duplicates! operational description of trans
 basic of SQL 以上两者被证明等价并且使得SQL能够被编译&ndash;long story&hellip;&hellip;
 Relational Algebra Operators Unary Operators Selection (σ) : select rows that satisfy a condition Projection (π) : select specific columns 如果结果是multiset, 去重! 虽然real system不会自动去重 Rename (ρ) : rename a column Union (∪) : tuples in either r1 or r2 two input relations, must be compatible (same number of columns or &ldquo;fields&rdquo;, and have same data types corresponding to the same field) UNION in SQL Difference (−) : tuples in r1, but not in r2 same with union, both input relations must be compatible EXCEPT in SQL Cross Product (×) : cartesian product of two relations how many rows in the result?</div><div class="post-footer">
         <a href="/databasel8/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/databasel7/">CS186-L7: Buffer Management</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-08-14">2024-08-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div><div class="content">intro 可能需要处理的问题 dirty pages pages replacement state of buffer management Page replacement terminology a page in &ldquo;use&rdquo; : Page pin count if full. which should be replaced: page replacement policy request请求发出来，转接到buffer manager&hellip;&hellip; Page replacement policies LRU (Least Recently Used) 最近最少使用使用的是 时间 pin count == 0! Priority heap data structure can help! like $O(logN)$ CLOCK 一种近似LRU的算法，旨在不需要维护每个页面的访问时间戳，从而减少了额外的开销。
-Clock policy将缓冲区中的页面视为一个循环列表，使用一个“时钟指针”来跟踪当前考虑替换的页面。每个页面都有一个“引用位”（ref bit），用于指示该页面是否被最近访问过。
-工作流程
-初始化：当缓冲区管理器启动时，时钟指针指向第一个未固定（unpinned）的页面，并将该页面的引用位设置为1，当页面被读入时。 页面替换： 当需要替换页面时，缓冲区管理器从时钟指针开始，遍历缓冲区中的页面。 对于每个页面，如果该页面的引用位为1，则将其引用位重置为0，并将时钟指针移动到下一个页面。 如果找到一个引用位为0的页面，则可以将其替换。此时，如果该页面是“脏页”（dirty page），则需要将其写回磁盘，然后读取新的页面并将其引用位设置为1。 LRU-Clock bad behavior Sequential Flooding! MRU (Most Recently Used) General case: SeqScan + MRU $B$ buffers $N&gt;B$ pages in file Improvements for sequential scan: prefetch hybrid?</div><div class="post-footer">
-        <a href="/databasel7/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -149,7 +155,7 @@ Clock policy将缓冲区中的页面视为一个循环列表，使用一个“�
                     <span class="page-link" aria-hidden="true">&hellip;</span>
                 </li><li class="page-item ">
                     <span class="page-link">
-                        <a href="/page/62/">62</a>
+                        <a href="/page/63/">63</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">

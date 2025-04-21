@@ -98,6 +98,18 @@
         alt="/avatar.jpg"
         title="/avatar.jpg" width="1920" height="1280" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/HuangHuangZhengZheng" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/lec13-data-representation/">Lec13-Data Representation</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-15">2024-10-15</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61a/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61A</a></span></div><div class="content">Data Representation what is data???
+从对象的行为（函数与方法）来定义
+Example: Rational Numbers 纯粹使用函数来做接口而不是内在设置列表存储 &#x1f914;
+data representation &ndash; a methodology constructor &amp; selector thoughts
+感觉这里更像是api设计的思路，哲学思想
+仔细思考用好 constructor 和 selector 的作用 ！
+有没有一种可能，java没这么多事
+Pairs 和 __getitem__ ?
+1 2 3 from operator import getitem getitem(pair, 0) # first element getitem(pair, 1) # second element 1 2 3 from fractions import gcd ### gcd is used to find the greatest common divisor of two numbers gcd(pair[0], pair[1]) # greatest common divisor </div><div class="post-footer">
+        <a href="/lec13-data-representation/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/lec13-compiling-assembling-linking-and-loading/">Lec13-Compiling, Assembling, Linking and Loading</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-15">2024-10-15</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61c/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61C</a></span></div><div class="content">Compiling, Assembling, Linking and Loading CALL
 Interpretation and Translation Interpretation 有一个解释器（是一个程序）
@@ -118,12 +130,6 @@ slice 传统python中，slice操作符的语法为[start:stop:step]，其中star
 切片生成新的序列，对原序列的修改不会影响切片（物化view的感觉）
 Process value in container aggregate functions sum(container)：返回容器中所有元素的和 1 2 3 sum([1, 2, 3, 4, 5]) # 15 sum([1, 2], 9) # 12 sum([[2, 3], [4]], []) # [2, 3, 4] max(container)：返回容器中最大的元素 1 max(range(10), key=lambda x: 7-(x-4)*(x-2)) # 3 all(container)：如果容器中所有元素都为真，则返回True，否则返回False 1 2 3 all([True, True, True]) # True all([True, False, True]) # False all([x &lt; 5 for x in range(5)]) Strings 注意事实上程序只是字符串 &#x1f60b; 和61B的text写java一个道理</div><div class="post-footer">
         <a href="/lec12-container/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/lec11-sequences/">Lec11-Sequences</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-15">2024-10-15</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61a/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61A</a></span></div><div class="content">Sequences List 1 2 my_list = [1, 2, 3, 4, 5] getitem(my_list, 2) # Output: 3 加法乘法是 拼接
-Container in 1 2 my_list = [1, 2, 3, 4, 5] 5 in my_list # Output: True 1 2 for i in my_list: print(i) unpacking range 1 2 3 range(5) # Output: range(0, 5) range(1, 5) # Output: range(1, 5) range(1, 10, 2) # Output: range(1, 10, 2) 左闭右开
-下划线变量命名 1 2 3 _ = 1 # 单个下划线 __ = 2 # 双下划线 __my_var = 3 # 双下划线开头的变量名 List comprehension 1 [x for x in range(5) if x % 2 == 0] </div><div class="post-footer">
-        <a href="/lec11-sequences/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -154,7 +160,7 @@ Container in 1 2 my_list = [1, 2, 3, 4, 5] 5 in my_list # Output: True 1 2 for i
                     <span class="page-link" aria-hidden="true">&hellip;</span>
                 </li><li class="page-item ">
                     <span class="page-link">
-                        <a href="/page/62/">62</a>
+                        <a href="/page/63/">63</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">

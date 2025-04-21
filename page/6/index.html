@@ -98,6 +98,10 @@
         alt="/avatar.jpg"
         title="/avatar.jpg" width="1920" height="1280" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/HuangHuangZhengZheng" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/lec14-intro-to-synchronous-digital-systems/">Lec14-Intro to Synchronous Digital Systems</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2025-01-22">2025-01-22</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61c/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61C</a></span></div><div class="content">Lecture 14: Intro to Synchronous Digital Systems MOS Transistors normal n-channel gate G is low, open. NAND Gates 与非门 电路存储与构成 组合逻辑电路 有状态元件 like 寄存器 </div><div class="post-footer">
+        <a href="/lec14-intro-to-synchronous-digital-systems/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/l14-visualizing-and-understanding/">L14-Visualizing and Understanding</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-11-06">2024-11-06</time></span>&nbsp;<span class="post-category">included in <a href="/categories/umich-eecs-498/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UMich-EECS-498</a></span></div><div class="content">Visualizing and Understanding Visualizing 对第一层、第二层以及最后进入FC层的特征图进行可视化
 PCA√
@@ -109,16 +113,6 @@ Understanding 细节</div><div class="post-footer">
         <a href="/l10-training-i/">L10-Training I</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-11-04">2024-11-04</time></span>&nbsp;<span class="post-category">included in <a href="/categories/umich-eecs-498/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UMich-EECS-498</a></span></div><div class="content">Training I Activation Functions Sigmoid function: $\sigma(x) = \frac{1}{1 + e^{-x}}$ 不是0中心 两端饱和 always all positive or negative :( exp() 计算复杂，但是对于GPU不是问题 tanh function: $\tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}$ sigmoid变体 ReLU function: $f(x) = max(0, x)$ 不会饱和 计算快 非0中心 dead relu ==&gt; leaky relu Leaky ReLU function: $f(x) = max(0.01x, x)$ 解决了dead relu问题 ==&gt; PRelu function：把0.01改成可学习的参数 ELU function: $f(x) = \begin{cases} x &amp; x \geq 0 \ \alpha(e^x - 1) &amp; x &lt; 0 \end{cases}$ Data Preprocessing 参见DATA-100相关课程</div><div class="post-footer">
         <a href="/l10-training-i/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/l9-hard-and-software/">L9-Hard and Software</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-11-02">2024-11-02</time></span>&nbsp;<span class="post-category">included in <a href="/categories/umich-eecs-498/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UMich-EECS-498</a></span></div><div class="content">Hard and Soft ware Hardware eecs 598.009 GPU programming!
-其实我很想了解一下cuda编程
-tensorflow支持TPU，pytorch呢？
-计算图存储在GPU内存里面
-Software the point of deep learning frameworks
-allow rapid prototyping automatically compute gradients run it all efficiently on GPUs or else PyTorch sigmoid0减少计算图节点的设计，因为反向传播重写了
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 class Sigmoid(torch.autograd.Function): @staticmethod def forward(ctx, input): y = 1 / (1 + torch.exp(-input)) ctx.save_for_backward(input) return y @staticmethod def backward(ctx, grad_output): input, = ctx.</div><div class="post-footer">
-        <a href="/l9-hard-and-software/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -149,7 +143,7 @@ allow rapid prototyping automatically compute gradients run it all efficiently o
                     <span class="page-link" aria-hidden="true">&hellip;</span>
                 </li><li class="page-item ">
                     <span class="page-link">
-                        <a href="/page/62/">62</a>
+                        <a href="/page/63/">63</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">

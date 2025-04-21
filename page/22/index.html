@@ -98,6 +98,16 @@
         alt="/avatar.jpg"
         title="/avatar.jpg" width="1920" height="1280" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/HuangHuangZhengZheng" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/lec7-risc-v-introduction/">Lec7-RISC-V Introduction</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-09">2024-10-09</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61c/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61C</a></span></div><div class="content">RISC-V Introduction Instruction Set Architecture (ISA) Assembly Variables each statement is called an instruction
+Registers where are registers ?
+32 general purpose registers (GPRs) are available in RISC-V architecture.(x0 - x31)
+word: 32 bits (can be 64 bits in RV64)
+x0: always 0 # is the comment character
+no type casting in RISC-V assembly language the registers have no type
+add/sub instructions syntax of instructions 1 2 add rd, rs1, rs2 sub rd, rs1, rs2 # d(rd) = e(rs1) - f(rs2), 注意顺序 Immediate values（立即数） 1 addi rd, rs1, 10 没有subi ，加上相反数即可</div><div class="post-footer">
+        <a href="/lec7-risc-v-introduction/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/lec11-risc-v-instruction-formats-i/">Lec11-RISC-V Instruction Formats I</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-09">2024-10-09</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61c/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61C</a></span></div><div class="content">RISC-V Instruction Formats I 事实上已经来到下一个层级(二进制)了，但是看标题似乎还是RISC-V &#x1f914;
 Background and Consequences 1. addressing modes everything has a memory address, so branches and jumps can use them PC (program counter, again &#x1f604;) is a register that holds the address of the next instruction to be executed 2. 二进制兼容否？如何表示指令？ 一个指令用1个word(32bits)来装绰绰有余
@@ -112,12 +122,6 @@ new one: slt and sltu &ndash; set less than, when rs1 &lt; rs2, then set the des
 栈帧 / Stack Frame 存放了什么？ 注意stack 从上往下增长，push sp&ndash;, pop sp++
 序言prologue &amp; 结尾epilogue 1 2 3 4 5 int Leaf (int g, int h, int i, int j) { int f; f = (g + h) - (i + j); return f; } 1 2 3 4 5 6 7 8 9 10 11 12 13 Leaf: # 序言prologue addi sp, sp, -8 # 保存之前的栈指针 sw s1, 4(sp) # 保存参数 sw s2, 0(sp) # 计算 .</div><div class="post-footer">
         <a href="/lec10-risc-v-procedures/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/lec9-risc-v-decisions-ii/">Lec9-RISC-V Decisions II</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-08">2024-10-08</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61c/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61C</a></span></div><div class="content">RISC-V Decisions II Logical Instruction and, andi, not 2种对应变体
-and: and x5, x6, x7 # x5 = x6 &amp; x7 andi: andi x5, x6, 0x7 # x5 = x6 &amp; 0x7 # for masking &#x1f60b; or: or x5, x6, x7 # x5 = x6 | x7 xor: xor x5, x6, x7 # x5 = x6 ^ x7 Not not, xor with 111111&hellip;1111即可
-shift instructions logical shift arithmetic shift A bit about machine programming PC: program counter (special register), 程序计数器 指向下一条指令的地址（next 4 byte / 1 word away）</div><div class="post-footer">
-        <a href="/lec9-risc-v-decisions-ii/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -148,7 +152,7 @@ shift instructions logical shift arithmetic shift A bit about machine programmin
                     <span class="page-link" aria-hidden="true">&hellip;</span>
                 </li><li class="page-item ">
                     <span class="page-link">
-                        <a href="/page/62/">62</a>
+                        <a href="/page/63/">63</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">

@@ -98,6 +98,16 @@
         alt="/avatar.jpg"
         title="/avatar.jpg" width="1920" height="1280" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/HuangHuangZhengZheng" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/l9-hard-and-software/">L9-Hard and Software</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-11-02">2024-11-02</time></span>&nbsp;<span class="post-category">included in <a href="/categories/umich-eecs-498/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UMich-EECS-498</a></span></div><div class="content">Hard and Soft ware Hardware eecs 598.009 GPU programming!
+其实我很想了解一下cuda编程
+tensorflow支持TPU，pytorch呢？
+计算图存储在GPU内存里面
+Software the point of deep learning frameworks
+allow rapid prototyping automatically compute gradients run it all efficiently on GPUs or else PyTorch sigmoid0减少计算图节点的设计，因为反向传播重写了
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 class Sigmoid(torch.autograd.Function): @staticmethod def forward(ctx, input): y = 1 / (1 + torch.exp(-input)) ctx.save_for_backward(input) return y @staticmethod def backward(ctx, grad_output): input, = ctx.</div><div class="post-footer">
+        <a href="/l9-hard-and-software/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/l8-cnn-arch/">L8-CNN Arch</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-11-02">2024-11-02</time></span>&nbsp;<span class="post-category">included in <a href="/categories/umich-eecs-498/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UMich-EECS-498</a></span></div><div class="content">CNN Architectures 今日首绷 计算题 4 bytes per elem
 右边三列体现了一个规律 2013的ImageNet winner仍然是AlexNet变体(ZFNet, ECCV)，只是trial and error的结果
@@ -121,15 +131,6 @@ Normalization Layers 主要讨论的是batch normalization
 1 model.eval() 此时bn可以作为线形层被fuse进入fcnn or conv
 layer norm也有，主要是rnn和transformer用到了 Example: LeNet-5 </div><div class="post-footer">
         <a href="/l7-cnn/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/l6-bp/">L6-BP</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-24">2024-10-24</time></span>&nbsp;<span class="post-category">included in <a href="/categories/umich-eecs-498/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UMich-EECS-498</a></span></div><div class="content">Backpropagation 参见cmu 10-414 &#x1f600;
-RNN 初见 Computation Graph &#x1f60f; A2要hardcode直接的反向传播了 555
-真正的代码 &#x1f60b;
-1 2 3 4 5 6 7 8 9 class Multiply(torch.autograd.Function): @staticmethod def forward(ctx, x, y): ctx.save_for_backward(x, y) return x * y @staticmethod def backward(ctx, grad_output): x, y = ctx.saved_tensors return grad_output * y, grad_output * x # 解析计算 PyTorch operators in deep engine &#x1f914;
-BP rules BP with vector-valued functions 假装标量求导，然后匹配矩阵形状即可（典中典）
-element-wise functions in BP 不用使用矩阵求导，直接一一对应去想梯度的传递即可</div><div class="post-footer">
-        <a href="/l6-bp/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -160,7 +161,7 @@ element-wise functions in BP 不用使用矩阵求导，直接一一对应去想
                     <span class="page-link" aria-hidden="true">&hellip;</span>
                 </li><li class="page-item ">
                     <span class="page-link">
-                        <a href="/page/62/">62</a>
+                        <a href="/page/63/">63</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">

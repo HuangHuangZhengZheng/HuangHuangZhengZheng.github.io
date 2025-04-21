@@ -98,6 +98,13 @@
         alt="/avatar.jpg"
         title="/avatar.jpg" width="1920" height="1280" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/HuangHuangZhengZheng" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/l20-generative-model-ii/">L20-Generative Model II</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2025-04-21">2025-04-21</time></span>&nbsp;<span class="post-category">included in <a href="/categories/umich-eecs-498/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UMich-EECS-498</a></span></div><div class="content">Generative Model II for some reason, it seems like that we are backed &#x1f606;
+Generative Adversarial Networks (GANs) setup: assume that we have data $x_i$ from a distribution $p_{data}(x)$, all we wanna do is to sample from $p_{data}(x)$
+idea: introduce a latent variable $z$ with simple prior $p(z)$, those $z$ can be interpolated,
+sample $z$ from $p(z)$, and pass into a Generator $x = G(z)$, then we said that $x$ is a sample from the Generator distribution $p_{G}$,</div><div class="post-footer">
+        <a href="/l20-generative-model-ii/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/l18-video/">L18-Video</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2025-04-20">2025-04-20</time></span>&nbsp;<span class="post-category">included in <a href="/categories/umich-eecs-498/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UMich-EECS-498</a></span></div><div class="content">Video in NN Introduction Video: 4D tensor, T x H x W x C, a sequence of frames(images).
 Video Classification Input: T x H x W x C Output: K classes, actions instead of nouns. Problems: raw video are BIG, ~1.5GB per minute for SD(640x480x3)
@@ -111,14 +118,6 @@ classification, semantic segmentation, object detection, etc. unsupervised learn
 clustering, density estimation, feature extraction/learning, dimensionality reduction, etc. we are trying to learn model the distribution of the data
 Discriminative, Generative, and Conditional Generative all three types of learning can be used in a equation, x is the input variable, y is the target variable,</div><div class="post-footer">
         <a href="/l19-generative-model-i/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/l13-attention/">L13-Attention</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2025-04-19">2025-04-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/umich-eecs-498/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UMich-EECS-498</a></span></div><div class="content">Attention Mechanisms in Neural Networks introduction What if Seq to Seq models processed long long sequences?
-Attention Mechanisms the core idea is that using weighted sum, and the coefficient can be learned from the model itself
-In math, we do not actually care that wether input is a sequence or not.
-given hidden states $h_i$ and the context vector $c$, we can calculate the attention weights as follows:
-$$ e_{t, i, j} = f_{att}(s_{t-1}, h_{i,j}) \ a_{t, :, :} = softmax(e_{t, :, :}) \ c_{t} = \sum_{i,j} a_{t, i, j} h_{i,j} $$</div><div class="post-footer">
-        <a href="/l13-attention/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item active">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -135,7 +134,7 @@ $$ e_{t, i, j} = f_{att}(s_{t-1}, h_{i,j}) \ a_{t, :, :} = softmax(e_{t, :, :}) 
                     <span class="page-link" aria-hidden="true">&hellip;</span>
                 </li><li class="page-item ">
                     <span class="page-link">
-                        <a href="/page/62/">62</a>
+                        <a href="/page/63/">63</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">
