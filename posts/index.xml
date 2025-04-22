@@ -3,7 +3,29 @@
         <title>All Posts - HHZZ`s space</title>
         <link>http://example.org/posts/</link>
         <description>All Posts | HHZZ`s space</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 21 Apr 2025 08:27:18 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 22 Apr 2025 08:27:18 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>L16: Image Segmentation</title>
+    <link>http://example.org/l16-segmentation/</link>
+    <pubDate>Tue, 22 Apr 2025 08:27:18 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/l16-segmentation/</guid>
+    <description><![CDATA[Image Segmentation Goal: to learn about what Fully Convolutional Networks (FCN) are and how they can be used for image segmentation. &#x1f914;
+Semantic Segmentation a simple way is to slide the window, creating a slow RNN? another way is to build a Equal size Fully Convolutional Network (but receptive field is limited and hard to generalize to higher resolutions) U-Net like architecture &#x1f609; but how to UPSAMPLE the feature maps?]]></description>
+</item>
+<item>
+    <title>L22-Recap and Conclusion</title>
+    <link>http://example.org/l22-recap-and-conclusion/</link>
+    <pubDate>Tue, 22 Apr 2025 08:27:18 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/l22-recap-and-conclusion/</guid>
+    <description><![CDATA[Recap and Conclusion Recap What is Computer Vision? building a system that can understand and process visual information
+Main approaches to Computer Vision
+semantic segmentation using Fully Convolutional Networks (FCN) &#x1f914;
+What&rsquo;s next? we will discover interesting new types of deep models Neural ODE NIPS 2018 $$ h_{t+1} = h_t + f(h_t, \theta_t) \Rightarrow \frac{dh}{dt} = f(h(t), t, \theta) $$
+Deep Learning will find new applications
+AI4S DL4CS, like using DL training a hash function to improve the hash table DL4Mathematics, auto theorem proving Deep Learning will use more data and more computional power Problems and Challenges Models are biased eg: Vector Arithmetic with Word Vectors, fit biased dataset to a model leads to poor performance; Economic Bias (usually train model on the wealthier western family?]]></description>
+</item>
+<item>
     <title>L20-Generative Model II</title>
     <link>http://example.org/l20-generative-model-ii/</link>
     <pubDate>Mon, 21 Apr 2025 08:27:18 &#43;0800</pubDate>
@@ -87,31 +109,6 @@ cluster-GCN advanced Simplified GCN 舍弃了GCN的non-linearity，直接用line
     <author>HHZZ</author>
     <guid>http://example.org/l16-improvedgnn/</guid>
     <description><![CDATA[Improved GNN positionally-aware gnn anchor数量 大小 （指数守恒） refer to the paper of Position-aware Graph Neural Networks (P-GNN)]]></description>
-</item>
-<item>
-    <title>L7-GNN t1</title>
-    <link>http://example.org/l7-gnn-t1/</link>
-    <pubDate>Tue, 28 Jan 2025 13:39:34 &#43;0800</pubDate>
-    <author>HHZZ</author>
-    <guid>http://example.org/l7-gnn-t1/</guid>
-    <description><![CDATA[L7-GNN theory 1 所有gnn的原型在这里
-一个layer layers之间的交互 input graph -&gt; computational graph的构建 GO!!!!
-a simple layer of GNN msg computations 原神处理dddd
-aggregation 核心：order invariance 焯这就是pointnet的核心之一啊！！！
-issue： 容易忽略自己节点 some examples of GNNs GCN GraphSAGE 这里的细节在于如何聚合邻居的信息
-同时每层来个norm
-GAT 首先解释一下什么是attention mechanism 单个attention的计算 多头attention的计算（更容易收敛） GNN layers in practice glidar呼之欲出了 &#x1f631; 有意思的东西&#x1f60b; stacking GNN layers ]]></description>
-</item>
-<item>
-    <title>L6-GNN intro</title>
-    <link>http://example.org/l6-gnn-intro/</link>
-    <pubDate>Mon, 27 Jan 2025 16:39:56 &#43;0800</pubDate>
-    <author>HHZZ</author>
-    <guid>http://example.org/l6-gnn-intro/</guid>
-    <description><![CDATA[GNN Intro shallow deep graph encoder tmd 终于来了 !!! 借鉴cnn，但是
-没有fixed notion or sliding window permutation invariance！ GCNN 直觉上的思考 其实就是3 + 1步走
-找到aggregate function 找到loss function train on a set of nodes apply to new nodes 7 8.1 9
-16.2 17]]></description>
 </item>
 </channel>
 </rss>

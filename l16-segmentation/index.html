@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>L16: Image Segmentation - HHZZ`s space</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="L16: Image Segmentation" />
+<meta property="og:description" content="Image Segmentation Goal: to learn about what Fully Convolutional Networks (FCN) are and how they can be used for image segmentation. &#x1f914;
+Semantic Segmentation a simple way is to slide the window, creating a slow RNN? another way is to build a Equal size Fully Convolutional Network (but receptive field is limited and hard to generalize to higher resolutions) U-Net like architecture &#x1f609; but how to UPSAMPLE the feature maps?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/l16-segmentation/" /><meta property="og:image" content="http://example.org/logo.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2025-04-22T08:27:18+08:00" />
+<meta property="article:modified_time" content="2025-04-22T08:27:18+08:00" /><meta property="og:site_name" content="My cool site" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://example.org/logo.png" /><meta name="twitter:title" content="L16: Image Segmentation"/>
+<meta name="twitter:description" content="Image Segmentation Goal: to learn about what Fully Convolutional Networks (FCN) are and how they can be used for image segmentation. &#x1f914;
+Semantic Segmentation a simple way is to slide the window, creating a slow RNN? another way is to build a Equal size Fully Convolutional Network (but receptive field is limited and hard to generalize to higher resolutions) U-Net like architecture &#x1f609; but how to UPSAMPLE the feature maps?"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/l16-segmentation/" /><link rel="prev" href="http://example.org/l22-recap-and-conclusion/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "L16: Image Segmentation",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/l16-segmentation\/"
+        },"genre": "posts","wordcount":  505 ,
+        "url": "http:\/\/example.org\/l16-segmentation\/","datePublished": "2025-04-22T08:27:18+08:00","dateModified": "2025-04-22T08:27:18+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "HHZZ"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HHZZ`s space">Code and BeyondCode😋</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tools/"> Tools </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/beyondcode/"> BeyondCode😋 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HHZZ`s space">Code and BeyondCode😋</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tools/" title="">Tools</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/beyondcode/" title="">BeyondCode😋</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">L16: Image Segmentation</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-category">included in <a href="/categories/umich-eecs-498/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UMich-EECS-498</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-04-22">2025-04-22</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;505 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#semantic-segmentation">Semantic Segmentation</a>
+      <ul>
+        <li><a href="#up-sampling">Up-sampling</a></li>
+      </ul>
+    </li>
+    <li><a href="#instance-segmentation">Instance Segmentation</a></li>
+    <li><a href="#else">else</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="image-segmentation">Image Segmentation</h1>
+<p>Goal: to learn about what Fully Convolutional Networks (FCN) are and how they can be used for image segmentation. &#x1f914;</p>
+<h2 id="semantic-segmentation">Semantic Segmentation</h2>
+<ul>
+<li>a simple way is to slide the window,  creating a slow RNN?</li>
+<li>another way is to build a Equal size Fully Convolutional Network (but receptive field is limited and hard to generalize to higher resolutions)
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/l16-segmentation/image/index/1745325674979.png"
+        data-srcset="/l16-segmentation/image/index/1745325674979.png, /l16-segmentation/image/index/1745325674979.png 1.5x, /l16-segmentation/image/index/1745325674979.png 2x"
+        data-sizes="auto"
+        alt="/l16-segmentation/image/index/1745325674979.png"
+        title="1745325674979" width="836" height="203" /></li>
+<li>U-Net like architecture &#x1f609;
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/l16-segmentation/image/index/1745325848620.png"
+        data-srcset="/l16-segmentation/image/index/1745325848620.png, /l16-segmentation/image/index/1745325848620.png 1.5x, /l16-segmentation/image/index/1745325848620.png 2x"
+        data-sizes="auto"
+        alt="/l16-segmentation/image/index/1745325848620.png"
+        title="1745325848620" width="1054" height="387" /></li>
+</ul>
+<p>but how to UPSAMPLE the feature maps?</p>
+<h3 id="up-sampling">Up-sampling</h3>
+<ul>
+<li>
+<p>simple built-in function, targets at the <em>average pooling</em></p>
+<ul>
+<li>bed of nails</li>
+<li>Nearest Neighbor</li>
+<li>Bilinear Interpolation
+<ul>
+<li>Bicubic Interpolation also like this onw</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Max Unpooling, targets at the <em>max pooling</em></p>
+<ul>
+<li>when max pooling is used, remember the position of the maximum value, and use it (those places) to upsample the feature map</li>
+</ul>
+</li>
+<li>
+<p><a href="https://web.eecs.umich.edu/~justincj/slides/eecs498/498_FA2019_lecture16.pdf" target="_blank" rel="noopener noreffer ">Transpose Convolution</a>, <em>learnable</em> weights
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/l16-segmentation/image/index/1745327679468.png"
+        data-srcset="/l16-segmentation/image/index/1745327679468.png, /l16-segmentation/image/index/1745327679468.png 1.5x, /l16-segmentation/image/index/1745327679468.png 2x"
+        data-sizes="auto"
+        alt="/l16-segmentation/image/index/1745327679468.png"
+        title="1745327679468" width="864" height="428" /></p>
+</li>
+</ul>
+<p>Ready for math? &#x1f609;</p>
+<p>when 1D, size=3, stride=1, padding=1&hellip;
+$$
+\vec{x}*\vec{a} = X \vec{a}
+$$</p>
+<p>$$
+\begin{bmatrix}
+x &amp; y &amp; z &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; x &amp; y &amp; z &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; x &amp; y &amp; z &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; x &amp; y &amp; z \\
+\end{bmatrix}
+\begin{bmatrix}
+0 \\
+a \\
+b \\
+c \\
+d \\
+0 \\
+\end{bmatrix} =
+\begin{bmatrix}
+ay+bz  \\
+ax+by+cz \\
+bx+cy+dz  \\
+cx+dy \\
+\end{bmatrix}
+$$</p>
+<p>$$
+let \ *^T\ be \ transpose \ convolution \Rightarrow \vec{x}*^T \vec{a} = X^T \vec{a}
+$$</p>
+<p>$$
+\begin{bmatrix}
+x &amp; 0 &amp; 0 &amp; 0 \\
+y &amp; x &amp; 0 &amp; 0 \\
+z &amp; y &amp; x &amp; 0 \\
+0 &amp; z &amp; y &amp; x \\
+0 &amp; 0 &amp; z &amp; y \\
+0 &amp; 0 &amp; 0 &amp; z \\
+\end{bmatrix}
+\begin{bmatrix}
+a \\
+b \\
+c \\
+d \\
+\end{bmatrix} =
+\begin{bmatrix}
+ax  \\
+ay+bx\\
+az+by+cx  \\
+bz+cy+dx  \\
+cz+dy \\
+dz \\
+\end{bmatrix}
+$$</p>
+<p>HOWEVER, when the stride is greater than 1, transposed conv can not be expressed as normal conv</p>
+<p>when 1D, size=3, <em>stride=2</em>, padding=1&hellip;
+$$
+\vec{x}*\vec{a} = X \vec{a}
+$$</p>
+<p>$$
+\begin{bmatrix}
+x &amp; y &amp; z &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; x &amp; y &amp; z &amp; 0 \\
+\end{bmatrix}
+\begin{bmatrix}
+0 \\
+a \\
+b \\
+c \\
+d \\
+0 \\
+\end{bmatrix} =
+\begin{bmatrix}
+ay+bz  \\
+bx+cy+dz  \\
+\end{bmatrix}
+$$</p>
+<p>$$
+let \ *^T\ be \ transpose \ convolution \Rightarrow \vec{x}*^T \vec{a} = X^T \vec{a}
+$$</p>
+<p>$$
+\begin{bmatrix}
+x &amp; 0 \\
+y &amp; 0 \\
+z &amp; x \\
+0 &amp; y \\
+0 &amp; z \\
+0 &amp; 0 \\
+\end{bmatrix}
+\begin{bmatrix}
+a \\
+b \\
+\end{bmatrix} =
+\begin{bmatrix}
+ax \\
+ay \\
+az+bx \\
+by  \\
+bz \\
+0 \\
+\end{bmatrix}
+$$</p>
+<ul>
+<li>HHZZ: there is another way, which is upsampling the feature maps by a buit-in function, and then use a convolutional layer to learn the weights for the upsampling.</li>
+</ul>
+<h2 id="instance-segmentation">Instance Segmentation</h2>
+<p>object detection + segmentation &#x1f609;</p>
+<p>see Mask R-CNN paper</p>
+<h2 id="else">else</h2>
+<ul>
+<li>Panoptic Segmentation</li>
+<li>end to end Instance Segmentation</li>
+<li>key points segmentation &amp; human pose estimation</li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2025-04-22</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/l16-segmentation/" data-title="L16: Image Segmentation"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/l16-segmentation/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.org/l16-segmentation/" data-title="L16: Image Segmentation"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/l16-segmentation/" data-title="L16: Image Segmentation"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/l16-segmentation/" data-title="L16: Image Segmentation"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/l22-recap-and-conclusion/" class="prev" rel="prev" title="L22-Recap and Conclusion"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>L22-Recap and Conclusion</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.123.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">HHZZ</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

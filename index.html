@@ -98,26 +98,26 @@
         alt="/avatar.jpg"
         title="/avatar.jpg" width="1920" height="1280" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/HuangHuangZhengZheng" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/l16-segmentation/">L16: Image Segmentation</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2025-04-22">2025-04-22</time></span>&nbsp;<span class="post-category">included in <a href="/categories/umich-eecs-498/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UMich-EECS-498</a></span></div><div class="content">Image Segmentation Goal: to learn about what Fully Convolutional Networks (FCN) are and how they can be used for image segmentation. &#x1f914;
+Semantic Segmentation a simple way is to slide the window, creating a slow RNN? another way is to build a Equal size Fully Convolutional Network (but receptive field is limited and hard to generalize to higher resolutions) U-Net like architecture &#x1f609; but how to UPSAMPLE the feature maps?</div><div class="post-footer">
+        <a href="/l16-segmentation/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/l22-recap-and-conclusion/">L22-Recap and Conclusion</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2025-04-22">2025-04-22</time></span>&nbsp;<span class="post-category">included in <a href="/categories/umich-eecs-498/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UMich-EECS-498</a></span></div><div class="content">Recap and Conclusion Recap What is Computer Vision? building a system that can understand and process visual information
+Main approaches to Computer Vision
+semantic segmentation using Fully Convolutional Networks (FCN) &#x1f914;
+What&rsquo;s next? we will discover interesting new types of deep models Neural ODE NIPS 2018 $$ h_{t+1} = h_t + f(h_t, \theta_t) \Rightarrow \frac{dh}{dt} = f(h(t), t, \theta) $$
+Deep Learning will find new applications
+AI4S DL4CS, like using DL training a hash function to improve the hash table DL4Mathematics, auto theorem proving Deep Learning will use more data and more computional power Problems and Challenges Models are biased eg: Vector Arithmetic with Word Vectors, fit biased dataset to a model leads to poor performance; Economic Bias (usually train model on the wealthier western family?</div><div class="post-footer">
+        <a href="/l22-recap-and-conclusion/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/l20-generative-model-ii/">L20-Generative Model II</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2025-04-21">2025-04-21</time></span>&nbsp;<span class="post-category">included in <a href="/categories/umich-eecs-498/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UMich-EECS-498</a></span></div><div class="content">Generative Model II for some reason, it seems like that we are backed &#x1f606;
 Generative Adversarial Networks (GANs) setup: assume that we have data $x_i$ from a distribution $p_{data}(x)$, all we wanna do is to sample from $p_{data}(x)$
 idea: introduce a latent variable $z$ with simple prior $p(z)$, those $z$ can be interpolated,
 sample $z$ from $p(z)$, and pass into a Generator $x = G(z)$, then we said that $x$ is a sample from the Generator distribution $p_{G}$,</div><div class="post-footer">
         <a href="/l20-generative-model-ii/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/l18-video/">L18-Video</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2025-04-20">2025-04-20</time></span>&nbsp;<span class="post-category">included in <a href="/categories/umich-eecs-498/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UMich-EECS-498</a></span></div><div class="content">Video in NN Introduction Video: 4D tensor, T x H x W x C, a sequence of frames(images).
-Video Classification Input: T x H x W x C Output: K classes, actions instead of nouns. Problems: raw video are BIG, ~1.5GB per minute for SD(640x480x3)
-Solutions: on short clips, eg. T=16, H=W=112, low fps
-Short Term model Single-Frame CNN so you can use a 2D CNN on each frame independently :)</div><div class="post-footer">
-        <a href="/l18-video/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/l19-generative-model-i/">L19-Generative Model I</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2025-04-20">2025-04-20</time></span>&nbsp;<span class="post-category">included in <a href="/categories/umich-eecs-498/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UMich-EECS-498</a></span></div><div class="content">Generative Model I supervised learning vs unsupervised learning supervised learning: labeled data, labeled target variable
-classification, semantic segmentation, object detection, etc. unsupervised learning: unlabeled data, no target variable
-clustering, density estimation, feature extraction/learning, dimensionality reduction, etc. we are trying to learn model the distribution of the data
-Discriminative, Generative, and Conditional Generative all three types of learning can be used in a equation, x is the input variable, y is the target variable,</div><div class="post-footer">
-        <a href="/l19-generative-model-i/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item active">
                     <span class="page-link">
                         <a href="/">1</a>

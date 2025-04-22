@@ -3,7 +3,29 @@
         <title>UMich-EECS-498 - Category - HHZZ`s space</title>
         <link>http://example.org/categories/umich-eecs-498/</link>
         <description>UMich-EECS-498 - Category - HHZZ`s space</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 21 Apr 2025 08:27:18 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/umich-eecs-498/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 22 Apr 2025 08:27:18 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/umich-eecs-498/" rel="self" type="application/rss+xml" /><item>
+    <title>L16: Image Segmentation</title>
+    <link>http://example.org/l16-segmentation/</link>
+    <pubDate>Tue, 22 Apr 2025 08:27:18 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/l16-segmentation/</guid>
+    <description><![CDATA[Image Segmentation Goal: to learn about what Fully Convolutional Networks (FCN) are and how they can be used for image segmentation. &#x1f914;
+Semantic Segmentation a simple way is to slide the window, creating a slow RNN? another way is to build a Equal size Fully Convolutional Network (but receptive field is limited and hard to generalize to higher resolutions) U-Net like architecture &#x1f609; but how to UPSAMPLE the feature maps?]]></description>
+</item>
+<item>
+    <title>L22-Recap and Conclusion</title>
+    <link>http://example.org/l22-recap-and-conclusion/</link>
+    <pubDate>Tue, 22 Apr 2025 08:27:18 &#43;0800</pubDate>
+    <author>HHZZ</author>
+    <guid>http://example.org/l22-recap-and-conclusion/</guid>
+    <description><![CDATA[Recap and Conclusion Recap What is Computer Vision? building a system that can understand and process visual information
+Main approaches to Computer Vision
+semantic segmentation using Fully Convolutional Networks (FCN) &#x1f914;
+What&rsquo;s next? we will discover interesting new types of deep models Neural ODE NIPS 2018 $$ h_{t+1} = h_t + f(h_t, \theta_t) \Rightarrow \frac{dh}{dt} = f(h(t), t, \theta) $$
+Deep Learning will find new applications
+AI4S DL4CS, like using DL training a hash function to improve the hash table DL4Mathematics, auto theorem proving Deep Learning will use more data and more computional power Problems and Challenges Models are biased eg: Vector Arithmetic with Word Vectors, fit biased dataset to a model leads to poor performance; Economic Bias (usually train model on the wealthier western family?]]></description>
+</item>
+<item>
     <title>L20-Generative Model II</title>
     <link>http://example.org/l20-generative-model-ii/</link>
     <pubDate>Mon, 21 Apr 2025 08:27:18 &#43;0800</pubDate>
@@ -88,33 +110,6 @@ Understanding 细节]]></description>
     <author>HHZZ</author>
     <guid>http://example.org/l10-training-i/</guid>
     <description><![CDATA[Training I Activation Functions Sigmoid function: $\sigma(x) = \frac{1}{1 + e^{-x}}$ 不是0中心 两端饱和 always all positive or negative :( exp() 计算复杂，但是对于GPU不是问题 tanh function: $\tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}$ sigmoid变体 ReLU function: $f(x) = max(0, x)$ 不会饱和 计算快 非0中心 dead relu ==&gt; leaky relu Leaky ReLU function: $f(x) = max(0.01x, x)$ 解决了dead relu问题 ==&gt; PRelu function：把0.01改成可学习的参数 ELU function: $f(x) = \begin{cases} x &amp; x \geq 0 \ \alpha(e^x - 1) &amp; x &lt; 0 \end{cases}$ Data Preprocessing 参见DATA-100相关课程]]></description>
-</item>
-<item>
-    <title>L9-Hard and Software</title>
-    <link>http://example.org/l9-hard-and-software/</link>
-    <pubDate>Sat, 02 Nov 2024 09:59:30 &#43;0800</pubDate>
-    <author>HHZZ</author>
-    <guid>http://example.org/l9-hard-and-software/</guid>
-    <description><![CDATA[Hard and Soft ware Hardware eecs 598.009 GPU programming!
-其实我很想了解一下cuda编程
-tensorflow支持TPU，pytorch呢？
-计算图存储在GPU内存里面
-Software the point of deep learning frameworks
-allow rapid prototyping automatically compute gradients run it all efficiently on GPUs or else PyTorch sigmoid0减少计算图节点的设计，因为反向传播重写了
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 class Sigmoid(torch.autograd.Function): @staticmethod def forward(ctx, input): y = 1 / (1 + torch.exp(-input)) ctx.save_for_backward(input) return y @staticmethod def backward(ctx, grad_output): input, = ctx.]]></description>
-</item>
-<item>
-    <title>L8-CNN Arch</title>
-    <link>http://example.org/l8-cnn-arch/</link>
-    <pubDate>Sat, 02 Nov 2024 09:58:45 &#43;0800</pubDate>
-    <author>HHZZ</author>
-    <guid>http://example.org/l8-cnn-arch/</guid>
-    <description><![CDATA[CNN Architectures 今日首绷 计算题 4 bytes per elem
-右边三列体现了一个规律 2013的ImageNet winner仍然是AlexNet变体(ZFNet, ECCV)，只是trial and error的结果
-2014的ImageNet winner是VGGNet ICLR，提出了规则化 3x3卷积核? 两个3x3卷积核 比 一个5x5卷积核 Params和FLOPs更少，但是感受野一样，并且可以插入更多的relu channel翻倍，每次卷积计算cost same amount of floating points computation 2014的ImageNet有GoogLeNet CVPR:
-初期快速下采样 Inception模块: 1x1, 3x3, 5x5卷积核(使得kernel size不再是一个超参数) 1x1适配器的引入 resnet雏形 Global Average Pooling: 替换掉一层fcnn 其次还有auxiliary classifier取中间层输出，作为loss加入到loss function中 2015年首先是BN被发现了，auxiliary classifier被弃用 接着ResNet CVPR:
-引入残差结构，提升准确率 引入bottleneck结构，层数增加，但是flops减少 ECCV有一篇进一步讨论了残差块的结构 CVPR2017有一篇文章提出了ResNeXt 1 torch.nn.Conv2d(groups=) # groups参数控制了分组卷积的数量 2017年的ImageNet结束
-DenseNet: fancier 趋势 MobileNet: 轻量化趋势 ICLR 2017自动化设计神经网络结构 Neural Architecture Search ]]></description>
 </item>
 </channel>
 </rss>

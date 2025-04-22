@@ -98,18 +98,29 @@
         alt="/avatar.jpg"
         title="/avatar.jpg" width="1920" height="1280" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/HuangHuangZhengZheng" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/lec8-risc-v-lw-sw-decision-i/">Lec8-RISC-V lw, sw, Decision I</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-08">2024-10-08</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61c/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61C</a></span></div><div class="content">RISC-V lw, sw, Decision I Intro 编译器会最小化寄存器使用
+layout in Memory side note:
+a register is a 32-bit register(hold 32-bit data) word: 4 bytes, 32 bits risc-v 小端法（主流） Data Transfer Instructions lw (load word) look note &#x1f914;
+sw (store word) 结合lec7的模式图来记忆
+lb/sb (load byte/store byte) same as lw/sw
+lb 符号扩展
+lbu: load byte unsigned
+why still addi? 更快 但是imm的范围更小 (32bit以内) Decision I RV32 so far &#x1f60b;
+1 2 3 4 5 6 7 8 add rd, rs1, rs2 sub rd, rs1, rs2 addi rd, rs1, imm lw rd, imm(rs1) sw rs2, imm(rs1) lb rd, imm(rs1) sb rs2, imm(rs1) lbu rd, imm(rs1) beq/bne (branch if equal/not equal) Decision in RISC-V Assembly beq: branch if equal bne: branch if not equal blt: branch if less than blt reg1, reg2, label # if (reg1 &lt; reg2) goto label bge: branch if greater than or equal bltu: branch if unsigned less than bltu reg1, reg2, label # if (reg1 &lt; reg2) goto label bgeu: branch if unsigned greater than or equal j: jump/always branch j label # 无条件jump的范围比有条件jump构造出来的无条件jump更大（32位限制） 没有：bgt or ble, only have BLT（培根生菜番茄） sandwiches</div><div class="post-footer">
+        <a href="/lec8-risc-v-lw-sw-decision-i/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/lec4-c-intropointers-arrays-strings/">Lec4-C intro：Pointers, Arrays, Strings</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-05">2024-10-05</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61c/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61C</a></span></div><div class="content">C intro: Pointers, Arrays, Strings Pointers 1 int (*fn) (void *, void *) = &amp;foo; // pointer to function arrow operator -&gt; is used to access members of a struct pointed to by a pointer.
+NULL pointer is used to indicate an invalid pointer.
+1 2 3 if (p == NULL) { // handle error } 谈到了地址对齐 -&gt; word alignment
+1 2 3 sizeof(arg) sizeof(structtype) Arrays 经典问题之数组名是指针
+1 2 3 4 5 char *foo() { char arr[10]; return arr; // A BIG mistake!</div><div class="post-footer">
+        <a href="/lec4-c-intropointers-arrays-strings/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/lec1-great-ideas-in-computer-architecture-intro/">Lec1-Great Ideas in Computer Architecture Intro</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-05">2024-10-05</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61c/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61C</a></span></div><div class="content">Great Ideas in Computer Architecture Intro six great ideas Moore&rsquo;s Law Abstraction Principle of Locality / Memory Hierarchy Parallelism Performance Measurement &amp; Improvement Dependability via Redundancy &#x1f609;</div><div class="post-footer">
         <a href="/lec1-great-ideas-in-computer-architecture-intro/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/lec2-number-representation/">Lec2-Number Representation</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-05">2024-10-05</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61c/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61C</a></span></div><div class="content">Number Representation Summary 前两个编码方式不常用 后三个无符号数 / 2的补码 / biased representation 比较常见 </div><div class="post-footer">
-        <a href="/lec2-number-representation/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/lec3-c-introbasic/">Lec3-C intro：Basic</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-05">2024-10-05</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61c/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61C</a></span></div><div class="content">C intro: Basic Compile vs Interpret Java 是先编译后解释器解释 C 是编译完成后直接运行，不需要解释器
-Syntax 1 2 3 4 int8_t a = 10; int64_t b = 20; int16_t c = a + b; uint32_t d = a - b; 1 2 3 4 5 6 7 typedef uint8_t Byte; typedef struct { Byte a; int b; } MyStruct; MyStruct myStruct = {10, 20}; </div><div class="post-footer">
-        <a href="/lec3-c-introbasic/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>

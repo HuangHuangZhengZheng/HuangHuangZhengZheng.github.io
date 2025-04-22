@@ -98,6 +98,16 @@
         alt="/avatar.jpg"
         title="/avatar.jpg" width="1920" height="1280" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/HuangHuangZhengZheng" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/lec3-control/">Lec3-Control</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-12">2024-10-12</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61a/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61A</a></span></div><div class="content">Control div in Python 1 2 3 4 5 6 7 from opertor import truediv, floordiv a = 10 b = 3 c = a / b d = a // b print(c) # 3.3333333333333335 print(d) # 3 doctest in Python </div><div class="post-footer">
+        <a href="/lec3-control/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/lec4-higher-order-functions/">Lec4-Higher-Order Functions</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-12">2024-10-12</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61a/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61A</a></span></div><div class="content">Higher Order Functions Control Statements vs Functions all params will be evaluated before the function is called ! 不存在跳过参数的情况
+Assertions in Python 1 assert condition, message Returning a Function from a Function 带参数的修饰器 &#x1f62e;
+1 2 3 4 5 6 7 8 def make_adder(n): def adder(x): return x + n return adder # Example usage add_three = make_adder(3) print(add_three(4)) # Output: 7, WHY? functions in Python are first-class values!</div><div class="post-footer">
+        <a href="/lec4-higher-order-functions/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/lec12-risc-v-instruction-formats-ii/">Lec12-RISC-V Instruction Formats II</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-09">2024-10-09</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61c/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61C</a></span></div><div class="content">RISC-V Instruction Formats II B-Format Layout branch/分支 ==&gt; if-else, while, for
 encode Label:
@@ -114,27 +124,6 @@ Long Immediate， U-Format Layout I, B, S imm的12位扩展到long，找个地�
 jalr 使用示例
 留一个reference</div><div class="post-footer">
         <a href="/lec12-risc-v-instruction-formats-ii/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/lec5-c-memory-management/">Lec5-C Memory Management</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-09">2024-10-09</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61c/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61C</a></span></div><div class="content">C Memory Management malloc 1 2 3 4 5 6 // with the help of a typecast and sizeof ptr = (int *) malloc(n * sizeof(int)); /* check if malloc was successful */ if (ptr == NULL) { /* handle error */ } 1 2 3 ptr = (int *) realloc(ptr, (n+1) * sizeof(int)); free(ptr); // realloc(ptr, 0) 不要踩坑！
-An array name is not a variable. &ndash; K&amp;R
-when call &amp;arr , just get the address of the first element of the array</div><div class="post-footer">
-        <a href="/lec5-c-memory-management/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/lec6-floating-point/">Lec6-Floating Point</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-09">2024-10-09</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61c/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61C</a></span></div><div class="content">Floating Point Introduction note that binary can directly calculate
-we can use normal format to represent floating point numbers
-eg: $1.xxxxx * 2_{two}^{yyyyy}$
-&ldquo;1.&ldquo;默认，不需bit级别上考虑
-underflow &amp; IEEE 754 希望全是0的bit表示的是最小的数字，而不是+0或-0，引入bias
-$bias = 2^{n-1} - 1$ 详见number representation的bias部分
-真正的表示方法：
-IEEE 754 &#x1f389;
-Special Values infinity, NaN, zero
-NaN (Not a Number) : 无效数值，如0/0, sqrt(-1) infinity : 无穷大，如1/0, 10^1000 zero : 零，如0/1, 1.0-1.0 gap数量级在800万左右，因为implicit one的出现
-denormalized number : 规格化数值，指数部分为0（implicit 2^-126），小数部分不为0==&gt; 从步长2^-149开始，exp加1，步长翻倍，同时从denorm到norm的时候步长不会发生变化！ 总结
-从0 11111110 111&hellip;11(23个) 加一，得到 0 11111111 000&hellip;00(23个)这就是无穷</div><div class="post-footer">
-        <a href="/lec6-floating-point/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>

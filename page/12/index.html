@@ -98,6 +98,19 @@
         alt="/avatar.jpg"
         title="/avatar.jpg" width="1920" height="1280" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/HuangHuangZhengZheng" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/lec30-tail-calls/">Lec30-Tail Calls</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-22">2024-10-22</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61a/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61A</a></span></div><div class="content">Tail Calls Functional Programming Tail Call 相同时间复杂度，对空间复杂度的限制，常量空间运行
+get the len of a list Map and Reduce Reduce eg
+1 (reduce * &#39;(3 4 5) 2) ; 120 Map Map with only a constant numbers of Frames
+General Computing Machine &#x1f62e;</div><div class="post-footer">
+        <a href="/lec30-tail-calls/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/lec31-programs-as-data/">Lec31-Programs as Data</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-22">2024-10-22</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61a/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61A</a></span></div><div class="content">Programs as Data eval 在字符串上面eval
+Generating Code Quasiquotes
+while statements in Scheme&hellip;how to generate generic code </div><div class="post-footer">
+        <a href="/lec31-programs-as-data/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/lec28-calculator/">Lec28-Calculator</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-21">2024-10-21</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61a/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61A</a></span></div><div class="content">Calculator Exception 1 raise Exception(&#34;Invalid input&#34;) 1 2 3 4 try: # code that may raise an exception except Exception as e: print(e) 见java try-catch &#x1f60f;
 1 2 float(&#39;inf&#39;) # positive infinity float(&#39;-inf&#39;) # negative infinity Programming Languages Programs are trees&hellip; and the way interpreters work is through a tree recursion. Parsing 把文本转化为抽象语法树（Abstract Syntax Tree，AST）
@@ -105,19 +118,6 @@ base case: only symbols and numbers
 recursive case: expressions and statements
 Scheme-Syntax Calculator using Python Pair to describe pairs of expressions and statements</div><div class="post-footer">
         <a href="/lec28-calculator/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/lec27-scheme-lists/">Lec27-Scheme Lists</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-21">2024-10-21</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61a/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61A</a></span></div><div class="content">Scheme Lists cons / car / cdr / nil 1 2 3 4 (null? nil) ; #t (null? (cons 1 nil)) ; #f (car (cons 1 2)) ; 1 (list 1 2 3) ; (1 2 3) Symbolic Programming Lisp is a symbolic programming language, which uses in AI for a long time&hellip;?
-注意单引号
-1 (car (cdr (car (cdr &#39;(1 (2 3) 4))))) ; 3 List Processing 纯看scheme属实有点抽象了
-helper function 化简之</div><div class="post-footer">
-        <a href="/lec27-scheme-lists/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/lec23-eifficiency/">Lec23-Eifficiency</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-21">2024-10-21</time></span>&nbsp;<span class="post-category">included in <a href="/categories/ucb-cs61a/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UCB-CS61A</a></span></div><div class="content">Efficiency Memorization Idea: Memorize a large set of information and use it to quickly recall it.
-fib 1 2 3 4 5 6 7 8 def memo(f): cache = {} def memoized(n): if n not in cache: cache[n] = f(n) return cache[n] return memoized Exponentiation 前者 O(N) ，后者 O(logN)
-省流 CS61B前瞻，对时间复杂度和空间复杂度初步探索</div><div class="post-footer">
-        <a href="/lec23-eifficiency/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>

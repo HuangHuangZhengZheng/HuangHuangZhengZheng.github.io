@@ -98,26 +98,25 @@
         alt="/avatar.jpg"
         title="/avatar.jpg" width="1920" height="1280" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/HuangHuangZhengZheng" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/l17-3d-vision/">L17-3D Vision</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2025-04-19">2025-04-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/umich-eecs-498/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UMich-EECS-498</a></span></div><div class="content">3D Vision back to the start &#x1f606;
+shape prediction and ingest 3D information 5 data representation
+depth map
+RGB + Depth image = RGB-D image 2.5D raw 3D sensor can easily capture depth information another type of depth map is surface normal map, which is a 2D image that represents the surface normal (using a normal vector) at each pixel location all the mentioned maps can be learned with Fully Convolutional Networks (FCN) &#x1f914; Voxel grid</div><div class="post-footer">
+        <a href="/l17-3d-vision/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/l21-reinforcement-learning/">L21-Reinforcement Learning</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2025-04-18">2025-04-18</time></span>&nbsp;<span class="post-category">included in <a href="/categories/umich-eecs-498/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UMich-EECS-498</a></span></div><div class="content">Reinforcement Learning So far, we have discussed supervised learning, and a little bit unsupervised learning (in UCB-data100 &#x1f609;)
+What is Reinforcement Learning at time $t$, env $\rightarrow^{state}$ agent $\rightarrow^{action}$ env $\rightarrow^{reward}$ agent, then env changed, agent learned, then repeated.
+state can be partial -&gt; noisy reward can be delayed, implicit and sparse -&gt; noisy AND Nondifferentiable &#x1f632; Nonstationary environment, change over time &#x1f60e; Generative Adversarial Networks (GANs) somehow is a part of Reinforcement Learning.</div><div class="post-footer">
+        <a href="/l21-reinforcement-learning/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/l17-huge-gnn/">L17-huge GNN</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2025-01-29">2025-01-29</time></span>&nbsp;<span class="post-category">included in <a href="/categories/stanford-cs224w/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Stanford-CS224W</a></span></div><div class="content">Scaling up GNNs 直接load全部nodes又不太可能【naive approach】4090 / A100带不动
 neighbor sampling 对hub node的思考 see the paper
 cluster-GCN advanced Simplified GCN 舍弃了GCN的non-linearity，直接用linear layer
 同质性？但是我想知道和glidar的区别？ </div><div class="post-footer">
         <a href="/l17-huge-gnn/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/l16-improvedgnn/">L16-improvedGNN</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2025-01-29">2025-01-29</time></span>&nbsp;<span class="post-category">included in <a href="/categories/stanford-cs224w/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Stanford-CS224W</a></span></div><div class="content">Improved GNN positionally-aware gnn anchor数量 大小 （指数守恒） refer to the paper of Position-aware Graph Neural Networks (P-GNN)</div><div class="post-footer">
-        <a href="/l16-improvedgnn/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/l7-gnn-t1/">L7-GNN t1</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2025-01-28">2025-01-28</time></span>&nbsp;<span class="post-category">included in <a href="/categories/stanford-cs224w/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Stanford-CS224W</a></span></div><div class="content">L7-GNN theory 1 所有gnn的原型在这里
-一个layer layers之间的交互 input graph -&gt; computational graph的构建 GO!!!!
-a simple layer of GNN msg computations 原神处理dddd
-aggregation 核心：order invariance 焯这就是pointnet的核心之一啊！！！
-issue： 容易忽略自己节点 some examples of GNNs GCN GraphSAGE 这里的细节在于如何聚合邻居的信息
-同时每层来个norm
-GAT 首先解释一下什么是attention mechanism 单个attention的计算 多头attention的计算（更容易收敛） GNN layers in practice glidar呼之欲出了 &#x1f631; 有意思的东西&#x1f60b; stacking GNN layers </div><div class="post-footer">
-        <a href="/l7-gnn-t1/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>

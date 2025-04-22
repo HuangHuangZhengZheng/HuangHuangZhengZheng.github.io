@@ -98,6 +98,18 @@
         alt="/avatar.jpg"
         title="/avatar.jpg" width="1920" height="1280" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/HuangHuangZhengZheng" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/l14-visualizing-and-understanding/">L14-Visualizing and Understanding</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-11-06">2024-11-06</time></span>&nbsp;<span class="post-category">included in <a href="/categories/umich-eecs-498/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UMich-EECS-498</a></span></div><div class="content">Visualizing and Understanding Visualizing 对第一层、第二层以及最后进入FC层的特征图进行可视化
+PCA√
+t-SNE√ 非线性降维
+最大激活
+Understanding 细节</div><div class="post-footer">
+        <a href="/l14-visualizing-and-understanding/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/l10-training-i/">L10-Training I</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-11-04">2024-11-04</time></span>&nbsp;<span class="post-category">included in <a href="/categories/umich-eecs-498/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UMich-EECS-498</a></span></div><div class="content">Training I Activation Functions Sigmoid function: $\sigma(x) = \frac{1}{1 + e^{-x}}$ 不是0中心 两端饱和 always all positive or negative :( exp() 计算复杂，但是对于GPU不是问题 tanh function: $\tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}$ sigmoid变体 ReLU function: $f(x) = max(0, x)$ 不会饱和 计算快 非0中心 dead relu ==&gt; leaky relu Leaky ReLU function: $f(x) = max(0.01x, x)$ 解决了dead relu问题 ==&gt; PRelu function：把0.01改成可学习的参数 ELU function: $f(x) = \begin{cases} x &amp; x \geq 0 \ \alpha(e^x - 1) &amp; x &lt; 0 \end{cases}$ Data Preprocessing 参见DATA-100相关课程</div><div class="post-footer">
+        <a href="/l10-training-i/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/l9-hard-and-software/">L9-Hard and Software</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-11-02">2024-11-02</time></span>&nbsp;<span class="post-category">included in <a href="/categories/umich-eecs-498/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UMich-EECS-498</a></span></div><div class="content">Hard and Soft ware Hardware eecs 598.009 GPU programming!
 其实我很想了解一下cuda编程
@@ -107,30 +119,6 @@ Software the point of deep learning frameworks
 allow rapid prototyping automatically compute gradients run it all efficiently on GPUs or else PyTorch sigmoid0减少计算图节点的设计，因为反向传播重写了
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 class Sigmoid(torch.autograd.Function): @staticmethod def forward(ctx, input): y = 1 / (1 + torch.exp(-input)) ctx.save_for_backward(input) return y @staticmethod def backward(ctx, grad_output): input, = ctx.</div><div class="post-footer">
         <a href="/l9-hard-and-software/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/l8-cnn-arch/">L8-CNN Arch</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-11-02">2024-11-02</time></span>&nbsp;<span class="post-category">included in <a href="/categories/umich-eecs-498/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UMich-EECS-498</a></span></div><div class="content">CNN Architectures 今日首绷 计算题 4 bytes per elem
-右边三列体现了一个规律 2013的ImageNet winner仍然是AlexNet变体(ZFNet, ECCV)，只是trial and error的结果
-2014的ImageNet winner是VGGNet ICLR，提出了规则化 3x3卷积核? 两个3x3卷积核 比 一个5x5卷积核 Params和FLOPs更少，但是感受野一样，并且可以插入更多的relu channel翻倍，每次卷积计算cost same amount of floating points computation 2014的ImageNet有GoogLeNet CVPR:
-初期快速下采样 Inception模块: 1x1, 3x3, 5x5卷积核(使得kernel size不再是一个超参数) 1x1适配器的引入 resnet雏形 Global Average Pooling: 替换掉一层fcnn 其次还有auxiliary classifier取中间层输出，作为loss加入到loss function中 2015年首先是BN被发现了，auxiliary classifier被弃用 接着ResNet CVPR:
-引入残差结构，提升准确率 引入bottleneck结构，层数增加，但是flops减少 ECCV有一篇进一步讨论了残差块的结构 CVPR2017有一篇文章提出了ResNeXt 1 torch.nn.Conv2d(groups=) # groups参数控制了分组卷积的数量 2017年的ImageNet结束
-DenseNet: fancier 趋势 MobileNet: 轻量化趋势 ICLR 2017自动化设计神经网络结构 Neural Architecture Search </div><div class="post-footer">
-        <a href="/l8-cnn-arch/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/l7-cnn/">L7-CNN</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-10-29">2024-10-29</time></span>&nbsp;<span class="post-category">included in <a href="/categories/umich-eecs-498/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>UMich-EECS-498</a></span></div><div class="content">Convolutional Neural Networks Components of a CNN Convolutional layers Pooling layers Normalization layers Convolutional Layers 注意到一个通道的卷积核也是全通道数 3 x5x5
-偏置是一个向量
-(b, c, h, w)表示batch size, channel, height, width!
-注意四个维度的意义
-卷积本质上也是一种linear layer，所以要relu等
-高维全局，低维局部 1x1 Convolutions 一种适配器，调整通道数
-other types of convolutions PyTorch Implementation Pooling Layers another way to downsample data, no learnable parameters
-局部最大值微小移动不变性
-Normalization Layers 主要讨论的是batch normalization
-层与层之间数据分布更加稳定 此时
-1 model.eval() 此时bn可以作为线形层被fuse进入fcnn or conv
-layer norm也有，主要是rnn和transformer用到了 Example: LeNet-5 </div><div class="post-footer">
-        <a href="/l7-cnn/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>

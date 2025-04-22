@@ -98,6 +98,21 @@
         alt="/avatar.jpg"
         title="/avatar.jpg" width="1920" height="1280" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/HuangHuangZhengZheng" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:2434937326@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/databasel18/">CS186-L18: Parallel Query Processing</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-08-14">2024-08-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div><div class="content">Intro to Parallelism Architectures and Software Structures we will focus on the shared-nothing here &#x1f60b;
+Kinds of Query Parallelism side note:
+intra: single inter: multiple at the same level Parallel Data Acceess Data Partitioning across Machines Round robin means that each machine haves the same shuffled data
+parallel scans scan and merge
+$\sigma_p$ : an operator that skip entire sites that have no matching tuples in range or hash partitioning</div><div class="post-footer">
+        <a href="/databasel18/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/databasel13/">CS186-L13: Transactions & Concurrency I</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-08-14">2024-08-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div><div class="content">&#x1f389;
+Intro transaction&rsquo;s principle ACID Isolation (Concurrency) however, do not consider serial execution &#x1f605;
+Atomicity and Durability Consistency Concurrency Control 基本符号表达 序列等价性：
+$Def1:$ Serial Schedule each transaction executes in a serial order, one after the other, without any intervening $Def2:$ schedules Equivalent involve same transaction each transaction&rsquo;s actions are the same order both transactions have the same effect on the database&rsquo;s final state $Def3:$ Serializable if a schedule is serializable, then it is equivalent to some serial schedule Conflict Serializability conflict operations?</div><div class="post-footer">
+        <a href="/databasel13/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/databasel14/">CS186-L14: Transactions & Concurrency II</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-08-14">2024-08-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div><div class="content">Two Phase Locking (2PL) Strict 2PL same as 2PL, but with stricter definition of release locks at once
 pink area is the Strict 2PL
@@ -107,17 +122,6 @@ why happen? side note:
 prioritize upgrades can avoid #2 unlike the OS which can have a fixed order of required sources&hellip;&hellip;
 avoiding deadlocks timeout first, TIMEOUT is a not so bad idea &#x1f914;</div><div class="post-footer">
         <a href="/databasel14/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/databasel15/">CS186-L15: DB Design: Entity-Relationship Models</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-08-14">2024-08-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div><div class="content">Overview how to design a database instead of DBMS! &#x1f914; this class mainly focuses on the conceptual design
-Data Models and Relational Levels of Abstraction def in Data model abstractions example Data Independence Entity-Relationship Model (ERM) Def Entity: a real-world object that can be described and identified by a set of attributes Entity Set: a collection of similar entities all entities in an entity set have the same attributes each entity set has a key each attribute has a domain Relationship: a connection between two entity sets Key and Participation Constraints Key Constraints Participation Constraints Weak Entity Alternative Notation and Terminology decoder graph &#x1f605; math notation &#x1f605; Binary vs Ternary Relationships 上面的更加紧密并且可以记录qty</div><div class="post-footer">
-        <a href="/databasel15/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/databasel10/">CS186-L10: Iterators & Joins</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HHZZ</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-08-14">2024-08-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cs186/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CS186</a></span></div><div class="content">Intro relational operator: tuples(in other way, relations) in, tuples out
-1 2 3 4 5 6 7 abstract class Iterator { // set up the children and the dataflow graph void setup(List&lt;Iterator&gt; inputs); void init(args); // state tuple next(); // returns the next tuple void close(); } presudo code select on the fly &#x1f914;
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 init() { child.</div><div class="post-footer">
-        <a href="/databasel10/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
