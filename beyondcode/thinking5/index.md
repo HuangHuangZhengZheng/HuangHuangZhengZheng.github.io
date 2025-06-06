@@ -59,7 +59,9 @@ Key idea: Help them help you! win-win, win, win, win.
 - take charge of your own attitude -- that ultimately determines your quality of life
 - Sleeping is the most important thing in the world, should always come first.
 - 零消耗：不轻易跟随对方的思维与情绪，不轻易期待，不轻易回应，我不同意你说的每一句话，但是我尊重你说话的权利。
-- 
+- 持续的成长感 + 活在当下 + 书里面找答案
+- Somehow, I know this is painful, and because it is painful, it will evoke an increase in dopamine later, it mean it will raise my baselines. In those moments, tell yourself that you are doing this by choice, and I love it! 努力前后都不要太提高多巴胺的数值，学会在努力的过程中提升多巴胺！
+
 
 <p style="color: green; font-size: 18px; font-family: 'Courier New', monospace;">这是绿色、18像素大小的 Courier New 字体</p>
 
